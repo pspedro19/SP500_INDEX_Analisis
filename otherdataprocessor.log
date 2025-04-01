@@ -1,0 +1,474 @@
+2025-03-31 11:42:13,271 [INFO] ================================================================================
+2025-03-31 11:42:13,274 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-03-31 11:42:13,274 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-03-31 11:42:13,275 [INFO] Directorio raíz de datos: Data/Macro/raw
+2025-03-31 11:42:13,277 [INFO] Fecha y hora: 2025-03-31 11:42:13
+2025-03-31 11:42:13,277 [INFO] ================================================================================
+2025-03-31 11:42:13,280 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-03-31 11:42:13,280 [INFO] Leyendo archivo de configuración...
+2025-03-31 11:42:13,626 [INFO] Se encontraron 4 configuraciones para procesar con fuente 'Other'
+2025-03-31 11:42:13,627 [INFO] 
+Resumen de configuraciones a procesar:
+2025-03-31 11:42:13,629 [INFO] - US_Empire_State_Index (Tipo Macro: business_confidence, TARGET: nan)
+2025-03-31 11:42:13,630 [INFO] - AAII_Investor_Sentiment (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-03-31 11:42:13,630 [INFO] - Put_Call_Ratio_SPY (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-03-31 11:42:13,632 [INFO] - Chicago_Fed_NFCI (Tipo Macro: leading_economic_index, TARGET: ANFCI)
+2025-03-31 11:42:13,633 [INFO] 
+Procesando: US_Empire_State_Index (business_confidence)
+2025-03-31 11:42:13,635 [INFO] - Columna TARGET: nan
+2025-03-31 11:42:13,636 [INFO] - Tipo de preprocesamiento: Normal
+2025-03-31 11:42:13,636 [INFO] Procesando US_Empire_State_Index manualmente
+2025-03-31 11:42:13,638 [INFO] - Archivo de entrada: Data/Macro/raw\business_confidence\US_Empire_State_Index.csv
+2025-03-31 11:42:13,646 [INFO] - Archivo cargado: 285 filas, 24 columnas
+2025-03-31 11:42:13,650 [INFO] - Rango de fechas: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:13,652 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-03-31 11:42:13,655 [INFO] - Columnas encontradas y procesadas: GACDISA, AWCDISA
+2025-03-31 11:42:13,660 [INFO] - Columna ESI_GACDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:13,663 [INFO] - Columna ESI_AWCDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:13,666 [INFO] - US_Empire_State_Index: 285 filas procesadas manualmente, periodo: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:13,667 [INFO] 
+Procesando: AAII_Investor_Sentiment (consumer_confidence)
+2025-03-31 11:42:13,669 [INFO] - Columna TARGET: nan
+2025-03-31 11:42:13,670 [INFO] - Tipo de preprocesamiento: nan
+2025-03-31 11:42:13,672 [INFO] Procesando AAII_Investor_Sentiment manualmente
+2025-03-31 11:42:13,672 [INFO] - Archivo de entrada: Data/Macro/raw\consumer_confidence\AAII_Investor_Sentiment.xlsx
+2025-03-31 11:42:13,673 [INFO] Intentando leer Excel con engine: openpyxl
+2025-03-31 11:42:13,910 [INFO] - Archivo cargado: 1966 filas, 13 columnas
+2025-03-31 11:42:13,910 [INFO] - Columnas disponibles: Reported Date, Bullish, Neutral, Bearish, Total, Bullish 8-week Mov Avg, Bull-Bear Spread, Bullish Average, Bullish Average +St. Dev.,  Bullish Average - St. Dev., S&P 500 Weekly High, S&P 500 Weekly Low, S&P 500 Weekly Close
+2025-03-31 11:42:13,911 [INFO] - Usando columna 'Reported Date' como fecha
+2025-03-31 11:42:13,913 [INFO] - Columnas encontradas: Bearish, Bull-Bear Spread, Bullish
+2025-03-31 11:42:13,919 [INFO] - Rango de fechas total: 1987-06-26 a 2025-03-20
+2025-03-31 11:42:13,921 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-03-31 11:42:13,924 [INFO] - Columna AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-03-31 11:42:13,925 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-03-31 11:42:13,927 [INFO] - Columna AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-03-31 11:42:13,928 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-03-31 11:42:13,931 [INFO] - Columna AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-03-31 11:42:13,933 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-03-31 11:42:13,936 [INFO] - AAII_Investor_Sentiment: 1966 filas procesadas manualmente, periodo: 1987-06-26 a 2025-03-20
+2025-03-31 11:42:13,937 [INFO] 
+Procesando: Put_Call_Ratio_SPY (consumer_confidence)
+2025-03-31 11:42:13,939 [INFO] - Columna TARGET: nan
+2025-03-31 11:42:13,939 [INFO] - Tipo de preprocesamiento: nan
+2025-03-31 11:42:13,941 [INFO] Procesando Put_Call_Ratio_SPY manualmente
+2025-03-31 11:42:13,942 [INFO] - Archivo de entrada: Data/Macro/raw\consumer_confidence\Put_Call_Ratio_SPY.csv
+2025-03-31 11:42:14,107 [INFO] - Archivo cargado: 114936 filas, 13 columnas
+2025-03-31 11:42:14,107 [INFO] - Columnas disponibles: date, act_symbol, expiration, strike, call_put, bid, ask, vol, delta, gamma, theta, vega, rho
+2025-03-31 11:42:14,108 [INFO] - Usando columna 'date' como fecha/hora
+2025-03-31 11:42:14,134 [WARNING] - No se encontraron columnas 'put_volume' y 'call_volume' estándar. Se aplicará fallback usando columnas numéricas.
+2025-03-31 11:42:14,177 [INFO] - Put_Call_Ratio_SPY: 895 filas tras agrupar fallback, periodo: 2019-02-09 a 2025-03-25
+2025-03-31 11:42:14,181 [INFO] 
+Procesando: Chicago_Fed_NFCI (leading_economic_index)
+2025-03-31 11:42:14,181 [INFO] - Columna TARGET: ANFCI
+2025-03-31 11:42:14,183 [INFO] - Tipo de preprocesamiento: Normal
+2025-03-31 11:42:14,184 [INFO] Procesando Chicago_Fed_NFCI manualmente
+2025-03-31 11:42:14,184 [INFO] - Archivo de entrada: Data/Macro/raw\leading_economic_index\Chicago_Fed_NFCI.csv
+2025-03-31 11:42:14,195 [INFO] - Archivo cargado: 2829 filas, 7 columnas
+2025-03-31 11:42:14,195 [INFO] - Columnas disponibles: Friday_of_Week, NFCI, ANFCI, Risk, Credit, Leverage, Nonfinancial_Leverage
+2025-03-31 11:42:14,203 [INFO] - Usando columna 'Friday_of_Week' como fecha
+2025-03-31 11:42:14,206 [INFO] - Rango de fechas total: 1971-01-08 a 2025-03-21
+2025-03-31 11:42:14,207 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-03-31 11:42:14,210 [INFO] - Filtrando desde 2014-01-01: 586/2829 filas (20.71%)
+2025-03-31 11:42:14,215 [INFO] - Columna NFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-03-31 11:42:14,218 [INFO] - Columna ANFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-03-31 11:42:14,219 [INFO] - Columnas procesadas: NFCI, ANFCI
+2025-03-31 11:42:14,222 [INFO] - Chicago_Fed_NFCI: 586 filas procesadas manualmente, periodo: 2014-01-03 a 2025-03-21
+2025-03-31 11:42:14,224 [INFO] 
+Archivos procesados correctamente: 4/4
+2025-03-31 11:42:14,225 [INFO] 
+Generando índice temporal diario...
+2025-03-31 11:42:14,227 [INFO] - Rango de fechas global: 1987-06-26 a 2025-03-31
+2025-03-31 11:42:14,229 [INFO] - Total de fechas diarias generadas: 13794
+2025-03-31 11:42:14,230 [INFO] 
+Combinando datos con índice diario...
+2025-03-31 11:42:14,232 [INFO] - Combinando: US_Empire_State_Index
+2025-03-31 11:42:14,242 [INFO] - Combinando: AAII_Investor_Sentiment
+2025-03-31 11:42:14,250 [INFO] - Combinando: Put_Call_Ratio_SPY
+2025-03-31 11:42:14,261 [INFO] - Combinando: Chicago_Fed_NFCI
+2025-03-31 11:42:14,270 [INFO] - DataFrame combinado: 13794 filas, 17 columnas
+2025-03-31 11:42:14,271 [INFO] 
+==================================================
+2025-03-31 11:42:14,272 [INFO] RESUMEN DE COBERTURA FINAL
+2025-03-31 11:42:14,274 [INFO] ==================================================
+2025-03-31 11:42:14,275 [INFO] Total indicadores procesados: 3
+2025-03-31 11:42:14,277 [INFO] Rango de fechas: 1987-06-26 a 2025-03-31
+2025-03-31 11:42:14,278 [INFO] Total días en la serie: 13794
+2025-03-31 11:42:14,278 [INFO] 
+Cobertura por indicador:
+2025-03-31 11:42:14,282 [INFO] - US_Empire_State_Index: 62.67%
+2025-03-31 11:42:14,284 [INFO] - AAII_Investor_Sentiment: 99.80%
+2025-03-31 11:42:14,286 [INFO] - Chicago_Fed_NFCI: 29.77%
+2025-03-31 11:42:14,287 [INFO] 
+==================================================
+2025-03-31 11:42:14,287 [INFO] ESTADÍSTICAS DE VALORES
+2025-03-31 11:42:14,289 [INFO] ==================================================
+2025-03-31 11:42:14,293 [INFO] 
+Estadísticas para ESI_GACDISA_US_Empire_State_Index_business_confidence:
+2025-03-31 11:42:14,293 [INFO] - Min: -79.9
+2025-03-31 11:42:14,295 [INFO] - Max: 39.0
+2025-03-31 11:42:14,296 [INFO] - Media: 6.604580682475419
+2025-03-31 11:42:14,296 [INFO] - Mediana: 7.8
+2025-03-31 11:42:14,298 [INFO] - Desv. Estándar: 15.716616407659977
+2025-03-31 11:42:14,301 [INFO] 
+Estadísticas para ESI_AWCDISA_US_Empire_State_Index_business_confidence:
+2025-03-31 11:42:14,301 [INFO] - Min: -63.2
+2025-03-31 11:42:14,302 [INFO] - Max: 33.5
+2025-03-31 11:42:14,302 [INFO] - Media: 1.2108733371891272
+2025-03-31 11:42:14,304 [INFO] - Mediana: 1.3
+2025-03-31 11:42:14,306 [INFO] - Desv. Estándar: 10.23365502980844
+2025-03-31 11:42:14,307 [INFO] 
+Estadísticas para AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence:
+2025-03-31 11:42:14,309 [INFO] - Min: 0.06
+2025-03-31 11:42:14,309 [INFO] - Max: 0.7027
+2025-03-31 11:42:14,309 [INFO] - Media: 0.3105507494551794
+2025-03-31 11:42:14,310 [INFO] - Mediana: 0.2988
+2025-03-31 11:42:14,312 [INFO] - Desv. Estándar: 0.09745327291339351
+2025-03-31 11:42:14,313 [INFO] 
+Estadísticas para AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence:
+2025-03-31 11:42:14,315 [INFO] - Min: -0.54
+2025-03-31 11:42:14,315 [INFO] - Max: 0.6286
+2025-03-31 11:42:14,316 [INFO] - Media: 0.06615073056806625
+2025-03-31 11:42:14,318 [INFO] - Mediana: 0.07468750000000002
+2025-03-31 11:42:14,318 [INFO] - Desv. Estándar: 0.18114104664392988
+2025-03-31 11:42:14,319 [INFO] 
+Estadísticas para AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence:
+2025-03-31 11:42:14,321 [INFO] - Min: 0.12
+2025-03-31 11:42:14,322 [INFO] - Max: 0.75
+2025-03-31 11:42:14,322 [INFO] - Media: 0.3767014800232457
+2025-03-31 11:42:14,322 [INFO] - Mediana: 0.373016
+2025-03-31 11:42:14,324 [INFO] - Desv. Estándar: 0.10098032765975683
+2025-03-31 11:42:14,326 [INFO] 
+Estadísticas para PutCall_strike_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,327 [INFO] - Min: 223.02564102564102
+2025-03-31 11:42:14,327 [INFO] - Max: 612.6603773584906
+2025-03-31 11:42:14,329 [INFO] - Media: 404.668114090602
+2025-03-31 11:42:14,329 [INFO] - Mediana: 405.0263157894737
+2025-03-31 11:42:14,330 [INFO] - Desv. Estándar: 87.93213244314363
+2025-03-31 11:42:14,332 [INFO] 
+Estadísticas para PutCall_bid_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,333 [INFO] - Min: 9.744833333333334
+2025-03-31 11:42:14,333 [INFO] - Max: 38.27791666666667
+2025-03-31 11:42:14,335 [INFO] - Media: 26.29920874911389
+2025-03-31 11:42:14,335 [INFO] - Mediana: 28.854599999999998
+2025-03-31 11:42:14,336 [INFO] - Desv. Estándar: 7.413850149086833
+2025-03-31 11:42:14,338 [INFO] 
+Estadísticas para PutCall_ask_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,339 [INFO] - Min: 9.886
+2025-03-31 11:42:14,339 [INFO] - Max: 38.78576388888889
+2025-03-31 11:42:14,342 [INFO] - Media: 26.60199191275792
+2025-03-31 11:42:14,342 [INFO] - Mediana: 29.264769230769232
+2025-03-31 11:42:14,342 [INFO] - Desv. Estándar: 7.48820818076355
+2025-03-31 11:42:14,346 [INFO] 
+Estadísticas para PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,347 [INFO] - Min: 0.10756969696969697
+2025-03-31 11:42:14,348 [INFO] - Max: 1.0840395833333334
+2025-03-31 11:42:14,350 [INFO] - Media: 0.26006733207554783
+2025-03-31 11:42:14,350 [INFO] - Mediana: 0.24875655737704916
+2025-03-31 11:42:14,352 [INFO] - Desv. Estándar: 0.08703340900993432
+2025-03-31 11:42:14,353 [INFO] 
+Estadísticas para PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,355 [INFO] - Min: -0.1892878205128205
+2025-03-31 11:42:14,356 [INFO] - Max: 0.13888653846153848
+2025-03-31 11:42:14,358 [INFO] - Media: 0.016195936242762034
+2025-03-31 11:42:14,359 [INFO] - Mediana: 0.00973051948051948
+2025-03-31 11:42:14,360 [INFO] - Desv. Estándar: 0.038078736335686224
+2025-03-31 11:42:14,363 [INFO] 
+Estadísticas para PutCall_gamma_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,365 [INFO] - Min: 0.00313972602739726
+2025-03-31 11:42:14,365 [INFO] - Max: 0.018022727272727274
+2025-03-31 11:42:14,366 [INFO] - Media: 0.0073453931604935095
+2025-03-31 11:42:14,367 [INFO] - Mediana: 0.005812328767123288
+2025-03-31 11:42:14,368 [INFO] - Desv. Estándar: 0.003714755536802568
+2025-03-31 11:42:14,371 [INFO] 
+Estadísticas para PutCall_theta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,371 [INFO] - Min: -0.7143673611111111
+2025-03-31 11:42:14,371 [INFO] - Max: -0.026554545454545452
+2025-03-31 11:42:14,372 [INFO] - Media: -0.06679269441911516
+2025-03-31 11:42:14,372 [INFO] - Mediana: -0.058112666666666674
+2025-03-31 11:42:14,372 [INFO] - Desv. Estándar: 0.04793361473370308
+2025-03-31 11:42:14,374 [INFO] 
+Estadísticas para PutCall_vega_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,375 [INFO] - Min: 0.08615289855072464
+2025-03-31 11:42:14,375 [INFO] - Max: 0.35191842105263155
+2025-03-31 11:42:14,375 [INFO] - Media: 0.17390617048713555
+2025-03-31 11:42:14,377 [INFO] - Mediana: 0.1629635802469136
+2025-03-31 11:42:14,378 [INFO] - Desv. Estándar: 0.03985547326367032
+2025-03-31 11:42:14,380 [INFO] 
+Estadísticas para PutCall_rho_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:14,380 [INFO] - Min: -0.08338653846153846
+2025-03-31 11:42:14,381 [INFO] - Max: 0.1444063829787234
+2025-03-31 11:42:14,381 [INFO] - Media: 0.03279143559682671
+2025-03-31 11:42:14,383 [INFO] - Mediana: 0.03569838709677419
+2025-03-31 11:42:14,383 [INFO] - Desv. Estándar: 0.04133325747106617
+2025-03-31 11:42:14,386 [INFO] 
+Estadísticas para NFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-03-31 11:42:14,386 [INFO] - Min: -0.799666616089861
+2025-03-31 11:42:14,388 [INFO] - Max: 0.494555538914267
+2025-03-31 11:42:14,388 [INFO] - Media: -0.4805096337311241
+2025-03-31 11:42:14,389 [INFO] - Mediana: -0.52381758146561
+2025-03-31 11:42:14,389 [INFO] - Desv. Estándar: 0.18723518268942319
+2025-03-31 11:42:14,391 [INFO] 
+Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-03-31 11:42:14,392 [INFO] - Min: -0.908607104751089
+2025-03-31 11:42:14,392 [INFO] - Max: 0.633457159158181
+2025-03-31 11:42:14,394 [INFO] - Media: -0.47021921372465036
+2025-03-31 11:42:14,394 [INFO] - Mediana: -0.504665111888294
+2025-03-31 11:42:14,395 [INFO] - Desv. Estándar: 0.21287358745036755
+2025-03-31 11:42:14,395 [INFO] 
+==================================================
+2025-03-31 11:42:14,395 [INFO] GUARDANDO RESULTADOS
+2025-03-31 11:42:14,397 [INFO] ==================================================
+2025-03-31 11:42:14,398 [INFO] Guardando resultados en: datos_economicos_other_procesados.xlsx
+2025-03-31 11:42:14,400 [ERROR] Error al guardar resultados: [Errno 13] Permission denied: 'datos_economicos_other_procesados.xlsx'
+2025-03-31 11:42:14,400 [INFO] 
+==================================================
+2025-03-31 11:42:14,401 [INFO] RESUMEN DE EJECUCIÓN
+2025-03-31 11:42:14,401 [INFO] ==================================================
+2025-03-31 11:42:14,401 [INFO] Proceso: OtherDataProcessor
+2025-03-31 11:42:14,403 [INFO] Tiempo de ejecución: 1.12 segundos
+2025-03-31 11:42:14,404 [INFO] Archivos procesados: 4
+2025-03-31 11:42:14,404 [INFO] Archivos con error: 0
+2025-03-31 11:42:14,406 [INFO] Archivos procesados correctamente: 4
+2025-03-31 11:42:14,406 [INFO] Periodo de datos: 1987-06-26 a 2025-03-31
+2025-03-31 11:42:14,407 [INFO] Datos combinados: 13794 filas, 17 columnas
+2025-03-31 11:42:14,407 [INFO] Archivo de salida: datos_economicos_other_procesados.xlsx
+2025-03-31 11:42:14,407 [INFO] Estado: ERROR
+2025-03-31 11:42:14,409 [INFO] ==================================================
+2025-03-31 11:42:34,385 [INFO] ================================================================================
+2025-03-31 11:42:34,386 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-03-31 11:42:34,388 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-03-31 11:42:34,388 [INFO] Directorio raíz de datos: Data/Macro/raw
+2025-03-31 11:42:34,389 [INFO] Fecha y hora: 2025-03-31 11:42:34
+2025-03-31 11:42:34,392 [INFO] ================================================================================
+2025-03-31 11:42:34,392 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-03-31 11:42:34,394 [INFO] Leyendo archivo de configuración...
+2025-03-31 11:42:34,418 [INFO] Se encontraron 4 configuraciones para procesar con fuente 'Other'
+2025-03-31 11:42:34,419 [INFO] 
+Resumen de configuraciones a procesar:
+2025-03-31 11:42:34,421 [INFO] - US_Empire_State_Index (Tipo Macro: business_confidence, TARGET: nan)
+2025-03-31 11:42:34,424 [INFO] - AAII_Investor_Sentiment (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-03-31 11:42:34,425 [INFO] - Put_Call_Ratio_SPY (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-03-31 11:42:34,425 [INFO] - Chicago_Fed_NFCI (Tipo Macro: leading_economic_index, TARGET: ANFCI)
+2025-03-31 11:42:34,427 [INFO] 
+Procesando: US_Empire_State_Index (business_confidence)
+2025-03-31 11:42:34,428 [INFO] - Columna TARGET: nan
+2025-03-31 11:42:34,430 [INFO] - Tipo de preprocesamiento: Normal
+2025-03-31 11:42:34,430 [INFO] Procesando US_Empire_State_Index manualmente
+2025-03-31 11:42:34,432 [INFO] - Archivo de entrada: Data/Macro/raw\business_confidence\US_Empire_State_Index.csv
+2025-03-31 11:42:34,435 [INFO] - Archivo cargado: 285 filas, 24 columnas
+2025-03-31 11:42:34,438 [INFO] - Rango de fechas: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:34,439 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-03-31 11:42:34,441 [INFO] - Columnas encontradas y procesadas: GACDISA, AWCDISA
+2025-03-31 11:42:34,442 [INFO] - Columna ESI_GACDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:34,447 [INFO] - Columna ESI_AWCDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:34,448 [INFO] - US_Empire_State_Index: 285 filas procesadas manualmente, periodo: 2001-07-31 a 2025-03-31
+2025-03-31 11:42:34,448 [INFO] 
+Procesando: AAII_Investor_Sentiment (consumer_confidence)
+2025-03-31 11:42:34,450 [INFO] - Columna TARGET: nan
+2025-03-31 11:42:34,451 [INFO] - Tipo de preprocesamiento: nan
+2025-03-31 11:42:34,454 [INFO] Procesando AAII_Investor_Sentiment manualmente
+2025-03-31 11:42:34,456 [INFO] - Archivo de entrada: Data/Macro/raw\consumer_confidence\AAII_Investor_Sentiment.xlsx
+2025-03-31 11:42:34,456 [INFO] Intentando leer Excel con engine: openpyxl
+2025-03-31 11:42:34,682 [INFO] - Archivo cargado: 1966 filas, 13 columnas
+2025-03-31 11:42:34,684 [INFO] - Columnas disponibles: Reported Date, Bullish, Neutral, Bearish, Total, Bullish 8-week Mov Avg, Bull-Bear Spread, Bullish Average, Bullish Average +St. Dev.,  Bullish Average - St. Dev., S&P 500 Weekly High, S&P 500 Weekly Low, S&P 500 Weekly Close
+2025-03-31 11:42:34,685 [INFO] - Usando columna 'Reported Date' como fecha
+2025-03-31 11:42:34,687 [INFO] - Columnas encontradas: Bearish, Bull-Bear Spread, Bullish
+2025-03-31 11:42:34,693 [INFO] - Rango de fechas total: 1987-06-26 a 2025-03-20
+2025-03-31 11:42:34,696 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-03-31 11:42:34,701 [INFO] - Columna AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-03-31 11:42:34,702 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-03-31 11:42:34,707 [INFO] - Columna AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-03-31 11:42:34,707 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-03-31 11:42:34,710 [INFO] - Columna AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-03-31 11:42:34,711 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-03-31 11:42:34,715 [INFO] - AAII_Investor_Sentiment: 1966 filas procesadas manualmente, periodo: 1987-06-26 a 2025-03-20
+2025-03-31 11:42:34,716 [INFO] 
+Procesando: Put_Call_Ratio_SPY (consumer_confidence)
+2025-03-31 11:42:34,719 [INFO] - Columna TARGET: nan
+2025-03-31 11:42:34,721 [INFO] - Tipo de preprocesamiento: nan
+2025-03-31 11:42:34,724 [INFO] Procesando Put_Call_Ratio_SPY manualmente
+2025-03-31 11:42:34,725 [INFO] - Archivo de entrada: Data/Macro/raw\consumer_confidence\Put_Call_Ratio_SPY.csv
+2025-03-31 11:42:34,858 [INFO] - Archivo cargado: 114936 filas, 13 columnas
+2025-03-31 11:42:34,859 [INFO] - Columnas disponibles: date, act_symbol, expiration, strike, call_put, bid, ask, vol, delta, gamma, theta, vega, rho
+2025-03-31 11:42:34,859 [INFO] - Usando columna 'date' como fecha/hora
+2025-03-31 11:42:34,881 [WARNING] - No se encontraron columnas 'put_volume' y 'call_volume' estándar. Se aplicará fallback usando columnas numéricas.
+2025-03-31 11:42:34,903 [INFO] - Put_Call_Ratio_SPY: 895 filas tras agrupar fallback, periodo: 2019-02-09 a 2025-03-25
+2025-03-31 11:42:34,906 [INFO] 
+Procesando: Chicago_Fed_NFCI (leading_economic_index)
+2025-03-31 11:42:34,906 [INFO] - Columna TARGET: ANFCI
+2025-03-31 11:42:34,907 [INFO] - Tipo de preprocesamiento: Normal
+2025-03-31 11:42:34,907 [INFO] Procesando Chicago_Fed_NFCI manualmente
+2025-03-31 11:42:34,909 [INFO] - Archivo de entrada: Data/Macro/raw\leading_economic_index\Chicago_Fed_NFCI.csv
+2025-03-31 11:42:34,916 [INFO] - Archivo cargado: 2829 filas, 7 columnas
+2025-03-31 11:42:34,916 [INFO] - Columnas disponibles: Friday_of_Week, NFCI, ANFCI, Risk, Credit, Leverage, Nonfinancial_Leverage
+2025-03-31 11:42:34,922 [INFO] - Usando columna 'Friday_of_Week' como fecha
+2025-03-31 11:42:34,923 [INFO] - Rango de fechas total: 1971-01-08 a 2025-03-21
+2025-03-31 11:42:34,927 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-03-31 11:42:34,927 [INFO] - Filtrando desde 2014-01-01: 586/2829 filas (20.71%)
+2025-03-31 11:42:34,930 [INFO] - Columna NFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-03-31 11:42:34,933 [INFO] - Columna ANFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-03-31 11:42:34,933 [INFO] - Columnas procesadas: NFCI, ANFCI
+2025-03-31 11:42:34,934 [INFO] - Chicago_Fed_NFCI: 586 filas procesadas manualmente, periodo: 2014-01-03 a 2025-03-21
+2025-03-31 11:42:34,936 [INFO] 
+Archivos procesados correctamente: 4/4
+2025-03-31 11:42:34,937 [INFO] 
+Generando índice temporal diario...
+2025-03-31 11:42:34,937 [INFO] - Rango de fechas global: 1987-06-26 a 2025-03-31
+2025-03-31 11:42:34,939 [INFO] - Total de fechas diarias generadas: 13794
+2025-03-31 11:42:34,940 [INFO] 
+Combinando datos con índice diario...
+2025-03-31 11:42:34,940 [INFO] - Combinando: US_Empire_State_Index
+2025-03-31 11:42:34,946 [INFO] - Combinando: AAII_Investor_Sentiment
+2025-03-31 11:42:34,954 [INFO] - Combinando: Put_Call_Ratio_SPY
+2025-03-31 11:42:34,962 [INFO] - Combinando: Chicago_Fed_NFCI
+2025-03-31 11:42:34,969 [INFO] - DataFrame combinado: 13794 filas, 17 columnas
+2025-03-31 11:42:34,969 [INFO] 
+==================================================
+2025-03-31 11:42:34,969 [INFO] RESUMEN DE COBERTURA FINAL
+2025-03-31 11:42:34,971 [INFO] ==================================================
+2025-03-31 11:42:34,972 [INFO] Total indicadores procesados: 3
+2025-03-31 11:42:34,972 [INFO] Rango de fechas: 1987-06-26 a 2025-03-31
+2025-03-31 11:42:34,972 [INFO] Total días en la serie: 13794
+2025-03-31 11:42:34,974 [INFO] 
+Cobertura por indicador:
+2025-03-31 11:42:34,975 [INFO] - US_Empire_State_Index: 62.67%
+2025-03-31 11:42:34,977 [INFO] - AAII_Investor_Sentiment: 99.80%
+2025-03-31 11:42:34,979 [INFO] - Chicago_Fed_NFCI: 29.77%
+2025-03-31 11:42:34,979 [INFO] 
+==================================================
+2025-03-31 11:42:34,980 [INFO] ESTADÍSTICAS DE VALORES
+2025-03-31 11:42:34,980 [INFO] ==================================================
+2025-03-31 11:42:34,982 [INFO] 
+Estadísticas para ESI_GACDISA_US_Empire_State_Index_business_confidence:
+2025-03-31 11:42:34,982 [INFO] - Min: -79.9
+2025-03-31 11:42:34,983 [INFO] - Max: 39.0
+2025-03-31 11:42:34,983 [INFO] - Media: 6.604580682475419
+2025-03-31 11:42:34,983 [INFO] - Mediana: 7.8
+2025-03-31 11:42:34,985 [INFO] - Desv. Estándar: 15.716616407659977
+2025-03-31 11:42:34,986 [INFO] 
+Estadísticas para ESI_AWCDISA_US_Empire_State_Index_business_confidence:
+2025-03-31 11:42:34,988 [INFO] - Min: -63.2
+2025-03-31 11:42:34,988 [INFO] - Max: 33.5
+2025-03-31 11:42:34,988 [INFO] - Media: 1.2108733371891272
+2025-03-31 11:42:34,989 [INFO] - Mediana: 1.3
+2025-03-31 11:42:34,989 [INFO] - Desv. Estándar: 10.23365502980844
+2025-03-31 11:42:34,991 [INFO] 
+Estadísticas para AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence:
+2025-03-31 11:42:34,991 [INFO] - Min: 0.06
+2025-03-31 11:42:34,992 [INFO] - Max: 0.7027
+2025-03-31 11:42:34,994 [INFO] - Media: 0.3105507494551794
+2025-03-31 11:42:34,994 [INFO] - Mediana: 0.2988
+2025-03-31 11:42:34,994 [INFO] - Desv. Estándar: 0.09745327291339351
+2025-03-31 11:42:34,997 [INFO] 
+Estadísticas para AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence:
+2025-03-31 11:42:34,997 [INFO] - Min: -0.54
+2025-03-31 11:42:34,997 [INFO] - Max: 0.6286
+2025-03-31 11:42:34,998 [INFO] - Media: 0.06615073056806625
+2025-03-31 11:42:34,998 [INFO] - Mediana: 0.07468750000000002
+2025-03-31 11:42:35,000 [INFO] - Desv. Estándar: 0.18114104664392988
+2025-03-31 11:42:35,001 [INFO] 
+Estadísticas para AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence:
+2025-03-31 11:42:35,001 [INFO] - Min: 0.12
+2025-03-31 11:42:35,002 [INFO] - Max: 0.75
+2025-03-31 11:42:35,003 [INFO] - Media: 0.3767014800232457
+2025-03-31 11:42:35,004 [INFO] - Mediana: 0.373016
+2025-03-31 11:42:35,004 [INFO] - Desv. Estándar: 0.10098032765975683
+2025-03-31 11:42:35,005 [INFO] 
+Estadísticas para PutCall_strike_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,007 [INFO] - Min: 223.02564102564102
+2025-03-31 11:42:35,007 [INFO] - Max: 612.6603773584906
+2025-03-31 11:42:35,009 [INFO] - Media: 404.668114090602
+2025-03-31 11:42:35,009 [INFO] - Mediana: 405.0263157894737
+2025-03-31 11:42:35,010 [INFO] - Desv. Estándar: 87.93213244314363
+2025-03-31 11:42:35,012 [INFO] 
+Estadísticas para PutCall_bid_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,012 [INFO] - Min: 9.744833333333334
+2025-03-31 11:42:35,012 [INFO] - Max: 38.27791666666667
+2025-03-31 11:42:35,013 [INFO] - Media: 26.29920874911389
+2025-03-31 11:42:35,015 [INFO] - Mediana: 28.854599999999998
+2025-03-31 11:42:35,015 [INFO] - Desv. Estándar: 7.413850149086833
+2025-03-31 11:42:35,018 [INFO] 
+Estadísticas para PutCall_ask_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,021 [INFO] - Min: 9.886
+2025-03-31 11:42:35,022 [INFO] - Max: 38.78576388888889
+2025-03-31 11:42:35,024 [INFO] - Media: 26.60199191275792
+2025-03-31 11:42:35,025 [INFO] - Mediana: 29.264769230769232
+2025-03-31 11:42:35,027 [INFO] - Desv. Estándar: 7.48820818076355
+2025-03-31 11:42:35,028 [INFO] 
+Estadísticas para PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,030 [INFO] - Min: 0.10756969696969697
+2025-03-31 11:42:35,031 [INFO] - Max: 1.0840395833333334
+2025-03-31 11:42:35,031 [INFO] - Media: 0.26006733207554783
+2025-03-31 11:42:35,033 [INFO] - Mediana: 0.24875655737704916
+2025-03-31 11:42:35,033 [INFO] - Desv. Estándar: 0.08703340900993432
+2025-03-31 11:42:35,036 [INFO] 
+Estadísticas para PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,038 [INFO] - Min: -0.1892878205128205
+2025-03-31 11:42:35,038 [INFO] - Max: 0.13888653846153848
+2025-03-31 11:42:35,039 [INFO] - Media: 0.016195936242762034
+2025-03-31 11:42:35,041 [INFO] - Mediana: 0.00973051948051948
+2025-03-31 11:42:35,042 [INFO] - Desv. Estándar: 0.038078736335686224
+2025-03-31 11:42:35,045 [INFO] 
+Estadísticas para PutCall_gamma_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,045 [INFO] - Min: 0.00313972602739726
+2025-03-31 11:42:35,048 [INFO] - Max: 0.018022727272727274
+2025-03-31 11:42:35,050 [INFO] - Media: 0.0073453931604935095
+2025-03-31 11:42:35,050 [INFO] - Mediana: 0.005812328767123288
+2025-03-31 11:42:35,051 [INFO] - Desv. Estándar: 0.003714755536802568
+2025-03-31 11:42:35,055 [INFO] 
+Estadísticas para PutCall_theta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,055 [INFO] - Min: -0.7143673611111111
+2025-03-31 11:42:35,055 [INFO] - Max: -0.026554545454545452
+2025-03-31 11:42:35,056 [INFO] - Media: -0.06679269441911516
+2025-03-31 11:42:35,058 [INFO] - Mediana: -0.058112666666666674
+2025-03-31 11:42:35,058 [INFO] - Desv. Estándar: 0.04793361473370308
+2025-03-31 11:42:35,059 [INFO] 
+Estadísticas para PutCall_vega_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,059 [INFO] - Min: 0.08615289855072464
+2025-03-31 11:42:35,061 [INFO] - Max: 0.35191842105263155
+2025-03-31 11:42:35,061 [INFO] - Media: 0.17390617048713555
+2025-03-31 11:42:35,062 [INFO] - Mediana: 0.1629635802469136
+2025-03-31 11:42:35,064 [INFO] - Desv. Estándar: 0.03985547326367032
+2025-03-31 11:42:35,067 [INFO] 
+Estadísticas para PutCall_rho_Put_Call_Ratio_SPY_consumer_confidence:
+2025-03-31 11:42:35,068 [INFO] - Min: -0.08338653846153846
+2025-03-31 11:42:35,068 [INFO] - Max: 0.1444063829787234
+2025-03-31 11:42:35,070 [INFO] - Media: 0.03279143559682671
+2025-03-31 11:42:35,070 [INFO] - Mediana: 0.03569838709677419
+2025-03-31 11:42:35,071 [INFO] - Desv. Estándar: 0.04133325747106617
+2025-03-31 11:42:35,073 [INFO] 
+Estadísticas para NFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-03-31 11:42:35,073 [INFO] - Min: -0.799666616089861
+2025-03-31 11:42:35,074 [INFO] - Max: 0.494555538914267
+2025-03-31 11:42:35,074 [INFO] - Media: -0.4805096337311241
+2025-03-31 11:42:35,076 [INFO] - Mediana: -0.52381758146561
+2025-03-31 11:42:35,076 [INFO] - Desv. Estándar: 0.18723518268942319
+2025-03-31 11:42:35,077 [INFO] 
+Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-03-31 11:42:35,079 [INFO] - Min: -0.908607104751089
+2025-03-31 11:42:35,079 [INFO] - Max: 0.633457159158181
+2025-03-31 11:42:35,079 [INFO] - Media: -0.47021921372465036
+2025-03-31 11:42:35,081 [INFO] - Mediana: -0.504665111888294
+2025-03-31 11:42:35,081 [INFO] - Desv. Estándar: 0.21287358745036755
+2025-03-31 11:42:35,082 [INFO] 
+==================================================
+2025-03-31 11:42:35,082 [INFO] GUARDANDO RESULTADOS
+2025-03-31 11:42:35,084 [INFO] ==================================================
+2025-03-31 11:42:35,084 [INFO] Guardando resultados en: datos_economicos_other_procesados.xlsx
+2025-03-31 11:42:35,087 [INFO] Guardando DataFrame combinado en 'datos_economicos_other_procesados.xlsx'...
+2025-03-31 11:42:36,599 [INFO] Guardando estadísticas de los indicadores...
+2025-03-31 11:42:38,827 [INFO] Archivo guardado exitosamente: datos_economicos_other_procesados.xlsx
+2025-03-31 11:42:38,827 [INFO] 
+==================================================
+2025-03-31 11:42:38,829 [INFO] RESUMEN DE EJECUCIÓN
+2025-03-31 11:42:38,829 [INFO] ==================================================
+2025-03-31 11:42:38,832 [INFO] Proceso: OtherDataProcessor
+2025-03-31 11:42:38,833 [INFO] Tiempo de ejecución: 4.43 segundos
+2025-03-31 11:42:38,833 [INFO] Archivos procesados: 4
+2025-03-31 11:42:38,835 [INFO] Archivos con error: 0
+2025-03-31 11:42:38,835 [INFO] Archivos procesados correctamente: 4
+2025-03-31 11:42:38,836 [INFO] Periodo de datos: 1987-06-26 a 2025-03-31
+2025-03-31 11:42:38,836 [INFO] Datos combinados: 13794 filas, 17 columnas
+2025-03-31 11:42:38,836 [INFO] Archivo de salida: datos_economicos_other_procesados.xlsx
+2025-03-31 11:42:38,836 [INFO] Estado: COMPLETADO
+2025-03-31 11:42:38,838 [INFO] ==================================================
