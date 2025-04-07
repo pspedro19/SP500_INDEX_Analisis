@@ -28,7 +28,7 @@ APPLY_SCALING = False
 
 # Ajusta este threshold para hacer la selección de features más o menos agresiva:
 # Cuanto más alto el threshold, mayor caída de performance se requiere para descartar una feature.
-THRESHOLD = 0.0001
+THRESHOLD = 0.000001
 
 CATBOOST_PARAMS = {
     'n_estimators': 500,

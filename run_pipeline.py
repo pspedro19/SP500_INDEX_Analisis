@@ -8,7 +8,7 @@ steps = [
     "run_pipeline_step_4.py"
     "Eliminar_relaciones_step_5.py"
     "FPI_Feature_Section_step_6.py"
-    "Training.py
+    "Training.py"
 ]
 
 for step in steps:
