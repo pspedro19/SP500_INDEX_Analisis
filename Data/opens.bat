@@ -1,3 +1,4 @@
 @echo off
+pause
 cd /d "%~dp0"
-wsl.exe --cd "%CD:\=/%"
+wsl.exe -d Ubuntu --cd "%CD:\=/%"
