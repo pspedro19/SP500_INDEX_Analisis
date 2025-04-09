@@ -13,8 +13,8 @@ import pandas_market_calendars as mcal
 # ------------------------------
 # CONFIGURACIÓN GLOBAL
 # ------------------------------
-INPUT_FILE = "Data/Macro/Eliminar_relaciones/EUR.xlsx"
-OUTPUT_FILE = "Data/Macro/FPI_Feature_Section/EUR_final_FPI.xlsx"
+INPUT_FILE = "Data/processed/EUR.xlsx"
+OUTPUT_FILE = "Data/processed/EUR_final_FPI.xlsx"
 
 # Si quieres forzar el target por nombre, ponlo aquí; en caso contrario, se usará la última columna.
 # TARGET_COL_NAME = 'Target'

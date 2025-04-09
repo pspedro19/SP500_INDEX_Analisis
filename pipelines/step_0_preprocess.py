@@ -38,7 +38,7 @@ class EconomicDataProcessor:
       - Validación y log detallado en cada etapa.
     """
 
-    def __init__(self, config_file, data_root='Data/Macro/raw', log_file='myinvestingreportcp.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='myinvestingreportcp.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -360,8 +360,8 @@ class EconomicDataProcessor:
 
 # Función principal para ejecutar el proceso
 def run_economic_data_processor(config_file='Data Engineering.xlsx',
-                                output_file='Data/Macro/Documents_tomerge/datos_economicos_procesados_cp.xlsx',
-                                data_root='Data/Macro/raw',
+                                output_file='Data/raw/datos_economicos_procesados_cp.xlsx',
+                                data_root='Data/raw',
                                 log_file='myinvestingreportcp.log'):
     processor = EconomicDataProcessor(config_file, data_root, log_file)
     return processor.run(output_file)
@@ -560,7 +560,7 @@ class MyinvestingreportNormal:
     validación para evitar interpretaciones erróneas (como fechas en abril cuando
     los datos crudos solo llegan hasta marzo).
     """
-    def __init__(self, config_file, data_root='Data/Macro/raw', log_file='myinvestingreportnormal.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='myinvestingreportnormal.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -949,8 +949,8 @@ class MyinvestingreportNormal:
         return resultado
 
 def ejecutar_myinvestingreportnormal(config_file='Data Engineering.xlsx',
-                                     output_file='Data/Macro/Documents_tomerge/datos_economicos_normales_procesados.xlsx',
-                                     data_root='Data/Macro/raw',
+                                     output_file='Data/raw/datos_economicos_normales_procesados.xlsx',
+                                     data_root='Data/raw',
                                      log_file='myinvestingreportnormal.log'):
     procesador = MyinvestingreportNormal(config_file, data_root, log_file)
     return procesador.ejecutar_proceso_completo(output_file)
@@ -1002,7 +1002,7 @@ class FredDataProcessor:
       - Genera un índice diario global y usa merge_asof para imputar los datos (forward fill).
     """
 
-    def __init__(self, config_file, data_root='Data/Macro/raw', log_file='freddataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='freddataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -1357,8 +1357,8 @@ class FredDataProcessor:
 
 # Función principal para ejecutar el proceso
 def run_fred_data_processor(config_file='Data Engineering.xlsx',
-                            output_file='Data/Macro/Documents_tomerge/datos_economicos_procesados_Fred.xlsx',
-                            data_root='Data/Macro/raw',
+                            output_file='Data/raw/datos_economicos_procesados_Fred.xlsx',
+                            data_root='Data/raw',
                             log_file='freddataprocessor.log'):
     processor = FredDataProcessor(config_file, data_root, log_file)
     return processor.run(output_file)
@@ -1447,7 +1447,7 @@ class OtherDataProcessor:
     """
     Clase para procesar datos de la fuente "Other" usando scripts personalizados.
     """
-    def __init__(self, config_file, data_root='Data/Macro/raw', log_file='otherdataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='otherdataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -2590,8 +2590,8 @@ class OtherDataProcessor:
 
 # Función principal para ejecutar el proceso
 def ejecutar_otherdataprocessor(config_file='Data Engineering.xlsx',
-                                output_file='Data/Macro/Documents_tomerge/datos_economicos_other_procesados.xlsx',
-                                data_root='Data/Macro/raw',
+                                output_file='Data/raw/datos_economicos_other_procesados.xlsx',
+                                data_root='Data/raw',
                                 log_file='otherdataprocessor.log'):
     """
     Ejecuta el proceso OtherDataProcessor
@@ -2688,7 +2688,7 @@ class OtherDataProcessor:
     """
     Clase para procesar datos de la fuente "Other" usando scripts personalizados.
     """
-    def __init__(self, config_file, data_root='Data/Macro/raw', log_file='otherdataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='otherdataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -3483,8 +3483,8 @@ class OtherDataProcessor:
 
 # Función principal para ejecutar el proceso
 def ejecutar_otherdataprocessor(config_file='Data Engineering.xlsx',
-                                output_file='Data/Macro/Documents_tomerge/datos_economicos_other_procesados.xlsx',
-                                data_root='Data/Macro/raw',
+                                output_file='Data/raw/datos_economicos_other_procesados.xlsx',
+                                data_root='Data/raw',
                                 log_file='otherdataprocessor.log'):
     """
     Ejecuta el proceso OtherDataProcessor

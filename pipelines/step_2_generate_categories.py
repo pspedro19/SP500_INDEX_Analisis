@@ -8,8 +8,8 @@ logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Rutas
-archivo_entrada = "Data/Macro/pre_process/MERGEDEXCELS.xlsx"
-carpeta_salida = "Data/Macro/pre_process"
+archivo_entrada = "Data/processed/MERGEDEXCELS.xlsx"
+carpeta_salida = "Data/processed"
 archivo_salida = os.path.join(carpeta_salida, "MERGEDEXCELS_CATEGORIZADO.xlsx")
 archivo_diagnostico = os.path.join(carpeta_salida, "DIAGNOSTICO_CATEGORIAS.xlsx")
 

@@ -124,4 +124,4 @@ pip install -r requirements.txt
 
 ## 🧠 Autor
 
-Proyecto desarrollado por Stiven para análisis avanzado del índice S&P500 usando datos macroeconómicos estructurados y modelado basado en aprendizaje automático.
+Proyecto desarrollado por Pedro para análisis avanzado del índice S&P500 usando datos macroeconómicos estructurados y modelado basado en aprendizaje automático.

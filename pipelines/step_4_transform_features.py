@@ -328,8 +328,8 @@ def transform_unemployment_rate(df, target_column, id_column='id'):
 # MAIN PIPELINE PARA 1MONTH
 # ================================
 def main():
-    input_file = "Data/Macro/pre_process/MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx"
-    output_file = "Data/Macro/process/datos_economicos_1month_procesados.xlsx"
+    input_file = "Data/processed/MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx"
+    output_file = "Data/processed/datos_economicos_1month_procesados.xlsx"
 
     try:
         df_raw = pd.read_excel(input_file, header=None)

@@ -29,9 +29,9 @@ SCALING_REQUIRED_MODELS = {
 }
 
 class Args:
-    input_file = "Data/Macro/FPI_Feature_Section/EUR_final_FPI.xlsx"
+    input_file = "Data/processed/EUR_final_FPI.xlsx"
     output_dir = "models/"
-    output_predictions = "Data/Macro/Training/all_models_predictions.csv"
+    output_predictions = "Data/final/all_models_predictions.csv"
     n_trials = 20
     cv_splits = 5
     gap = 20

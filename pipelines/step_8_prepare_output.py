@@ -1,7 +1,7 @@
 import pandas as pd
 
-input_file = "Data/Macro/Training/all_models_predictions.csv"
-output_file = "Data/Macro/Power_bi/archivo_para_powerbi.csv"
+input_file = "Data/final/all_models_predictions.csv"
+output_file = "Data/final/archivo_para_powerbi.csv"
 
 # Leer todo como texto
 df = pd.read_csv(input_file, encoding='utf-8', dtype=str)

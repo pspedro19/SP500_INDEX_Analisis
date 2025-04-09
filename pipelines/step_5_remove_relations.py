@@ -81,7 +81,7 @@ def iterative_vif_reduction(df_features, threshold=VIF_THRESHOLD):
     return df_reduced, compute_vif(df_reduced)
 
 def main():
-    archivo = "Data/Macro/process/datos_economicos_1month_procesados.xlsx"
+    archivo = "Data/processed/datos_economicos_1month_procesados.xlsx"
     df = pd.read_excel(archivo)
 
     target_col = df.columns[-1]
@@ -104,7 +104,7 @@ def main():
 
     final_df = pd.concat([features_vif, target], axis=1)
 
-    salida = "Data/Macro/Eliminar_relaciones/ULTIMO_S&P500_final.xlsx"
+    salida = "Data/processed/ULTIMO_S&P500_final.xlsx"
     final_df.to_excel(salida, index=False)
     logging.info(f"El dataset final se ha guardado en: '{salida}'.")
 

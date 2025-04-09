@@ -111,11 +111,11 @@ def merge_dataframes(dfs, columnas_merge, como_merge='outer'):
 
 # Configuraciones principales
 # Carpeta de entrada (donde están los Excel)
-ruta_carpeta = "Data/Macro/Documents_tomerge" # punto significa 'la carpeta actual'
+ruta_carpeta = "Data/raw" # punto significa 'la carpeta actual'
 
 
 # Carpeta de salida (donde se guarda el Excel combinado)
-ruta_salida = "Data/Macro/pre_process"
+ruta_salida = "Data/processed"
 
 archivos = [f for f in os.listdir(ruta_carpeta) if f.endswith('.xlsx') and not f.startswith('~$')]
 
