@@ -1,20 +1,23 @@
 import subprocess
 
+# Lista de scripts por paso, ubicados en la carpeta pipelines/
 steps = [
-    "preprocess_step_0.py",
-    "merge_excels_step_1.py",
-    "generate_categories_step_2.py",
-    "clean_columns_step_3.py",
-    "run_pipeline_step_4.py"
-    "Eliminar_relaciones_step_5.py"
-    "FPI_Feature_Section_step_6.py"
-    "Training.py"
+    "pipelines/step_0_preprocess.py",
+    "pipelines/step_1_merge_excels.py",
+    "pipelines/step_2_generate_categories.py",
+    "pipelines/step_3_clean_columns.py",
+    "pipelines/step_4_transform_features.py",
+    "pipelines/step_5_remove_relations.py",
+    "pipelines/step_6_fpi_selection.py",
+    "pipelines/step_7_train_models.py",
+    "pipelines/step_8_prepare_output.py"
 ]
 
+# Ejecuta cada paso secuencialmente
 for step in steps:
-    print(f"🔄 Ejecutando: {step}")
+    print(f"\n🔄 Ejecutando: {step}")
     result = subprocess.run(["python", step])
     if result.returncode != 0:
-        print(f"❌ Error al ejecutar: {step}")
+        print(f"❌ Error al ejecutar: {step}. Deteniendo el pipeline.")
         break
-    print(f"✅ Finalizado: {step}\n")
+    print(f"✅ Finalizado: {step}")

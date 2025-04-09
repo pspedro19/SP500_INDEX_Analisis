@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.dll
+
+# Logs
+*.log
+logs/
+
+# Data & Outputs
+data/raw/
+data/processed/
+data/final/
+outputs/
+*.csv
+*.xlsx
+*.parquet
+
+# Modelos entrenados
+models/
+catboost_info/
+*.pkl
+*.joblib
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Entornos
+.env
+config.env
+*.env
+
+# VSCode & otros IDEs
+.vscode/
+.idea/
+*.swp
+
+# Archivos temporales
+*.tmp
+*.bak
+*.old
+*~
