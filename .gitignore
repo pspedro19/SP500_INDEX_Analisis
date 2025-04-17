@@ -1,43 +1,43 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*.so
-*.dll
+# # Byte-compiled / optimized / DLL files
+# __pycache__/
+# *.py[cod]
+# *.so
+# *.dll
 
-# Logs
-*.log
-logs/
+# # Logs
+# *.log
+# logs/
 
-# Data & Outputs
-data/raw/
-data/processed/
-data/final/
-outputs/
-*.csv
-*.xlsx
-*.parquet
+# # Data & Outputs
+# # data/raw/
+# # data/processed/
+# # data/final/
+# # outputs/
+# # *.csv
+# # *.xlsx
+# # *.parquet
 
-# Modelos entrenados
-models/
-catboost_info/
-*.pkl
-*.joblib
+# # Modelos entrenados
+# # models/
+# # catboost_info/
+# # *.pkl
+# # *.joblib
 
-# Notebooks
-.ipynb_checkpoints/
+# # Notebooks
+# .ipynb_checkpoints/
 
-# Entornos
-.env
-config.env
-*.env
+# # Entornos
+# .env
+# config.env
+# *.env
 
-# VSCode & otros IDEs
-.vscode/
-.idea/
-*.swp
+# # VSCode & otros IDEs
+# .vscode/
+# .idea/
+# *.swp
 
-# Archivos temporales
-*.tmp
-*.bak
-*.old
-*~
+# # Archivos temporales
+# *.tmp
+# *.bak
+# *.old
+# *~
