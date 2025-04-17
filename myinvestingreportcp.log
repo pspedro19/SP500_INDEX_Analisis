@@ -26204,3 +26204,1839 @@ Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
 2025-04-09 16:23:15,902 [INFO] Estado: COMPLETADO
 2025-04-09 16:23:15,902 [INFO] ==================================================
 2025-04-09 16:23:15,907 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 15:39:53,573 [INFO] ================================================================================
+2025-04-17 15:39:53,573 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 15:39:53,573 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 15:39:53,573 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 15:39:53,573 [INFO] Fecha y hora: 2025-04-17 15:39:53
+2025-04-17 15:39:53,573 [INFO] ================================================================================
+2025-04-17 15:39:53,573 [INFO] Leyendo archivo de configuración...
+2025-04-17 15:39:54,040 [INFO] Se encontraron 21 configuraciones para procesar
+2025-04-17 15:39:54,041 [INFO] 
+Procesando: US_ISM_Manufacturing (business_confidence)
+2025-04-17 15:39:54,041 [INFO] - Archivo: US_ISM_Manufacturing.xlsx
+2025-04-17 15:39:54,041 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,042 [INFO] - Ruta encontrada: Data/raw\business_confidence\US_ISM_Manufacturing.xlsx
+2025-04-17 15:39:54,050 [INFO] - Filas encontradas: 138
+2025-04-17 15:39:54,055 [INFO] Preferencia de dayfirst para Data/raw\business_confidence\US_ISM_Manufacturing.xlsx: True
+2025-04-17 15:39:54,094 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,095 [INFO] - Valores no nulos en TARGET: 137
+2025-04-17 15:39:54,095 [INFO] - Periodo: 2013-11-01 a 2025-03-03
+2025-04-17 15:39:54,095 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,096 [INFO] 
+Procesando: US_ISM_Services (business_confidence)
+2025-04-17 15:39:54,096 [INFO] - Archivo: US_ISM_Services.xlsx
+2025-04-17 15:39:54,097 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,097 [INFO] - Ruta encontrada: Data/raw\business_confidence\US_ISM_Services.xlsx
+2025-04-17 15:39:54,105 [INFO] - Filas encontradas: 137
+2025-04-17 15:39:54,108 [INFO] Preferencia de dayfirst para Data/raw\business_confidence\US_ISM_Services.xlsx: True
+2025-04-17 15:39:54,140 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,142 [INFO] - Valores no nulos en TARGET: 136
+2025-04-17 15:39:54,142 [INFO] - Periodo: 2013-12-04 a 2025-03-05
+2025-04-17 15:39:54,142 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,143 [INFO] 
+Procesando: US_Philly_Fed_Index (business_confidence)
+2025-04-17 15:39:54,143 [INFO] - Archivo: US_Philly_Fed_Index.xlsx
+2025-04-17 15:39:54,143 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,143 [INFO] - Ruta encontrada: Data/raw\business_confidence\US_Philly_Fed_Index.xlsx
+2025-04-17 15:39:54,152 [INFO] - Filas encontradas: 136
+2025-04-17 15:39:54,155 [INFO] Preferencia de dayfirst para Data/raw\business_confidence\US_Philly_Fed_Index.xlsx: True
+2025-04-17 15:39:54,187 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,188 [INFO] - Valores no nulos en TARGET: 136
+2025-04-17 15:39:54,189 [INFO] - Periodo: 2013-12-19 a 2025-03-20
+2025-04-17 15:39:54,189 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,189 [INFO] 
+Procesando: France_Business_Climate (business_confidence)
+2025-04-17 15:39:54,189 [INFO] - Archivo: France_Business_Climate.xlsx
+2025-04-17 15:39:54,190 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,190 [INFO] - Ruta encontrada: Data/raw\business_confidence\France_Business_Climate.xlsx
+2025-04-17 15:39:54,197 [INFO] - Filas encontradas: 137
+2025-04-17 15:39:54,201 [INFO] Preferencia de dayfirst para Data/raw\business_confidence\France_Business_Climate.xlsx: True
+2025-04-17 15:39:54,240 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,242 [INFO] - Valores no nulos en TARGET: 137
+2025-04-17 15:39:54,242 [INFO] - Periodo: 2013-12-20 a 2025-03-21
+2025-04-17 15:39:54,242 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,243 [INFO] 
+Procesando: EuroZone_Business_Climate (business_confidence)
+2025-04-17 15:39:54,243 [INFO] - Archivo: EuroZone_Business_Climate.xlsx
+2025-04-17 15:39:54,243 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,243 [INFO] - Ruta encontrada: Data/raw\business_confidence\EuroZone_Business_Climate.xlsx
+2025-04-17 15:39:54,251 [INFO] - Filas encontradas: 138
+2025-04-17 15:39:54,254 [INFO] Preferencia de dayfirst para Data/raw\business_confidence\EuroZone_Business_Climate.xlsx: True
+2025-04-17 15:39:54,282 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,284 [INFO] - Valores no nulos en TARGET: 137
+2025-04-17 15:39:54,284 [INFO] - Periodo: 2013-10-30 a 2025-02-27
+2025-04-17 15:39:54,284 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,285 [INFO] 
+Procesando: U.S. All Car Sales (car_registrations)
+2025-04-17 15:39:54,285 [INFO] - Archivo: U.S. All Car Sales.xlsx
+2025-04-17 15:39:54,285 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,285 [INFO] - Ruta encontrada: Data/raw\car_registrations\U.S. All Car Sales.xlsx
+2025-04-17 15:39:54,294 [INFO] - Filas encontradas: 132
+2025-04-17 15:39:54,297 [INFO] Preferencia de dayfirst para Data/raw\car_registrations\U.S. All Car Sales.xlsx: True
+2025-04-17 15:39:54,329 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,330 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\car_registrations\U.S. All Car Sales.xlsx
+2025-04-17 15:39:54,331 [INFO] 
+Procesando: US_Consumer_Confidence (consumer_confidence)
+2025-04-17 15:39:54,331 [INFO] - Archivo: US_Consumer_Confidence.xlsx
+2025-04-17 15:39:54,331 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,331 [INFO] - Ruta encontrada: Data/raw\consumer_confidence\US_Consumer_Confidence.xlsx
+2025-04-17 15:39:54,340 [INFO] - Filas encontradas: 136
+2025-04-17 15:39:54,343 [INFO] Preferencia de dayfirst para Data/raw\consumer_confidence\US_Consumer_Confidence.xlsx: True
+2025-04-17 15:39:54,373 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,374 [INFO] - Valores no nulos en TARGET: 136
+2025-04-17 15:39:54,374 [INFO] - Periodo: 2013-12-31 a 2025-03-25
+2025-04-17 15:39:54,374 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,375 [INFO] 
+Procesando: China_PMI_Manufacturing (economics)
+2025-04-17 15:39:54,375 [INFO] - Archivo: China_PMI_Manufacturing.xlsx
+2025-04-17 15:39:54,375 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,375 [INFO] - Ruta encontrada: Data/raw\economics\China_PMI_Manufacturing.xlsx
+2025-04-17 15:39:54,385 [INFO] - Filas encontradas: 136
+2025-04-17 15:39:54,388 [INFO] Preferencia de dayfirst para Data/raw\economics\China_PMI_Manufacturing.xlsx: True
+2025-04-17 15:39:54,417 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,418 [INFO] - Valores no nulos en TARGET: 135
+2025-04-17 15:39:54,418 [INFO] - Periodo: 2013-12-31 a 2025-02-28
+2025-04-17 15:39:54,418 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,419 [INFO] 
+Procesando: Singapore_NonOil_Exports_YoY (economics)
+2025-04-17 15:39:54,419 [INFO] - Archivo: Singapore_NonOil_Exports_YoY.xlsx
+2025-04-17 15:39:54,419 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,419 [INFO] - Ruta encontrada: Data/raw\economics\Singapore_NonOil_Exports_YoY.xlsx
+2025-04-17 15:39:54,428 [INFO] - Filas encontradas: 138
+2025-04-17 15:39:54,433 [INFO] Preferencia de dayfirst para Data/raw\economics\Singapore_NonOil_Exports_YoY.xlsx: True
+2025-04-17 15:39:54,463 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,464 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\economics\Singapore_NonOil_Exports_YoY.xlsx
+2025-04-17 15:39:54,465 [INFO] 
+Procesando: Japan_M2_MoneySupply_YoY (economics)
+2025-04-17 15:39:54,465 [INFO] - Archivo: Japan_M2_MoneySupply_YoY.xlsx
+2025-04-17 15:39:54,465 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,465 [INFO] - Ruta encontrada: Data/raw\economics\Japan_M2_MoneySupply_YoY.xlsx
+2025-04-17 15:39:54,474 [INFO] - Filas encontradas: 131
+2025-04-17 15:39:54,480 [INFO] Preferencia de dayfirst para Data/raw\economics\Japan_M2_MoneySupply_YoY.xlsx: True
+2025-04-17 15:39:54,510 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,511 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\economics\Japan_M2_MoneySupply_YoY.xlsx
+2025-04-17 15:39:54,512 [INFO] 
+Procesando: China_M2_MoneySupply_YoY (economics)
+2025-04-17 15:39:54,512 [INFO] - Archivo: China_M2_MoneySupply_YoY.xlsx
+2025-04-17 15:39:54,512 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,512 [INFO] - Ruta encontrada: Data/raw\economics\China_M2_MoneySupply_YoY.xlsx
+2025-04-17 15:39:54,521 [INFO] - Filas encontradas: 137
+2025-04-17 15:39:54,525 [INFO] Preferencia de dayfirst para Data/raw\economics\China_M2_MoneySupply_YoY.xlsx: True
+2025-04-17 15:39:54,558 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,559 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\economics\China_M2_MoneySupply_YoY.xlsx
+2025-04-17 15:39:54,560 [INFO] 
+Procesando: Mexico_CPI_MoM (economics)
+2025-04-17 15:39:54,560 [INFO] - Archivo: Mexico_CPI_MoM.xlsx
+2025-04-17 15:39:54,560 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,560 [INFO] - Ruta encontrada: Data/raw\economics\Mexico_CPI_MoM.xlsx
+2025-04-17 15:39:54,568 [INFO] - Filas encontradas: 138
+2025-04-17 15:39:54,571 [INFO] Preferencia de dayfirst para Data/raw\economics\Mexico_CPI_MoM.xlsx: True
+2025-04-17 15:39:54,607 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,608 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\economics\Mexico_CPI_MoM.xlsx
+2025-04-17 15:39:54,609 [INFO] 
+Procesando: BOJ_Policy_Rate (economics)
+2025-04-17 15:39:54,609 [INFO] - Archivo: BOJ_Policy_Rate.xlsx
+2025-04-17 15:39:54,609 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,609 [INFO] - Ruta encontrada: Data/raw\economics\BOJ_Policy_Rate.xlsx
+2025-04-17 15:39:54,616 [INFO] - Filas encontradas: 111
+2025-04-17 15:39:54,623 [INFO] Preferencia de dayfirst para Data/raw\economics\BOJ_Policy_Rate.xlsx: True
+2025-04-17 15:39:54,652 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,653 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\economics\BOJ_Policy_Rate.xlsx
+2025-04-17 15:39:54,653 [INFO] 
+Procesando: UK_Retail_Sales_MoM (economics)
+2025-04-17 15:39:54,653 [INFO] - Archivo: UK_Retail_Sales_MoM.xlsx
+2025-04-17 15:39:54,654 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,654 [INFO] - Ruta encontrada: Data/raw\economics\UK_Retail_Sales_MoM.xlsx
+2025-04-17 15:39:54,662 [INFO] - Filas encontradas: 138
+2025-04-17 15:39:54,665 [INFO] Preferencia de dayfirst para Data/raw\economics\UK_Retail_Sales_MoM.xlsx: True
+2025-04-17 15:39:54,700 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,701 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\economics\UK_Retail_Sales_MoM.xlsx
+2025-04-17 15:39:54,702 [INFO] 
+Procesando: China_Exports (exports)
+2025-04-17 15:39:54,702 [INFO] - Archivo: China_Exports.xlsx
+2025-04-17 15:39:54,702 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,702 [INFO] - Ruta encontrada: Data/raw\exports\China_Exports.xlsx
+2025-04-17 15:39:54,710 [INFO] - Filas encontradas: 131
+2025-04-17 15:39:54,713 [INFO] Preferencia de dayfirst para Data/raw\exports\China_Exports.xlsx: True
+2025-04-17 15:39:54,746 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,747 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\exports\China_Exports.xlsx
+2025-04-17 15:39:54,748 [INFO] 
+Procesando: US_Exports (exports)
+2025-04-17 15:39:54,748 [INFO] - Archivo: US_Exports.xlsx
+2025-04-17 15:39:54,748 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,748 [INFO] - Ruta encontrada: Data/raw\exports\US_Exports.xlsx
+2025-04-17 15:39:54,755 [INFO] - Filas encontradas: 87
+2025-04-17 15:39:54,759 [INFO] Preferencia de dayfirst para Data/raw\exports\US_Exports.xlsx: True
+2025-04-17 15:39:54,779 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,781 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\exports\US_Exports.xlsx
+2025-04-17 15:39:54,781 [INFO] 
+Procesando: US_Leading_EconIndex (leading_economic_index)
+2025-04-17 15:39:54,782 [INFO] - Archivo: US_Leading_EconIndex.xlsx
+2025-04-17 15:39:54,782 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,782 [INFO] - Ruta encontrada: Data/raw\leading_economic_index\US_Leading_EconIndex.xlsx
+2025-04-17 15:39:54,782 [INFO] Utilizando estrategia especial para US_Leading_EconIndex (header=2)
+2025-04-17 15:39:54,791 [INFO] Columnas leídas: ['Feb 20, 2025 (Jan)', nan, '-0.3%', '-0.1%', '0.1%']
+2025-04-17 15:39:54,791 [INFO] - Filas encontradas: 133
+2025-04-17 15:39:54,791 [ERROR] No se encontró la columna 'Release Date' en Data/raw\leading_economic_index\US_Leading_EconIndex.xlsx
+2025-04-17 15:39:54,792 [INFO] 
+Procesando: US_ConferenceBoard_LEI (leading_economic_index)
+2025-04-17 15:39:54,792 [INFO] - Archivo: US_ConferenceBoard_LEI.xlsx
+2025-04-17 15:39:54,792 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,792 [INFO] - Ruta encontrada: Data/raw\leading_economic_index\US_ConferenceBoard_LEI.xlsx
+2025-04-17 15:39:54,801 [INFO] - Filas encontradas: 135
+2025-04-17 15:39:54,804 [INFO] Preferencia de dayfirst para Data/raw\leading_economic_index\US_ConferenceBoard_LEI.xlsx: True
+2025-04-17 15:39:54,846 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,847 [INFO] - Valores no nulos en TARGET: 8
+2025-04-17 15:39:54,847 [INFO] - Periodo: 2014-01-28 a 2014-08-26
+2025-04-17 15:39:54,847 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,848 [INFO] 
+Procesando: Japan_Leading_Indicator (leading_economic_index)
+2025-04-17 15:39:54,848 [INFO] - Archivo: Japan_Leading_Indicator.xlsx
+2025-04-17 15:39:54,848 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,848 [INFO] - Ruta encontrada: Data/raw\leading_economic_index\Japan_Leading_Indicator.xlsx
+2025-04-17 15:39:54,860 [INFO] - Filas encontradas: 257
+2025-04-17 15:39:54,863 [INFO] Preferencia de dayfirst para Data/raw\leading_economic_index\Japan_Leading_Indicator.xlsx: True
+2025-04-17 15:39:54,918 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,919 [INFO] - Valores no nulos en TARGET: 257
+2025-04-17 15:39:54,919 [INFO] - Periodo: 2014-01-10 a 2025-03-26
+2025-04-17 15:39:54,919 [INFO] - Cobertura: 100.00%
+2025-04-17 15:39:54,920 [INFO] 
+Procesando: China_Unemployment_Rate (unemployment_rate)
+2025-04-17 15:39:54,920 [INFO] - Archivo: China_Unemployment_Rate.xlsx
+2025-04-17 15:39:54,920 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,920 [INFO] - Ruta encontrada: Data/raw\unemployment_rate\China_Unemployment_Rate.xlsx
+2025-04-17 15:39:54,928 [INFO] - Filas encontradas: 75
+2025-04-17 15:39:54,931 [INFO] Preferencia de dayfirst para Data/raw\unemployment_rate\China_Unemployment_Rate.xlsx: True
+2025-04-17 15:39:54,954 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:54,956 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\unemployment_rate\China_Unemployment_Rate.xlsx
+2025-04-17 15:39:54,956 [INFO] 
+Procesando: Eurozone_Unemployment_Rate (unemployment_rate)
+2025-04-17 15:39:54,957 [INFO] - Archivo: Eurozone_Unemployment_Rate.xlsx
+2025-04-17 15:39:54,957 [INFO] - Columna TARGET: ACTUAL
+2025-04-17 15:39:54,957 [INFO] - Ruta encontrada: Data/raw\unemployment_rate\Eurozone_Unemployment_Rate.xlsx
+2025-04-17 15:39:54,967 [INFO] - Filas encontradas: 136
+2025-04-17 15:39:54,972 [INFO] Preferencia de dayfirst para Data/raw\unemployment_rate\Eurozone_Unemployment_Rate.xlsx: True
+2025-04-17 15:39:55,005 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-04-17 15:39:55,007 [ERROR] No se encontraron valores válidos para 'Actual' en Data/raw\unemployment_rate\Eurozone_Unemployment_Rate.xlsx
+2025-04-17 15:39:55,008 [INFO] Índice diario generado: 4166 días desde 2013-10-30 hasta 2025-03-26
+2025-04-17 15:39:55,021 [WARNING] Omitiendo U.S. All Car Sales por falta de datos
+2025-04-17 15:39:55,026 [WARNING] Omitiendo Singapore_NonOil_Exports_YoY por falta de datos
+2025-04-17 15:39:55,026 [WARNING] Omitiendo Japan_M2_MoneySupply_YoY por falta de datos
+2025-04-17 15:39:55,026 [WARNING] Omitiendo China_M2_MoneySupply_YoY por falta de datos
+2025-04-17 15:39:55,026 [WARNING] Omitiendo Mexico_CPI_MoM por falta de datos
+2025-04-17 15:39:55,026 [WARNING] Omitiendo BOJ_Policy_Rate por falta de datos
+2025-04-17 15:39:55,027 [WARNING] Omitiendo UK_Retail_Sales_MoM por falta de datos
+2025-04-17 15:39:55,027 [WARNING] Omitiendo China_Exports por falta de datos
+2025-04-17 15:39:55,027 [WARNING] Omitiendo US_Exports por falta de datos
+2025-04-17 15:39:55,027 [WARNING] Omitiendo US_Leading_EconIndex por falta de datos
+2025-04-17 15:39:55,031 [WARNING] Omitiendo China_Unemployment_Rate por falta de datos
+2025-04-17 15:39:55,031 [WARNING] Omitiendo Eurozone_Unemployment_Rate por falta de datos
+2025-04-17 15:39:55,032 [INFO] DataFrame final combinado: 4166 filas, 10 columnas
+2025-04-17 15:39:55,032 [INFO] 
+Resumen de Cobertura:
+2025-04-17 15:39:55,032 [INFO] - US_ISM_Manufacturing: 100.00% desde 2013-11-01 a 2025-03-03
+2025-04-17 15:39:55,032 [INFO] - US_ISM_Services: 100.00% desde 2013-12-04 a 2025-03-05
+2025-04-17 15:39:55,032 [INFO] - US_Philly_Fed_Index: 100.00% desde 2013-12-19 a 2025-03-20
+2025-04-17 15:39:55,032 [INFO] - France_Business_Climate: 100.00% desde 2013-12-20 a 2025-03-21
+2025-04-17 15:39:55,032 [INFO] - EuroZone_Business_Climate: 100.00% desde 2013-10-30 a 2025-02-27
+2025-04-17 15:39:55,033 [INFO] - US_Consumer_Confidence: 100.00% desde 2013-12-31 a 2025-03-25
+2025-04-17 15:39:55,033 [INFO] - China_PMI_Manufacturing: 100.00% desde 2013-12-31 a 2025-02-28
+2025-04-17 15:39:55,033 [INFO] - US_ConferenceBoard_LEI: 100.00% desde 2014-01-28 a 2014-08-26
+2025-04-17 15:39:55,033 [INFO] - Japan_Leading_Indicator: 100.00% desde 2014-01-10 a 2025-03-26
+2025-04-17 15:39:55,412 [INFO] Archivo guardado exitosamente: Data/raw/datos_economicos_procesados_cp.xlsx
+2025-04-17 15:39:55,413 [INFO] 
+Resumen de Ejecución:
+2025-04-17 15:39:55,413 [INFO] Tiempo de ejecución: 1.84 segundos
+2025-04-17 15:39:55,413 [INFO] Archivos procesados: 21
+2025-04-17 15:39:55,413 [INFO] Archivo de salida: Data/raw/datos_economicos_procesados_cp.xlsx
+2025-04-17 15:39:55,413 [INFO] Estado: COMPLETADO
+2025-04-17 15:39:55,415 [INFO] ================================================================================
+2025-04-17 15:39:55,416 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 15:39:55,416 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 15:39:55,416 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 15:39:55,416 [INFO] Fecha y hora: 2025-04-17 15:39:55
+2025-04-17 15:39:55,416 [INFO] ================================================================================
+2025-04-17 15:39:55,416 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 15:39:55,416 [INFO] Leyendo archivo de configuración...
+2025-04-17 15:39:55,433 [INFO] Se encontraron 28 configuraciones para procesar
+2025-04-17 15:39:55,433 [INFO] 
+Procesando: Australia_10Y_Bond (bond)
+2025-04-17 15:39:55,434 [INFO] - Archivo: Australia_10Y_Bond
+2025-04-17 15:39:55,434 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:55,434 [INFO] - Ruta encontrada: Data/raw\bond\Australia_10Y_Bond.csv
+2025-04-17 15:39:55,440 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:55,447 [INFO] Formato de fecha detectado para Australia_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-04-17 15:39:56,142 [INFO] Ejemplos de fechas convertidas para Australia_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:39:56,144 [INFO] Formato numérico detectado para Australia_10Y_Bond: americano
+2025-04-17 15:39:56,147 [INFO] Para Australia_10Y_Bond (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:56,148 [INFO] - Australia_10Y_Bond: 3810 filas procesadas, periodo: 2014-01-01 a 2025-03-26
+2025-04-17 15:39:56,148 [INFO] 
+Procesando: Italy_10Y_Bond (bond)
+2025-04-17 15:39:56,148 [INFO] - Archivo: Italy_10Y_Bond
+2025-04-17 15:39:56,149 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:56,149 [INFO] - Ruta encontrada: Data/raw\bond\Italy_10Y_Bond.csv
+2025-04-17 15:39:56,155 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:56,161 [INFO] Formato de fecha detectado para Italy_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-04-17 15:39:56,770 [INFO] Ejemplos de fechas convertidas para Italy_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:39:56,772 [INFO] Formato numérico detectado para Italy_10Y_Bond: americano
+2025-04-17 15:39:56,775 [INFO] Para Italy_10Y_Bond (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:56,775 [INFO] - Italy_10Y_Bond: 3238 filas procesadas, periodo: 2014-01-02 a 2025-03-26
+2025-04-17 15:39:56,775 [INFO] 
+Procesando: Japan_10Y_Bond (bond)
+2025-04-17 15:39:56,776 [INFO] - Archivo: Japan_10Y_Bond
+2025-04-17 15:39:56,776 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:56,776 [INFO] - Ruta encontrada: Data/raw\bond\Japan_10Y_Bond.csv
+2025-04-17 15:39:56,781 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:56,787 [INFO] Formato de fecha detectado para Japan_10Y_Bond: dayfirst=False (confianza: 0.15)
+2025-04-17 15:39:57,401 [INFO] Ejemplos de fechas convertidas para Japan_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-19 00:00:00')]
+2025-04-17 15:39:57,403 [INFO] Formato numérico detectado para Japan_10Y_Bond: americano
+2025-04-17 15:39:57,406 [INFO] Para Japan_10Y_Bond (columna Date), la fecha mínima es 2014-01-06 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:57,406 [INFO] - Japan_10Y_Bond: 3203 filas procesadas, periodo: 2014-01-06 a 2025-03-26
+2025-04-17 15:39:57,407 [INFO] 
+Procesando: UK_10Y_Bond (bond)
+2025-04-17 15:39:57,407 [INFO] - Archivo: UK_10Y_Bond
+2025-04-17 15:39:57,407 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:57,408 [INFO] - Ruta encontrada: Data/raw\bond\UK_10Y_Bond.csv
+2025-04-17 15:39:57,418 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:57,423 [INFO] Formato de fecha detectado para UK_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-04-17 15:39:58,038 [INFO] Ejemplos de fechas convertidas para UK_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:39:58,040 [INFO] Formato numérico detectado para UK_10Y_Bond: americano
+2025-04-17 15:39:58,043 [INFO] Para UK_10Y_Bond (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:58,043 [INFO] - UK_10Y_Bond: 3424 filas procesadas, periodo: 2014-01-01 a 2025-03-26
+2025-04-17 15:39:58,043 [INFO] 
+Procesando: Germany_10Y_Bond (bond)
+2025-04-17 15:39:58,044 [INFO] - Archivo: Germany_10Y_Bond
+2025-04-17 15:39:58,044 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:58,044 [INFO] - Ruta encontrada: Data/raw\bond\Germany_10Y_Bond.csv
+2025-04-17 15:39:58,050 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:58,056 [INFO] Formato de fecha detectado para Germany_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-04-17 15:39:58,588 [INFO] Ejemplos de fechas convertidas para Germany_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:39:58,590 [INFO] Formato numérico detectado para Germany_10Y_Bond: americano
+2025-04-17 15:39:58,593 [INFO] Para Germany_10Y_Bond (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:58,593 [INFO] - Germany_10Y_Bond: 3075 filas procesadas, periodo: 2014-01-02 a 2025-03-26
+2025-04-17 15:39:58,594 [INFO] 
+Procesando: Canada_10Y_Bond (bond)
+2025-04-17 15:39:58,594 [INFO] - Archivo: Canada_10Y_Bond
+2025-04-17 15:39:58,594 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:58,595 [INFO] - Ruta encontrada: Data/raw\bond\Canada_10Y_Bond.csv
+2025-04-17 15:39:58,599 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:58,604 [INFO] Formato de fecha detectado para Canada_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-04-17 15:39:59,131 [INFO] Ejemplos de fechas convertidas para Canada_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:39:59,133 [INFO] Formato numérico detectado para Canada_10Y_Bond: americano
+2025-04-17 15:39:59,135 [INFO] Para Canada_10Y_Bond (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:59,136 [INFO] - Canada_10Y_Bond: 2965 filas procesadas, periodo: 2014-01-01 a 2025-03-26
+2025-04-17 15:39:59,136 [INFO] 
+Procesando: China_10Y_Bond (bond)
+2025-04-17 15:39:59,136 [INFO] - Archivo: China_10Y_Bond
+2025-04-17 15:39:59,136 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:59,137 [INFO] - Ruta encontrada: Data/raw\bond\China_10Y_Bond.csv
+2025-04-17 15:39:59,142 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:59,148 [INFO] Formato de fecha detectado para China_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-04-17 15:39:59,683 [INFO] Ejemplos de fechas convertidas para China_10Y_Bond: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:39:59,685 [INFO] Formato numérico detectado para China_10Y_Bond: americano
+2025-04-17 15:39:59,687 [INFO] Para China_10Y_Bond (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:39:59,687 [INFO] - China_10Y_Bond: 2914 filas procesadas, periodo: 2014-01-02 a 2025-03-26
+2025-04-17 15:39:59,688 [INFO] 
+Procesando: CrudeOil_WTI (commodities)
+2025-04-17 15:39:59,688 [INFO] - Archivo: CrudeOil_WTI
+2025-04-17 15:39:59,688 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:39:59,688 [INFO] - Ruta encontrada: Data/raw\commodities\CrudeOil_WTI.csv
+2025-04-17 15:39:59,693 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:39:59,698 [INFO] Formato de fecha detectado para CrudeOil_WTI: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:00,218 [INFO] Ejemplos de fechas convertidas para CrudeOil_WTI: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:40:00,219 [INFO] Formato numérico detectado para CrudeOil_WTI: americano
+2025-04-17 15:40:00,221 [INFO] Para CrudeOil_WTI (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:40:00,222 [INFO] - CrudeOil_WTI: 2953 filas procesadas, periodo: 2014-01-01 a 2025-03-26
+2025-04-17 15:40:00,222 [INFO] 
+Procesando: Gold_Spot (commodities)
+2025-04-17 15:40:00,222 [INFO] - Archivo: Gold_Spot
+2025-04-17 15:40:00,222 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:00,223 [INFO] - Ruta encontrada: Data/raw\commodities\Gold_Spot.csv
+2025-04-17 15:40:00,231 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:00,236 [INFO] Formato de fecha detectado para Gold_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:00,740 [INFO] Ejemplos de fechas convertidas para Gold_Spot: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:40:00,741 [INFO] Formato numérico detectado para Gold_Spot: americano
+2025-04-17 15:40:00,745 [INFO] Para Gold_Spot (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:40:00,745 [INFO] - Gold_Spot: 2874 filas procesadas, periodo: 2014-01-02 a 2025-03-26
+2025-04-17 15:40:00,746 [INFO] 
+Procesando: Silver_Spot (commodities)
+2025-04-17 15:40:00,746 [INFO] - Archivo: Silver_Spot
+2025-04-17 15:40:00,747 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:00,747 [INFO] - Ruta encontrada: Data/raw\commodities\Silver_Spot.csv
+2025-04-17 15:40:00,753 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:00,759 [INFO] Formato de fecha detectado para Silver_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:01,267 [INFO] Ejemplos de fechas convertidas para Silver_Spot: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:40:01,268 [INFO] Formato numérico detectado para Silver_Spot: americano
+2025-04-17 15:40:01,270 [INFO] Para Silver_Spot (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:40:01,271 [INFO] - Silver_Spot: 2911 filas procesadas, periodo: 2014-01-02 a 2025-03-26
+2025-04-17 15:40:01,271 [INFO] 
+Procesando: Copper_Futures (commodities)
+2025-04-17 15:40:01,271 [INFO] - Archivo: Copper_Futures
+2025-04-17 15:40:01,272 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:01,272 [INFO] - Ruta encontrada: Data/raw\commodities\Copper_Futures.csv
+2025-04-17 15:40:01,276 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:01,281 [INFO] Formato de fecha detectado para Copper_Futures: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:01,820 [INFO] Ejemplos de fechas convertidas para Copper_Futures: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:40:01,822 [INFO] Formato numérico detectado para Copper_Futures: americano
+2025-04-17 15:40:01,824 [INFO] Para Copper_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:40:01,824 [INFO] - Copper_Futures: 2908 filas procesadas, periodo: 2014-01-02 a 2025-03-26
+2025-04-17 15:40:01,825 [INFO] 
+Procesando: Platinum_Spot (commodities)
+2025-04-17 15:40:01,825 [INFO] - Archivo: Platinum_Spot
+2025-04-17 15:40:01,825 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:01,825 [INFO] - Ruta encontrada: Data/raw\commodities\Platinum_Spot.csv
+2025-04-17 15:40:01,833 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:01,838 [INFO] Formato de fecha detectado para Platinum_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:02,453 [INFO] Ejemplos de fechas convertidas para Platinum_Spot: [Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00'), Timestamp('2025-03-20 00:00:00')]
+2025-04-17 15:40:02,454 [INFO] Formato numérico detectado para Platinum_Spot: americano
+2025-04-17 15:40:02,459 [INFO] Para Platinum_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-26 00:00:00
+2025-04-17 15:40:02,459 [INFO] - Platinum_Spot: 3463 filas procesadas, periodo: 2014-01-01 a 2025-03-26
+2025-04-17 15:40:02,460 [INFO] 
+Procesando: EUR_USD_Spot (exchange_rate)
+2025-04-17 15:40:02,460 [INFO] - Archivo: EUR_USD_Spot
+2025-04-17 15:40:02,460 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:02,461 [INFO] - Ruta encontrada: Data/raw\exchange_rate\EUR_USD_Spot.csv
+2025-04-17 15:40:02,464 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:02,470 [INFO] Formato de fecha detectado para EUR_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:03,041 [INFO] Ejemplos de fechas convertidas para EUR_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:03,043 [INFO] Formato numérico detectado para EUR_USD_Spot: americano
+2025-04-17 15:40:03,045 [INFO] Para EUR_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:03,046 [INFO] - EUR_USD_Spot: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:03,046 [INFO] 
+Procesando: GBP_USD_Spot (exchange_rate)
+2025-04-17 15:40:03,046 [INFO] - Archivo: GBP_USD_Spot
+2025-04-17 15:40:03,046 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:03,047 [INFO] - Ruta encontrada: Data/raw\exchange_rate\GBP_USD_Spot.csv
+2025-04-17 15:40:03,052 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:03,057 [INFO] Formato de fecha detectado para GBP_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:03,595 [INFO] Ejemplos de fechas convertidas para GBP_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:03,597 [INFO] Formato numérico detectado para GBP_USD_Spot: americano
+2025-04-17 15:40:03,600 [INFO] Para GBP_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:03,600 [INFO] - GBP_USD_Spot: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:03,600 [INFO] 
+Procesando: JPY_USD_Spot (exchange_rate)
+2025-04-17 15:40:03,600 [INFO] - Archivo: JPY_USD_Spot
+2025-04-17 15:40:03,601 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:03,601 [INFO] - Ruta encontrada: Data/raw\exchange_rate\JPY_USD_Spot.csv
+2025-04-17 15:40:03,606 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:03,612 [INFO] Formato de fecha detectado para JPY_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:04,142 [INFO] Ejemplos de fechas convertidas para JPY_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:04,144 [INFO] Formato numérico detectado para JPY_USD_Spot: americano
+2025-04-17 15:40:04,146 [INFO] Para JPY_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:04,146 [INFO] - JPY_USD_Spot: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:04,147 [INFO] 
+Procesando: CNY_USD_Spot (exchange_rate)
+2025-04-17 15:40:04,147 [INFO] - Archivo: CNY_USD_Spot
+2025-04-17 15:40:04,147 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:04,147 [INFO] - Ruta encontrada: Data/raw\exchange_rate\CNY_USD_Spot.csv
+2025-04-17 15:40:04,153 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:04,157 [INFO] Formato de fecha detectado para CNY_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:04,695 [INFO] Ejemplos de fechas convertidas para CNY_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:04,697 [INFO] Formato numérico detectado para CNY_USD_Spot: americano
+2025-04-17 15:40:04,699 [INFO] Para CNY_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:04,699 [INFO] - CNY_USD_Spot: 2933 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:04,700 [INFO] 
+Procesando: AUD_USD_Spot (exchange_rate)
+2025-04-17 15:40:04,700 [INFO] - Archivo: AUD_USD_Spot
+2025-04-17 15:40:04,700 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:04,700 [INFO] - Ruta encontrada: Data/raw\exchange_rate\AUD_USD_Spot.csv
+2025-04-17 15:40:04,706 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:04,711 [INFO] Formato de fecha detectado para AUD_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:05,287 [INFO] Ejemplos de fechas convertidas para AUD_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:05,289 [INFO] Formato numérico detectado para AUD_USD_Spot: americano
+2025-04-17 15:40:05,292 [INFO] Para AUD_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:05,293 [INFO] - AUD_USD_Spot: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:05,294 [INFO] 
+Procesando: CAD_USD_Spot (exchange_rate)
+2025-04-17 15:40:05,294 [INFO] - Archivo: CAD_USD_Spot
+2025-04-17 15:40:05,294 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:05,294 [INFO] - Ruta encontrada: Data/raw\exchange_rate\CAD_USD_Spot.csv
+2025-04-17 15:40:05,300 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:05,307 [INFO] Formato de fecha detectado para CAD_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:05,924 [INFO] Ejemplos de fechas convertidas para CAD_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:05,925 [INFO] Formato numérico detectado para CAD_USD_Spot: americano
+2025-04-17 15:40:05,928 [INFO] Para CAD_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:05,928 [INFO] - CAD_USD_Spot: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:05,928 [INFO] 
+Procesando: MXN_USD_Spot (exchange_rate)
+2025-04-17 15:40:05,929 [INFO] - Archivo: MXN_USD_Spot
+2025-04-17 15:40:05,929 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:05,929 [INFO] - Ruta encontrada: Data/raw\exchange_rate\MXN_USD_Spot.csv
+2025-04-17 15:40:05,934 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:05,940 [INFO] Formato de fecha detectado para MXN_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:06,507 [INFO] Ejemplos de fechas convertidas para MXN_USD_Spot: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:06,510 [INFO] Formato numérico detectado para MXN_USD_Spot: americano
+2025-04-17 15:40:06,513 [INFO] Para MXN_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:06,513 [INFO] - MXN_USD_Spot: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:06,514 [INFO] 
+Procesando: EUR_GBP_Cross (exchange_rate)
+2025-04-17 15:40:06,514 [INFO] - Archivo: EUR_GBP_Cross
+2025-04-17 15:40:06,514 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:06,515 [INFO] - Ruta encontrada: Data/raw\exchange_rate\EUR_GBP_Cross.csv
+2025-04-17 15:40:06,519 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:06,526 [INFO] Formato de fecha detectado para EUR_GBP_Cross: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:07,068 [INFO] Ejemplos de fechas convertidas para EUR_GBP_Cross: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:07,070 [INFO] Formato numérico detectado para EUR_GBP_Cross: americano
+2025-04-17 15:40:07,073 [INFO] Para EUR_GBP_Cross (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:07,073 [INFO] - EUR_GBP_Cross: 2932 filas procesadas, periodo: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:07,074 [INFO] 
+Procesando: S&P500_Index (index_pricing)
+2025-04-17 15:40:07,074 [INFO] - Archivo: S&P500_Index
+2025-04-17 15:40:07,074 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:07,074 [INFO] - Ruta encontrada: Data/raw\index_pricing\S&P500_Index.csv
+2025-04-17 15:40:07,081 [INFO] Columna de fecha detectada: Fecha
+2025-04-17 15:40:07,086 [INFO] Formato de fecha detectado para S&P500_Index: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:07,218 [INFO] Ejemplos de fechas convertidas para S&P500_Index: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:07,219 [INFO] Formato numérico detectado para S&P500_Index: americano
+2025-04-17 15:40:07,224 [INFO] Para S&P500_Index (columna Fecha), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:07,224 [INFO] - S&P500_Index: 2826 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:07,225 [INFO] 
+Procesando: NASDAQ_Composite (index_pricing)
+2025-04-17 15:40:07,225 [INFO] - Archivo: NASDAQ_Composite
+2025-04-17 15:40:07,225 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:07,225 [INFO] - Ruta encontrada: Data/raw\index_pricing\NASDAQ_Composite.csv
+2025-04-17 15:40:07,234 [INFO] Columna de fecha detectada: Fecha
+2025-04-17 15:40:07,241 [INFO] Formato de fecha detectado para NASDAQ_Composite: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:07,381 [INFO] Ejemplos de fechas convertidas para NASDAQ_Composite: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:07,382 [INFO] Formato numérico detectado para NASDAQ_Composite: americano
+2025-04-17 15:40:07,386 [INFO] Para NASDAQ_Composite (columna Fecha), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:07,386 [INFO] - NASDAQ_Composite: 2826 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:07,387 [INFO] 
+Procesando: Russell_2000 (index_pricing)
+2025-04-17 15:40:07,387 [INFO] - Archivo: Russell_2000
+2025-04-17 15:40:07,387 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:07,388 [INFO] - Ruta encontrada: Data/raw\index_pricing\Russell_2000.csv
+2025-04-17 15:40:07,398 [INFO] Columna de fecha detectada: Fecha
+2025-04-17 15:40:07,404 [INFO] Formato de fecha detectado para Russell_2000: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:07,537 [INFO] Ejemplos de fechas convertidas para Russell_2000: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:07,538 [INFO] Formato numérico detectado para Russell_2000: americano
+2025-04-17 15:40:07,543 [INFO] Para Russell_2000 (columna Fecha), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:07,543 [INFO] - Russell_2000: 2840 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:07,544 [INFO] 
+Procesando: FTSE_100 (index_pricing)
+2025-04-17 15:40:07,544 [INFO] - Archivo: FTSE_100
+2025-04-17 15:40:07,544 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:07,544 [INFO] - Ruta encontrada: Data/raw\index_pricing\FTSE_100.csv
+2025-04-17 15:40:07,552 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:07,558 [INFO] Formato de fecha detectado para FTSE_100: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:08,099 [INFO] Ejemplos de fechas convertidas para FTSE_100: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:08,099 [INFO] Formato numérico detectado para FTSE_100: americano
+2025-04-17 15:40:08,104 [INFO] Para FTSE_100 (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:08,105 [INFO] - FTSE_100: 2840 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:08,105 [INFO] 
+Procesando: Nikkei_225 (index_pricing)
+2025-04-17 15:40:08,105 [INFO] - Archivo: Nikkei_225
+2025-04-17 15:40:08,106 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:08,106 [INFO] - Ruta encontrada: Data/raw\index_pricing\Nikkei_225.csv
+2025-04-17 15:40:08,116 [INFO] Columna de fecha detectada: Fecha
+2025-04-17 15:40:08,121 [INFO] Formato de fecha detectado para Nikkei_225: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:08,260 [INFO] Ejemplos de fechas convertidas para Nikkei_225: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:08,261 [INFO] Formato numérico detectado para Nikkei_225: americano
+2025-04-17 15:40:08,267 [INFO] Para Nikkei_225 (columna Fecha), la fecha mínima es 2014-01-06 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:08,267 [INFO] - Nikkei_225: 2741 filas procesadas, periodo: 2014-01-06 a 2025-03-27
+2025-04-17 15:40:08,268 [INFO] 
+Procesando: DAX_30 (index_pricing)
+2025-04-17 15:40:08,268 [INFO] - Archivo: DAX_30
+2025-04-17 15:40:08,268 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:08,269 [INFO] - Ruta encontrada: Data/raw\index_pricing\DAX_30.csv
+2025-04-17 15:40:08,278 [INFO] Columna de fecha detectada: Fecha
+2025-04-17 15:40:08,284 [INFO] Formato de fecha detectado para DAX_30: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:08,422 [INFO] Ejemplos de fechas convertidas para DAX_30: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:08,422 [INFO] Formato numérico detectado para DAX_30: americano
+2025-04-17 15:40:08,430 [INFO] Para DAX_30 (columna Fecha), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:08,430 [INFO] - DAX_30: 2851 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:08,431 [INFO] 
+Procesando: Shanghai_Composite (index_pricing)
+2025-04-17 15:40:08,431 [INFO] - Archivo: Shanghai_Composite
+2025-04-17 15:40:08,431 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:08,431 [INFO] - Ruta encontrada: Data/raw\index_pricing\Shanghai_Composite.csv
+2025-04-17 15:40:08,441 [INFO] Columna de fecha detectada: Date
+2025-04-17 15:40:08,447 [INFO] Formato de fecha detectado para Shanghai_Composite: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:08,953 [INFO] Ejemplos de fechas convertidas para Shanghai_Composite: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:08,954 [INFO] Formato numérico detectado para Shanghai_Composite: americano
+2025-04-17 15:40:08,959 [INFO] Para Shanghai_Composite (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:08,960 [INFO] - Shanghai_Composite: 2731 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:08,960 [INFO] 
+Procesando: VIX_VolatilityIndex (index_pricing)
+2025-04-17 15:40:08,960 [INFO] - Archivo: VIX_VolatilityIndex
+2025-04-17 15:40:08,961 [INFO] - Columna TARGET: ULTIMO
+2025-04-17 15:40:08,961 [INFO] - Ruta encontrada: Data/raw\index_pricing\VIX_VolatilityIndex.csv
+2025-04-17 15:40:08,967 [INFO] Columna de fecha detectada: Fecha
+2025-04-17 15:40:08,973 [INFO] Formato de fecha detectado para VIX_VolatilityIndex: dayfirst=False (confianza: 0.00)
+2025-04-17 15:40:09,112 [INFO] Ejemplos de fechas convertidas para VIX_VolatilityIndex: [Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-21 00:00:00')]
+2025-04-17 15:40:09,113 [INFO] Formato numérico detectado para VIX_VolatilityIndex: americano
+2025-04-17 15:40:09,117 [INFO] Para VIX_VolatilityIndex (columna Fecha), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-03-27 00:00:00
+2025-04-17 15:40:09,118 [INFO] - VIX_VolatilityIndex: 2860 filas procesadas, periodo: 2014-01-02 a 2025-03-27
+2025-04-17 15:40:09,118 [INFO] 
+Generando índice temporal diario...
+2025-04-17 15:40:09,118 [INFO] Archivo con fecha mínima global: Australia_10Y_Bond (2014-01-01)
+2025-04-17 15:40:09,119 [INFO] Archivo con fecha máxima global: EUR_USD_Spot (2025-03-27)
+2025-04-17 15:40:09,119 [INFO] - Total de fechas diarias generadas: 4104
+2025-04-17 15:40:09,120 [INFO] 
+Combinando datos con índice diario (usando join para reducir consumo de memoria)...
+2025-04-17 15:40:09,120 [INFO] - Combinando: PRICE_Australia_10Y_Bond_bond
+2025-04-17 15:40:09,122 [INFO] - Combinando: PRICE_Italy_10Y_Bond_bond
+2025-04-17 15:40:09,124 [INFO] - Combinando: PRICE_Japan_10Y_Bond_bond
+2025-04-17 15:40:09,125 [INFO] - Combinando: PRICE_UK_10Y_Bond_bond
+2025-04-17 15:40:09,127 [INFO] - Combinando: PRICE_Germany_10Y_Bond_bond
+2025-04-17 15:40:09,128 [INFO] - Combinando: PRICE_Canada_10Y_Bond_bond
+2025-04-17 15:40:09,130 [INFO] - Combinando: PRICE_China_10Y_Bond_bond
+2025-04-17 15:40:09,132 [INFO] - Combinando: PRICE_CrudeOil_WTI_commodities
+2025-04-17 15:40:09,134 [INFO] - Combinando: PRICE_Gold_Spot_commodities
+2025-04-17 15:40:09,136 [INFO] - Combinando: PRICE_Silver_Spot_commodities
+2025-04-17 15:40:09,139 [INFO] - Combinando: PRICE_Copper_Futures_commodities
+2025-04-17 15:40:09,142 [INFO] - Combinando: PRICE_Platinum_Spot_commodities
+2025-04-17 15:40:09,144 [INFO] - Combinando: PRICE_EUR_USD_Spot_exchange_rate
+2025-04-17 15:40:09,147 [INFO] - Combinando: PRICE_GBP_USD_Spot_exchange_rate
+2025-04-17 15:40:09,148 [INFO] - Combinando: PRICE_JPY_USD_Spot_exchange_rate
+2025-04-17 15:40:09,150 [INFO] - Combinando: PRICE_CNY_USD_Spot_exchange_rate
+2025-04-17 15:40:09,152 [INFO] - Combinando: PRICE_AUD_USD_Spot_exchange_rate
+2025-04-17 15:40:09,153 [INFO] - Combinando: PRICE_CAD_USD_Spot_exchange_rate
+2025-04-17 15:40:09,155 [INFO] - Combinando: PRICE_MXN_USD_Spot_exchange_rate
+2025-04-17 15:40:09,157 [INFO] - Combinando: PRICE_EUR_GBP_Cross_exchange_rate
+2025-04-17 15:40:09,159 [INFO] - Combinando: ULTIMO_S&P500_Index_index_pricing
+2025-04-17 15:40:09,161 [INFO] - Combinando: ULTIMO_NASDAQ_Composite_index_pricing
+2025-04-17 15:40:09,163 [INFO] - Combinando: ULTIMO_Russell_2000_index_pricing
+2025-04-17 15:40:09,165 [INFO] - Combinando: ULTIMO_FTSE_100_index_pricing
+2025-04-17 15:40:09,167 [INFO] - Combinando: ULTIMO_Nikkei_225_index_pricing
+2025-04-17 15:40:09,170 [INFO] - Combinando: ULTIMO_DAX_30_index_pricing
+2025-04-17 15:40:09,173 [INFO] - Combinando: PRICE_Shanghai_Composite_index_pricing
+2025-04-17 15:40:09,176 [INFO] - Combinando: ULTIMO_VIX_VolatilityIndex_index_pricing
+2025-04-17 15:40:09,179 [INFO] - DataFrame combinado: 4104 filas, 29 columnas
+2025-04-17 15:40:09,180 [INFO] 
+==================================================
+2025-04-17 15:40:09,180 [INFO] RESUMEN DE COBERTURA FINAL
+2025-04-17 15:40:09,181 [INFO] ==================================================
+2025-04-17 15:40:09,181 [INFO] Total indicadores procesados: 28
+2025-04-17 15:40:09,181 [INFO] Rango de fechas: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:09,181 [INFO] Total días en la serie: 4104
+2025-04-17 15:40:09,182 [INFO] - Australia_10Y_Bond (PRICE_Australia_10Y_Bond_bond): Cobertura aproximada 92.84%
+2025-04-17 15:40:09,182 [INFO] - Italy_10Y_Bond (PRICE_Italy_10Y_Bond_bond): Cobertura aproximada 78.90%
+2025-04-17 15:40:09,182 [INFO] - Japan_10Y_Bond (PRICE_Japan_10Y_Bond_bond): Cobertura aproximada 78.05%
+2025-04-17 15:40:09,182 [INFO] - UK_10Y_Bond (PRICE_UK_10Y_Bond_bond): Cobertura aproximada 83.43%
+2025-04-17 15:40:09,182 [INFO] - Germany_10Y_Bond (PRICE_Germany_10Y_Bond_bond): Cobertura aproximada 74.93%
+2025-04-17 15:40:09,182 [INFO] - Canada_10Y_Bond (PRICE_Canada_10Y_Bond_bond): Cobertura aproximada 72.25%
+2025-04-17 15:40:09,183 [INFO] - China_10Y_Bond (PRICE_China_10Y_Bond_bond): Cobertura aproximada 71.00%
+2025-04-17 15:40:09,183 [INFO] - CrudeOil_WTI (PRICE_CrudeOil_WTI_commodities): Cobertura aproximada 71.95%
+2025-04-17 15:40:09,183 [INFO] - Gold_Spot (PRICE_Gold_Spot_commodities): Cobertura aproximada 70.03%
+2025-04-17 15:40:09,183 [INFO] - Silver_Spot (PRICE_Silver_Spot_commodities): Cobertura aproximada 70.93%
+2025-04-17 15:40:09,183 [INFO] - Copper_Futures (PRICE_Copper_Futures_commodities): Cobertura aproximada 70.86%
+2025-04-17 15:40:09,183 [INFO] - Platinum_Spot (PRICE_Platinum_Spot_commodities): Cobertura aproximada 84.38%
+2025-04-17 15:40:09,183 [INFO] - EUR_USD_Spot (PRICE_EUR_USD_Spot_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,183 [INFO] - GBP_USD_Spot (PRICE_GBP_USD_Spot_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,183 [INFO] - JPY_USD_Spot (PRICE_JPY_USD_Spot_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,183 [INFO] - CNY_USD_Spot (PRICE_CNY_USD_Spot_exchange_rate): Cobertura aproximada 71.47%
+2025-04-17 15:40:09,184 [INFO] - AUD_USD_Spot (PRICE_AUD_USD_Spot_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,184 [INFO] - CAD_USD_Spot (PRICE_CAD_USD_Spot_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,184 [INFO] - MXN_USD_Spot (PRICE_MXN_USD_Spot_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,184 [INFO] - EUR_GBP_Cross (PRICE_EUR_GBP_Cross_exchange_rate): Cobertura aproximada 71.44%
+2025-04-17 15:40:09,184 [INFO] - S&P500_Index (ULTIMO_S&P500_Index_index_pricing): Cobertura aproximada 68.86%
+2025-04-17 15:40:09,184 [INFO] - NASDAQ_Composite (ULTIMO_NASDAQ_Composite_index_pricing): Cobertura aproximada 68.86%
+2025-04-17 15:40:09,184 [INFO] - Russell_2000 (ULTIMO_Russell_2000_index_pricing): Cobertura aproximada 69.20%
+2025-04-17 15:40:09,184 [INFO] - FTSE_100 (ULTIMO_FTSE_100_index_pricing): Cobertura aproximada 69.20%
+2025-04-17 15:40:09,184 [INFO] - Nikkei_225 (ULTIMO_Nikkei_225_index_pricing): Cobertura aproximada 66.79%
+2025-04-17 15:40:09,184 [INFO] - DAX_30 (ULTIMO_DAX_30_index_pricing): Cobertura aproximada 69.47%
+2025-04-17 15:40:09,184 [INFO] - Shanghai_Composite (PRICE_Shanghai_Composite_index_pricing): Cobertura aproximada 66.54%
+2025-04-17 15:40:09,184 [INFO] - VIX_VolatilityIndex (ULTIMO_VIX_VolatilityIndex_index_pricing): Cobertura aproximada 69.69%
+2025-04-17 15:40:09,185 [INFO] 
+==================================================
+2025-04-17 15:40:09,185 [INFO] ESTADÍSTICAS DE VALORES
+2025-04-17 15:40:09,185 [INFO] ==================================================
+2025-04-17 15:40:09,188 [INFO] 
+Estadísticas para PRICE_Australia_10Y_Bond_bond:
+2025-04-17 15:40:09,188 [INFO] - Min: 0.6010
+2025-04-17 15:40:09,188 [INFO] - Max: 4.9680
+2025-04-17 15:40:09,189 [INFO] - Media: 2.7097
+2025-04-17 15:40:09,189 [INFO] - Mediana: 2.7025
+2025-04-17 15:40:09,189 [INFO] - Desv. Estándar: 1.0845
+2025-04-17 15:40:09,190 [INFO] 
+Estadísticas para PRICE_Italy_10Y_Bond_bond:
+2025-04-17 15:40:09,190 [INFO] - Min: 0.4610
+2025-04-17 15:40:09,190 [INFO] - Max: 4.9880
+2025-04-17 15:40:09,190 [INFO] - Media: 2.3621
+2025-04-17 15:40:09,190 [INFO] - Mediana: 2.1180
+2025-04-17 15:40:09,190 [INFO] - Desv. Estándar: 1.1532
+2025-04-17 15:40:09,191 [INFO] 
+Estadísticas para PRICE_Japan_10Y_Bond_bond:
+2025-04-17 15:40:09,191 [INFO] - Min: -0.2910
+2025-04-17 15:40:09,191 [INFO] - Max: 1.5610
+2025-04-17 15:40:09,191 [INFO] - Media: 0.2615
+2025-04-17 15:40:09,191 [INFO] - Mediana: 0.1040
+2025-04-17 15:40:09,191 [INFO] - Desv. Estándar: 0.3457
+2025-04-17 15:40:09,192 [INFO] 
+Estadísticas para PRICE_UK_10Y_Bond_bond:
+2025-04-17 15:40:09,192 [INFO] - Min: 0.0750
+2025-04-17 15:40:09,192 [INFO] - Max: 4.8850
+2025-04-17 15:40:09,192 [INFO] - Media: 1.9328
+2025-04-17 15:40:09,192 [INFO] - Mediana: 1.4620
+2025-04-17 15:40:09,192 [INFO] - Desv. Estándar: 1.3117
+2025-04-17 15:40:09,193 [INFO] 
+Estadísticas para PRICE_Germany_10Y_Bond_bond:
+2025-04-17 15:40:09,193 [INFO] - Min: -0.8540
+2025-04-17 15:40:09,193 [INFO] - Max: 2.9680
+2025-04-17 15:40:09,194 [INFO] - Media: 0.7411
+2025-04-17 15:40:09,194 [INFO] - Mediana: 0.4270
+2025-04-17 15:40:09,194 [INFO] - Desv. Estándar: 1.0257
+2025-04-17 15:40:09,195 [INFO] 
+Estadísticas para PRICE_Canada_10Y_Bond_bond:
+2025-04-17 15:40:09,195 [INFO] - Min: 0.4350
+2025-04-17 15:40:09,195 [INFO] - Max: 4.2750
+2025-04-17 15:40:09,195 [INFO] - Media: 2.0485
+2025-04-17 15:40:09,195 [INFO] - Mediana: 1.8740
+2025-04-17 15:40:09,195 [INFO] - Desv. Estándar: 0.8708
+2025-04-17 15:40:09,196 [INFO] 
+Estadísticas para PRICE_China_10Y_Bond_bond:
+2025-04-17 15:40:09,196 [INFO] - Min: 1.6070
+2025-04-17 15:40:09,196 [INFO] - Max: 4.7100
+2025-04-17 15:40:09,196 [INFO] - Media: 3.1233
+2025-04-17 15:40:09,196 [INFO] - Mediana: 3.0940
+2025-04-17 15:40:09,196 [INFO] - Desv. Estándar: 0.5733
+2025-04-17 15:40:09,197 [INFO] 
+Estadísticas para PRICE_CrudeOil_WTI_commodities:
+2025-04-17 15:40:09,197 [INFO] - Min: 11.5700
+2025-04-17 15:40:09,197 [INFO] - Max: 119.7800
+2025-04-17 15:40:09,197 [INFO] - Media: 64.8420
+2025-04-17 15:40:09,197 [INFO] - Mediana: 63.3800
+2025-04-17 15:40:09,197 [INFO] - Desv. Estándar: 19.1693
+2025-04-17 15:40:09,197 [INFO] 
+Estadísticas para PRICE_Gold_Spot_commodities:
+2025-04-17 15:40:09,197 [INFO] - Min: 1049.6000
+2025-04-17 15:40:09,197 [INFO] - Max: 3071.3000
+2025-04-17 15:40:09,198 [INFO] - Media: 1601.5690
+2025-04-17 15:40:09,198 [INFO] - Mediana: 1462.9000
+2025-04-17 15:40:09,198 [INFO] - Desv. Estándar: 427.1199
+2025-04-17 15:40:09,198 [INFO] 
+Estadísticas para PRICE_Silver_Spot_commodities:
+2025-04-17 15:40:09,198 [INFO] - Min: 11.7720
+2025-04-17 15:40:09,198 [INFO] - Max: 35.0410
+2025-04-17 15:40:09,198 [INFO] - Media: 20.3172
+2025-04-17 15:40:09,199 [INFO] - Mediana: 18.6510
+2025-04-17 15:40:09,199 [INFO] - Desv. Estándar: 4.8965
+2025-04-17 15:40:09,199 [INFO] 
+Estadísticas para PRICE_Copper_Futures_commodities:
+2025-04-17 15:40:09,200 [INFO] - Min: 1.9435
+2025-04-17 15:40:09,200 [INFO] - Max: 5.2430
+2025-04-17 15:40:09,200 [INFO] - Media: 3.2489
+2025-04-17 15:40:09,200 [INFO] - Mediana: 3.0675
+2025-04-17 15:40:09,200 [INFO] - Desv. Estándar: 0.7632
+2025-04-17 15:40:09,201 [INFO] 
+Estadísticas para PRICE_Platinum_Spot_commodities:
+2025-04-17 15:40:09,201 [INFO] - Min: 595.2000
+2025-04-17 15:40:09,201 [INFO] - Max: 1516.2000
+2025-04-17 15:40:09,201 [INFO] - Media: 1001.9474
+2025-04-17 15:40:09,201 [INFO] - Mediana: 966.6500
+2025-04-17 15:40:09,201 [INFO] - Desv. Estándar: 157.0175
+2025-04-17 15:40:09,202 [INFO] 
+Estadísticas para PRICE_EUR_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,202 [INFO] - Min: 0.9592
+2025-04-17 15:40:09,202 [INFO] - Max: 1.3933
+2025-04-17 15:40:09,202 [INFO] - Media: 1.1360
+2025-04-17 15:40:09,202 [INFO] - Mediana: 1.1192
+2025-04-17 15:40:09,202 [INFO] - Desv. Estándar: 0.0800
+2025-04-17 15:40:09,203 [INFO] 
+Estadísticas para PRICE_GBP_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,203 [INFO] - Min: 1.0684
+2025-04-17 15:40:09,203 [INFO] - Max: 1.7163
+2025-04-17 15:40:09,203 [INFO] - Media: 1.3479
+2025-04-17 15:40:09,203 [INFO] - Mediana: 1.3062
+2025-04-17 15:40:09,203 [INFO] - Desv. Estándar: 0.1300
+2025-04-17 15:40:09,204 [INFO] 
+Estadísticas para PRICE_JPY_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,204 [INFO] - Min: 99.8700
+2025-04-17 15:40:09,204 [INFO] - Max: 161.6800
+2025-04-17 15:40:09,204 [INFO] - Media: 119.5522
+2025-04-17 15:40:09,204 [INFO] - Mediana: 112.5050
+2025-04-17 15:40:09,204 [INFO] - Desv. Estándar: 16.2139
+2025-04-17 15:40:09,205 [INFO] 
+Estadísticas para PRICE_CNY_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,205 [INFO] - Min: 6.0402
+2025-04-17 15:40:09,205 [INFO] - Max: 7.3430
+2025-04-17 15:40:09,205 [INFO] - Media: 6.7138
+2025-04-17 15:40:09,205 [INFO] - Mediana: 6.7204
+2025-04-17 15:40:09,205 [INFO] - Desv. Estándar: 0.3520
+2025-04-17 15:40:09,206 [INFO] 
+Estadísticas para PRICE_AUD_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,206 [INFO] - Min: 0.5741
+2025-04-17 15:40:09,206 [INFO] - Max: 0.9496
+2025-04-17 15:40:09,206 [INFO] - Media: 0.7311
+2025-04-17 15:40:09,206 [INFO] - Mediana: 0.7226
+2025-04-17 15:40:09,206 [INFO] - Desv. Estándar: 0.0706
+2025-04-17 15:40:09,207 [INFO] 
+Estadísticas para PRICE_CAD_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,207 [INFO] - Min: 1.0631
+2025-04-17 15:40:09,207 [INFO] - Max: 1.4576
+2025-04-17 15:40:09,207 [INFO] - Media: 1.2978
+2025-04-17 15:40:09,207 [INFO] - Mediana: 1.3135
+2025-04-17 15:40:09,207 [INFO] - Desv. Estándar: 0.0775
+2025-04-17 15:40:09,208 [INFO] 
+Estadísticas para PRICE_MXN_USD_Spot_exchange_rate:
+2025-04-17 15:40:09,208 [INFO] - Min: 12.8375
+2025-04-17 15:40:09,208 [INFO] - Max: 25.3380
+2025-04-17 15:40:09,208 [INFO] - Media: 18.5027
+2025-04-17 15:40:09,208 [INFO] - Mediana: 18.9318
+2025-04-17 15:40:09,208 [INFO] - Desv. Estándar: 2.3166
+2025-04-17 15:40:09,209 [INFO] 
+Estadísticas para PRICE_EUR_GBP_Cross_exchange_rate:
+2025-04-17 15:40:09,209 [INFO] - Min: 0.6937
+2025-04-17 15:40:09,209 [INFO] - Max: 0.9396
+2025-04-17 15:40:09,209 [INFO] - Media: 0.8457
+2025-04-17 15:40:09,209 [INFO] - Mediana: 0.8568
+2025-04-17 15:40:09,209 [INFO] - Desv. Estándar: 0.0493
+2025-04-17 15:40:09,210 [INFO] 
+Estadísticas para ULTIMO_S&P500_Index_index_pricing:
+2025-04-17 15:40:09,210 [INFO] - Min: 1741.9000
+2025-04-17 15:40:09,210 [INFO] - Max: 6144.1500
+2025-04-17 15:40:09,210 [INFO] - Media: 3283.5838
+2025-04-17 15:40:09,210 [INFO] - Mediana: 2914.0000
+2025-04-17 15:40:09,210 [INFO] - Desv. Estándar: 1166.1993
+2025-04-17 15:40:09,210 [INFO] 
+Estadísticas para ULTIMO_NASDAQ_Composite_index_pricing:
+2025-04-17 15:40:09,211 [INFO] - Min: 3996.9600
+2025-04-17 15:40:09,211 [INFO] - Max: 20173.8900
+2025-04-17 15:40:09,211 [INFO] - Media: 9561.0893
+2025-04-17 15:40:09,211 [INFO] - Mediana: 8028.2300
+2025-04-17 15:40:09,211 [INFO] - Desv. Estándar: 4414.3752
+2025-04-17 15:40:09,211 [INFO] 
+Estadísticas para ULTIMO_Russell_2000_index_pricing:
+2025-04-17 15:40:09,212 [INFO] - Min: 953.7200
+2025-04-17 15:40:09,212 [INFO] - Max: 2442.7400
+2025-04-17 15:40:09,212 [INFO] - Media: 1622.3269
+2025-04-17 15:40:09,212 [INFO] - Mediana: 1565.7500
+2025-04-17 15:40:09,212 [INFO] - Desv. Estándar: 379.5475
+2025-04-17 15:40:09,213 [INFO] 
+Estadísticas para ULTIMO_FTSE_100_index_pricing:
+2025-04-17 15:40:09,213 [INFO] - Min: 4993.8900
+2025-04-17 15:40:09,213 [INFO] - Max: 8871.3100
+2025-04-17 15:40:09,213 [INFO] - Media: 7130.4668
+2025-04-17 15:40:09,213 [INFO] - Mediana: 7198.7000
+2025-04-17 15:40:09,213 [INFO] - Desv. Estándar: 634.3461
+2025-04-17 15:40:09,213 [INFO] 
+Estadísticas para ULTIMO_Nikkei_225_index_pricing:
+2025-04-17 15:40:09,214 [INFO] - Min: 13910.1600
+2025-04-17 15:40:09,214 [INFO] - Max: 42224.0200
+2025-04-17 15:40:09,214 [INFO] - Media: 24275.9486
+2025-04-17 15:40:09,214 [INFO] - Mediana: 22508.6900
+2025-04-17 15:40:09,214 [INFO] - Desv. Estándar: 6837.3404
+2025-04-17 15:40:09,214 [INFO] 
+Estadísticas para ULTIMO_DAX_30_index_pricing:
+2025-04-17 15:40:09,214 [INFO] - Min: 8441.7100
+2025-04-17 15:40:09,215 [INFO] - Max: 23419.4800
+2025-04-17 15:40:09,215 [INFO] - Media: 13188.9842
+2025-04-17 15:40:09,215 [INFO] - Mediana: 12630.2300
+2025-04-17 15:40:09,215 [INFO] - Desv. Estándar: 2873.9918
+2025-04-17 15:40:09,215 [INFO] 
+Estadísticas para PRICE_Shanghai_Composite_index_pricing:
+2025-04-17 15:40:09,215 [INFO] - Min: 1991.2500
+2025-04-17 15:40:09,215 [INFO] - Max: 5166.3500
+2025-04-17 15:40:09,215 [INFO] - Media: 3109.6248
+2025-04-17 15:40:09,215 [INFO] - Mediana: 3135.8900
+2025-04-17 15:40:09,216 [INFO] - Desv. Estándar: 427.9591
+2025-04-17 15:40:09,216 [INFO] 
+Estadísticas para ULTIMO_VIX_VolatilityIndex_index_pricing:
+2025-04-17 15:40:09,216 [INFO] - Min: 9.1400
+2025-04-17 15:40:09,216 [INFO] - Max: 82.6900
+2025-04-17 15:40:09,216 [INFO] - Media: 17.8182
+2025-04-17 15:40:09,216 [INFO] - Mediana: 15.9600
+2025-04-17 15:40:09,216 [INFO] - Desv. Estándar: 6.9428
+2025-04-17 15:40:09,216 [INFO] 
+==================================================
+2025-04-17 15:40:09,216 [INFO] GUARDANDO RESULTADOS
+2025-04-17 15:40:09,216 [INFO] ==================================================
+2025-04-17 15:40:09,217 [INFO] Guardando resultados en: Data/raw/datos_economicos_normales_procesados.xlsx
+2025-04-17 15:40:10,317 [INFO] Archivo guardado exitosamente: Data/raw/datos_economicos_normales_procesados.xlsx
+2025-04-17 15:40:10,318 [INFO] 
+==================================================
+2025-04-17 15:40:10,318 [INFO] RESUMEN DE EJECUCIÓN
+2025-04-17 15:40:10,318 [INFO] ==================================================
+2025-04-17 15:40:10,318 [INFO] Proceso: MyinvestingreportNormal
+2025-04-17 15:40:10,318 [INFO] Tiempo de ejecución: 14.90 segundos
+2025-04-17 15:40:10,318 [INFO] Archivos procesados: 28
+2025-04-17 15:40:10,318 [INFO] Archivos con error: 0
+2025-04-17 15:40:10,319 [INFO] Archivos procesados correctamente: 28
+2025-04-17 15:40:10,319 [INFO] Periodo de datos: 2014-01-01 a 2025-03-27
+2025-04-17 15:40:10,319 [INFO] Datos combinados: 4104 filas, 29 columnas
+2025-04-17 15:40:10,319 [INFO] Archivo de salida: Data/raw/datos_economicos_normales_procesados.xlsx
+2025-04-17 15:40:10,319 [INFO] Estado: COMPLETADO
+2025-04-17 15:40:10,319 [INFO] ==================================================
+2025-04-17 15:40:10,320 [INFO] ================================================================================
+2025-04-17 15:40:10,320 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 15:40:10,320 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 15:40:10,321 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 15:40:10,321 [INFO] Fecha y hora: 2025-04-17 15:40:10
+2025-04-17 15:40:10,321 [INFO] ================================================================================
+2025-04-17 15:40:10,321 [INFO] Leyendo archivo de configuración...
+2025-04-17 15:40:10,342 [INFO] Se encontraron 35 configuraciones para procesar
+2025-04-17 15:40:10,343 [INFO] 
+Procesando: US_10Y_Treasury (bond)
+2025-04-17 15:40:10,343 [INFO] - Archivo: US_10Y_Treasury.csv
+2025-04-17 15:40:10,344 [INFO] - Columna TARGET: DGS10
+2025-04-17 15:40:10,344 [INFO] - Ruta encontrada: Data/raw\bond\US_10Y_Treasury.csv
+2025-04-17 15:40:10,347 [INFO] - Filas encontradas: 2929
+2025-04-17 15:40:10,348 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,348 [INFO] Formato detectado para Data/raw\bond\US_10Y_Treasury.csv: ISO
+2025-04-17 15:40:10,511 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-04-17 15:40:10,513 [INFO] - Valores no nulos en TARGET: 2808
+2025-04-17 15:40:10,513 [INFO] - Periodo: 2014-01-02 a 2025-03-25
+2025-04-17 15:40:10,513 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,514 [INFO] 
+Procesando: US_2Y_Treasury (bond)
+2025-04-17 15:40:10,514 [INFO] - Archivo: US_2Y_Treasury.csv
+2025-04-17 15:40:10,515 [INFO] - Columna TARGET: DGS2
+2025-04-17 15:40:10,515 [INFO] - Ruta encontrada: Data/raw\bond\US_2Y_Treasury.csv
+2025-04-17 15:40:10,518 [INFO] - Filas encontradas: 2929
+2025-04-17 15:40:10,519 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,519 [INFO] Formato detectado para Data/raw\bond\US_2Y_Treasury.csv: ISO
+2025-04-17 15:40:10,679 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-04-17 15:40:10,681 [INFO] - Valores no nulos en TARGET: 2808
+2025-04-17 15:40:10,681 [INFO] - Periodo: 2014-01-02 a 2025-03-25
+2025-04-17 15:40:10,681 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,682 [INFO] 
+Procesando: Corporate_Bond_AAA_Spread (bond)
+2025-04-17 15:40:10,682 [INFO] - Archivo: Corporate_Bond_AAA_Spread.csv
+2025-04-17 15:40:10,682 [INFO] - Columna TARGET: AAA
+2025-04-17 15:40:10,682 [INFO] - Ruta encontrada: Data/raw\bond\Corporate_Bond_AAA_Spread.csv
+2025-04-17 15:40:10,684 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,685 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,685 [INFO] Formato detectado para Data/raw\bond\Corporate_Bond_AAA_Spread.csv: ISO
+2025-04-17 15:40:10,695 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,697 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:10,698 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:10,698 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,699 [INFO] 
+Procesando: Corporate_Bond_BBB_Spread (bond)
+2025-04-17 15:40:10,699 [INFO] - Archivo: Corporate_Bond_BBB_Spread.csv
+2025-04-17 15:40:10,699 [INFO] - Columna TARGET: BAA10YM
+2025-04-17 15:40:10,699 [INFO] - Ruta encontrada: Data/raw\bond\Corporate_Bond_BBB_Spread.csv
+2025-04-17 15:40:10,700 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,701 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,701 [INFO] Formato detectado para Data/raw\bond\Corporate_Bond_BBB_Spread.csv: ISO
+2025-04-17 15:40:10,712 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,714 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:10,715 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:10,715 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,716 [INFO] 
+Procesando: High_Yield_Bond_Spread (bond)
+2025-04-17 15:40:10,716 [INFO] - Archivo: High_Yield_Bond_Spread.csv
+2025-04-17 15:40:10,716 [INFO] - Columna TARGET: BAMLH0A0HYM2
+2025-04-17 15:40:10,716 [INFO] - Ruta encontrada: Data/raw\bond\High_Yield_Bond_Spread.csv
+2025-04-17 15:40:10,719 [INFO] - Filas encontradas: 2967
+2025-04-17 15:40:10,720 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,720 [INFO] Formato detectado para Data/raw\bond\High_Yield_Bond_Spread.csv: ISO
+2025-04-17 15:40:10,895 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-04-17 15:40:10,897 [INFO] - Valores no nulos en TARGET: 2932
+2025-04-17 15:40:10,898 [INFO] - Periodo: 2014-01-02 a 2025-03-25
+2025-04-17 15:40:10,898 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,898 [INFO] 
+Procesando: Denmark_Car_Registrations_MoM (car_registrations)
+2025-04-17 15:40:10,899 [INFO] - Archivo: Denmark_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,899 [INFO] - Columna TARGET: DNKSLRTCR03GPSAM
+2025-04-17 15:40:10,899 [INFO] - Ruta encontrada: Data/raw\car_registrations\Denmark_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,901 [INFO] - Filas encontradas: 133
+2025-04-17 15:40:10,901 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,901 [INFO] Formato detectado para Data/raw\car_registrations\Denmark_Car_Registrations_MoM.csv: ISO
+2025-04-17 15:40:10,916 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,918 [INFO] - Valores no nulos en TARGET: 133
+2025-04-17 15:40:10,918 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:10,919 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,920 [INFO] 
+Procesando: US_Car_Registrations_MoM (car_registrations)
+2025-04-17 15:40:10,920 [INFO] - Archivo: US_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,920 [INFO] - Columna TARGET: USASLRTCR03GPSAM
+2025-04-17 15:40:10,920 [INFO] - Ruta encontrada: Data/raw\car_registrations\US_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,922 [INFO] - Filas encontradas: 132
+2025-04-17 15:40:10,922 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,922 [INFO] Formato detectado para Data/raw\car_registrations\US_Car_Registrations_MoM.csv: ISO
+2025-04-17 15:40:10,931 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,933 [INFO] - Valores no nulos en TARGET: 132
+2025-04-17 15:40:10,933 [INFO] - Periodo: 2014-01-01 a 2024-12-01
+2025-04-17 15:40:10,933 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,935 [INFO] 
+Procesando: SouthAfrica_Car_Registrations_MoM (car_registrations)
+2025-04-17 15:40:10,935 [INFO] - Archivo: SouthAfrica_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,935 [INFO] - Columna TARGET: ZAFSLRTCR03GPSAM
+2025-04-17 15:40:10,935 [INFO] - Ruta encontrada: Data/raw\car_registrations\SouthAfrica_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,937 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,937 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,937 [INFO] Formato detectado para Data/raw\car_registrations\SouthAfrica_Car_Registrations_MoM.csv: ISO
+2025-04-17 15:40:10,948 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,950 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:10,950 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:10,950 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,952 [INFO] 
+Procesando: United_Kingdom_Car_Registrations_MoM (car_registrations)
+2025-04-17 15:40:10,953 [INFO] - Archivo: United_Kingdom_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,953 [INFO] - Columna TARGET: GBRSLRTCR03GPSAM
+2025-04-17 15:40:10,953 [INFO] - Ruta encontrada: Data/raw\car_registrations\United_Kingdom_Car_Registrations_MoM.csv
+2025-04-17 15:40:10,955 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,955 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,955 [INFO] Formato detectado para Data/raw\car_registrations\United_Kingdom_Car_Registrations_MoM.csv: ISO
+2025-04-17 15:40:10,963 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,965 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:10,965 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:10,966 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,966 [INFO] 
+Procesando: Spain_Car_Registrations_MoM (car_registrations)
+2025-04-17 15:40:10,966 [INFO] - Archivo: Spain_Car_Registrations_MoM.xlsx
+2025-04-17 15:40:10,967 [INFO] - Columna TARGET: ESPSLRTCR03GPSAM
+2025-04-17 15:40:10,967 [INFO] - Ruta encontrada: Data/raw\car_registrations\Spain_Car_Registrations_MoM.xlsx
+2025-04-17 15:40:10,975 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,975 [INFO] Detección formato: 0/20 registros ISO (ratio 0.00)
+2025-04-17 15:40:10,975 [INFO] Formato detectado para Data/raw\car_registrations\Spain_Car_Registrations_MoM.xlsx: AMBIGUOUS
+2025-04-17 15:40:10,977 [INFO] Preferencia de dayfirst para Data/raw\car_registrations\Spain_Car_Registrations_MoM.xlsx: True (score True: 1.00, False: 1.00)
+2025-04-17 15:40:10,978 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,979 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:10,980 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:10,980 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,980 [INFO] 
+Procesando: US_Commercial_Loans (comm_loans)
+2025-04-17 15:40:10,981 [INFO] - Archivo: US_Commercial_Loans.csv
+2025-04-17 15:40:10,981 [INFO] - Columna TARGET: BUSLOANS
+2025-04-17 15:40:10,981 [INFO] - Ruta encontrada: Data/raw\comm_loans\US_Commercial_Loans.csv
+2025-04-17 15:40:10,982 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,982 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,982 [INFO] Formato detectado para Data/raw\comm_loans\US_Commercial_Loans.csv: ISO
+2025-04-17 15:40:10,990 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:10,991 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:10,992 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:10,992 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:10,992 [INFO] 
+Procesando: US_RealEstate_Commercial_Loans (comm_loans)
+2025-04-17 15:40:10,992 [INFO] - Archivo: US_RealEstate_Commercial_Loans.csv
+2025-04-17 15:40:10,993 [INFO] - Columna TARGET: CREACBM027NBOG
+2025-04-17 15:40:10,993 [INFO] - Ruta encontrada: Data/raw\comm_loans\US_RealEstate_Commercial_Loans.csv
+2025-04-17 15:40:10,994 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:10,994 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:10,994 [INFO] Formato detectado para Data/raw\comm_loans\US_RealEstate_Commercial_Loans.csv: ISO
+2025-04-17 15:40:11,004 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,006 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,006 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,006 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,007 [INFO] 
+Procesando: US_Consumer_Credit (comm_loans)
+2025-04-17 15:40:11,007 [INFO] - Archivo: US_Consumer_Credit.csv
+2025-04-17 15:40:11,007 [INFO] - Columna TARGET: TOTALSL
+2025-04-17 15:40:11,007 [INFO] - Ruta encontrada: Data/raw\comm_loans\US_Consumer_Credit.csv
+2025-04-17 15:40:11,008 [INFO] - Filas encontradas: 133
+2025-04-17 15:40:11,008 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,009 [INFO] Formato detectado para Data/raw\comm_loans\US_Consumer_Credit.csv: ISO
+2025-04-17 15:40:11,019 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,020 [INFO] - Valores no nulos en TARGET: 133
+2025-04-17 15:40:11,020 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,020 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,021 [INFO] 
+Procesando: EuroZone_Consumer_Confidence (consumer_confidence)
+2025-04-17 15:40:11,021 [INFO] - Archivo: EuroZone_Consumer_Confidence.csv
+2025-04-17 15:40:11,021 [INFO] - Columna TARGET: CSCICP02EZM460S
+2025-04-17 15:40:11,021 [INFO] - Ruta encontrada: Data/raw\consumer_confidence\EuroZone_Consumer_Confidence.csv
+2025-04-17 15:40:11,022 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,023 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,023 [INFO] Formato detectado para Data/raw\consumer_confidence\EuroZone_Consumer_Confidence.csv: ISO
+2025-04-17 15:40:11,033 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,035 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,035 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,035 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,036 [INFO] 
+Procesando: Switzerland_Consumer_Confidence (consumer_confidence)
+2025-04-17 15:40:11,036 [INFO] - Archivo: Switzerland_Consumer_Confidence.csv
+2025-04-17 15:40:11,036 [INFO] - Columna TARGET: CSCICP02CHQ460S
+2025-04-17 15:40:11,036 [INFO] - Ruta encontrada: Data/raw\consumer_confidence\Switzerland_Consumer_Confidence.csv
+2025-04-17 15:40:11,037 [INFO] - Filas encontradas: 45
+2025-04-17 15:40:11,038 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,038 [INFO] Formato detectado para Data/raw\consumer_confidence\Switzerland_Consumer_Confidence.csv: ISO
+2025-04-17 15:40:11,041 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-07-01 00:00:00'), Timestamp('2014-10-01 00:00:00'), Timestamp('2015-01-01 00:00:00')]
+2025-04-17 15:40:11,043 [INFO] - Valores no nulos en TARGET: 45
+2025-04-17 15:40:11,043 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,043 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,044 [INFO] 
+Procesando: Michigan_Consumer_Sentiment (consumer_confidence)
+2025-04-17 15:40:11,044 [INFO] - Archivo: Michigan_Consumer_Sentiment.csv
+2025-04-17 15:40:11,044 [INFO] - Columna TARGET: UMCSENT
+2025-04-17 15:40:11,044 [INFO] - Ruta encontrada: Data/raw\consumer_confidence\Michigan_Consumer_Sentiment.csv
+2025-04-17 15:40:11,045 [INFO] - Filas encontradas: 121
+2025-04-17 15:40:11,046 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,046 [INFO] Formato detectado para Data/raw\consumer_confidence\Michigan_Consumer_Sentiment.csv: ISO
+2025-04-17 15:40:11,054 [INFO] Primeras fechas convertidas: [Timestamp('2015-01-01 00:00:00'), Timestamp('2015-02-01 00:00:00'), Timestamp('2015-03-01 00:00:00'), Timestamp('2015-04-01 00:00:00'), Timestamp('2015-05-01 00:00:00')]
+2025-04-17 15:40:11,056 [INFO] - Valores no nulos en TARGET: 121
+2025-04-17 15:40:11,056 [INFO] - Periodo: 2015-01-01 a 2025-01-01
+2025-04-17 15:40:11,056 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,057 [INFO] 
+Procesando: US_CPI (economics)
+2025-04-17 15:40:11,057 [INFO] - Archivo: US_CPI.csv
+2025-04-17 15:40:11,057 [INFO] - Columna TARGET: CPIAUCSL
+2025-04-17 15:40:11,057 [INFO] - Ruta encontrada: Data/raw\economics\US_CPI.csv
+2025-04-17 15:40:11,058 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,059 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,059 [INFO] Formato detectado para Data/raw\economics\US_CPI.csv: ISO
+2025-04-17 15:40:11,067 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,068 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,068 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,068 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,069 [INFO] 
+Procesando: US_Core_CPI (economics)
+2025-04-17 15:40:11,069 [INFO] - Archivo: US_Core_CPI.csv
+2025-04-17 15:40:11,069 [INFO] - Columna TARGET: CPILFESL
+2025-04-17 15:40:11,069 [INFO] - Ruta encontrada: Data/raw\economics\US_Core_CPI.csv
+2025-04-17 15:40:11,070 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,071 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,071 [INFO] Formato detectado para Data/raw\economics\US_Core_CPI.csv: ISO
+2025-04-17 15:40:11,079 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,081 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,081 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,081 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,082 [INFO] 
+Procesando: US_PCE (economics)
+2025-04-17 15:40:11,082 [INFO] - Archivo: US_PCE.csv
+2025-04-17 15:40:11,082 [INFO] - Columna TARGET: PCE
+2025-04-17 15:40:11,082 [INFO] - Ruta encontrada: Data/raw\economics\US_PCE.csv
+2025-04-17 15:40:11,083 [INFO] - Filas encontradas: 133
+2025-04-17 15:40:11,083 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,083 [INFO] Formato detectado para Data/raw\economics\US_PCE.csv: ISO
+2025-04-17 15:40:11,097 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,098 [INFO] - Valores no nulos en TARGET: 133
+2025-04-17 15:40:11,098 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,099 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,099 [INFO] 
+Procesando: US_Core_PCE (economics)
+2025-04-17 15:40:11,099 [INFO] - Archivo: US_Core_PCE.csv
+2025-04-17 15:40:11,099 [INFO] - Columna TARGET: PCEPILFE
+2025-04-17 15:40:11,100 [INFO] - Ruta encontrada: Data/raw\economics\US_Core_PCE.csv
+2025-04-17 15:40:11,101 [INFO] - Filas encontradas: 133
+2025-04-17 15:40:11,101 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,101 [INFO] Formato detectado para Data/raw\economics\US_Core_PCE.csv: ISO
+2025-04-17 15:40:11,109 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,111 [INFO] - Valores no nulos en TARGET: 133
+2025-04-17 15:40:11,111 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,111 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,112 [INFO] 
+Procesando: US_PPI (economics)
+2025-04-17 15:40:11,112 [INFO] - Archivo: US_PPI.csv
+2025-04-17 15:40:11,112 [INFO] - Columna TARGET: PPIACO
+2025-04-17 15:40:11,112 [INFO] - Ruta encontrada: Data/raw\economics\US_PPI.csv
+2025-04-17 15:40:11,113 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,113 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,113 [INFO] Formato detectado para Data/raw\economics\US_PPI.csv: ISO
+2025-04-17 15:40:11,121 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,123 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,123 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,123 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,124 [INFO] 
+Procesando: US_Industrial_Production_MoM (economics)
+2025-04-17 15:40:11,124 [INFO] - Archivo: US_Industrial_Production_MoM.csv
+2025-04-17 15:40:11,124 [INFO] - Columna TARGET: INDPRO
+2025-04-17 15:40:11,124 [INFO] - Ruta encontrada: Data/raw\economics\US_Industrial_Production_MoM.csv
+2025-04-17 15:40:11,125 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,125 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,125 [INFO] Formato detectado para Data/raw\economics\US_Industrial_Production_MoM.csv: ISO
+2025-04-17 15:40:11,133 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,135 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,135 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,135 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,136 [INFO] 
+Procesando: US_CaseShiller_HomePrice (economics)
+2025-04-17 15:40:11,136 [INFO] - Archivo: US_CaseShiller_HomePrice.csv
+2025-04-17 15:40:11,136 [INFO] - Columna TARGET: CSUSHPINSA
+2025-04-17 15:40:11,136 [INFO] - Ruta encontrada: Data/raw\economics\US_CaseShiller_HomePrice.csv
+2025-04-17 15:40:11,137 [INFO] - Filas encontradas: 133
+2025-04-17 15:40:11,138 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,138 [INFO] Formato detectado para Data/raw\economics\US_CaseShiller_HomePrice.csv: ISO
+2025-04-17 15:40:11,146 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,147 [INFO] - Valores no nulos en TARGET: 133
+2025-04-17 15:40:11,148 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,148 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,148 [INFO] 
+Procesando: US_GDP_Growth (economics)
+2025-04-17 15:40:11,148 [INFO] - Archivo: US_GDP_Growth.csv
+2025-04-17 15:40:11,149 [INFO] - Columna TARGET: GDP
+2025-04-17 15:40:11,149 [INFO] - Ruta encontrada: Data/raw\economics\US_GDP_Growth.csv
+2025-04-17 15:40:11,150 [INFO] - Filas encontradas: 44
+2025-04-17 15:40:11,150 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,150 [INFO] Formato detectado para Data/raw\economics\US_GDP_Growth.csv: ISO
+2025-04-17 15:40:11,154 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-07-01 00:00:00'), Timestamp('2014-10-01 00:00:00'), Timestamp('2015-01-01 00:00:00')]
+2025-04-17 15:40:11,155 [INFO] - Valores no nulos en TARGET: 44
+2025-04-17 15:40:11,155 [INFO] - Periodo: 2014-01-01 a 2024-10-01
+2025-04-17 15:40:11,156 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,156 [INFO] 
+Procesando: US_Capacity_Utilization (economics)
+2025-04-17 15:40:11,156 [INFO] - Archivo: US_Capacity_Utilization.csv
+2025-04-17 15:40:11,156 [INFO] - Columna TARGET: TCU
+2025-04-17 15:40:11,157 [INFO] - Ruta encontrada: Data/raw\economics\US_Capacity_Utilization.csv
+2025-04-17 15:40:11,158 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,158 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,158 [INFO] Formato detectado para Data/raw\economics\US_Capacity_Utilization.csv: ISO
+2025-04-17 15:40:11,166 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,168 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,168 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,168 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,168 [INFO] 
+Procesando: US_Building_Permits (economics)
+2025-04-17 15:40:11,169 [INFO] - Archivo: US_Building_Permits.csv
+2025-04-17 15:40:11,169 [INFO] - Columna TARGET: PERMIT
+2025-04-17 15:40:11,169 [INFO] - Ruta encontrada: Data/raw\economics\US_Building_Permits.csv
+2025-04-17 15:40:11,170 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,170 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,171 [INFO] Formato detectado para Data/raw\economics\US_Building_Permits.csv: ISO
+2025-04-17 15:40:11,178 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,180 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,180 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,180 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,180 [INFO] 
+Procesando: US_Housing_Starts (economics)
+2025-04-17 15:40:11,181 [INFO] - Archivo: US_Housing_Starts.csv
+2025-04-17 15:40:11,181 [INFO] - Columna TARGET: HOUST
+2025-04-17 15:40:11,181 [INFO] - Ruta encontrada: Data/raw\economics\US_Housing_Starts.csv
+2025-04-17 15:40:11,182 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,183 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,183 [INFO] Formato detectado para Data/raw\economics\US_Housing_Starts.csv: ISO
+2025-04-17 15:40:11,190 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,192 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,192 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,192 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,193 [INFO] 
+Procesando: US_FedFunds_Rate (economics)
+2025-04-17 15:40:11,193 [INFO] - Archivo: US_FedFunds_Rate.csv
+2025-04-17 15:40:11,193 [INFO] - Columna TARGET: FEDFUNDS
+2025-04-17 15:40:11,193 [INFO] - Ruta encontrada: Data/raw\economics\US_FedFunds_Rate.csv
+2025-04-17 15:40:11,194 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,195 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,195 [INFO] Formato detectado para Data/raw\economics\US_FedFunds_Rate.csv: ISO
+2025-04-17 15:40:11,205 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,207 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,207 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,207 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,207 [INFO] 
+Procesando: ECB_Deposit_Rate (economics)
+2025-04-17 15:40:11,208 [INFO] - Archivo: ECB_Deposit_Rate.csv
+2025-04-17 15:40:11,208 [INFO] - Columna TARGET: ECBDFR
+2025-04-17 15:40:11,208 [INFO] - Ruta encontrada: Data/raw\economics\ECB_Deposit_Rate.csv
+2025-04-17 15:40:11,210 [INFO] - Filas encontradas: 4103
+2025-04-17 15:40:11,211 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,211 [INFO] Formato detectado para Data/raw\economics\ECB_Deposit_Rate.csv: ISO
+2025-04-17 15:40:11,422 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-04 00:00:00'), Timestamp('2014-01-05 00:00:00')]
+2025-04-17 15:40:11,424 [INFO] - Valores no nulos en TARGET: 4103
+2025-04-17 15:40:11,424 [INFO] - Periodo: 2014-01-01 a 2025-03-26
+2025-04-17 15:40:11,425 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,425 [INFO] 
+Procesando: Fed_Balance_Sheet (economics)
+2025-04-17 15:40:11,425 [INFO] - Archivo: Fed_Balance_Sheet.csv
+2025-04-17 15:40:11,425 [INFO] - Columna TARGET: WALCL
+2025-04-17 15:40:11,426 [INFO] - Ruta encontrada: Data/raw\economics\Fed_Balance_Sheet.csv
+2025-04-17 15:40:11,427 [INFO] - Filas encontradas: 586
+2025-04-17 15:40:11,427 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-04-17 15:40:11,427 [INFO] Formato detectado para Data/raw\economics\Fed_Balance_Sheet.csv: ISO
+2025-04-17 15:40:11,469 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-01-08 00:00:00'), Timestamp('2014-01-15 00:00:00'), Timestamp('2014-01-22 00:00:00'), Timestamp('2014-01-29 00:00:00')]
+2025-04-17 15:40:11,470 [INFO] - Valores no nulos en TARGET: 586
+2025-04-17 15:40:11,471 [INFO] - Periodo: 2014-01-01 a 2025-03-19
+2025-04-17 15:40:11,471 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,472 [INFO] 
+Procesando: Dollar_Index_DXY (index_pricing)
+2025-04-17 15:40:11,473 [INFO] - Archivo: Dollar_Index_DXY.xlsx
+2025-04-17 15:40:11,473 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:11,473 [INFO] - Ruta encontrada: Data/raw\index_pricing\Dollar_Index_DXY.xlsx
+2025-04-17 15:40:11,514 [INFO] - Filas encontradas: 2927
+2025-04-17 15:40:11,514 [INFO] Detección formato: 0/20 registros ISO (ratio 0.00)
+2025-04-17 15:40:11,515 [INFO] Formato detectado para Data/raw\index_pricing\Dollar_Index_DXY.xlsx: AMBIGUOUS
+2025-04-17 15:40:11,516 [INFO] Preferencia de dayfirst para Data/raw\index_pricing\Dollar_Index_DXY.xlsx: True (score True: 1.00, False: 1.00)
+2025-04-17 15:40:11,520 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-04-17 15:40:11,520 [WARNING] No se encontró 'PRICE', se usará 'Price'
+2025-04-17 15:40:11,522 [INFO] - Valores no nulos en TARGET: 2792
+2025-04-17 15:40:11,523 [INFO] - Periodo: 2014-01-02 a 2025-03-21
+2025-04-17 15:40:11,523 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,523 [INFO] 
+Procesando: US_Unemployment_Rate (unemployment_rate)
+2025-04-17 15:40:11,524 [INFO] - Archivo: US_Unemployment_Rate.xlsx
+2025-04-17 15:40:11,524 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:11,524 [INFO] - Ruta encontrada: Data/raw\unemployment_rate\US_Unemployment_Rate.xlsx
+2025-04-17 15:40:11,531 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,531 [INFO] Detección formato: 0/20 registros ISO (ratio 0.00)
+2025-04-17 15:40:11,531 [INFO] Formato detectado para Data/raw\unemployment_rate\US_Unemployment_Rate.xlsx: AMBIGUOUS
+2025-04-17 15:40:11,533 [INFO] Preferencia de dayfirst para Data/raw\unemployment_rate\US_Unemployment_Rate.xlsx: True (score True: 1.00, False: 1.00)
+2025-04-17 15:40:11,535 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,536 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,536 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,536 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,537 [INFO] 
+Procesando: US_Nonfarm_Payrolls (unemployment_rate)
+2025-04-17 15:40:11,537 [INFO] - Archivo: US_Nonfarm_Payrolls.xlsx
+2025-04-17 15:40:11,537 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:11,537 [INFO] - Ruta encontrada: Data/raw\unemployment_rate\US_Nonfarm_Payrolls.xlsx
+2025-04-17 15:40:11,544 [INFO] - Filas encontradas: 134
+2025-04-17 15:40:11,545 [INFO] Detección formato: 0/20 registros ISO (ratio 0.00)
+2025-04-17 15:40:11,545 [INFO] Formato detectado para Data/raw\unemployment_rate\US_Nonfarm_Payrolls.xlsx: AMBIGUOUS
+2025-04-17 15:40:11,546 [INFO] Preferencia de dayfirst para Data/raw\unemployment_rate\US_Nonfarm_Payrolls.xlsx: True (score True: 1.00, False: 1.00)
+2025-04-17 15:40:11,548 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,549 [INFO] - Valores no nulos en TARGET: 134
+2025-04-17 15:40:11,549 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,549 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,550 [INFO] 
+Procesando: US_Initial_Jobless_Claims (unemployment_rate)
+2025-04-17 15:40:11,550 [INFO] - Archivo: US_Initial_Jobless_Claims.xlsx
+2025-04-17 15:40:11,550 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:11,550 [INFO] - Ruta encontrada: Data/raw\unemployment_rate\US_Initial_Jobless_Claims.xlsx
+2025-04-17 15:40:11,562 [INFO] - Filas encontradas: 586
+2025-04-17 15:40:11,563 [INFO] Detección formato: 0/20 registros ISO (ratio 0.00)
+2025-04-17 15:40:11,563 [INFO] Formato detectado para Data/raw\unemployment_rate\US_Initial_Jobless_Claims.xlsx: AMBIGUOUS
+2025-04-17 15:40:11,564 [INFO] Preferencia de dayfirst para Data/raw\unemployment_rate\US_Initial_Jobless_Claims.xlsx: True (score True: 1.00, False: 1.00)
+2025-04-17 15:40:11,567 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-04 00:00:00'), Timestamp('2014-01-11 00:00:00'), Timestamp('2014-01-18 00:00:00'), Timestamp('2014-01-25 00:00:00'), Timestamp('2014-02-01 00:00:00')]
+2025-04-17 15:40:11,568 [INFO] - Valores no nulos en TARGET: 586
+2025-04-17 15:40:11,568 [INFO] - Periodo: 2014-01-04 a 2025-03-22
+2025-04-17 15:40:11,568 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,569 [INFO] 
+Procesando: US_JOLTS (unemployment_rate)
+2025-04-17 15:40:11,569 [INFO] - Archivo: US_JOLTS.xlsx
+2025-04-17 15:40:11,569 [INFO] - Columna TARGET: PRICE
+2025-04-17 15:40:11,569 [INFO] - Ruta encontrada: Data/raw\unemployment_rate\US_JOLTS.xlsx
+2025-04-17 15:40:11,576 [INFO] - Filas encontradas: 133
+2025-04-17 15:40:11,577 [INFO] Detección formato: 0/20 registros ISO (ratio 0.00)
+2025-04-17 15:40:11,577 [INFO] Formato detectado para Data/raw\unemployment_rate\US_JOLTS.xlsx: AMBIGUOUS
+2025-04-17 15:40:11,578 [INFO] Preferencia de dayfirst para Data/raw\unemployment_rate\US_JOLTS.xlsx: True (score True: 1.00, False: 1.00)
+2025-04-17 15:40:11,579 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-04-17 15:40:11,580 [INFO] - Valores no nulos en TARGET: 133
+2025-04-17 15:40:11,580 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,581 [INFO] - Cobertura: 100.00%
+2025-04-17 15:40:11,582 [INFO] Índice diario generado: 4103 días desde 2014-01-01 hasta 2025-03-26
+2025-04-17 15:40:11,687 [INFO] DataFrame final combinado: 4103 filas, 36 columnas
+2025-04-17 15:40:11,687 [INFO] 
+Resumen de Cobertura:
+2025-04-17 15:40:11,687 [INFO] - US_10Y_Treasury: 100.00% desde 2014-01-02 a 2025-03-25
+2025-04-17 15:40:11,688 [INFO] - US_2Y_Treasury: 100.00% desde 2014-01-02 a 2025-03-25
+2025-04-17 15:40:11,688 [INFO] - Corporate_Bond_AAA_Spread: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,688 [INFO] - Corporate_Bond_BBB_Spread: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,688 [INFO] - High_Yield_Bond_Spread: 100.00% desde 2014-01-02 a 2025-03-25
+2025-04-17 15:40:11,688 [INFO] - Denmark_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,688 [INFO] - US_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2024-12-01
+2025-04-17 15:40:11,688 [INFO] - SouthAfrica_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,688 [INFO] - United_Kingdom_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - Spain_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - US_Commercial_Loans: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - US_RealEstate_Commercial_Loans: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - US_Consumer_Credit: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,689 [INFO] - EuroZone_Consumer_Confidence: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - Switzerland_Consumer_Confidence: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,689 [INFO] - Michigan_Consumer_Sentiment: 100.00% desde 2015-01-01 a 2025-01-01
+2025-04-17 15:40:11,689 [INFO] - US_CPI: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - US_Core_CPI: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,689 [INFO] - US_PCE: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,690 [INFO] - US_Core_PCE: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,690 [INFO] - US_PPI: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,690 [INFO] - US_Industrial_Production_MoM: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,690 [INFO] - US_CaseShiller_HomePrice: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:11,690 [INFO] - US_GDP_Growth: 100.00% desde 2014-01-01 a 2024-10-01
+2025-04-17 15:40:11,690 [INFO] - US_Capacity_Utilization: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,690 [INFO] - US_Building_Permits: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,691 [INFO] - US_Housing_Starts: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,691 [INFO] - US_FedFunds_Rate: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,691 [INFO] - ECB_Deposit_Rate: 100.00% desde 2014-01-01 a 2025-03-26
+2025-04-17 15:40:11,691 [INFO] - Fed_Balance_Sheet: 100.00% desde 2014-01-01 a 2025-03-19
+2025-04-17 15:40:11,691 [INFO] - Dollar_Index_DXY: 100.00% desde 2014-01-02 a 2025-03-21
+2025-04-17 15:40:11,691 [INFO] - US_Unemployment_Rate: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,691 [INFO] - US_Nonfarm_Payrolls: 100.00% desde 2014-01-01 a 2025-02-01
+2025-04-17 15:40:11,692 [INFO] - US_Initial_Jobless_Claims: 100.00% desde 2014-01-04 a 2025-03-22
+2025-04-17 15:40:11,692 [INFO] - US_JOLTS: 100.00% desde 2014-01-01 a 2025-01-01
+2025-04-17 15:40:13,252 [INFO] Archivo guardado exitosamente: Data/raw/datos_economicos_procesados_Fred.xlsx
+2025-04-17 15:40:13,253 [INFO] 
+Resumen de Ejecución:
+2025-04-17 15:40:13,253 [INFO] Tiempo de ejecución: 2.93 segundos
+2025-04-17 15:40:13,253 [INFO] Archivos procesados: 35
+2025-04-17 15:40:13,254 [INFO] Archivo de salida: Data/raw/datos_economicos_procesados_Fred.xlsx
+2025-04-17 15:40:13,254 [INFO] Estado: COMPLETADO
+2025-04-17 15:40:13,255 [INFO] ================================================================================
+2025-04-17 15:40:13,255 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 15:40:13,255 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 15:40:13,255 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 15:40:13,256 [INFO] Fecha y hora: 2025-04-17 15:40:13
+2025-04-17 15:40:13,256 [INFO] ================================================================================
+2025-04-17 15:40:13,256 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 15:40:13,257 [INFO] Leyendo archivo de configuración...
+2025-04-17 15:40:13,276 [INFO] Se encontraron 4 configuraciones para procesar con fuente 'Other'
+2025-04-17 15:40:13,276 [INFO] 
+Resumen de configuraciones a procesar:
+2025-04-17 15:40:13,277 [INFO] - US_Empire_State_Index (Tipo Macro: business_confidence, TARGET: nan)
+2025-04-17 15:40:13,277 [INFO] - AAII_Investor_Sentiment (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-04-17 15:40:13,277 [INFO] - Put_Call_Ratio_SPY (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-04-17 15:40:13,278 [INFO] - Chicago_Fed_NFCI (Tipo Macro: leading_economic_index, TARGET: ANFCI)
+2025-04-17 15:40:13,278 [INFO] 
+Procesando: US_Empire_State_Index (business_confidence)
+2025-04-17 15:40:13,279 [INFO] - Columna TARGET: nan
+2025-04-17 15:40:13,279 [INFO] - Tipo de preprocesamiento: Normal
+2025-04-17 15:40:13,279 [INFO] Procesando US_Empire_State_Index manualmente
+2025-04-17 15:40:13,279 [INFO] - Archivo de entrada: Data/raw\business_confidence\US_Empire_State_Index.csv
+2025-04-17 15:40:13,282 [INFO] - Archivo cargado: 285 filas, 24 columnas
+2025-04-17 15:40:13,283 [INFO] - Rango de fechas: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:13,283 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-04-17 15:40:13,284 [INFO] - Columnas encontradas y procesadas: GACDISA, AWCDISA
+2025-04-17 15:40:13,285 [INFO] - Columna ESI_GACDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:13,286 [INFO] - Columna ESI_AWCDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:13,286 [INFO] - US_Empire_State_Index: 285 filas procesadas manualmente, periodo: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:13,287 [INFO] 
+Procesando: AAII_Investor_Sentiment (consumer_confidence)
+2025-04-17 15:40:13,287 [INFO] - Columna TARGET: nan
+2025-04-17 15:40:13,287 [INFO] - Tipo de preprocesamiento: nan
+2025-04-17 15:40:13,287 [INFO] Procesando AAII_Investor_Sentiment manualmente
+2025-04-17 15:40:13,287 [INFO] - Archivo de entrada: Data/raw\consumer_confidence\AAII_Investor_Sentiment.xlsx
+2025-04-17 15:40:13,287 [INFO] Intentando leer Excel con engine: openpyxl
+2025-04-17 15:40:13,425 [INFO] - Archivo cargado: 1966 filas, 13 columnas
+2025-04-17 15:40:13,425 [INFO] - Columnas disponibles: Reported Date, Bullish, Neutral, Bearish, Total, Bullish 8-week Mov Avg, Bull-Bear Spread, Bullish Average, Bullish Average +St. Dev.,  Bullish Average - St. Dev., S&P 500 Weekly High, S&P 500 Weekly Low, S&P 500 Weekly Close
+2025-04-17 15:40:13,425 [INFO] - Usando columna 'Reported Date' como fecha
+2025-04-17 15:40:13,426 [INFO] - Columnas encontradas: Bearish, Bull-Bear Spread, Bullish
+2025-04-17 15:40:13,430 [INFO] - Rango de fechas total: 1987-06-26 a 2025-03-20
+2025-04-17 15:40:13,431 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-04-17 15:40:13,433 [INFO] - Columna AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-04-17 15:40:13,433 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-04-17 15:40:13,435 [INFO] - Columna AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-04-17 15:40:13,435 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-04-17 15:40:13,436 [INFO] - Columna AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-04-17 15:40:13,436 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-04-17 15:40:13,438 [INFO] - AAII_Investor_Sentiment: 1966 filas procesadas manualmente, periodo: 1987-06-26 a 2025-03-20
+2025-04-17 15:40:13,438 [INFO] 
+Procesando: Put_Call_Ratio_SPY (consumer_confidence)
+2025-04-17 15:40:13,438 [INFO] - Columna TARGET: nan
+2025-04-17 15:40:13,438 [INFO] - Tipo de preprocesamiento: nan
+2025-04-17 15:40:13,439 [INFO] Procesando Put_Call_Ratio_SPY manualmente
+2025-04-17 15:40:13,439 [INFO] - Archivo de entrada: Data/raw\consumer_confidence\Put_Call_Ratio_SPY.csv
+2025-04-17 15:40:13,556 [INFO] - Archivo cargado: 114936 filas, 13 columnas
+2025-04-17 15:40:13,557 [INFO] - Columnas disponibles: date, act_symbol, expiration, strike, call_put, bid, ask, vol, delta, gamma, theta, vega, rho
+2025-04-17 15:40:13,557 [INFO] - Usando columna 'date' como fecha
+2025-04-17 15:40:13,566 [INFO] - Rango de fechas total: 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,567 [INFO] - ¿Tiene datos desde 2014 o antes?: No
+2025-04-17 15:40:13,567 [WARNING] - ATENCIÓN: Los datos comienzan en 2019-02-09, después de 2014-01-01
+2025-04-17 15:40:13,567 [WARNING] - No se encontraron columnas call_volume y put_volume. Buscando otras columnas numéricas.
+2025-04-17 15:40:13,569 [INFO] - Columna PutCall_strike_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,569 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,574 [INFO] - Columna PutCall_bid_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,575 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,580 [INFO] - Columna PutCall_ask_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,580 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,588 [INFO] - Columna PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,588 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,598 [INFO] - Columna PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,599 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,609 [INFO] - Columna PutCall_gamma_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,609 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,620 [INFO] - Columna PutCall_theta_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,620 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,633 [INFO] - Columna PutCall_vega_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,633 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,648 [INFO] - Columna PutCall_rho_Put_Call_Ratio_SPY_consumer_confidence: Rango de fechas 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,649 [INFO] - Valores disponibles: 114936/114936 (100.00%)
+2025-04-17 15:40:13,649 [INFO] - Se utilizaron columnas numéricas alternativas: strike, bid, ask, vol, delta, gamma, theta, vega, rho
+2025-04-17 15:40:13,659 [INFO] - Put_Call_Ratio_SPY: 114936 filas procesadas manualmente, periodo: 2019-02-09 a 2025-03-25
+2025-04-17 15:40:13,663 [INFO] 
+Procesando: Chicago_Fed_NFCI (leading_economic_index)
+2025-04-17 15:40:13,663 [INFO] - Columna TARGET: ANFCI
+2025-04-17 15:40:13,663 [INFO] - Tipo de preprocesamiento: Normal
+2025-04-17 15:40:13,663 [INFO] Procesando Chicago_Fed_NFCI manualmente
+2025-04-17 15:40:13,663 [INFO] - Archivo de entrada: Data/raw\leading_economic_index\Chicago_Fed_NFCI.csv
+2025-04-17 15:40:13,670 [INFO] - Archivo cargado: 2829 filas, 7 columnas
+2025-04-17 15:40:13,670 [INFO] - Columnas disponibles: Friday_of_Week, NFCI, ANFCI, Risk, Credit, Leverage, Nonfinancial_Leverage
+2025-04-17 15:40:13,675 [INFO] - Usando columna 'Friday_of_Week' como fecha
+2025-04-17 15:40:13,675 [INFO] - Rango de fechas total: 1971-01-08 a 2025-03-21
+2025-04-17 15:40:13,676 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-04-17 15:40:13,676 [INFO] - Filtrando desde 2014-01-01: 586/2829 filas (20.71%)
+2025-04-17 15:40:13,678 [INFO] - Columna NFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-04-17 15:40:13,679 [INFO] - Columna ANFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-04-17 15:40:13,679 [INFO] - Columnas procesadas: NFCI, ANFCI
+2025-04-17 15:40:13,680 [INFO] - Chicago_Fed_NFCI: 586 filas procesadas manualmente, periodo: 2014-01-03 a 2025-03-21
+2025-04-17 15:40:13,680 [INFO] 
+Archivos procesados correctamente: 4/4
+2025-04-17 15:40:13,681 [INFO] 
+Generando índice temporal diario...
+2025-04-17 15:40:13,681 [INFO] - Rango de fechas global: 1987-06-26 a 2025-03-31
+2025-04-17 15:40:13,681 [INFO] - Total de fechas diarias generadas: 13794
+2025-04-17 15:40:13,681 [INFO] 
+Combinando datos con índice diario...
+2025-04-17 15:40:13,682 [INFO] - Combinando: US_Empire_State_Index
+2025-04-17 15:40:13,684 [INFO] - Combinando: AAII_Investor_Sentiment
+2025-04-17 15:40:13,688 [INFO] - Combinando: Put_Call_Ratio_SPY
+2025-04-17 15:40:13,746 [INFO] - Combinando: Chicago_Fed_NFCI
+2025-04-17 15:40:13,771 [INFO] - DataFrame combinado: 127835 filas, 17 columnas
+2025-04-17 15:40:13,772 [INFO] 
+==================================================
+2025-04-17 15:40:13,772 [INFO] RESUMEN DE COBERTURA FINAL
+2025-04-17 15:40:13,772 [INFO] ==================================================
+2025-04-17 15:40:13,772 [INFO] Total indicadores procesados: 4
+2025-04-17 15:40:13,772 [INFO] Rango de fechas: 1987-06-26 a 2025-03-31
+2025-04-17 15:40:13,772 [INFO] Total días en la serie: 13794
+2025-04-17 15:40:13,772 [INFO] 
+Cobertura por indicador:
+2025-04-17 15:40:13,773 [INFO] - US_Empire_State_Index: 889.42%
+2025-04-17 15:40:13,774 [INFO] - AAII_Investor_Sentiment: 926.54%
+2025-04-17 15:40:13,776 [INFO] - Put_Call_Ratio_SPY: 843.00%
+2025-04-17 15:40:13,777 [INFO] - Chicago_Fed_NFCI: 856.51%
+2025-04-17 15:40:13,777 [INFO] 
+==================================================
+2025-04-17 15:40:13,777 [INFO] ESTADÍSTICAS DE VALORES
+2025-04-17 15:40:13,777 [INFO] ==================================================
+2025-04-17 15:40:13,783 [INFO] 
+Estadísticas para ESI_GACDISA_US_Empire_State_Index_business_confidence:
+2025-04-17 15:40:13,783 [INFO] - Min: -79.9
+2025-04-17 15:40:13,783 [INFO] - Max: 39.0
+2025-04-17 15:40:13,783 [INFO] - Media: 0.2369773242260741
+2025-04-17 15:40:13,784 [INFO] - Mediana: 0.5
+2025-04-17 15:40:13,784 [INFO] - Desv. Estándar: 19.098291845758684
+2025-04-17 15:40:13,788 [INFO] 
+Estadísticas para ESI_AWCDISA_US_Empire_State_Index_business_confidence:
+2025-04-17 15:40:13,788 [INFO] - Min: -63.2
+2025-04-17 15:40:13,788 [INFO] - Max: 33.5
+2025-04-17 15:40:13,789 [INFO] - Media: 0.030172961870139937
+2025-04-17 15:40:13,789 [INFO] - Mediana: -0.9
+2025-04-17 15:40:13,789 [INFO] - Desv. Estándar: 12.340907430807254
+2025-04-17 15:40:13,794 [INFO] 
+Estadísticas para AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence:
+2025-04-17 15:40:13,794 [INFO] - Min: 0.06
+2025-04-17 15:40:13,794 [INFO] - Max: 0.7027
+2025-04-17 15:40:13,794 [INFO] - Media: 0.3508379509807757
+2025-04-17 15:40:13,795 [INFO] - Mediana: 0.34
+2025-04-17 15:40:13,795 [INFO] - Desv. Estándar: 0.10334892901173451
+2025-04-17 15:40:13,800 [INFO] 
+Estadísticas para AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence:
+2025-04-17 15:40:13,800 [INFO] - Min: -0.54
+2025-04-17 15:40:13,800 [INFO] - Max: 0.6286
+2025-04-17 15:40:13,800 [INFO] - Media: 0.000662551393898613
+2025-04-17 15:40:13,801 [INFO] - Mediana: 0.0
+2025-04-17 15:40:13,801 [INFO] - Desv. Estándar: 0.1933573104733393
+2025-04-17 15:40:13,804 [INFO] 
+Estadísticas para AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence:
+2025-04-17 15:40:13,804 [INFO] - Min: 0.12
+2025-04-17 15:40:13,804 [INFO] - Max: 0.75
+2025-04-17 15:40:13,804 [INFO] - Media: 0.35150050237467434
+2025-04-17 15:40:13,804 [INFO] - Mediana: 0.347418
+2025-04-17 15:40:13,805 [INFO] - Desv. Estándar: 0.09729409084289153
+2025-04-17 15:40:13,808 [INFO] 
+Estadísticas para PutCall_strike_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,808 [INFO] - Min: 5.0
+2025-04-17 15:40:13,809 [INFO] - Max: 735.0
+2025-04-17 15:40:13,809 [INFO] - Media: 422.74466822606723
+2025-04-17 15:40:13,809 [INFO] - Mediana: 415.0
+2025-04-17 15:40:13,809 [INFO] - Desv. Estándar: 106.67710620068586
+2025-04-17 15:40:13,812 [INFO] 
+Estadísticas para PutCall_bid_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,812 [INFO] - Min: 0.0
+2025-04-17 15:40:13,813 [INFO] - Max: 336.56
+2025-04-17 15:40:13,813 [INFO] - Media: 28.79837982869526
+2025-04-17 15:40:13,813 [INFO] - Mediana: 8.74
+2025-04-17 15:40:13,813 [INFO] - Desv. Estándar: 37.47521121114415
+2025-04-17 15:40:13,815 [INFO] 
+Estadísticas para PutCall_ask_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,816 [INFO] - Min: 0.0
+2025-04-17 15:40:13,816 [INFO] - Max: 337.21
+2025-04-17 15:40:13,816 [INFO] - Media: 29.129587561487387
+2025-04-17 15:40:13,816 [INFO] - Mediana: 8.84
+2025-04-17 15:40:13,816 [INFO] - Desv. Estándar: 37.78666680625484
+2025-04-17 15:40:13,818 [INFO] 
+Estadísticas para PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,819 [INFO] - Min: -1.0
+2025-04-17 15:40:13,819 [INFO] - Max: 4.296
+2025-04-17 15:40:13,819 [INFO] - Media: 0.27433479498469265
+2025-04-17 15:40:13,819 [INFO] - Mediana: 0.2322
+2025-04-17 15:40:13,819 [INFO] - Desv. Estándar: 0.17021965635656194
+2025-04-17 15:40:13,822 [INFO] 
+Estadísticas para PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,822 [INFO] - Min: -1.0
+2025-04-17 15:40:13,822 [INFO] - Max: 1.0
+2025-04-17 15:40:13,822 [INFO] - Media: 0.020562159024457363
+2025-04-17 15:40:13,822 [INFO] - Mediana: 0.0
+2025-04-17 15:40:13,822 [INFO] - Desv. Estándar: 0.649676453332417
+2025-04-17 15:40:13,825 [INFO] 
+Estadísticas para PutCall_gamma_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,825 [INFO] - Min: 0.0
+2025-04-17 15:40:13,826 [INFO] - Max: 0.1225
+2025-04-17 15:40:13,826 [INFO] - Media: 0.006018882219393897
+2025-04-17 15:40:13,826 [INFO] - Mediana: 0.0025
+2025-04-17 15:40:13,826 [INFO] - Desv. Estándar: 0.007873098906305801
+2025-04-17 15:40:13,829 [INFO] 
+Estadísticas para PutCall_theta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,829 [INFO] - Min: -3.8015
+2025-04-17 15:40:13,829 [INFO] - Max: 0.0
+2025-04-17 15:40:13,829 [INFO] - Media: -0.07004985552612569
+2025-04-17 15:40:13,829 [INFO] - Mediana: -0.0531
+2025-04-17 15:40:13,829 [INFO] - Desv. Estándar: 0.0997670179386413
+2025-04-17 15:40:13,832 [INFO] 
+Estadísticas para PutCall_vega_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,832 [INFO] - Min: 0.0
+2025-04-17 15:40:13,832 [INFO] - Max: 1.0124
+2025-04-17 15:40:13,832 [INFO] - Media: 0.17602285525093733
+2025-04-17 15:40:13,833 [INFO] - Mediana: 0.1075
+2025-04-17 15:40:13,833 [INFO] - Desv. Estándar: 0.18784802159085914
+2025-04-17 15:40:13,835 [INFO] 
+Estadísticas para PutCall_rho_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:13,835 [INFO] - Min: -1.0682
+2025-04-17 15:40:13,835 [INFO] - Max: 0.8462
+2025-04-17 15:40:13,835 [INFO] - Media: 0.03510286281861649
+2025-04-17 15:40:13,835 [INFO] - Mediana: 0.0
+2025-04-17 15:40:13,836 [INFO] - Desv. Estándar: 0.21527614162821226
+2025-04-17 15:40:13,839 [INFO] 
+Estadísticas para NFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-04-17 15:40:13,839 [INFO] - Min: -0.799666616089861
+2025-04-17 15:40:13,840 [INFO] - Max: 0.494555538914267
+2025-04-17 15:40:13,840 [INFO] - Media: -0.4262457009893776
+2025-04-17 15:40:13,840 [INFO] - Mediana: -0.508249851268891
+2025-04-17 15:40:13,840 [INFO] - Desv. Estándar: 0.22244254168275923
+2025-04-17 15:40:13,843 [INFO] 
+Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-04-17 15:40:13,844 [INFO] - Min: -0.908607104751089
+2025-04-17 15:40:13,844 [INFO] - Max: 0.633457159158181
+2025-04-17 15:40:13,844 [INFO] - Media: -0.4770622444086897
+2025-04-17 15:40:13,844 [INFO] - Mediana: -0.549216080706813
+2025-04-17 15:40:13,844 [INFO] - Desv. Estándar: 0.24438137382544337
+2025-04-17 15:40:13,844 [INFO] 
+==================================================
+2025-04-17 15:40:13,845 [INFO] GUARDANDO RESULTADOS
+2025-04-17 15:40:13,845 [INFO] ==================================================
+2025-04-17 15:40:13,845 [INFO] Guardando resultados en: Data/raw/datos_economicos_other_procesados.xlsx
+2025-04-17 15:40:13,846 [INFO] Guardando DataFrame combinado en 'Data/raw/datos_economicos_other_procesados.xlsx'...
+2025-04-17 15:40:22,368 [INFO] Guardando estadísticas de los indicadores...
+2025-04-17 15:40:38,480 [INFO] Archivo guardado exitosamente: Data/raw/datos_economicos_other_procesados.xlsx
+2025-04-17 15:40:38,481 [INFO] 
+==================================================
+2025-04-17 15:40:38,481 [INFO] RESUMEN DE EJECUCIÓN
+2025-04-17 15:40:38,481 [INFO] ==================================================
+2025-04-17 15:40:38,481 [INFO] Proceso: OtherDataProcessor
+2025-04-17 15:40:38,481 [INFO] Tiempo de ejecución: 25.22 segundos
+2025-04-17 15:40:38,481 [INFO] Archivos procesados: 4
+2025-04-17 15:40:38,481 [INFO] Archivos con error: 0
+2025-04-17 15:40:38,481 [INFO] Archivos procesados correctamente: 4
+2025-04-17 15:40:38,482 [INFO] Periodo de datos: 1987-06-26 a 2025-03-31
+2025-04-17 15:40:38,482 [INFO] Datos combinados: 127835 filas, 17 columnas
+2025-04-17 15:40:38,482 [INFO] Archivo de salida: Data/raw/datos_economicos_other_procesados.xlsx
+2025-04-17 15:40:38,482 [INFO] Estado: COMPLETADO
+2025-04-17 15:40:38,482 [INFO] ==================================================
+2025-04-17 15:40:38,486 [INFO] ================================================================================
+2025-04-17 15:40:38,486 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 15:40:38,486 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 15:40:38,486 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 15:40:38,486 [INFO] Fecha y hora: 2025-04-17 15:40:38
+2025-04-17 15:40:38,487 [INFO] ================================================================================
+2025-04-17 15:40:38,487 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 15:40:38,487 [INFO] Leyendo archivo de configuración...
+2025-04-17 15:40:38,502 [INFO] Se encontraron 4 configuraciones para procesar con fuente 'Other'
+2025-04-17 15:40:38,502 [INFO] 
+Resumen de configuraciones a procesar:
+2025-04-17 15:40:38,503 [INFO] - US_Empire_State_Index (Tipo Macro: business_confidence, TARGET: nan)
+2025-04-17 15:40:38,503 [INFO] - AAII_Investor_Sentiment (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-04-17 15:40:38,503 [INFO] - Put_Call_Ratio_SPY (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-04-17 15:40:38,504 [INFO] - Chicago_Fed_NFCI (Tipo Macro: leading_economic_index, TARGET: ANFCI)
+2025-04-17 15:40:38,504 [INFO] 
+Procesando: US_Empire_State_Index (business_confidence)
+2025-04-17 15:40:38,504 [INFO] - Columna TARGET: nan
+2025-04-17 15:40:38,504 [INFO] - Tipo de preprocesamiento: Normal
+2025-04-17 15:40:38,504 [INFO] Procesando US_Empire_State_Index manualmente
+2025-04-17 15:40:38,504 [INFO] - Archivo de entrada: Data/raw\business_confidence\US_Empire_State_Index.csv
+2025-04-17 15:40:38,506 [INFO] - Archivo cargado: 285 filas, 24 columnas
+2025-04-17 15:40:38,508 [INFO] - Rango de fechas: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:38,508 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-04-17 15:40:38,509 [INFO] - Columnas encontradas y procesadas: GACDISA, AWCDISA
+2025-04-17 15:40:38,510 [INFO] - Columna ESI_GACDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:38,511 [INFO] - Columna ESI_AWCDISA_US_Empire_State_Index_business_confidence: 285 valores no nulos (100.00%), rango: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:38,511 [INFO] - US_Empire_State_Index: 285 filas procesadas manualmente, periodo: 2001-07-31 a 2025-03-31
+2025-04-17 15:40:38,511 [INFO] 
+Procesando: AAII_Investor_Sentiment (consumer_confidence)
+2025-04-17 15:40:38,511 [INFO] - Columna TARGET: nan
+2025-04-17 15:40:38,512 [INFO] - Tipo de preprocesamiento: nan
+2025-04-17 15:40:38,512 [INFO] Procesando AAII_Investor_Sentiment manualmente
+2025-04-17 15:40:38,512 [INFO] - Archivo de entrada: Data/raw\consumer_confidence\AAII_Investor_Sentiment.xlsx
+2025-04-17 15:40:38,512 [INFO] Intentando leer Excel con engine: openpyxl
+2025-04-17 15:40:38,629 [INFO] - Archivo cargado: 1966 filas, 13 columnas
+2025-04-17 15:40:38,630 [INFO] - Columnas disponibles: Reported Date, Bullish, Neutral, Bearish, Total, Bullish 8-week Mov Avg, Bull-Bear Spread, Bullish Average, Bullish Average +St. Dev.,  Bullish Average - St. Dev., S&P 500 Weekly High, S&P 500 Weekly Low, S&P 500 Weekly Close
+2025-04-17 15:40:38,630 [INFO] - Usando columna 'Reported Date' como fecha
+2025-04-17 15:40:38,630 [INFO] - Columnas encontradas: Bearish, Bull-Bear Spread, Bullish
+2025-04-17 15:40:38,632 [INFO] - Rango de fechas total: 1987-06-26 a 2025-03-20
+2025-04-17 15:40:38,633 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-04-17 15:40:38,634 [INFO] - Columna AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-04-17 15:40:38,634 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-04-17 15:40:38,635 [INFO] - Columna AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-04-17 15:40:38,635 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-04-17 15:40:38,636 [INFO] - Columna AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence: Rango de fechas 1987-07-24 a 2025-03-20
+2025-04-17 15:40:38,636 [INFO] - Valores disponibles: 1963/1966 (99.85%)
+2025-04-17 15:40:38,637 [INFO] - AAII_Investor_Sentiment: 1966 filas procesadas manualmente, periodo: 1987-06-26 a 2025-03-20
+2025-04-17 15:40:38,637 [INFO] 
+Procesando: Put_Call_Ratio_SPY (consumer_confidence)
+2025-04-17 15:40:38,637 [INFO] - Columna TARGET: nan
+2025-04-17 15:40:38,637 [INFO] - Tipo de preprocesamiento: nan
+2025-04-17 15:40:38,638 [INFO] Procesando Put_Call_Ratio_SPY manualmente
+2025-04-17 15:40:38,638 [INFO] - Archivo de entrada: Data/raw\consumer_confidence\Put_Call_Ratio_SPY.csv
+2025-04-17 15:40:38,746 [INFO] - Archivo cargado: 114936 filas, 13 columnas
+2025-04-17 15:40:38,746 [INFO] - Columnas disponibles: date, act_symbol, expiration, strike, call_put, bid, ask, vol, delta, gamma, theta, vega, rho
+2025-04-17 15:40:38,747 [INFO] - Usando columna 'date' como fecha/hora
+2025-04-17 15:40:38,765 [WARNING] - No se encontraron columnas 'put_volume' y 'call_volume' estándar. Se aplicará fallback usando columnas numéricas.
+2025-04-17 15:40:38,784 [INFO] - Put_Call_Ratio_SPY: 895 filas tras agrupar fallback, periodo: 2019-02-09 a 2025-03-25
+2025-04-17 15:40:38,786 [INFO] 
+Procesando: Chicago_Fed_NFCI (leading_economic_index)
+2025-04-17 15:40:38,787 [INFO] - Columna TARGET: ANFCI
+2025-04-17 15:40:38,787 [INFO] - Tipo de preprocesamiento: Normal
+2025-04-17 15:40:38,787 [INFO] Procesando Chicago_Fed_NFCI manualmente
+2025-04-17 15:40:38,788 [INFO] - Archivo de entrada: Data/raw\leading_economic_index\Chicago_Fed_NFCI.csv
+2025-04-17 15:40:38,794 [INFO] - Archivo cargado: 2829 filas, 7 columnas
+2025-04-17 15:40:38,795 [INFO] - Columnas disponibles: Friday_of_Week, NFCI, ANFCI, Risk, Credit, Leverage, Nonfinancial_Leverage
+2025-04-17 15:40:38,800 [INFO] - Usando columna 'Friday_of_Week' como fecha
+2025-04-17 15:40:38,800 [INFO] - Rango de fechas total: 1971-01-08 a 2025-03-21
+2025-04-17 15:40:38,801 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-04-17 15:40:38,802 [INFO] - Filtrando desde 2014-01-01: 586/2829 filas (20.71%)
+2025-04-17 15:40:38,804 [INFO] - Columna NFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-04-17 15:40:38,805 [INFO] - Columna ANFCI: Rango de fechas 2014-01-03 a 2025-03-21
+2025-04-17 15:40:38,805 [INFO] - Columnas procesadas: NFCI, ANFCI
+2025-04-17 15:40:38,806 [INFO] - Chicago_Fed_NFCI: 586 filas procesadas manualmente, periodo: 2014-01-03 a 2025-03-21
+2025-04-17 15:40:38,806 [INFO] 
+Archivos procesados correctamente: 4/4
+2025-04-17 15:40:38,807 [INFO] 
+Generando índice temporal diario...
+2025-04-17 15:40:38,807 [INFO] - Rango de fechas global: 1987-06-26 a 2025-03-31
+2025-04-17 15:40:38,808 [INFO] - Total de fechas diarias generadas: 13794
+2025-04-17 15:40:38,808 [INFO] 
+Combinando datos con índice diario...
+2025-04-17 15:40:38,808 [INFO] - Combinando: US_Empire_State_Index
+2025-04-17 15:40:38,812 [INFO] - Combinando: AAII_Investor_Sentiment
+2025-04-17 15:40:38,817 [INFO] - Combinando: Put_Call_Ratio_SPY
+2025-04-17 15:40:38,823 [INFO] - Combinando: Chicago_Fed_NFCI
+2025-04-17 15:40:38,828 [INFO] - DataFrame combinado: 13794 filas, 17 columnas
+2025-04-17 15:40:38,829 [INFO] 
+==================================================
+2025-04-17 15:40:38,829 [INFO] RESUMEN DE COBERTURA FINAL
+2025-04-17 15:40:38,829 [INFO] ==================================================
+2025-04-17 15:40:38,829 [INFO] Total indicadores procesados: 3
+2025-04-17 15:40:38,829 [INFO] Rango de fechas: 1987-06-26 a 2025-03-31
+2025-04-17 15:40:38,829 [INFO] Total días en la serie: 13794
+2025-04-17 15:40:38,829 [INFO] 
+Cobertura por indicador:
+2025-04-17 15:40:38,830 [INFO] - US_Empire_State_Index: 62.67%
+2025-04-17 15:40:38,831 [INFO] - AAII_Investor_Sentiment: 99.80%
+2025-04-17 15:40:38,831 [INFO] - Chicago_Fed_NFCI: 29.77%
+2025-04-17 15:40:38,831 [INFO] 
+==================================================
+2025-04-17 15:40:38,831 [INFO] ESTADÍSTICAS DE VALORES
+2025-04-17 15:40:38,832 [INFO] ==================================================
+2025-04-17 15:40:38,832 [INFO] 
+Estadísticas para ESI_GACDISA_US_Empire_State_Index_business_confidence:
+2025-04-17 15:40:38,832 [INFO] - Min: -79.9
+2025-04-17 15:40:38,832 [INFO] - Max: 39.0
+2025-04-17 15:40:38,832 [INFO] - Media: 6.604580682475419
+2025-04-17 15:40:38,833 [INFO] - Mediana: 7.8
+2025-04-17 15:40:38,833 [INFO] - Desv. Estándar: 15.716616407659977
+2025-04-17 15:40:38,833 [INFO] 
+Estadísticas para ESI_AWCDISA_US_Empire_State_Index_business_confidence:
+2025-04-17 15:40:38,833 [INFO] - Min: -63.2
+2025-04-17 15:40:38,833 [INFO] - Max: 33.5
+2025-04-17 15:40:38,834 [INFO] - Media: 1.2108733371891272
+2025-04-17 15:40:38,834 [INFO] - Mediana: 1.3
+2025-04-17 15:40:38,834 [INFO] - Desv. Estándar: 10.23365502980844
+2025-04-17 15:40:38,835 [INFO] 
+Estadísticas para AAII_Bearish_AAII_Investor_Sentiment_consumer_confidence:
+2025-04-17 15:40:38,835 [INFO] - Min: 0.06
+2025-04-17 15:40:38,835 [INFO] - Max: 0.7027
+2025-04-17 15:40:38,835 [INFO] - Media: 0.3105507494551794
+2025-04-17 15:40:38,835 [INFO] - Mediana: 0.2988
+2025-04-17 15:40:38,835 [INFO] - Desv. Estándar: 0.09745327291339351
+2025-04-17 15:40:38,836 [INFO] 
+Estadísticas para AAII_Bull-Bear Spread_AAII_Investor_Sentiment_consumer_confidence:
+2025-04-17 15:40:38,836 [INFO] - Min: -0.54
+2025-04-17 15:40:38,836 [INFO] - Max: 0.6286
+2025-04-17 15:40:38,837 [INFO] - Media: 0.06615073056806625
+2025-04-17 15:40:38,837 [INFO] - Mediana: 0.07468750000000002
+2025-04-17 15:40:38,837 [INFO] - Desv. Estándar: 0.18114104664392988
+2025-04-17 15:40:38,838 [INFO] 
+Estadísticas para AAII_Bullish_AAII_Investor_Sentiment_consumer_confidence:
+2025-04-17 15:40:38,838 [INFO] - Min: 0.12
+2025-04-17 15:40:38,838 [INFO] - Max: 0.75
+2025-04-17 15:40:38,838 [INFO] - Media: 0.3767014800232457
+2025-04-17 15:40:38,838 [INFO] - Mediana: 0.373016
+2025-04-17 15:40:38,838 [INFO] - Desv. Estándar: 0.10098032765975683
+2025-04-17 15:40:38,839 [INFO] 
+Estadísticas para PutCall_strike_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,839 [INFO] - Min: 223.02564102564102
+2025-04-17 15:40:38,839 [INFO] - Max: 612.6603773584906
+2025-04-17 15:40:38,839 [INFO] - Media: 404.668114090602
+2025-04-17 15:40:38,839 [INFO] - Mediana: 405.0263157894737
+2025-04-17 15:40:38,840 [INFO] - Desv. Estándar: 87.93213244314363
+2025-04-17 15:40:38,840 [INFO] 
+Estadísticas para PutCall_bid_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,840 [INFO] - Min: 9.744833333333334
+2025-04-17 15:40:38,840 [INFO] - Max: 38.27791666666667
+2025-04-17 15:40:38,840 [INFO] - Media: 26.29920874911389
+2025-04-17 15:40:38,841 [INFO] - Mediana: 28.854599999999998
+2025-04-17 15:40:38,841 [INFO] - Desv. Estándar: 7.413850149086833
+2025-04-17 15:40:38,841 [INFO] 
+Estadísticas para PutCall_ask_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,841 [INFO] - Min: 9.886
+2025-04-17 15:40:38,841 [INFO] - Max: 38.78576388888889
+2025-04-17 15:40:38,841 [INFO] - Media: 26.60199191275792
+2025-04-17 15:40:38,842 [INFO] - Mediana: 29.264769230769232
+2025-04-17 15:40:38,842 [INFO] - Desv. Estándar: 7.48820818076355
+2025-04-17 15:40:38,842 [INFO] 
+Estadísticas para PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,842 [INFO] - Min: 0.10756969696969697
+2025-04-17 15:40:38,842 [INFO] - Max: 1.0840395833333334
+2025-04-17 15:40:38,842 [INFO] - Media: 0.26006733207554783
+2025-04-17 15:40:38,843 [INFO] - Mediana: 0.24875655737704916
+2025-04-17 15:40:38,843 [INFO] - Desv. Estándar: 0.08703340900993432
+2025-04-17 15:40:38,843 [INFO] 
+Estadísticas para PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,843 [INFO] - Min: -0.1892878205128205
+2025-04-17 15:40:38,843 [INFO] - Max: 0.13888653846153848
+2025-04-17 15:40:38,844 [INFO] - Media: 0.016195936242762034
+2025-04-17 15:40:38,844 [INFO] - Mediana: 0.00973051948051948
+2025-04-17 15:40:38,844 [INFO] - Desv. Estándar: 0.038078736335686224
+2025-04-17 15:40:38,844 [INFO] 
+Estadísticas para PutCall_gamma_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,844 [INFO] - Min: 0.00313972602739726
+2025-04-17 15:40:38,845 [INFO] - Max: 0.018022727272727274
+2025-04-17 15:40:38,845 [INFO] - Media: 0.0073453931604935095
+2025-04-17 15:40:38,845 [INFO] - Mediana: 0.005812328767123288
+2025-04-17 15:40:38,845 [INFO] - Desv. Estándar: 0.003714755536802568
+2025-04-17 15:40:38,846 [INFO] 
+Estadísticas para PutCall_theta_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,846 [INFO] - Min: -0.7143673611111111
+2025-04-17 15:40:38,846 [INFO] - Max: -0.026554545454545452
+2025-04-17 15:40:38,846 [INFO] - Media: -0.06679269441911516
+2025-04-17 15:40:38,846 [INFO] - Mediana: -0.058112666666666674
+2025-04-17 15:40:38,847 [INFO] - Desv. Estándar: 0.04793361473370308
+2025-04-17 15:40:38,847 [INFO] 
+Estadísticas para PutCall_vega_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,847 [INFO] - Min: 0.08615289855072464
+2025-04-17 15:40:38,847 [INFO] - Max: 0.35191842105263155
+2025-04-17 15:40:38,848 [INFO] - Media: 0.17390617048713555
+2025-04-17 15:40:38,848 [INFO] - Mediana: 0.1629635802469136
+2025-04-17 15:40:38,848 [INFO] - Desv. Estándar: 0.03985547326367032
+2025-04-17 15:40:38,848 [INFO] 
+Estadísticas para PutCall_rho_Put_Call_Ratio_SPY_consumer_confidence:
+2025-04-17 15:40:38,849 [INFO] - Min: -0.08338653846153846
+2025-04-17 15:40:38,849 [INFO] - Max: 0.1444063829787234
+2025-04-17 15:40:38,849 [INFO] - Media: 0.03279143559682671
+2025-04-17 15:40:38,849 [INFO] - Mediana: 0.03569838709677419
+2025-04-17 15:40:38,849 [INFO] - Desv. Estándar: 0.04133325747106617
+2025-04-17 15:40:38,850 [INFO] 
+Estadísticas para NFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-04-17 15:40:38,850 [INFO] - Min: -0.799666616089861
+2025-04-17 15:40:38,850 [INFO] - Max: 0.494555538914267
+2025-04-17 15:40:38,850 [INFO] - Media: -0.4805096337311241
+2025-04-17 15:40:38,850 [INFO] - Mediana: -0.52381758146561
+2025-04-17 15:40:38,850 [INFO] - Desv. Estándar: 0.18723518268942319
+2025-04-17 15:40:38,851 [INFO] 
+Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-04-17 15:40:38,851 [INFO] - Min: -0.908607104751089
+2025-04-17 15:40:38,851 [INFO] - Max: 0.633457159158181
+2025-04-17 15:40:38,851 [INFO] - Media: -0.47021921372465036
+2025-04-17 15:40:38,852 [INFO] - Mediana: -0.504665111888294
+2025-04-17 15:40:38,852 [INFO] - Desv. Estándar: 0.21287358745036755
+2025-04-17 15:40:38,852 [INFO] 
+==================================================
+2025-04-17 15:40:38,852 [INFO] GUARDANDO RESULTADOS
+2025-04-17 15:40:38,852 [INFO] ==================================================
+2025-04-17 15:40:38,852 [INFO] Guardando resultados en: Data/raw/datos_economicos_other_procesados.xlsx
+2025-04-17 15:40:38,855 [INFO] Guardando DataFrame combinado en 'Data/raw/datos_economicos_other_procesados.xlsx'...
+2025-04-17 15:40:39,639 [INFO] Guardando estadísticas de los indicadores...
+2025-04-17 15:40:40,903 [INFO] Archivo guardado exitosamente: Data/raw/datos_economicos_other_procesados.xlsx
+2025-04-17 15:40:40,903 [INFO] 
+==================================================
+2025-04-17 15:40:40,904 [INFO] RESUMEN DE EJECUCIÓN
+2025-04-17 15:40:40,904 [INFO] ==================================================
+2025-04-17 15:40:40,904 [INFO] Proceso: OtherDataProcessor
+2025-04-17 15:40:40,904 [INFO] Tiempo de ejecución: 2.42 segundos
+2025-04-17 15:40:40,904 [INFO] Archivos procesados: 4
+2025-04-17 15:40:40,905 [INFO] Archivos con error: 0
+2025-04-17 15:40:40,905 [INFO] Archivos procesados correctamente: 4
+2025-04-17 15:40:40,905 [INFO] Periodo de datos: 1987-06-26 a 2025-03-31
+2025-04-17 15:40:40,905 [INFO] Datos combinados: 13794 filas, 17 columnas
+2025-04-17 15:40:40,905 [INFO] Archivo de salida: Data/raw/datos_economicos_other_procesados.xlsx
+2025-04-17 15:40:40,905 [INFO] Estado: COMPLETADO
+2025-04-17 15:40:40,906 [INFO] ==================================================
+2025-04-17 15:40:40,907 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
