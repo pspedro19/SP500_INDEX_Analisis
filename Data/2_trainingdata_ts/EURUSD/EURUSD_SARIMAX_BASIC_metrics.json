@@ -1,0 +1,25 @@
+{
+    "instrument": "EURUSD",
+    "model_type": "SARIMAX_BASIC",
+    "order": "(0, 0, 1)",
+    "seasonal_order": "(0, 1, 1, 5)",
+    "hyperparameters": {
+        "p": 0,
+        "d": 0,
+        "q": 1,
+        "P": 0,
+        "D": 1,
+        "Q": 1,
+        "m": 5
+    },
+    "metrics": {
+        "rmse": 0.0029701976647449934,
+        "mae": 0.001904008946827332,
+        "mape": NaN,
+        "hit_direction": 60.1593625498008,
+        "naive_rmse": 0.005370265205106533,
+        "naive_drift_rmse": 1.086052533077072,
+        "improvement_vs_naive": 44.69178799734767,
+        "improvement_vs_drift": 99.72651436516338
+    }
+}

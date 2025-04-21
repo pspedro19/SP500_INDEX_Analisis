@@ -1,0 +1,4 @@
+,status,adf_pvalue,kpss_pvalue
+japan_leading_lag1m_log_d1,stationary,4.011382794297018e-18,0.1
+norm_range,uncertain_trend_stationary,1.7209436802913964e-06,0.019630795248673425
+pct_gap,stationary,0.0,0.06266671830803464

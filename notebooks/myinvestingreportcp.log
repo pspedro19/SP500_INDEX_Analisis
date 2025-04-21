@@ -1,0 +1,420 @@
+2025-04-17 17:55:06,932 [INFO] ================================================================================
+2025-04-17 17:55:06,933 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 17:55:06,934 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:55:06,935 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:55:06,936 [INFO] Fecha y hora: 2025-04-17 17:55:06
+2025-04-17 17:55:06,936 [INFO] ================================================================================
+2025-04-17 17:55:06,937 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:55:06,940 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:55:06,943 [INFO] ================================================================================
+2025-04-17 17:55:06,944 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 17:55:06,944 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:55:06,946 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:55:06,946 [INFO] Fecha y hora: 2025-04-17 17:55:06
+2025-04-17 17:55:06,947 [INFO] ================================================================================
+2025-04-17 17:55:06,949 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 17:55:06,950 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:55:06,952 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:55:06,953 [INFO] ================================================================================
+2025-04-17 17:55:06,956 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 17:55:06,956 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:55:06,958 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:55:06,958 [INFO] Fecha y hora: 2025-04-17 17:55:06
+2025-04-17 17:55:06,959 [INFO] ================================================================================
+2025-04-17 17:55:06,961 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:55:06,964 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:55:06,965 [INFO] ================================================================================
+2025-04-17 17:55:06,965 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 17:55:06,967 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:55:06,969 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:55:06,970 [INFO] Fecha y hora: 2025-04-17 17:55:06
+2025-04-17 17:55:06,972 [INFO] ================================================================================
+2025-04-17 17:55:06,972 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 17:55:06,973 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:55:06,976 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:55:06,978 [INFO] ================================================================================
+2025-04-17 17:55:06,980 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 17:55:06,981 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:55:06,981 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:55:06,983 [INFO] Fecha y hora: 2025-04-17 17:55:06
+2025-04-17 17:55:06,984 [INFO] ================================================================================
+2025-04-17 17:55:06,986 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 17:55:06,987 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:55:06,990 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:55:06,995 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 17:56:06,663 [INFO] ================================================================================
+2025-04-17 17:56:06,663 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 17:56:06,664 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:56:06,666 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:56:06,669 [INFO] Fecha y hora: 2025-04-17 17:56:06
+2025-04-17 17:56:06,671 [INFO] ================================================================================
+2025-04-17 17:56:06,673 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:56:06,678 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:56:06,680 [INFO] ================================================================================
+2025-04-17 17:56:06,682 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 17:56:06,683 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:56:06,685 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:56:06,686 [INFO] Fecha y hora: 2025-04-17 17:56:06
+2025-04-17 17:56:06,689 [INFO] ================================================================================
+2025-04-17 17:56:06,689 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 17:56:06,692 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:56:06,696 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:56:06,697 [INFO] ================================================================================
+2025-04-17 17:56:06,699 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 17:56:06,700 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:56:06,702 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:56:06,702 [INFO] Fecha y hora: 2025-04-17 17:56:06
+2025-04-17 17:56:06,703 [INFO] ================================================================================
+2025-04-17 17:56:06,705 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:56:06,708 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:56:06,711 [INFO] ================================================================================
+2025-04-17 17:56:06,712 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 17:56:06,714 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:56:06,715 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:56:06,715 [INFO] Fecha y hora: 2025-04-17 17:56:06
+2025-04-17 17:56:06,717 [INFO] ================================================================================
+2025-04-17 17:56:06,719 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 17:56:06,719 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:56:06,723 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:56:06,725 [INFO] ================================================================================
+2025-04-17 17:56:06,728 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 17:56:06,729 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 17:56:06,729 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 17:56:06,731 [INFO] Fecha y hora: 2025-04-17 17:56:06
+2025-04-17 17:56:06,732 [INFO] ================================================================================
+2025-04-17 17:56:06,734 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 17:56:06,735 [INFO] Leyendo archivo de configuración...
+2025-04-17 17:56:06,739 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 17:56:06,742 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 18:06:04,025 [INFO] ================================================================================
+2025-04-17 18:06:04,030 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 18:06:04,031 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:04,033 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:04,034 [INFO] Fecha y hora: 2025-04-17 18:06:04
+2025-04-17 18:06:04,036 [INFO] ================================================================================
+2025-04-17 18:06:04,037 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:04,040 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:04,043 [INFO] ================================================================================
+2025-04-17 18:06:04,045 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 18:06:04,047 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:04,048 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:04,051 [INFO] Fecha y hora: 2025-04-17 18:06:04
+2025-04-17 18:06:04,053 [INFO] ================================================================================
+2025-04-17 18:06:04,054 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 18:06:04,056 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:04,059 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:04,060 [INFO] ================================================================================
+2025-04-17 18:06:04,062 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 18:06:04,063 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:04,063 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:04,065 [INFO] Fecha y hora: 2025-04-17 18:06:04
+2025-04-17 18:06:04,065 [INFO] ================================================================================
+2025-04-17 18:06:04,066 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:04,069 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:04,071 [INFO] ================================================================================
+2025-04-17 18:06:04,071 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:06:04,072 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:04,072 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:04,074 [INFO] Fecha y hora: 2025-04-17 18:06:04
+2025-04-17 18:06:04,075 [INFO] ================================================================================
+2025-04-17 18:06:04,077 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:06:04,078 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:04,080 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:04,083 [INFO] ================================================================================
+2025-04-17 18:06:04,084 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:06:04,084 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:04,086 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:04,086 [INFO] Fecha y hora: 2025-04-17 18:06:04
+2025-04-17 18:06:04,088 [INFO] ================================================================================
+2025-04-17 18:06:04,089 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:06:04,090 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:04,092 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:04,095 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 18:06:32,257 [INFO] ================================================================================
+2025-04-17 18:06:32,259 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 18:06:32,260 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:32,262 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:32,263 [INFO] Fecha y hora: 2025-04-17 18:06:32
+2025-04-17 18:06:32,265 [INFO] ================================================================================
+2025-04-17 18:06:32,266 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:32,269 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:32,271 [INFO] ================================================================================
+2025-04-17 18:06:32,272 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 18:06:32,272 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:32,275 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:32,275 [INFO] Fecha y hora: 2025-04-17 18:06:32
+2025-04-17 18:06:32,277 [INFO] ================================================================================
+2025-04-17 18:06:32,278 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 18:06:32,279 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:32,283 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:32,285 [INFO] ================================================================================
+2025-04-17 18:06:32,286 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 18:06:32,287 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:32,288 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:32,290 [INFO] Fecha y hora: 2025-04-17 18:06:32
+2025-04-17 18:06:32,292 [INFO] ================================================================================
+2025-04-17 18:06:32,293 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:32,295 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:32,298 [INFO] ================================================================================
+2025-04-17 18:06:32,300 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:06:32,301 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:32,303 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:32,304 [INFO] Fecha y hora: 2025-04-17 18:06:32
+2025-04-17 18:06:32,305 [INFO] ================================================================================
+2025-04-17 18:06:32,306 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:06:32,308 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:32,312 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:32,314 [INFO] ================================================================================
+2025-04-17 18:06:32,315 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:06:32,316 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:06:32,318 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:06:32,319 [INFO] Fecha y hora: 2025-04-17 18:06:32
+2025-04-17 18:06:32,320 [INFO] ================================================================================
+2025-04-17 18:06:32,322 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:06:32,323 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:06:32,326 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:06:32,330 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 18:12:07,308 [INFO] ================================================================================
+2025-04-17 18:12:07,311 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 18:12:07,312 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:12:07,314 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:12:07,315 [INFO] Fecha y hora: 2025-04-17 18:12:07
+2025-04-17 18:12:07,317 [INFO] ================================================================================
+2025-04-17 18:12:07,318 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:12:07,321 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:12:07,323 [INFO] ================================================================================
+2025-04-17 18:12:07,326 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 18:12:07,326 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:12:07,327 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:12:07,329 [INFO] Fecha y hora: 2025-04-17 18:12:07
+2025-04-17 18:12:07,330 [INFO] ================================================================================
+2025-04-17 18:12:07,332 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 18:12:07,334 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:12:07,335 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:12:07,337 [INFO] ================================================================================
+2025-04-17 18:12:07,338 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 18:12:07,340 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:12:07,340 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:12:07,341 [INFO] Fecha y hora: 2025-04-17 18:12:07
+2025-04-17 18:12:07,343 [INFO] ================================================================================
+2025-04-17 18:12:07,343 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:12:07,345 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:12:07,349 [INFO] ================================================================================
+2025-04-17 18:12:07,350 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:12:07,352 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:12:07,353 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:12:07,355 [INFO] Fecha y hora: 2025-04-17 18:12:07
+2025-04-17 18:12:07,355 [INFO] ================================================================================
+2025-04-17 18:12:07,356 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:12:07,358 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:12:07,361 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:36,267 [INFO] ================================================================================
+2025-04-17 18:16:36,270 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 18:16:36,275 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:36,276 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:16:36,279 [INFO] Fecha y hora: 2025-04-17 18:16:36
+2025-04-17 18:16:36,279 [INFO] ================================================================================
+2025-04-17 18:16:36,281 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:36,287 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:36,290 [INFO] ================================================================================
+2025-04-17 18:16:36,292 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 18:16:36,293 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:36,293 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:16:36,295 [INFO] Fecha y hora: 2025-04-17 18:16:36
+2025-04-17 18:16:36,298 [INFO] ================================================================================
+2025-04-17 18:16:36,301 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 18:16:36,303 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:36,306 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:36,307 [INFO] ================================================================================
+2025-04-17 18:16:36,309 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 18:16:36,312 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:36,312 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:16:36,315 [INFO] Fecha y hora: 2025-04-17 18:16:36
+2025-04-17 18:16:36,315 [INFO] ================================================================================
+2025-04-17 18:16:36,318 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:36,321 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:36,324 [INFO] ================================================================================
+2025-04-17 18:16:36,324 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:16:36,326 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:36,327 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\Data\raw
+2025-04-17 18:16:36,329 [INFO] Fecha y hora: 2025-04-17 18:16:36
+2025-04-17 18:16:36,329 [INFO] ================================================================================
+2025-04-17 18:16:36,330 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:16:36,332 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:36,335 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:53,859 [INFO] ================================================================================
+2025-04-17 18:16:53,860 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 18:16:53,862 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:53,864 [INFO] Directorio raíz de datos: data/0_raw/
+2025-04-17 18:16:53,864 [INFO] Fecha y hora: 2025-04-17 18:16:53
+2025-04-17 18:16:53,865 [INFO] ================================================================================
+2025-04-17 18:16:53,865 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:53,869 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:53,872 [INFO] ================================================================================
+2025-04-17 18:16:53,874 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 18:16:53,877 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:53,878 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:16:53,882 [INFO] Fecha y hora: 2025-04-17 18:16:53
+2025-04-17 18:16:53,883 [INFO] ================================================================================
+2025-04-17 18:16:53,886 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 18:16:53,886 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:53,889 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:53,894 [INFO] ================================================================================
+2025-04-17 18:16:53,896 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 18:16:53,897 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:53,899 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:16:53,899 [INFO] Fecha y hora: 2025-04-17 18:16:53
+2025-04-17 18:16:53,902 [INFO] ================================================================================
+2025-04-17 18:16:53,904 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:53,907 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:53,910 [INFO] ================================================================================
+2025-04-17 18:16:53,911 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:16:53,913 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:53,915 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:16:53,916 [INFO] Fecha y hora: 2025-04-17 18:16:53
+2025-04-17 18:16:53,918 [INFO] ================================================================================
+2025-04-17 18:16:53,919 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:16:53,919 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:53,922 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:53,925 [INFO] ================================================================================
+2025-04-17 18:16:53,927 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 18:16:53,927 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 18:16:53,928 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 18:16:53,931 [INFO] Fecha y hora: 2025-04-17 18:16:53
+2025-04-17 18:16:53,933 [INFO] ================================================================================
+2025-04-17 18:16:53,934 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 18:16:53,936 [INFO] Leyendo archivo de configuración...
+2025-04-17 18:16:53,937 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 18:16:53,940 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 19:21:48,769 [INFO] ================================================================================
+2025-04-17 19:21:48,772 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 19:21:48,773 [INFO] Archivo de configuración: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-04-17 19:21:48,774 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\data/0_raw
+2025-04-17 19:21:48,776 [INFO] Fecha y hora: 2025-04-17 19:21:48
+2025-04-17 19:21:48,776 [INFO] ================================================================================
+2025-04-17 19:21:48,777 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:21:48,800 [ERROR] Error al leer configuración: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2025-04-17 19:21:48,803 [INFO] ================================================================================
+2025-04-17 19:21:48,805 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 19:21:48,805 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:21:48,808 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:21:48,809 [INFO] Fecha y hora: 2025-04-17 19:21:48
+2025-04-17 19:21:48,811 [INFO] ================================================================================
+2025-04-17 19:21:48,812 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 19:21:48,814 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:21:48,820 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:21:48,824 [INFO] ================================================================================
+2025-04-17 19:21:48,827 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 19:21:48,829 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:21:48,832 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:21:48,833 [INFO] Fecha y hora: 2025-04-17 19:21:48
+2025-04-17 19:21:48,836 [INFO] ================================================================================
+2025-04-17 19:21:48,837 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:21:48,842 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:21:48,845 [INFO] ================================================================================
+2025-04-17 19:21:48,846 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 19:21:48,848 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:21:48,851 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:21:48,853 [INFO] Fecha y hora: 2025-04-17 19:21:48
+2025-04-17 19:21:48,855 [INFO] ================================================================================
+2025-04-17 19:21:48,856 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 19:21:48,859 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:21:48,862 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:21:48,863 [INFO] ================================================================================
+2025-04-17 19:21:48,865 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 19:21:48,865 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:21:48,867 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:21:48,867 [INFO] Fecha y hora: 2025-04-17 19:21:48
+2025-04-17 19:21:48,870 [INFO] ================================================================================
+2025-04-17 19:21:48,872 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 19:21:48,874 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:21:48,878 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:21:48,881 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 19:24:34,687 [INFO] ================================================================================
+2025-04-17 19:24:34,689 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 19:24:34,689 [INFO] Archivo de configuración: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-04-17 19:24:34,690 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\data/0_raw
+2025-04-17 19:24:34,692 [INFO] Fecha y hora: 2025-04-17 19:24:34
+2025-04-17 19:24:34,693 [INFO] ================================================================================
+2025-04-17 19:24:34,695 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:24:34,700 [ERROR] Error al leer configuración: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2025-04-17 19:24:34,701 [INFO] ================================================================================
+2025-04-17 19:24:34,703 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 19:24:34,704 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:24:34,706 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:24:34,707 [INFO] Fecha y hora: 2025-04-17 19:24:34
+2025-04-17 19:24:34,708 [INFO] ================================================================================
+2025-04-17 19:24:34,710 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 19:24:34,712 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:24:34,715 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:24:34,717 [INFO] ================================================================================
+2025-04-17 19:24:34,717 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 19:24:34,719 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:24:34,721 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:24:34,722 [INFO] Fecha y hora: 2025-04-17 19:24:34
+2025-04-17 19:24:34,722 [INFO] ================================================================================
+2025-04-17 19:24:34,725 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:24:34,728 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:24:34,729 [INFO] ================================================================================
+2025-04-17 19:24:34,731 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 19:24:34,731 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:24:34,733 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:24:34,734 [INFO] Fecha y hora: 2025-04-17 19:24:34
+2025-04-17 19:24:34,735 [INFO] ================================================================================
+2025-04-17 19:24:34,738 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 19:24:34,740 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:24:34,744 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:24:34,746 [INFO] ================================================================================
+2025-04-17 19:24:34,748 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 19:24:34,749 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:24:34,751 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:24:34,754 [INFO] Fecha y hora: 2025-04-17 19:24:34
+2025-04-17 19:24:34,755 [INFO] ================================================================================
+2025-04-17 19:24:34,757 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 19:24:34,758 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:24:34,762 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:24:34,767 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
+2025-04-17 19:26:53,517 [INFO] ================================================================================
+2025-04-17 19:26:53,519 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-04-17 19:26:53,520 [INFO] Archivo de configuración: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\pipelines\Data Engineering.xlsx
+2025-04-17 19:26:53,520 [INFO] Directorio raíz de datos: c:\Users\pedro\OneDrive\Documents\ALGO TRADING\SP500_INDEX_Analisis\data\0_raw
+2025-04-17 19:26:53,522 [INFO] Fecha y hora: 2025-04-17 19:26:53
+2025-04-17 19:26:53,523 [INFO] ================================================================================
+2025-04-17 19:26:53,523 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:26:53,528 [ERROR] Error al leer configuración: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2025-04-17 19:26:53,529 [INFO] ================================================================================
+2025-04-17 19:26:53,529 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-04-17 19:26:53,531 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:26:53,532 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:26:53,534 [INFO] Fecha y hora: 2025-04-17 19:26:53
+2025-04-17 19:26:53,535 [INFO] ================================================================================
+2025-04-17 19:26:53,537 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-04-17 19:26:53,537 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:26:53,541 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:26:53,543 [INFO] ================================================================================
+2025-04-17 19:26:53,544 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-04-17 19:26:53,544 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:26:53,547 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:26:53,549 [INFO] Fecha y hora: 2025-04-17 19:26:53
+2025-04-17 19:26:53,549 [INFO] ================================================================================
+2025-04-17 19:26:53,550 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:26:53,552 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:26:53,555 [INFO] ================================================================================
+2025-04-17 19:26:53,556 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 19:26:53,556 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:26:53,558 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:26:53,558 [INFO] Fecha y hora: 2025-04-17 19:26:53
+2025-04-17 19:26:53,560 [INFO] ================================================================================
+2025-04-17 19:26:53,561 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 19:26:53,563 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:26:53,566 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:26:53,567 [INFO] ================================================================================
+2025-04-17 19:26:53,569 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-04-17 19:26:53,570 [INFO] Archivo de configuración: Data Engineering.xlsx
+2025-04-17 19:26:53,572 [INFO] Directorio raíz de datos: Data/raw
+2025-04-17 19:26:53,573 [INFO] Fecha y hora: 2025-04-17 19:26:53
+2025-04-17 19:26:53,573 [INFO] ================================================================================
+2025-04-17 19:26:53,576 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-04-17 19:26:53,576 [INFO] Leyendo archivo de configuración...
+2025-04-17 19:26:53,579 [ERROR] Error al leer configuración: [Errno 2] No such file or directory: 'Data Engineering.xlsx'
+2025-04-17 19:26:53,584 [ERROR] Error al leer el archivo Excel: [Errno 2] No such file or directory: 'MERGEDEXCELS.xlsx'
