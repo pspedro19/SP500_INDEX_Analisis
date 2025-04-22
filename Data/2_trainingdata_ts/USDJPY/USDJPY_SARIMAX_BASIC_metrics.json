@@ -13,13 +13,13 @@
         "m": 5
     },
     "metrics": {
-        "rmse": 0.006611898436205666,
-        "mae": 0.004938415906061701,
+        "rmse": 0.0066118979646512905,
+        "mae": 0.004938414283080712,
         "mape": NaN,
         "hit_direction": 50.99601593625498,
         "naive_rmse": 0.007228034142078886,
         "naive_drift_rmse": 0.5213608476246772,
-        "improvement_vs_naive": 8.52425007632865,
-        "improvement_vs_drift": 98.7317999680395
+        "improvement_vs_naive": 8.524256600293068,
+        "improvement_vs_drift": 98.73180005848633
     }
 }

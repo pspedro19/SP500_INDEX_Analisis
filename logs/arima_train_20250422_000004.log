@@ -1,0 +1,408 @@
+2025-04-22 00:00:04 [INFO] __main__:206 - Logging configurado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\logs\arima_train_20250422_000004.log
+2025-04-22 00:00:04 [INFO] __main__:2093 - Iniciando entrenamiento de modelos con método: hybrid
+2025-04-22 00:00:04 [INFO] __main__:2099 - Procesando 3 instrumentos en paralelo con None workers
+2025-04-22 00:00:04 [INFO] __main__:1783 - Procesando instrumento: SP500 [instrument=SP500]
+2025-04-22 00:00:04 [INFO] __main__:1795 - Procesando SP500 - ARIMA [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:04 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\SP500\SP500_ARIMA.csv [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:04 [INFO] __main__:280 - Datos cargados: 3008 filas, 1 columnas [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:04 [INFO] __main__:331 - Datos divididos: Training=2252, Validation=504, Test=252
+2025-04-22 00:00:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:00:04 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=ARIMA]
+2025-04-22 00:00:04 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=False)
+2025-04-22 00:00:06 [INFO] __main__:772 - auto_arima sugiere: order=(2, 0, 0), seasonal_order=None
+2025-04-22 00:00:07 [INFO] __main__:1060 - RMSE inicial en validación: 0.0105 [model_type=ARIMA]
+2025-04-22 00:00:07 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:1179 - RMSE final en validación: 0.0105 (mejora: 0.01%) [model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:1180 - Orden óptimo: (1, 0, 0), seasonal_order: None [model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:1350 - Modelo final ARIMA - RMSE: 0.0085
+2025-04-22 00:00:25 [INFO] __main__:1351 - Hit Direction: 4.38%
+2025-04-22 00:00:25 [INFO] __main__:1352 - Mejora vs. Naive: 44.03%, vs. Drift: 97.67%
+2025-04-22 00:00:25 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:00:25 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\SP500_ARIMA.pkl [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\SP500\SP500_ARIMA_metrics.json [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\SP500\SP500_ARIMA_forecast.csv [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:25 [INFO] __main__:2015 - Procesamiento completado para SP500 - ARIMA [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:26 [INFO] __main__:2032 - Línea de tiempo completa generada para SP500 - ARIMA [instrument=SP500 | model_type=ARIMA]
+2025-04-22 00:00:26 [INFO] __main__:1795 - Procesando SP500 - SARIMAX_BASIC [instrument=SP500 | model_type=SARIMAX_BASIC]
+2025-04-22 00:00:26 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\SP500\SP500_SARIMAX_BASIC.csv [instrument=SP500 | model_type=BASIC]
+2025-04-22 00:00:26 [INFO] __main__:280 - Datos cargados: 3008 filas, 6 columnas [instrument=SP500 | model_type=BASIC]
+2025-04-22 00:00:26 [INFO] __main__:331 - Datos divididos: Training=2252, Validation=504, Test=252
+2025-04-22 00:00:26 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:00:26 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=SARIMAX_BASIC]
+2025-04-22 00:00:26 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=True)
+2025-04-22 00:01:14 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 3), seasonal_order=(1, 1, 1, 5)
+2025-04-22 00:01:17 [INFO] __main__:1060 - RMSE inicial en validación: 0.0079 [model_type=SARIMAX_BASIC]
+2025-04-22 00:01:17 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=SARIMAX_BASIC]
+2025-04-22 00:04:49 [INFO] __main__:1179 - RMSE final en validación: 0.0083 (mejora: -5.04%) [model_type=SARIMAX_BASIC]
+2025-04-22 00:04:49 [INFO] __main__:1180 - Orden óptimo: (1, 0, 2), seasonal_order: (0, 1, 1, 5) [model_type=SARIMAX_BASIC]
+2025-04-22 00:04:52 [ERROR] __main__:2037 - Error procesando SP500 - SARIMAX_BASIC: Input contains NaN. [instrument=SP500]
+2025-04-22 00:04:52 [ERROR] __main__:2038 - Traza de error: Traceback (most recent call last):
+  File "C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\pipelines\time_series\arima_step_2_train.py", line 1825, in process_instrument
+    final_model, test_pred, metrics = train_final_model(
+                                      ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\pipelines\time_series\arima_step_2_train.py", line 1280, in train_final_model
+    rmse = sqrt(mean_squared_error(y_test, test_pred))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sklearn\utils\_param_validation.py", line 216, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sklearn\metrics\_regression.py", line 565, in mean_squared_error
+    _check_reg_targets_with_floating_dtype(
+  File "C:\Python312\Lib\site-packages\sklearn\metrics\_regression.py", line 198, in _check_reg_targets_with_floating_dtype
+    y_type, y_true, y_pred, multioutput = _check_reg_targets(
+                                          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sklearn\metrics\_regression.py", line 106, in _check_reg_targets
+    y_pred = check_array(y_pred, ensure_2d=False, dtype=dtype)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
+    _assert_all_finite(
+  File "C:\Python312\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "C:\Python312\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+ [instrument=SP500]
+2025-04-22 00:04:52 [INFO] __main__:1795 - Procesando SP500 - SARIMAX_EXTENDED [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:04:52 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\SP500\SP500_SARIMAX_EXTENDED.csv [instrument=SP500 | model_type=EXTENDED]
+2025-04-22 00:04:52 [INFO] __main__:280 - Datos cargados: 3008 filas, 8 columnas [instrument=SP500 | model_type=EXTENDED]
+2025-04-22 00:04:52 [INFO] __main__:331 - Datos divididos: Training=2252, Validation=504, Test=252
+2025-04-22 00:04:52 [INFO] __main__:493 - Variable vix_log_d1: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:04:52 [INFO] __main__:493 - Variable term_spread: non_stationary (ADF p=0.3300, KPSS p=0.0100)
+2025-04-22 00:04:52 [INFO] __main__:493 - Variable cpi_yoy_lag1m_log_d1: uncertain_trend_stationary (ADF p=0.0000, KPSS p=0.0100)
+2025-04-22 00:04:52 [INFO] __main__:493 - Variable wti_crude_raw_log_d1: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:04:52 [INFO] __main__:493 - Variable unemployment_lag1m_log_d1: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:04:53 [INFO] __main__:493 - Variable norm_range: uncertain_trend_stationary (ADF p=0.0000, KPSS p=0.0168)
+2025-04-22 00:04:53 [INFO] __main__:493 - Variable pct_gap: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:04:53 [INFO] __main__:502 - Resultados de estacionariedad guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\stationarity_audit.csv
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: vix_log_d1 causa sp500_close_log_d1 (mejor lag=4, p=0.0000)
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: term_spread no causa sp500_close_log_d1 (mejor lag=3, p=0.1462)
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: cpi_yoy_lag1m_log_d1 no causa sp500_close_log_d1 (mejor lag=3, p=0.2982)
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: wti_crude_raw_log_d1 causa sp500_close_log_d1 (mejor lag=4, p=0.0000)
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: unemployment_lag1m_log_d1 no causa sp500_close_log_d1 (mejor lag=2, p=0.4387)
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: norm_range no causa sp500_close_log_d1 (mejor lag=1, p=0.2780)
+2025-04-22 00:04:53 [INFO] __main__:569 - Granger: pct_gap causa sp500_close_log_d1 (mejor lag=2, p=0.0000)
+2025-04-22 00:04:53 [INFO] __main__:589 - Resultados de causalidad guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\granger_causality_audit.csv
+2025-04-22 00:04:53 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:04:53 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:04:53 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=True)
+2025-04-22 00:05:41 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 3), seasonal_order=(1, 1, 1, 5)
+2025-04-22 00:05:46 [INFO] __main__:1060 - RMSE inicial en validación: 0.0071 [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:05:46 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:27 [INFO] __main__:1179 - RMSE final en validación: 0.0071 (mejora: -0.01%) [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:27 [INFO] __main__:1180 - Orden óptimo: (1, 0, 3), seasonal_order: (0, 1, 1, 5) [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:32 [INFO] __main__:1350 - Modelo final SARIMAX_EXTENDED - RMSE: 0.0054
+2025-04-22 00:10:32 [INFO] __main__:1351 - Hit Direction: 88.05%
+2025-04-22 00:10:32 [INFO] __main__:1352 - Mejora vs. Naive: 64.42%, vs. Drift: 98.52%
+2025-04-22 00:10:32 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:32 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:32 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:32 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:32 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:33 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:34 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:34 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:34 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:34 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:34 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:34 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:35 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:35 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:35 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:35 [INFO] __main__:709 - Análisis de estabilidad guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\coefficient_stability_SP500_SARIMAX_EXTENDED.csv
+2025-04-22 00:10:35 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:10:35 [INFO] __main__:1410 - X_future shape: (21, 7)
+2025-04-22 00:10:35 [INFO] __main__:1421 - SARIMAX generó pronóstico con 21 pasos
+2025-04-22 00:10:35 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\SP500_SARIMAX_EXTENDED.pkl [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:35 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\SP500\SP500_SARIMAX_EXTENDED_metrics.json [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:35 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\SP500\SP500_SARIMAX_EXTENDED_forecast.csv [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:35 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:35 [INFO] __main__:2015 - Procesamiento completado para SP500 - SARIMAX_EXTENDED [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:36 [INFO] __main__:2032 - Línea de tiempo completa generada para SP500 - SARIMAX_EXTENDED [instrument=SP500 | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:10:36 [INFO] __main__:1783 - Procesando instrumento: EURUSD [instrument=EURUSD]
+2025-04-22 00:10:36 [INFO] __main__:1795 - Procesando EURUSD - ARIMA [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:36 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\EURUSD\EURUSD_ARIMA.csv [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:36 [INFO] __main__:280 - Datos cargados: 4103 filas, 1 columnas [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:36 [INFO] __main__:331 - Datos divididos: Training=3347, Validation=504, Test=252
+2025-04-22 00:10:36 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:36 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=ARIMA]
+2025-04-22 00:10:36 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=False)
+2025-04-22 00:10:37 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 0), seasonal_order=None
+2025-04-22 00:10:37 [INFO] __main__:1060 - RMSE inicial en validación: 0.0034 [model_type=ARIMA]
+2025-04-22 00:10:37 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:1179 - RMSE final en validación: 0.0034 (mejora: 0.01%) [model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:1180 - Orden óptimo: (0, 0, 1), seasonal_order: None [model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:1350 - Modelo final ARIMA - RMSE: 0.0039
+2025-04-22 00:10:56 [INFO] __main__:1351 - Hit Direction: 15.14%
+2025-04-22 00:10:56 [INFO] __main__:1352 - Mejora vs. Naive: 27.86%, vs. Drift: 99.64%
+2025-04-22 00:10:56 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:10:56 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\EURUSD_ARIMA.pkl [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\EURUSD\EURUSD_ARIMA_metrics.json [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\EURUSD\EURUSD_ARIMA_forecast.csv [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:56 [INFO] __main__:2015 - Procesamiento completado para EURUSD - ARIMA [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:57 [INFO] __main__:2032 - Línea de tiempo completa generada para EURUSD - ARIMA [instrument=EURUSD | model_type=ARIMA]
+2025-04-22 00:10:57 [INFO] __main__:1795 - Procesando EURUSD - SARIMAX_BASIC [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:10:57 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\EURUSD\EURUSD_SARIMAX_BASIC.csv [instrument=EURUSD | model_type=BASIC]
+2025-04-22 00:10:57 [INFO] __main__:280 - Datos cargados: 4103 filas, 4 columnas [instrument=EURUSD | model_type=BASIC]
+2025-04-22 00:10:57 [INFO] __main__:331 - Datos divididos: Training=3347, Validation=504, Test=252
+2025-04-22 00:10:57 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:10:57 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=SARIMAX_BASIC]
+2025-04-22 00:10:57 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=True)
+2025-04-22 00:11:09 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 0), seasonal_order=(1, 1, 1, 5)
+2025-04-22 00:11:11 [INFO] __main__:1060 - RMSE inicial en validación: 0.0024 [model_type=SARIMAX_BASIC]
+2025-04-22 00:11:11 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=SARIMAX_BASIC]
+2025-04-22 00:14:00 [INFO] __main__:1179 - RMSE final en validación: 0.0024 (mejora: 0.25%) [model_type=SARIMAX_BASIC]
+2025-04-22 00:14:00 [INFO] __main__:1180 - Orden óptimo: (0, 0, 1), seasonal_order: (0, 1, 1, 5) [model_type=SARIMAX_BASIC]
+2025-04-22 00:14:03 [INFO] __main__:1350 - Modelo final SARIMAX_BASIC - RMSE: 0.0030
+2025-04-22 00:14:03 [INFO] __main__:1351 - Hit Direction: 60.16%
+2025-04-22 00:14:03 [INFO] __main__:1352 - Mejora vs. Naive: 44.69%, vs. Drift: 99.73%
+2025-04-22 00:14:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:04 [INFO] __main__:413 - Discrepancia entre tests: ADF indica estacionariedad pero KPSS no. Se ajusta a d=1.
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=1, D=1
+2025-04-22 00:14:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:05 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:07 [INFO] __main__:709 - Análisis de estabilidad guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\coefficient_stability_EURUSD_SARIMAX_BASIC.csv
+2025-04-22 00:14:07 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:14:07 [INFO] __main__:1410 - X_future shape: (21, 3)
+2025-04-22 00:14:07 [INFO] __main__:1421 - SARIMAX generó pronóstico con 21 pasos
+2025-04-22 00:14:07 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\EURUSD_SARIMAX_BASIC.pkl [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:14:07 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\EURUSD\EURUSD_SARIMAX_BASIC_metrics.json [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:14:07 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\EURUSD\EURUSD_SARIMAX_BASIC_forecast.csv [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:14:07 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:14:07 [INFO] __main__:2015 - Procesamiento completado para EURUSD - SARIMAX_BASIC [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:14:07 [INFO] __main__:2032 - Línea de tiempo completa generada para EURUSD - SARIMAX_BASIC [instrument=EURUSD | model_type=SARIMAX_BASIC]
+2025-04-22 00:14:07 [INFO] __main__:1795 - Procesando EURUSD - SARIMAX_EXTENDED [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:14:07 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\EURUSD\EURUSD_SARIMAX_EXTENDED.csv [instrument=EURUSD | model_type=EXTENDED]
+2025-04-22 00:14:07 [INFO] __main__:280 - Datos cargados: 4103 filas, 6 columnas [instrument=EURUSD | model_type=EXTENDED]
+2025-04-22 00:14:07 [INFO] __main__:331 - Datos divididos: Training=3347, Validation=504, Test=252
+2025-04-22 00:14:07 [INFO] __main__:493 - Variable dxy_index_raw_log_d1: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:14:07 [INFO] __main__:493 - Variable interest_rate_diff_log: uncertain_trend_stationary (ADF p=0.0284, KPSS p=0.0100)
+2025-04-22 00:14:08 [INFO] __main__:493 - Variable eu_consumer_confidence_raw_d1: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:14:08 [INFO] __main__:493 - Variable norm_range: uncertain_trend_stationary (ADF p=0.0000, KPSS p=0.0100)
+2025-04-22 00:14:08 [INFO] __main__:493 - Variable pct_gap: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:14:08 [INFO] __main__:502 - Resultados de estacionariedad guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\stationarity_audit.csv
+2025-04-22 00:14:08 [INFO] __main__:569 - Granger: dxy_index_raw_log_d1 no causa eurusd_close_log_d1 (mejor lag=1, p=0.2954)
+2025-04-22 00:14:08 [INFO] __main__:569 - Granger: interest_rate_diff_log causa eurusd_close_log_d1 (mejor lag=5, p=0.0100)
+2025-04-22 00:14:08 [INFO] __main__:569 - Granger: eu_consumer_confidence_raw_d1 no causa eurusd_close_log_d1 (mejor lag=4, p=0.0908)
+2025-04-22 00:14:08 [INFO] __main__:569 - Granger: norm_range no causa eurusd_close_log_d1 (mejor lag=1, p=0.0797)
+2025-04-22 00:14:08 [INFO] __main__:569 - Granger: pct_gap causa eurusd_close_log_d1 (mejor lag=3, p=0.0166)
+2025-04-22 00:14:08 [INFO] __main__:589 - Resultados de causalidad guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\granger_causality_audit.csv
+2025-04-22 00:14:08 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:14:08 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:14:08 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=True)
+2025-04-22 00:14:21 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 0), seasonal_order=(1, 1, 1, 5)
+2025-04-22 00:14:24 [INFO] __main__:1060 - RMSE inicial en validación: 0.0025 [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:14:24 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:17 [INFO] __main__:1179 - RMSE final en validación: 0.0025 (mejora: 0.82%) [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:17 [INFO] __main__:1180 - Orden óptimo: (1, 0, 0), seasonal_order: (0, 1, 1, 5) [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:19 [INFO] __main__:1350 - Modelo final SARIMAX_EXTENDED - RMSE: 0.0031
+2025-04-22 00:18:19 [INFO] __main__:1351 - Hit Direction: 56.57%
+2025-04-22 00:18:19 [INFO] __main__:1352 - Mejora vs. Naive: 42.97%, vs. Drift: 99.72%
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:19 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:20 [INFO] __main__:413 - Discrepancia entre tests: ADF indica estacionariedad pero KPSS no. Se ajusta a d=1.
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=1, D=1
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:20 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:21 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:22 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:23 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:23 [INFO] __main__:709 - Análisis de estabilidad guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\coefficient_stability_EURUSD_SARIMAX_EXTENDED.csv
+2025-04-22 00:18:23 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:18:23 [INFO] __main__:1410 - X_future shape: (21, 5)
+2025-04-22 00:18:23 [INFO] __main__:1421 - SARIMAX generó pronóstico con 21 pasos
+2025-04-22 00:18:23 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\EURUSD_SARIMAX_EXTENDED.pkl [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:23 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\EURUSD\EURUSD_SARIMAX_EXTENDED_metrics.json [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:23 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\EURUSD\EURUSD_SARIMAX_EXTENDED_forecast.csv [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:23 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:23 [INFO] __main__:2015 - Procesamiento completado para EURUSD - SARIMAX_EXTENDED [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:23 [INFO] __main__:2032 - Línea de tiempo completa generada para EURUSD - SARIMAX_EXTENDED [instrument=EURUSD | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:18:23 [INFO] __main__:1783 - Procesando instrumento: USDJPY [instrument=USDJPY]
+2025-04-22 00:18:23 [INFO] __main__:1795 - Procesando USDJPY - ARIMA [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:23 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\USDJPY\USDJPY_ARIMA.csv [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:23 [INFO] __main__:280 - Datos cargados: 2984 filas, 1 columnas [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:23 [INFO] __main__:331 - Datos divididos: Training=2228, Validation=504, Test=252
+2025-04-22 00:18:24 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:24 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=ARIMA]
+2025-04-22 00:18:24 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=False)
+2025-04-22 00:18:25 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 2), seasonal_order=None
+2025-04-22 00:18:25 [INFO] __main__:1060 - RMSE inicial en validación: 0.0067 [model_type=ARIMA]
+2025-04-22 00:18:25 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=ARIMA]
+2025-04-22 00:18:42 [INFO] __main__:1179 - RMSE final en validación: 0.0067 (mejora: -0.00%) [model_type=ARIMA]
+2025-04-22 00:18:42 [INFO] __main__:1180 - Orden óptimo: (0, 0, 1), seasonal_order: None [model_type=ARIMA]
+2025-04-22 00:18:42 [INFO] __main__:1350 - Modelo final ARIMA - RMSE: 0.0066
+2025-04-22 00:18:42 [INFO] __main__:1351 - Hit Direction: 0.40%
+2025-04-22 00:18:42 [INFO] __main__:1352 - Mejora vs. Naive: 8.64%, vs. Drift: 98.73%
+2025-04-22 00:18:42 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:18:42 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\USDJPY_ARIMA.pkl [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:42 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\USDJPY\USDJPY_ARIMA_metrics.json [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:42 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\USDJPY\USDJPY_ARIMA_forecast.csv [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:43 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:43 [INFO] __main__:2015 - Procesamiento completado para USDJPY - ARIMA [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:43 [INFO] __main__:2032 - Línea de tiempo completa generada para USDJPY - ARIMA [instrument=USDJPY | model_type=ARIMA]
+2025-04-22 00:18:43 [INFO] __main__:1795 - Procesando USDJPY - SARIMAX_BASIC [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:18:43 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\USDJPY\USDJPY_SARIMAX_BASIC.csv [instrument=USDJPY | model_type=BASIC]
+2025-04-22 00:18:43 [INFO] __main__:280 - Datos cargados: 2984 filas, 2 columnas [instrument=USDJPY | model_type=BASIC]
+2025-04-22 00:18:43 [INFO] __main__:331 - Datos divididos: Training=2228, Validation=504, Test=252
+2025-04-22 00:18:43 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:18:43 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=SARIMAX_BASIC]
+2025-04-22 00:18:43 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=True)
+2025-04-22 00:18:52 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 0), seasonal_order=(1, 1, 1, 5)
+2025-04-22 00:18:54 [INFO] __main__:1060 - RMSE inicial en validación: 0.0067 [model_type=SARIMAX_BASIC]
+2025-04-22 00:18:54 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=SARIMAX_BASIC]
+2025-04-22 00:20:04 [INFO] __main__:1179 - RMSE final en validación: 0.0067 (mejora: 0.00%) [model_type=SARIMAX_BASIC]
+2025-04-22 00:20:04 [INFO] __main__:1180 - Orden óptimo: (0, 0, 0), seasonal_order: (1, 1, 1, 5) [model_type=SARIMAX_BASIC]
+2025-04-22 00:20:06 [INFO] __main__:1350 - Modelo final SARIMAX_BASIC - RMSE: 0.0066
+2025-04-22 00:20:06 [INFO] __main__:1351 - Hit Direction: 51.00%
+2025-04-22 00:20:06 [INFO] __main__:1352 - Mejora vs. Naive: 8.52%, vs. Drift: 98.73%
+2025-04-22 00:20:06 [INFO] __main__:413 - Discrepancia entre tests: ADF indica estacionariedad pero KPSS no. Se ajusta a d=1.
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=1, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:06 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:07 [INFO] __main__:413 - Discrepancia entre tests: ADF indica estacionariedad pero KPSS no. Se ajusta a d=1.
+2025-04-22 00:20:07 [INFO] __main__:437 - Órdenes de integración determinados: d=1, D=1
+2025-04-22 00:20:08 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:08 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:08 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:08 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:08 [INFO] __main__:709 - Análisis de estabilidad guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\coefficient_stability_USDJPY_SARIMAX_BASIC.csv
+2025-04-22 00:20:08 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:20:08 [INFO] __main__:1410 - X_future shape: (21, 1)
+2025-04-22 00:20:08 [INFO] __main__:1421 - SARIMAX generó pronóstico con 21 pasos
+2025-04-22 00:20:08 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\USDJPY_SARIMAX_BASIC.pkl [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:20:08 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\USDJPY\USDJPY_SARIMAX_BASIC_metrics.json [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:20:08 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\USDJPY\USDJPY_SARIMAX_BASIC_forecast.csv [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:20:08 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:20:08 [INFO] __main__:2015 - Procesamiento completado para USDJPY - SARIMAX_BASIC [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:20:09 [INFO] __main__:2032 - Línea de tiempo completa generada para USDJPY - SARIMAX_BASIC [instrument=USDJPY | model_type=SARIMAX_BASIC]
+2025-04-22 00:20:09 [INFO] __main__:1795 - Procesando USDJPY - SARIMAX_EXTENDED [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:20:09 [INFO] __main__:256 - Archivo encontrado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\1_preprocess_ts\USDJPY\USDJPY_SARIMAX_EXTENDED.csv [instrument=USDJPY | model_type=EXTENDED]
+2025-04-22 00:20:09 [INFO] __main__:280 - Datos cargados: 2984 filas, 4 columnas [instrument=USDJPY | model_type=EXTENDED]
+2025-04-22 00:20:09 [INFO] __main__:331 - Datos divididos: Training=2228, Validation=504, Test=252
+2025-04-22 00:20:09 [INFO] __main__:493 - Variable japan_leading_lag1m_log_d1: stationary (ADF p=0.0000, KPSS p=0.1000)
+2025-04-22 00:20:09 [INFO] __main__:493 - Variable norm_range: uncertain_trend_stationary (ADF p=0.0000, KPSS p=0.0196)
+2025-04-22 00:20:09 [INFO] __main__:493 - Variable pct_gap: stationary (ADF p=0.0000, KPSS p=0.0627)
+2025-04-22 00:20:09 [INFO] __main__:502 - Resultados de estacionariedad guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\stationarity_audit.csv
+2025-04-22 00:20:09 [INFO] __main__:569 - Granger: japan_leading_lag1m_log_d1 no causa usdjpy_close_log_d1 (mejor lag=1, p=0.3092)
+2025-04-22 00:20:09 [INFO] __main__:569 - Granger: norm_range no causa usdjpy_close_log_d1 (mejor lag=1, p=0.7435)
+2025-04-22 00:20:09 [INFO] __main__:569 - Granger: pct_gap no causa usdjpy_close_log_d1 (mejor lag=1, p=0.2045)
+2025-04-22 00:20:09 [INFO] __main__:589 - Resultados de causalidad guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\granger_causality_audit.csv
+2025-04-22 00:20:09 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:20:09 [INFO] __main__:1028 - Utilizando método híbrido (auto_arima + Optuna) para búsqueda de hiperparámetros [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:20:09 [INFO] __main__:745 - Iniciando búsqueda con auto_arima (seasonal=True)
+2025-04-22 00:20:19 [INFO] __main__:772 - auto_arima sugiere: order=(0, 0, 0), seasonal_order=(1, 1, 1, 5)
+2025-04-22 00:20:19 [INFO] __main__:1060 - RMSE inicial en validación: 0.0066 [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:20:19 [INFO] __main__:1066 - Iniciando refinamiento con Optuna [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:00 [INFO] __main__:1179 - RMSE final en validación: 0.0066 (mejora: 0.50%) [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:00 [INFO] __main__:1180 - Orden óptimo: (1, 0, 0), seasonal_order: (0, 1, 1, 5) [model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:01 [INFO] __main__:1350 - Modelo final SARIMAX_EXTENDED - RMSE: 0.0064
+2025-04-22 00:22:01 [INFO] __main__:1351 - Hit Direction: 51.39%
+2025-04-22 00:22:01 [INFO] __main__:1352 - Mejora vs. Naive: 11.20%, vs. Drift: 98.77%
+2025-04-22 00:22:01 [INFO] __main__:413 - Discrepancia entre tests: ADF indica estacionariedad pero KPSS no. Se ajusta a d=1.
+2025-04-22 00:22:01 [INFO] __main__:437 - Órdenes de integración determinados: d=1, D=1
+2025-04-22 00:22:01 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:01 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:02 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:03 [INFO] __main__:413 - Discrepancia entre tests: ADF indica estacionariedad pero KPSS no. Se ajusta a d=1.
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=1, D=1
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:03 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:04 [INFO] __main__:437 - Órdenes de integración determinados: d=0, D=1
+2025-04-22 00:22:04 [INFO] __main__:709 - Análisis de estabilidad guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\coefficient_stability_USDJPY_SARIMAX_EXTENDED.csv
+2025-04-22 00:22:04 [INFO] __main__:1384 - Generando pronóstico para 21 pasos, desde 2025-03-28 00:00:00 hasta 2025-04-25 00:00:00
+2025-04-22 00:22:04 [INFO] __main__:1410 - X_future shape: (21, 3)
+2025-04-22 00:22:04 [INFO] __main__:1421 - SARIMAX generó pronóstico con 21 pasos
+2025-04-22 00:22:04 [INFO] __main__:1847 - Modelo guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\USDJPY_SARIMAX_EXTENDED.pkl [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:04 [INFO] __main__:1870 - Métricas guardadas en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\USDJPY\USDJPY_SARIMAX_EXTENDED_metrics.json [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:04 [INFO] __main__:1878 - Forecast guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\USDJPY\USDJPY_SARIMAX_EXTENDED_forecast.csv [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:04 [INFO] __main__:1974 - Longitudes para Test: índices=252, valores=252, predicciones=252 [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:04 [INFO] __main__:2015 - Procesamiento completado para USDJPY - SARIMAX_EXTENDED [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:04 [INFO] __main__:2032 - Línea de tiempo completa generada para USDJPY - SARIMAX_EXTENDED [instrument=USDJPY | model_type=SARIMAX_EXTENDED]
+2025-04-22 00:22:05 [INFO] __main__:2126 - Resultados combinados guardados en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\2_trainingdata_ts\all_models_predictions.csv
+2025-04-22 00:22:05 [INFO] __main__:2128 - Procesamiento completo

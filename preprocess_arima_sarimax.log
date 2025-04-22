@@ -1,0 +1,276 @@
+2025-04-21 23:53:50 [INFO]  Iniciando preparación de datos para modelos ARIMA/SARIMAX
+2025-04-21 23:53:50 [INFO] Procesando SP500 con data\1_preprocess_ts\SP500_business_days.csv
+2025-04-21 23:53:50 [INFO]  Procesando SP500
+2025-04-21 23:53:50 [INFO] CSV leído: SP500_business_days.csv (enc=utf-8, sep=',')
+2025-04-21 23:53:50 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_close
+2025-04-21 23:53:50 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_open
+2025-04-21 23:53:50 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_high
+2025-04-21 23:53:50 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_low
+2025-04-21 23:53:50 [INFO] Aplicada limpieza especial de formato para SP500
+2025-04-21 23:53:50 [INFO] Convertida a numérica: sp500_close (NaN: 46)
+2025-04-21 23:53:50 [INFO] Convertida a numérica: sp500_open (NaN: 46)
+2025-04-21 23:53:50 [INFO] Convertida a numérica: sp500_high (NaN: 46)
+2025-04-21 23:53:50 [INFO] Convertida a numérica: sp500_low (NaN: 46)
+2025-04-21 23:53:50 [INFO] Convertida a numérica: vix (NaN: 46)
+2025-04-21 23:53:50 [INFO] DataFrame inicial: 3055 filas × 12 columnas
+2025-04-21 23:53:50 [INFO] Target sp500_close: 3009/3055 valores válidos (1.51% NaN)
+2025-04-21 23:53:50 [INFO] Derivando variables para SP500...
+2025-04-21 23:53:50 [INFO] Derivada: term_spread (NaN: 46)
+2025-04-21 23:53:50 [INFO] Derivada: norm_range (NaN: 46)
+2025-04-21 23:53:50 [INFO] Derivada: pct_gap (NaN: 47)
+2025-04-21 23:53:50 [INFO] Aplicando rezagos...
+2025-04-21 23:53:50 [INFO] Rezago: cpi_yoy_lag1m (+21 días)
+2025-04-21 23:53:50 [INFO] Rezago: unemployment_lag1m (+3 días)
+2025-04-21 23:53:50 [INFO] Aplicando log/log1p...
+2025-04-21 23:53:50 [INFO] Log: sp500_close
+2025-04-21 23:53:50 [INFO] Log: sp500_open
+2025-04-21 23:53:50 [INFO] Log: sp500_high
+2025-04-21 23:53:50 [INFO] Log: sp500_low
+2025-04-21 23:53:50 [INFO] Log: vix
+2025-04-21 23:53:50 [INFO] Log: ust10y
+2025-04-21 23:53:50 [INFO] Log: fedfunds
+2025-04-21 23:53:50 [INFO] Log: cpi_yoy_raw
+2025-04-21 23:53:50 [INFO] Log: wti_crude_raw
+2025-04-21 23:53:50 [INFO] Log: unemployment_raw
+2025-04-21 23:53:50 [INFO] Log: ism_manufacturing_raw
+2025-04-21 23:53:50 [INFO] Log: michigan_sentiment_raw
+2025-04-21 23:53:50 [INFO] Log: cpi_yoy_lag1m
+2025-04-21 23:53:50 [INFO] Log: unemployment_lag1m
+2025-04-21 23:53:50 [INFO] Aplicando diferenciación selectiva...
+2025-04-21 23:53:50 [INFO] Diferenciación: sp500_close_log -> sp500_close_log_d1
+2025-04-21 23:53:50 [INFO] Diferenciación: sp500_open_log -> sp500_open_log_d1
+2025-04-21 23:53:50 [INFO] Diferenciación: sp500_high_log -> sp500_high_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: sp500_low_log -> sp500_low_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: vix_log -> vix_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: ust10y_log -> ust10y_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: fedfunds_log -> fedfunds_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: wti_crude_raw_log -> wti_crude_raw_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: unemployment_raw_log -> unemployment_raw_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: unemployment_lag1m_log -> unemployment_lag1m_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: sp500_close_log -> sp500_close_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: sp500_open_log -> sp500_open_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: sp500_high_log -> sp500_high_log_d1
+2025-04-21 23:53:51 [INFO] Diferenciación: sp500_low_log -> sp500_low_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: vix_log -> vix_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: ust10y_log -> ust10y_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: fedfunds_log -> fedfunds_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: wti_crude_raw_log -> wti_crude_raw_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: unemployment_raw_log -> unemployment_raw_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: unemployment_lag1m_log -> unemployment_lag1m_log_d1
+2025-04-21 23:53:52 [INFO] DataFrame transformado: 3055 filas × 45 columnas
+2025-04-21 23:53:52 [INFO] Construyendo frames para SP500...
+2025-04-21 23:53:52 [INFO] Target seleccionado: sp500_close_log_d1
+2025-04-21 23:53:52 [INFO] Variable vix_log_d1 -> basic
+2025-04-21 23:53:52 [INFO] Variable term_spread -> basic
+2025-04-21 23:53:52 [INFO] Variable cpi_yoy_lag1m_log_d1 -> basic
+2025-04-21 23:53:52 [INFO] Variable wti_crude_raw_log_d1 -> basic
+2025-04-21 23:53:52 [INFO] Variable unemployment_lag1m_log_d1 -> basic
+2025-04-21 23:53:52 [WARNING] No encontrada transformación para volume_lag1
+2025-04-21 23:53:52 [INFO] Variable vix_log_d1 -> extended
+2025-04-21 23:53:52 [INFO] Variable term_spread -> extended
+2025-04-21 23:53:52 [INFO] Variable cpi_yoy_lag1m_log_d1 -> extended
+2025-04-21 23:53:52 [INFO] Variable wti_crude_raw_log_d1 -> extended
+2025-04-21 23:53:52 [INFO] Variable unemployment_lag1m_log_d1 -> extended
+2025-04-21 23:53:52 [WARNING] No encontrada transformación para volume_lag1
+2025-04-21 23:53:52 [INFO] Variable norm_range -> extended
+2025-04-21 23:53:52 [INFO] Variable pct_gap -> extended
+2025-04-21 23:53:52 [WARNING] No encontrada transformación para vol_ma5
+2025-04-21 23:53:52 [INFO] VIF aceptable para sarimax_basic
+2025-04-21 23:53:52 [INFO] Escalado aplicado a 5 vars en sarimax_basic
+2025-04-21 23:53:52 [INFO] Frame final sarimax_basic: (3055, 6)
+2025-04-21 23:53:52 [INFO] VIF aceptable para sarimax_extended
+2025-04-21 23:53:52 [INFO] Escalado aplicado a 7 vars en sarimax_extended
+2025-04-21 23:53:52 [INFO] Frame final sarimax_extended: (3055, 8)
+2025-04-21 23:53:52 [INFO] Limpiando dataset SP500_arima: (3055, 1)
+2025-04-21 23:53:52 [INFO] Tras filtrar >20% NaN: 3008 -> 3008 filas
+2025-04-21 23:53:52 [INFO] Resultado limpieza arima: 3055 -> 3008 filas (1.54% eliminadas)
+2025-04-21 23:53:52 [INFO] Guardado: SP500_ARIMA.csv (3008 filas × 2 cols)
+2025-04-21 23:53:52 [INFO] Guardado dataset SP500_ARIMA.csv
+2025-04-21 23:53:52 [INFO] Limpiando dataset SP500_sarimax_basic: (3055, 6)
+2025-04-21 23:53:52 [INFO] Tras filtrar >20% NaN: 3008 -> 3008 filas
+2025-04-21 23:53:52 [INFO] Resultado limpieza sarimax_basic: 3055 -> 3008 filas (1.54% eliminadas)
+2025-04-21 23:53:52 [INFO] Guardado: SP500_SARIMAX_BASIC.csv (3008 filas × 7 cols)
+2025-04-21 23:53:52 [INFO] Guardado dataset SP500_SARIMAX_BASIC.csv
+2025-04-21 23:53:52 [INFO] Limpiando dataset SP500_sarimax_extended: (3055, 8)
+2025-04-21 23:53:52 [INFO] Tras filtrar >20% NaN: 3008 -> 3008 filas
+2025-04-21 23:53:52 [INFO] Resultado limpieza sarimax_extended: 3055 -> 3008 filas (1.54% eliminadas)
+2025-04-21 23:53:52 [INFO] Guardado: SP500_SARIMAX_EXTENDED.csv (3008 filas × 9 cols)
+2025-04-21 23:53:52 [INFO] Guardado dataset SP500_SARIMAX_EXTENDED.csv
+2025-04-21 23:53:52 [INFO]  SP500 procesado con éxito
+2025-04-21 23:53:52 [INFO] Procesando EURUSD con data\1_preprocess_ts\EURUSD_business_days.csv
+2025-04-21 23:53:52 [INFO]  Procesando EURUSD
+2025-04-21 23:53:52 [INFO] CSV leído: EURUSD_business_days.csv (enc=utf-8, sep=',')
+2025-04-21 23:53:52 [INFO] Convertida a numérica: eu_unemployment_raw (NaN: 4107)
+2025-04-21 23:53:52 [INFO] DataFrame inicial: 4107 filas × 10 columnas
+2025-04-21 23:53:52 [INFO] Target eurusd_close: 4104/4107 valores válidos (0.07% NaN)
+2025-04-21 23:53:52 [INFO] Derivando variables para EURUSD...
+2025-04-21 23:53:52 [INFO] Derivada: interest_rate_diff (EURUSD)
+2025-04-21 23:53:52 [INFO] Derivada: norm_range (NaN: 3)
+2025-04-21 23:53:52 [INFO] Derivada: pct_gap (NaN: 4)
+2025-04-21 23:53:52 [INFO] Aplicando rezagos...
+2025-04-21 23:53:52 [INFO] Rezago: eu_unemployment_lag1m (+30 días)
+2025-04-21 23:53:52 [INFO] Aplicando log/log1p...
+2025-04-21 23:53:52 [INFO] Log: eurusd_close
+2025-04-21 23:53:52 [INFO] Log: eurusd_open
+2025-04-21 23:53:52 [INFO] Log: eurusd_high
+2025-04-21 23:53:52 [INFO] Log: eurusd_low
+2025-04-21 23:53:52 [INFO] Log: dxy_index_raw
+2025-04-21 23:53:52 [INFO] Omitiendo log para ecb_rate - Contiene valores no positivos
+2025-04-21 23:53:52 [INFO] Log: fed_funds
+2025-04-21 23:53:52 [INFO] Omitiendo log para eu_unemployment_raw - Contiene valores no positivos
+2025-04-21 23:53:52 [INFO] Log: us_unemployment_raw
+2025-04-21 23:53:52 [INFO] Omitiendo log para eu_consumer_confidence_raw - Contiene valores no positivos
+2025-04-21 23:53:52 [INFO] Log: interest_rate_diff
+2025-04-21 23:53:52 [INFO] Omitiendo log para eu_unemployment_lag1m - Contiene valores no positivos
+2025-04-21 23:53:52 [INFO] Aplicando diferenciación selectiva...
+2025-04-21 23:53:52 [INFO] Diferenciación: eurusd_close_log -> eurusd_close_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: eurusd_open_log -> eurusd_open_log_d1
+2025-04-21 23:53:52 [INFO] Diferenciación: eurusd_high_log -> eurusd_high_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: eurusd_low_log -> eurusd_low_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: dxy_index_raw_log -> dxy_index_raw_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: ecb_rate -> ecb_rate_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1
+2025-04-21 23:53:53 [WARNING] Serie eu_unemployment_raw tiene <20 valores válidos (0)
+2025-04-21 23:53:53 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: eu_consumer_confidence_raw -> eu_consumer_confidence_raw_d1
+2025-04-21 23:53:53 [WARNING] Serie eu_unemployment_lag1m tiene <20 valores válidos (0)
+2025-04-21 23:53:53 [INFO] Diferenciación: eurusd_close_log -> eurusd_close_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: eurusd_open_log -> eurusd_open_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: eurusd_high_log -> eurusd_high_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: eurusd_low_log -> eurusd_low_log_d1
+2025-04-21 23:53:53 [INFO] Diferenciación: dxy_index_raw_log -> dxy_index_raw_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1
+2025-04-21 23:53:54 [INFO] DataFrame transformado: 4107 filas × 31 columnas
+2025-04-21 23:53:54 [INFO] Construyendo frames para EURUSD...
+2025-04-21 23:53:54 [INFO] Target seleccionado: eurusd_close_log_d1
+2025-04-21 23:53:54 [INFO] Variable dxy_index_raw_log_d1 -> basic
+2025-04-21 23:53:54 [INFO] Variable interest_rate_diff_log -> basic
+2025-04-21 23:53:54 [INFO] Variable eu_unemployment_lag1m -> basic
+2025-04-21 23:53:54 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-04-21 23:53:54 [INFO] Variable eu_consumer_confidence_raw_d1 -> basic
+2025-04-21 23:53:54 [INFO] Variable dxy_index_raw_log_d1 -> extended
+2025-04-21 23:53:54 [INFO] Variable interest_rate_diff_log -> extended
+2025-04-21 23:53:54 [INFO] Variable eu_unemployment_lag1m -> extended
+2025-04-21 23:53:54 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-04-21 23:53:54 [INFO] Variable eu_consumer_confidence_raw_d1 -> extended
+2025-04-21 23:53:54 [INFO] Variable norm_range -> extended
+2025-04-21 23:53:54 [INFO] Variable pct_gap -> extended
+2025-04-21 23:53:54 [WARNING] Columnas con todos NaN: ['eu_unemployment_lag1m']
+2025-04-21 23:53:54 [INFO] VIF aceptable para sarimax_basic
+2025-04-21 23:53:54 [INFO] Escalado aplicado a 3 vars en sarimax_basic
+2025-04-21 23:53:54 [INFO] Frame final sarimax_basic: (4107, 4)
+2025-04-21 23:53:54 [WARNING] Columnas con todos NaN: ['eu_unemployment_lag1m']
+2025-04-21 23:53:54 [INFO] VIF aceptable para sarimax_extended
+2025-04-21 23:53:54 [INFO] Escalado aplicado a 5 vars en sarimax_extended
+2025-04-21 23:53:54 [INFO] Frame final sarimax_extended: (4107, 6)
+2025-04-21 23:53:54 [INFO] Limpiando dataset EURUSD_arima: (4107, 1)
+2025-04-21 23:53:54 [INFO] Tras filtrar >20% NaN: 4103 -> 4103 filas
+2025-04-21 23:53:54 [INFO] Resultado limpieza arima: 4107 -> 4103 filas (0.10% eliminadas)
+2025-04-21 23:53:54 [INFO] Guardado: EURUSD_ARIMA.csv (4103 filas × 2 cols)
+2025-04-21 23:53:54 [INFO] Guardado dataset EURUSD_ARIMA.csv
+2025-04-21 23:53:54 [INFO] Limpiando dataset EURUSD_sarimax_basic: (4107, 4)
+2025-04-21 23:53:54 [INFO] Tras filtrar >20% NaN: 4103 -> 4103 filas
+2025-04-21 23:53:54 [INFO] Resultado limpieza sarimax_basic: 4107 -> 4103 filas (0.10% eliminadas)
+2025-04-21 23:53:54 [INFO] Guardado: EURUSD_SARIMAX_BASIC.csv (4103 filas × 5 cols)
+2025-04-21 23:53:54 [INFO] Guardado dataset EURUSD_SARIMAX_BASIC.csv
+2025-04-21 23:53:54 [INFO] Limpiando dataset EURUSD_sarimax_extended: (4107, 6)
+2025-04-21 23:53:54 [INFO] Tras filtrar >20% NaN: 4103 -> 4103 filas
+2025-04-21 23:53:54 [INFO] Resultado limpieza sarimax_extended: 4107 -> 4103 filas (0.10% eliminadas)
+2025-04-21 23:53:54 [INFO] Guardado: EURUSD_SARIMAX_EXTENDED.csv (4103 filas × 7 cols)
+2025-04-21 23:53:54 [INFO] Guardado dataset EURUSD_SARIMAX_EXTENDED.csv
+2025-04-21 23:53:54 [INFO]  EURUSD procesado con éxito
+2025-04-21 23:53:54 [INFO] Procesando USDJPY con data\1_preprocess_ts\USDJPY_business_days.csv
+2025-04-21 23:53:54 [INFO]  Procesando USDJPY
+2025-04-21 23:53:54 [INFO] CSV leído: USDJPY_business_days.csv (enc=utf-8, sep=',')
+2025-04-21 23:53:54 [INFO] Convertida a numérica: boj_rate (NaN: 3280)
+2025-04-21 23:53:54 [INFO] Convertida a numérica: nikkei_225_raw (NaN: 3280)
+2025-04-21 23:53:54 [INFO] Convertida a numérica: japan_m2_raw (NaN: 3280)
+2025-04-21 23:53:54 [INFO] DataFrame inicial: 3280 filas × 10 columnas
+2025-04-21 23:53:54 [INFO] Target usdjpy_close: 2985/3280 valores válidos (8.99% NaN)
+2025-04-21 23:53:54 [INFO] Derivando variables para USDJPY...
+2025-04-21 23:53:54 [INFO] Derivada: interest_rate_diff (USDJPY)
+2025-04-21 23:53:54 [INFO] Derivada: norm_range (NaN: 295)
+2025-04-21 23:53:54 [INFO] Derivada: pct_gap (NaN: 296)
+2025-04-21 23:53:54 [INFO] Aplicando rezagos...
+2025-04-21 23:53:54 [INFO] Rezago: japan_leading_lag1m (+30 días)
+2025-04-21 23:53:54 [INFO] Aplicando log/log1p...
+2025-04-21 23:53:54 [INFO] Log: usdjpy_close
+2025-04-21 23:53:54 [INFO] Log: usdjpy_open
+2025-04-21 23:53:54 [INFO] Log: usdjpy_high
+2025-04-21 23:53:54 [INFO] Log: usdjpy_low
+2025-04-21 23:53:54 [INFO] Omitiendo log para boj_rate - Contiene valores no positivos
+2025-04-21 23:53:54 [INFO] Log: fed_funds
+2025-04-21 23:53:54 [INFO] Log: japan_leading_indicator_raw
+2025-04-21 23:53:54 [INFO] Log: us_unemployment_raw
+2025-04-21 23:53:54 [INFO] Omitiendo log para nikkei_225_raw - Contiene valores no positivos
+2025-04-21 23:53:54 [INFO] Omitiendo log para japan_m2_raw - Contiene valores no positivos
+2025-04-21 23:53:54 [INFO] Omitiendo log para interest_rate_diff - Contiene valores no positivos
+2025-04-21 23:53:54 [INFO] Log: japan_leading_lag1m
+2025-04-21 23:53:54 [INFO] Aplicando diferenciación selectiva...
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_close_log -> usdjpy_close_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_open_log -> usdjpy_open_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_high_log -> usdjpy_high_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_low_log -> usdjpy_low_log_d1
+2025-04-21 23:53:54 [WARNING] Serie boj_rate tiene <20 valores válidos (0)
+2025-04-21 23:53:54 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1
+2025-04-21 23:53:54 [WARNING] Serie nikkei_225_raw tiene <20 valores válidos (0)
+2025-04-21 23:53:54 [WARNING] Serie japan_m2_raw tiene <20 valores válidos (0)
+2025-04-21 23:53:54 [INFO] Diferenciación: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_close_log -> usdjpy_close_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_open_log -> usdjpy_open_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_high_log -> usdjpy_high_log_d1
+2025-04-21 23:53:54 [INFO] Diferenciación: usdjpy_low_log -> usdjpy_low_log_d1
+2025-04-21 23:53:55 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1
+2025-04-21 23:53:55 [INFO] Diferenciación: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1
+2025-04-21 23:53:55 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1
+2025-04-21 23:53:55 [INFO] Diferenciación: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1
+2025-04-21 23:53:55 [INFO] DataFrame transformado: 3280 filas × 30 columnas
+2025-04-21 23:53:55 [INFO] Construyendo frames para USDJPY...
+2025-04-21 23:53:55 [INFO] Target seleccionado: usdjpy_close_log_d1
+2025-04-21 23:53:55 [INFO] Variable interest_rate_diff -> basic
+2025-04-21 23:53:55 [INFO] Variable japan_leading_lag1m_log_d1 -> basic
+2025-04-21 23:53:55 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-04-21 23:53:55 [INFO] Variable nikkei_225_raw -> basic
+2025-04-21 23:53:55 [INFO] Variable japan_m2_raw -> basic
+2025-04-21 23:53:55 [INFO] Variable interest_rate_diff -> extended
+2025-04-21 23:53:55 [INFO] Variable japan_leading_lag1m_log_d1 -> extended
+2025-04-21 23:53:55 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-04-21 23:53:55 [INFO] Variable nikkei_225_raw -> extended
+2025-04-21 23:53:55 [INFO] Variable japan_m2_raw -> extended
+2025-04-21 23:53:55 [INFO] Variable norm_range -> extended
+2025-04-21 23:53:55 [INFO] Variable pct_gap -> extended
+2025-04-21 23:53:55 [WARNING] Columnas con todos NaN: ['interest_rate_diff', 'nikkei_225_raw', 'japan_m2_raw']
+2025-04-21 23:53:55 [INFO] Escalado aplicado a 1 vars en sarimax_basic
+2025-04-21 23:53:55 [INFO] Frame final sarimax_basic: (3280, 2)
+2025-04-21 23:53:55 [WARNING] Columnas con todos NaN: ['interest_rate_diff', 'nikkei_225_raw', 'japan_m2_raw']
+2025-04-21 23:53:55 [INFO] VIF aceptable para sarimax_extended
+2025-04-21 23:53:55 [INFO] Escalado aplicado a 3 vars en sarimax_extended
+2025-04-21 23:53:55 [INFO] Frame final sarimax_extended: (3280, 4)
+2025-04-21 23:53:55 [INFO] Limpiando dataset USDJPY_arima: (3280, 1)
+2025-04-21 23:53:55 [INFO] Tras filtrar >20% NaN: 2984 -> 2984 filas
+2025-04-21 23:53:55 [INFO] Resultado limpieza arima: 3280 -> 2984 filas (9.02% eliminadas)
+2025-04-21 23:53:55 [INFO] Guardado: USDJPY_ARIMA.csv (2984 filas × 2 cols)
+2025-04-21 23:53:55 [INFO] Guardado dataset USDJPY_ARIMA.csv
+2025-04-21 23:53:55 [INFO] Limpiando dataset USDJPY_sarimax_basic: (3280, 2)
+2025-04-21 23:53:55 [INFO] Tras filtrar >20% NaN: 2984 -> 2984 filas
+2025-04-21 23:53:55 [INFO] Resultado limpieza sarimax_basic: 3280 -> 2984 filas (9.02% eliminadas)
+2025-04-21 23:53:55 [INFO] Guardado: USDJPY_SARIMAX_BASIC.csv (2984 filas × 3 cols)
+2025-04-21 23:53:55 [INFO] Guardado dataset USDJPY_SARIMAX_BASIC.csv
+2025-04-21 23:53:55 [INFO] Limpiando dataset USDJPY_sarimax_extended: (3280, 4)
+2025-04-21 23:53:55 [INFO] Tras filtrar >20% NaN: 2984 -> 2984 filas
+2025-04-21 23:53:55 [INFO] Resultado limpieza sarimax_extended: 3280 -> 2984 filas (9.02% eliminadas)
+2025-04-21 23:53:55 [INFO] Guardado: USDJPY_SARIMAX_EXTENDED.csv (2984 filas × 5 cols)
+2025-04-21 23:53:55 [INFO] Guardado dataset USDJPY_SARIMAX_EXTENDED.csv
+2025-04-21 23:53:55 [INFO]  USDJPY procesado con éxito
+2025-04-21 23:53:55 [INFO]  Procesamiento completo

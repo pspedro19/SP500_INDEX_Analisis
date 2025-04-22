@@ -1,25 +1,25 @@
 {
     "instrument": "EURUSD",
     "model_type": "SARIMAX_EXTENDED",
-    "order": "(0, 0, 1)",
+    "order": "(1, 0, 0)",
     "seasonal_order": "(0, 1, 1, 5)",
     "hyperparameters": {
-        "p": 0,
+        "p": 1,
         "d": 0,
-        "q": 1,
+        "q": 0,
         "P": 0,
         "D": 1,
         "Q": 1,
         "m": 5
     },
     "metrics": {
-        "rmse": 0.0030629595036342507,
-        "mae": 0.00213118506407919,
+        "rmse": 0.003062915065587848,
+        "mae": 0.0021307968329308115,
         "mape": NaN,
         "hit_direction": 56.573705179282875,
         "naive_rmse": 0.005370265205106533,
         "naive_drift_rmse": 1.086052533077072,
-        "improvement_vs_naive": 42.96446475824486,
-        "improvement_vs_drift": 99.71797317253558
+        "improvement_vs_naive": 42.96529224152,
+        "improvement_vs_drift": 99.71797726423878
     }
 }

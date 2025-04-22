@@ -1,0 +1,8 @@
+2025-04-22 00:39:41,390 - WARNING - No se pudieron importar los módulos de generación de reportes avanzados.
+2025-04-22 00:39:41,391 - INFO - Iniciando preparación de salida y generación de reportes
+2025-04-22 00:39:41,391 - INFO - Leyendo archivo: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\all_models_with_ensemble.csv
+2025-04-22 00:39:41,420 - INFO - Archivo leído correctamente: 27508 filas, 9 columnas
+2025-04-22 00:39:41,421 - INFO - Generando versiones para diferentes consumidores...
+2025-04-22 00:39:41,632 - INFO -  CSV para Power BI (formato español) guardado en: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\archivo_para_powerbi.csv
+2025-04-22 00:39:42,160 - INFO -  JSON para API guardado en: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\predictions_api.json
+2025-04-22 00:39:42,176 - ERROR - Error en el procesamiento: No module named 'xlsxwriter'
