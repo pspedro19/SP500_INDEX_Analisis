@@ -1,0 +1,33 @@
+2025-04-22 06:51:30,225 - INFO - Usando el archivo más reciente: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx
+2025-04-22 06:51:30,225 - INFO - Usando horizonte de 20 días para forecast_period=1MONTH
+2025-04-22 06:51:30,956 - INFO - Datos leídos y ordenados por fecha.
+2025-04-22 06:51:30,958 - INFO - Se han imputado los valores NaN e inf (ffill y relleno con 0).
+2025-04-22 06:51:30,969 - INFO - Tiempo de carga y preprocesamiento: 0.74s
+2025-04-22 06:51:30,970 - INFO - Realizando división temporal por años (Year<=2022 para train+val)
+2025-04-22 06:51:30,973 - INFO - División por años: Train=2246 (years <= 2022), Val=20 (last 20 days of 2022), Test=540 (years > 2022)
+2025-04-22 06:51:30,973 - INFO - Tiempo para split de datos: 0.00s
+2025-04-22 06:51:30,973 - INFO - === Optimizando y entrenando CatBoost... ===
+2025-04-22 06:51:30,973 - INFO - [CatBoost] Iniciando optimización con 20 trials
+2025-04-22 06:51:56,716 - INFO - [CatBoost] Trial 0: RMSE=0.0613, Time=25.74s
+2025-04-22 06:52:02,501 - INFO - [CatBoost] Trial 1: RMSE=0.0576, Time=5.78s
+2025-04-22 06:52:14,203 - INFO - [CatBoost] Trial 2: RMSE=0.0584, Time=11.70s
+2025-04-22 06:54:00,263 - INFO - [CatBoost] Trial 3: RMSE=0.0619, Time=106.06s
+2025-04-22 06:55:37,118 - INFO - [CatBoost] Trial 4: RMSE=0.0631, Time=96.85s
+2025-04-22 06:56:01,488 - INFO - [CatBoost] Trial 5: RMSE=0.0675, Time=24.37s
+2025-04-22 06:56:11,362 - INFO - [CatBoost] Trial 6: RMSE=0.0599, Time=9.87s
+2025-04-22 06:57:27,223 - INFO - [CatBoost] Trial 7: RMSE=0.0659, Time=75.86s
+2025-04-22 06:57:30,533 - INFO - [CatBoost] Trial 8: RMSE=0.0562, Time=3.31s
+2025-04-22 06:57:46,605 - INFO - [CatBoost] Trial 9: RMSE=0.0637, Time=16.07s
+2025-04-22 06:57:49,643 - INFO - [CatBoost] Trial 10: RMSE=0.0553, Time=3.04s
+2025-04-22 06:57:52,554 - INFO - [CatBoost] Trial 11: RMSE=0.0553, Time=2.91s
+2025-04-22 06:57:55,351 - INFO - [CatBoost] Trial 12: RMSE=0.0551, Time=2.80s
+2025-04-22 06:57:59,568 - INFO - [CatBoost] Trial 13: RMSE=0.0568, Time=4.22s
+2025-04-22 06:58:01,160 - INFO - [CatBoost] Trial 14: RMSE=0.0593, Time=1.59s
+2025-04-22 06:58:03,395 - INFO - [CatBoost] Trial 15: RMSE=0.0556, Time=2.23s
+2025-04-22 06:58:14,608 - INFO - [CatBoost] Trial 16: RMSE=0.0580, Time=11.21s
+2025-04-22 06:58:26,409 - INFO - [CatBoost] Trial 17: RMSE=0.0573, Time=11.80s
+2025-04-22 07:05:05,187 - INFO - [CatBoost] Trial 18: RMSE=0.0674, Time=398.78s
+2025-04-22 07:05:09,217 - INFO - [CatBoost] Trial 19: RMSE=0.0564, Time=4.02s
+2025-04-22 07:05:09,218 - INFO - [CatBoost] Mejor RMSE en CV (Training): 0.0551
+2025-04-22 07:05:09,218 - INFO - [CatBoost] Mejores hiperparámetros: {'learning_rate': 0.011495797604107058, 'depth': 4, 'iterations': 1675}
+2025-04-22 07:05:09,218 - INFO - [CatBoost] Tiempo de optimización: 818.24s

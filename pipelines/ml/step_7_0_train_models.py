@@ -17,14 +17,22 @@ import lightgbm as lgb
 import xgboost as xgb
 from sklearn.neural_network import MLPRegressor
 from sklearn.svm import SVR
+import matplotlib.pyplot as plt
+
+
 
 # Importar configuraciones centralizadas
 from config import (
-    PROJECT_ROOT, MODELS_DIR, TRAINING_DIR, RESULTS_DIR, IMG_CHARTS,
+    PROJECT_ROOT, MODELS_DIR, TRAINING_DIR, RESULTS_DIR, IMG_CHARTS_DIR,
     DATE_COL, LOCAL_REFINEMENT_DAYS, TRAIN_TEST_SPLIT_RATIO,
     FORECAST_HORIZON_1MONTH, FORECAST_HORIZON_3MONTHS, RANDOM_SEED,
     ensure_directories
 )
+
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 
 # Importar funciones de visualización
 from ml.utils.plots import (
@@ -417,7 +425,7 @@ def optimize_and_train_extended(algo_name, objective_func, X_train, y_train, X_v
     trial_df = pd.DataFrame(trial_metrics)
     
     # Gráfico de evolución del RMSE por trial
-    trials_chart_path = os.path.join(IMG_CHARTS, f"{algo_name.lower()}_trials_evolution.png")
+    trials_chart_path = os.path.join(IMG_CHARTS_DIR, f"{algo_name.lower()}_trials_evolution.png")
     plt.figure(figsize=(10, 6))
     plt.plot(trial_df['Trial'], trial_df['RMSE'], marker='o', linestyle='-')
     plt.title(f"Evolución de RMSE en trials - {algo_name}")
@@ -601,7 +609,7 @@ def optimize_and_train_extended(algo_name, objective_func, X_train, y_train, X_v
         
         # Generar visualización completa
         model_version = f"{algo_name}_Trial{trial.number}"
-        chart_path = os.path.join(IMG_CHARTS, f"{algo_name.lower()}_trial{trial.number}_full.png")
+        chart_path = os.path.join(IMG_CHARTS_DIR, f"{algo_name.lower()}_trial{trial.number}_full.png")
         plot_real_vs_pred(
             df_all,
             title=f"Histórico y Forecast - {model_version}",
@@ -619,7 +627,7 @@ def optimize_and_train_extended(algo_name, objective_func, X_train, y_train, X_v
         
         # Feature importance si el modelo lo soporta
         if hasattr(refined_model, 'feature_importances_'):
-            importance_chart_path = os.path.join(IMG_CHARTS, f"{algo_name.lower()}_trial{trial.number}_importance.png")
+            importance_chart_path = os.path.join(IMG_CHARTS_DIR, f"{algo_name.lower()}_trial{trial.number}_importance.png")
             feature_names = X_train.columns
             
             plot_feature_importance(
@@ -668,7 +676,7 @@ def run_training():
     
     # Asegurar que existen los directorios
     os.makedirs(args.output_dir, exist_ok=True)
-    os.makedirs(IMG_CHARTS, exist_ok=True)
+    os.makedirs(IMG_CHARTS_DIR, exist_ok=True)
     
     # Determinar horizonte según forecast_period
     if args.forecast_period == "1MONTH":
@@ -836,7 +844,7 @@ def run_training():
     plt.xlabel("Algoritmo")
     plt.ylabel("Tiempo (segundos)")
     plt.grid(axis='y', alpha=0.3)
-    plt.savefig(os.path.join(IMG_CHARTS, "training_times.png"), dpi=300)
+    plt.savefig(os.path.join(IMG_CHARTS_DIR, "training_times.png"), dpi=300)
     plt.close()
     
     if final_results:
@@ -848,7 +856,7 @@ def run_training():
         logging.info(f"Archivo final de predicciones guardado en {args.output_predictions}")
         
         # Gráfico comparativo de todos los modelos
-        all_models_chart = os.path.join(IMG_CHARTS, "all_models_comparison.png")
+        all_models_chart = os.path.join(IMG_CHARTS_DIR, "all_models_comparison.png")
         plot_real_vs_pred(
             predictions_df[predictions_df['Periodo'] != 'Forecast'],
             title="Comparación de todos los modelos",
@@ -868,7 +876,7 @@ def run_training():
         plt.grid(axis='y', alpha=0.3)
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
-        plt.savefig(os.path.join(IMG_CHARTS, "rmse_comparison.png"), dpi=300)
+        plt.savefig(os.path.join(IMG_CHARTS_DIR, "rmse_comparison.png"), dpi=300)
         plt.close()
         
         # Generar informe resumen en formato CSV
@@ -902,7 +910,7 @@ def run_training():
     
     # Imprimir resumen final
     print(f"✅ Entrenamiento completado para {len(algorithms)} algoritmos")
-    print(f"✅ Visualizaciones generadas en: {IMG_CHARTS}")
+    print(f"✅ Visualizaciones generadas en: {IMG_CHARTS_DIR}")
     print(f"✅ Modelos guardados en: {args.output_dir}")
     print(f"✅ Predicciones consolidadas en: {args.output_predictions}")
     print(f"✅ Tiempo total de ejecución: {total_time:.2f}s")

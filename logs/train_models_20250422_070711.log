@@ -1,0 +1,391 @@
+2025-04-22 07:07:11,194 - INFO - Usando el archivo más reciente: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx
+2025-04-22 07:07:11,195 - INFO - Usando horizonte de 20 días para forecast_period=1MONTH
+2025-04-22 07:07:11,951 - INFO - Datos leídos y ordenados por fecha.
+2025-04-22 07:07:11,955 - INFO - Se han imputado los valores NaN e inf (ffill y relleno con 0).
+2025-04-22 07:07:11,967 - INFO - Tiempo de carga y preprocesamiento: 0.77s
+2025-04-22 07:07:11,967 - INFO - Realizando división temporal por años (Year<=2022 para train+val)
+2025-04-22 07:07:11,971 - INFO - División por años: Train=2246 (years <= 2022), Val=20 (last 20 days of 2022), Test=540 (years > 2022)
+2025-04-22 07:07:11,971 - INFO - Tiempo para split de datos: 0.00s
+2025-04-22 07:07:11,971 - INFO - === Optimizando y entrenando CatBoost... ===
+2025-04-22 07:07:11,971 - INFO - [CatBoost] Iniciando optimización con 20 trials
+2025-04-22 07:08:30,023 - INFO - [CatBoost] Trial 0: RMSE=0.0628, Time=78.05s
+2025-04-22 07:09:33,679 - INFO - [CatBoost] Trial 1: RMSE=0.0616, Time=63.65s
+2025-04-22 07:09:39,091 - INFO - [CatBoost] Trial 2: RMSE=0.0579, Time=5.41s
+2025-04-22 07:09:40,870 - INFO - [CatBoost] Trial 3: RMSE=0.0553, Time=1.78s
+2025-04-22 07:09:54,240 - INFO - [CatBoost] Trial 4: RMSE=0.0594, Time=13.37s
+2025-04-22 07:14:16,862 - INFO - [CatBoost] Trial 5: RMSE=0.0638, Time=262.62s
+2025-04-22 07:15:07,271 - INFO - [CatBoost] Trial 6: RMSE=0.0606, Time=50.40s
+2025-04-22 07:17:17,881 - INFO - [CatBoost] Trial 7: RMSE=0.0735, Time=130.61s
+2025-04-22 07:17:24,279 - INFO - [CatBoost] Trial 8: RMSE=0.0577, Time=6.39s
+2025-04-22 07:17:36,048 - INFO - [CatBoost] Trial 9: RMSE=0.0580, Time=11.77s
+2025-04-22 07:17:37,093 - INFO - [CatBoost] Trial 10: RMSE=0.0556, Time=1.04s
+2025-04-22 07:17:37,970 - INFO - [CatBoost] Trial 11: RMSE=0.0560, Time=0.88s
+2025-04-22 07:17:39,471 - INFO - [CatBoost] Trial 12: RMSE=0.0590, Time=1.50s
+2025-04-22 07:17:40,755 - INFO - [CatBoost] Trial 13: RMSE=0.0561, Time=1.28s
+2025-04-22 07:17:42,799 - INFO - [CatBoost] Trial 14: RMSE=0.0577, Time=2.04s
+2025-04-22 07:17:45,327 - INFO - [CatBoost] Trial 15: RMSE=0.0573, Time=2.53s
+2025-04-22 07:17:48,942 - INFO - [CatBoost] Trial 16: RMSE=0.0574, Time=3.61s
+2025-04-22 07:17:51,295 - INFO - [CatBoost] Trial 17: RMSE=0.0559, Time=2.35s
+2025-04-22 07:17:53,138 - INFO - [CatBoost] Trial 18: RMSE=0.0583, Time=1.84s
+2025-04-22 07:18:14,114 - INFO - [CatBoost] Trial 19: RMSE=0.0595, Time=20.98s
+2025-04-22 07:18:14,116 - INFO - [CatBoost] Mejor RMSE en CV (Training): 0.0553
+2025-04-22 07:18:14,116 - INFO - [CatBoost] Mejores hiperparámetros: {'learning_rate': 0.023685779885772355, 'depth': 4, 'iterations': 1496}
+2025-04-22 07:18:14,116 - INFO - [CatBoost] Tiempo de optimización: 662.14s
+2025-04-22 07:18:14,389 - INFO - [CatBoost] Gráfico de evolución de trials guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trials_evolution.png
+2025-04-22 07:18:14,391 - INFO - [CatBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.023685779885772355, 'depth': 4, 'iterations': 1496}
+2025-04-22 07:18:16,376 - INFO - [CatBoost] Modelo entrenado inicialmente en 1.98s
+2025-04-22 07:18:17,527 - INFO - [CatBoost] Modelo refinado localmente en 1.15s
+2025-04-22 07:18:17,532 - INFO - [CatBoost] Training predictions generadas en 0.00s (RMSE=0.1208)
+2025-04-22 07:18:17,535 - INFO - [CatBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0580)
+2025-04-22 07:18:17,539 - INFO - [CatBoost] Predicciones en Test generadas en 0.00s (RMSE=0.0409)
+2025-04-22 07:18:17,544 - INFO - [CatBoost] Mejor modelo guardado como: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\catboost_best.pkl
+2025-04-22 07:18:17,544 - INFO - [CatBoost] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\catboosttrial3.pkl
+2025-04-22 07:18:17,556 - INFO - [CatBoost] Forecast de 20 días generado en 0.01s
+2025-04-22 07:18:17,874 - INFO - [CatBoost] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial3_full.png
+2025-04-22 07:18:17,894 - INFO - [CatBoost] CSV para Trial 3 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_catboost_trial3.csv
+2025-04-22 07:18:18,247 - INFO - [CatBoost] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial3_importance.png
+2025-04-22 07:18:18,248 - INFO - [CatBoost] Trial 3 métricas:
+2025-04-22 07:18:18,248 - INFO -   - Training: RMSE=0.1208, MAE=0.0939, R2=-1.2371
+2025-04-22 07:18:18,248 - INFO -   - Validación: RMSE=0.0580, MAE=0.0571, R2=-25.2828
+2025-04-22 07:18:18,248 - INFO -   - Test: RMSE=0.0409, MAE=0.0335, R2=-3.1824
+2025-04-22 07:18:18,248 - INFO - [CatBoost] Tiempo total para Trial 3: 3.86s
+2025-04-22 07:18:18,248 - INFO - [CatBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.035885966544752256, 'depth': 4, 'iterations': 885}
+2025-04-22 07:18:19,406 - INFO - [CatBoost] Modelo entrenado inicialmente en 1.16s
+2025-04-22 07:18:20,095 - INFO - [CatBoost] Modelo refinado localmente en 0.69s
+2025-04-22 07:18:20,098 - INFO - [CatBoost] Training predictions generadas en 0.00s (RMSE=0.1224)
+2025-04-22 07:18:20,101 - INFO - [CatBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0558)
+2025-04-22 07:18:20,105 - INFO - [CatBoost] Predicciones en Test generadas en 0.00s (RMSE=0.0392)
+2025-04-22 07:18:20,106 - INFO - [CatBoost] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\catboosttrial10.pkl
+2025-04-22 07:18:20,118 - INFO - [CatBoost] Forecast de 20 días generado en 0.01s
+2025-04-22 07:18:20,430 - INFO - [CatBoost] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial10_full.png
+2025-04-22 07:18:20,448 - INFO - [CatBoost] CSV para Trial 10 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_catboost_trial10.csv
+2025-04-22 07:18:20,805 - INFO - [CatBoost] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial10_importance.png
+2025-04-22 07:18:20,805 - INFO - [CatBoost] Trial 10 métricas:
+2025-04-22 07:18:20,805 - INFO -   - Training: RMSE=0.1224, MAE=0.0957, R2=-1.2985
+2025-04-22 07:18:20,805 - INFO -   - Validación: RMSE=0.0558, MAE=0.0551, R2=-23.3934
+2025-04-22 07:18:20,805 - INFO -   - Test: RMSE=0.0392, MAE=0.0319, R2=-2.8462
+2025-04-22 07:18:20,806 - INFO - [CatBoost] Tiempo total para Trial 10: 2.56s
+2025-04-22 07:18:20,806 - INFO - [CatBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.008668948976989239, 'depth': 4, 'iterations': 806}
+2025-04-22 07:18:21,892 - INFO - [CatBoost] Modelo entrenado inicialmente en 1.09s
+2025-04-22 07:18:22,540 - INFO - [CatBoost] Modelo refinado localmente en 0.65s
+2025-04-22 07:18:22,544 - INFO - [CatBoost] Training predictions generadas en 0.00s (RMSE=0.1205)
+2025-04-22 07:18:22,547 - INFO - [CatBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0555)
+2025-04-22 07:18:22,551 - INFO - [CatBoost] Predicciones en Test generadas en 0.00s (RMSE=0.0425)
+2025-04-22 07:18:22,552 - INFO - [CatBoost] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\catboosttrial17.pkl
+2025-04-22 07:18:22,564 - INFO - [CatBoost] Forecast de 20 días generado en 0.01s
+2025-04-22 07:18:22,871 - INFO - [CatBoost] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial17_full.png
+2025-04-22 07:18:22,896 - INFO - [CatBoost] CSV para Trial 17 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_catboost_trial17.csv
+2025-04-22 07:18:23,247 - INFO - [CatBoost] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial17_importance.png
+2025-04-22 07:18:23,248 - INFO - [CatBoost] Trial 17 métricas:
+2025-04-22 07:18:23,248 - INFO -   - Training: RMSE=0.1205, MAE=0.0944, R2=-1.2254
+2025-04-22 07:18:23,248 - INFO -   - Validación: RMSE=0.0555, MAE=0.0544, R2=-23.0991
+2025-04-22 07:18:23,248 - INFO -   - Test: RMSE=0.0425, MAE=0.0359, R2=-3.5115
+2025-04-22 07:18:23,248 - INFO - [CatBoost] Tiempo total para Trial 17: 2.44s
+2025-04-22 07:18:23,249 - INFO - [CatBoost] Procesamiento completo en 671.28s
+2025-04-22 07:18:23,250 - INFO - === Completado CatBoost en 671.28s ===
+2025-04-22 07:18:23,250 - INFO - === Optimizando y entrenando LightGBM... ===
+2025-04-22 07:18:23,251 - INFO - [LightGBM] Iniciando optimización con 20 trials
+2025-04-22 07:18:23,760 - INFO - [LightGBM] Trial 0: RMSE=0.0682, Time=0.51s
+2025-04-22 07:18:24,282 - INFO - [LightGBM] Trial 1: RMSE=0.0672, Time=0.52s
+2025-04-22 07:18:26,071 - INFO - [LightGBM] Trial 2: RMSE=0.0674, Time=1.79s
+2025-04-22 07:18:26,392 - INFO - [LightGBM] Trial 3: RMSE=0.0681, Time=0.32s
+2025-04-22 07:18:27,353 - INFO - [LightGBM] Trial 4: RMSE=0.0673, Time=0.96s
+2025-04-22 07:18:29,542 - INFO - [LightGBM] Trial 5: RMSE=0.0684, Time=2.19s
+2025-04-22 07:18:31,623 - INFO - [LightGBM] Trial 6: RMSE=0.0700, Time=2.08s
+2025-04-22 07:18:33,597 - INFO - [LightGBM] Trial 7: RMSE=0.0673, Time=1.97s
+2025-04-22 07:18:34,011 - INFO - [LightGBM] Trial 8: RMSE=0.0678, Time=0.41s
+2025-04-22 07:18:35,083 - INFO - [LightGBM] Trial 9: RMSE=0.0668, Time=1.07s
+2025-04-22 07:18:35,577 - INFO - [LightGBM] Trial 10: RMSE=0.0672, Time=0.49s
+2025-04-22 07:18:36,258 - INFO - [LightGBM] Trial 11: RMSE=0.0670, Time=0.68s
+2025-04-22 07:18:36,838 - INFO - [LightGBM] Trial 12: RMSE=0.0669, Time=0.58s
+2025-04-22 07:18:37,650 - INFO - [LightGBM] Trial 13: RMSE=0.0673, Time=0.81s
+2025-04-22 07:18:38,337 - INFO - [LightGBM] Trial 14: RMSE=0.0674, Time=0.69s
+2025-04-22 07:18:39,729 - INFO - [LightGBM] Trial 15: RMSE=0.0679, Time=1.39s
+2025-04-22 07:18:40,285 - INFO - [LightGBM] Trial 16: RMSE=0.0673, Time=0.55s
+2025-04-22 07:18:41,057 - INFO - [LightGBM] Trial 17: RMSE=0.0676, Time=0.77s
+2025-04-22 07:18:42,451 - INFO - [LightGBM] Trial 18: RMSE=0.0680, Time=1.39s
+2025-04-22 07:18:43,219 - INFO - [LightGBM] Trial 19: RMSE=0.0670, Time=0.77s
+2025-04-22 07:18:43,221 - INFO - [LightGBM] Mejor RMSE en CV (Training): 0.0668
+2025-04-22 07:18:43,221 - INFO - [LightGBM] Mejores hiperparámetros: {'learning_rate': 0.011977364682892733, 'max_depth': 6, 'n_estimators': 859}
+2025-04-22 07:18:43,221 - INFO - [LightGBM] Tiempo de optimización: 19.97s
+2025-04-22 07:18:43,423 - INFO - [LightGBM] Gráfico de evolución de trials guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trials_evolution.png
+2025-04-22 07:18:43,424 - INFO - [LightGBM] Entrenando modelo final con parámetros: {'learning_rate': 0.011977364682892733, 'max_depth': 6, 'n_estimators': 859}
+2025-04-22 07:18:44,141 - INFO - [LightGBM] Modelo entrenado inicialmente en 0.72s
+2025-04-22 07:18:44,277 - INFO - [LightGBM] Modelo refinado localmente en 0.14s
+2025-04-22 07:18:44,292 - INFO - [LightGBM] Training predictions generadas en 0.01s (RMSE=0.1313)
+2025-04-22 07:18:44,295 - INFO - [LightGBM] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0708)
+2025-04-22 07:18:44,301 - INFO - [LightGBM] Predicciones en Test generadas en 0.01s (RMSE=0.0444)
+2025-04-22 07:18:44,323 - INFO - [LightGBM] Mejor modelo guardado como: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\lightgbm_best.pkl
+2025-04-22 07:18:44,323 - INFO - [LightGBM] Modelo refinado guardado en 0.02s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\lightgbmtrial9.pkl
+2025-04-22 07:18:44,353 - INFO - [LightGBM] Forecast de 20 días generado en 0.03s
+2025-04-22 07:18:44,687 - INFO - [LightGBM] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial9_full.png
+2025-04-22 07:18:44,705 - INFO - [LightGBM] CSV para Trial 9 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_lightgbm_trial9.csv
+2025-04-22 07:18:45,043 - INFO - [LightGBM] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial9_importance.png
+2025-04-22 07:18:45,043 - INFO - [LightGBM] Trial 9 métricas:
+2025-04-22 07:18:45,043 - INFO -   - Training: RMSE=0.1313, MAE=0.1017, R2=-1.6426
+2025-04-22 07:18:45,044 - INFO -   - Validación: RMSE=0.0708, MAE=0.0702, R2=-38.2442
+2025-04-22 07:18:45,044 - INFO -   - Test: RMSE=0.0444, MAE=0.0340, R2=-3.9193
+2025-04-22 07:18:45,044 - INFO - [LightGBM] Tiempo total para Trial 9: 1.62s
+2025-04-22 07:18:45,044 - INFO - [LightGBM] Entrenando modelo final con parámetros: {'learning_rate': 0.018697312434715375, 'max_depth': 6, 'n_estimators': 543}
+2025-04-22 07:18:45,513 - INFO - [LightGBM] Modelo entrenado inicialmente en 0.47s
+2025-04-22 07:18:45,601 - INFO - [LightGBM] Modelo refinado localmente en 0.09s
+2025-04-22 07:18:45,612 - INFO - [LightGBM] Training predictions generadas en 0.01s (RMSE=0.1310)
+2025-04-22 07:18:45,615 - INFO - [LightGBM] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0707)
+2025-04-22 07:18:45,622 - INFO - [LightGBM] Predicciones en Test generadas en 0.01s (RMSE=0.0441)
+2025-04-22 07:18:45,630 - INFO - [LightGBM] Modelo refinado guardado en 0.01s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\lightgbmtrial12.pkl
+2025-04-22 07:18:45,654 - INFO - [LightGBM] Forecast de 20 días generado en 0.02s
+2025-04-22 07:18:45,985 - INFO - [LightGBM] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial12_full.png
+2025-04-22 07:18:46,009 - INFO - [LightGBM] CSV para Trial 12 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_lightgbm_trial12.csv
+2025-04-22 07:18:46,360 - INFO - [LightGBM] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial12_importance.png
+2025-04-22 07:18:46,360 - INFO - [LightGBM] Trial 12 métricas:
+2025-04-22 07:18:46,361 - INFO -   - Training: RMSE=0.1310, MAE=0.1015, R2=-1.6316
+2025-04-22 07:18:46,361 - INFO -   - Validación: RMSE=0.0707, MAE=0.0701, R2=-38.1131
+2025-04-22 07:18:46,361 - INFO -   - Test: RMSE=0.0441, MAE=0.0338, R2=-3.8635
+2025-04-22 07:18:46,361 - INFO - [LightGBM] Tiempo total para Trial 12: 1.32s
+2025-04-22 07:18:46,361 - INFO - [LightGBM] Entrenando modelo final con parámetros: {'learning_rate': 0.019628350722034234, 'max_depth': 6, 'n_estimators': 523}
+2025-04-22 07:18:46,864 - INFO - [LightGBM] Modelo entrenado inicialmente en 0.50s
+2025-04-22 07:18:46,947 - INFO - [LightGBM] Modelo refinado localmente en 0.08s
+2025-04-22 07:18:46,957 - INFO - [LightGBM] Training predictions generadas en 0.01s (RMSE=0.1318)
+2025-04-22 07:18:46,962 - INFO - [LightGBM] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0711)
+2025-04-22 07:18:46,967 - INFO - [LightGBM] Predicciones en Test generadas en 0.01s (RMSE=0.0445)
+2025-04-22 07:18:46,974 - INFO - [LightGBM] Modelo refinado guardado en 0.01s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\lightgbmtrial11.pkl
+2025-04-22 07:18:46,997 - INFO - [LightGBM] Forecast de 20 días generado en 0.02s
+2025-04-22 07:18:47,321 - INFO - [LightGBM] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial11_full.png
+2025-04-22 07:18:47,342 - INFO - [LightGBM] CSV para Trial 11 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_lightgbm_trial11.csv
+2025-04-22 07:18:47,690 - INFO - [LightGBM] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial11_importance.png
+2025-04-22 07:18:47,690 - INFO - [LightGBM] Trial 11 métricas:
+2025-04-22 07:18:47,690 - INFO -   - Training: RMSE=0.1318, MAE=0.1022, R2=-1.6645
+2025-04-22 07:18:47,691 - INFO -   - Validación: RMSE=0.0711, MAE=0.0704, R2=-38.4950
+2025-04-22 07:18:47,691 - INFO -   - Test: RMSE=0.0445, MAE=0.0342, R2=-3.9559
+2025-04-22 07:18:47,691 - INFO - [LightGBM] Tiempo total para Trial 11: 1.33s
+2025-04-22 07:18:47,692 - INFO - [LightGBM] Procesamiento completo en 24.44s
+2025-04-22 07:18:47,692 - INFO - === Completado LightGBM en 24.44s ===
+2025-04-22 07:18:47,692 - INFO - === Optimizando y entrenando XGBoost... ===
+2025-04-22 07:18:47,692 - INFO - [XGBoost] Iniciando optimización con 20 trials
+2025-04-22 07:18:51,775 - INFO - [XGBoost] Trial 0: RMSE=0.0683, Time=4.08s
+2025-04-22 07:19:02,616 - INFO - [XGBoost] Trial 1: RMSE=0.0693, Time=10.84s
+2025-04-22 07:19:04,561 - INFO - [XGBoost] Trial 2: RMSE=0.0684, Time=1.94s
+2025-04-22 07:19:13,595 - INFO - [XGBoost] Trial 3: RMSE=0.0686, Time=9.03s
+2025-04-22 07:19:14,381 - INFO - [XGBoost] Trial 4: RMSE=0.0675, Time=0.78s
+2025-04-22 07:19:18,833 - INFO - [XGBoost] Trial 5: RMSE=0.0680, Time=4.45s
+2025-04-22 07:19:21,733 - INFO - [XGBoost] Trial 6: RMSE=0.0687, Time=2.90s
+2025-04-22 07:19:23,517 - INFO - [XGBoost] Trial 7: RMSE=0.0687, Time=1.78s
+2025-04-22 07:19:30,084 - INFO - [XGBoost] Trial 8: RMSE=0.0677, Time=6.56s
+2025-04-22 07:19:32,921 - INFO - [XGBoost] Trial 9: RMSE=0.0690, Time=2.83s
+2025-04-22 07:19:33,516 - INFO - [XGBoost] Trial 10: RMSE=0.0683, Time=0.59s
+2025-04-22 07:19:47,647 - INFO - [XGBoost] Trial 11: RMSE=0.0681, Time=14.13s
+2025-04-22 07:19:49,664 - INFO - [XGBoost] Trial 12: RMSE=0.0676, Time=2.01s
+2025-04-22 07:19:52,190 - INFO - [XGBoost] Trial 13: RMSE=0.0675, Time=2.52s
+2025-04-22 07:19:55,523 - INFO - [XGBoost] Trial 14: RMSE=0.0685, Time=3.33s
+2025-04-22 07:19:58,627 - INFO - [XGBoost] Trial 15: RMSE=0.0678, Time=3.10s
+2025-04-22 07:19:59,525 - INFO - [XGBoost] Trial 16: RMSE=0.0680, Time=0.90s
+2025-04-22 07:20:03,990 - INFO - [XGBoost] Trial 17: RMSE=0.0682, Time=4.46s
+2025-04-22 07:20:05,989 - INFO - [XGBoost] Trial 18: RMSE=0.0729, Time=1.99s
+2025-04-22 07:20:06,529 - INFO - [XGBoost] Trial 19: RMSE=0.0683, Time=0.54s
+2025-04-22 07:20:06,530 - INFO - [XGBoost] Mejor RMSE en CV (Training): 0.0675
+2025-04-22 07:20:06,530 - INFO - [XGBoost] Mejores hiperparámetros: {'learning_rate': 0.016366172800636226, 'max_depth': 4, 'n_estimators': 1944, 'subsample': 0.5980597561057878}
+2025-04-22 07:20:06,530 - INFO - [XGBoost] Tiempo de optimización: 78.84s
+2025-04-22 07:20:06,755 - INFO - [XGBoost] Gráfico de evolución de trials guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trials_evolution.png
+2025-04-22 07:20:06,756 - INFO - [XGBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.016366172800636226, 'max_depth': 4, 'n_estimators': 1944, 'subsample': 0.5980597561057878}
+2025-04-22 07:20:08,562 - INFO - [XGBoost] Modelo entrenado inicialmente en 1.81s
+2025-04-22 07:20:09,342 - INFO - [XGBoost] Modelo refinado localmente en 0.78s
+2025-04-22 07:20:09,350 - INFO - [XGBoost] Training predictions generadas en 0.01s (RMSE=0.1312)
+2025-04-22 07:20:09,355 - INFO - [XGBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0692)
+2025-04-22 07:20:09,360 - INFO - [XGBoost] Predicciones en Test generadas en 0.01s (RMSE=0.0442)
+2025-04-22 07:20:09,413 - INFO - [XGBoost] Mejor modelo guardado como: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\xgboost_best.pkl
+2025-04-22 07:20:09,413 - INFO - [XGBoost] Modelo refinado guardado en 0.05s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\xgboosttrial4.pkl
+2025-04-22 07:20:09,425 - INFO - [XGBoost] Forecast de 20 días generado en 0.01s
+2025-04-22 07:20:09,777 - INFO - [XGBoost] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial4_full.png
+2025-04-22 07:20:09,796 - INFO - [XGBoost] CSV para Trial 4 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_xgboost_trial4.csv
+2025-04-22 07:20:10,228 - INFO - [XGBoost] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial4_importance.png
+2025-04-22 07:20:10,229 - INFO - [XGBoost] Trial 4 métricas:
+2025-04-22 07:20:10,229 - INFO -   - Training: RMSE=0.1312, MAE=0.1026, R2=-1.6400
+2025-04-22 07:20:10,229 - INFO -   - Validación: RMSE=0.0692, MAE=0.0681, R2=-36.4548
+2025-04-22 07:20:10,229 - INFO -   - Test: RMSE=0.0442, MAE=0.0334, R2=-3.8745
+2025-04-22 07:20:10,229 - INFO - [XGBoost] Tiempo total para Trial 4: 3.47s
+2025-04-22 07:20:10,230 - INFO - [XGBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.003722890554940315, 'max_depth': 4, 'n_estimators': 1964, 'subsample': 0.6371313057678301}
+2025-04-22 07:20:12,039 - INFO - [XGBoost] Modelo entrenado inicialmente en 1.81s
+2025-04-22 07:20:13,125 - INFO - [XGBoost] Modelo refinado localmente en 1.09s
+2025-04-22 07:20:13,138 - INFO - [XGBoost] Training predictions generadas en 0.01s (RMSE=0.1326)
+2025-04-22 07:20:13,145 - INFO - [XGBoost] Predicciones en Evaluacion generadas en 0.01s (RMSE=0.0699)
+2025-04-22 07:20:13,152 - INFO - [XGBoost] Predicciones en Test generadas en 0.01s (RMSE=0.0447)
+2025-04-22 07:20:13,188 - INFO - [XGBoost] Modelo refinado guardado en 0.04s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\xgboosttrial13.pkl
+2025-04-22 07:20:13,199 - INFO - [XGBoost] Forecast de 20 días generado en 0.01s
+2025-04-22 07:20:13,548 - INFO - [XGBoost] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial13_full.png
+2025-04-22 07:20:13,568 - INFO - [XGBoost] CSV para Trial 13 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_xgboost_trial13.csv
+2025-04-22 07:20:13,926 - INFO - [XGBoost] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial13_importance.png
+2025-04-22 07:20:13,927 - INFO - [XGBoost] Trial 13 métricas:
+2025-04-22 07:20:13,927 - INFO -   - Training: RMSE=0.1326, MAE=0.1037, R2=-1.6947
+2025-04-22 07:20:13,927 - INFO -   - Validación: RMSE=0.0699, MAE=0.0689, R2=-37.2508
+2025-04-22 07:20:13,927 - INFO -   - Test: RMSE=0.0447, MAE=0.0340, R2=-3.9839
+2025-04-22 07:20:13,927 - INFO - [XGBoost] Tiempo total para Trial 13: 3.70s
+2025-04-22 07:20:13,927 - INFO - [XGBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.004711193655571011, 'max_depth': 4, 'n_estimators': 1998, 'subsample': 0.5060348223294568}
+2025-04-22 07:20:15,730 - INFO - [XGBoost] Modelo entrenado inicialmente en 1.80s
+2025-04-22 07:20:16,791 - INFO - [XGBoost] Modelo refinado localmente en 1.06s
+2025-04-22 07:20:16,801 - INFO - [XGBoost] Training predictions generadas en 0.01s (RMSE=0.1301)
+2025-04-22 07:20:16,805 - INFO - [XGBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0629)
+2025-04-22 07:20:16,811 - INFO - [XGBoost] Predicciones en Test generadas en 0.01s (RMSE=0.0414)
+2025-04-22 07:20:16,841 - INFO - [XGBoost] Modelo refinado guardado en 0.03s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\xgboosttrial12.pkl
+2025-04-22 07:20:16,850 - INFO - [XGBoost] Forecast de 20 días generado en 0.01s
+2025-04-22 07:20:17,195 - INFO - [XGBoost] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial12_full.png
+2025-04-22 07:20:17,215 - INFO - [XGBoost] CSV para Trial 12 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_xgboost_trial12.csv
+2025-04-22 07:20:17,572 - INFO - [XGBoost] Gráfico de importancia de features guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial12_importance.png
+2025-04-22 07:20:17,572 - INFO - [XGBoost] Trial 12 métricas:
+2025-04-22 07:20:17,573 - INFO -   - Training: RMSE=0.1301, MAE=0.1014, R2=-1.5940
+2025-04-22 07:20:17,573 - INFO -   - Validación: RMSE=0.0629, MAE=0.0619, R2=-29.9724
+2025-04-22 07:20:17,573 - INFO -   - Test: RMSE=0.0414, MAE=0.0315, R2=-3.2830
+2025-04-22 07:20:17,573 - INFO - [XGBoost] Tiempo total para Trial 12: 3.65s
+2025-04-22 07:20:17,574 - INFO - [XGBoost] Procesamiento completo en 89.88s
+2025-04-22 07:20:17,575 - INFO - === Completado XGBoost en 89.88s ===
+2025-04-22 07:20:17,575 - INFO - === Optimizando y entrenando MLP... ===
+2025-04-22 07:20:17,575 - INFO - [MLP] Iniciando optimización con 20 trials
+2025-04-22 07:20:43,888 - INFO - [MLP] Trial 0: RMSE=0.3190, Time=26.31s
+2025-04-22 07:20:52,722 - INFO - [MLP] Trial 1: RMSE=0.3776, Time=8.83s
+2025-04-22 07:21:10,604 - INFO - [MLP] Trial 2: RMSE=0.3280, Time=17.88s
+2025-04-22 07:21:18,911 - INFO - [MLP] Trial 3: RMSE=0.3170, Time=8.31s
+2025-04-22 07:21:41,629 - INFO - [MLP] Trial 4: RMSE=0.3866, Time=22.72s
+2025-04-22 07:22:03,667 - INFO - [MLP] Trial 5: RMSE=0.3147, Time=22.04s
+2025-04-22 07:22:13,918 - INFO - [MLP] Trial 6: RMSE=0.2934, Time=10.25s
+2025-04-22 07:22:22,106 - INFO - [MLP] Trial 7: RMSE=0.3738, Time=8.19s
+2025-04-22 07:22:41,180 - INFO - [MLP] Trial 8: RMSE=0.3226, Time=19.07s
+2025-04-22 07:23:01,782 - INFO - [MLP] Trial 9: RMSE=0.4202, Time=20.60s
+2025-04-22 07:23:17,598 - INFO - [MLP] Trial 10: RMSE=0.4332, Time=15.82s
+2025-04-22 07:23:34,548 - INFO - [MLP] Trial 11: RMSE=0.2970, Time=16.95s
+2025-04-22 07:23:47,864 - INFO - [MLP] Trial 12: RMSE=0.3297, Time=13.32s
+2025-04-22 07:23:57,321 - INFO - [MLP] Trial 13: RMSE=0.3801, Time=9.46s
+2025-04-22 07:24:08,658 - INFO - [MLP] Trial 14: RMSE=0.3189, Time=11.34s
+2025-04-22 07:24:21,239 - INFO - [MLP] Trial 15: RMSE=0.4171, Time=12.58s
+2025-04-22 07:24:41,351 - INFO - [MLP] Trial 16: RMSE=0.3605, Time=20.11s
+2025-04-22 07:24:53,931 - INFO - [MLP] Trial 17: RMSE=0.3519, Time=12.58s
+2025-04-22 07:25:10,103 - INFO - [MLP] Trial 18: RMSE=0.3019, Time=16.17s
+2025-04-22 07:25:20,233 - INFO - [MLP] Trial 19: RMSE=0.2978, Time=10.13s
+2025-04-22 07:25:20,234 - INFO - [MLP] Mejor RMSE en CV (Training): 0.2934
+2025-04-22 07:25:20,234 - INFO - [MLP] Mejores hiperparámetros: {'hidden_neurons': 89, 'learning_rate_init': 0.0003389937983559405, 'max_iter': 464}
+2025-04-22 07:25:20,234 - INFO - [MLP] Tiempo de optimización: 302.66s
+2025-04-22 07:25:20,462 - INFO - [MLP] Gráfico de evolución de trials guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\mlp_trials_evolution.png
+2025-04-22 07:25:20,463 - INFO - [MLP] Entrenando modelo final con parámetros: {'hidden_neurons': 89, 'learning_rate_init': 0.0003389937983559405, 'max_iter': 464}
+2025-04-22 07:25:21,310 - INFO - [MLP] Modelo entrenado inicialmente en 0.85s
+2025-04-22 07:25:21,455 - INFO - [MLP] Modelo refinado localmente en 0.14s
+2025-04-22 07:25:21,460 - INFO - [MLP] Training predictions generadas en 0.00s (RMSE=0.5526)
+2025-04-22 07:25:21,463 - INFO - [MLP] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.6208)
+2025-04-22 07:25:21,466 - INFO - [MLP] Predicciones en Test generadas en 0.00s (RMSE=0.4911)
+2025-04-22 07:25:21,474 - INFO - [MLP] Mejor modelo guardado como: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\mlp_best.pkl
+2025-04-22 07:25:21,474 - INFO - [MLP] Modelo refinado guardado en 0.01s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\mlptrial6.pkl
+2025-04-22 07:25:21,480 - INFO - [MLP] Forecast de 20 días generado en 0.01s
+2025-04-22 07:25:21,848 - INFO - [MLP] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\mlp_trial6_full.png
+2025-04-22 07:25:21,867 - INFO - [MLP] CSV para Trial 6 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_mlp_trial6.csv
+2025-04-22 07:25:21,867 - INFO - [MLP] Trial 6 métricas:
+2025-04-22 07:25:21,868 - INFO -   - Training: RMSE=0.5526, MAE=0.4649, R2=-45.8253
+2025-04-22 07:25:21,868 - INFO -   - Validación: RMSE=0.6208, MAE=0.5316, R2=-3013.6700
+2025-04-22 07:25:21,868 - INFO -   - Test: RMSE=0.4911, MAE=0.4348, R2=-601.6834
+2025-04-22 07:25:21,868 - INFO - [MLP] Tiempo total para Trial 6: 1.41s
+2025-04-22 07:25:21,869 - INFO - [MLP] Entrenando modelo final con parámetros: {'hidden_neurons': 66, 'learning_rate_init': 0.00010530653986996797, 'max_iter': 552}
+2025-04-22 07:25:23,372 - INFO - [MLP] Modelo entrenado inicialmente en 1.50s
+2025-04-22 07:25:23,549 - INFO - [MLP] Modelo refinado localmente en 0.18s
+2025-04-22 07:25:23,553 - INFO - [MLP] Training predictions generadas en 0.00s (RMSE=0.7401)
+2025-04-22 07:25:23,555 - INFO - [MLP] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.6507)
+2025-04-22 07:25:23,559 - INFO - [MLP] Predicciones en Test generadas en 0.00s (RMSE=0.4880)
+2025-04-22 07:25:23,565 - INFO - [MLP] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\mlptrial11.pkl
+2025-04-22 07:25:23,574 - INFO - [MLP] Forecast de 20 días generado en 0.01s
+2025-04-22 07:25:23,978 - INFO - [MLP] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\mlp_trial11_full.png
+2025-04-22 07:25:24,004 - INFO - [MLP] CSV para Trial 11 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_mlp_trial11.csv
+2025-04-22 07:25:24,005 - INFO - [MLP] Trial 11 métricas:
+2025-04-22 07:25:24,005 - INFO -   - Training: RMSE=0.7401, MAE=0.6209, R2=-82.9903
+2025-04-22 07:25:24,005 - INFO -   - Validación: RMSE=0.6507, MAE=0.6275, R2=-3310.7538
+2025-04-22 07:25:24,005 - INFO -   - Test: RMSE=0.4880, MAE=0.4389, R2=-594.0475
+2025-04-22 07:25:24,005 - INFO - [MLP] Tiempo total para Trial 11: 2.14s
+2025-04-22 07:25:24,006 - INFO - [MLP] Entrenando modelo final con parámetros: {'hidden_neurons': 86, 'learning_rate_init': 0.0023265715758319654, 'max_iter': 339}
+2025-04-22 07:25:24,501 - INFO - [MLP] Modelo entrenado inicialmente en 0.50s
+2025-04-22 07:25:24,619 - INFO - [MLP] Modelo refinado localmente en 0.12s
+2025-04-22 07:25:24,623 - INFO - [MLP] Training predictions generadas en 0.00s (RMSE=0.5636)
+2025-04-22 07:25:24,626 - INFO - [MLP] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.5766)
+2025-04-22 07:25:24,630 - INFO - [MLP] Predicciones en Test generadas en 0.00s (RMSE=0.5106)
+2025-04-22 07:25:24,633 - INFO - [MLP] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\mlptrial19.pkl
+2025-04-22 07:25:24,639 - INFO - [MLP] Forecast de 20 días generado en 0.01s
+2025-04-22 07:25:25,070 - INFO - [MLP] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\mlp_trial19_full.png
+2025-04-22 07:25:25,089 - INFO - [MLP] CSV para Trial 19 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_mlp_trial19.csv
+2025-04-22 07:25:25,091 - INFO - [MLP] Trial 19 métricas:
+2025-04-22 07:25:25,091 - INFO -   - Training: RMSE=0.5636, MAE=0.4612, R2=-47.7016
+2025-04-22 07:25:25,091 - INFO -   - Validación: RMSE=0.5766, MAE=0.5477, R2=-2599.8111
+2025-04-22 07:25:25,091 - INFO -   - Test: RMSE=0.5106, MAE=0.4504, R2=-650.5059
+2025-04-22 07:25:25,091 - INFO - [MLP] Tiempo total para Trial 19: 1.09s
+2025-04-22 07:25:25,092 - INFO - [MLP] Procesamiento completo en 307.52s
+2025-04-22 07:25:25,092 - INFO - === Completado MLP en 307.52s ===
+2025-04-22 07:25:25,092 - INFO - === Optimizando y entrenando SVM... ===
+2025-04-22 07:25:25,093 - INFO - [SVM] Iniciando optimización con 20 trials
+2025-04-22 07:25:25,118 - INFO - [SVM] Trial 0: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,135 - INFO - [SVM] Trial 1: RMSE=0.1013, Time=0.02s
+2025-04-22 07:25:25,155 - INFO - [SVM] Trial 2: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,173 - INFO - [SVM] Trial 3: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,190 - INFO - [SVM] Trial 4: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,227 - INFO - [SVM] Trial 5: RMSE=0.1010, Time=0.04s
+2025-04-22 07:25:25,257 - INFO - [SVM] Trial 6: RMSE=0.1020, Time=0.03s
+2025-04-22 07:25:25,273 - INFO - [SVM] Trial 7: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,290 - INFO - [SVM] Trial 8: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,318 - INFO - [SVM] Trial 9: RMSE=0.1018, Time=0.03s
+2025-04-22 07:25:25,340 - INFO - [SVM] Trial 10: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,362 - INFO - [SVM] Trial 11: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,556 - INFO - [SVM] Trial 12: RMSE=0.1022, Time=0.19s
+2025-04-22 07:25:25,582 - INFO - [SVM] Trial 13: RMSE=0.1003, Time=0.03s
+2025-04-22 07:25:25,604 - INFO - [SVM] Trial 14: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,623 - INFO - [SVM] Trial 15: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,644 - INFO - [SVM] Trial 16: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,667 - INFO - [SVM] Trial 17: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,686 - INFO - [SVM] Trial 18: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,705 - INFO - [SVM] Trial 19: RMSE=0.1003, Time=0.02s
+2025-04-22 07:25:25,706 - INFO - [SVM] Mejor RMSE en CV (Training): 0.1003
+2025-04-22 07:25:25,706 - INFO - [SVM] Mejores hiperparámetros: {'C': 0.5449442757796263, 'epsilon': 0.42528275255042614}
+2025-04-22 07:25:25,706 - INFO - [SVM] Tiempo de optimización: 0.61s
+2025-04-22 07:25:25,942 - INFO - [SVM] Gráfico de evolución de trials guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\svm_trials_evolution.png
+2025-04-22 07:25:25,943 - INFO - [SVM] Entrenando modelo final con parámetros: {'C': 0.5449442757796263, 'epsilon': 0.42528275255042614}
+2025-04-22 07:25:25,946 - INFO - [SVM] Modelo entrenado inicialmente en 0.00s
+2025-04-22 07:25:25,948 - INFO - [SVM] Modelo refinado localmente en 0.00s
+2025-04-22 07:25:25,951 - INFO - [SVM] Training predictions generadas en 0.00s (RMSE=0.1266)
+2025-04-22 07:25:25,954 - INFO - [SVM] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0275)
+2025-04-22 07:25:25,957 - INFO - [SVM] Predicciones en Test generadas en 0.00s (RMSE=0.0341)
+2025-04-22 07:25:25,963 - INFO - [SVM] Mejor modelo guardado como: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\svm_best.pkl
+2025-04-22 07:25:25,963 - INFO - [SVM] Modelo refinado guardado en 0.01s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\svmtrial0.pkl
+2025-04-22 07:25:25,969 - INFO - [SVM] Forecast de 20 días generado en 0.01s
+2025-04-22 07:25:26,375 - INFO - [SVM] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\svm_trial0_full.png
+2025-04-22 07:25:26,394 - INFO - [SVM] CSV para Trial 0 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_svm_trial0.csv
+2025-04-22 07:25:26,394 - INFO - [SVM] Trial 0 métricas:
+2025-04-22 07:25:26,394 - INFO -   - Training: RMSE=0.1266, MAE=0.1020, R2=-1.4591
+2025-04-22 07:25:26,394 - INFO -   - Validación: RMSE=0.0275, MAE=0.0250, R2=-4.9045
+2025-04-22 07:25:26,395 - INFO -   - Test: RMSE=0.0341, MAE=0.0300, R2=-1.9030
+2025-04-22 07:25:26,395 - INFO - [SVM] Tiempo total para Trial 0: 0.45s
+2025-04-22 07:25:26,395 - INFO - [SVM] Entrenando modelo final con parámetros: {'C': 0.2950791309639099, 'epsilon': 0.3211186683473495}
+2025-04-22 07:25:26,398 - INFO - [SVM] Modelo entrenado inicialmente en 0.00s
+2025-04-22 07:25:26,399 - INFO - [SVM] Modelo refinado localmente en 0.00s
+2025-04-22 07:25:26,402 - INFO - [SVM] Training predictions generadas en 0.00s (RMSE=0.1266)
+2025-04-22 07:25:26,406 - INFO - [SVM] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0275)
+2025-04-22 07:25:26,409 - INFO - [SVM] Predicciones en Test generadas en 0.00s (RMSE=0.0341)
+2025-04-22 07:25:26,411 - INFO - [SVM] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\svmtrial2.pkl
+2025-04-22 07:25:26,417 - INFO - [SVM] Forecast de 20 días generado en 0.01s
+2025-04-22 07:25:26,776 - INFO - [SVM] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\svm_trial2_full.png
+2025-04-22 07:25:26,800 - INFO - [SVM] CSV para Trial 2 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_svm_trial2.csv
+2025-04-22 07:25:26,801 - INFO - [SVM] Trial 2 métricas:
+2025-04-22 07:25:26,801 - INFO -   - Training: RMSE=0.1266, MAE=0.1020, R2=-1.4591
+2025-04-22 07:25:26,801 - INFO -   - Validación: RMSE=0.0275, MAE=0.0250, R2=-4.9045
+2025-04-22 07:25:26,801 - INFO -   - Test: RMSE=0.0341, MAE=0.0300, R2=-1.9030
+2025-04-22 07:25:26,801 - INFO - [SVM] Tiempo total para Trial 2: 0.41s
+2025-04-22 07:25:26,801 - INFO - [SVM] Entrenando modelo final con parámetros: {'C': 0.1686531611630443, 'epsilon': 0.3266087033177726}
+2025-04-22 07:25:26,805 - INFO - [SVM] Modelo entrenado inicialmente en 0.00s
+2025-04-22 07:25:26,807 - INFO - [SVM] Modelo refinado localmente en 0.00s
+2025-04-22 07:25:26,811 - INFO - [SVM] Training predictions generadas en 0.00s (RMSE=0.1266)
+2025-04-22 07:25:26,813 - INFO - [SVM] Predicciones en Evaluacion generadas en 0.00s (RMSE=0.0275)
+2025-04-22 07:25:26,815 - INFO - [SVM] Predicciones en Test generadas en 0.00s (RMSE=0.0341)
+2025-04-22 07:25:26,818 - INFO - [SVM] Modelo refinado guardado en 0.00s: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\models\svmtrial3.pkl
+2025-04-22 07:25:26,824 - INFO - [SVM] Forecast de 20 días generado en 0.01s
+2025-04-22 07:25:27,208 - INFO - [SVM] Gráfico completo guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\svm_trial3_full.png
+2025-04-22 07:25:27,236 - INFO - [SVM] CSV para Trial 3 guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\s&p500_svm_trial3.csv
+2025-04-22 07:25:27,236 - INFO - [SVM] Trial 3 métricas:
+2025-04-22 07:25:27,236 - INFO -   - Training: RMSE=0.1266, MAE=0.1020, R2=-1.4591
+2025-04-22 07:25:27,236 - INFO -   - Validación: RMSE=0.0275, MAE=0.0250, R2=-4.9045
+2025-04-22 07:25:27,236 - INFO -   - Test: RMSE=0.0341, MAE=0.0300, R2=-1.9030
+2025-04-22 07:25:27,236 - INFO - [SVM] Tiempo total para Trial 3: 0.44s
+2025-04-22 07:25:27,237 - INFO - [SVM] Procesamiento completo en 2.14s
+2025-04-22 07:25:27,238 - INFO - === Completado SVM en 2.15s ===
+2025-04-22 07:25:27,831 - INFO - Archivo final de predicciones guardado en C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\all_models_predictions.csv
+2025-04-22 07:25:28,524 - INFO - Gráfico comparativo de todos los modelos guardado: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\charts\all_models_comparison.png
+2025-04-22 07:25:28,776 - INFO - Resumen de métricas guardado en: C:\Users\Home\Desktop\NuevoSP_500\SP500_INDEX_Analisis\data\4_results\resumen_metricas.csv
+2025-04-22 07:25:28,776 - INFO - Proceso completo terminado en 1097.58s
