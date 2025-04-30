@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-04-21 11:48:48",
+  "timestamp": "2025-04-30 10:18:33",
   "inventory": "..\\pipelines\\full_consolidated_inventory.xlsx",
   "output_dir": "..\\data\\1_preprocess_ts",
   "total_instruments": 3,
