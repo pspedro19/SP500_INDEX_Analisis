@@ -1,0 +1,1213 @@
+2025-05-02 09:59:08 [INFO]  Iniciando preparación de datos para modelos ARIMA/SARIMAX con transformaciones inversas
+2025-05-02 09:59:08 [INFO] Procesando SP500 con ..\data\1_preprocess_ts\SP500_business_days.csv
+2025-05-02 09:59:08 [INFO]  Procesando SP500
+2025-05-02 09:59:08 [INFO] CSV leído: SP500_business_days.csv (enc=utf-8, sep=',')
+2025-05-02 09:59:09 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_close
+2025-05-02 09:59:09 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_open
+2025-05-02 09:59:09 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_high
+2025-05-02 09:59:09 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_low
+2025-05-02 09:59:09 [INFO] Aplicada limpieza especial de formato para SP500
+2025-05-02 09:59:09 [INFO] Convertida a numérica: sp500_close (NaN: 45)
+2025-05-02 09:59:09 [INFO] Convertida a numérica: sp500_open (NaN: 45)
+2025-05-02 09:59:09 [INFO] Convertida a numérica: sp500_high (NaN: 45)
+2025-05-02 09:59:09 [INFO] Convertida a numérica: sp500_low (NaN: 45)
+2025-05-02 09:59:09 [INFO] Convertida a numérica: vix (NaN: 45)
+2025-05-02 09:59:09 [INFO] DataFrame inicial: 2871 filas × 12 columnas
+2025-05-02 09:59:09 [INFO] Target sp500_close: 2826/2871 valores válidos (1.57% NaN)
+2025-05-02 09:59:09 [INFO] Derivando variables para SP500...
+2025-05-02 09:59:09 [INFO] Derivada: term_spread (NaN: 106) + inversas
+2025-05-02 09:59:09 [INFO] Derivada: norm_range (NaN: 45) + inversa
+2025-05-02 09:59:09 [INFO] Derivada: pct_gap (NaN: 46) + inversa
+2025-05-02 09:59:09 [INFO] Aplicando rezagos...
+2025-05-02 09:59:09 [INFO] Rezago: cpi_yoy_lag1m (+21 días) + inversa
+2025-05-02 09:59:09 [INFO] Rezago: unemployment_lag1m (+3 días) + inversa
+2025-05-02 09:59:09 [INFO] Aplicando log/log1p con inversas (exp/expm1)...
+2025-05-02 09:59:09 [INFO] Log: sp500_close + inversa exp
+2025-05-02 09:59:09 [INFO] Log: sp500_open + inversa exp
+2025-05-02 09:59:09 [INFO] Log: sp500_high + inversa exp
+2025-05-02 09:59:09 [INFO] Log: sp500_low + inversa exp
+2025-05-02 09:59:09 [INFO] Log: vix + inversa exp
+2025-05-02 09:59:09 [INFO] Log: ust10y + inversa exp
+2025-05-02 09:59:09 [INFO] Log: fedfunds + inversa exp
+2025-05-02 09:59:09 [INFO] Log: cpi_yoy_raw + inversa exp
+2025-05-02 09:59:09 [INFO] Log: wti_crude_raw + inversa exp
+2025-05-02 09:59:09 [INFO] Log: unemployment_raw + inversa exp
+2025-05-02 09:59:09 [INFO] Log: ism_manufacturing_raw + inversa exp
+2025-05-02 09:59:09 [INFO] Log: michigan_sentiment_raw + inversa exp
+2025-05-02 09:59:09 [INFO] Log: cpi_yoy_lag1m + inversa exp
+2025-05-02 09:59:09 [INFO] Log: unemployment_lag1m + inversa exp
+2025-05-02 09:59:09 [INFO] Aplicando diferenciación selectiva con inversas mejoradas...
+2025-05-02 09:59:09 [INFO] Diferenciación: sp500_close_log -> sp500_close_log_d1 + inversa (cumsum)
+2025-05-02 09:59:09 [INFO] Diferenciación mejorada: sp500_close_log -> sp500_close_log_d1 con múltiples inversas
+2025-05-02 09:59:09 [INFO] Diferenciación: sp500_open_log -> sp500_open_log_d1 + inversa (cumsum)
+2025-05-02 09:59:09 [INFO] Diferenciación mejorada: sp500_open_log -> sp500_open_log_d1 con múltiples inversas
+2025-05-02 09:59:09 [INFO] Diferenciación: sp500_high_log -> sp500_high_log_d1 + inversa (cumsum)
+2025-05-02 09:59:09 [INFO] Diferenciación mejorada: sp500_high_log -> sp500_high_log_d1 con múltiples inversas
+2025-05-02 09:59:10 [INFO] Diferenciación: sp500_low_log -> sp500_low_log_d1 + inversa (cumsum)
+2025-05-02 09:59:10 [INFO] Diferenciación mejorada: sp500_low_log -> sp500_low_log_d1 con múltiples inversas
+2025-05-02 09:59:10 [INFO] Diferenciación: vix_log -> vix_log_d1 + inversa (cumsum)
+2025-05-02 09:59:10 [INFO] Diferenciación mejorada: vix_log -> vix_log_d1 con múltiples inversas
+2025-05-02 09:59:10 [INFO] Diferenciación: ust10y_log -> ust10y_log_d1 + inversa (cumsum)
+2025-05-02 09:59:10 [INFO] Diferenciación mejorada: ust10y_log -> ust10y_log_d1 con múltiples inversas
+2025-05-02 09:59:10 [INFO] Diferenciación: fedfunds_log -> fedfunds_log_d1 + inversa (cumsum)
+2025-05-02 09:59:10 [INFO] Diferenciación mejorada: fedfunds_log -> fedfunds_log_d1 con múltiples inversas
+2025-05-02 09:59:11 [INFO] Diferenciación: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:11 [INFO] Diferenciación mejorada: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:11 [INFO] Diferenciación: wti_crude_raw_log -> wti_crude_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:11 [INFO] Diferenciación mejorada: wti_crude_raw_log -> wti_crude_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:11 [INFO] Diferenciación: unemployment_raw_log -> unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:11 [INFO] Diferenciación mejorada: unemployment_raw_log -> unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:11 [INFO] Diferenciación: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:11 [INFO] Diferenciación mejorada: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:11 [INFO] Diferenciación: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:11 [INFO] Diferenciación mejorada: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:12 [INFO] Diferenciación: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 09:59:12 [INFO] Diferenciación mejorada: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 con múltiples inversas
+2025-05-02 09:59:12 [INFO] Diferenciación: unemployment_lag1m_log -> unemployment_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 09:59:12 [INFO] Diferenciación mejorada: unemployment_lag1m_log -> unemployment_lag1m_log_d1 con múltiples inversas
+2025-05-02 09:59:12 [INFO] Diferenciación: sp500_close_log -> sp500_close_log_d1 + inversa (cumsum)
+2025-05-02 09:59:12 [INFO] Diferenciación mejorada: sp500_close_log -> sp500_close_log_d1 con múltiples inversas
+2025-05-02 09:59:12 [INFO] Diferenciación: sp500_open_log -> sp500_open_log_d1 + inversa (cumsum)
+2025-05-02 09:59:12 [INFO] Diferenciación mejorada: sp500_open_log -> sp500_open_log_d1 con múltiples inversas
+2025-05-02 09:59:13 [INFO] Diferenciación: sp500_high_log -> sp500_high_log_d1 + inversa (cumsum)
+2025-05-02 09:59:13 [INFO] Diferenciación mejorada: sp500_high_log -> sp500_high_log_d1 con múltiples inversas
+2025-05-02 09:59:13 [INFO] Diferenciación: sp500_low_log -> sp500_low_log_d1 + inversa (cumsum)
+2025-05-02 09:59:13 [INFO] Diferenciación mejorada: sp500_low_log -> sp500_low_log_d1 con múltiples inversas
+2025-05-02 09:59:13 [INFO] Diferenciación: vix_log -> vix_log_d1 + inversa (cumsum)
+2025-05-02 09:59:13 [INFO] Diferenciación mejorada: vix_log -> vix_log_d1 con múltiples inversas
+2025-05-02 09:59:13 [INFO] Diferenciación: ust10y_log -> ust10y_log_d1 + inversa (cumsum)
+2025-05-02 09:59:13 [INFO] Diferenciación mejorada: ust10y_log -> ust10y_log_d1 con múltiples inversas
+2025-05-02 09:59:14 [INFO] Diferenciación: fedfunds_log -> fedfunds_log_d1 + inversa (cumsum)
+2025-05-02 09:59:14 [INFO] Diferenciación mejorada: fedfunds_log -> fedfunds_log_d1 con múltiples inversas
+2025-05-02 09:59:14 [INFO] Diferenciación: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:14 [INFO] Diferenciación mejorada: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:14 [INFO] Diferenciación: wti_crude_raw_log -> wti_crude_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:14 [INFO] Diferenciación mejorada: wti_crude_raw_log -> wti_crude_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:15 [INFO] Diferenciación: unemployment_raw_log -> unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:15 [INFO] Diferenciación mejorada: unemployment_raw_log -> unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:15 [INFO] Diferenciación: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:15 [INFO] Diferenciación mejorada: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:15 [INFO] Diferenciación: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:15 [INFO] Diferenciación mejorada: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:15 [INFO] Diferenciación: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 09:59:15 [INFO] Diferenciación mejorada: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 con múltiples inversas
+2025-05-02 09:59:15 [INFO] Diferenciación: unemployment_lag1m_log -> unemployment_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 09:59:15 [INFO] Diferenciación mejorada: unemployment_lag1m_log -> unemployment_lag1m_log_d1 con múltiples inversas
+2025-05-02 09:59:15 [INFO] DataFrame transformado: 2871 filas × 121 columnas
+2025-05-02 09:59:15 [INFO] Construyendo frames para SP500...
+2025-05-02 09:59:15 [INFO] Target seleccionado: sp500_close_log_d1
+2025-05-02 09:59:15 [INFO] Variable vix_log_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable term_spread -> basic (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable cpi_yoy_lag1m_log_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable wti_crude_raw_log_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable unemployment_lag1m_log_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:15 [WARNING] No encontrada transformación para volume_lag1
+2025-05-02 09:59:15 [INFO] Variable vix_log_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable term_spread -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable cpi_yoy_lag1m_log_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable wti_crude_raw_log_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable unemployment_lag1m_log_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [WARNING] No encontrada transformación para volume_lag1
+2025-05-02 09:59:15 [INFO] Variable norm_range -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [INFO] Variable pct_gap -> extended (+ inversa si existe)
+2025-05-02 09:59:15 [WARNING] No encontrada transformación para vol_ma5
+2025-05-02 09:59:15 [INFO] VIF aceptable para sarimax_basic
+2025-05-02 09:59:15 [INFO] Escalado aplicado a 20 vars en sarimax_basic + inversas
+2025-05-02 09:59:15 [INFO] Frame final sarimax_basic: (2871, 26)
+2025-05-02 09:59:15 [INFO] VIF aceptable para sarimax_extended
+2025-05-02 09:59:15 [INFO] Escalado aplicado a 28 vars en sarimax_extended + inversas
+2025-05-02 09:59:15 [INFO] Frame final sarimax_extended: (2871, 34)
+2025-05-02 09:59:15 [INFO] Limpiando dataset SP500_arima: (2871, 2)
+2025-05-02 09:59:15 [INFO] Tras filtrar >20% NaN: 2825 -> 2825 filas
+2025-05-02 09:59:15 [INFO] Resultado limpieza arima: 2871 -> 2825 filas (1.60% eliminadas)
+2025-05-02 09:59:15 [INFO] Guardado: SP500_ARIMA.csv (2825 filas × 3 cols)
+2025-05-02 09:59:15 [INFO] Guardado dataset SP500_ARIMA.csv
+2025-05-02 09:59:15 [INFO] Limpiando dataset SP500_sarimax_basic: (2871, 26)
+2025-05-02 09:59:15 [INFO] Tras filtrar >20% NaN: 2825 -> 2825 filas
+2025-05-02 09:59:15 [INFO] NaN imputados: 146 -> 146 -> 0
+2025-05-02 09:59:15 [INFO] Resultado limpieza sarimax_basic: 2871 -> 2825 filas (1.60% eliminadas)
+2025-05-02 09:59:16 [INFO] Guardado: SP500_SARIMAX_BASIC.csv (2825 filas × 27 cols)
+2025-05-02 09:59:16 [INFO] Guardado dataset SP500_SARIMAX_BASIC.csv
+2025-05-02 09:59:16 [INFO] Limpiando dataset SP500_sarimax_extended: (2871, 34)
+2025-05-02 09:59:16 [INFO] Tras filtrar >20% NaN: 2825 -> 2825 filas
+2025-05-02 09:59:16 [INFO] NaN imputados: 146 -> 146 -> 0
+2025-05-02 09:59:16 [INFO] Resultado limpieza sarimax_extended: 2871 -> 2825 filas (1.60% eliminadas)
+2025-05-02 09:59:16 [INFO] Guardado: SP500_SARIMAX_EXTENDED.csv (2825 filas × 35 cols)
+2025-05-02 09:59:16 [INFO] Guardado dataset SP500_SARIMAX_EXTENDED.csv
+2025-05-02 09:59:16 [INFO]  SP500 procesado con éxito
+2025-05-02 09:59:16 [INFO] Procesando EURUSD con ..\data\1_preprocess_ts\EURUSD_business_days.csv
+2025-05-02 09:59:16 [INFO]  Procesando EURUSD
+2025-05-02 09:59:16 [INFO] CSV leído: EURUSD_business_days.csv (enc=utf-8, sep=',')
+2025-05-02 09:59:16 [INFO] Convertida a numérica: eu_unemployment_raw (NaN: 2935)
+2025-05-02 09:59:16 [INFO] DataFrame inicial: 2935 filas × 10 columnas
+2025-05-02 09:59:16 [INFO] Target eurusd_close: 2932/2935 valores válidos (0.10% NaN)
+2025-05-02 09:59:16 [INFO] Derivando variables para EURUSD...
+2025-05-02 09:59:16 [INFO] Derivada: interest_rate_diff (EURUSD) + inversas
+2025-05-02 09:59:16 [INFO] Derivada: norm_range (NaN: 3) + inversa
+2025-05-02 09:59:16 [INFO] Derivada: pct_gap (NaN: 4) + inversa
+2025-05-02 09:59:16 [INFO] Aplicando rezagos...
+2025-05-02 09:59:16 [INFO] Rezago: eu_unemployment_lag1m (+30 días) + inversa
+2025-05-02 09:59:16 [INFO] Aplicando log/log1p con inversas (exp/expm1)...
+2025-05-02 09:59:16 [INFO] Log: eurusd_close + inversa exp
+2025-05-02 09:59:16 [INFO] Log: eurusd_open + inversa exp
+2025-05-02 09:59:16 [INFO] Log: eurusd_high + inversa exp
+2025-05-02 09:59:16 [INFO] Log: eurusd_low + inversa exp
+2025-05-02 09:59:16 [INFO] Log: dxy_index_raw + inversa exp
+2025-05-02 09:59:16 [INFO] Omitiendo log para ecb_rate - Contiene valores no positivos
+2025-05-02 09:59:16 [INFO] Log: fed_funds + inversa exp
+2025-05-02 09:59:16 [INFO] Omitiendo log para eu_unemployment_raw - Contiene valores no positivos
+2025-05-02 09:59:16 [INFO] Log: us_unemployment_raw + inversa exp
+2025-05-02 09:59:16 [INFO] Omitiendo log para eu_consumer_confidence_raw - Contiene valores no positivos
+2025-05-02 09:59:16 [INFO] Log: interest_rate_diff + inversa exp
+2025-05-02 09:59:16 [INFO] Omitiendo log para eu_unemployment_lag1m - Contiene valores no positivos
+2025-05-02 09:59:16 [INFO] Aplicando diferenciación selectiva con inversas mejoradas...
+2025-05-02 09:59:16 [INFO] Diferenciación: eurusd_close_log -> eurusd_close_log_d1 + inversa (cumsum)
+2025-05-02 09:59:16 [INFO] Diferenciación mejorada: eurusd_close_log -> eurusd_close_log_d1 con múltiples inversas
+2025-05-02 09:59:16 [INFO] Diferenciación: eurusd_open_log -> eurusd_open_log_d1 + inversa (cumsum)
+2025-05-02 09:59:16 [INFO] Diferenciación mejorada: eurusd_open_log -> eurusd_open_log_d1 con múltiples inversas
+2025-05-02 09:59:16 [INFO] Diferenciación: eurusd_high_log -> eurusd_high_log_d1 + inversa (cumsum)
+2025-05-02 09:59:16 [INFO] Diferenciación mejorada: eurusd_high_log -> eurusd_high_log_d1 con múltiples inversas
+2025-05-02 09:59:17 [INFO] Diferenciación: eurusd_low_log -> eurusd_low_log_d1 + inversa (cumsum)
+2025-05-02 09:59:17 [INFO] Diferenciación mejorada: eurusd_low_log -> eurusd_low_log_d1 con múltiples inversas
+2025-05-02 09:59:17 [INFO] Diferenciación: dxy_index_raw_log -> dxy_index_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:17 [INFO] Diferenciación mejorada: dxy_index_raw_log -> dxy_index_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:17 [INFO] Diferenciación: ecb_rate -> ecb_rate_d1 + inversa (cumsum)
+2025-05-02 09:59:17 [INFO] Diferenciación mejorada: ecb_rate -> ecb_rate_d1 con múltiples inversas
+2025-05-02 09:59:17 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 09:59:17 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 09:59:17 [WARNING] Serie eu_unemployment_raw tiene <20 valores válidos (0)
+2025-05-02 09:59:18 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:18 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:18 [INFO] Diferenciación: eu_consumer_confidence_raw -> eu_consumer_confidence_raw_d1 + inversa (cumsum)
+2025-05-02 09:59:18 [INFO] Diferenciación mejorada: eu_consumer_confidence_raw -> eu_consumer_confidence_raw_d1 con múltiples inversas
+2025-05-02 09:59:18 [WARNING] Serie eu_unemployment_lag1m tiene <20 valores válidos (0)
+2025-05-02 09:59:18 [INFO] Diferenciación: eurusd_close_log -> eurusd_close_log_d1 + inversa (cumsum)
+2025-05-02 09:59:18 [INFO] Diferenciación mejorada: eurusd_close_log -> eurusd_close_log_d1 con múltiples inversas
+2025-05-02 09:59:18 [INFO] Diferenciación: eurusd_open_log -> eurusd_open_log_d1 + inversa (cumsum)
+2025-05-02 09:59:18 [INFO] Diferenciación mejorada: eurusd_open_log -> eurusd_open_log_d1 con múltiples inversas
+2025-05-02 09:59:19 [INFO] Diferenciación: eurusd_high_log -> eurusd_high_log_d1 + inversa (cumsum)
+2025-05-02 09:59:19 [INFO] Diferenciación mejorada: eurusd_high_log -> eurusd_high_log_d1 con múltiples inversas
+2025-05-02 09:59:19 [INFO] Diferenciación: eurusd_low_log -> eurusd_low_log_d1 + inversa (cumsum)
+2025-05-02 09:59:19 [INFO] Diferenciación mejorada: eurusd_low_log -> eurusd_low_log_d1 con múltiples inversas
+2025-05-02 09:59:19 [INFO] Diferenciación: dxy_index_raw_log -> dxy_index_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:19 [INFO] Diferenciación mejorada: dxy_index_raw_log -> dxy_index_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:19 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 09:59:19 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 09:59:19 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:19 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:19 [INFO] DataFrame transformado: 2935 filas × 80 columnas
+2025-05-02 09:59:19 [INFO] Construyendo frames para EURUSD...
+2025-05-02 09:59:19 [INFO] Target seleccionado: eurusd_close_log_d1
+2025-05-02 09:59:19 [INFO] Variable dxy_index_raw_log_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable interest_rate_diff_log -> basic (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable eu_unemployment_lag1m -> basic (+ inversa si existe)
+2025-05-02 09:59:19 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 09:59:19 [INFO] Variable eu_consumer_confidence_raw_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable dxy_index_raw_log_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable interest_rate_diff_log -> extended (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable eu_unemployment_lag1m -> extended (+ inversa si existe)
+2025-05-02 09:59:19 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 09:59:19 [INFO] Variable eu_consumer_confidence_raw_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable norm_range -> extended (+ inversa si existe)
+2025-05-02 09:59:19 [INFO] Variable pct_gap -> extended (+ inversa si existe)
+2025-05-02 09:59:19 [WARNING] Columnas con todos NaN: ['eu_unemployment_lag1m']
+2025-05-02 09:59:19 [INFO] VIF aceptable para sarimax_basic
+2025-05-02 09:59:19 [INFO] Escalado aplicado a 12 vars en sarimax_basic + inversas
+2025-05-02 09:59:19 [INFO] Frame final sarimax_basic: (2935, 18)
+2025-05-02 09:59:19 [WARNING] Columnas con todos NaN: ['eu_unemployment_lag1m']
+2025-05-02 09:59:19 [INFO] VIF aceptable para sarimax_extended
+2025-05-02 09:59:19 [INFO] Escalado aplicado a 20 vars en sarimax_extended + inversas
+2025-05-02 09:59:19 [INFO] Frame final sarimax_extended: (2935, 26)
+2025-05-02 09:59:19 [INFO] Limpiando dataset EURUSD_arima: (2935, 2)
+2025-05-02 09:59:19 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 09:59:19 [INFO] Resultado limpieza arima: 2935 -> 2931 filas (0.14% eliminadas)
+2025-05-02 09:59:19 [INFO] Guardado: EURUSD_ARIMA.csv (2931 filas × 3 cols)
+2025-05-02 09:59:19 [INFO] Guardado dataset EURUSD_ARIMA.csv
+2025-05-02 09:59:19 [INFO] Limpiando dataset EURUSD_sarimax_basic: (2935, 18)
+2025-05-02 09:59:19 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 09:59:19 [INFO] NaN imputados: 2932 -> 2932 -> 2931
+2025-05-02 09:59:19 [INFO] Resultado limpieza sarimax_basic: 2935 -> 2931 filas (0.14% eliminadas)
+2025-05-02 09:59:20 [INFO] Guardado: EURUSD_SARIMAX_BASIC.csv (2931 filas × 19 cols)
+2025-05-02 09:59:20 [INFO] Guardado dataset EURUSD_SARIMAX_BASIC.csv
+2025-05-02 09:59:20 [INFO] Limpiando dataset EURUSD_sarimax_extended: (2935, 26)
+2025-05-02 09:59:20 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 09:59:20 [INFO] NaN imputados: 2932 -> 2932 -> 2931
+2025-05-02 09:59:20 [INFO] Resultado limpieza sarimax_extended: 2935 -> 2931 filas (0.14% eliminadas)
+2025-05-02 09:59:20 [INFO] Guardado: EURUSD_SARIMAX_EXTENDED.csv (2931 filas × 27 cols)
+2025-05-02 09:59:20 [INFO] Guardado dataset EURUSD_SARIMAX_EXTENDED.csv
+2025-05-02 09:59:20 [INFO]  EURUSD procesado con éxito
+2025-05-02 09:59:20 [INFO] Procesando USDJPY con ..\data\1_preprocess_ts\USDJPY_business_days.csv
+2025-05-02 09:59:20 [INFO]  Procesando USDJPY
+2025-05-02 09:59:20 [INFO] CSV leído: USDJPY_business_days.csv (enc=utf-8, sep=',')
+2025-05-02 09:59:20 [INFO] Convertida a numérica: boj_rate (NaN: 3227)
+2025-05-02 09:59:20 [INFO] Convertida a numérica: nikkei_225_raw (NaN: 3227)
+2025-05-02 09:59:20 [INFO] Convertida a numérica: japan_m2_raw (NaN: 3227)
+2025-05-02 09:59:20 [INFO] DataFrame inicial: 3227 filas × 10 columnas
+2025-05-02 09:59:20 [INFO] Target usdjpy_close: 2932/3227 valores válidos (9.14% NaN)
+2025-05-02 09:59:20 [INFO] Derivando variables para USDJPY...
+2025-05-02 09:59:20 [INFO] Derivada: interest_rate_diff (USDJPY) + inversas
+2025-05-02 09:59:20 [INFO] Derivada: norm_range (NaN: 295) + inversa
+2025-05-02 09:59:20 [INFO] Derivada: pct_gap (NaN: 296) + inversa
+2025-05-02 09:59:20 [INFO] Aplicando rezagos...
+2025-05-02 09:59:20 [INFO] Rezago: japan_leading_lag1m (+30 días) + inversa
+2025-05-02 09:59:20 [INFO] Aplicando log/log1p con inversas (exp/expm1)...
+2025-05-02 09:59:20 [INFO] Log: usdjpy_close + inversa exp
+2025-05-02 09:59:20 [INFO] Log: usdjpy_open + inversa exp
+2025-05-02 09:59:20 [INFO] Log: usdjpy_high + inversa exp
+2025-05-02 09:59:20 [INFO] Log: usdjpy_low + inversa exp
+2025-05-02 09:59:20 [INFO] Omitiendo log para boj_rate - Contiene valores no positivos
+2025-05-02 09:59:20 [INFO] Log: fed_funds + inversa exp
+2025-05-02 09:59:20 [INFO] Log: japan_leading_indicator_raw + inversa exp
+2025-05-02 09:59:20 [INFO] Log: us_unemployment_raw + inversa exp
+2025-05-02 09:59:20 [INFO] Omitiendo log para nikkei_225_raw - Contiene valores no positivos
+2025-05-02 09:59:20 [INFO] Omitiendo log para japan_m2_raw - Contiene valores no positivos
+2025-05-02 09:59:20 [INFO] Omitiendo log para interest_rate_diff - Contiene valores no positivos
+2025-05-02 09:59:20 [INFO] Log: japan_leading_lag1m + inversa exp
+2025-05-02 09:59:20 [INFO] Aplicando diferenciación selectiva con inversas mejoradas...
+2025-05-02 09:59:20 [INFO] Diferenciación: usdjpy_close_log -> usdjpy_close_log_d1 + inversa (cumsum)
+2025-05-02 09:59:20 [INFO] Diferenciación mejorada: usdjpy_close_log -> usdjpy_close_log_d1 con múltiples inversas
+2025-05-02 09:59:20 [INFO] Diferenciación: usdjpy_open_log -> usdjpy_open_log_d1 + inversa (cumsum)
+2025-05-02 09:59:20 [INFO] Diferenciación mejorada: usdjpy_open_log -> usdjpy_open_log_d1 con múltiples inversas
+2025-05-02 09:59:20 [INFO] Diferenciación: usdjpy_high_log -> usdjpy_high_log_d1 + inversa (cumsum)
+2025-05-02 09:59:20 [INFO] Diferenciación mejorada: usdjpy_high_log -> usdjpy_high_log_d1 con múltiples inversas
+2025-05-02 09:59:20 [INFO] Diferenciación: usdjpy_low_log -> usdjpy_low_log_d1 + inversa (cumsum)
+2025-05-02 09:59:20 [INFO] Diferenciación mejorada: usdjpy_low_log -> usdjpy_low_log_d1 con múltiples inversas
+2025-05-02 09:59:20 [WARNING] Serie boj_rate tiene <20 valores válidos (0)
+2025-05-02 09:59:20 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 09:59:20 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 09:59:21 [INFO] Diferenciación: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:21 [INFO] Diferenciación mejorada: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:21 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:21 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:21 [WARNING] Serie nikkei_225_raw tiene <20 valores válidos (0)
+2025-05-02 09:59:21 [WARNING] Serie japan_m2_raw tiene <20 valores válidos (0)
+2025-05-02 09:59:21 [INFO] Diferenciación: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 09:59:21 [INFO] Diferenciación mejorada: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 con múltiples inversas
+2025-05-02 09:59:21 [INFO] Diferenciación: usdjpy_close_log -> usdjpy_close_log_d1 + inversa (cumsum)
+2025-05-02 09:59:21 [INFO] Diferenciación mejorada: usdjpy_close_log -> usdjpy_close_log_d1 con múltiples inversas
+2025-05-02 09:59:21 [INFO] Diferenciación: usdjpy_open_log -> usdjpy_open_log_d1 + inversa (cumsum)
+2025-05-02 09:59:21 [INFO] Diferenciación mejorada: usdjpy_open_log -> usdjpy_open_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] Diferenciación: usdjpy_high_log -> usdjpy_high_log_d1 + inversa (cumsum)
+2025-05-02 09:59:22 [INFO] Diferenciación mejorada: usdjpy_high_log -> usdjpy_high_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] Diferenciación: usdjpy_low_log -> usdjpy_low_log_d1 + inversa (cumsum)
+2025-05-02 09:59:22 [INFO] Diferenciación mejorada: usdjpy_low_log -> usdjpy_low_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 09:59:22 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] Diferenciación: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:22 [INFO] Diferenciación mejorada: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 09:59:22 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] Diferenciación: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 09:59:22 [INFO] Diferenciación mejorada: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 con múltiples inversas
+2025-05-02 09:59:22 [INFO] DataFrame transformado: 3227 filas × 75 columnas
+2025-05-02 09:59:22 [INFO] Construyendo frames para USDJPY...
+2025-05-02 09:59:22 [INFO] Target seleccionado: usdjpy_close_log_d1
+2025-05-02 09:59:22 [INFO] Variable interest_rate_diff -> basic (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable japan_leading_lag1m_log_d1 -> basic (+ inversa si existe)
+2025-05-02 09:59:22 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 09:59:22 [INFO] Variable nikkei_225_raw -> basic (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable japan_m2_raw -> basic (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable interest_rate_diff -> extended (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable japan_leading_lag1m_log_d1 -> extended (+ inversa si existe)
+2025-05-02 09:59:22 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 09:59:22 [INFO] Variable nikkei_225_raw -> extended (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable japan_m2_raw -> extended (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable norm_range -> extended (+ inversa si existe)
+2025-05-02 09:59:22 [INFO] Variable pct_gap -> extended (+ inversa si existe)
+2025-05-02 09:59:22 [WARNING] Columnas con todos NaN: ['interest_rate_diff', 'nikkei_225_raw', 'japan_m2_raw']
+2025-05-02 09:59:22 [INFO] Escalado aplicado a 4 vars en sarimax_basic + inversas
+2025-05-02 09:59:22 [INFO] Frame final sarimax_basic: (3227, 7)
+2025-05-02 09:59:23 [WARNING] Columnas con todos NaN: ['interest_rate_diff', 'nikkei_225_raw', 'japan_m2_raw']
+2025-05-02 09:59:23 [INFO] VIF aceptable para sarimax_extended
+2025-05-02 09:59:23 [INFO] Escalado aplicado a 12 vars en sarimax_extended + inversas
+2025-05-02 09:59:23 [INFO] Frame final sarimax_extended: (3227, 15)
+2025-05-02 09:59:23 [INFO] Limpiando dataset USDJPY_arima: (3227, 2)
+2025-05-02 09:59:23 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 09:59:23 [INFO] Resultado limpieza arima: 3227 -> 2931 filas (9.17% eliminadas)
+2025-05-02 09:59:23 [INFO] Guardado: USDJPY_ARIMA.csv (2931 filas × 3 cols)
+2025-05-02 09:59:23 [INFO] Guardado dataset USDJPY_ARIMA.csv
+2025-05-02 09:59:23 [INFO] Limpiando dataset USDJPY_sarimax_basic: (3227, 7)
+2025-05-02 09:59:23 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 09:59:23 [INFO] NaN imputados: 37 -> 37 -> 0
+2025-05-02 09:59:23 [INFO] Resultado limpieza sarimax_basic: 3227 -> 2931 filas (9.17% eliminadas)
+2025-05-02 09:59:23 [INFO] Guardado: USDJPY_SARIMAX_BASIC.csv (2931 filas × 8 cols)
+2025-05-02 09:59:23 [INFO] Guardado dataset USDJPY_SARIMAX_BASIC.csv
+2025-05-02 09:59:23 [INFO] Limpiando dataset USDJPY_sarimax_extended: (3227, 15)
+2025-05-02 09:59:23 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 09:59:23 [INFO] NaN imputados: 37 -> 37 -> 0
+2025-05-02 09:59:23 [INFO] Resultado limpieza sarimax_extended: 3227 -> 2931 filas (9.17% eliminadas)
+2025-05-02 09:59:23 [INFO] Guardado: USDJPY_SARIMAX_EXTENDED.csv (2931 filas × 16 cols)
+2025-05-02 09:59:23 [INFO] Guardado dataset USDJPY_SARIMAX_EXTENDED.csv
+2025-05-02 09:59:23 [INFO]  USDJPY procesado con éxito
+2025-05-02 09:59:23 [INFO]  Procesamiento completo con transformaciones inversas
+2025-05-02 10:02:24 [INFO] Time Series Processor with Date Verification
+2025-05-02 10:02:24 [INFO] Running from notebook with default configuration
+2025-05-02 10:02:24 [INFO] === Inicio: procesamiento de inventario ===
+2025-05-02 10:02:24 [INFO] Cargando inventario desde: ..\pipelines\full_consolidated_inventory.xlsx
+2025-05-02 10:02:25 [INFO] Inventario cargado con éxito: 38 filas
+2025-05-02 10:02:25 [INFO] Instrumentos detectados (3): ['SP500', 'EURUSD', 'USDJPY']
+2025-05-02 10:02:25 [INFO] --- Procesando instrumento: SP500 ---
+2025-05-02 10:02:25 [INFO] Processing data for instrument: SP500
+2025-05-02 10:02:25 [INFO] Found 13 raw data columns for SP500 (excluding volume/lag)
+2025-05-02 10:02:25 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:25 [INFO] File read successfully: S&P500_Index.csv (2826 rows x 7 columns)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Parsing dates for file: S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] Sample date values from S&P500_Index.csv:
+2025-05-02 10:02:25 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:25 [INFO] Auto-detected format for S&P500_Index.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:25 [INFO] Date conversion success rate for S&P500_Index.csv: 100.00%
+2025-05-02 10:02:25 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:25 [INFO] File read successfully: S&P500_Index.csv (2826 rows x 7 columns)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Parsing dates for file: S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] Sample date values from S&P500_Index.csv:
+2025-05-02 10:02:25 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:25 [INFO] Auto-detected format for S&P500_Index.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:25 [INFO] Date conversion success rate for S&P500_Index.csv: 100.00%
+2025-05-02 10:02:25 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:25 [INFO] File read successfully: S&P500_Index.csv (2826 rows x 7 columns)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Parsing dates for file: S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] Sample date values from S&P500_Index.csv:
+2025-05-02 10:02:25 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:25 [INFO] Auto-detected format for S&P500_Index.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:25 [INFO] Date conversion success rate for S&P500_Index.csv: 100.00%
+2025-05-02 10:02:25 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:25 [INFO] File read successfully: S&P500_Index.csv (2826 rows x 7 columns)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Parsing dates for file: S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] Sample date values from S&P500_Index.csv:
+2025-05-02 10:02:25 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:25 [INFO] Auto-detected format for S&P500_Index.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:25 [INFO] Date conversion success rate for S&P500_Index.csv: 100.00%
+2025-05-02 10:02:25 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:25 [INFO] File read successfully: S&P500_Index.csv (2826 rows x 7 columns)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Parsing dates for file: S&P500_Index.csv
+2025-05-02 10:02:25 [INFO] Sample date values from S&P500_Index.csv:
+2025-05-02 10:02:25 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:25 [INFO] Auto-detected format for S&P500_Index.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:25 [INFO] Date conversion success rate for S&P500_Index.csv: 100.00%
+2025-05-02 10:02:25 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\VIX_VolatilityIndex.csv
+2025-05-02 10:02:25 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:25 [INFO] File read successfully: VIX_VolatilityIndex.csv (2860 rows x 7 columns)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:25 [INFO] Parsing dates for file: VIX_VolatilityIndex.csv
+2025-05-02 10:02:25 [INFO] Sample date values from VIX_VolatilityIndex.csv:
+2025-05-02 10:02:25 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:25 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:26 [INFO] Auto-detected format for VIX_VolatilityIndex.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for VIX_VolatilityIndex.csv: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\bond\US_10Y_Treasury.csv
+2025-05-02 10:02:26 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:26 [INFO] File read successfully: US_10Y_Treasury.csv (2929 rows x 2 columns)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: US_10Y_Treasury.csv
+2025-05-02 10:02:26 [INFO] Sample date values from US_10Y_Treasury.csv:
+2025-05-02 10:02:26 [INFO]   Sample 1: '2014-01-02'
+2025-05-02 10:02:26 [INFO]   Sample 2: '2014-01-03'
+2025-05-02 10:02:26 [INFO]   Sample 3: '2014-01-06'
+2025-05-02 10:02:26 [INFO] Detected US_10Y_Treasury.csv - Using ISO format (YYYY-MM-DD)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for US_10Y_Treasury.csv: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\US_FedFunds_Rate.csv
+2025-05-02 10:02:26 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:26 [INFO] File read successfully: US_FedFunds_Rate.csv (134 rows x 2 columns)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: US_FedFunds_Rate.csv
+2025-05-02 10:02:26 [INFO] Sample date values from US_FedFunds_Rate.csv:
+2025-05-02 10:02:26 [INFO]   Sample 1: '2014-01-01'
+2025-05-02 10:02:26 [INFO]   Sample 2: '2014-02-01'
+2025-05-02 10:02:26 [INFO]   Sample 3: '2014-03-01'
+2025-05-02 10:02:26 [INFO] Auto-detected format for US_FedFunds_Rate.csv: ISO (YYYY-MM-DD)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for US_FedFunds_Rate.csv: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\US_CPI.csv
+2025-05-02 10:02:26 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:26 [INFO] File read successfully: US_CPI.csv (134 rows x 2 columns)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: US_CPI.csv
+2025-05-02 10:02:26 [INFO] Sample date values from US_CPI.csv:
+2025-05-02 10:02:26 [INFO]   Sample 1: '2014-01-01'
+2025-05-02 10:02:26 [INFO]   Sample 2: '2014-02-01'
+2025-05-02 10:02:26 [INFO]   Sample 3: '2014-03-01'
+2025-05-02 10:02:26 [INFO] Auto-detected format for US_CPI.csv: ISO (YYYY-MM-DD)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for US_CPI.csv: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\commodities\CrudeOil_WTI.csv
+2025-05-02 10:02:26 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:26 [INFO] File read successfully: CrudeOil_WTI.csv (2953 rows x 7 columns)
+2025-05-02 10:02:26 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:26 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:26 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: CrudeOil_WTI.csv
+2025-05-02 10:02:26 [INFO] Sample date values from CrudeOil_WTI.csv:
+2025-05-02 10:02:26 [INFO]   Sample 1: '03/26/2025'
+2025-05-02 10:02:26 [INFO]   Sample 2: '03/25/2025'
+2025-05-02 10:02:26 [INFO]   Sample 3: '03/24/2025'
+2025-05-02 10:02:26 [INFO] Auto-detected format for CrudeOil_WTI.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for CrudeOil_WTI.csv: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\unemployment_rate\US_Unemployment_Rate.xlsx
+2025-05-02 10:02:26 [INFO] File read successfully: US_Unemployment_Rate.xlsx (134 rows x 2 columns)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: US_Unemployment_Rate.xlsx
+2025-05-02 10:02:26 [INFO] Sample date values from US_Unemployment_Rate.xlsx:
+2025-05-02 10:02:26 [INFO]   Sample 1: '2014-01-01T00:00:00.000000000'
+2025-05-02 10:02:26 [INFO]   Sample 2: '2014-02-01T00:00:00.000000000'
+2025-05-02 10:02:26 [INFO]   Sample 3: '2014-03-01T00:00:00.000000000'
+2025-05-02 10:02:26 [INFO] Auto-detected format for US_Unemployment_Rate.xlsx: ISO (YYYY-MM-DD)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for US_Unemployment_Rate.xlsx: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\business_confidence\US_ISM_Manufacturing.xlsx
+2025-05-02 10:02:26 [INFO] Using specialized Excel reader for US_ISM_Manufacturing.xlsx
+2025-05-02 10:02:26 [INFO] File read successfully: US_ISM_Manufacturing.xlsx (137 rows x 5 columns)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: US_ISM_Manufacturing.xlsx
+2025-05-02 10:02:26 [INFO] Sample date values from US_ISM_Manufacturing.xlsx:
+2025-05-02 10:02:26 [INFO]   Sample 1: 'Mar 03, 2025 (Feb)'
+2025-05-02 10:02:26 [INFO]   Sample 2: 'Feb 03, 2025 (Jan)'
+2025-05-02 10:02:26 [INFO]   Sample 3: 'Jan 03, 2025 (Dec)'
+2025-05-02 10:02:26 [INFO] Detected special date format in US_ISM_Manufacturing.xlsx with reference period in parentheses
+2025-05-02 10:02:26 [INFO] Successfully parsed dates from US_ISM_Manufacturing.xlsx using format '%b %d, %Y'
+2025-05-02 10:02:26 [INFO] Date conversion success rate for US_ISM_Manufacturing.xlsx: 100.00%
+2025-05-02 10:02:26 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\consumer_confidence\Michigan_Consumer_Sentiment.csv
+2025-05-02 10:02:26 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:26 [INFO] File read successfully: Michigan_Consumer_Sentiment.csv (121 rows x 2 columns)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:26 [INFO] Parsing dates for file: Michigan_Consumer_Sentiment.csv
+2025-05-02 10:02:26 [INFO] Sample date values from Michigan_Consumer_Sentiment.csv:
+2025-05-02 10:02:26 [INFO]   Sample 1: '2015-01-01'
+2025-05-02 10:02:26 [INFO]   Sample 2: '2015-02-01'
+2025-05-02 10:02:26 [INFO]   Sample 3: '2015-03-01'
+2025-05-02 10:02:26 [INFO] Auto-detected format for Michigan_Consumer_Sentiment.csv: ISO (YYYY-MM-DD)
+2025-05-02 10:02:26 [INFO] Date conversion success rate for Michigan_Consumer_Sentiment.csv: 100.00%
+2025-05-02 10:02:26 [INFO] 
+================================================================================
+2025-05-02 10:02:26 [INFO] ================================================================================
+2025-05-02 10:02:26 [INFO] SOURCE                         | MIN DATE     | MAX DATE     | FUTURE? | ROWS   
+2025-05-02 10:02:26 [INFO] -------------------------------+--------------+--------------+---------+--------
+2025-05-02 10:02:26 [INFO] date                           | 2014-01-02   | 2025-03-27   | NO      | 2826   
+2025-05-02 10:02:26 [INFO] sp500_close                    | 2014-01-02   | 2025-03-27   | NO      | 2826   
+2025-05-02 10:02:26 [INFO] sp500_open                     | 2014-01-02   | 2025-03-27   | NO      | 2826   
+2025-05-02 10:02:26 [INFO] sp500_high                     | 2014-01-02   | 2025-03-27   | NO      | 2826   
+2025-05-02 10:02:26 [INFO] sp500_low                      | 2014-01-02   | 2025-03-27   | NO      | 2826   
+2025-05-02 10:02:26 [INFO] vix                            | 2014-01-02   | 2025-03-27   | NO      | 2860   
+2025-05-02 10:02:26 [INFO] ust10y                         | 2014-01-02   | 2025-03-25   | NO      | 2929   
+2025-05-02 10:02:26 [INFO] fedfunds                       | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:26 [INFO] cpi_yoy_raw                    | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:26 [INFO] wti_crude_raw                  | 2014-01-01   | 2025-03-26   | NO      | 2953   
+2025-05-02 10:02:26 [INFO] unemployment_raw               | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:26 [INFO] ism_manufacturing_raw          | 2013-11-01   | 2025-03-03   | NO      | 137    
+2025-05-02 10:02:26 [INFO] michigan_sentiment_raw         | 2015-01-01   | 2025-01-01   | NO      | 121    
+2025-05-02 10:02:26 [INFO] ================================================================================
+2025-05-02 10:02:26 [INFO] Initial merged dataframe: 3012 rows x 12 columns
+2025-05-02 10:02:27 [INFO] Created business day index from NYSE calendar with 2874 trading days
+2025-05-02 10:02:27 [INFO] Final dataset for SP500: 2871 rows, 12 columns
+2025-05-02 10:02:27 [INFO] Dataset saved: ..\data\1_preprocess_ts\SP500_business_days.csv (2,871 rows, 12 columns)
+2025-05-02 10:02:27 [INFO] Dataset guardado para SP500: ..\data\1_preprocess_ts\SP500_business_days.csv
+2025-05-02 10:02:27 [INFO] --- Procesando instrumento: EURUSD ---
+2025-05-02 10:02:27 [INFO] Processing data for instrument: EURUSD
+2025-05-02 10:02:27 [INFO] Found 11 raw data columns for EURUSD (excluding volume/lag)
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:27 [INFO] File read successfully: EUR_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] Sample date values from EUR_USD_Spot.csv:
+2025-05-02 10:02:27 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:27 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:27 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:27 [INFO] Auto-detected format for EUR_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:27 [INFO] Date conversion success rate for EUR_USD_Spot.csv: 100.00%
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:27 [INFO] File read successfully: EUR_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] Sample date values from EUR_USD_Spot.csv:
+2025-05-02 10:02:27 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:27 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:27 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:27 [INFO] Auto-detected format for EUR_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:27 [INFO] Date conversion success rate for EUR_USD_Spot.csv: 100.00%
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:27 [INFO] File read successfully: EUR_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] Sample date values from EUR_USD_Spot.csv:
+2025-05-02 10:02:27 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:27 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:27 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:27 [INFO] Auto-detected format for EUR_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:27 [INFO] Date conversion success rate for EUR_USD_Spot.csv: 100.00%
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:27 [INFO] File read successfully: EUR_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] Sample date values from EUR_USD_Spot.csv:
+2025-05-02 10:02:27 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:27 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:27 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:27 [INFO] Auto-detected format for EUR_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:27 [INFO] Date conversion success rate for EUR_USD_Spot.csv: 100.00%
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:27 [INFO] File read successfully: EUR_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: EUR_USD_Spot.csv
+2025-05-02 10:02:27 [INFO] Sample date values from EUR_USD_Spot.csv:
+2025-05-02 10:02:27 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:27 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:27 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:27 [INFO] Auto-detected format for EUR_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:27 [INFO] Date conversion success rate for EUR_USD_Spot.csv: 100.00%
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\Dollar_Index_DXY.xlsx
+2025-05-02 10:02:27 [INFO] File read successfully: Dollar_Index_DXY.xlsx (2927 rows x 2 columns)
+2025-05-02 10:02:27 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:27 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:27 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: Dollar_Index_DXY.xlsx
+2025-05-02 10:02:27 [INFO] Sample date values from Dollar_Index_DXY.xlsx:
+2025-05-02 10:02:27 [INFO]   Sample 1: '2014-01-02T00:00:00.000000000'
+2025-05-02 10:02:27 [INFO]   Sample 2: '2014-01-03T00:00:00.000000000'
+2025-05-02 10:02:27 [INFO]   Sample 3: '2014-01-06T00:00:00.000000000'
+2025-05-02 10:02:27 [INFO] Auto-detected format for Dollar_Index_DXY.xlsx: ISO (YYYY-MM-DD)
+2025-05-02 10:02:27 [INFO] Date conversion success rate for Dollar_Index_DXY.xlsx: 100.00%
+2025-05-02 10:02:27 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\ECB_Deposit_Rate.csv
+2025-05-02 10:02:27 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:27 [INFO] File read successfully: ECB_Deposit_Rate.csv (4103 rows x 2 columns)
+2025-05-02 10:02:27 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:27 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:27 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:27 [INFO] Parsing dates for file: ECB_Deposit_Rate.csv
+2025-05-02 10:02:27 [INFO] Sample date values from ECB_Deposit_Rate.csv:
+2025-05-02 10:02:27 [INFO]   Sample 1: '2014-01-01'
+2025-05-02 10:02:27 [INFO]   Sample 2: '2014-01-02'
+2025-05-02 10:02:27 [INFO]   Sample 3: '2014-01-03'
+2025-05-02 10:02:28 [INFO] Detected ECB_Deposit_Rate.csv - Using ISO format (YYYY-MM-DD)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for ECB_Deposit_Rate.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\US_FedFunds_Rate.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: US_FedFunds_Rate.csv (134 rows x 2 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: US_FedFunds_Rate.csv
+2025-05-02 10:02:28 [INFO] Sample date values from US_FedFunds_Rate.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '2014-01-01'
+2025-05-02 10:02:28 [INFO]   Sample 2: '2014-02-01'
+2025-05-02 10:02:28 [INFO]   Sample 3: '2014-03-01'
+2025-05-02 10:02:28 [INFO] Auto-detected format for US_FedFunds_Rate.csv: ISO (YYYY-MM-DD)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for US_FedFunds_Rate.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\unemployment_rate\Eurozone_Unemployment_Rate.xlsx
+2025-05-02 10:02:28 [INFO] Using specialized Excel reader for Eurozone_Unemployment_Rate.xlsx
+2025-05-02 10:02:28 [INFO] File read successfully: Eurozone_Unemployment_Rate.xlsx (135 rows x 5 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: Eurozone_Unemployment_Rate.xlsx
+2025-05-02 10:02:28 [INFO] Sample date values from Eurozone_Unemployment_Rate.xlsx:
+2025-05-02 10:02:28 [INFO]   Sample 1: 'Mar 04, 2025 (Jan)'
+2025-05-02 10:02:28 [INFO]   Sample 2: 'Jan 30, 2025 (Dec)'
+2025-05-02 10:02:28 [INFO]   Sample 3: 'Jan 07, 2025 (Nov)'
+2025-05-02 10:02:28 [INFO] Detected special date format in Eurozone_Unemployment_Rate.xlsx with reference period in parentheses
+2025-05-02 10:02:28 [INFO] Successfully parsed dates from Eurozone_Unemployment_Rate.xlsx using format '%b %d, %Y'
+2025-05-02 10:02:28 [INFO] Date conversion success rate for Eurozone_Unemployment_Rate.xlsx: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\unemployment_rate\US_Unemployment_Rate.xlsx
+2025-05-02 10:02:28 [INFO] File read successfully: US_Unemployment_Rate.xlsx (134 rows x 2 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: US_Unemployment_Rate.xlsx
+2025-05-02 10:02:28 [INFO] Sample date values from US_Unemployment_Rate.xlsx:
+2025-05-02 10:02:28 [INFO]   Sample 1: '2014-01-01T00:00:00.000000000'
+2025-05-02 10:02:28 [INFO]   Sample 2: '2014-02-01T00:00:00.000000000'
+2025-05-02 10:02:28 [INFO]   Sample 3: '2014-03-01T00:00:00.000000000'
+2025-05-02 10:02:28 [INFO] Auto-detected format for US_Unemployment_Rate.xlsx: ISO (YYYY-MM-DD)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for US_Unemployment_Rate.xlsx: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\consumer_confidence\EuroZone_Consumer_Confidence.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: EuroZone_Consumer_Confidence.csv (134 rows x 2 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: EuroZone_Consumer_Confidence.csv
+2025-05-02 10:02:28 [INFO] Sample date values from EuroZone_Consumer_Confidence.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '2014-01-01'
+2025-05-02 10:02:28 [INFO]   Sample 2: '2014-02-01'
+2025-05-02 10:02:28 [INFO]   Sample 3: '2014-03-01'
+2025-05-02 10:02:28 [INFO] Auto-detected format for EuroZone_Consumer_Confidence.csv: ISO (YYYY-MM-DD)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for EuroZone_Consumer_Confidence.csv: 100.00%
+2025-05-02 10:02:28 [INFO] 
+================================================================================
+2025-05-02 10:02:28 [INFO] ================================================================================
+2025-05-02 10:02:28 [INFO] SOURCE                         | MIN DATE     | MAX DATE     | FUTURE? | ROWS   
+2025-05-02 10:02:28 [INFO] -------------------------------+--------------+--------------+---------+--------
+2025-05-02 10:02:28 [INFO] date                           | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:28 [INFO] eurusd_close                   | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:28 [INFO] eurusd_open                    | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:28 [INFO] eurusd_high                    | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:28 [INFO] eurusd_low                     | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:28 [INFO] dxy_index_raw                  | 2014-01-02   | 2025-03-21   | NO      | 2927   
+2025-05-02 10:02:28 [INFO] ecb_rate                       | 2014-01-01   | 2025-03-26   | NO      | 4103   
+2025-05-02 10:02:28 [INFO] fed_funds                      | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:28 [INFO] eu_unemployment_raw            | 2014-01-08   | 2025-03-04   | NO      | 135    
+2025-05-02 10:02:28 [INFO] us_unemployment_raw            | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:28 [INFO] eu_consumer_confidence_raw     | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:28 [INFO] ================================================================================
+2025-05-02 10:02:28 [INFO] Initial merged dataframe: 4104 rows x 10 columns
+2025-05-02 10:02:28 [INFO] Created business day index for FOREX (weekdays) with 2938 trading days
+2025-05-02 10:02:28 [INFO] Final dataset for EURUSD: 2935 rows, 10 columns
+2025-05-02 10:02:28 [INFO] Dataset saved: ..\data\1_preprocess_ts\EURUSD_business_days.csv (2,935 rows, 10 columns)
+2025-05-02 10:02:28 [INFO] Dataset guardado para EURUSD: ..\data\1_preprocess_ts\EURUSD_business_days.csv
+2025-05-02 10:02:28 [INFO] --- Procesando instrumento: USDJPY ---
+2025-05-02 10:02:28 [INFO] Processing data for instrument: USDJPY
+2025-05-02 10:02:28 [INFO] Found 11 raw data columns for USDJPY (excluding volume/lag)
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: JPY_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] Sample date values from JPY_USD_Spot.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:28 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:28 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:28 [INFO] Auto-detected format for JPY_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for JPY_USD_Spot.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: JPY_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] Sample date values from JPY_USD_Spot.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:28 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:28 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:28 [INFO] Auto-detected format for JPY_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for JPY_USD_Spot.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: JPY_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] Sample date values from JPY_USD_Spot.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:28 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:28 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:28 [INFO] Auto-detected format for JPY_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for JPY_USD_Spot.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: JPY_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] Sample date values from JPY_USD_Spot.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:28 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:28 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:28 [INFO] Auto-detected format for JPY_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for JPY_USD_Spot.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\exchange_rate\JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: JPY_USD_Spot.csv (2932 rows x 7 columns)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Column 'date' found as 'Date' (case-insensitive)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: JPY_USD_Spot.csv
+2025-05-02 10:02:28 [INFO] Sample date values from JPY_USD_Spot.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '03/27/2025'
+2025-05-02 10:02:28 [INFO]   Sample 2: '03/26/2025'
+2025-05-02 10:02:28 [INFO]   Sample 3: '03/25/2025'
+2025-05-02 10:02:28 [INFO] Auto-detected format for JPY_USD_Spot.csv: American (MM/DD/YYYY)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for JPY_USD_Spot.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\BOJ_Policy_Rate.xlsx
+2025-05-02 10:02:28 [INFO] File read successfully: BOJ_Policy_Rate.xlsx (120 rows x 5 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: BOJ_Policy_Rate.xlsx
+2025-05-02 10:02:28 [INFO] Sample date values from BOJ_Policy_Rate.xlsx:
+2025-05-02 10:02:28 [INFO]   Sample 1: 'Mar 18, 2025'
+2025-05-02 10:02:28 [INFO]   Sample 2: 'Jan 23, 2025'
+2025-05-02 10:02:28 [INFO]   Sample 3: 'Dec 18, 2024'
+2025-05-02 10:02:28 [INFO] Detected BOJ_Policy_Rate.xlsx - Using text month format (MMM DD, YYYY)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for BOJ_Policy_Rate.xlsx: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\US_FedFunds_Rate.csv
+2025-05-02 10:02:28 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:28 [INFO] File read successfully: US_FedFunds_Rate.csv (134 rows x 2 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: US_FedFunds_Rate.csv
+2025-05-02 10:02:28 [INFO] Sample date values from US_FedFunds_Rate.csv:
+2025-05-02 10:02:28 [INFO]   Sample 1: '2014-01-01'
+2025-05-02 10:02:28 [INFO]   Sample 2: '2014-02-01'
+2025-05-02 10:02:28 [INFO]   Sample 3: '2014-03-01'
+2025-05-02 10:02:28 [INFO] Auto-detected format for US_FedFunds_Rate.csv: ISO (YYYY-MM-DD)
+2025-05-02 10:02:28 [INFO] Date conversion success rate for US_FedFunds_Rate.csv: 100.00%
+2025-05-02 10:02:28 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\leading_economic_index\Japan_Leading_Indicator.xlsx
+2025-05-02 10:02:28 [INFO] File read successfully: Japan_Leading_Indicator.xlsx (257 rows x 5 columns)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:28 [INFO] Parsing dates for file: Japan_Leading_Indicator.xlsx
+2025-05-02 10:02:28 [INFO] Sample date values from Japan_Leading_Indicator.xlsx:
+2025-05-02 10:02:28 [INFO]   Sample 1: 'Mar 26, 2025 (Jan)'
+2025-05-02 10:02:29 [INFO]   Sample 2: 'Mar 10, 2025 (Jan)'
+2025-05-02 10:02:29 [INFO]   Sample 3: 'Feb 26, 2025 (Dec)'
+2025-05-02 10:02:29 [INFO] Auto-detected format for Japan_Leading_Indicator.xlsx: Month name (MMM DD, YYYY)
+2025-05-02 10:02:29 [INFO] Date conversion success rate for Japan_Leading_Indicator.xlsx: 92.22%
+2025-05-02 10:02:29 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\unemployment_rate\US_Unemployment_Rate.xlsx
+2025-05-02 10:02:29 [INFO] File read successfully: US_Unemployment_Rate.xlsx (134 rows x 2 columns)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'observation_date' (pattern: date)
+2025-05-02 10:02:29 [INFO] Parsing dates for file: US_Unemployment_Rate.xlsx
+2025-05-02 10:02:29 [INFO] Sample date values from US_Unemployment_Rate.xlsx:
+2025-05-02 10:02:29 [INFO]   Sample 1: '2014-01-01T00:00:00.000000000'
+2025-05-02 10:02:29 [INFO]   Sample 2: '2014-02-01T00:00:00.000000000'
+2025-05-02 10:02:29 [INFO]   Sample 3: '2014-03-01T00:00:00.000000000'
+2025-05-02 10:02:29 [INFO] Auto-detected format for US_Unemployment_Rate.xlsx: ISO (YYYY-MM-DD)
+2025-05-02 10:02:29 [INFO] Date conversion success rate for US_Unemployment_Rate.xlsx: 100.00%
+2025-05-02 10:02:29 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\index_pricing\Nikkei_225.csv
+2025-05-02 10:02:29 [INFO] CSV read successfully with encoding=utf-8, sep=','
+2025-05-02 10:02:29 [INFO] File read successfully: Nikkei_225.csv (2741 rows x 7 columns)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'Fecha' (pattern: fecha)
+2025-05-02 10:02:29 [INFO] Parsing dates for file: Nikkei_225.csv
+2025-05-02 10:02:29 [INFO] Sample date values from Nikkei_225.csv:
+2025-05-02 10:02:29 [INFO]   Sample 1: '27.03.2025'
+2025-05-02 10:02:29 [INFO]   Sample 2: '26.03.2025'
+2025-05-02 10:02:29 [INFO]   Sample 3: '25.03.2025'
+2025-05-02 10:02:29 [INFO] Auto-detected format for Nikkei_225.csv: European (DD.MM.YYYY)
+2025-05-02 10:02:29 [INFO] Date conversion success rate for Nikkei_225.csv: 100.00%
+2025-05-02 10:02:29 [INFO] Reading file: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\0_raw\economics\Japan_M2_MoneySupply_YoY.xlsx
+2025-05-02 10:02:29 [INFO] File read successfully: Japan_M2_MoneySupply_YoY.xlsx (131 rows x 5 columns)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:29 [INFO] Similar column to 'date' found as 'Release Date' (pattern: date)
+2025-05-02 10:02:29 [INFO] Parsing dates for file: Japan_M2_MoneySupply_YoY.xlsx
+2025-05-02 10:02:29 [INFO] Sample date values from Japan_M2_MoneySupply_YoY.xlsx:
+2025-05-02 10:02:29 [INFO]   Sample 1: 'Mar 10, 2025'
+2025-05-02 10:02:29 [INFO]   Sample 2: 'Feb 11, 2025'
+2025-05-02 10:02:29 [INFO]   Sample 3: 'Jan 14, 2025'
+2025-05-02 10:02:29 [INFO] Auto-detected format for Japan_M2_MoneySupply_YoY.xlsx: Month name (MMM DD, YYYY)
+2025-05-02 10:02:29 [INFO] Date conversion success rate for Japan_M2_MoneySupply_YoY.xlsx: 99.24%
+2025-05-02 10:02:29 [INFO] 
+================================================================================
+2025-05-02 10:02:29 [INFO] ================================================================================
+2025-05-02 10:02:29 [INFO] SOURCE                         | MIN DATE     | MAX DATE     | FUTURE? | ROWS   
+2025-05-02 10:02:29 [INFO] -------------------------------+--------------+--------------+---------+--------
+2025-05-02 10:02:29 [INFO] date                           | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:29 [INFO] usdjpy_close                   | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:29 [INFO] usdjpy_open                    | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:29 [INFO] usdjpy_high                    | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:29 [INFO] usdjpy_low                     | 2014-01-01   | 2025-03-27   | NO      | 2932   
+2025-05-02 10:02:29 [INFO] boj_rate                       | 2012-11-19   | 2025-03-18   | NO      | 120    
+2025-05-02 10:02:29 [INFO] fed_funds                      | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:29 [INFO] japan_leading_indicator_raw    | 2014-01-10   | 2025-01-10   | NO      | 257    
+2025-05-02 10:02:29 [INFO] us_unemployment_raw            | 2014-01-01   | 2025-02-01   | NO      | 134    
+2025-05-02 10:02:29 [INFO] nikkei_225_raw                 | 2014-01-06   | 2025-03-27   | NO      | 2741   
+2025-05-02 10:02:29 [INFO] japan_m2_raw                   | 2013-12-09   | 2025-03-10   | NO      | 131    
+2025-05-02 10:02:29 [INFO] ================================================================================
+2025-05-02 10:02:29 [INFO] Initial merged dataframe: 3003 rows x 10 columns
+2025-05-02 10:02:29 [INFO] Created business day index for FOREX (weekdays) with 3230 trading days
+2025-05-02 10:02:29 [INFO] Final dataset for USDJPY: 3227 rows, 10 columns
+2025-05-02 10:02:29 [INFO] Dataset saved: ..\data\1_preprocess_ts\USDJPY_business_days.csv (3,227 rows, 10 columns)
+2025-05-02 10:02:29 [INFO] Dataset guardado para USDJPY: ..\data\1_preprocess_ts\USDJPY_business_days.csv
+2025-05-02 10:02:29 [INFO] Resumen guardado en: ..\data\1_preprocess_ts\processing_summary.json
+2025-05-02 10:02:29 [INFO] === Procesamiento completo: 3 éxitos, 0 fallos ===
+2025-05-02 10:02:31 [INFO]  Iniciando preparación de datos para modelos ARIMA/SARIMAX con transformaciones inversas
+2025-05-02 10:02:31 [INFO] Procesando SP500 con ..\data\1_preprocess_ts\SP500_business_days.csv
+2025-05-02 10:02:31 [INFO]  Procesando SP500
+2025-05-02 10:02:31 [INFO] CSV leído: SP500_business_days.csv (enc=utf-8, sep=',')
+2025-05-02 10:02:31 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_close
+2025-05-02 10:02:32 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_open
+2025-05-02 10:02:32 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_high
+2025-05-02 10:02:32 [INFO] Limpieza SP500: eliminado separadores de miles en sp500_low
+2025-05-02 10:02:32 [INFO] Aplicada limpieza especial de formato para SP500
+2025-05-02 10:02:32 [INFO] Convertida a numérica: sp500_close (NaN: 45)
+2025-05-02 10:02:32 [INFO] Convertida a numérica: sp500_open (NaN: 45)
+2025-05-02 10:02:32 [INFO] Convertida a numérica: sp500_high (NaN: 45)
+2025-05-02 10:02:32 [INFO] Convertida a numérica: sp500_low (NaN: 45)
+2025-05-02 10:02:32 [INFO] Convertida a numérica: vix (NaN: 45)
+2025-05-02 10:02:32 [INFO] DataFrame inicial: 2871 filas × 12 columnas
+2025-05-02 10:02:32 [INFO] Target sp500_close: 2826/2871 valores válidos (1.57% NaN)
+2025-05-02 10:02:32 [INFO] Derivando variables para SP500...
+2025-05-02 10:02:32 [INFO] Derivada: term_spread (NaN: 106) + inversas
+2025-05-02 10:02:32 [INFO] Derivada: norm_range (NaN: 45) + inversa
+2025-05-02 10:02:32 [INFO] Derivada: pct_gap (NaN: 46) + inversa
+2025-05-02 10:02:32 [INFO] Aplicando rezagos...
+2025-05-02 10:02:32 [INFO] Rezago: cpi_yoy_lag1m (+21 días) + inversa
+2025-05-02 10:02:32 [INFO] Rezago: unemployment_lag1m (+3 días) + inversa
+2025-05-02 10:02:32 [INFO] Aplicando log/log1p con inversas (exp/expm1)...
+2025-05-02 10:02:32 [INFO] Log: sp500_close + inversa exp
+2025-05-02 10:02:32 [INFO] Log: sp500_open + inversa exp
+2025-05-02 10:02:32 [INFO] Log: sp500_high + inversa exp
+2025-05-02 10:02:32 [INFO] Log: sp500_low + inversa exp
+2025-05-02 10:02:32 [INFO] Log: vix + inversa exp
+2025-05-02 10:02:32 [INFO] Log: ust10y + inversa exp
+2025-05-02 10:02:32 [INFO] Log: fedfunds + inversa exp
+2025-05-02 10:02:32 [INFO] Log: cpi_yoy_raw + inversa exp
+2025-05-02 10:02:32 [INFO] Log: wti_crude_raw + inversa exp
+2025-05-02 10:02:32 [INFO] Log: unemployment_raw + inversa exp
+2025-05-02 10:02:32 [INFO] Log: ism_manufacturing_raw + inversa exp
+2025-05-02 10:02:32 [INFO] Log: michigan_sentiment_raw + inversa exp
+2025-05-02 10:02:32 [INFO] Log: cpi_yoy_lag1m + inversa exp
+2025-05-02 10:02:32 [INFO] Log: unemployment_lag1m + inversa exp
+2025-05-02 10:02:32 [INFO] Aplicando diferenciación selectiva con inversas mejoradas...
+2025-05-02 10:02:32 [INFO] Diferenciación: sp500_close_log -> sp500_close_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: sp500_close_log -> sp500_close_log_d1 con múltiples inversas
+2025-05-02 10:02:32 [INFO] Diferenciación: sp500_open_log -> sp500_open_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: sp500_open_log -> sp500_open_log_d1 con múltiples inversas
+2025-05-02 10:02:32 [INFO] Diferenciación: sp500_high_log -> sp500_high_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: sp500_high_log -> sp500_high_log_d1 con múltiples inversas
+2025-05-02 10:02:32 [INFO] Diferenciación: sp500_low_log -> sp500_low_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: sp500_low_log -> sp500_low_log_d1 con múltiples inversas
+2025-05-02 10:02:32 [INFO] Diferenciación: vix_log -> vix_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: vix_log -> vix_log_d1 con múltiples inversas
+2025-05-02 10:02:32 [INFO] Diferenciación: ust10y_log -> ust10y_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: ust10y_log -> ust10y_log_d1 con múltiples inversas
+2025-05-02 10:02:32 [INFO] Diferenciación: fedfunds_log -> fedfunds_log_d1 + inversa (cumsum)
+2025-05-02 10:02:32 [INFO] Diferenciación mejorada: fedfunds_log -> fedfunds_log_d1 con múltiples inversas
+2025-05-02 10:02:33 [INFO] Diferenciación: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:33 [INFO] Diferenciación mejorada: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:33 [INFO] Diferenciación: wti_crude_raw_log -> wti_crude_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:33 [INFO] Diferenciación mejorada: wti_crude_raw_log -> wti_crude_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:33 [INFO] Diferenciación: unemployment_raw_log -> unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:33 [INFO] Diferenciación mejorada: unemployment_raw_log -> unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:33 [INFO] Diferenciación: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:33 [INFO] Diferenciación mejorada: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:33 [INFO] Diferenciación: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:33 [INFO] Diferenciación mejorada: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:34 [INFO] Diferenciación: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 10:02:34 [INFO] Diferenciación mejorada: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 con múltiples inversas
+2025-05-02 10:02:34 [INFO] Diferenciación: unemployment_lag1m_log -> unemployment_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 10:02:34 [INFO] Diferenciación mejorada: unemployment_lag1m_log -> unemployment_lag1m_log_d1 con múltiples inversas
+2025-05-02 10:02:34 [INFO] Diferenciación: sp500_close_log -> sp500_close_log_d1 + inversa (cumsum)
+2025-05-02 10:02:34 [INFO] Diferenciación mejorada: sp500_close_log -> sp500_close_log_d1 con múltiples inversas
+2025-05-02 10:02:34 [INFO] Diferenciación: sp500_open_log -> sp500_open_log_d1 + inversa (cumsum)
+2025-05-02 10:02:34 [INFO] Diferenciación mejorada: sp500_open_log -> sp500_open_log_d1 con múltiples inversas
+2025-05-02 10:02:34 [INFO] Diferenciación: sp500_high_log -> sp500_high_log_d1 + inversa (cumsum)
+2025-05-02 10:02:34 [INFO] Diferenciación mejorada: sp500_high_log -> sp500_high_log_d1 con múltiples inversas
+2025-05-02 10:02:34 [INFO] Diferenciación: sp500_low_log -> sp500_low_log_d1 + inversa (cumsum)
+2025-05-02 10:02:35 [INFO] Diferenciación mejorada: sp500_low_log -> sp500_low_log_d1 con múltiples inversas
+2025-05-02 10:02:35 [INFO] Diferenciación: vix_log -> vix_log_d1 + inversa (cumsum)
+2025-05-02 10:02:35 [INFO] Diferenciación mejorada: vix_log -> vix_log_d1 con múltiples inversas
+2025-05-02 10:02:35 [INFO] Diferenciación: ust10y_log -> ust10y_log_d1 + inversa (cumsum)
+2025-05-02 10:02:35 [INFO] Diferenciación mejorada: ust10y_log -> ust10y_log_d1 con múltiples inversas
+2025-05-02 10:02:35 [INFO] Diferenciación: fedfunds_log -> fedfunds_log_d1 + inversa (cumsum)
+2025-05-02 10:02:35 [INFO] Diferenciación mejorada: fedfunds_log -> fedfunds_log_d1 con múltiples inversas
+2025-05-02 10:02:35 [INFO] Diferenciación: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:35 [INFO] Diferenciación mejorada: cpi_yoy_raw_log -> cpi_yoy_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:36 [INFO] Diferenciación: wti_crude_raw_log -> wti_crude_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:36 [INFO] Diferenciación mejorada: wti_crude_raw_log -> wti_crude_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:36 [INFO] Diferenciación: unemployment_raw_log -> unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:36 [INFO] Diferenciación mejorada: unemployment_raw_log -> unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:36 [INFO] Diferenciación: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:36 [INFO] Diferenciación mejorada: ism_manufacturing_raw_log -> ism_manufacturing_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:36 [INFO] Diferenciación: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:36 [INFO] Diferenciación mejorada: michigan_sentiment_raw_log -> michigan_sentiment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:36 [INFO] Diferenciación: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 10:02:37 [INFO] Diferenciación mejorada: cpi_yoy_lag1m_log -> cpi_yoy_lag1m_log_d1 con múltiples inversas
+2025-05-02 10:02:37 [INFO] Diferenciación: unemployment_lag1m_log -> unemployment_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 10:02:37 [INFO] Diferenciación mejorada: unemployment_lag1m_log -> unemployment_lag1m_log_d1 con múltiples inversas
+2025-05-02 10:02:37 [INFO] DataFrame transformado: 2871 filas × 121 columnas
+2025-05-02 10:02:37 [INFO] Construyendo frames para SP500...
+2025-05-02 10:02:37 [INFO] Target seleccionado: sp500_close_log_d1
+2025-05-02 10:02:37 [INFO] Variable vix_log_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable term_spread -> basic (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable cpi_yoy_lag1m_log_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable wti_crude_raw_log_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable unemployment_lag1m_log_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:37 [WARNING] No encontrada transformación para volume_lag1
+2025-05-02 10:02:37 [INFO] Variable vix_log_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable term_spread -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable cpi_yoy_lag1m_log_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable wti_crude_raw_log_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable unemployment_lag1m_log_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [WARNING] No encontrada transformación para volume_lag1
+2025-05-02 10:02:37 [INFO] Variable norm_range -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [INFO] Variable pct_gap -> extended (+ inversa si existe)
+2025-05-02 10:02:37 [WARNING] No encontrada transformación para vol_ma5
+2025-05-02 10:02:37 [INFO] VIF aceptable para sarimax_basic
+2025-05-02 10:02:37 [INFO] Escalado aplicado a 20 vars en sarimax_basic + inversas
+2025-05-02 10:02:37 [INFO] Frame final sarimax_basic: (2871, 26)
+2025-05-02 10:02:37 [INFO] VIF aceptable para sarimax_extended
+2025-05-02 10:02:37 [INFO] Escalado aplicado a 28 vars en sarimax_extended + inversas
+2025-05-02 10:02:37 [INFO] Frame final sarimax_extended: (2871, 34)
+2025-05-02 10:02:37 [INFO] Limpiando dataset SP500_arima: (2871, 2)
+2025-05-02 10:02:37 [INFO] Tras filtrar >20% NaN: 2825 -> 2825 filas
+2025-05-02 10:02:37 [INFO] Resultado limpieza arima: 2871 -> 2825 filas (1.60% eliminadas)
+2025-05-02 10:02:37 [INFO] Guardado: SP500_ARIMA.csv (2825 filas × 3 cols)
+2025-05-02 10:02:37 [INFO] Guardado dataset SP500_ARIMA.csv
+2025-05-02 10:02:37 [INFO] Limpiando dataset SP500_sarimax_basic: (2871, 26)
+2025-05-02 10:02:37 [INFO] Tras filtrar >20% NaN: 2825 -> 2825 filas
+2025-05-02 10:02:37 [INFO] NaN imputados: 146 -> 146 -> 0
+2025-05-02 10:02:37 [INFO] Resultado limpieza sarimax_basic: 2871 -> 2825 filas (1.60% eliminadas)
+2025-05-02 10:02:37 [INFO] Guardado: SP500_SARIMAX_BASIC.csv (2825 filas × 27 cols)
+2025-05-02 10:02:37 [INFO] Guardado dataset SP500_SARIMAX_BASIC.csv
+2025-05-02 10:02:37 [INFO] Limpiando dataset SP500_sarimax_extended: (2871, 34)
+2025-05-02 10:02:37 [INFO] Tras filtrar >20% NaN: 2825 -> 2825 filas
+2025-05-02 10:02:37 [INFO] NaN imputados: 146 -> 146 -> 0
+2025-05-02 10:02:37 [INFO] Resultado limpieza sarimax_extended: 2871 -> 2825 filas (1.60% eliminadas)
+2025-05-02 10:02:37 [INFO] Guardado: SP500_SARIMAX_EXTENDED.csv (2825 filas × 35 cols)
+2025-05-02 10:02:37 [INFO] Guardado dataset SP500_SARIMAX_EXTENDED.csv
+2025-05-02 10:02:37 [INFO]  SP500 procesado con éxito
+2025-05-02 10:02:37 [INFO] Procesando EURUSD con ..\data\1_preprocess_ts\EURUSD_business_days.csv
+2025-05-02 10:02:37 [INFO]  Procesando EURUSD
+2025-05-02 10:02:37 [INFO] CSV leído: EURUSD_business_days.csv (enc=utf-8, sep=',')
+2025-05-02 10:02:37 [INFO] Convertida a numérica: eu_unemployment_raw (NaN: 2935)
+2025-05-02 10:02:37 [INFO] DataFrame inicial: 2935 filas × 10 columnas
+2025-05-02 10:02:37 [INFO] Target eurusd_close: 2932/2935 valores válidos (0.10% NaN)
+2025-05-02 10:02:37 [INFO] Derivando variables para EURUSD...
+2025-05-02 10:02:37 [INFO] Derivada: interest_rate_diff (EURUSD) + inversas
+2025-05-02 10:02:37 [INFO] Derivada: norm_range (NaN: 3) + inversa
+2025-05-02 10:02:37 [INFO] Derivada: pct_gap (NaN: 4) + inversa
+2025-05-02 10:02:37 [INFO] Aplicando rezagos...
+2025-05-02 10:02:37 [INFO] Rezago: eu_unemployment_lag1m (+30 días) + inversa
+2025-05-02 10:02:37 [INFO] Aplicando log/log1p con inversas (exp/expm1)...
+2025-05-02 10:02:37 [INFO] Log: eurusd_close + inversa exp
+2025-05-02 10:02:37 [INFO] Log: eurusd_open + inversa exp
+2025-05-02 10:02:37 [INFO] Log: eurusd_high + inversa exp
+2025-05-02 10:02:37 [INFO] Log: eurusd_low + inversa exp
+2025-05-02 10:02:37 [INFO] Log: dxy_index_raw + inversa exp
+2025-05-02 10:02:37 [INFO] Omitiendo log para ecb_rate - Contiene valores no positivos
+2025-05-02 10:02:37 [INFO] Log: fed_funds + inversa exp
+2025-05-02 10:02:37 [INFO] Omitiendo log para eu_unemployment_raw - Contiene valores no positivos
+2025-05-02 10:02:37 [INFO] Log: us_unemployment_raw + inversa exp
+2025-05-02 10:02:37 [INFO] Omitiendo log para eu_consumer_confidence_raw - Contiene valores no positivos
+2025-05-02 10:02:37 [INFO] Log: interest_rate_diff + inversa exp
+2025-05-02 10:02:37 [INFO] Omitiendo log para eu_unemployment_lag1m - Contiene valores no positivos
+2025-05-02 10:02:37 [INFO] Aplicando diferenciación selectiva con inversas mejoradas...
+2025-05-02 10:02:38 [INFO] Diferenciación: eurusd_close_log -> eurusd_close_log_d1 + inversa (cumsum)
+2025-05-02 10:02:38 [INFO] Diferenciación mejorada: eurusd_close_log -> eurusd_close_log_d1 con múltiples inversas
+2025-05-02 10:02:38 [INFO] Diferenciación: eurusd_open_log -> eurusd_open_log_d1 + inversa (cumsum)
+2025-05-02 10:02:38 [INFO] Diferenciación mejorada: eurusd_open_log -> eurusd_open_log_d1 con múltiples inversas
+2025-05-02 10:02:38 [INFO] Diferenciación: eurusd_high_log -> eurusd_high_log_d1 + inversa (cumsum)
+2025-05-02 10:02:38 [INFO] Diferenciación mejorada: eurusd_high_log -> eurusd_high_log_d1 con múltiples inversas
+2025-05-02 10:02:38 [INFO] Diferenciación: eurusd_low_log -> eurusd_low_log_d1 + inversa (cumsum)
+2025-05-02 10:02:38 [INFO] Diferenciación mejorada: eurusd_low_log -> eurusd_low_log_d1 con múltiples inversas
+2025-05-02 10:02:39 [INFO] Diferenciación: dxy_index_raw_log -> dxy_index_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:39 [INFO] Diferenciación mejorada: dxy_index_raw_log -> dxy_index_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:39 [INFO] Diferenciación: ecb_rate -> ecb_rate_d1 + inversa (cumsum)
+2025-05-02 10:02:39 [INFO] Diferenciación mejorada: ecb_rate -> ecb_rate_d1 con múltiples inversas
+2025-05-02 10:02:39 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 10:02:39 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 10:02:39 [WARNING] Serie eu_unemployment_raw tiene <20 valores válidos (0)
+2025-05-02 10:02:40 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:40 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:40 [INFO] Diferenciación: eu_consumer_confidence_raw -> eu_consumer_confidence_raw_d1 + inversa (cumsum)
+2025-05-02 10:02:40 [INFO] Diferenciación mejorada: eu_consumer_confidence_raw -> eu_consumer_confidence_raw_d1 con múltiples inversas
+2025-05-02 10:02:40 [WARNING] Serie eu_unemployment_lag1m tiene <20 valores válidos (0)
+2025-05-02 10:02:40 [INFO] Diferenciación: eurusd_close_log -> eurusd_close_log_d1 + inversa (cumsum)
+2025-05-02 10:02:40 [INFO] Diferenciación mejorada: eurusd_close_log -> eurusd_close_log_d1 con múltiples inversas
+2025-05-02 10:02:40 [INFO] Diferenciación: eurusd_open_log -> eurusd_open_log_d1 + inversa (cumsum)
+2025-05-02 10:02:40 [INFO] Diferenciación mejorada: eurusd_open_log -> eurusd_open_log_d1 con múltiples inversas
+2025-05-02 10:02:41 [INFO] Diferenciación: eurusd_high_log -> eurusd_high_log_d1 + inversa (cumsum)
+2025-05-02 10:02:41 [INFO] Diferenciación mejorada: eurusd_high_log -> eurusd_high_log_d1 con múltiples inversas
+2025-05-02 10:02:41 [INFO] Diferenciación: eurusd_low_log -> eurusd_low_log_d1 + inversa (cumsum)
+2025-05-02 10:02:41 [INFO] Diferenciación mejorada: eurusd_low_log -> eurusd_low_log_d1 con múltiples inversas
+2025-05-02 10:02:41 [INFO] Diferenciación: dxy_index_raw_log -> dxy_index_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:41 [INFO] Diferenciación mejorada: dxy_index_raw_log -> dxy_index_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:41 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 10:02:41 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 10:02:41 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:41 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:41 [INFO] DataFrame transformado: 2935 filas × 80 columnas
+2025-05-02 10:02:41 [INFO] Construyendo frames para EURUSD...
+2025-05-02 10:02:41 [INFO] Target seleccionado: eurusd_close_log_d1
+2025-05-02 10:02:41 [INFO] Variable dxy_index_raw_log_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable interest_rate_diff_log -> basic (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable eu_unemployment_lag1m -> basic (+ inversa si existe)
+2025-05-02 10:02:41 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 10:02:41 [INFO] Variable eu_consumer_confidence_raw_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable dxy_index_raw_log_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable interest_rate_diff_log -> extended (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable eu_unemployment_lag1m -> extended (+ inversa si existe)
+2025-05-02 10:02:41 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 10:02:41 [INFO] Variable eu_consumer_confidence_raw_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable norm_range -> extended (+ inversa si existe)
+2025-05-02 10:02:41 [INFO] Variable pct_gap -> extended (+ inversa si existe)
+2025-05-02 10:02:41 [WARNING] Columnas con todos NaN: ['eu_unemployment_lag1m']
+2025-05-02 10:02:41 [INFO] VIF aceptable para sarimax_basic
+2025-05-02 10:02:41 [INFO] Escalado aplicado a 12 vars en sarimax_basic + inversas
+2025-05-02 10:02:41 [INFO] Frame final sarimax_basic: (2935, 18)
+2025-05-02 10:02:41 [WARNING] Columnas con todos NaN: ['eu_unemployment_lag1m']
+2025-05-02 10:02:41 [INFO] VIF aceptable para sarimax_extended
+2025-05-02 10:02:41 [INFO] Escalado aplicado a 20 vars en sarimax_extended + inversas
+2025-05-02 10:02:41 [INFO] Frame final sarimax_extended: (2935, 26)
+2025-05-02 10:02:41 [INFO] Limpiando dataset EURUSD_arima: (2935, 2)
+2025-05-02 10:02:41 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 10:02:41 [INFO] Resultado limpieza arima: 2935 -> 2931 filas (0.14% eliminadas)
+2025-05-02 10:02:41 [INFO] Guardado: EURUSD_ARIMA.csv (2931 filas × 3 cols)
+2025-05-02 10:02:41 [INFO] Guardado dataset EURUSD_ARIMA.csv
+2025-05-02 10:02:41 [INFO] Limpiando dataset EURUSD_sarimax_basic: (2935, 18)
+2025-05-02 10:02:41 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 10:02:41 [INFO] NaN imputados: 2932 -> 2932 -> 2931
+2025-05-02 10:02:41 [INFO] Resultado limpieza sarimax_basic: 2935 -> 2931 filas (0.14% eliminadas)
+2025-05-02 10:02:41 [INFO] Guardado: EURUSD_SARIMAX_BASIC.csv (2931 filas × 19 cols)
+2025-05-02 10:02:41 [INFO] Guardado dataset EURUSD_SARIMAX_BASIC.csv
+2025-05-02 10:02:41 [INFO] Limpiando dataset EURUSD_sarimax_extended: (2935, 26)
+2025-05-02 10:02:41 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 10:02:41 [INFO] NaN imputados: 2932 -> 2932 -> 2931
+2025-05-02 10:02:41 [INFO] Resultado limpieza sarimax_extended: 2935 -> 2931 filas (0.14% eliminadas)
+2025-05-02 10:02:41 [INFO] Guardado: EURUSD_SARIMAX_EXTENDED.csv (2931 filas × 27 cols)
+2025-05-02 10:02:41 [INFO] Guardado dataset EURUSD_SARIMAX_EXTENDED.csv
+2025-05-02 10:02:41 [INFO]  EURUSD procesado con éxito
+2025-05-02 10:02:41 [INFO] Procesando USDJPY con ..\data\1_preprocess_ts\USDJPY_business_days.csv
+2025-05-02 10:02:41 [INFO]  Procesando USDJPY
+2025-05-02 10:02:41 [INFO] CSV leído: USDJPY_business_days.csv (enc=utf-8, sep=',')
+2025-05-02 10:02:41 [INFO] Convertida a numérica: boj_rate (NaN: 3227)
+2025-05-02 10:02:41 [INFO] Convertida a numérica: nikkei_225_raw (NaN: 3227)
+2025-05-02 10:02:41 [INFO] Convertida a numérica: japan_m2_raw (NaN: 3227)
+2025-05-02 10:02:41 [INFO] DataFrame inicial: 3227 filas × 10 columnas
+2025-05-02 10:02:41 [INFO] Target usdjpy_close: 2932/3227 valores válidos (9.14% NaN)
+2025-05-02 10:02:41 [INFO] Derivando variables para USDJPY...
+2025-05-02 10:02:41 [INFO] Derivada: interest_rate_diff (USDJPY) + inversas
+2025-05-02 10:02:41 [INFO] Derivada: norm_range (NaN: 295) + inversa
+2025-05-02 10:02:41 [INFO] Derivada: pct_gap (NaN: 296) + inversa
+2025-05-02 10:02:41 [INFO] Aplicando rezagos...
+2025-05-02 10:02:41 [INFO] Rezago: japan_leading_lag1m (+30 días) + inversa
+2025-05-02 10:02:41 [INFO] Aplicando log/log1p con inversas (exp/expm1)...
+2025-05-02 10:02:41 [INFO] Log: usdjpy_close + inversa exp
+2025-05-02 10:02:41 [INFO] Log: usdjpy_open + inversa exp
+2025-05-02 10:02:41 [INFO] Log: usdjpy_high + inversa exp
+2025-05-02 10:02:41 [INFO] Log: usdjpy_low + inversa exp
+2025-05-02 10:02:41 [INFO] Omitiendo log para boj_rate - Contiene valores no positivos
+2025-05-02 10:02:41 [INFO] Log: fed_funds + inversa exp
+2025-05-02 10:02:41 [INFO] Log: japan_leading_indicator_raw + inversa exp
+2025-05-02 10:02:41 [INFO] Log: us_unemployment_raw + inversa exp
+2025-05-02 10:02:41 [INFO] Omitiendo log para nikkei_225_raw - Contiene valores no positivos
+2025-05-02 10:02:41 [INFO] Omitiendo log para japan_m2_raw - Contiene valores no positivos
+2025-05-02 10:02:41 [INFO] Omitiendo log para interest_rate_diff - Contiene valores no positivos
+2025-05-02 10:02:41 [INFO] Log: japan_leading_lag1m + inversa exp
+2025-05-02 10:02:41 [INFO] Aplicando diferenciación selectiva con inversas mejoradas...
+2025-05-02 10:02:42 [INFO] Diferenciación: usdjpy_close_log -> usdjpy_close_log_d1 + inversa (cumsum)
+2025-05-02 10:02:42 [INFO] Diferenciación mejorada: usdjpy_close_log -> usdjpy_close_log_d1 con múltiples inversas
+2025-05-02 10:02:42 [INFO] Diferenciación: usdjpy_open_log -> usdjpy_open_log_d1 + inversa (cumsum)
+2025-05-02 10:02:42 [INFO] Diferenciación mejorada: usdjpy_open_log -> usdjpy_open_log_d1 con múltiples inversas
+2025-05-02 10:02:42 [INFO] Diferenciación: usdjpy_high_log -> usdjpy_high_log_d1 + inversa (cumsum)
+2025-05-02 10:02:42 [INFO] Diferenciación mejorada: usdjpy_high_log -> usdjpy_high_log_d1 con múltiples inversas
+2025-05-02 10:02:42 [INFO] Diferenciación: usdjpy_low_log -> usdjpy_low_log_d1 + inversa (cumsum)
+2025-05-02 10:02:42 [INFO] Diferenciación mejorada: usdjpy_low_log -> usdjpy_low_log_d1 con múltiples inversas
+2025-05-02 10:02:42 [WARNING] Serie boj_rate tiene <20 valores válidos (0)
+2025-05-02 10:02:42 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 10:02:42 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [INFO] Diferenciación: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [WARNING] Serie nikkei_225_raw tiene <20 valores válidos (0)
+2025-05-02 10:02:43 [WARNING] Serie japan_m2_raw tiene <20 valores válidos (0)
+2025-05-02 10:02:43 [INFO] Diferenciación: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [INFO] Diferenciación: usdjpy_close_log -> usdjpy_close_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: usdjpy_close_log -> usdjpy_close_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [INFO] Diferenciación: usdjpy_open_log -> usdjpy_open_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: usdjpy_open_log -> usdjpy_open_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [INFO] Diferenciación: usdjpy_high_log -> usdjpy_high_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: usdjpy_high_log -> usdjpy_high_log_d1 con múltiples inversas
+2025-05-02 10:02:43 [INFO] Diferenciación: usdjpy_low_log -> usdjpy_low_log_d1 + inversa (cumsum)
+2025-05-02 10:02:43 [INFO] Diferenciación mejorada: usdjpy_low_log -> usdjpy_low_log_d1 con múltiples inversas
+2025-05-02 10:02:44 [INFO] Diferenciación: fed_funds_log -> fed_funds_log_d1 + inversa (cumsum)
+2025-05-02 10:02:44 [INFO] Diferenciación mejorada: fed_funds_log -> fed_funds_log_d1 con múltiples inversas
+2025-05-02 10:02:44 [INFO] Diferenciación: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:44 [INFO] Diferenciación mejorada: japan_leading_indicator_raw_log -> japan_leading_indicator_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:44 [INFO] Diferenciación: us_unemployment_raw_log -> us_unemployment_raw_log_d1 + inversa (cumsum)
+2025-05-02 10:02:44 [INFO] Diferenciación mejorada: us_unemployment_raw_log -> us_unemployment_raw_log_d1 con múltiples inversas
+2025-05-02 10:02:44 [INFO] Diferenciación: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 + inversa (cumsum)
+2025-05-02 10:02:44 [INFO] Diferenciación mejorada: japan_leading_lag1m_log -> japan_leading_lag1m_log_d1 con múltiples inversas
+2025-05-02 10:02:44 [INFO] DataFrame transformado: 3227 filas × 75 columnas
+2025-05-02 10:02:44 [INFO] Construyendo frames para USDJPY...
+2025-05-02 10:02:44 [INFO] Target seleccionado: usdjpy_close_log_d1
+2025-05-02 10:02:44 [INFO] Variable interest_rate_diff -> basic (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable japan_leading_lag1m_log_d1 -> basic (+ inversa si existe)
+2025-05-02 10:02:44 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 10:02:44 [INFO] Variable nikkei_225_raw -> basic (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable japan_m2_raw -> basic (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable interest_rate_diff -> extended (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable japan_leading_lag1m_log_d1 -> extended (+ inversa si existe)
+2025-05-02 10:02:44 [WARNING] No encontrada transformación para us_unemployment_lag1m
+2025-05-02 10:02:44 [INFO] Variable nikkei_225_raw -> extended (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable japan_m2_raw -> extended (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable norm_range -> extended (+ inversa si existe)
+2025-05-02 10:02:44 [INFO] Variable pct_gap -> extended (+ inversa si existe)
+2025-05-02 10:02:44 [WARNING] Columnas con todos NaN: ['interest_rate_diff', 'nikkei_225_raw', 'japan_m2_raw']
+2025-05-02 10:02:44 [INFO] Escalado aplicado a 4 vars en sarimax_basic + inversas
+2025-05-02 10:02:44 [INFO] Frame final sarimax_basic: (3227, 7)
+2025-05-02 10:02:44 [WARNING] Columnas con todos NaN: ['interest_rate_diff', 'nikkei_225_raw', 'japan_m2_raw']
+2025-05-02 10:02:44 [INFO] VIF aceptable para sarimax_extended
+2025-05-02 10:02:44 [INFO] Escalado aplicado a 12 vars en sarimax_extended + inversas
+2025-05-02 10:02:44 [INFO] Frame final sarimax_extended: (3227, 15)
+2025-05-02 10:02:44 [INFO] Limpiando dataset USDJPY_arima: (3227, 2)
+2025-05-02 10:02:44 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 10:02:44 [INFO] Resultado limpieza arima: 3227 -> 2931 filas (9.17% eliminadas)
+2025-05-02 10:02:44 [INFO] Guardado: USDJPY_ARIMA.csv (2931 filas × 3 cols)
+2025-05-02 10:02:44 [INFO] Guardado dataset USDJPY_ARIMA.csv
+2025-05-02 10:02:44 [INFO] Limpiando dataset USDJPY_sarimax_basic: (3227, 7)
+2025-05-02 10:02:44 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 10:02:44 [INFO] NaN imputados: 37 -> 37 -> 0
+2025-05-02 10:02:44 [INFO] Resultado limpieza sarimax_basic: 3227 -> 2931 filas (9.17% eliminadas)
+2025-05-02 10:02:44 [INFO] Guardado: USDJPY_SARIMAX_BASIC.csv (2931 filas × 8 cols)
+2025-05-02 10:02:44 [INFO] Guardado dataset USDJPY_SARIMAX_BASIC.csv
+2025-05-02 10:02:44 [INFO] Limpiando dataset USDJPY_sarimax_extended: (3227, 15)
+2025-05-02 10:02:44 [INFO] Tras filtrar >20% NaN: 2931 -> 2931 filas
+2025-05-02 10:02:44 [INFO] NaN imputados: 37 -> 37 -> 0
+2025-05-02 10:02:44 [INFO] Resultado limpieza sarimax_extended: 3227 -> 2931 filas (9.17% eliminadas)
+2025-05-02 10:02:44 [INFO] Guardado: USDJPY_SARIMAX_EXTENDED.csv (2931 filas × 16 cols)
+2025-05-02 10:02:44 [INFO] Guardado dataset USDJPY_SARIMAX_EXTENDED.csv
+2025-05-02 10:02:44 [INFO]  USDJPY procesado con éxito
+2025-05-02 10:02:44 [INFO]  Procesamiento completo con transformaciones inversas

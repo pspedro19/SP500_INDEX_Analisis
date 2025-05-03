@@ -27,6 +27,7 @@ from pandas.tseries.offsets import BDay
 # Constants
 DEFAULT_INVENTORY = Path("../pipelines/full_consolidated_inventory.xlsx")
 DEFAULT_OUTDIR = Path("../data/1_preprocess_ts")
+
 IS_NOTEBOOK = 'ipykernel' in sys.modules
 
 # Configure logging
@@ -698,74 +699,72 @@ class SimpleDatasetProcessor:
             log.error(f"Error saving dataset: {str(e)}")
             raise
 
-def process_inventory(inventory_path: Path, outdir: Path) -> Dict:
-    """Process the inventory and create datasets."""
-    # Load inventory
-    log.info(f"Loading inventory: {inventory_path}")
-    
+def process_inventory(inventory_path: Path, outdir: Path) -> Dict[str, Any]:
+    """Load the inventory and process every unique instrument found in it."""
+    log.info("=== Inicio: procesamiento de inventario ===")
+    log.info(f"Cargando inventario desde: {inventory_path}")
+    # 1) Cargar inventario
     try:
-        # Try different engines
-        try:
-            inv = pd.read_excel(inventory_path, engine="openpyxl")
-        except Exception:
-            try:
-                inv = pd.read_excel(inventory_path, engine="xlrd")
-            except Exception:
-                inv = pd.read_excel(inventory_path, engine="openpyxl", sheet_name=0)
+        inv = pd.read_excel(inventory_path, engine="openpyxl")
+        log.info(f"Inventario cargado con éxito: {len(inv)} filas")
     except Exception as e:
-        log.error(f"Error loading inventory: {str(e)}")
-        return {"status": "error", "message": f"Could not load inventory: {str(e)}"}
-    
-    log.info(f"Inventory loaded: {len(inv)} rows")
-    
-    # Create processor
+        log.error(f"No se pudo cargar el inventario: {e}")
+        return {"status": "error", "message": str(e)}
+
+    # 2) Extraer instrumentos dinámicamente (saltando NaN)
+    instruments = inv["instrument"].dropna().unique().tolist()
+    log.info(f"Instrumentos detectados ({len(instruments)}): {instruments}")
+
+    # 3) Crear procesador
     processor = SimpleDatasetProcessor(outdir)
-    
-    # Process each instrument
-    instruments = inv["instrument"].unique()
-    log.info(f"Processing {len(instruments)} instruments")
-    
+
     results = {
         "processed": [],
         "failed": [],
         "total_instruments": len(instruments)
     }
-    
+
+    # 4) Procesar cada instrumento
     for instrument in instruments:
+        log.info(f"--- Procesando instrumento: {instrument} ---")
+        instrument_rows = inv[inv["instrument"] == instrument]
+
         try:
-            # Get rows for this instrument
-            instrument_rows = inv[inv["instrument"] == instrument]
-            
-            # Process the instrument
             df = processor.process_instrument(instrument_rows, instrument)
-            
-            if df is not None:
-                # Save the dataset
-                outfile = processor.save_dataset(df, instrument)
-                
-                results["processed"].append({
-                    "instrument": instrument,
-                    "rows": len(df),
-                    "columns": len(df.columns),
-                    "date_range": {
-                        "min_date": df.index.min().strftime('%Y-%m-%d'),
-                        "max_date": df.index.max().strftime('%Y-%m-%d')
-                    },
-                    "file": str(outfile)
-                })
-            else:
+            if df is None:
+                log.warning(f"No se generó DataFrame para {instrument}")
                 results["failed"].append({
                     "instrument": instrument,
-                    "reason": "Processing returned None"
+                    "reason": "No data returned"
                 })
+                continue
+
+            # 5) Guardar resultado
+            outfile = processor.save_dataset(df, instrument)
+            log.info(f"Dataset guardado para {instrument}: {outfile}")
+
+            # 6) Registrar con fechas
+            min_date = df.index.min()
+            max_date = df.index.max()
+            results["processed"].append({
+                "instrument": instrument,
+                "rows": df.shape[0],
+                "columns": df.shape[1],
+                "date_range": {
+                    "min_date": min_date.strftime("%Y-%m-%d") if pd.notnull(min_date) else None,
+                    "max_date": max_date.strftime("%Y-%m-%d") if pd.notnull(max_date) else None
+                },
+                "file": str(outfile)
+            })
+
         except Exception as e:
-            log.error(f"Error processing instrument {instrument}: {str(e)}")
+            log.error(f"Error procesando {instrument}: {e}")
             results["failed"].append({
                 "instrument": instrument,
                 "reason": str(e)
             })
-    
-    # Save summary
+
+    # 7) Resumen final
     summary = {
         "timestamp": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
         "inventory": str(inventory_path),
@@ -774,15 +773,20 @@ def process_inventory(inventory_path: Path, outdir: Path) -> Dict:
         "successful": len(results["processed"]),
         "failed": len(results["failed"])
     }
-    
     summary_file = outdir / "processing_summary.json"
-    with open(summary_file, "w") as f:
-        json.dump(summary, f, indent=2)
-    
-    log.info(f"Summary saved to {summary_file}")
-    log.info(f"Processing complete: {len(results['processed'])} successful, {len(results['failed'])} failed")
-    
+    try:
+        with open(summary_file, "w") as f:
+            json.dump(summary, f, indent=2)
+        log.info(f"Resumen guardado en: {summary_file}")
+    except Exception as e:
+        log.error(f"No se pudo guardar el resumen: {e}")
+
+    log.info(
+        f"=== Procesamiento completo: "
+        f"{len(results['processed'])} éxitos, {len(results['failed'])} fallos ==="
+    )
     return results
+
 
 def main():
     """Main function."""
