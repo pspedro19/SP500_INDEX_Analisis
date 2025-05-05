@@ -13,6 +13,50 @@ from dateutil.parser import parse
 import warnings
 warnings.filterwarnings('ignore')
 
+def preprocesar_excel_myinvesting(archivo_excel):
+    """
+    Preprocesa archivos Excel con fechas divididas en múltiples filas
+    """
+    df = pd.read_excel(archivo_excel, header=None)
+    
+    # Identificar la fila de encabezados
+    header_row = 0
+    for i in range(5):  # Buscar en las primeras 5 filas
+        if 'Release Date' in df.iloc[i].values:
+            header_row = i
+            break
+    
+    # Establecer los nombres de columnas
+    df.columns = df.iloc[header_row]
+    df = df.iloc[header_row + 1:]
+    
+    # Combinar fechas divididas
+    fecha_completa = []
+    i = 0
+    while i < len(df):
+        if pd.notna(df.iloc[i]['Release Date']):
+            fecha = str(df.iloc[i]['Release Date'])
+            # Si la siguiente fila tiene el año/resto de la fecha
+            if i + 1 < len(df) and pd.isna(df.iloc[i + 1]['Release Date']):
+                fecha += " " + str(df.iloc[i + 1].iloc[0])
+                i += 2
+            else:
+                i += 1
+            fecha_completa.append(fecha)
+        else:
+            i += 1
+    
+    # Crear nuevo DataFrame con fechas combinadas
+    df_procesado = pd.DataFrame()
+    df_procesado['Release Date'] = fecha_completa
+    
+    # Copiar otras columnas
+    for col in ['Actual', 'Forecast', 'Previous']:
+        if col in df.columns:
+            df_procesado[col] = df[col].dropna().reset_index(drop=True)
+    
+    return df_procesado
+
 # Configuración de logging
 def configurar_logging(log_file='myinvestingreportcp.log'):
     logging.basicConfig(
@@ -24,6 +68,37 @@ def configurar_logging(log_file='myinvestingreportcp.log'):
         ]
     )
     return logging.getLogger('EconomicDataProcessor')
+
+def leer_csv_robusto(ruta_csv, variable=None, logger=None, min_columnas=2):
+    configuraciones = [
+        {'sep': ',', 'decimal': '.', 'quotechar': '"', 'encoding': 'utf-8'},
+        {'sep': ',', 'decimal': '.', 'quotechar': '"', 'encoding': 'latin1'},
+        {'sep': ';', 'decimal': ',', 'quotechar': '"', 'encoding': 'utf-8'},
+        {'sep': ';', 'decimal': ',', 'quotechar': '"', 'encoding': 'latin1'},
+        {'sep': ',', 'decimal': '.', 'quotechar': None, 'encoding': 'utf-8'},
+        {'sep': ',', 'decimal': '.', 'quotechar': None, 'encoding': 'latin1'},
+        {'sep': ';', 'decimal': '.', 'quotechar': None, 'encoding': 'utf-8'},
+        {'sep': '\t', 'encoding': 'utf-8'},
+        {'sep': '\t', 'encoding': 'latin1'},
+    ]
+
+    errores = []
+    for config in configuraciones:
+        try:
+            df = pd.read_csv(ruta_csv, **config)
+            if len(df.columns) >= min_columnas:
+                if logger:
+                    logger.info(f"Archivo leído correctamente con config: {config}")
+                return df
+        except Exception as e:
+            errores.append(f"{config}: {str(e)}")
+    
+    if logger:
+        logger.error(f"No se pudo leer {ruta_csv} con ninguna configuración válida.")
+        for error in errores:
+            logger.debug(f"Error: {error}")
+    return None
+
 
 class EconomicDataProcessor:
     """
@@ -131,124 +206,225 @@ class EconomicDataProcessor:
             return None
 
     def process_file(self, config_row):
-        """
-        Procesa un archivo individual:
-          - Lee el archivo (se usa estrategia especial para US_Leading_EconIndex).
-          - Convierte la columna 'Release Date' robustamente.
-          - Detecta y convierte la columna target a numérico.
-          - Renombra la columna de valor usando el patrón:
-                {target_col}_{variable}_{tipo_macro}
-          - Selecciona solo las columnas 'fecha' y la columna renombrada.
-
-        Returns:
-            tuple: (variable, DataFrame procesado) o (variable, None) en caso de error.
-        """
         variable = config_row['Variable']
         macro_type = config_row['Tipo Macro']
         target_col = config_row['TARGET']
 
-        # Construir la ruta (buscando también en subdirectorios)
-        ruta = os.path.join(self.data_root, macro_type, f"{variable}.xlsx")
-        if not os.path.exists(ruta):
-            for root, dirs, files in os.walk(self.data_root):
-                if f"{variable}.xlsx" in files:
-                    ruta = os.path.join(root, f"{variable}.xlsx")
+        ruta = None
+        extensions = ['.xlsx', '.xls']
+        for ext in extensions:
+            ruta_candidate = os.path.join(self.data_root, macro_type, f"{variable}{ext}")
+            if os.path.exists(ruta_candidate):
+                ruta = ruta_candidate
+                break
+        if ruta is None:
+            for ext in extensions:
+                for root, dirs, files in os.walk(self.data_root):
+                    if f"{variable}{ext}" in files:
+                        ruta = os.path.join(root, f"{variable}{ext}")
+                        break
+                if ruta is not None:
                     break
-        if not os.path.exists(ruta):
-            self.logger.error(f"Archivo no encontrado: {variable}.xlsx")
+
+        if ruta is None:
+            self.logger.error(f"Archivo no encontrado para: {variable}")
             return variable, None
 
         self.logger.info(f"\nProcesando: {variable} ({macro_type})")
-        self.logger.info(f"- Archivo: {variable}.xlsx")
-        self.logger.info(f"- Columna TARGET: {target_col}")
-        self.logger.info(f"- Ruta encontrada: {ruta}")
+        self.logger.info(f"- Archivo: {os.path.basename(ruta)}")
+        self.logger.info(f"- TARGET: {target_col}")
+        self.logger.info(f"- Ruta completa: {ruta}")
 
         try:
-            # Estrategia especial para US_Leading_EconIndex: ajustar header y limpiar columnas
-            if variable == "US_Leading_EconIndex":
-                self.logger.info("Utilizando estrategia especial para US_Leading_EconIndex (header=2)")
-                df = pd.read_excel(ruta, header=2, engine='openpyxl')
-                df.columns = df.columns.str.strip()
-                self.logger.info(f"Columnas leídas: {df.columns.tolist()}")
-            else:
-                df = pd.read_excel(ruta, engine='openpyxl')
+            # Primero intentamos leer el archivo en bruto para analizar su estructura
+            df_raw = pd.read_excel(ruta, header=None)
+            
+            # Analizamos la estructura del archivo
+            df = self.analizar_y_procesar_estructura(df_raw, target_col)
+            
+            if df is None or df.empty:
+                self.logger.error("No se pudo procesar el archivo")
+                return variable, None
+
+            # Procesar fechas
+            df['fecha'] = df['Release Date'].apply(self.robust_parse_date)
+            df = df.dropna(subset=['fecha'])
+            df = df.sort_values('fecha')
+
+            # Procesar valores
+            df['valor'] = self.limpiar_y_convertir_valor(df[target_col])
+            df = df.dropna(subset=['valor'])
+            
+            if df.empty:
+                self.logger.error(f"No hay valores numéricos válidos para {target_col}")
+                return variable, None
+
+            # Actualizar fechas globales
+            current_min = df['fecha'].min()
+            current_max = df['fecha'].max()
+            if self.global_min_date is None or current_min < self.global_min_date:
+                self.global_min_date = current_min
+            if self.global_max_date is None or current_max > self.global_max_date:
+                self.global_max_date = current_max
+
+            # Renombrar columna
+            nuevo_nombre = f"{target_col}_{variable}_{macro_type}"
+            df.rename(columns={'valor': nuevo_nombre}, inplace=True)
+
+            # Guardar estadísticas
+            self.stats[variable] = {
+                'macro_type': macro_type,
+                'target_column': target_col,
+                'total_rows': len(df),
+                'valid_values': len(df),
+                'coverage': 100.0,
+                'date_min': current_min,
+                'date_max': current_max,
+                'nuevo_nombre': nuevo_nombre
+            }
+
+            self.logger.info(f"- Valores válidos: {len(df)}")
+            self.logger.info(f"- Periodo: {current_min.date()} a {current_max.date()}")
+            return variable, df[['fecha', nuevo_nombre]].copy()
+
         except Exception as e:
-            self.logger.error(f"Error al leer {ruta}: {e}")
+            self.logger.error(f"Error procesando {variable}: {e}")
             return variable, None
 
-        self.logger.info(f"- Filas encontradas: {len(df)}")
-        if 'Release Date' not in df.columns:
-            self.logger.error(f"No se encontró la columna 'Release Date' en {ruta}")
-            return variable, None
-
-        # Determinar preferencia de dayfirst (cacheada)
-        if ruta not in self.date_cache:
-            sample = df['Release Date'].dropna().head(10)
-            count_true, count_false = 0, 0
-            threshold = pd.Timestamp.today() + pd.Timedelta(days=30)
-            for val in sample:
-                dt_true = pd.to_datetime(val, dayfirst=True, errors='coerce')
-                dt_false = pd.to_datetime(val, dayfirst=False, errors='coerce')
-                if pd.notnull(dt_true) and dt_true <= threshold:
-                    count_true += 1
-                if pd.notnull(dt_false) and dt_false <= threshold:
-                    count_false += 1
-            preferred = count_true >= count_false
-            self.date_cache[ruta] = preferred
-            self.logger.info(f"Preferencia de dayfirst para {ruta}: {preferred}")
-        else:
-            preferred = self.date_cache[ruta]
-
-        df['fecha'] = df['Release Date'].apply(lambda x: self.robust_parse_date(x, preferred_dayfirst=preferred))
-        df = df.dropna(subset=['fecha'])
-        df = df.sort_values('fecha')
-
-        # Si el target especificado no está, intenta buscar una alternativa
-        if target_col not in df.columns:
-            for col in df.columns:
-                if col.strip().lower() == target_col.strip().lower():
-                    target_col = col
-                    self.logger.warning(f"No se encontró '{config_row['TARGET']}', se usará '{target_col}'")
+    def analizar_y_procesar_estructura(self, df_raw, target_col):
+        """
+        Analiza la estructura del archivo y procesa fechas divididas
+        """
+        try:
+            # Buscar la fila que contiene 'Release Date'
+            header_row = None
+            for i in range(min(10, len(df_raw))):
+                row_values = df_raw.iloc[i].astype(str)
+                if any('Release Date' in str(val) for val in row_values):
+                    header_row = i
                     break
-        if target_col not in df.columns:
-            self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
-            return variable, None
+            
+            if header_row is None:
+                self.logger.error("No se encontró la fila de encabezados")
+                return None
+            
+            # Obtener los nombres de las columnas
+            columns = []
+            for j in range(len(df_raw.columns)):
+                val = str(df_raw.iloc[header_row, j]).strip()
+                if val and val != 'nan':
+                    columns.append(val)
+                else:
+                    columns.append(f'col_{j}')
+            
+            # Procesar los datos
+            processed_data = []
+            i = header_row + 1
+            
+            while i < len(df_raw):
+                row = df_raw.iloc[i]
+                
+                # Verificar si esta fila tiene una fecha en la primera columna
+                if pd.notna(row[0]) and str(row[0]).strip() not in ['', 'nan']:
+                    current_date = str(row[0]).strip()
+                    
+                    # Verificar si la siguiente fila completa la fecha
+                    if i + 1 < len(df_raw):
+                        next_row = df_raw.iloc[i + 1]
+                        # Si la siguiente fila tiene año/mes/día complementario
+                        if pd.isna(next_row[0]) or str(next_row[0]).strip() in ['', 'nan']:
+                            # Buscar en las columnas siguientes
+                            for j in range(1, len(next_row)):
+                                next_val = str(next_row[j]).strip()
+                                if next_val and next_val != 'nan' and any(char.isdigit() for char in next_val):
+                                    # Si parece un año o parte de fecha
+                                    if len(next_val) == 4 and next_val.isdigit():  # Año
+                                        current_date += f" {next_val}"
+                                    elif '(' in next_val:  # Formato con paréntesis
+                                        current_date += f" {next_val.split('(')[0].strip()}"
+                                    else:
+                                        current_date += f" {next_val}"
+                                    break
+                    
+                    # Crear registro con datos completos
+                    record = {'Release Date': current_date}
+                    
+                    # Procesar otras columnas
+                    for j, col_name in enumerate(columns[1:], 1):
+                        if j < len(row):
+                            value = str(row[j]).strip()
+                            if value and value != 'nan':
+                                record[col_name] = value
+                    
+                    processed_data.append(record)
+                
+                i += 1
+            
+            # Crear DataFrame procesado
+            df_processed = pd.DataFrame(processed_data)
+            
+            # Verificar que tenemos las columnas necesarias
+            if 'Release Date' not in df_processed.columns:
+                self.logger.error("No se encontró la columna 'Release Date' después del procesamiento")
+                return None
+            
+            # Verificar columna target
+            if target_col not in df_processed.columns:
+                # Buscar columna similar
+                for col in df_processed.columns:
+                    if target_col.lower() in col.lower():
+                        df_processed.rename(columns={col: target_col}, inplace=True)
+                        break
+            
+            return df_processed
+            
+        except Exception as e:
+            self.logger.error(f"Error en analizar_y_procesar_estructura: {e}")
+            return None
 
-        # Convertir la columna target a numérico y descartar valores no válidos
-        df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
-        df = df.dropna(subset=['valor'])
-        if df.empty:
-            self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
-            return variable, None
-
-        # Actualizar rango global de fechas
-        current_min = df['fecha'].min()
-        current_max = df['fecha'].max()
-        if self.global_min_date is None or current_min < self.global_min_date:
-            self.global_min_date = current_min
-        if self.global_max_date is None or current_max > self.global_max_date:
-            self.global_max_date = current_max
-
-        # Calcular cobertura (puedes ajustar la fórmula si lo deseas)
-        cobertura = (len(df) / len(df)) * 100
-
-        # RENOMBRAR LA COLUMNA: Crear un nombre único
-        nuevo_nombre = f"{target_col}_{variable}_{macro_type}"
-        df.rename(columns={'valor': nuevo_nombre}, inplace=True)
-        self.stats[variable] = {
-            'macro_type': macro_type,
-            'target_column': target_col,
-            'total_rows': len(df),
-            'valid_values': len(df),
-            'coverage': cobertura,
-            'date_min': current_min,
-            'date_max': current_max,
-            'nuevo_nombre': nuevo_nombre
-        }
-        self.logger.info(f"- Valores no nulos en TARGET: {len(df)}")
-        self.logger.info(f"- Periodo: {current_min.strftime('%Y-%m-%d')} a {current_max.strftime('%Y-%m-%d')}")
-        self.logger.info(f"- Cobertura: {cobertura:.2f}%")
-        return variable, df[['fecha', nuevo_nombre]].copy()
+    def limpiar_y_convertir_valor(self, serie):
+        """
+        Limpia y convierte valores a numérico, manejando porcentajes y sufijos
+        """
+        valores_limpios = []
+        
+        for valor in serie:
+            if pd.isna(valor):
+                valores_limpios.append(np.nan)
+                continue
+                
+            valor_str = str(valor).strip()
+            
+            # Manejar porcentajes
+            if '%' in valor_str:
+                valor_limpio = valor_str.replace('%', '').strip()
+                try:
+                    valores_limpios.append(float(valor_limpio))
+                except:
+                    valores_limpios.append(np.nan)
+            # Manejar millones
+            elif 'M' in valor_str.upper():
+                valor_limpio = valor_str.upper().replace('M', '').replace(',', '').strip()
+                try:
+                    valores_limpios.append(float(valor_limpio) * 1e6)
+                except:
+                    valores_limpios.append(np.nan)
+            # Manejar billones
+            elif 'B' in valor_str.upper():
+                valor_limpio = valor_str.upper().replace('B', '').replace(',', '').strip()
+                try:
+                    valores_limpios.append(float(valor_limpio) * 1e9)
+                except:
+                    valores_limpios.append(np.nan)
+            # Valores normales
+            else:
+                valor_limpio = valor_str.replace(',', '').strip()
+                try:
+                    valores_limpios.append(float(valor_limpio))
+                except:
+                    valores_limpios.append(np.nan)
+        
+        return pd.Series(valores_limpios)
 
     def generate_daily_index(self):
         """
@@ -720,7 +896,7 @@ class MyinvestingreportNormal:
             _, extension = os.path.splitext(ruta_archivo)
             extension = extension.lower()
             if extension == '.csv':
-                df = self.leer_csv_adaptativo(ruta_archivo, variable)
+                df = leer_csv_robusto(ruta_archivo, variable=variable, logger=self.logger)
             elif extension in ['.xlsx', '.xls']:
                 df = pd.read_excel(ruta_archivo, engine='openpyxl')
             else:
@@ -1130,10 +1306,9 @@ class FredDataProcessor:
     def process_file(self, config_row):
         """
         Procesa un archivo individual de FRED.
-        
-        - Busca el archivo usando extensiones: .csv, .xlsx, .xls.
+
+        - Usa una función robusta para leer CSVs con diferentes codificaciones y formatos.
         - Usa la columna de fecha "observation_date" (o "DATE").
-        - Analiza hasta 20 registros para determinar el formato de fecha.
         - Convierte la columna de fecha y la columna target a numérico.
         - Renombra la columna de datos con el patrón: {TARGET}_{variable}_{Tipo_Macro}.
         - Devuelve un DataFrame con columnas ['fecha', nuevo_nombre].
@@ -1142,7 +1317,7 @@ class FredDataProcessor:
         macro_type = config_row['Tipo Macro']
         target_col = config_row['TARGET']
 
-        # Lista de extensiones a buscar
+        # Buscar el archivo en múltiples extensiones
         extensions = ['.csv', '.xlsx', '.xls']
         ruta = None
         for ext in extensions:
@@ -1169,91 +1344,78 @@ class FredDataProcessor:
 
         try:
             if ruta.endswith('.csv'):
-                df = pd.read_csv(ruta)
+                df = leer_csv_robusto(ruta, variable=variable, logger=self.logger)
             elif ruta.endswith(('.xlsx', '.xls')):
                 df = pd.read_excel(ruta)
             else:
                 self.logger.error(f"Extensión no soportada para {ruta}")
                 return variable, None
+
+            if df is None or len(df) == 0:
+                self.logger.error("El archivo está vacío o no se pudo leer correctamente")
+                return variable, None
+
+            self.logger.info(f"- Filas encontradas: {len(df)}")
+
+            # Determinar la columna de fecha
+            if 'observation_date' in df.columns:
+                date_col = 'observation_date'
+            elif 'DATE' in df.columns:
+                date_col = 'DATE'
+            else:
+                self.logger.error(f"No se encontró columna de fecha ('observation_date' o 'DATE') en {ruta}")
+                return variable, None
+
+            # Convertir fechas
+            df['fecha'] = pd.to_datetime(df[date_col], errors='coerce')
+            df = df.dropna(subset=['fecha'])
+            df = df.sort_values('fecha')
+
+            # Verificar la columna target
+            if target_col not in df.columns:
+                for col in df.columns:
+                    if col.strip().lower() == target_col.strip().lower():
+                        target_col = col
+                        self.logger.warning(f"No se encontró '{config_row['TARGET']}', se usará '{target_col}'")
+                        break
+            if target_col not in df.columns:
+                self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
+                return variable, None
+
+            df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
+            df = df.dropna(subset=['valor'])
+            if df.empty:
+                self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
+                return variable, None
+
+            current_min = df['fecha'].min()
+            current_max = df['fecha'].max()
+            if self.global_min_date is None or current_min < self.global_min_date:
+                self.global_min_date = current_min
+            if self.global_max_date is None or current_max > self.global_max_date:
+                self.global_max_date = current_max
+
+            nuevo_nombre = f"{target_col}_{variable}_{macro_type}"
+            df.rename(columns={'valor': nuevo_nombre}, inplace=True)
+            self.stats[variable] = {
+                'macro_type': macro_type,
+                'target_column': target_col,
+                'total_rows': len(df),
+                'valid_values': len(df),
+                'coverage': 100.0,
+                'date_min': current_min,
+                'date_max': current_max,
+                'nuevo_nombre': nuevo_nombre
+            }
+            self.logger.info(f"- Valores no nulos en TARGET: {len(df)}")
+            self.logger.info(f"- Periodo: {current_min.strftime('%Y-%m-%d')} a {current_max.strftime('%Y-%m-%d')}")
+            self.logger.info(f"- Cobertura: 100.00%")
+            return variable, df[['fecha', nuevo_nombre]].copy()
+
         except Exception as e:
-            self.logger.error(f"Error al leer {ruta}: {e}")
+            self.logger.error(f"Error al procesar {ruta}: {e}")
             return variable, None
 
-        self.logger.info(f"- Filas encontradas: {len(df)}")
-        # Determinar la columna de fecha: preferir "observation_date", sino "DATE"
-        if 'observation_date' in df.columns:
-            date_col = 'observation_date'
-        elif 'DATE' in df.columns:
-            date_col = 'DATE'
-        else:
-            self.logger.error(f"No se encontró columna de fecha ('observation_date' o 'DATE') en {ruta}")
-            return variable, None
-
-        # Detectar el formato de fecha a partir de 20 registros
-        fmt = self.detect_date_format(df[date_col], n=20, iso_threshold=0.6)
-        use_iso = (fmt == "ISO")
-        self.logger.info(f"Formato detectado para {ruta}: {fmt}")
-
-        # Si el formato no es ISO, determinar la preferencia de dayfirst usando la monotonicidad
-        if not use_iso:
-            sample = df[date_col].dropna().head(20)
-            parsed_true = pd.to_datetime(sample, dayfirst=True, errors='coerce')
-            parsed_false = pd.to_datetime(sample, dayfirst=False, errors='coerce')
-            score_true = self.monotonic_score(parsed_true)
-            score_false = self.monotonic_score(parsed_false)
-            preferred = score_true >= score_false
-            self.date_cache[ruta] = preferred
-            self.logger.info(f"Preferencia de dayfirst para {ruta}: {preferred} (score True: {score_true:.2f}, False: {score_false:.2f})")
-        else:
-            preferred = None
-
-        # Convertir la columna de fecha usando improved_robust_parse_date
-        df['fecha'] = df[date_col].apply(lambda x: self.improved_robust_parse_date(x, preferred_dayfirst=preferred, use_iso=use_iso))
-        df = df.dropna(subset=['fecha'])
-        df = df.sort_values('fecha')
-        self.logger.info(f"Primeras fechas convertidas: {df['fecha'].head(5).tolist()}")
-
-        # Verificar la columna target usando búsqueda insensible a mayúsculas
-        if target_col not in df.columns:
-            for col in df.columns:
-                if col.strip().lower() == target_col.strip().lower():
-                    target_col = col
-                    self.logger.warning(f"No se encontró '{config_row['TARGET']}', se usará '{target_col}'")
-                    break
-        if target_col not in df.columns:
-            self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
-            return variable, None
-
-        df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
-        df = df.dropna(subset=['valor'])
-        if df.empty:
-            self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
-            return variable, None
-
-        current_min = df['fecha'].min()
-        current_max = df['fecha'].max()
-        if self.global_min_date is None or current_min < self.global_min_date:
-            self.global_min_date = current_min
-        if self.global_max_date is None or current_max > self.global_max_date:
-            self.global_max_date = current_max
-
-        # Renombrar la columna de datos usando el patrón
-        nuevo_nombre = f"{target_col}_{variable}_{macro_type}"
-        df.rename(columns={'valor': nuevo_nombre}, inplace=True)
-        self.stats[variable] = {
-            'macro_type': macro_type,
-            'target_column': target_col,
-            'total_rows': len(df),
-            'valid_values': len(df),
-            'coverage': 100.0,
-            'date_min': current_min,
-            'date_max': current_max,
-            'nuevo_nombre': nuevo_nombre
-        }
-        self.logger.info(f"- Valores no nulos en TARGET: {len(df)}")
-        self.logger.info(f"- Periodo: {current_min.strftime('%Y-%m-%d')} a {current_max.strftime('%Y-%m-%d')}")
-        self.logger.info(f"- Cobertura: 100.00%")
-        return variable, df[['fecha', nuevo_nombre]].copy()
 
     def generate_daily_index(self):
         """
@@ -3556,7 +3718,7 @@ def categorize_column(col_name: str) -> str:
 def main():
     # Intentar leer el archivo Excel
     try:
-        df = pd.read_excel("MERGEDEXCELS.xlsx")
+        df = pd.read_excel("MercadosDelProyecto.xlsx")
         columns = df.columns.tolist()
         logging.info("Archivo Excel cargado exitosamente.")
     except Exception as e:
