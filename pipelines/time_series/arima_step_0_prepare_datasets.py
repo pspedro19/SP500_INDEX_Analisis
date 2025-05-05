@@ -27,6 +27,7 @@ from pandas.tseries.offsets import BDay
 # Constants
 DEFAULT_INVENTORY = Path("../pipelines/full_consolidated_inventory.xlsx")
 DEFAULT_OUTDIR = Path("../data/1_preprocess_ts")
+
 IS_NOTEBOOK = 'ipykernel' in sys.modules
 
 # Configure logging
@@ -550,184 +551,118 @@ class SimpleDatasetProcessor:
     
     @catch_exceptions
     def process_instrument(self, inventory_rows: pd.DataFrame, instrument: str) -> pd.DataFrame:
-        """Process all columns for a specific instrument."""
+        """Process all columns for a specific instrument, using relative paths."""
         log.info(f"Processing data for instrument: {instrument}")
-        
-        # Create column configs
-        configs = []
+
+        # 1) Define el root de tu proyecto (dos niveles arriba de este archivo)
+        project_root = Path(__file__).resolve().parents[2]
+        root_name = project_root.name
+
+        # 2) Construye la lista de ColumnConfig con rutas relativas
+        configs: List[ColumnConfig] = []
         for _, row in inventory_rows.iterrows():
-            # Skip derived/lag columns and volume columns
-            column_name = row.get('canonical_name', '')
-            if pd.isna(column_name):
+            col_name = row.get('canonical_name', '')
+            if pd.isna(col_name):
                 continue
-            
-            # Skip volume columns
-            if any(vol_term in column_name.lower() for vol_term in ['volume', 'vol', 'volumen']):
-                log.info(f"Skipping volume column: {column_name}")
+            # Saltar volúmenes y lags
+            if any(term in col_name.lower() for term in ['volume', 'vol', 'volumen']) or 'lag' in col_name.lower():
                 continue
-                
-            # Skip lag columns
-            if 'lag' in column_name.lower():
+
+            raw = row.get('absolute_path', '')
+            if pd.isna(raw):
                 continue
-                
-            # Get source path
-            source_path = row.get('absolute_path', '')
-            if pd.isna(source_path) or not isinstance(source_path, (str, os.PathLike)):
-                continue
-                
+
+            abs_path = Path(raw)
+            if abs_path.is_absolute():
+                try:
+                    rel = abs_path.relative_to(project_root)
+                except ValueError:
+                    parts = abs_path.parts
+                    if root_name in parts:
+                        idx = parts.index(root_name)
+                        rel = Path(*parts[idx+1:])
+                    else:
+                        rel = Path(abs_path.name)
+                source_path = project_root / rel
+            else:
+                source_path = abs_path
+
             configs.append(ColumnConfig(
-                name=column_name,
-                source_path=Path(source_path),
+                name=col_name,
+                source_path=source_path,
                 source_column=row.get('raw_column', '')
             ))
-        
-        log.info(f"Found {len(configs)} raw data columns for {instrument} (excluding volume columns)")
-        
-        # Process each column
+
+        log.info(f"Found {len(configs)} raw data columns for {instrument} (excluding volume/lag)")
+
+        # --- Carga cada columna ---
         dfs = []
         date_cols = []
-        
-        # Dictionary to store min/max dates for each source file
-        file_date_ranges = {}
-        
-        for config in configs:
-            try:
-                df, date_col = self.load_column(config)
-                if df is not None:
-                    # Log min/max dates for this file
-                    if date_col and date_col in df.columns:
-                        min_date = df[date_col].min()
-                        max_date = df[date_col].max()
-                        
-                        # Store date range
-                        file_date_ranges[config.name] = {
-                            'min_date': min_date,
-                            'max_date': max_date,
-                            'count': len(df),
-                            'source_file': config.source_path.name
-                        }
-                    
-                    dfs.append(df)
-                    if date_col:
-                        date_cols.append(date_col)
-            except Exception as e:
-                log.error(f"Error loading column {config.name}: {str(e)}")
-        
+        file_date_ranges: Dict[str, Dict[str, Any]] = {}
+
+        for cfg in configs:
+            df, date_col = self.load_column(cfg)
+            if df is not None:
+                if date_col and date_col in df.columns:
+                    file_date_ranges[cfg.name] = {
+                        'min_date': df[date_col].min(),
+                        'max_date': df[date_col].max(),
+                        'count': len(df),
+                        'source_file': cfg.source_path.name
+                    }
+                dfs.append(df)
+                if date_col:
+                    date_cols.append(date_col)
+
         if not dfs:
             log.error(f"No data could be loaded for {instrument}")
             return None
-        
-        # Print summary of date ranges
-        future_files = self.print_date_summary(file_date_ranges, instrument)
-        
-        # Merge all dataframes
-        log.info(f"Merging {len(dfs)} dataframes for {instrument}")
-        
-        # First find and prepare dataframes with date column
-        merged = None
-        
-        try:
-            # Find dataframes with date columns
-            date_dfs = []
-            for df in dfs:
-                if any(col in df.columns for col in date_cols):
-                    # Get the date column
-                    date_col = next(col for col in df.columns if col in date_cols)
-                    
-                    # Set date as index
-                    df_temp = df.copy()
-                    df_temp = df_temp.set_index(date_col)
-                    
-                    # Remove duplicates in the index
-                    if df_temp.index.duplicated().any():
-                        df_temp = df_temp[~df_temp.index.duplicated(keep='first')]
-                    
-                    # Sort by date
-                    df_temp = df_temp.sort_index()
-                    date_dfs.append(df_temp)
-            
-            # Combine all date dataframes
-            if date_dfs:
-                merged = pd.concat(date_dfs, axis=1, join='outer')
-                log.info(f"Initial merged dataframe: {merged.shape[0]} rows x {merged.shape[1]} columns")
-            else:
-                log.warning("No dataframes with valid date columns found")
-                return None
-                
-        except Exception as e:
-            log.error(f"Error merging dataframes: {str(e)}")
-            return None
-        
-        # Log original min/max dates
-        original_min_date = merged.index.min()
-        original_max_date = merged.index.max()
-        log.info(f"Original date range for {instrument}: {original_min_date} to {original_max_date}")
-        
-        # If we have future dates, trim to current date
+
+        self.print_date_summary(file_date_ranges, instrument)
+
+        # --- Unir por fecha ---
+        # 1) Crear lista de DataFrames indexados por fecha, quitando duplicados
+        date_dfs = []
+        for df in dfs:
+            for dc in date_cols:
+                if dc in df.columns:
+                    temp = df.set_index(dc)
+                    temp = temp[~temp.index.duplicated(keep='first')]
+                    temp = temp.sort_index()
+                    date_dfs.append(temp)
+                    break
+
+        merged = pd.concat(date_dfs, axis=1, join='outer')
+        log.info(f"Initial merged dataframe: {merged.shape[0]} rows x {merged.shape[1]} columns")
+
+        # 2) Recortar fechas futuras
         today = pd.Timestamp.now().normalize()
-        if original_max_date > today:
-            log.warning(f"⚠️ Trimming dataset to current date: {today.strftime('%Y-%m-%d')}")
-            # Keep only dates up to today
+        if merged.index.max() > today:
             merged = merged[merged.index <= today]
-            log.info(f"New date range after trimming future dates: {merged.index.min()} to {merged.index.max()}")
-        
-        # Create business day index
+
+        # 3) Reconstruir sobre días hábiles
         business_days = create_business_day_index(merged.index.min(), merged.index.max(), instrument)
-        
         if business_days is not None:
-            # Create DataFrame with business day index
-            full_index_df = pd.DataFrame(index=business_days)
-            
-            # Perform outer join to keep all dates
-            merged = merged.join(full_index_df, how='outer')
-            merged = merged.sort_index()
-            
-            # Log reconstructed date range
-            new_min_date = merged.index.min()
-            new_max_date = merged.index.max()
-            new_days_count = len(merged)
-            
-            log.info(f"Reconstructed date range after business days merge: {new_min_date} to {new_max_date}")
-            log.info(f"Total days in merged dataset: {new_days_count} days")
-            
-            # SOLUCIÓN: Recortar el dataframe a la fecha real máxima
-            # Identificar la última fecha con datos reales (donde no todos son NaN)
-            original_max_date = merged[~merged.isna().all(axis=1)].index.max()
-            log.info(f"Last date with real data: {original_max_date}")
-            
-            # Truncar el dataframe a esa fecha para eliminar filas más allá de los datos reales
-            merged = merged[merged.index <= original_max_date]
-            log.info(f"Truncated dataframe to real data max date: {len(merged)} rows")
-        else:
-            log.warning(f"Using original dates for {instrument} without business day alignment.")
-        
-        # Fill missing values using only forward fill
-        log.info("Filling missing values using ONLY forward fill (no backward fill)")
-        
-        for col in merged.columns:
-            null_count = merged[col].isna().sum()
-            if null_count > 0:
-                null_pct = null_count / len(merged) * 100
-                log.info(f"Filling {null_count} nulls ({null_pct:.1f}%) in '{col}' with FFILL only")
-                
-                # Apply only forward fill
-                merged[col] = merged[col].ffill()  # Using ffill() instead of fillna(method='ffill')
-                
-                # Check remaining nulls
-                remaining_nulls = merged[col].isna().sum()
-                if remaining_nulls > 0:
-                    log.warning(f"{remaining_nulls} null values remain in '{col}' after forward fill")
-        
-        # Make sure the index is a proper datetime index
+            full_idx = pd.DataFrame(index=business_days)
+            # Asegurar índice único antes de reindexar
+            merged = merged[~merged.index.duplicated(keep='first')]
+            # Reindexar sobre el índice de business days
+            merged = full_idx.join(merged, how='left').sort_index()
+            # Truncar filas más allá de la última fecha con datos reales
+            last_real = merged[~merged.isna().all(axis=1)].index.max()
+            merged = merged[merged.index <= last_real]
+
+        # 4) Rellenar NaNs solo con forward fill
+        merged = merged.ffill()
+
+        # 5) Asegurar índice datetime
         if not isinstance(merged.index, pd.DatetimeIndex):
-            try:
-                merged.index = pd.to_datetime(merged.index)
-                merged = merged.sort_index()
-            except Exception as e:
-                log.warning(f"Error converting index to datetime: {str(e)}")
-        
+            merged.index = pd.to_datetime(merged.index)
+            merged = merged.sort_index()
+
         log.info(f"Final dataset for {instrument}: {merged.shape[0]} rows, {merged.shape[1]} columns")
         return merged
+
     
     @catch_exceptions
     def save_dataset(self, df: pd.DataFrame, instrument: str) -> Path:
@@ -755,8 +690,20 @@ class SimpleDatasetProcessor:
                 cols = ['date'] + [c for c in df_reset.columns if c != 'date']
                 df_reset = df_reset[cols]
             
-            # Save to CSV
-            df_reset.to_csv(outfile, index=False)
+            # INSERTAR AQUÍ EL CÓDIGO DE CONFIGURACIÓN DE LOCALIZACIÓN
+            import locale
+            try:
+                # Intentar configurar localización en inglés (USA)
+                locale.setlocale(locale.LC_NUMERIC, 'en_US.UTF-8')
+            except:
+                try:
+                    # Alternativa para Windows
+                    locale.setlocale(locale.LC_NUMERIC, 'English_United States.1252')
+                except:
+                    log.warning("No se pudo establecer la configuración regional para formato numérico")
+            
+            # Save to CSV - MODIFICAR TAMBIÉN ESTA LÍNEA
+            df_reset.to_csv(outfile, index=False, decimal='.', float_format='%.6f')
             log.info(f"Dataset saved: {outfile} ({len(df):,} rows, {len(df.columns)} columns)")
             
             return outfile
@@ -764,74 +711,72 @@ class SimpleDatasetProcessor:
             log.error(f"Error saving dataset: {str(e)}")
             raise
 
-def process_inventory(inventory_path: Path, outdir: Path) -> Dict:
-    """Process the inventory and create datasets."""
-    # Load inventory
-    log.info(f"Loading inventory: {inventory_path}")
-    
+def process_inventory(inventory_path: Path, outdir: Path) -> Dict[str, Any]:
+    """Load the inventory and process every unique instrument found in it."""
+    log.info("=== Inicio: procesamiento de inventario ===")
+    log.info(f"Cargando inventario desde: {inventory_path}")
+    # 1) Cargar inventario
     try:
-        # Try different engines
-        try:
-            inv = pd.read_excel(inventory_path, engine="openpyxl")
-        except Exception:
-            try:
-                inv = pd.read_excel(inventory_path, engine="xlrd")
-            except Exception:
-                inv = pd.read_excel(inventory_path, engine="openpyxl", sheet_name=0)
+        inv = pd.read_excel(inventory_path, engine="openpyxl")
+        log.info(f"Inventario cargado con éxito: {len(inv)} filas")
     except Exception as e:
-        log.error(f"Error loading inventory: {str(e)}")
-        return {"status": "error", "message": f"Could not load inventory: {str(e)}"}
-    
-    log.info(f"Inventory loaded: {len(inv)} rows")
-    
-    # Create processor
+        log.error(f"No se pudo cargar el inventario: {e}")
+        return {"status": "error", "message": str(e)}
+
+    # 2) Extraer instrumentos dinámicamente (saltando NaN)
+    instruments = inv["instrument"].dropna().unique().tolist()
+    log.info(f"Instrumentos detectados ({len(instruments)}): {instruments}")
+
+    # 3) Crear procesador
     processor = SimpleDatasetProcessor(outdir)
-    
-    # Process each instrument
-    instruments = inv["instrument"].unique()
-    log.info(f"Processing {len(instruments)} instruments")
-    
+
     results = {
         "processed": [],
         "failed": [],
         "total_instruments": len(instruments)
     }
-    
+
+    # 4) Procesar cada instrumento
     for instrument in instruments:
+        log.info(f"--- Procesando instrumento: {instrument} ---")
+        instrument_rows = inv[inv["instrument"] == instrument]
+
         try:
-            # Get rows for this instrument
-            instrument_rows = inv[inv["instrument"] == instrument]
-            
-            # Process the instrument
             df = processor.process_instrument(instrument_rows, instrument)
-            
-            if df is not None:
-                # Save the dataset
-                outfile = processor.save_dataset(df, instrument)
-                
-                results["processed"].append({
-                    "instrument": instrument,
-                    "rows": len(df),
-                    "columns": len(df.columns),
-                    "date_range": {
-                        "min_date": df.index.min().strftime('%Y-%m-%d'),
-                        "max_date": df.index.max().strftime('%Y-%m-%d')
-                    },
-                    "file": str(outfile)
-                })
-            else:
+            if df is None:
+                log.warning(f"No se generó DataFrame para {instrument}")
                 results["failed"].append({
                     "instrument": instrument,
-                    "reason": "Processing returned None"
+                    "reason": "No data returned"
                 })
+                continue
+
+            # 5) Guardar resultado
+            outfile = processor.save_dataset(df, instrument)
+            log.info(f"Dataset guardado para {instrument}: {outfile}")
+
+            # 6) Registrar con fechas
+            min_date = df.index.min()
+            max_date = df.index.max()
+            results["processed"].append({
+                "instrument": instrument,
+                "rows": df.shape[0],
+                "columns": df.shape[1],
+                "date_range": {
+                    "min_date": min_date.strftime("%Y-%m-%d") if pd.notnull(min_date) else None,
+                    "max_date": max_date.strftime("%Y-%m-%d") if pd.notnull(max_date) else None
+                },
+                "file": str(outfile)
+            })
+
         except Exception as e:
-            log.error(f"Error processing instrument {instrument}: {str(e)}")
+            log.error(f"Error procesando {instrument}: {e}")
             results["failed"].append({
                 "instrument": instrument,
                 "reason": str(e)
             })
-    
-    # Save summary
+
+    # 7) Resumen final
     summary = {
         "timestamp": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
         "inventory": str(inventory_path),
@@ -840,15 +785,20 @@ def process_inventory(inventory_path: Path, outdir: Path) -> Dict:
         "successful": len(results["processed"]),
         "failed": len(results["failed"])
     }
-    
     summary_file = outdir / "processing_summary.json"
-    with open(summary_file, "w") as f:
-        json.dump(summary, f, indent=2)
-    
-    log.info(f"Summary saved to {summary_file}")
-    log.info(f"Processing complete: {len(results['processed'])} successful, {len(results['failed'])} failed")
-    
+    try:
+        with open(summary_file, "w") as f:
+            json.dump(summary, f, indent=2)
+        log.info(f"Resumen guardado en: {summary_file}")
+    except Exception as e:
+        log.error(f"No se pudo guardar el resumen: {e}")
+
+    log.info(
+        f"=== Procesamiento completo: "
+        f"{len(results['processed'])} éxitos, {len(results['failed'])} fallos ==="
+    )
     return results
+
 
 def main():
     """Main function."""

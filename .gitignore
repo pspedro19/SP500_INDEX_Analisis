@@ -1,2 +1,5 @@
 *.pkl
 models/*.pkl
+# Ignorar entorno virtual
+venv_MValores/
+
