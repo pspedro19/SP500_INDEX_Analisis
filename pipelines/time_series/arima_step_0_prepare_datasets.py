@@ -690,8 +690,20 @@ class SimpleDatasetProcessor:
                 cols = ['date'] + [c for c in df_reset.columns if c != 'date']
                 df_reset = df_reset[cols]
             
-            # Save to CSV
-            df_reset.to_csv(outfile, index=False)
+            # INSERTAR AQUÍ EL CÓDIGO DE CONFIGURACIÓN DE LOCALIZACIÓN
+            import locale
+            try:
+                # Intentar configurar localización en inglés (USA)
+                locale.setlocale(locale.LC_NUMERIC, 'en_US.UTF-8')
+            except:
+                try:
+                    # Alternativa para Windows
+                    locale.setlocale(locale.LC_NUMERIC, 'English_United States.1252')
+                except:
+                    log.warning("No se pudo establecer la configuración regional para formato numérico")
+            
+            # Save to CSV - MODIFICAR TAMBIÉN ESTA LÍNEA
+            df_reset.to_csv(outfile, index=False, decimal='.', float_format='%.6f')
             log.info(f"Dataset saved: {outfile} ({len(df):,} rows, {len(df.columns)} columns)")
             
             return outfile
