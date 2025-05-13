@@ -1471,7 +1471,6 @@ class OtherDataProcessor:
         self.data_paths = {
             'US_Empire_State_Index': os.path.join('business_confidence', 'US_Empire_State_Index.csv'),
             'AAII_Investor_Sentiment': os.path.join('consumer_confidence', 'AAII_Investor_Sentiment.xls'),
-            'Put_Call_Ratio_SPY': os.path.join('consumer_confidence', 'Put_Call_Ratio_SPY.csv'),
             'Chicago_Fed_NFCI': os.path.join('leading_economic_index', 'Chicago_Fed_NFCI.csv')
         }
 
@@ -2283,8 +2282,6 @@ class OtherDataProcessor:
             return self.procesar_empire_state_manualmente(variable, tipo_macro, target_col)
         elif variable == 'AAII_Investor_Sentiment':
             return self.procesar_aaii_investor_sentiment(variable, tipo_macro, target_col)
-        elif variable == 'Put_Call_Ratio_SPY':
-            return self.procesar_put_call_ratio(variable, tipo_macro, target_col) 
         elif variable == 'Chicago_Fed_NFCI':
             return self.procesar_chicago_fed_manualmente(variable, tipo_macro, target_col)
         else:
@@ -2714,7 +2711,6 @@ class OtherDataProcessor:
         self.data_paths = {
             'US_Empire_State_Index': os.path.join('business_confidence', 'US_Empire_State_Index.csv'),
             'AAII_Investor_Sentiment': os.path.join('consumer_confidence', 'AAII_Investor_Sentiment.xls'),
-            'Put_Call_Ratio_SPY': os.path.join('consumer_confidence', 'Put_Call_Ratio_SPY.csv'),
             'Chicago_Fed_NFCI': os.path.join('leading_economic_index', 'Chicago_Fed_NFCI.csv')
         }
 
@@ -3266,8 +3262,6 @@ class OtherDataProcessor:
             return self.procesar_empire_state_manualmente(variable, tipo_macro, target_col)
         elif variable == 'AAII_Investor_Sentiment':
             return self.procesar_aaii_investor_sentiment(variable, tipo_macro, target_col)
-        elif variable == 'Put_Call_Ratio_SPY':
-            return self.procesar_put_call_ratio(variable, tipo_macro, target_col) 
         elif variable == 'Chicago_Fed_NFCI':
             return self.procesar_chicago_fed_manualmente(variable, tipo_macro, target_col)
         else:
