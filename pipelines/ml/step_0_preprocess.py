@@ -133,16 +133,7 @@ class EconomicDataProcessor:
 
     def process_file(self, config_row):
         """
-        Procesa un archivo individual:
-          - Lee el archivo (se usa estrategia especial para US_Leading_EconIndex).
-          - Convierte la columna 'Release Date' robustamente.
-          - Detecta y convierte la columna target a numérico.
-          - Renombra la columna de valor usando el patrón:
-                {target_col}_{variable}_{tipo_macro}
-          - Selecciona solo las columnas 'fecha' y la columna renombrada.
-
-        Returns:
-            tuple: (variable, DataFrame procesado) o (variable, None) en caso de error.
+        Procesa un archivo individual con manejo robusto de formatos numéricos.
         """
         variable = config_row['Variable']
         macro_type = config_row['Tipo Macro']
@@ -215,9 +206,44 @@ class EconomicDataProcessor:
             self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
             return variable, None
 
-        # Convertir la columna target a numérico y descartar valores no válidos
-        df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
+        # FUNCIÓN MEJORADA: Convertir la columna target a numérico con manejo de formatos especiales
+        def convertir_valor_robusto(val):
+            """Maneja múltiples formatos numéricos incluyendo sufijos y símbolos"""
+            if pd.isna(val) or val == '':
+                return None
+                
+            # Convertir a string y limpiar
+            val_str = str(val).strip()
+            
+            # Manejar sufijos multiplicadores
+            multiplicador = 1
+            if val_str.endswith('B') or val_str.endswith('b'):  # Billones
+                multiplicador = 1e9
+                val_str = val_str[:-1].strip()
+            elif val_str.endswith('M') or val_str.endswith('m'):  # Millones
+                multiplicador = 1e6
+                val_str = val_str[:-1].strip()
+            elif val_str.endswith('K') or val_str.endswith('k'):  # Miles
+                multiplicador = 1e3
+                val_str = val_str[:-1].strip()
+                
+            # Eliminar porcentaje
+            if val_str.endswith('%'):
+                val_str = val_str[:-1].strip()
+                multiplicador *= 0.01  # Para convertir 5% a 0.05
+                
+            # Reemplazar comas por puntos (formato europeo)
+            val_str = val_str.replace(',', '.')
+            
+            try:
+                return float(val_str) * multiplicador
+            except ValueError:
+                return None
+        
+        # Aplicar la función de conversión robusta
+        df['valor'] = df[target_col].apply(convertir_valor_robusto)
         df = df.dropna(subset=['valor'])
+        
         if df.empty:
             self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
             return variable, None
@@ -1225,7 +1251,7 @@ class FredDataProcessor:
             self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
             return variable, None
 
-        df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
+        df['valor'] = df[target_col].astype(str).str.replace(',', '.').str.replace('%', '').astype(float)
         df = df.dropna(subset=['valor'])
         if df.empty:
             self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
