@@ -1,0 +1,25 @@
+2025-05-12 12:33:32,630 - INFO - === INICIANDO PROCESO DE COMBINACIÓN DE ARCHIVOS EXCEL ===
+2025-05-12 12:33:32,645 - INFO - Se encontraron 4 archivos Excel en la carpeta.
+2025-05-12 12:33:32,645 - INFO - Cargando archivo: datos_economicos_normales_procesados.xlsx
+2025-05-12 12:33:33,718 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado en 1.07s con 4140 filas.
+2025-05-12 12:33:33,719 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado correctamente con 4140 filas
+2025-05-12 12:33:33,739 - INFO - Después de filtrar por fecha: 4104 filas
+2025-05-12 12:33:33,739 - INFO - Cargando archivo: datos_economicos_other_procesados.xlsx
+2025-05-12 12:33:34,525 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado en 0.78s con 8675 filas.
+2025-05-12 12:33:34,526 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado correctamente con 8675 filas
+2025-05-12 12:33:34,532 - INFO - Después de filtrar por fecha: 4104 filas
+2025-05-12 12:33:34,533 - INFO - Cargando archivo: datos_economicos_procesados_cp.xlsx
+2025-05-12 12:33:34,832 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado en 0.30s con 4201 filas.
+2025-05-12 12:33:34,832 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado correctamente con 4201 filas
+2025-05-12 12:33:34,836 - INFO - Después de filtrar por fecha: 4104 filas
+2025-05-12 12:33:34,837 - INFO - Cargando archivo: datos_economicos_procesados_Fred.xlsx
+2025-05-12 12:33:35,657 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado en 0.82s con 4140 filas.
+2025-05-12 12:33:35,658 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado correctamente con 4140 filas
+2025-05-12 12:33:35,662 - INFO - Después de filtrar por fecha: 4104 filas
+2025-05-12 12:33:35,663 - INFO - Combinando DataFrame 1 con el resultado (4104 filas + 4104 filas)...
+2025-05-12 12:33:35,666 - INFO - Combinando DataFrame 2 con el resultado (4104 filas + 4104 filas)...
+2025-05-12 12:33:35,672 - INFO - Combinando DataFrame 3 con el resultado (4104 filas + 4104 filas)...
+2025-05-12 12:33:35,712 - INFO - Merge completado en 0.05s: 4104 filas, 85 columnas.
+2025-05-12 12:33:35,721 - INFO - Combinación exitosa. Resultado tiene 4104 filas y 85 columnas
+2025-05-12 12:33:40,284 - INFO - Archivo combinado guardado como: c:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\1_preprocess\MERGEDEXCELS.xlsx en 4.56s
+2025-05-12 12:33:40,287 - INFO - Proceso completo en 7.65s

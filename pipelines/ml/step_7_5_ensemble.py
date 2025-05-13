@@ -11,13 +11,13 @@ from sklearn.model_selection import TimeSeriesSplit
 
 # Importar configuraciones
 from config import (
-    PROJECT_ROOT, MODELS_DIR, RESULTS_DIR, TRAINING_DIR, IMG_CHARTS,
+    PROJECT_ROOT, MODELS_DIR, RESULTS_DIR, TRAINING_DIR, IMG_CHARTS_DIR,
     LOCAL_REFINEMENT_DAYS, FORECAST_HORIZON_1MONTH, 
     TRAIN_TEST_SPLIT_RATIO, DATE_COL, RANDOM_SEED, ensure_directories
 )
 
 # Importar funciones de visualización
-from ml.utils.plots import plot_real_vs_pred
+from utils.plots import plot_real_vs_pred
 
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING
@@ -303,7 +303,7 @@ def visualize_ensemble_performance(ensemble, X, y, output_dir=None):
         list: Rutas a las visualizaciones generadas
     """
     if output_dir is None:
-        output_dir = IMG_CHARTS
+        output_dir = IMG_CHARTS_DIR
     
     os.makedirs(output_dir, exist_ok=True)
     visualization_paths = []
@@ -394,7 +394,7 @@ def main():
     
     logging.info(f"Se cargaron {len(models)} modelos para el ensamble.")
     
-    # Cargar datos
+    # Cargar datos Excel
     input_file = glob.glob(os.path.join(TRAINING_DIR, "*FPI.xlsx"))
     if not input_file:
         logging.error("No se encontró archivo de training con features FPI.")
@@ -410,17 +410,77 @@ def main():
         logging.error(f"Error al cargar datos: {e}")
         return None
     
-    # Procesar datos
-    df[DATE_COL] = pd.to_datetime(df[DATE_COL])
-    df = df.sort_values(DATE_COL)
+    # Mostrar columnas disponibles para diagnóstico
+    logging.info(f"Columnas en el DataFrame: {df.columns.tolist()}")
+    
+    # Siempre usar la última columna como target
+    target_col = df.columns[-1]
+    logging.info(f"Usando última columna como target: {target_col}")
+    
+    # Identificar la columna de fecha
+    date_col = None
+    # Primero intentar con nombres comunes
+    date_candidates = ['date', 'fecha', 'Date', 'Fecha', 'DATE']
+    for col in date_candidates:
+        if col in df.columns:
+            date_col = col
+            logging.info(f"Columna fecha encontrada por nombre: {date_col}")
+            break
+    
+    # Si no se encontró por nombre, intentar inferir por tipo
+    if date_col is None:
+        for col in df.columns:
+            if pd.api.types.is_datetime64_dtype(df[col]) or 'date' in col.lower():
+                try:
+                    pd.to_datetime(df[col])
+                    date_col = col
+                    logging.info(f"Columna fecha encontrada por tipo: {date_col}")
+                    break
+                except:
+                    continue
+    
+    # Si aún no se encontró, crear una columna de fecha
+    if date_col is None:
+        logging.warning("No se identificó columna de fecha. Creando índice temporal.")
+        df['fecha'] = pd.date_range(start='2000-01-01', periods=len(df))
+        date_col = 'fecha'
+    
+    # Asegurar que la columna de fecha sea datetime
+    df[date_col] = pd.to_datetime(df[date_col])
+    
+    # Ordenar por fecha
+    df = df.sort_values(date_col)
+    
+    # Asegurar que el target sea numérico
+    if not pd.api.types.is_numeric_dtype(df[target_col]):
+        try:
+            df[target_col] = pd.to_numeric(df[target_col])
+            logging.info(f"Columna target {target_col} convertida a numérica")
+        except Exception as e:
+            logging.error(f"Error al convertir target a numérico: {e}")
+            logging.error(f"Valores en target: {df[target_col].head()}")
+            # En lugar de retornar None, podríamos intentar otra estrategia
+            logging.info("Intentando extraer valores numéricos de la columna target...")
+            try:
+                # Intentar extraer valores numéricos con regex
+                import re
+                df[target_col] = df[target_col].apply(lambda x: float(re.findall(r"[-+]?\d*\.\d+|\d+", str(x))[0]) if re.findall(r"[-+]?\d*\.\d+|\d+", str(x)) else np.nan)
+                df = df.dropna(subset=[target_col])
+                logging.info(f"Se extrajeron valores numéricos. Quedan {len(df)} filas.")
+            except Exception as e2:
+                logging.error(f"No se pudo extraer valores numéricos: {e2}")
+                return None
+    
+    # Mostrar información del target
+    logging.info(f"Estadísticas del target: min={df[target_col].min()}, max={df[target_col].max()}, mean={df[target_col].mean()}")
     
     # Separar features y target
-    target_col = df.columns[-1]
-    X = df.drop(columns=[target_col, DATE_COL])
+    X = df.drop(columns=[target_col, date_col])
     y = df[target_col]
     
-    # Manejar índices de fecha
-    X.index = df[DATE_COL]
+    # Usar la columna de fecha como índice
+    X.index = df[date_col]
+    y.index = df[date_col]
     
     # Crear y entrenar ensamble
     ensemble = GreedyEnsembleRegressor(models, model_names=model_names)
@@ -444,6 +504,7 @@ def main():
     
     ensemble_info_path = os.path.join(RESULTS_DIR, "ensemble_info.json")
     with open(ensemble_info_path, 'w') as f:
+        import json
         json.dump(ensemble_info, f, indent=4)
     
     end_time = time.perf_counter()
@@ -455,7 +516,7 @@ def main():
     
     print(f"✅ Ensemble creado con {len(ensemble.selected_models)} modelos seleccionados de {len(models)} totales")
     print(f"✅ Métricas del ensemble: RMSE={ensemble.metrics['RMSE']:.4f}, R2={ensemble.metrics['R2']:.4f}")
-    print(f"✅ Visualizaciones guardadas en: {IMG_CHARTS}")
+    print(f"✅ Visualizaciones guardadas en: {IMG_CHARTS_DIR}")
     
     return ensemble
 

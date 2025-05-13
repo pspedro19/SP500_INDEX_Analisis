@@ -38,7 +38,7 @@ CSV_REPORTS_DIR = os.path.join(REPORTS_DIR, "csv")
 # ================================
 # COLUMNAS COMUNES
 # ================================
-DATE_COL = "date"
+DATE_COL = "fecha"
 ID_COL = "id"
 TARGET_SUFFIX = "_Target"
 
@@ -104,6 +104,9 @@ PERIODO_LABELS = {
     "Forecast": "Pronóstico"
 }
 
+DATA_RAW = RAW_DIR
+DATA_PREP = PREPROCESS_DIR
+CSV_REPORTS = CSV_REPORTS_DIR
 # ================================
 # FUNCIONES AUXILIARES
 # ================================

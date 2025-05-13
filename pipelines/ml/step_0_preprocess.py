@@ -1,10 +1,11 @@
+##step_0_preprocess.py
 #pip install openpyxl
-
 # ## MyInvesting Copy-Paste
 
 import pandas as pd
 import numpy as np
 import os
+from pathlib import Path
 import re
 import time
 import logging
@@ -3554,11 +3555,21 @@ def categorize_column(col_name: str) -> str:
     return "Sin categoría"
 
 def main():
-    # Intentar leer el archivo Excel
+    # 1) Determinar la ruta del repositorio (dos niveles arriba de este archivo)
+    script_dir = Path(__file__).resolve().parent
+    repo_root = script_dir.parent.parent
+
+    # 2) Construir la ruta relativa al Excel
+    merge_path = repo_root / "Data" / "1_preprocess" / "MERGEDEXCELS.xlsx"
+
+    # 3) Intentar leer el archivo Excel
     try:
-        df = pd.read_excel("MERGEDEXCELS.xlsx")
+        df = pd.read_excel(merge_path, engine="openpyxl")
         columns = df.columns.tolist()
-        logging.info("Archivo Excel cargado exitosamente.")
+        logging.info(f"Archivo Excel cargado exitosamente desde {merge_path}")
+    except FileNotFoundError:
+        logging.error(f"No se encontró el fichero: {merge_path}")
+        return
     except Exception as e:
         logging.error("Error al leer el archivo Excel: %s", e)
         return
@@ -3582,4 +3593,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
