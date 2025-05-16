@@ -22314,3 +22314,2230 @@ Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
 2025-05-15 11:15:17,668 [INFO] Archivo Excel cargado exitosamente desde C:\Users\saule\Desktop\Pipeline\Mayo3\SP500_INDEX_Analisis\Data\1_preprocess\MERGEDEXCELS.xlsx
 2025-05-15 11:15:17,668 [INFO] Iniciando la categorización de columnas...
 2025-05-15 11:15:17,688 [INFO] Proceso completado exitosamente.
+2025-05-16 16:41:11,513 [INFO] ================================================================================
+2025-05-16 16:41:11,513 [INFO] INICIANDO PROCESO: EconomicDataProcessor
+2025-05-16 16:41:11,513 [INFO] Archivo de configuración: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-05-16 16:41:11,513 [INFO] Directorio raíz de datos: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw
+2025-05-16 16:41:11,513 [INFO] Fecha y hora: 2025-05-16 16:41:11
+2025-05-16 16:41:11,517 [INFO] ================================================================================
+2025-05-16 16:41:11,517 [INFO] Leyendo archivo de configuración...
+2025-05-16 16:41:12,227 [INFO] Se encontraron 21 configuraciones para procesar
+2025-05-16 16:41:12,227 [INFO] 
+Procesando: US_ISM_Manufacturing (business_confidence)
+2025-05-16 16:41:12,227 [INFO] - Archivo: US_ISM_Manufacturing.xlsx
+2025-05-16 16:41:12,227 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:12,227 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_ISM_Manufacturing.xlsx
+2025-05-16 16:41:12,284 [INFO] - Filas encontradas: 136
+2025-05-16 16:41:12,299 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_ISM_Manufacturing.xlsx: True
+2025-05-16 16:41:12,390 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:12,394 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:12,394 [INFO] - Periodo: 2014-01-02 a 2025-04-01
+2025-05-16 16:41:12,394 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:12,397 [INFO] 
+Procesando: US_ISM_Services (business_confidence)
+2025-05-16 16:41:12,397 [INFO] - Archivo: US_ISM_Services.xlsx
+2025-05-16 16:41:12,397 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:12,397 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_ISM_Services.xlsx
+2025-05-16 16:41:12,435 [INFO] - Filas encontradas: 136
+2025-05-16 16:41:12,445 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_ISM_Services.xlsx: True
+2025-05-16 16:41:12,527 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:12,534 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:12,534 [INFO] - Periodo: 2014-01-06 a 2025-04-03
+2025-05-16 16:41:12,534 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:12,537 [INFO] 
+Procesando: US_Philly_Fed_Index (business_confidence)
+2025-05-16 16:41:12,537 [INFO] - Archivo: US_Philly_Fed_Index.xlsx
+2025-05-16 16:41:12,537 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:12,537 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_Philly_Fed_Index.xlsx
+2025-05-16 16:41:12,584 [INFO] - Filas encontradas: 136
+2025-05-16 16:41:12,584 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_Philly_Fed_Index.xlsx: True
+2025-05-16 16:41:12,669 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:12,676 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:12,676 [INFO] - Periodo: 2014-01-16 a 2025-04-17
+2025-05-16 16:41:12,676 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:12,680 [INFO] 
+Procesando: France_Business_Climate (business_confidence)
+2025-05-16 16:41:12,680 [INFO] - Archivo: France_Business_Climate.xlsx
+2025-05-16 16:41:12,680 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:12,680 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\France_Business_Climate.xlsx
+2025-05-16 16:41:12,723 [INFO] - Filas encontradas: 137
+2025-05-16 16:41:12,734 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\France_Business_Climate.xlsx: True
+2025-05-16 16:41:12,809 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:12,813 [INFO] - Valores no nulos en TARGET: 137
+2025-05-16 16:41:12,814 [INFO] - Periodo: 2014-01-23 a 2025-04-25
+2025-05-16 16:41:12,814 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:12,817 [INFO] 
+Procesando: EuroZone_Business_Climate (business_confidence)
+2025-05-16 16:41:12,817 [INFO] - Archivo: EuroZone_Business_Climate.xlsx
+2025-05-16 16:41:12,817 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:12,818 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\EuroZone_Business_Climate.xlsx
+2025-05-16 16:41:12,856 [INFO] - Filas encontradas: 138
+2025-05-16 16:41:12,867 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\EuroZone_Business_Climate.xlsx: True
+2025-05-16 16:41:12,945 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:12,950 [INFO] - Valores no nulos en TARGET: 137
+2025-05-16 16:41:12,951 [INFO] - Periodo: 2013-10-30 a 2025-02-27
+2025-05-16 16:41:12,951 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:12,954 [INFO] 
+Procesando: U.S. All Car Sales (car_registrations)
+2025-05-16 16:41:12,954 [INFO] - Archivo: U.S. All Car Sales.xlsx
+2025-05-16 16:41:12,954 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:12,954 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\U.S. All Car Sales.xlsx
+2025-05-16 16:41:13,000 [INFO] - Filas encontradas: 132
+2025-05-16 16:41:13,000 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\U.S. All Car Sales.xlsx: True
+2025-05-16 16:41:13,095 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,099 [INFO] - Valores no nulos en TARGET: 132
+2025-05-16 16:41:13,099 [INFO] - Periodo: 2014-01-03 a 2025-04-02
+2025-05-16 16:41:13,100 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,102 [INFO] 
+Procesando: US_Consumer_Confidence (consumer_confidence)
+2025-05-16 16:41:13,102 [INFO] - Archivo: US_Consumer_Confidence.xlsx
+2025-05-16 16:41:13,102 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,104 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\US_Consumer_Confidence.xlsx
+2025-05-16 16:41:13,143 [INFO] - Filas encontradas: 136
+2025-05-16 16:41:13,150 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\US_Consumer_Confidence.xlsx: True
+2025-05-16 16:41:13,228 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,231 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:13,232 [INFO] - Periodo: 2014-01-28 a 2025-04-29
+2025-05-16 16:41:13,233 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,236 [INFO] 
+Procesando: China_PMI_Manufacturing (economics)
+2025-05-16 16:41:13,236 [INFO] - Archivo: China_PMI_Manufacturing.xlsx
+2025-05-16 16:41:13,236 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,236 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\China_PMI_Manufacturing.xlsx
+2025-05-16 16:41:13,321 [INFO] - Filas encontradas: 136
+2025-05-16 16:41:13,327 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\China_PMI_Manufacturing.xlsx: True
+2025-05-16 16:41:13,405 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,409 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:13,409 [INFO] - Periodo: 2014-01-31 a 2025-04-29
+2025-05-16 16:41:13,409 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,411 [INFO] 
+Procesando: Singapore_NonOil_Exports_YoY (economics)
+2025-05-16 16:41:13,411 [INFO] - Archivo: Singapore_NonOil_Exports_YoY.xlsx
+2025-05-16 16:41:13,414 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,414 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Singapore_NonOil_Exports_YoY.xlsx
+2025-05-16 16:41:13,450 [INFO] - Filas encontradas: 138
+2025-05-16 16:41:13,468 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Singapore_NonOil_Exports_YoY.xlsx: True
+2025-05-16 16:41:13,540 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,544 [INFO] - Valores no nulos en TARGET: 137
+2025-05-16 16:41:13,544 [INFO] - Periodo: 2014-01-01 a 2025-04-16
+2025-05-16 16:41:13,545 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,547 [INFO] 
+Procesando: Japan_M2_MoneySupply_YoY (economics)
+2025-05-16 16:41:13,548 [INFO] - Archivo: Japan_M2_MoneySupply_YoY.xlsx
+2025-05-16 16:41:13,548 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,548 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Japan_M2_MoneySupply_YoY.xlsx
+2025-05-16 16:41:13,587 [INFO] - Filas encontradas: 132
+2025-05-16 16:41:13,598 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Japan_M2_MoneySupply_YoY.xlsx: True
+2025-05-16 16:41:13,672 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,675 [INFO] - Valores no nulos en TARGET: 132
+2025-05-16 16:41:13,676 [INFO] - Periodo: 2013-12-09 a 2025-04-10
+2025-05-16 16:41:13,676 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,678 [INFO] 
+Procesando: China_M2_MoneySupply_YoY (economics)
+2025-05-16 16:41:13,679 [INFO] - Archivo: China_M2_MoneySupply_YoY.xlsx
+2025-05-16 16:41:13,679 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,679 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\China_M2_MoneySupply_YoY.xlsx
+2025-05-16 16:41:13,725 [INFO] - Filas encontradas: 138
+2025-05-16 16:41:13,736 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\China_M2_MoneySupply_YoY.xlsx: True
+2025-05-16 16:41:13,815 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,821 [INFO] - Valores no nulos en TARGET: 137
+2025-05-16 16:41:13,821 [INFO] - Periodo: 2014-01-14 a 2025-04-13
+2025-05-16 16:41:13,821 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,825 [INFO] 
+Procesando: Mexico_CPI_MoM (economics)
+2025-05-16 16:41:13,825 [INFO] - Archivo: Mexico_CPI_MoM.xlsx
+2025-05-16 16:41:13,825 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,825 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Mexico_CPI_MoM.xlsx
+2025-05-16 16:41:13,866 [INFO] - Filas encontradas: 137
+2025-05-16 16:41:13,885 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Mexico_CPI_MoM.xlsx: True
+2025-05-16 16:41:13,967 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:13,970 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:13,971 [INFO] - Periodo: 2014-01-01 a 2025-04-09
+2025-05-16 16:41:13,971 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:13,973 [INFO] 
+Procesando: BOJ_Policy_Rate (economics)
+2025-05-16 16:41:13,973 [INFO] - Archivo: BOJ_Policy_Rate.xlsx
+2025-05-16 16:41:13,974 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:13,974 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\BOJ_Policy_Rate.xlsx
+2025-05-16 16:41:14,017 [INFO] - Filas encontradas: 110
+2025-05-16 16:41:14,034 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\BOJ_Policy_Rate.xlsx: True
+2025-05-16 16:41:14,098 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:14,098 [INFO] - Valores no nulos en TARGET: 105
+2025-05-16 16:41:14,098 [INFO] - Periodo: 2014-01-21 a 2025-04-30
+2025-05-16 16:41:14,098 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:14,109 [INFO] 
+Procesando: UK_Retail_Sales_MoM (economics)
+2025-05-16 16:41:14,109 [INFO] - Archivo: UK_Retail_Sales_MoM.xlsx
+2025-05-16 16:41:14,109 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,109 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\UK_Retail_Sales_MoM.xlsx
+2025-05-16 16:41:14,152 [INFO] - Filas encontradas: 137
+2025-05-16 16:41:14,162 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\UK_Retail_Sales_MoM.xlsx: True
+2025-05-16 16:41:14,233 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:14,234 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:14,237 [INFO] - Periodo: 2014-01-17 a 2025-04-25
+2025-05-16 16:41:14,237 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:14,237 [INFO] 
+Procesando: China_Exports (exports)
+2025-05-16 16:41:14,237 [INFO] - Archivo: China_Exports.xlsx
+2025-05-16 16:41:14,237 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,237 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exports\China_Exports.xlsx
+2025-05-16 16:41:14,291 [INFO] - Filas encontradas: 132
+2025-05-16 16:41:14,298 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exports\China_Exports.xlsx: True
+2025-05-16 16:41:14,365 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:14,365 [INFO] - Valores no nulos en TARGET: 131
+2025-05-16 16:41:14,365 [INFO] - Periodo: 2014-01-09 a 2025-04-13
+2025-05-16 16:41:14,365 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:14,365 [INFO] 
+Procesando: US_Exports (exports)
+2025-05-16 16:41:14,365 [INFO] - Archivo: US_Exports.xlsx
+2025-05-16 16:41:14,365 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,365 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exports\US_Exports.xlsx
+2025-05-16 16:41:14,450 [INFO] - Filas encontradas: 88
+2025-05-16 16:41:14,458 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exports\US_Exports.xlsx: True
+2025-05-16 16:41:14,516 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:14,518 [INFO] - Valores no nulos en TARGET: 87
+2025-05-16 16:41:14,518 [INFO] - Periodo: 2018-01-05 a 2025-04-03
+2025-05-16 16:41:14,518 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:14,518 [INFO] 
+Procesando: US_Leading_EconIndex (leading_economic_index)
+2025-05-16 16:41:14,518 [INFO] - Archivo: US_Leading_EconIndex.xlsx
+2025-05-16 16:41:14,525 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,525 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\US_Leading_EconIndex.xlsx
+2025-05-16 16:41:14,525 [INFO] Utilizando estrategia especial para US_Leading_EconIndex (header=2)
+2025-05-16 16:41:14,568 [INFO] Columnas leídas: ['Apr 21, 2025 (Mar)', nan, '-0.7%', '-0.5%', '-0.2%']
+2025-05-16 16:41:14,568 [INFO] - Filas encontradas: 135
+2025-05-16 16:41:14,568 [ERROR] No se encontró la columna 'Release Date' en C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\US_Leading_EconIndex.xlsx
+2025-05-16 16:41:14,568 [INFO] 
+Procesando: US_ConferenceBoard_LEI (leading_economic_index)
+2025-05-16 16:41:14,568 [INFO] - Archivo: US_ConferenceBoard_LEI.xlsx
+2025-05-16 16:41:14,568 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,568 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\US_ConferenceBoard_LEI.xlsx
+2025-05-16 16:41:14,617 [INFO] - Filas encontradas: 136
+2025-05-16 16:41:14,623 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\US_ConferenceBoard_LEI.xlsx: True
+2025-05-16 16:41:14,701 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:14,704 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:41:14,704 [INFO] - Periodo: 2014-01-28 a 2025-04-29
+2025-05-16 16:41:14,705 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:14,707 [INFO] 
+Procesando: Japan_Leading_Indicator (leading_economic_index)
+2025-05-16 16:41:14,707 [INFO] - Archivo: Japan_Leading_Indicator.xlsx
+2025-05-16 16:41:14,707 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,708 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\Japan_Leading_Indicator.xlsx
+2025-05-16 16:41:14,765 [INFO] - Filas encontradas: 260
+2025-05-16 16:41:14,770 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\Japan_Leading_Indicator.xlsx: True
+2025-05-16 16:41:14,920 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:14,923 [INFO] - Valores no nulos en TARGET: 259
+2025-05-16 16:41:14,923 [INFO] - Periodo: 2014-01-10 a 2025-04-30
+2025-05-16 16:41:14,923 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:14,928 [INFO] 
+Procesando: China_Unemployment_Rate (unemployment_rate)
+2025-05-16 16:41:14,928 [INFO] - Archivo: China_Unemployment_Rate.xlsx
+2025-05-16 16:41:14,929 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:14,930 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\China_Unemployment_Rate.xlsx
+2025-05-16 16:41:14,985 [INFO] - Filas encontradas: 76
+2025-05-16 16:41:15,005 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\China_Unemployment_Rate.xlsx: True
+2025-05-16 16:41:15,056 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:15,062 [INFO] - Valores no nulos en TARGET: 75
+2025-05-16 16:41:15,063 [INFO] - Periodo: 2018-04-16 a 2025-04-15
+2025-05-16 16:41:15,063 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:15,067 [INFO] 
+Procesando: Eurozone_Unemployment_Rate (unemployment_rate)
+2025-05-16 16:41:15,067 [INFO] - Archivo: Eurozone_Unemployment_Rate.xlsx
+2025-05-16 16:41:15,067 [INFO] - Columna TARGET: ACTUAL
+2025-05-16 16:41:15,067 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\Eurozone_Unemployment_Rate.xlsx
+2025-05-16 16:41:15,114 [INFO] - Filas encontradas: 137
+2025-05-16 16:41:15,124 [INFO] Preferencia de dayfirst para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\Eurozone_Unemployment_Rate.xlsx: True
+2025-05-16 16:41:15,197 [WARNING] No se encontró 'ACTUAL', se usará 'Actual'
+2025-05-16 16:41:15,197 [INFO] - Valores no nulos en TARGET: 137
+2025-05-16 16:41:15,197 [INFO] - Periodo: 2014-01-08 a 2025-05-02
+2025-05-16 16:41:15,197 [INFO] - Cobertura: 100.00%
+2025-05-16 16:41:15,222 [INFO] Índice diario generado: 4203 días desde 2013-10-30 hasta 2025-05-02
+2025-05-16 16:41:15,311 [WARNING] Omitiendo US_Leading_EconIndex por falta de datos
+2025-05-16 16:41:15,336 [INFO] DataFrame final combinado: 4203 filas, 21 columnas
+2025-05-16 16:41:15,336 [INFO] 
+Resumen de Cobertura:
+2025-05-16 16:41:15,336 [INFO] - US_ISM_Manufacturing: 100.00% desde 2014-01-02 a 2025-04-01
+2025-05-16 16:41:15,336 [INFO] - US_ISM_Services: 100.00% desde 2014-01-06 a 2025-04-03
+2025-05-16 16:41:15,336 [INFO] - US_Philly_Fed_Index: 100.00% desde 2014-01-16 a 2025-04-17
+2025-05-16 16:41:15,336 [INFO] - France_Business_Climate: 100.00% desde 2014-01-23 a 2025-04-25
+2025-05-16 16:41:15,336 [INFO] - EuroZone_Business_Climate: 100.00% desde 2013-10-30 a 2025-02-27
+2025-05-16 16:41:15,336 [INFO] - U.S. All Car Sales: 100.00% desde 2014-01-03 a 2025-04-02
+2025-05-16 16:41:15,336 [INFO] - US_Consumer_Confidence: 100.00% desde 2014-01-28 a 2025-04-29
+2025-05-16 16:41:15,336 [INFO] - China_PMI_Manufacturing: 100.00% desde 2014-01-31 a 2025-04-29
+2025-05-16 16:41:15,336 [INFO] - Singapore_NonOil_Exports_YoY: 100.00% desde 2014-01-01 a 2025-04-16
+2025-05-16 16:41:15,336 [INFO] - Japan_M2_MoneySupply_YoY: 100.00% desde 2013-12-09 a 2025-04-10
+2025-05-16 16:41:15,336 [INFO] - China_M2_MoneySupply_YoY: 100.00% desde 2014-01-14 a 2025-04-13
+2025-05-16 16:41:15,336 [INFO] - Mexico_CPI_MoM: 100.00% desde 2014-01-01 a 2025-04-09
+2025-05-16 16:41:15,336 [INFO] - BOJ_Policy_Rate: 100.00% desde 2014-01-21 a 2025-04-30
+2025-05-16 16:41:15,336 [INFO] - UK_Retail_Sales_MoM: 100.00% desde 2014-01-17 a 2025-04-25
+2025-05-16 16:41:15,336 [INFO] - China_Exports: 100.00% desde 2014-01-09 a 2025-04-13
+2025-05-16 16:41:15,336 [INFO] - US_Exports: 100.00% desde 2018-01-05 a 2025-04-03
+2025-05-16 16:41:15,336 [INFO] - US_ConferenceBoard_LEI: 100.00% desde 2014-01-28 a 2025-04-29
+2025-05-16 16:41:15,336 [INFO] - Japan_Leading_Indicator: 100.00% desde 2014-01-10 a 2025-04-30
+2025-05-16 16:41:15,336 [INFO] - China_Unemployment_Rate: 100.00% desde 2018-04-16 a 2025-04-15
+2025-05-16 16:41:15,336 [INFO] - Eurozone_Unemployment_Rate: 100.00% desde 2014-01-08 a 2025-05-02
+2025-05-16 16:41:18,077 [INFO] Archivo guardado exitosamente: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_procesados_cp.xlsx
+2025-05-16 16:41:18,077 [INFO] 
+Resumen de Ejecución:
+2025-05-16 16:41:18,077 [INFO] Tiempo de ejecución: 6.56 segundos
+2025-05-16 16:41:18,077 [INFO] Archivos procesados: 21
+2025-05-16 16:41:18,077 [INFO] Archivo de salida: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_procesados_cp.xlsx
+2025-05-16 16:41:18,077 [INFO] Estado: COMPLETADO
+2025-05-16 16:41:18,077 [INFO] ================================================================================
+2025-05-16 16:41:18,077 [INFO] INICIANDO PROCESO: MyinvestingreportNormal
+2025-05-16 16:41:18,077 [INFO] Archivo de configuración: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-05-16 16:41:18,077 [INFO] Directorio raíz de datos: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw
+2025-05-16 16:41:18,077 [INFO] Fecha y hora: 2025-05-16 16:41:18
+2025-05-16 16:41:18,077 [INFO] ================================================================================
+2025-05-16 16:41:18,087 [INFO] Iniciando proceso completo MyinvestingreportNormal...
+2025-05-16 16:41:18,087 [INFO] Leyendo archivo de configuración...
+2025-05-16 16:41:18,167 [INFO] Se encontraron 59 configuraciones para procesar
+2025-05-16 16:41:18,168 [INFO] 
+Procesando: Australia_10Y_Bond (bond)
+2025-05-16 16:41:18,168 [INFO] - Archivo: Australia_10Y_Bond
+2025-05-16 16:41:18,169 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:18,169 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Australia_10Y_Bond.csv
+2025-05-16 16:41:18,216 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:18,233 [INFO] Formato de fecha detectado para Australia_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:20,605 [INFO] Ejemplos de fechas convertidas para Australia_10Y_Bond: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-24 00:00:00'), Timestamp('2025-04-23 00:00:00')]
+2025-05-16 16:41:20,605 [INFO] Formato numérico detectado para Australia_10Y_Bond: americano
+2025-05-16 16:41:20,621 [INFO] Para Australia_10Y_Bond (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:20,621 [INFO] - Australia_10Y_Bond: 3832 filas procesadas, periodo: 2014-01-01 a 2025-04-30
+2025-05-16 16:41:20,625 [INFO] 
+Procesando: Italy_10Y_Bond (bond)
+2025-05-16 16:41:20,626 [INFO] - Archivo: Italy_10Y_Bond
+2025-05-16 16:41:20,626 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:20,626 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Italy_10Y_Bond.csv
+2025-05-16 16:41:20,676 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:20,695 [INFO] Formato de fecha detectado para Italy_10Y_Bond: dayfirst=False (confianza: 0.60)
+2025-05-16 16:41:22,845 [INFO] Ejemplos de fechas convertidas para Italy_10Y_Bond: [Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00'), Timestamp('2025-05-08 00:00:00'), Timestamp('2025-05-07 00:00:00')]
+2025-05-16 16:41:22,851 [INFO] Formato numérico detectado para Italy_10Y_Bond: americano
+2025-05-16 16:41:22,859 [INFO] Para Italy_10Y_Bond (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-13 00:00:00
+2025-05-16 16:41:22,859 [INFO] - Italy_10Y_Bond: 3269 filas procesadas, periodo: 2014-01-02 a 2025-05-13
+2025-05-16 16:41:22,863 [INFO] 
+Procesando: Japan_10Y_Bond (bond)
+2025-05-16 16:41:22,863 [INFO] - Archivo: Japan_10Y_Bond
+2025-05-16 16:41:22,863 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:22,863 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Japan_10Y_Bond.csv
+2025-05-16 16:41:22,982 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:22,994 [INFO] Formato de fecha detectado para Japan_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:24,988 [INFO] Ejemplos de fechas convertidas para Japan_10Y_Bond: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00'), Timestamp('2025-04-23 00:00:00')]
+2025-05-16 16:41:24,991 [INFO] Formato numérico detectado para Japan_10Y_Bond: americano
+2025-05-16 16:41:24,991 [INFO] Para Japan_10Y_Bond (columna Date), la fecha mínima es 2014-01-06 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:25,000 [INFO] - Japan_10Y_Bond: 3227 filas procesadas, periodo: 2014-01-06 a 2025-04-30
+2025-05-16 16:41:25,001 [INFO] 
+Procesando: UK_10Y_Bond (bond)
+2025-05-16 16:41:25,001 [INFO] - Archivo: UK_10Y_Bond
+2025-05-16 16:41:25,003 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:25,003 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\UK_10Y_Bond.csv
+2025-05-16 16:41:25,059 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:25,076 [INFO] Formato de fecha detectado para UK_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:27,058 [INFO] Ejemplos de fechas convertidas para UK_10Y_Bond: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:27,060 [INFO] Formato numérico detectado para UK_10Y_Bond: americano
+2025-05-16 16:41:27,060 [INFO] Para UK_10Y_Bond (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:27,069 [INFO] - UK_10Y_Bond: 3447 filas procesadas, periodo: 2014-01-01 a 2025-04-30
+2025-05-16 16:41:27,072 [INFO] 
+Procesando: Germany_10Y_Bond (bond)
+2025-05-16 16:41:27,072 [INFO] - Archivo: Germany_10Y_Bond
+2025-05-16 16:41:27,073 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:27,073 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Germany_10Y_Bond.csv
+2025-05-16 16:41:27,112 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:27,123 [INFO] Formato de fecha detectado para Germany_10Y_Bond: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:28,361 [INFO] Ejemplos de fechas convertidas para Germany_10Y_Bond: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:28,371 [INFO] Formato numérico detectado para Germany_10Y_Bond: americano
+2025-05-16 16:41:28,374 [INFO] Para Germany_10Y_Bond (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:28,374 [INFO] - Germany_10Y_Bond: 3098 filas procesadas, periodo: 2014-01-02 a 2025-04-30
+2025-05-16 16:41:28,374 [INFO] 
+Procesando: Canada_10Y_Bond (bond)
+2025-05-16 16:41:28,374 [INFO] - Archivo: Canada_10Y_Bond
+2025-05-16 16:41:28,374 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:28,374 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Canada_10Y_Bond.csv
+2025-05-16 16:41:28,419 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:28,425 [INFO] Formato de fecha detectado para Canada_10Y_Bond: dayfirst=False (confianza: 0.60)
+2025-05-16 16:41:29,650 [INFO] Ejemplos de fechas convertidas para Canada_10Y_Bond: [Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00'), Timestamp('2025-05-08 00:00:00'), Timestamp('2025-05-07 00:00:00')]
+2025-05-16 16:41:29,650 [INFO] Formato numérico detectado para Canada_10Y_Bond: americano
+2025-05-16 16:41:29,661 [INFO] Para Canada_10Y_Bond (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-13 00:00:00
+2025-05-16 16:41:29,661 [INFO] - Canada_10Y_Bond: 2998 filas procesadas, periodo: 2014-01-01 a 2025-05-13
+2025-05-16 16:41:29,664 [INFO] 
+Procesando: China_10Y_Bond (bond)
+2025-05-16 16:41:29,664 [INFO] - Archivo: China_10Y_Bond
+2025-05-16 16:41:29,665 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:29,665 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\China_10Y_Bond.csv
+2025-05-16 16:41:29,706 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:29,727 [INFO] Formato de fecha detectado para China_10Y_Bond: dayfirst=False (confianza: 0.60)
+2025-05-16 16:41:30,952 [INFO] Ejemplos de fechas convertidas para China_10Y_Bond: [Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00'), Timestamp('2025-05-08 00:00:00'), Timestamp('2025-05-07 00:00:00'), Timestamp('2025-05-06 00:00:00')]
+2025-05-16 16:41:30,952 [INFO] Formato numérico detectado para China_10Y_Bond: americano
+2025-05-16 16:41:30,967 [INFO] Para China_10Y_Bond (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-12 00:00:00
+2025-05-16 16:41:30,968 [INFO] - China_10Y_Bond: 2944 filas procesadas, periodo: 2014-01-02 a 2025-05-12
+2025-05-16 16:41:30,969 [INFO] 
+Procesando: CrudeOil_WTI (commodities)
+2025-05-16 16:41:30,969 [INFO] - Archivo: CrudeOil_WTI
+2025-05-16 16:41:30,969 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:30,969 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\CrudeOil_WTI.csv
+2025-05-16 16:41:31,009 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:31,026 [INFO] Formato de fecha detectado para CrudeOil_WTI: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:32,235 [INFO] Ejemplos de fechas convertidas para CrudeOil_WTI: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:32,242 [INFO] Formato numérico detectado para CrudeOil_WTI: americano
+2025-05-16 16:41:32,242 [INFO] Para CrudeOil_WTI (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:32,242 [INFO] - CrudeOil_WTI: 2977 filas procesadas, periodo: 2014-01-01 a 2025-04-30
+2025-05-16 16:41:32,252 [INFO] 
+Procesando: Gold_Spot (commodities)
+2025-05-16 16:41:32,252 [INFO] - Archivo: Gold_Spot
+2025-05-16 16:41:32,252 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:32,253 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Gold_Spot.csv
+2025-05-16 16:41:32,288 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:32,306 [INFO] Formato de fecha detectado para Gold_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:33,522 [INFO] Ejemplos de fechas convertidas para Gold_Spot: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:33,522 [INFO] Formato numérico detectado para Gold_Spot: americano
+2025-05-16 16:41:33,533 [INFO] Para Gold_Spot (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:33,533 [INFO] - Gold_Spot: 2898 filas procesadas, periodo: 2014-01-02 a 2025-04-30
+2025-05-16 16:41:33,540 [INFO] 
+Procesando: Silver_Spot (commodities)
+2025-05-16 16:41:33,541 [INFO] - Archivo: Silver_Spot
+2025-05-16 16:41:33,541 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:33,543 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Silver_Spot.csv
+2025-05-16 16:41:33,583 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:33,593 [INFO] Formato de fecha detectado para Silver_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:34,781 [INFO] Ejemplos de fechas convertidas para Silver_Spot: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:34,781 [INFO] Formato numérico detectado para Silver_Spot: americano
+2025-05-16 16:41:34,798 [INFO] Para Silver_Spot (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:34,799 [INFO] - Silver_Spot: 2935 filas procesadas, periodo: 2014-01-02 a 2025-04-30
+2025-05-16 16:41:34,800 [INFO] 
+Procesando: Copper_Futures (commodities)
+2025-05-16 16:41:34,800 [INFO] - Archivo: Copper_Futures
+2025-05-16 16:41:34,800 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:34,802 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Copper_Futures.csv
+2025-05-16 16:41:34,839 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:34,856 [INFO] Formato de fecha detectado para Copper_Futures: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:36,082 [INFO] Ejemplos de fechas convertidas para Copper_Futures: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:36,087 [INFO] Formato numérico detectado para Copper_Futures: americano
+2025-05-16 16:41:36,093 [INFO] Para Copper_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:36,093 [INFO] - Copper_Futures: 2932 filas procesadas, periodo: 2014-01-02 a 2025-04-30
+2025-05-16 16:41:36,100 [INFO] 
+Procesando: Platinum_Spot (commodities)
+2025-05-16 16:41:36,100 [INFO] - Archivo: Platinum_Spot
+2025-05-16 16:41:36,100 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:36,100 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Platinum_Spot.csv
+2025-05-16 16:41:36,145 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:36,157 [INFO] Formato de fecha detectado para Platinum_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:37,640 [INFO] Ejemplos de fechas convertidas para Platinum_Spot: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:37,640 [INFO] Formato numérico detectado para Platinum_Spot: americano
+2025-05-16 16:41:37,661 [INFO] Para Platinum_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:37,661 [INFO] - Platinum_Spot: 3487 filas procesadas, periodo: 2014-01-01 a 2025-04-30
+2025-05-16 16:41:37,666 [INFO] 
+Procesando: EUR_USD_Spot (exchange_rate)
+2025-05-16 16:41:37,666 [INFO] - Archivo: EUR_USD_Spot
+2025-05-16 16:41:37,667 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:37,667 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\EUR_USD_Spot.csv
+2025-05-16 16:41:37,704 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:37,720 [INFO] Formato de fecha detectado para EUR_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:38,964 [INFO] Ejemplos de fechas convertidas para EUR_USD_Spot: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:38,964 [INFO] Formato numérico detectado para EUR_USD_Spot: americano
+2025-05-16 16:41:38,977 [INFO] Para EUR_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:38,977 [INFO] - EUR_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:38,977 [INFO] 
+Procesando: GBP_USD_Spot (exchange_rate)
+2025-05-16 16:41:38,977 [INFO] - Archivo: GBP_USD_Spot
+2025-05-16 16:41:38,977 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:38,977 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\GBP_USD_Spot.csv
+2025-05-16 16:41:39,028 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:39,037 [INFO] Formato de fecha detectado para GBP_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:40,275 [INFO] Ejemplos de fechas convertidas para GBP_USD_Spot: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:40,277 [INFO] Formato numérico detectado para GBP_USD_Spot: americano
+2025-05-16 16:41:40,285 [INFO] Para GBP_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:40,285 [INFO] - GBP_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:40,289 [INFO] 
+Procesando: JPY_USD_Spot (exchange_rate)
+2025-05-16 16:41:40,289 [INFO] - Archivo: JPY_USD_Spot
+2025-05-16 16:41:40,290 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:40,290 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\JPY_USD_Spot.csv
+2025-05-16 16:41:40,357 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:40,381 [INFO] Formato de fecha detectado para JPY_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:41,654 [INFO] Ejemplos de fechas convertidas para JPY_USD_Spot: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:41,656 [INFO] Formato numérico detectado para JPY_USD_Spot: americano
+2025-05-16 16:41:41,661 [INFO] Para JPY_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:41,661 [INFO] - JPY_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:41,661 [INFO] 
+Procesando: CNY_USD_Spot (exchange_rate)
+2025-05-16 16:41:41,661 [INFO] - Archivo: CNY_USD_Spot
+2025-05-16 16:41:41,661 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:41,661 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\CNY_USD_Spot.csv
+2025-05-16 16:41:41,733 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:41,750 [INFO] Formato de fecha detectado para CNY_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:42,982 [INFO] Ejemplos de fechas convertidas para CNY_USD_Spot: [Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00')]
+2025-05-16 16:41:42,984 [INFO] Formato numérico detectado para CNY_USD_Spot: americano
+2025-05-16 16:41:42,992 [INFO] Para CNY_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-01 00:00:00
+2025-05-16 16:41:42,994 [INFO] - CNY_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-01
+2025-05-16 16:41:42,994 [INFO] 
+Procesando: AUD_USD_Spot (exchange_rate)
+2025-05-16 16:41:42,994 [INFO] - Archivo: AUD_USD_Spot
+2025-05-16 16:41:42,994 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:42,994 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\AUD_USD_Spot.csv
+2025-05-16 16:41:43,043 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:43,048 [INFO] Formato de fecha detectado para AUD_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:44,274 [INFO] Ejemplos de fechas convertidas para AUD_USD_Spot: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:44,277 [INFO] Formato numérico detectado para AUD_USD_Spot: americano
+2025-05-16 16:41:44,279 [INFO] Para AUD_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:44,279 [INFO] - AUD_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:44,289 [INFO] 
+Procesando: CAD_USD_Spot (exchange_rate)
+2025-05-16 16:41:44,289 [INFO] - Archivo: CAD_USD_Spot
+2025-05-16 16:41:44,289 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:44,289 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\CAD_USD_Spot.csv
+2025-05-16 16:41:44,324 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:44,343 [INFO] Formato de fecha detectado para CAD_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:45,597 [INFO] Ejemplos de fechas convertidas para CAD_USD_Spot: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:45,601 [INFO] Formato numérico detectado para CAD_USD_Spot: americano
+2025-05-16 16:41:45,608 [INFO] Para CAD_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:45,608 [INFO] - CAD_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:45,609 [INFO] 
+Procesando: MXN_USD_Spot (exchange_rate)
+2025-05-16 16:41:45,610 [INFO] - Archivo: MXN_USD_Spot
+2025-05-16 16:41:45,610 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:45,610 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\MXN_USD_Spot.csv
+2025-05-16 16:41:45,643 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:45,661 [INFO] Formato de fecha detectado para MXN_USD_Spot: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:46,923 [INFO] Ejemplos de fechas convertidas para MXN_USD_Spot: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:46,928 [INFO] Formato numérico detectado para MXN_USD_Spot: americano
+2025-05-16 16:41:46,937 [INFO] Para MXN_USD_Spot (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:46,937 [INFO] - MXN_USD_Spot: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:46,937 [INFO] 
+Procesando: EUR_GBP_Cross (exchange_rate)
+2025-05-16 16:41:46,937 [INFO] - Archivo: EUR_GBP_Cross
+2025-05-16 16:41:46,937 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:46,937 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\EUR_GBP_Cross.csv
+2025-05-16 16:41:46,973 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:46,988 [INFO] Formato de fecha detectado para EUR_GBP_Cross: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:48,221 [INFO] Ejemplos de fechas convertidas para EUR_GBP_Cross: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:48,222 [INFO] Formato numérico detectado para EUR_GBP_Cross: americano
+2025-05-16 16:41:48,235 [INFO] Para EUR_GBP_Cross (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:48,235 [INFO] - EUR_GBP_Cross: 2958 filas procesadas, periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:41:48,235 [INFO] 
+Procesando: S&P500_Index (index_pricing)
+2025-05-16 16:41:48,235 [INFO] - Archivo: S&P500_Index
+2025-05-16 16:41:48,235 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:48,235 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\S&P500_Index.csv
+2025-05-16 16:41:48,293 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:48,306 [INFO] Formato de fecha detectado para S&P500_Index: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:49,490 [INFO] Ejemplos de fechas convertidas para S&P500_Index: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:49,490 [INFO] Formato numérico detectado para S&P500_Index: americano
+2025-05-16 16:41:49,504 [INFO] Para S&P500_Index (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:49,512 [INFO] - S&P500_Index: 2851 filas procesadas, periodo: 2014-01-02 a 2025-05-02
+2025-05-16 16:41:49,512 [INFO] 
+Procesando: NASDAQ_Composite (index_pricing)
+2025-05-16 16:41:49,514 [INFO] - Archivo: NASDAQ_Composite
+2025-05-16 16:41:49,514 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:49,514 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\NASDAQ_Composite.csv
+2025-05-16 16:41:49,555 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:49,576 [INFO] Formato de fecha detectado para NASDAQ_Composite: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:50,952 [INFO] Ejemplos de fechas convertidas para NASDAQ_Composite: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:50,952 [INFO] Formato numérico detectado para NASDAQ_Composite: americano
+2025-05-16 16:41:50,972 [INFO] Para NASDAQ_Composite (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:50,973 [INFO] - NASDAQ_Composite: 2851 filas procesadas, periodo: 2014-01-02 a 2025-05-02
+2025-05-16 16:41:50,976 [INFO] 
+Procesando: Russell_2000 (index_pricing)
+2025-05-16 16:41:50,976 [INFO] - Archivo: Russell_2000
+2025-05-16 16:41:50,976 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:50,976 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Russell_2000.csv
+2025-05-16 16:41:51,026 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:51,037 [INFO] Formato de fecha detectado para Russell_2000: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:52,413 [INFO] Ejemplos de fechas convertidas para Russell_2000: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:52,413 [INFO] Formato numérico detectado para Russell_2000: americano
+2025-05-16 16:41:52,434 [INFO] Para Russell_2000 (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:52,434 [INFO] - Russell_2000: 2864 filas procesadas, periodo: 2014-01-02 a 2025-05-02
+2025-05-16 16:41:52,438 [INFO] 
+Procesando: FTSE_100 (index_pricing)
+2025-05-16 16:41:52,438 [INFO] - Archivo: FTSE_100
+2025-05-16 16:41:52,439 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:52,439 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\FTSE_100.csv
+2025-05-16 16:41:52,524 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:52,537 [INFO] Formato de fecha detectado para FTSE_100: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:53,778 [INFO] Ejemplos de fechas convertidas para FTSE_100: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:41:53,778 [INFO] Formato numérico detectado para FTSE_100: americano
+2025-05-16 16:41:53,796 [INFO] Para FTSE_100 (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:53,797 [INFO] - FTSE_100: 2864 filas procesadas, periodo: 2014-01-02 a 2025-05-02
+2025-05-16 16:41:53,798 [INFO] 
+Procesando: Nikkei_225 (index_pricing)
+2025-05-16 16:41:53,798 [INFO] - Archivo: Nikkei_225
+2025-05-16 16:41:53,799 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:53,800 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Nikkei_225.csv
+2025-05-16 16:41:53,832 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:53,853 [INFO] Formato de fecha detectado para Nikkei_225: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:55,539 [INFO] Ejemplos de fechas convertidas para Nikkei_225: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00'), Timestamp('2025-04-23 00:00:00')]
+2025-05-16 16:41:55,539 [INFO] Formato numérico detectado para Nikkei_225: americano
+2025-05-16 16:41:55,565 [INFO] Para Nikkei_225 (columna Date), la fecha mínima es 2014-01-06 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:55,567 [INFO] - Nikkei_225: 2760 filas procesadas, periodo: 2014-01-06 a 2025-05-02
+2025-05-16 16:41:55,569 [INFO] 
+Procesando: DAX_30 (index_pricing)
+2025-05-16 16:41:55,569 [INFO] - Archivo: DAX_30
+2025-05-16 16:41:55,569 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:55,570 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\DAX_30.csv
+2025-05-16 16:41:55,626 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:55,648 [INFO] Formato de fecha detectado para DAX_30: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:57,480 [INFO] Ejemplos de fechas convertidas para DAX_30: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00')]
+2025-05-16 16:41:57,483 [INFO] Formato numérico detectado para DAX_30: americano
+2025-05-16 16:41:57,491 [INFO] Para DAX_30 (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:41:57,491 [INFO] - DAX_30: 2874 filas procesadas, periodo: 2014-01-02 a 2025-05-02
+2025-05-16 16:41:57,501 [INFO] 
+Procesando: Shanghai_Composite (index_pricing)
+2025-05-16 16:41:57,501 [INFO] - Archivo: Shanghai_Composite
+2025-05-16 16:41:57,501 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:57,501 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Shanghai_Composite.csv
+2025-05-16 16:41:57,557 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:57,576 [INFO] Formato de fecha detectado para Shanghai_Composite: dayfirst=False (confianza: 0.00)
+2025-05-16 16:41:59,336 [INFO] Ejemplos de fechas convertidas para Shanghai_Composite: [Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00'), Timestamp('2025-04-25 00:00:00'), Timestamp('2025-04-24 00:00:00')]
+2025-05-16 16:41:59,336 [INFO] Formato numérico detectado para Shanghai_Composite: americano
+2025-05-16 16:41:59,351 [INFO] Para Shanghai_Composite (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-04-30 00:00:00
+2025-05-16 16:41:59,357 [INFO] - Shanghai_Composite: 2754 filas procesadas, periodo: 2014-01-02 a 2025-04-30
+2025-05-16 16:41:59,357 [INFO] 
+Procesando: VIX_VolatilityIndex (index_pricing)
+2025-05-16 16:41:59,357 [INFO] - Archivo: VIX_VolatilityIndex
+2025-05-16 16:41:59,357 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:41:59,357 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\VIX_VolatilityIndex.csv
+2025-05-16 16:41:59,400 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:41:59,411 [INFO] Formato de fecha detectado para VIX_VolatilityIndex: dayfirst=False (confianza: 0.00)
+2025-05-16 16:42:02,104 [INFO] Ejemplos de fechas convertidas para VIX_VolatilityIndex: [Timestamp('2025-05-02 00:00:00'), Timestamp('2025-05-01 00:00:00'), Timestamp('2025-04-30 00:00:00'), Timestamp('2025-04-29 00:00:00'), Timestamp('2025-04-28 00:00:00')]
+2025-05-16 16:42:02,109 [INFO] Formato numérico detectado para VIX_VolatilityIndex: americano
+2025-05-16 16:42:02,116 [INFO] Para VIX_VolatilityIndex (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-02 00:00:00
+2025-05-16 16:42:02,116 [INFO] - VIX_VolatilityIndex: 2885 filas procesadas, periodo: 2014-01-02 a 2025-05-02
+2025-05-16 16:42:02,118 [INFO] 
+Procesando: Aluminium_Spot (commodities)
+2025-05-16 16:42:02,120 [INFO] - Archivo: Aluminium_Spot
+2025-05-16 16:42:02,121 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:02,121 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Aluminium_Spot.csv
+2025-05-16 16:42:02,246 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:02,283 [INFO] Formato de fecha detectado para Aluminium_Spot: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:04,897 [INFO] Ejemplos de fechas convertidas para Aluminium_Spot: [Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00'), Timestamp('2025-05-08 00:00:00')]
+2025-05-16 16:42:04,898 [INFO] Formato numérico detectado para Aluminium_Spot: americano
+2025-05-16 16:42:04,919 [INFO] Para Aluminium_Spot (columna Date), la fecha mínima es 2014-06-16 00:00:00 y la fecha máxima es 2025-05-14 00:00:00
+2025-05-16 16:42:04,920 [INFO] - Aluminium_Spot: 2759 filas procesadas, periodo: 2014-06-16 a 2025-05-14
+2025-05-16 16:42:04,921 [INFO] 
+Procesando: Lead_Futures (commodities)
+2025-05-16 16:42:04,923 [INFO] - Archivo: Lead_Futures
+2025-05-16 16:42:04,923 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:04,924 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Lead_Futures.csv
+2025-05-16 16:42:04,995 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:05,013 [INFO] Formato de fecha detectado para Lead_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:07,493 [INFO] Ejemplos de fechas convertidas para Lead_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:07,494 [INFO] Formato numérico detectado para Lead_Futures: americano
+2025-05-16 16:42:07,517 [INFO] Para Lead_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:07,518 [INFO] - Lead_Futures: 2872 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:07,519 [INFO] 
+Procesando: Palladium_Futures (commodities)
+2025-05-16 16:42:07,520 [INFO] - Archivo: Palladium_Futures
+2025-05-16 16:42:07,520 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:07,521 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Palladium_Futures.csv
+2025-05-16 16:42:07,594 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:07,613 [INFO] Formato de fecha detectado para Palladium_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:09,974 [INFO] Ejemplos de fechas convertidas para Palladium_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:09,977 [INFO] Formato numérico detectado para Palladium_Futures: americano
+2025-05-16 16:42:10,003 [INFO] Para Palladium_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:10,003 [INFO] - Palladium_Futures: 3194 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:10,005 [INFO] 
+Procesando: Tin_Futures (commodities)
+2025-05-16 16:42:10,006 [INFO] - Archivo: Tin_Futures
+2025-05-16 16:42:10,006 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:10,006 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Tin_Futures.csv
+2025-05-16 16:42:10,070 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:10,088 [INFO] Formato de fecha detectado para Tin_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:12,247 [INFO] Ejemplos de fechas convertidas para Tin_Futures: [Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00'), Timestamp('2025-05-08 00:00:00')]
+2025-05-16 16:42:12,248 [INFO] Formato numérico detectado para Tin_Futures: americano
+2025-05-16 16:42:12,270 [INFO] Para Tin_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-14 00:00:00
+2025-05-16 16:42:12,270 [INFO] - Tin_Futures: 2872 filas procesadas, periodo: 2014-01-02 a 2025-05-14
+2025-05-16 16:42:12,272 [INFO] 
+Procesando: Zinc_Futures (commodities)
+2025-05-16 16:42:12,273 [INFO] - Archivo: Zinc_Futures
+2025-05-16 16:42:12,273 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:12,273 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Zinc_Futures.csv
+2025-05-16 16:42:12,332 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:12,358 [INFO] Formato de fecha detectado para Zinc_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:14,018 [INFO] Ejemplos de fechas convertidas para Zinc_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:14,020 [INFO] Formato numérico detectado para Zinc_Futures: americano
+2025-05-16 16:42:14,037 [INFO] Para Zinc_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:14,038 [INFO] - Zinc_Futures: 2874 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:14,040 [INFO] 
+Procesando: Nickel_Futures (commodities)
+2025-05-16 16:42:14,041 [INFO] - Archivo: Nickel_Futures
+2025-05-16 16:42:14,041 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:14,047 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Nickel_Futures.csv
+2025-05-16 16:42:14,095 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:14,118 [INFO] Formato de fecha detectado para Nickel_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:15,714 [INFO] Ejemplos de fechas convertidas para Nickel_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:15,716 [INFO] Formato numérico detectado para Nickel_Futures: americano
+2025-05-16 16:42:15,729 [INFO] Para Nickel_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:15,729 [INFO] - Nickel_Futures: 2780 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:15,730 [INFO] 
+Procesando: US_Cotton_#2_Futures (commodities)
+2025-05-16 16:42:15,731 [INFO] - Archivo: US_Cotton_#2_Futures
+2025-05-16 16:42:15,731 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:15,731 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Cotton_#2_Futures.csv
+2025-05-16 16:42:15,773 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:15,786 [INFO] Formato de fecha detectado para US_Cotton_#2_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:17,325 [INFO] Ejemplos de fechas convertidas para US_Cotton_#2_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:17,330 [INFO] Formato numérico detectado para US_Cotton_#2_Futures: americano
+2025-05-16 16:42:17,338 [INFO] Para US_Cotton_#2_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:17,338 [INFO] - US_Cotton_#2_Futures: 2881 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:17,341 [INFO] 
+Procesando: Lumber_Futures (commodities)
+2025-05-16 16:42:17,341 [INFO] - Archivo: Lumber_Futures
+2025-05-16 16:42:17,343 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:17,343 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Lumber_Futures.csv
+2025-05-16 16:42:17,401 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:17,416 [INFO] Formato de fecha detectado para Lumber_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:21,821 [INFO] Ejemplos de fechas convertidas para Lumber_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:21,824 [INFO] Formato numérico detectado para Lumber_Futures: americano
+2025-05-16 16:42:21,866 [INFO] Para Lumber_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:21,868 [INFO] - Lumber_Futures: 2926 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:21,871 [INFO] 
+Procesando: US_Cocoa_Futures (commodities)
+2025-05-16 16:42:21,871 [INFO] - Archivo: US_Cocoa_Futures
+2025-05-16 16:42:21,872 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:21,873 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Cocoa_Futures.csv
+2025-05-16 16:42:21,996 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:22,111 [INFO] Formato de fecha detectado para US_Cocoa_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:25,265 [INFO] Ejemplos de fechas convertidas para US_Cocoa_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:25,267 [INFO] Formato numérico detectado para US_Cocoa_Futures: americano
+2025-05-16 16:42:25,290 [INFO] Para US_Cocoa_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:25,291 [INFO] - US_Cocoa_Futures: 2908 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:25,292 [INFO] 
+Procesando: US_Coffee_C_Futures (commodities)
+2025-05-16 16:42:25,293 [INFO] - Archivo: US_Coffee_C_Futures
+2025-05-16 16:42:25,293 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:25,293 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Coffee_C_Futures.csv
+2025-05-16 16:42:25,345 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:25,364 [INFO] Formato de fecha detectado para US_Coffee_C_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:28,002 [INFO] Ejemplos de fechas convertidas para US_Coffee_C_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:28,008 [INFO] Formato numérico detectado para US_Coffee_C_Futures: americano
+2025-05-16 16:42:28,020 [INFO] Para US_Coffee_C_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:28,021 [INFO] - US_Coffee_C_Futures: 2872 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:28,023 [INFO] 
+Procesando: Orange_Juice_Futures (commodities)
+2025-05-16 16:42:28,023 [INFO] - Archivo: Orange_Juice_Futures
+2025-05-16 16:42:28,025 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:28,025 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Orange_Juice_Futures.csv
+2025-05-16 16:42:28,082 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:28,119 [INFO] Formato de fecha detectado para Orange_Juice_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:31,859 [INFO] Ejemplos de fechas convertidas para Orange_Juice_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:31,864 [INFO] Formato numérico detectado para Orange_Juice_Futures: americano
+2025-05-16 16:42:31,878 [INFO] Para Orange_Juice_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:31,878 [INFO] - Orange_Juice_Futures: 2873 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:31,881 [INFO] 
+Procesando: US_Sugar (commodities)
+2025-05-16 16:42:31,881 [INFO] - Archivo: US_Sugar
+2025-05-16 16:42:31,884 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:31,884 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Sugar.csv
+2025-05-16 16:42:31,984 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:32,027 [INFO] Formato de fecha detectado para US_Sugar: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:35,062 [INFO] Ejemplos de fechas convertidas para US_Sugar: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:35,067 [INFO] Formato numérico detectado para US_Sugar: americano
+2025-05-16 16:42:35,078 [INFO] Para US_Sugar (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:35,079 [INFO] - US_Sugar: 2877 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:35,081 [INFO] 
+Procesando: US_Corn_Futures (commodities)
+2025-05-16 16:42:35,081 [INFO] - Archivo: US_Corn_Futures
+2025-05-16 16:42:35,081 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:35,082 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Corn_Futures.csv
+2025-05-16 16:42:35,175 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:35,196 [INFO] Formato de fecha detectado para US_Corn_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:38,591 [INFO] Ejemplos de fechas convertidas para US_Corn_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:38,597 [INFO] Formato numérico detectado para US_Corn_Futures: americano
+2025-05-16 16:42:38,621 [INFO] Para US_Corn_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:38,624 [INFO] - US_Corn_Futures: 2896 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:38,627 [INFO] 
+Procesando: US_Wheat_Futures (commodities)
+2025-05-16 16:42:38,628 [INFO] - Archivo: US_Wheat_Futures
+2025-05-16 16:42:38,629 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:38,629 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Wheat_Futures.csv
+2025-05-16 16:42:38,715 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:38,816 [INFO] Formato de fecha detectado para US_Wheat_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:42,875 [INFO] Ejemplos de fechas convertidas para US_Wheat_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:42,878 [INFO] Formato numérico detectado para US_Wheat_Futures: americano
+2025-05-16 16:42:42,911 [INFO] Para US_Wheat_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:42,913 [INFO] - US_Wheat_Futures: 2908 filas procesadas, periodo: 2014-01-01 a 2025-05-15
+2025-05-16 16:42:42,916 [INFO] 
+Procesando: Oats_Futures (commodities)
+2025-05-16 16:42:42,916 [INFO] - Archivo: Oats_Futures
+2025-05-16 16:42:42,917 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:42,917 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Oats_Futures.csv
+2025-05-16 16:42:42,978 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:43,003 [INFO] Formato de fecha detectado para Oats_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:46,080 [INFO] Ejemplos de fechas convertidas para Oats_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:46,085 [INFO] Formato numérico detectado para Oats_Futures: americano
+2025-05-16 16:42:46,095 [INFO] Para Oats_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:46,096 [INFO] - Oats_Futures: 2867 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:46,098 [INFO] 
+Procesando: Rough_Rice_Futures (commodities)
+2025-05-16 16:42:46,098 [INFO] - Archivo: Rough_Rice_Futures
+2025-05-16 16:42:46,099 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:46,104 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Rough_Rice_Futures.csv
+2025-05-16 16:42:46,167 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:46,188 [INFO] Formato de fecha detectado para Rough_Rice_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:49,628 [INFO] Ejemplos de fechas convertidas para Rough_Rice_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:49,685 [INFO] Formato numérico detectado para Rough_Rice_Futures: americano
+2025-05-16 16:42:49,718 [INFO] Para Rough_Rice_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:49,720 [INFO] - Rough_Rice_Futures: 2868 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:49,723 [INFO] 
+Procesando: US_Soybean_Meal_Futures (commodities)
+2025-05-16 16:42:49,727 [INFO] - Archivo: US_Soybean_Meal_Futures
+2025-05-16 16:42:49,730 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:49,731 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Soybean_Meal_Futures.csv
+2025-05-16 16:42:49,818 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:49,862 [INFO] Formato de fecha detectado para US_Soybean_Meal_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:53,119 [INFO] Ejemplos de fechas convertidas para US_Soybean_Meal_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:42:53,124 [INFO] Formato numérico detectado para US_Soybean_Meal_Futures: americano
+2025-05-16 16:42:53,131 [INFO] Para US_Soybean_Meal_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:42:53,131 [INFO] - US_Soybean_Meal_Futures: 2912 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:42:53,134 [INFO] 
+Procesando: US_Soybean_Oil_Futures (commodities)
+2025-05-16 16:42:53,134 [INFO] - Archivo: US_Soybean_Oil_Futures
+2025-05-16 16:42:53,134 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:53,135 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Soybean_Oil_Futures.csv
+2025-05-16 16:42:53,201 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:53,219 [INFO] Formato de fecha detectado para US_Soybean_Oil_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:42:56,113 [INFO] Ejemplos de fechas convertidas para US_Soybean_Oil_Futures: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:42:56,119 [INFO] Formato numérico detectado para US_Soybean_Oil_Futures: americano
+2025-05-16 16:42:56,137 [INFO] Para US_Soybean_Oil_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:42:56,138 [INFO] - US_Soybean_Oil_Futures: 2919 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:42:56,140 [INFO] 
+Procesando: US_Soybeans_Futures (commodities)
+2025-05-16 16:42:56,140 [INFO] - Archivo: US_Soybeans_Futures
+2025-05-16 16:42:56,142 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:42:56,143 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\US_Soybeans_Futures.csv
+2025-05-16 16:42:56,230 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:42:56,265 [INFO] Formato de fecha detectado para US_Soybeans_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:00,738 [INFO] Ejemplos de fechas convertidas para US_Soybeans_Futures: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:00,746 [INFO] Formato numérico detectado para US_Soybeans_Futures: americano
+2025-05-16 16:43:00,810 [INFO] Para US_Soybeans_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:00,811 [INFO] - US_Soybeans_Futures: 2904 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:00,818 [INFO] 
+Procesando: Feeder_Cattle_Futures (commodities)
+2025-05-16 16:43:00,819 [INFO] - Archivo: Feeder_Cattle_Futures
+2025-05-16 16:43:00,820 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:00,822 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Feeder_Cattle_Futures.csv
+2025-05-16 16:43:00,908 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:00,942 [INFO] Formato de fecha detectado para Feeder_Cattle_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:04,962 [INFO] Ejemplos de fechas convertidas para Feeder_Cattle_Futures: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:04,966 [INFO] Formato numérico detectado para Feeder_Cattle_Futures: americano
+2025-05-16 16:43:04,983 [INFO] Para Feeder_Cattle_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:04,984 [INFO] - Feeder_Cattle_Futures: 2873 filas procesadas, periodo: 2014-01-02 a 2025-05-16
+2025-05-16 16:43:05,006 [INFO] 
+Procesando:  Lean_Hogs_Futures (commodities)
+2025-05-16 16:43:05,006 [INFO] - Archivo:  Lean_Hogs_Futures
+2025-05-16 16:43:05,007 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:05,007 [ERROR] - ERROR: Archivo no encontrado:  Lean_Hogs_Futures
+2025-05-16 16:43:05,012 [INFO] 
+Procesando: Live_Cattle_Futures (commodities)
+2025-05-16 16:43:05,013 [INFO] - Archivo: Live_Cattle_Futures
+2025-05-16 16:43:05,014 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:05,014 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Live_Cattle_Futures.csv
+2025-05-16 16:43:05,080 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:05,100 [INFO] Formato de fecha detectado para Live_Cattle_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:08,628 [INFO] Ejemplos de fechas convertidas para Live_Cattle_Futures: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:08,635 [INFO] Formato numérico detectado para Live_Cattle_Futures: americano
+2025-05-16 16:43:08,648 [INFO] Para Live_Cattle_Futures (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:08,649 [INFO] - Live_Cattle_Futures: 2887 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:08,651 [INFO] 
+Procesando: Iron_ore_fines_62%_Fe_CFR_Futures (commodities)
+2025-05-16 16:43:08,651 [INFO] - Archivo: Iron_ore_fines_62%_Fe_CFR_Futures
+2025-05-16 16:43:08,651 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:08,653 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\commodities\Iron_ore_fines_62%_Fe_CFR_Futures.csv
+2025-05-16 16:43:08,860 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:08,879 [INFO] Formato de fecha detectado para Iron_ore_fines_62%_Fe_CFR_Futures: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:11,285 [INFO] Ejemplos de fechas convertidas para Iron_ore_fines_62%_Fe_CFR_Futures: [Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00')]
+2025-05-16 16:43:11,289 [INFO] Formato numérico detectado para Iron_ore_fines_62%_Fe_CFR_Futures: americano
+2025-05-16 16:43:11,299 [INFO] Para Iron_ore_fines_62%_Fe_CFR_Futures (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-15 00:00:00
+2025-05-16 16:43:11,300 [INFO] - Iron_ore_fines_62%_Fe_CFR_Futures: 2858 filas procesadas, periodo: 2014-01-02 a 2025-05-15
+2025-05-16 16:43:11,302 [INFO] 
+Procesando: Dow_Jones_Industrial_Average (index_pricing)
+2025-05-16 16:43:11,302 [INFO] - Archivo: Dow_Jones_Industrial_Average
+2025-05-16 16:43:11,304 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:11,304 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Dow_Jones_Industrial_Average.csv
+2025-05-16 16:43:11,381 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:11,403 [INFO] Formato de fecha detectado para Dow_Jones_Industrial_Average: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:13,588 [INFO] Ejemplos de fechas convertidas para Dow_Jones_Industrial_Average: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:13,589 [INFO] Formato numérico detectado para Dow_Jones_Industrial_Average: americano
+2025-05-16 16:43:13,612 [INFO] Para Dow_Jones_Industrial_Average (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:13,613 [INFO] - Dow_Jones_Industrial_Average: 2862 filas procesadas, periodo: 2014-01-02 a 2025-05-16
+2025-05-16 16:43:13,616 [INFO] 
+Procesando: Nasdaq_100_Fi (index_pricing)
+2025-05-16 16:43:13,616 [INFO] - Archivo: Nasdaq_100_Fi
+2025-05-16 16:43:13,616 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:13,618 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Nasdaq_100_Fi.csv
+2025-05-16 16:43:13,741 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:13,760 [INFO] Formato de fecha detectado para Nasdaq_100_Fi: dayfirst=False (confianza: 0.00)
+2025-05-16 16:43:14,492 [INFO] Ejemplos de fechas convertidas para Nasdaq_100_Fi: [Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00'), Timestamp('2025-05-09 00:00:00'), Timestamp('2025-05-08 00:00:00')]
+2025-05-16 16:43:14,495 [INFO] Formato numérico detectado para Nasdaq_100_Fi: americano
+2025-05-16 16:43:14,501 [INFO] Para Nasdaq_100_Fi (columna Date), la fecha mínima es 2021-06-21 00:00:00 y la fecha máxima es 2025-05-14 00:00:00
+2025-05-16 16:43:14,502 [INFO] - Nasdaq_100_Fi: 990 filas procesadas, periodo: 2021-06-21 a 2025-05-14
+2025-05-16 16:43:14,506 [INFO] 
+Procesando: CAC_40 (index_pricing)
+2025-05-16 16:43:14,507 [INFO] - Archivo: CAC_40
+2025-05-16 16:43:14,507 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:14,507 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\CAC_40.csv
+2025-05-16 16:43:14,563 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:14,580 [INFO] Formato de fecha detectado para CAC_40: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:17,130 [INFO] Ejemplos de fechas convertidas para CAC_40: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:17,133 [INFO] Formato numérico detectado para CAC_40: americano
+2025-05-16 16:43:17,153 [INFO] Para CAC_40 (columna Date), la fecha mínima es 2014-01-02 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:17,154 [INFO] - CAC_40: 2910 filas procesadas, periodo: 2014-01-02 a 2025-05-16
+2025-05-16 16:43:17,157 [INFO] 
+Procesando: JPY_EUR (exchange_rate)
+2025-05-16 16:43:17,157 [INFO] - Archivo: JPY_EUR
+2025-05-16 16:43:17,157 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:17,158 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\JPY_EUR.csv
+2025-05-16 16:43:17,212 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:17,229 [INFO] Formato de fecha detectado para JPY_EUR: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:19,405 [INFO] Ejemplos de fechas convertidas para JPY_EUR: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:19,409 [INFO] Formato numérico detectado para JPY_EUR: americano
+2025-05-16 16:43:19,420 [INFO] Para JPY_EUR (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:19,421 [INFO] - JPY_EUR: 2968 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:19,423 [INFO] 
+Procesando: JPY_EUR (exchange_rate)
+2025-05-16 16:43:19,423 [INFO] - Archivo: JPY_EUR
+2025-05-16 16:43:19,423 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:19,425 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\JPY_EUR.csv
+2025-05-16 16:43:19,440 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:19,461 [INFO] Formato de fecha detectado para JPY_EUR: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:21,981 [INFO] Ejemplos de fechas convertidas para JPY_EUR: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:21,985 [INFO] Formato numérico detectado para JPY_EUR: americano
+2025-05-16 16:43:21,994 [INFO] Para JPY_EUR (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:21,995 [INFO] - JPY_EUR: 2968 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:21,996 [INFO] 
+Procesando: BRL_NZD (exchange_rate)
+2025-05-16 16:43:21,996 [INFO] - Archivo: BRL_NZD
+2025-05-16 16:43:21,997 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:21,997 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\BRL_NZD.csv
+2025-05-16 16:43:22,049 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:22,067 [INFO] Formato de fecha detectado para BRL_NZD: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:24,302 [INFO] Ejemplos de fechas convertidas para BRL_NZD: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:24,306 [INFO] Formato numérico detectado para BRL_NZD: americano
+2025-05-16 16:43:24,316 [INFO] Para BRL_NZD (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:24,317 [INFO] - BRL_NZD: 2968 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:24,318 [INFO] 
+Procesando: NOK_AUD (exchange_rate)
+2025-05-16 16:43:24,319 [INFO] - Archivo: NOK_AUD
+2025-05-16 16:43:24,319 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:24,319 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\NOK_AUD.csv
+2025-05-16 16:43:24,379 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:24,400 [INFO] Formato de fecha detectado para NOK_AUD: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:27,030 [INFO] Ejemplos de fechas convertidas para NOK_AUD: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:27,036 [INFO] Formato numérico detectado para NOK_AUD: americano
+2025-05-16 16:43:27,052 [INFO] Para NOK_AUD (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:27,053 [INFO] - NOK_AUD: 2968 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:27,064 [INFO] 
+Procesando: PHP_ZAR (exchange_rate)
+2025-05-16 16:43:27,065 [INFO] - Archivo: PHP_ZAR
+2025-05-16 16:43:27,065 [INFO] - Columna TARGET: PRICE
+2025-05-16 16:43:27,065 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\exchange_rate\PHP_ZAR.csv
+2025-05-16 16:43:27,234 [INFO] Columna de fecha detectada: Date
+2025-05-16 16:43:27,256 [INFO] Formato de fecha detectado para PHP_ZAR: dayfirst=False (confianza: 0.60)
+2025-05-16 16:43:30,204 [INFO] Ejemplos de fechas convertidas para PHP_ZAR: [Timestamp('2025-05-16 00:00:00'), Timestamp('2025-05-15 00:00:00'), Timestamp('2025-05-14 00:00:00'), Timestamp('2025-05-13 00:00:00'), Timestamp('2025-05-12 00:00:00')]
+2025-05-16 16:43:30,210 [INFO] Formato numérico detectado para PHP_ZAR: americano
+2025-05-16 16:43:30,219 [INFO] Para PHP_ZAR (columna Date), la fecha mínima es 2014-01-01 00:00:00 y la fecha máxima es 2025-05-16 00:00:00
+2025-05-16 16:43:30,220 [INFO] - PHP_ZAR: 2968 filas procesadas, periodo: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:30,221 [INFO] 
+Generando índice temporal diario...
+2025-05-16 16:43:30,223 [INFO] Archivo con fecha mínima global: Australia_10Y_Bond (2014-01-01)
+2025-05-16 16:43:30,224 [INFO] Archivo con fecha máxima global: US_Soybean_Oil_Futures (2025-05-16)
+2025-05-16 16:43:30,241 [INFO] - Total de fechas diarias generadas: 4154
+2025-05-16 16:43:30,241 [INFO] 
+Combinando datos con índice diario (usando join para reducir consumo de memoria)...
+2025-05-16 16:43:30,246 [INFO] - Combinando: PRICE_Australia_10Y_Bond_bond
+2025-05-16 16:43:30,265 [INFO] - Combinando: PRICE_Italy_10Y_Bond_bond
+2025-05-16 16:43:30,276 [INFO] - Combinando: PRICE_Japan_10Y_Bond_bond
+2025-05-16 16:43:30,282 [INFO] - Combinando: PRICE_UK_10Y_Bond_bond
+2025-05-16 16:43:30,289 [INFO] - Combinando: PRICE_Germany_10Y_Bond_bond
+2025-05-16 16:43:30,295 [INFO] - Combinando: PRICE_Canada_10Y_Bond_bond
+2025-05-16 16:43:30,300 [INFO] - Combinando: PRICE_China_10Y_Bond_bond
+2025-05-16 16:43:30,308 [INFO] - Combinando: PRICE_CrudeOil_WTI_commodities
+2025-05-16 16:43:30,315 [INFO] - Combinando: PRICE_Gold_Spot_commodities
+2025-05-16 16:43:30,322 [INFO] - Combinando: PRICE_Silver_Spot_commodities
+2025-05-16 16:43:30,328 [INFO] - Combinando: PRICE_Copper_Futures_commodities
+2025-05-16 16:43:30,333 [INFO] - Combinando: PRICE_Platinum_Spot_commodities
+2025-05-16 16:43:30,340 [INFO] - Combinando: PRICE_EUR_USD_Spot_exchange_rate
+2025-05-16 16:43:30,346 [INFO] - Combinando: PRICE_GBP_USD_Spot_exchange_rate
+2025-05-16 16:43:30,350 [INFO] - Combinando: PRICE_JPY_USD_Spot_exchange_rate
+2025-05-16 16:43:30,359 [INFO] - Combinando: PRICE_CNY_USD_Spot_exchange_rate
+2025-05-16 16:43:30,364 [INFO] - Combinando: PRICE_AUD_USD_Spot_exchange_rate
+2025-05-16 16:43:30,368 [INFO] - Combinando: PRICE_CAD_USD_Spot_exchange_rate
+2025-05-16 16:43:30,374 [INFO] - Combinando: PRICE_MXN_USD_Spot_exchange_rate
+2025-05-16 16:43:30,381 [INFO] - Combinando: PRICE_EUR_GBP_Cross_exchange_rate
+2025-05-16 16:43:30,389 [INFO] - Combinando: PRICE_S&P500_Index_index_pricing
+2025-05-16 16:43:30,395 [INFO] - Combinando: PRICE_NASDAQ_Composite_index_pricing
+2025-05-16 16:43:30,399 [INFO] - Combinando: PRICE_Russell_2000_index_pricing
+2025-05-16 16:43:30,408 [INFO] - Combinando: PRICE_FTSE_100_index_pricing
+2025-05-16 16:43:30,414 [INFO] - Combinando: PRICE_Nikkei_225_index_pricing
+2025-05-16 16:43:30,423 [INFO] - Combinando: PRICE_DAX_30_index_pricing
+2025-05-16 16:43:30,430 [INFO] - Combinando: PRICE_Shanghai_Composite_index_pricing
+2025-05-16 16:43:30,435 [INFO] - Combinando: PRICE_VIX_VolatilityIndex_index_pricing
+2025-05-16 16:43:30,444 [INFO] - Combinando: PRICE_Aluminium_Spot_commodities
+2025-05-16 16:43:30,466 [INFO] - Combinando: PRICE_Lead_Futures_commodities
+2025-05-16 16:43:30,474 [INFO] - Combinando: PRICE_Palladium_Futures_commodities
+2025-05-16 16:43:30,480 [INFO] - Combinando: PRICE_Tin_Futures_commodities
+2025-05-16 16:43:30,489 [INFO] - Combinando: PRICE_Zinc_Futures_commodities
+2025-05-16 16:43:30,495 [INFO] - Combinando: PRICE_Nickel_Futures_commodities
+2025-05-16 16:43:30,509 [INFO] - Combinando: PRICE_US_Cotton_#2_Futures_commodities
+2025-05-16 16:43:30,516 [INFO] - Combinando: PRICE_Lumber_Futures_commodities
+2025-05-16 16:43:30,523 [INFO] - Combinando: PRICE_US_Cocoa_Futures_commodities
+2025-05-16 16:43:30,538 [INFO] - Combinando: PRICE_US_Coffee_C_Futures_commodities
+2025-05-16 16:43:30,547 [INFO] - Combinando: PRICE_Orange_Juice_Futures_commodities
+2025-05-16 16:43:30,558 [INFO] - Combinando: PRICE_US_Sugar_commodities
+2025-05-16 16:43:30,566 [INFO] - Combinando: PRICE_US_Corn_Futures_commodities
+2025-05-16 16:43:30,577 [INFO] - Combinando: PRICE_US_Wheat_Futures_commodities
+2025-05-16 16:43:30,585 [INFO] - Combinando: PRICE_Oats_Futures_commodities
+2025-05-16 16:43:30,594 [INFO] - Combinando: PRICE_Rough_Rice_Futures_commodities
+2025-05-16 16:43:30,603 [INFO] - Combinando: PRICE_US_Soybean_Meal_Futures_commodities
+2025-05-16 16:43:30,612 [INFO] - Combinando: PRICE_US_Soybean_Oil_Futures_commodities
+2025-05-16 16:43:30,623 [INFO] - Combinando: PRICE_US_Soybeans_Futures_commodities
+2025-05-16 16:43:30,630 [INFO] - Combinando: PRICE_Feeder_Cattle_Futures_commodities
+2025-05-16 16:43:30,640 [WARNING] Omitiendo  Lean_Hogs_Futures por errores de procesamiento
+2025-05-16 16:43:30,641 [INFO] - Combinando: PRICE_Live_Cattle_Futures_commodities
+2025-05-16 16:43:30,648 [INFO] - Combinando: PRICE_Iron_ore_fines_62%_Fe_CFR_Futures_commodities
+2025-05-16 16:43:30,659 [INFO] - Combinando: PRICE_Dow_Jones_Industrial_Average_index_pricing
+2025-05-16 16:43:30,670 [INFO] - Combinando: PRICE_Nasdaq_100_Fi_index_pricing
+2025-05-16 16:43:30,679 [INFO] - Combinando: PRICE_CAC_40_index_pricing
+2025-05-16 16:43:30,690 [INFO] - Combinando: PRICE_JPY_EUR_exchange_rate
+2025-05-16 16:43:30,698 [INFO] - Combinando: PRICE_BRL_NZD_exchange_rate
+2025-05-16 16:43:30,707 [INFO] - Combinando: PRICE_NOK_AUD_exchange_rate
+2025-05-16 16:43:30,718 [INFO] - Combinando: PRICE_PHP_ZAR_exchange_rate
+2025-05-16 16:43:30,738 [INFO] - DataFrame combinado: 4154 filas, 58 columnas
+2025-05-16 16:43:30,739 [INFO] 
+==================================================
+2025-05-16 16:43:30,740 [INFO] RESUMEN DE COBERTURA FINAL
+2025-05-16 16:43:30,740 [INFO] ==================================================
+2025-05-16 16:43:30,741 [INFO] Total indicadores procesados: 57
+2025-05-16 16:43:30,741 [INFO] Rango de fechas: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:30,742 [INFO] Total días en la serie: 4154
+2025-05-16 16:43:30,742 [INFO] - Australia_10Y_Bond (PRICE_Australia_10Y_Bond_bond): Cobertura aproximada 92.25%
+2025-05-16 16:43:30,743 [INFO] - Italy_10Y_Bond (PRICE_Italy_10Y_Bond_bond): Cobertura aproximada 78.70%
+2025-05-16 16:43:30,743 [INFO] - Japan_10Y_Bond (PRICE_Japan_10Y_Bond_bond): Cobertura aproximada 77.68%
+2025-05-16 16:43:30,744 [INFO] - UK_10Y_Bond (PRICE_UK_10Y_Bond_bond): Cobertura aproximada 82.98%
+2025-05-16 16:43:30,744 [INFO] - Germany_10Y_Bond (PRICE_Germany_10Y_Bond_bond): Cobertura aproximada 74.58%
+2025-05-16 16:43:30,744 [INFO] - Canada_10Y_Bond (PRICE_Canada_10Y_Bond_bond): Cobertura aproximada 72.17%
+2025-05-16 16:43:30,745 [INFO] - China_10Y_Bond (PRICE_China_10Y_Bond_bond): Cobertura aproximada 70.87%
+2025-05-16 16:43:30,745 [INFO] - CrudeOil_WTI (PRICE_CrudeOil_WTI_commodities): Cobertura aproximada 71.67%
+2025-05-16 16:43:30,746 [INFO] - Gold_Spot (PRICE_Gold_Spot_commodities): Cobertura aproximada 69.76%
+2025-05-16 16:43:30,746 [INFO] - Silver_Spot (PRICE_Silver_Spot_commodities): Cobertura aproximada 70.65%
+2025-05-16 16:43:30,747 [INFO] - Copper_Futures (PRICE_Copper_Futures_commodities): Cobertura aproximada 70.58%
+2025-05-16 16:43:30,747 [INFO] - Platinum_Spot (PRICE_Platinum_Spot_commodities): Cobertura aproximada 83.94%
+2025-05-16 16:43:30,747 [INFO] - EUR_USD_Spot (PRICE_EUR_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,749 [INFO] - GBP_USD_Spot (PRICE_GBP_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,749 [INFO] - JPY_USD_Spot (PRICE_JPY_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,749 [INFO] - CNY_USD_Spot (PRICE_CNY_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,750 [INFO] - AUD_USD_Spot (PRICE_AUD_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,750 [INFO] - CAD_USD_Spot (PRICE_CAD_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,751 [INFO] - MXN_USD_Spot (PRICE_MXN_USD_Spot_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,751 [INFO] - EUR_GBP_Cross (PRICE_EUR_GBP_Cross_exchange_rate): Cobertura aproximada 71.21%
+2025-05-16 16:43:30,754 [INFO] - S&P500_Index (PRICE_S&P500_Index_index_pricing): Cobertura aproximada 68.63%
+2025-05-16 16:43:30,754 [INFO] - NASDAQ_Composite (PRICE_NASDAQ_Composite_index_pricing): Cobertura aproximada 68.63%
+2025-05-16 16:43:30,755 [INFO] - Russell_2000 (PRICE_Russell_2000_index_pricing): Cobertura aproximada 68.95%
+2025-05-16 16:43:30,755 [INFO] - FTSE_100 (PRICE_FTSE_100_index_pricing): Cobertura aproximada 68.95%
+2025-05-16 16:43:30,756 [INFO] - Nikkei_225 (PRICE_Nikkei_225_index_pricing): Cobertura aproximada 66.44%
+2025-05-16 16:43:30,756 [INFO] - DAX_30 (PRICE_DAX_30_index_pricing): Cobertura aproximada 69.19%
+2025-05-16 16:43:30,756 [INFO] - Shanghai_Composite (PRICE_Shanghai_Composite_index_pricing): Cobertura aproximada 66.30%
+2025-05-16 16:43:30,757 [INFO] - VIX_VolatilityIndex (PRICE_VIX_VolatilityIndex_index_pricing): Cobertura aproximada 69.45%
+2025-05-16 16:43:30,757 [INFO] - Aluminium_Spot (PRICE_Aluminium_Spot_commodities): Cobertura aproximada 66.42%
+2025-05-16 16:43:30,758 [INFO] - Lead_Futures (PRICE_Lead_Futures_commodities): Cobertura aproximada 69.14%
+2025-05-16 16:43:30,758 [INFO] - Palladium_Futures (PRICE_Palladium_Futures_commodities): Cobertura aproximada 76.89%
+2025-05-16 16:43:30,758 [INFO] - Tin_Futures (PRICE_Tin_Futures_commodities): Cobertura aproximada 69.14%
+2025-05-16 16:43:30,758 [INFO] - Zinc_Futures (PRICE_Zinc_Futures_commodities): Cobertura aproximada 69.19%
+2025-05-16 16:43:30,760 [INFO] - Nickel_Futures (PRICE_Nickel_Futures_commodities): Cobertura aproximada 66.92%
+2025-05-16 16:43:30,760 [INFO] - US_Cotton_#2_Futures (PRICE_US_Cotton_#2_Futures_commodities): Cobertura aproximada 69.35%
+2025-05-16 16:43:30,761 [INFO] - Lumber_Futures (PRICE_Lumber_Futures_commodities): Cobertura aproximada 70.44%
+2025-05-16 16:43:30,761 [INFO] - US_Cocoa_Futures (PRICE_US_Cocoa_Futures_commodities): Cobertura aproximada 70.00%
+2025-05-16 16:43:30,762 [INFO] - US_Coffee_C_Futures (PRICE_US_Coffee_C_Futures_commodities): Cobertura aproximada 69.14%
+2025-05-16 16:43:30,762 [INFO] - Orange_Juice_Futures (PRICE_Orange_Juice_Futures_commodities): Cobertura aproximada 69.16%
+2025-05-16 16:43:30,762 [INFO] - US_Sugar (PRICE_US_Sugar_commodities): Cobertura aproximada 69.26%
+2025-05-16 16:43:30,763 [INFO] - US_Corn_Futures (PRICE_US_Corn_Futures_commodities): Cobertura aproximada 69.72%
+2025-05-16 16:43:30,763 [INFO] - US_Wheat_Futures (PRICE_US_Wheat_Futures_commodities): Cobertura aproximada 70.00%
+2025-05-16 16:43:30,763 [INFO] - Oats_Futures (PRICE_Oats_Futures_commodities): Cobertura aproximada 69.02%
+2025-05-16 16:43:30,764 [INFO] - Rough_Rice_Futures (PRICE_Rough_Rice_Futures_commodities): Cobertura aproximada 69.04%
+2025-05-16 16:43:30,764 [INFO] - US_Soybean_Meal_Futures (PRICE_US_Soybean_Meal_Futures_commodities): Cobertura aproximada 70.10%
+2025-05-16 16:43:30,765 [INFO] - US_Soybean_Oil_Futures (PRICE_US_Soybean_Oil_Futures_commodities): Cobertura aproximada 70.27%
+2025-05-16 16:43:30,765 [INFO] - US_Soybeans_Futures (PRICE_US_Soybeans_Futures_commodities): Cobertura aproximada 69.91%
+2025-05-16 16:43:30,765 [INFO] - Feeder_Cattle_Futures (PRICE_Feeder_Cattle_Futures_commodities): Cobertura aproximada 69.16%
+2025-05-16 16:43:30,766 [INFO] - Live_Cattle_Futures (PRICE_Live_Cattle_Futures_commodities): Cobertura aproximada 69.50%
+2025-05-16 16:43:30,766 [INFO] - Iron_ore_fines_62%_Fe_CFR_Futures (PRICE_Iron_ore_fines_62%_Fe_CFR_Futures_commodities): Cobertura aproximada 68.80%
+2025-05-16 16:43:30,766 [INFO] - Dow_Jones_Industrial_Average (PRICE_Dow_Jones_Industrial_Average_index_pricing): Cobertura aproximada 68.90%
+2025-05-16 16:43:30,767 [INFO] - Nasdaq_100_Fi (PRICE_Nasdaq_100_Fi_index_pricing): Cobertura aproximada 23.83%
+2025-05-16 16:43:30,767 [INFO] - CAC_40 (PRICE_CAC_40_index_pricing): Cobertura aproximada 70.05%
+2025-05-16 16:43:30,768 [INFO] - JPY_EUR (PRICE_JPY_EUR_exchange_rate): Cobertura aproximada 71.45%
+2025-05-16 16:43:30,768 [INFO] - BRL_NZD (PRICE_BRL_NZD_exchange_rate): Cobertura aproximada 71.45%
+2025-05-16 16:43:30,769 [INFO] - NOK_AUD (PRICE_NOK_AUD_exchange_rate): Cobertura aproximada 71.45%
+2025-05-16 16:43:30,770 [INFO] - PHP_ZAR (PRICE_PHP_ZAR_exchange_rate): Cobertura aproximada 71.45%
+2025-05-16 16:43:30,770 [INFO] 
+==================================================
+2025-05-16 16:43:30,771 [INFO] ESTADÍSTICAS DE VALORES
+2025-05-16 16:43:30,773 [INFO] ==================================================
+2025-05-16 16:43:30,782 [INFO] 
+Estadísticas para PRICE_Australia_10Y_Bond_bond:
+2025-05-16 16:43:30,782 [INFO] - Min: 0.6010
+2025-05-16 16:43:30,783 [INFO] - Max: 4.9680
+2025-05-16 16:43:30,783 [INFO] - Media: 2.7280
+2025-05-16 16:43:30,783 [INFO] - Mediana: 2.7110
+2025-05-16 16:43:30,784 [INFO] - Desv. Estándar: 1.0907
+2025-05-16 16:43:30,786 [INFO] 
+Estadísticas para PRICE_Italy_10Y_Bond_bond:
+2025-05-16 16:43:30,786 [INFO] - Min: 0.4610
+2025-05-16 16:43:30,787 [INFO] - Max: 4.9880
+2025-05-16 16:43:30,787 [INFO] - Media: 2.3781
+2025-05-16 16:43:30,788 [INFO] - Mediana: 2.1350
+2025-05-16 16:43:30,788 [INFO] - Desv. Estándar: 1.1554
+2025-05-16 16:43:30,790 [INFO] 
+Estadísticas para PRICE_Japan_10Y_Bond_bond:
+2025-05-16 16:43:30,790 [INFO] - Min: -0.2910
+2025-05-16 16:43:30,791 [INFO] - Max: 1.5630
+2025-05-16 16:43:30,791 [INFO] - Media: 0.2743
+2025-05-16 16:43:30,793 [INFO] - Mediana: 0.1100
+2025-05-16 16:43:30,793 [INFO] - Desv. Estándar: 0.3630
+2025-05-16 16:43:30,795 [INFO] 
+Estadísticas para PRICE_UK_10Y_Bond_bond:
+2025-05-16 16:43:30,795 [INFO] - Min: 0.0750
+2025-05-16 16:43:30,795 [INFO] - Max: 4.8850
+2025-05-16 16:43:30,796 [INFO] - Media: 1.9644
+2025-05-16 16:43:30,796 [INFO] - Mediana: 1.4790
+2025-05-16 16:43:30,796 [INFO] - Desv. Estándar: 1.3348
+2025-05-16 16:43:30,798 [INFO] 
+Estadísticas para PRICE_Germany_10Y_Bond_bond:
+2025-05-16 16:43:30,798 [INFO] - Min: -0.8540
+2025-05-16 16:43:30,798 [INFO] - Max: 2.9680
+2025-05-16 16:43:30,799 [INFO] - Media: 0.7625
+2025-05-16 16:43:30,799 [INFO] - Mediana: 0.4410
+2025-05-16 16:43:30,799 [INFO] - Desv. Estándar: 1.0377
+2025-05-16 16:43:30,802 [INFO] 
+Estadísticas para PRICE_Canada_10Y_Bond_bond:
+2025-05-16 16:43:30,803 [INFO] - Min: 0.4350
+2025-05-16 16:43:30,803 [INFO] - Max: 4.2750
+2025-05-16 16:43:30,804 [INFO] - Media: 2.0614
+2025-05-16 16:43:30,805 [INFO] - Mediana: 1.8850
+2025-05-16 16:43:30,805 [INFO] - Desv. Estándar: 0.8736
+2025-05-16 16:43:30,809 [INFO] 
+Estadísticas para PRICE_China_10Y_Bond_bond:
+2025-05-16 16:43:30,809 [INFO] - Min: 1.6070
+2025-05-16 16:43:30,810 [INFO] - Max: 4.7100
+2025-05-16 16:43:30,825 [INFO] - Media: 3.1059
+2025-05-16 16:43:30,826 [INFO] - Mediana: 3.0890
+2025-05-16 16:43:30,826 [INFO] - Desv. Estándar: 0.5912
+2025-05-16 16:43:30,828 [INFO] 
+Estadísticas para PRICE_CrudeOil_WTI_commodities:
+2025-05-16 16:43:30,828 [INFO] - Min: 11.5700
+2025-05-16 16:43:30,829 [INFO] - Max: 119.7800
+2025-05-16 16:43:30,829 [INFO] - Media: 64.8083
+2025-05-16 16:43:30,829 [INFO] - Mediana: 63.2500
+2025-05-16 16:43:30,830 [INFO] - Desv. Estándar: 19.0607
+2025-05-16 16:43:30,831 [INFO] 
+Estadísticas para PRICE_Gold_Spot_commodities:
+2025-05-16 16:43:30,831 [INFO] - Min: 1049.6000
+2025-05-16 16:43:30,831 [INFO] - Max: 3425.3000
+2025-05-16 16:43:30,833 [INFO] - Media: 1621.2875
+2025-05-16 16:43:30,833 [INFO] - Mediana: 1474.7000
+2025-05-16 16:43:30,833 [INFO] - Desv. Estándar: 460.7431
+2025-05-16 16:43:30,835 [INFO] 
+Estadísticas para PRICE_Silver_Spot_commodities:
+2025-05-16 16:43:30,836 [INFO] - Min: 11.7720
+2025-05-16 16:43:30,837 [INFO] - Max: 35.0410
+2025-05-16 16:43:30,837 [INFO] - Media: 20.4633
+2025-05-16 16:43:30,838 [INFO] - Mediana: 18.7680
+2025-05-16 16:43:30,839 [INFO] - Desv. Estándar: 5.0457
+2025-05-16 16:43:30,840 [INFO] 
+Estadísticas para PRICE_Copper_Futures_commodities:
+2025-05-16 16:43:30,841 [INFO] - Min: 1.9435
+2025-05-16 16:43:30,841 [INFO] - Max: 5.2185
+2025-05-16 16:43:30,841 [INFO] - Media: 3.2662
+2025-05-16 16:43:30,842 [INFO] - Mediana: 3.0755
+2025-05-16 16:43:30,842 [INFO] - Desv. Estándar: 0.7750
+2025-05-16 16:43:30,843 [INFO] 
+Estadísticas para PRICE_Platinum_Spot_commodities:
+2025-05-16 16:43:30,844 [INFO] - Min: 595.2000
+2025-05-16 16:43:30,844 [INFO] - Max: 1516.2000
+2025-05-16 16:43:30,844 [INFO] - Media: 1001.5274
+2025-05-16 16:43:30,845 [INFO] - Mediana: 967.3250
+2025-05-16 16:43:30,845 [INFO] - Desv. Estándar: 156.1405
+2025-05-16 16:43:30,846 [INFO] 
+Estadísticas para PRICE_EUR_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,846 [INFO] - Min: 0.9592
+2025-05-16 16:43:30,846 [INFO] - Max: 1.3933
+2025-05-16 16:43:30,847 [INFO] - Media: 1.1358
+2025-05-16 16:43:30,847 [INFO] - Mediana: 1.1195
+2025-05-16 16:43:30,848 [INFO] - Desv. Estándar: 0.0796
+2025-05-16 16:43:30,849 [INFO] 
+Estadísticas para PRICE_GBP_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,849 [INFO] - Min: 1.0684
+2025-05-16 16:43:30,850 [INFO] - Max: 1.7163
+2025-05-16 16:43:30,850 [INFO] - Media: 1.3475
+2025-05-16 16:43:30,850 [INFO] - Mediana: 1.3066
+2025-05-16 16:43:30,851 [INFO] - Desv. Estándar: 0.1293
+2025-05-16 16:43:30,854 [INFO] 
+Estadísticas para PRICE_JPY_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,855 [INFO] - Min: 99.8700
+2025-05-16 16:43:30,856 [INFO] - Max: 161.6800
+2025-05-16 16:43:30,856 [INFO] - Media: 119.8560
+2025-05-16 16:43:30,857 [INFO] - Mediana: 112.6150
+2025-05-16 16:43:30,857 [INFO] - Desv. Estándar: 16.3514
+2025-05-16 16:43:30,860 [INFO] 
+Estadísticas para PRICE_CNY_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,860 [INFO] - Min: 6.0402
+2025-05-16 16:43:30,860 [INFO] - Max: 7.3499
+2025-05-16 16:43:30,861 [INFO] - Media: 6.7207
+2025-05-16 16:43:30,861 [INFO] - Mediana: 6.7312
+2025-05-16 16:43:30,861 [INFO] - Desv. Estándar: 0.3554
+2025-05-16 16:43:30,863 [INFO] 
+Estadísticas para PRICE_AUD_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,863 [INFO] - Min: 0.5741
+2025-05-16 16:43:30,863 [INFO] - Max: 0.9496
+2025-05-16 16:43:30,864 [INFO] - Media: 0.7300
+2025-05-16 16:43:30,864 [INFO] - Mediana: 0.7218
+2025-05-16 16:43:30,864 [INFO] - Desv. Estándar: 0.0710
+2025-05-16 16:43:30,866 [INFO] 
+Estadísticas para PRICE_CAD_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,866 [INFO] - Min: 1.0631
+2025-05-16 16:43:30,867 [INFO] - Max: 1.4576
+2025-05-16 16:43:30,867 [INFO] - Media: 1.2990
+2025-05-16 16:43:30,868 [INFO] - Mediana: 1.3142
+2025-05-16 16:43:30,868 [INFO] - Desv. Estándar: 0.0778
+2025-05-16 16:43:30,871 [INFO] 
+Estadísticas para PRICE_MXN_USD_Spot_exchange_rate:
+2025-05-16 16:43:30,873 [INFO] - Min: 12.8375
+2025-05-16 16:43:30,873 [INFO] - Max: 25.3380
+2025-05-16 16:43:30,873 [INFO] - Media: 18.5196
+2025-05-16 16:43:30,874 [INFO] - Mediana: 18.9698
+2025-05-16 16:43:30,874 [INFO] - Desv. Estándar: 2.3080
+2025-05-16 16:43:30,875 [INFO] 
+Estadísticas para PRICE_EUR_GBP_Cross_exchange_rate:
+2025-05-16 16:43:30,875 [INFO] - Min: 0.6937
+2025-05-16 16:43:30,876 [INFO] - Max: 0.9396
+2025-05-16 16:43:30,876 [INFO] - Media: 0.8458
+2025-05-16 16:43:30,877 [INFO] - Mediana: 0.8565
+2025-05-16 16:43:30,877 [INFO] - Desv. Estándar: 0.0491
+2025-05-16 16:43:30,878 [INFO] 
+Estadísticas para PRICE_S&P500_Index_index_pricing:
+2025-05-16 16:43:30,879 [INFO] - Min: 1741.9000
+2025-05-16 16:43:30,879 [INFO] - Max: 6144.1500
+2025-05-16 16:43:30,879 [INFO] - Media: 3310.0053
+2025-05-16 16:43:30,880 [INFO] - Mediana: 2926.3000
+2025-05-16 16:43:30,880 [INFO] - Desv. Estándar: 1183.8386
+2025-05-16 16:43:30,881 [INFO] 
+Estadísticas para PRICE_NASDAQ_Composite_index_pricing:
+2025-05-16 16:43:30,881 [INFO] - Min: 3996.9600
+2025-05-16 16:43:30,881 [INFO] - Max: 20173.8900
+2025-05-16 16:43:30,883 [INFO] - Media: 9652.0276
+2025-05-16 16:43:30,883 [INFO] - Mediana: 8089.5400
+2025-05-16 16:43:30,883 [INFO] - Desv. Estándar: 4465.2998
+2025-05-16 16:43:30,886 [INFO] 
+Estadísticas para PRICE_Russell_2000_index_pricing:
+2025-05-16 16:43:30,886 [INFO] - Min: 953.7200
+2025-05-16 16:43:30,887 [INFO] - Max: 2442.7400
+2025-05-16 16:43:30,887 [INFO] - Media: 1626.2218
+2025-05-16 16:43:30,887 [INFO] - Mediana: 1570.4100
+2025-05-16 16:43:30,889 [INFO] - Desv. Estándar: 378.9990
+2025-05-16 16:43:30,890 [INFO] 
+Estadísticas para PRICE_FTSE_100_index_pricing:
+2025-05-16 16:43:30,891 [INFO] - Min: 4993.8900
+2025-05-16 16:43:30,891 [INFO] - Max: 8871.3100
+2025-05-16 16:43:30,891 [INFO] - Media: 7145.4464
+2025-05-16 16:43:30,891 [INFO] - Mediana: 7208.4400
+2025-05-16 16:43:30,892 [INFO] - Desv. Estándar: 645.6068
+2025-05-16 16:43:30,893 [INFO] 
+Estadísticas para PRICE_Nikkei_225_index_pricing:
+2025-05-16 16:43:30,893 [INFO] - Min: 13910.1600
+2025-05-16 16:43:30,894 [INFO] - Max: 42224.0200
+2025-05-16 16:43:30,894 [INFO] - Media: 24411.4607
+2025-05-16 16:43:30,894 [INFO] - Mediana: 22544.8400
+2025-05-16 16:43:30,894 [INFO] - Desv. Estándar: 6907.3400
+2025-05-16 16:43:30,897 [INFO] 
+Estadísticas para PRICE_DAX_30_index_pricing:
+2025-05-16 16:43:30,897 [INFO] - Min: 8441.7100
+2025-05-16 16:43:30,897 [INFO] - Max: 23419.4800
+2025-05-16 16:43:30,898 [INFO] - Media: 13294.3485
+2025-05-16 16:43:30,898 [INFO] - Mediana: 12649.0300
+2025-05-16 16:43:30,899 [INFO] - Desv. Estándar: 3014.0647
+2025-05-16 16:43:30,901 [INFO] 
+Estadísticas para PRICE_Shanghai_Composite_index_pricing:
+2025-05-16 16:43:30,903 [INFO] - Min: 1991.2500
+2025-05-16 16:43:30,903 [INFO] - Max: 5166.3500
+2025-05-16 16:43:30,904 [INFO] - Media: 3111.7072
+2025-05-16 16:43:30,904 [INFO] - Mediana: 3141.5900
+2025-05-16 16:43:30,905 [INFO] - Desv. Estándar: 425.8249
+2025-05-16 16:43:30,906 [INFO] 
+Estadísticas para PRICE_VIX_VolatilityIndex_index_pricing:
+2025-05-16 16:43:30,907 [INFO] - Min: 9.1400
+2025-05-16 16:43:30,908 [INFO] - Max: 82.6900
+2025-05-16 16:43:30,908 [INFO] - Media: 17.9483
+2025-05-16 16:43:30,908 [INFO] - Mediana: 16.0300
+2025-05-16 16:43:30,909 [INFO] - Desv. Estándar: 7.0536
+2025-05-16 16:43:30,910 [INFO] 
+Estadísticas para PRICE_Aluminium_Spot_commodities:
+2025-05-16 16:43:30,911 [INFO] - Min: 1435.7500
+2025-05-16 16:43:30,911 [INFO] - Max: 3849.0000
+2025-05-16 16:43:30,911 [INFO] - Media: 2097.8438
+2025-05-16 16:43:30,911 [INFO] - Mediana: 2040.0000
+2025-05-16 16:43:30,912 [INFO] - Desv. Estándar: 409.1235
+2025-05-16 16:43:30,913 [INFO] 
+Estadísticas para PRICE_Lead_Futures_commodities:
+2025-05-16 16:43:30,913 [INFO] - Min: 1563.5000
+2025-05-16 16:43:30,914 [INFO] - Max: 2669.0000
+2025-05-16 16:43:30,914 [INFO] - Media: 2065.9679
+2025-05-16 16:43:30,914 [INFO] - Mediana: 2069.0000
+2025-05-16 16:43:30,915 [INFO] - Desv. Estándar: 212.0520
+2025-05-16 16:43:30,916 [INFO] 
+Estadísticas para PRICE_Palladium_Futures_commodities:
+2025-05-16 16:43:30,918 [INFO] - Min: 470.4500
+2025-05-16 16:43:30,920 [INFO] - Max: 3289.0000
+2025-05-16 16:43:30,921 [INFO] - Media: 1307.7706
+2025-05-16 16:43:30,922 [INFO] - Mediana: 1022.3000
+2025-05-16 16:43:30,923 [INFO] - Desv. Estándar: 629.4534
+2025-05-16 16:43:30,924 [INFO] 
+Estadísticas para PRICE_Tin_Futures_commodities:
+2025-05-16 16:43:30,925 [INFO] - Min: 13205.0000
+2025-05-16 16:43:30,925 [INFO] - Max: 48650.0000
+2025-05-16 16:43:30,925 [INFO] - Media: 23004.4121
+2025-05-16 16:43:30,926 [INFO] - Mediana: 20790.0000
+2025-05-16 16:43:30,926 [INFO] - Desv. Estándar: 6755.5661
+2025-05-16 16:43:30,927 [INFO] 
+Estadísticas para PRICE_Zinc_Futures_commodities:
+2025-05-16 16:43:30,927 [INFO] - Min: 1460.5000
+2025-05-16 16:43:30,928 [INFO] - Max: 4498.5000
+2025-05-16 16:43:30,928 [INFO] - Media: 2614.2391
+2025-05-16 16:43:30,928 [INFO] - Mediana: 2580.0000
+2025-05-16 16:43:30,929 [INFO] - Desv. Estándar: 514.9803
+2025-05-16 16:43:30,931 [INFO] 
+Estadísticas para PRICE_Nickel_Futures_commodities:
+2025-05-16 16:43:30,931 [INFO] - Min: 7590.0000
+2025-05-16 16:43:30,931 [INFO] - Max: 61714.4000
+2025-05-16 16:43:30,932 [INFO] - Media: 15777.4471
+2025-05-16 16:43:30,933 [INFO] - Mediana: 15250.0000
+2025-05-16 16:43:30,933 [INFO] - Desv. Estándar: 5578.9558
+2025-05-16 16:43:30,935 [INFO] 
+Estadísticas para PRICE_US_Cotton_#2_Futures_commodities:
+2025-05-16 16:43:30,935 [INFO] - Min: 48.4100
+2025-05-16 16:43:30,936 [INFO] - Max: 158.0200
+2025-05-16 16:43:30,936 [INFO] - Media: 77.5686
+2025-05-16 16:43:30,937 [INFO] - Mediana: 73.5700
+2025-05-16 16:43:30,937 [INFO] - Desv. Estándar: 16.9644
+2025-05-16 16:43:30,939 [INFO] 
+Estadísticas para PRICE_Lumber_Futures_commodities:
+2025-05-16 16:43:30,939 [INFO] - Min: 216.2000
+2025-05-16 16:43:30,941 [INFO] - Max: 1686.0000
+2025-05-16 16:43:30,941 [INFO] - Media: 489.8563
+2025-05-16 16:43:30,941 [INFO] - Mediana: 435.3000
+2025-05-16 16:43:30,942 [INFO] - Desv. Estándar: 229.0032
+2025-05-16 16:43:30,943 [INFO] 
+Estadísticas para PRICE_US_Cocoa_Futures_commodities:
+2025-05-16 16:43:30,944 [INFO] - Min: 1780.0000
+2025-05-16 16:43:30,944 [INFO] - Max: 12646.0000
+2025-05-16 16:43:30,944 [INFO] - Media: 3305.9125
+2025-05-16 16:43:30,945 [INFO] - Mediana: 2640.0000
+2025-05-16 16:43:30,945 [INFO] - Desv. Estándar: 1949.6333
+2025-05-16 16:43:30,946 [INFO] 
+Estadísticas para PRICE_US_Coffee_C_Futures_commodities:
+2025-05-16 16:43:30,947 [INFO] - Min: 86.6500
+2025-05-16 16:43:30,947 [INFO] - Max: 425.1000
+2025-05-16 16:43:30,947 [INFO] - Media: 161.7336
+2025-05-16 16:43:30,948 [INFO] - Mediana: 143.1000
+2025-05-16 16:43:30,948 [INFO] - Desv. Estándar: 60.4398
+2025-05-16 16:43:30,950 [INFO] 
+Estadísticas para PRICE_Orange_Juice_Futures_commodities:
+2025-05-16 16:43:30,950 [INFO] - Min: 91.2500
+2025-05-16 16:43:30,950 [INFO] - Max: 555.5000
+2025-05-16 16:43:30,951 [INFO] - Media: 186.8429
+2025-05-16 16:43:30,951 [INFO] - Mediana: 146.3750
+2025-05-16 16:43:30,953 [INFO] - Desv. Estándar: 102.4600
+2025-05-16 16:43:30,955 [INFO] 
+Estadísticas para PRICE_US_Sugar_commodities:
+2025-05-16 16:43:30,955 [INFO] - Min: 9.2100
+2025-05-16 16:43:30,956 [INFO] - Max: 27.9500
+2025-05-16 16:43:30,956 [INFO] - Media: 16.6545
+2025-05-16 16:43:30,956 [INFO] - Mediana: 16.2900
+2025-05-16 16:43:30,957 [INFO] - Desv. Estándar: 4.0029
+2025-05-16 16:43:30,958 [INFO] 
+Estadísticas para PRICE_US_Corn_Futures_commodities:
+2025-05-16 16:43:30,958 [INFO] - Min: 301.5000
+2025-05-16 16:43:30,959 [INFO] - Max: 818.2500
+2025-05-16 16:43:30,959 [INFO] - Media: 446.5466
+2025-05-16 16:43:30,959 [INFO] - Mediana: 394.5000
+2025-05-16 16:43:30,960 [INFO] - Desv. Estándar: 116.1723
+2025-05-16 16:43:30,961 [INFO] 
+Estadísticas para PRICE_US_Wheat_Futures_commodities:
+2025-05-16 16:43:30,961 [INFO] - Min: 361.0000
+2025-05-16 16:43:30,961 [INFO] - Max: 1425.2500
+2025-05-16 16:43:30,962 [INFO] - Media: 574.4676
+2025-05-16 16:43:30,962 [INFO] - Mediana: 537.7500
+2025-05-16 16:43:30,962 [INFO] - Desv. Estándar: 140.9007
+2025-05-16 16:43:30,965 [INFO] 
+Estadísticas para PRICE_Oats_Futures_commodities:
+2025-05-16 16:43:30,965 [INFO] - Min: 158.5000
+2025-05-16 16:43:30,966 [INFO] - Max: 807.0000
+2025-05-16 16:43:30,966 [INFO] - Media: 335.1396
+2025-05-16 16:43:30,966 [INFO] - Mediana: 307.7500
+2025-05-16 16:43:30,968 [INFO] - Desv. Estándar: 121.1529
+2025-05-16 16:43:30,970 [INFO] 
+Estadísticas para PRICE_Rough_Rice_Futures_commodities:
+2025-05-16 16:43:30,971 [INFO] - Min: 9.1250
+2025-05-16 16:43:30,971 [INFO] - Max: 19.4600
+2025-05-16 16:43:30,971 [INFO] - Media: 13.2772
+2025-05-16 16:43:30,973 [INFO] - Mediana: 12.7300
+2025-05-16 16:43:30,973 [INFO] - Desv. Estándar: 2.4692
+2025-05-16 16:43:30,975 [INFO] 
+Estadísticas para PRICE_US_Soybean_Meal_Futures_commodities:
+2025-05-16 16:43:30,975 [INFO] - Min: 257.2000
+2025-05-16 16:43:30,976 [INFO] - Max: 506.0000
+2025-05-16 16:43:30,976 [INFO] - Media: 354.0852
+2025-05-16 16:43:30,976 [INFO] - Mediana: 334.5000
+2025-05-16 16:43:30,977 [INFO] - Desv. Estándar: 57.0692
+2025-05-16 16:43:30,978 [INFO] 
+Estadísticas para PRICE_US_Soybean_Oil_Futures_commodities:
+2025-05-16 16:43:30,978 [INFO] - Min: 25.3400
+2025-05-16 16:43:30,979 [INFO] - Max: 86.6000
+2025-05-16 16:43:30,980 [INFO] - Media: 41.3009
+2025-05-16 16:43:30,981 [INFO] - Mediana: 34.6100
+2025-05-16 16:43:30,983 [INFO] - Desv. Estándar: 13.4747
+2025-05-16 16:43:30,988 [INFO] 
+Estadísticas para PRICE_US_Soybeans_Futures_commodities:
+2025-05-16 16:43:30,989 [INFO] - Min: 802.5000
+2025-05-16 16:43:30,989 [INFO] - Max: 1737.5000
+2025-05-16 16:43:30,989 [INFO] - Media: 1118.5521
+2025-05-16 16:43:30,990 [INFO] - Mediana: 1027.0000
+2025-05-16 16:43:30,990 [INFO] - Desv. Estándar: 228.1912
+2025-05-16 16:43:30,993 [INFO] 
+Estadísticas para PRICE_Feeder_Cattle_Futures_commodities:
+2025-05-16 16:43:30,993 [INFO] - Min: 108.2500
+2025-05-16 16:43:30,993 [INFO] - Max: 306.3800
+2025-05-16 16:43:30,994 [INFO] - Media: 177.3478
+2025-05-16 16:43:30,995 [INFO] - Mediana: 157.8800
+2025-05-16 16:43:30,997 [INFO] - Desv. Estándar: 44.3422
+2025-05-16 16:43:30,998 [INFO] 
+Estadísticas para PRICE_Live_Cattle_Futures_commodities:
+2025-05-16 16:43:30,999 [INFO] - Min: 83.8300
+2025-05-16 16:43:30,999 [INFO] - Max: 216.8200
+2025-05-16 16:43:30,999 [INFO] - Media: 137.7801
+2025-05-16 16:43:30,999 [INFO] - Mediana: 130.8350
+2025-05-16 16:43:31,000 [INFO] - Desv. Estándar: 28.4206
+2025-05-16 16:43:31,001 [INFO] 
+Estadísticas para PRICE_Iron_ore_fines_62%_Fe_CFR_Futures_commodities:
+2025-05-16 16:43:31,002 [INFO] - Min: 38.5400
+2025-05-16 16:43:31,003 [INFO] - Max: 219.7700
+2025-05-16 16:43:31,003 [INFO] - Media: 96.6672
+2025-05-16 16:43:31,005 [INFO] - Mediana: 93.7600
+2025-05-16 16:43:31,005 [INFO] - Desv. Estándar: 34.5618
+2025-05-16 16:43:31,007 [INFO] 
+Estadísticas para PRICE_Dow_Jones_Industrial_Average_index_pricing:
+2025-05-16 16:43:31,007 [INFO] - Min: 15372.8000
+2025-05-16 16:43:31,007 [INFO] - Max: 45014.0400
+2025-05-16 16:43:31,009 [INFO] - Media: 27219.0090
+2025-05-16 16:43:31,009 [INFO] - Mediana: 26191.2200
+2025-05-16 16:43:31,009 [INFO] - Desv. Estándar: 8016.3570
+2025-05-16 16:43:31,012 [INFO] 
+Estadísticas para PRICE_Nasdaq_100_Fi_index_pricing:
+2025-05-16 16:43:31,012 [INFO] - Min: 0.6970
+2025-05-16 16:43:31,013 [INFO] - Max: 1.4180
+2025-05-16 16:43:31,013 [INFO] - Media: 1.0237
+2025-05-16 16:43:31,014 [INFO] - Mediana: 1.0180
+2025-05-16 16:43:31,014 [INFO] - Desv. Estándar: 0.1741
+2025-05-16 16:43:31,015 [INFO] 
+Estadísticas para PRICE_CAC_40_index_pricing:
+2025-05-16 16:43:31,016 [INFO] - Min: 3754.8400
+2025-05-16 16:43:31,016 [INFO] - Max: 8239.9900
+2025-05-16 16:43:31,016 [INFO] - Media: 5736.8505
+2025-05-16 16:43:31,017 [INFO] - Mediana: 5408.4500
+2025-05-16 16:43:31,017 [INFO] - Desv. Estándar: 1152.4034
+2025-05-16 16:43:31,020 [INFO] 
+Estadísticas para PRICE_JPY_EUR_exchange_rate:
+2025-05-16 16:43:31,020 [INFO] - Min: 0.5710
+2025-05-16 16:43:31,021 [INFO] - Max: 0.8994
+2025-05-16 16:43:31,021 [INFO] - Media: 0.7460
+2025-05-16 16:43:31,021 [INFO] - Mediana: 0.7584
+2025-05-16 16:43:31,021 [INFO] - Desv. Estándar: 0.0734
+2025-05-16 16:43:31,024 [INFO] 
+Estadísticas para PRICE_BRL_NZD_exchange_rate:
+2025-05-16 16:43:31,026 [INFO] - Min: 0.2387
+2025-05-16 16:43:31,026 [INFO] - Max: 0.5366
+2025-05-16 16:43:31,026 [INFO] - Media: 0.3691
+2025-05-16 16:43:31,026 [INFO] - Mediana: 0.3733
+2025-05-16 16:43:31,027 [INFO] - Desv. Estándar: 0.0756
+2025-05-16 16:43:31,028 [INFO] 
+Estadísticas para PRICE_NOK_AUD_exchange_rate:
+2025-05-16 16:43:31,029 [INFO] - Min: 0.1351
+2025-05-16 16:43:31,029 [INFO] - Max: 0.1875
+2025-05-16 16:43:31,029 [INFO] - Media: 0.1569
+2025-05-16 16:43:31,030 [INFO] - Mediana: 0.1577
+2025-05-16 16:43:31,030 [INFO] - Desv. Estándar: 0.0106
+2025-05-16 16:43:31,031 [INFO] 
+Estadísticas para PRICE_PHP_ZAR_exchange_rate:
+2025-05-16 16:43:31,031 [INFO] - Min: 0.2221
+2025-05-16 16:43:31,033 [INFO] - Max: 0.3765
+2025-05-16 16:43:31,033 [INFO] - Media: 0.2930
+2025-05-16 16:43:31,033 [INFO] - Mediana: 0.2936
+2025-05-16 16:43:31,034 [INFO] - Desv. Estándar: 0.0326
+2025-05-16 16:43:31,034 [INFO] 
+==================================================
+2025-05-16 16:43:31,035 [INFO] GUARDANDO RESULTADOS
+2025-05-16 16:43:31,035 [INFO] ==================================================
+2025-05-16 16:43:31,036 [INFO] Guardando resultados en: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_normales_procesados.xlsx
+2025-05-16 16:43:42,845 [INFO] Archivo guardado exitosamente: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_normales_procesados.xlsx
+2025-05-16 16:43:42,845 [INFO] 
+==================================================
+2025-05-16 16:43:42,847 [INFO] RESUMEN DE EJECUCIÓN
+2025-05-16 16:43:42,847 [INFO] ==================================================
+2025-05-16 16:43:42,847 [INFO] Proceso: MyinvestingreportNormal
+2025-05-16 16:43:42,848 [INFO] Tiempo de ejecución: 144.76 segundos
+2025-05-16 16:43:42,848 [INFO] Archivos procesados: 58
+2025-05-16 16:43:42,848 [INFO] Archivos con error: 1
+2025-05-16 16:43:42,848 [INFO] Archivos procesados correctamente: 57
+2025-05-16 16:43:42,849 [INFO] Periodo de datos: 2014-01-01 a 2025-05-16
+2025-05-16 16:43:42,849 [INFO] Datos combinados: 4154 filas, 58 columnas
+2025-05-16 16:43:42,849 [INFO] Archivo de salida: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_normales_procesados.xlsx
+2025-05-16 16:43:42,850 [INFO] Estado: COMPLETADO
+2025-05-16 16:43:42,850 [INFO] ==================================================
+2025-05-16 16:43:42,860 [INFO] ================================================================================
+2025-05-16 16:43:42,861 [INFO] INICIANDO PROCESO: FredDataProcessor
+2025-05-16 16:43:42,861 [INFO] Archivo de configuración: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-05-16 16:43:42,863 [INFO] Directorio raíz de datos: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw
+2025-05-16 16:43:42,873 [INFO] Fecha y hora: 2025-05-16 16:43:42
+2025-05-16 16:43:42,875 [INFO] ================================================================================
+2025-05-16 16:43:42,875 [INFO] Leyendo archivo de configuración...
+2025-05-16 16:43:42,995 [INFO] Se encontraron 35 configuraciones para procesar
+2025-05-16 16:43:42,996 [INFO] 
+Procesando: US_10Y_Treasury (bond)
+2025-05-16 16:43:42,998 [INFO] - Archivo: US_10Y_Treasury.csv
+2025-05-16 16:43:42,998 [INFO] - Columna TARGET: DGS10
+2025-05-16 16:43:42,998 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\US_10Y_Treasury.csv
+2025-05-16 16:43:43,041 [INFO] - Filas encontradas: 2953
+2025-05-16 16:43:43,049 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:43,049 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\US_10Y_Treasury.csv: ISO
+2025-05-16 16:43:43,803 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-05-16 16:43:43,816 [INFO] - Valores no nulos en TARGET: 2831
+2025-05-16 16:43:43,817 [INFO] - Periodo: 2014-01-02 a 2025-04-28
+2025-05-16 16:43:43,817 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:43,821 [INFO] 
+Procesando: US_2Y_Treasury (bond)
+2025-05-16 16:43:43,821 [INFO] - Archivo: US_2Y_Treasury.csv
+2025-05-16 16:43:43,822 [INFO] - Columna TARGET: DGS2
+2025-05-16 16:43:43,823 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\US_2Y_Treasury.csv
+2025-05-16 16:43:43,854 [INFO] - Filas encontradas: 2953
+2025-05-16 16:43:43,858 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:43,859 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\US_2Y_Treasury.csv: ISO
+2025-05-16 16:43:44,649 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-05-16 16:43:44,664 [INFO] - Valores no nulos en TARGET: 2831
+2025-05-16 16:43:44,664 [INFO] - Periodo: 2014-01-02 a 2025-04-28
+2025-05-16 16:43:44,664 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:44,666 [INFO] 
+Procesando: Corporate_Bond_AAA_Spread (bond)
+2025-05-16 16:43:44,667 [INFO] - Archivo: Corporate_Bond_AAA_Spread.csv
+2025-05-16 16:43:44,678 [INFO] - Columna TARGET: AAA
+2025-05-16 16:43:44,678 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Corporate_Bond_AAA_Spread.csv
+2025-05-16 16:43:44,719 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:44,720 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:44,720 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Corporate_Bond_AAA_Spread.csv: ISO
+2025-05-16 16:43:44,797 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:44,805 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:44,805 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:44,806 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:44,811 [INFO] 
+Procesando: Corporate_Bond_BBB_Spread (bond)
+2025-05-16 16:43:44,811 [INFO] - Archivo: Corporate_Bond_BBB_Spread.csv
+2025-05-16 16:43:44,812 [INFO] - Columna TARGET: BAA10YM
+2025-05-16 16:43:44,812 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Corporate_Bond_BBB_Spread.csv
+2025-05-16 16:43:44,849 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:44,850 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:44,852 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\Corporate_Bond_BBB_Spread.csv: ISO
+2025-05-16 16:43:44,901 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:44,910 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:44,910 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:44,910 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:44,913 [INFO] 
+Procesando: High_Yield_Bond_Spread (bond)
+2025-05-16 16:43:44,913 [INFO] - Archivo: High_Yield_Bond_Spread.csv
+2025-05-16 16:43:44,913 [INFO] - Columna TARGET: BAMLH0A0HYM2
+2025-05-16 16:43:44,914 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\High_Yield_Bond_Spread.csv
+2025-05-16 16:43:44,952 [INFO] - Filas encontradas: 2992
+2025-05-16 16:43:44,955 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:44,957 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\bond\High_Yield_Bond_Spread.csv: ISO
+2025-05-16 16:43:45,852 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-05-16 16:43:45,866 [INFO] - Valores no nulos en TARGET: 2956
+2025-05-16 16:43:45,866 [INFO] - Periodo: 2014-01-02 a 2025-04-29
+2025-05-16 16:43:45,866 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:45,871 [INFO] 
+Procesando: Denmark_Car_Registrations_MoM (car_registrations)
+2025-05-16 16:43:45,872 [INFO] - Archivo: Denmark_Car_Registrations_MoM.csv
+2025-05-16 16:43:45,872 [INFO] - Columna TARGET: DNKSLRTCR03GPSAM
+2025-05-16 16:43:45,873 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\Denmark_Car_Registrations_MoM.csv
+2025-05-16 16:43:45,911 [INFO] - Filas encontradas: 134
+2025-05-16 16:43:45,913 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:45,914 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\Denmark_Car_Registrations_MoM.csv: ISO
+2025-05-16 16:43:45,957 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:45,961 [INFO] - Valores no nulos en TARGET: 134
+2025-05-16 16:43:45,963 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-05-16 16:43:45,963 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:45,966 [INFO] 
+Procesando: US_Car_Registrations_MoM (car_registrations)
+2025-05-16 16:43:45,966 [INFO] - Archivo: US_Car_Registrations_MoM.csv
+2025-05-16 16:43:45,966 [INFO] - Columna TARGET: USASLRTCR03GPSAM
+2025-05-16 16:43:45,967 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\US_Car_Registrations_MoM.csv
+2025-05-16 16:43:45,990 [INFO] - Filas encontradas: 134
+2025-05-16 16:43:45,991 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:45,991 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\US_Car_Registrations_MoM.csv: ISO
+2025-05-16 16:43:46,046 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,051 [INFO] - Valores no nulos en TARGET: 134
+2025-05-16 16:43:46,052 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-05-16 16:43:46,052 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,055 [INFO] 
+Procesando: SouthAfrica_Car_Registrations_MoM (car_registrations)
+2025-05-16 16:43:46,055 [INFO] - Archivo: SouthAfrica_Car_Registrations_MoM.csv
+2025-05-16 16:43:46,056 [INFO] - Columna TARGET: ZAFSLRTCR03GPSAM
+2025-05-16 16:43:46,056 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\SouthAfrica_Car_Registrations_MoM.csv
+2025-05-16 16:43:46,084 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,084 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,085 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\SouthAfrica_Car_Registrations_MoM.csv: ISO
+2025-05-16 16:43:46,133 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,141 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,142 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,142 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,145 [INFO] 
+Procesando: United_Kingdom_Car_Registrations_MoM (car_registrations)
+2025-05-16 16:43:46,145 [INFO] - Archivo: United_Kingdom_Car_Registrations_MoM.csv
+2025-05-16 16:43:46,146 [INFO] - Columna TARGET: GBRSLRTCR03GPSAM
+2025-05-16 16:43:46,146 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\United_Kingdom_Car_Registrations_MoM.csv
+2025-05-16 16:43:46,169 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,173 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,173 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\United_Kingdom_Car_Registrations_MoM.csv: ISO
+2025-05-16 16:43:46,217 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,225 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,225 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,225 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,228 [INFO] 
+Procesando: Spain_Car_Registrations_MoM (car_registrations)
+2025-05-16 16:43:46,229 [INFO] - Archivo: Spain_Car_Registrations_MoM.csv
+2025-05-16 16:43:46,229 [INFO] - Columna TARGET: ESPSLRTCR03GPSAM
+2025-05-16 16:43:46,229 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\Spain_Car_Registrations_MoM.csv
+2025-05-16 16:43:46,259 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,260 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,261 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\car_registrations\Spain_Car_Registrations_MoM.csv: ISO
+2025-05-16 16:43:46,311 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,317 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,318 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,318 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,321 [INFO] 
+Procesando: US_Commercial_Loans (comm_loans)
+2025-05-16 16:43:46,322 [INFO] - Archivo: US_Commercial_Loans.csv
+2025-05-16 16:43:46,322 [INFO] - Columna TARGET: BUSLOANS
+2025-05-16 16:43:46,322 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\comm_loans\US_Commercial_Loans.csv
+2025-05-16 16:43:46,347 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,348 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,348 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\comm_loans\US_Commercial_Loans.csv: ISO
+2025-05-16 16:43:46,386 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,392 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,392 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,394 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,396 [INFO] 
+Procesando: US_RealEstate_Commercial_Loans (comm_loans)
+2025-05-16 16:43:46,397 [INFO] - Archivo: US_RealEstate_Commercial_Loans.csv
+2025-05-16 16:43:46,397 [INFO] - Columna TARGET: CREACBM027NBOG
+2025-05-16 16:43:46,397 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\comm_loans\US_RealEstate_Commercial_Loans.csv
+2025-05-16 16:43:46,423 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,425 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,425 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\comm_loans\US_RealEstate_Commercial_Loans.csv: ISO
+2025-05-16 16:43:46,490 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,497 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,498 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,498 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,502 [INFO] 
+Procesando: US_Consumer_Credit (comm_loans)
+2025-05-16 16:43:46,504 [INFO] - Archivo: US_Consumer_Credit.csv
+2025-05-16 16:43:46,505 [INFO] - Columna TARGET: TOTALSL
+2025-05-16 16:43:46,506 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\comm_loans\US_Consumer_Credit.csv
+2025-05-16 16:43:46,535 [INFO] - Filas encontradas: 134
+2025-05-16 16:43:46,537 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,537 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\comm_loans\US_Consumer_Credit.csv: ISO
+2025-05-16 16:43:46,602 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,607 [INFO] - Valores no nulos en TARGET: 134
+2025-05-16 16:43:46,608 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-05-16 16:43:46,608 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,612 [INFO] 
+Procesando: EuroZone_Consumer_Confidence (consumer_confidence)
+2025-05-16 16:43:46,612 [INFO] - Archivo: EuroZone_Consumer_Confidence.csv
+2025-05-16 16:43:46,613 [INFO] - Columna TARGET: CSCICP02EZM460S
+2025-05-16 16:43:46,613 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\EuroZone_Consumer_Confidence.csv
+2025-05-16 16:43:46,639 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,641 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,642 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\EuroZone_Consumer_Confidence.csv: ISO
+2025-05-16 16:43:46,680 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,685 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,686 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,687 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,691 [INFO] 
+Procesando: Switzerland_Consumer_Confidence (consumer_confidence)
+2025-05-16 16:43:46,691 [INFO] - Archivo: Switzerland_Consumer_Confidence.csv
+2025-05-16 16:43:46,692 [INFO] - Columna TARGET: CSCICP02CHQ460S
+2025-05-16 16:43:46,692 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\Switzerland_Consumer_Confidence.csv
+2025-05-16 16:43:46,715 [INFO] - Filas encontradas: 45
+2025-05-16 16:43:46,716 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,717 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\Switzerland_Consumer_Confidence.csv: ISO
+2025-05-16 16:43:46,736 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-07-01 00:00:00'), Timestamp('2014-10-01 00:00:00'), Timestamp('2015-01-01 00:00:00')]
+2025-05-16 16:43:46,741 [INFO] - Valores no nulos en TARGET: 45
+2025-05-16 16:43:46,742 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-05-16 16:43:46,742 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,745 [INFO] 
+Procesando: Michigan_Consumer_Sentiment (consumer_confidence)
+2025-05-16 16:43:46,745 [INFO] - Archivo: Michigan_Consumer_Sentiment.csv
+2025-05-16 16:43:46,745 [INFO] - Columna TARGET: UMCSENT
+2025-05-16 16:43:46,746 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\Michigan_Consumer_Sentiment.csv
+2025-05-16 16:43:46,771 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,773 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,773 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\Michigan_Consumer_Sentiment.csv: ISO
+2025-05-16 16:43:46,811 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,816 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,816 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,817 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,820 [INFO] 
+Procesando: US_CPI (economics)
+2025-05-16 16:43:46,820 [INFO] - Archivo: US_CPI.csv
+2025-05-16 16:43:46,820 [INFO] - Columna TARGET: CPIAUCSL
+2025-05-16 16:43:46,822 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_CPI.csv
+2025-05-16 16:43:46,861 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,862 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,862 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_CPI.csv: ISO
+2025-05-16 16:43:46,913 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:46,918 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:46,921 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:46,923 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:46,926 [INFO] 
+Procesando: US_Core_CPI (economics)
+2025-05-16 16:43:46,926 [INFO] - Archivo: US_Core_CPI.csv
+2025-05-16 16:43:46,927 [INFO] - Columna TARGET: CPILFESL
+2025-05-16 16:43:46,927 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Core_CPI.csv
+2025-05-16 16:43:46,959 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:46,960 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:46,960 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Core_CPI.csv: ISO
+2025-05-16 16:43:47,010 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,017 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,018 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,018 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,024 [INFO] 
+Procesando: US_PCE (economics)
+2025-05-16 16:43:47,024 [INFO] - Archivo: US_PCE.csv
+2025-05-16 16:43:47,024 [INFO] - Columna TARGET: PCE
+2025-05-16 16:43:47,024 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_PCE.csv
+2025-05-16 16:43:47,058 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,060 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,060 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_PCE.csv: ISO
+2025-05-16 16:43:47,098 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,109 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,109 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,109 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,114 [INFO] 
+Procesando: US_Core_PCE (economics)
+2025-05-16 16:43:47,114 [INFO] - Archivo: US_Core_PCE.csv
+2025-05-16 16:43:47,114 [INFO] - Columna TARGET: PCEPILFE
+2025-05-16 16:43:47,114 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Core_PCE.csv
+2025-05-16 16:43:47,151 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,153 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,155 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Core_PCE.csv: ISO
+2025-05-16 16:43:47,204 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,211 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,211 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,211 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,215 [INFO] 
+Procesando: US_PPI (economics)
+2025-05-16 16:43:47,215 [INFO] - Archivo: US_PPI.csv
+2025-05-16 16:43:47,217 [INFO] - Columna TARGET: PPIACO
+2025-05-16 16:43:47,217 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_PPI.csv
+2025-05-16 16:43:47,242 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,244 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,244 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_PPI.csv: ISO
+2025-05-16 16:43:47,282 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,288 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,289 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,289 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,291 [INFO] 
+Procesando: US_Industrial_Production_MoM (economics)
+2025-05-16 16:43:47,291 [INFO] - Archivo: US_Industrial_Production_MoM.csv
+2025-05-16 16:43:47,293 [INFO] - Columna TARGET: INDPRO
+2025-05-16 16:43:47,293 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Industrial_Production_MoM.csv
+2025-05-16 16:43:47,314 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,315 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,315 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Industrial_Production_MoM.csv: ISO
+2025-05-16 16:43:47,354 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,361 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,362 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,362 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,365 [INFO] 
+Procesando: US_CaseShiller_HomePrice (economics)
+2025-05-16 16:43:47,366 [INFO] - Archivo: US_CaseShiller_HomePrice.csv
+2025-05-16 16:43:47,366 [INFO] - Columna TARGET: CSUSHPINSA
+2025-05-16 16:43:47,366 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_CaseShiller_HomePrice.csv
+2025-05-16 16:43:47,401 [INFO] - Filas encontradas: 134
+2025-05-16 16:43:47,413 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,415 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_CaseShiller_HomePrice.csv: ISO
+2025-05-16 16:43:47,465 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,472 [INFO] - Valores no nulos en TARGET: 134
+2025-05-16 16:43:47,473 [INFO] - Periodo: 2014-01-01 a 2025-02-01
+2025-05-16 16:43:47,473 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,476 [INFO] 
+Procesando: US_GDP_Growth (economics)
+2025-05-16 16:43:47,477 [INFO] - Archivo: US_GDP_Growth.csv
+2025-05-16 16:43:47,477 [INFO] - Columna TARGET: GDP
+2025-05-16 16:43:47,478 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_GDP_Growth.csv
+2025-05-16 16:43:47,503 [INFO] - Filas encontradas: 45
+2025-05-16 16:43:47,505 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,507 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_GDP_Growth.csv: ISO
+2025-05-16 16:43:47,527 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-07-01 00:00:00'), Timestamp('2014-10-01 00:00:00'), Timestamp('2015-01-01 00:00:00')]
+2025-05-16 16:43:47,531 [INFO] - Valores no nulos en TARGET: 45
+2025-05-16 16:43:47,532 [INFO] - Periodo: 2014-01-01 a 2025-01-01
+2025-05-16 16:43:47,532 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,536 [INFO] 
+Procesando: US_Capacity_Utilization (economics)
+2025-05-16 16:43:47,537 [INFO] - Archivo: US_Capacity_Utilization.csv
+2025-05-16 16:43:47,537 [INFO] - Columna TARGET: TCU
+2025-05-16 16:43:47,539 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Capacity_Utilization.csv
+2025-05-16 16:43:47,564 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,564 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,565 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Capacity_Utilization.csv: ISO
+2025-05-16 16:43:47,600 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,607 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,608 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,608 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,611 [INFO] 
+Procesando: US_Building_Permits (economics)
+2025-05-16 16:43:47,611 [INFO] - Archivo: US_Building_Permits.csv
+2025-05-16 16:43:47,611 [INFO] - Columna TARGET: PERMIT
+2025-05-16 16:43:47,611 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Building_Permits.csv
+2025-05-16 16:43:47,635 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,637 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,637 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Building_Permits.csv: ISO
+2025-05-16 16:43:47,680 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,687 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,687 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,688 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,690 [INFO] 
+Procesando: US_Housing_Starts (economics)
+2025-05-16 16:43:47,690 [INFO] - Archivo: US_Housing_Starts.csv
+2025-05-16 16:43:47,692 [INFO] - Columna TARGET: HOUST
+2025-05-16 16:43:47,692 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Housing_Starts.csv
+2025-05-16 16:43:47,713 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:47,714 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,714 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_Housing_Starts.csv: ISO
+2025-05-16 16:43:47,750 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,759 [INFO] - Valores no nulos en TARGET: 135
+2025-05-16 16:43:47,759 [INFO] - Periodo: 2014-01-01 a 2025-03-01
+2025-05-16 16:43:47,760 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,762 [INFO] 
+Procesando: US_FedFunds_Rate (economics)
+2025-05-16 16:43:47,763 [INFO] - Archivo: US_FedFunds_Rate.csv
+2025-05-16 16:43:47,763 [INFO] - Columna TARGET: FEDFUNDS
+2025-05-16 16:43:47,764 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_FedFunds_Rate.csv
+2025-05-16 16:43:47,788 [INFO] - Filas encontradas: 136
+2025-05-16 16:43:47,790 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,790 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\US_FedFunds_Rate.csv: ISO
+2025-05-16 16:43:47,830 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:47,835 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:43:47,835 [INFO] - Periodo: 2014-01-01 a 2025-04-01
+2025-05-16 16:43:47,837 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:47,841 [INFO] 
+Procesando: ECB_Deposit_Rate (economics)
+2025-05-16 16:43:47,842 [INFO] - Archivo: ECB_Deposit_Rate.csv
+2025-05-16 16:43:47,842 [INFO] - Columna TARGET: ECBDFR
+2025-05-16 16:43:47,842 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\ECB_Deposit_Rate.csv
+2025-05-16 16:43:47,878 [INFO] - Filas encontradas: 4140
+2025-05-16 16:43:47,879 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:47,879 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\ECB_Deposit_Rate.csv: ISO
+2025-05-16 16:43:49,130 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-04 00:00:00'), Timestamp('2014-01-05 00:00:00')]
+2025-05-16 16:43:49,150 [INFO] - Valores no nulos en TARGET: 4140
+2025-05-16 16:43:49,154 [INFO] - Periodo: 2014-01-01 a 2025-05-02
+2025-05-16 16:43:49,155 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:49,160 [INFO] 
+Procesando: Fed_Balance_Sheet (economics)
+2025-05-16 16:43:49,160 [INFO] - Archivo: Fed_Balance_Sheet.csv
+2025-05-16 16:43:49,161 [INFO] - Columna TARGET: WALCL
+2025-05-16 16:43:49,163 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Fed_Balance_Sheet.csv
+2025-05-16 16:43:49,207 [INFO] - Filas encontradas: 592
+2025-05-16 16:43:49,208 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:49,209 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\economics\Fed_Balance_Sheet.csv: ISO
+2025-05-16 16:43:49,491 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-01-08 00:00:00'), Timestamp('2014-01-15 00:00:00'), Timestamp('2014-01-22 00:00:00'), Timestamp('2014-01-29 00:00:00')]
+2025-05-16 16:43:49,499 [INFO] - Valores no nulos en TARGET: 592
+2025-05-16 16:43:49,499 [INFO] - Periodo: 2014-01-01 a 2025-04-30
+2025-05-16 16:43:49,503 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:49,506 [INFO] 
+Procesando: Dollar_Index_DXY (index_pricing)
+2025-05-16 16:43:49,507 [INFO] - Archivo: Dollar_Index_DXY.csv
+2025-05-16 16:43:49,508 [INFO] - Columna TARGET: DTWEXBGS
+2025-05-16 16:43:49,509 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Dollar_Index_DXY.csv
+2025-05-16 16:43:49,549 [INFO] - Filas encontradas: 2952
+2025-05-16 16:43:49,552 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:49,552 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\index_pricing\Dollar_Index_DXY.csv: ISO
+2025-05-16 16:43:50,725 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-05-16 16:43:50,745 [INFO] - Valores no nulos en TARGET: 2817
+2025-05-16 16:43:50,746 [INFO] - Periodo: 2014-01-02 a 2025-04-25
+2025-05-16 16:43:50,747 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:50,751 [INFO] 
+Procesando: US_Unemployment_Rate (unemployment_rate)
+2025-05-16 16:43:50,751 [INFO] - Archivo: US_Unemployment_Rate.csv
+2025-05-16 16:43:50,753 [INFO] - Columna TARGET: UNRATE
+2025-05-16 16:43:50,754 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_Unemployment_Rate.csv
+2025-05-16 16:43:50,801 [INFO] - Filas encontradas: 136
+2025-05-16 16:43:50,803 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:50,804 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_Unemployment_Rate.csv: ISO
+2025-05-16 16:43:50,941 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:50,950 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:43:50,950 [INFO] - Periodo: 2014-01-01 a 2025-04-01
+2025-05-16 16:43:50,950 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:50,956 [INFO] 
+Procesando: US_Nonfarm_Payrolls (unemployment_rate)
+2025-05-16 16:43:50,956 [INFO] - Archivo: US_Nonfarm_Payrolls.csv
+2025-05-16 16:43:50,957 [INFO] - Columna TARGET: PAYEMS
+2025-05-16 16:43:50,958 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_Nonfarm_Payrolls.csv
+2025-05-16 16:43:51,009 [INFO] - Filas encontradas: 136
+2025-05-16 16:43:51,017 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:51,019 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_Nonfarm_Payrolls.csv: ISO
+2025-05-16 16:43:51,160 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:51,170 [INFO] - Valores no nulos en TARGET: 136
+2025-05-16 16:43:51,171 [INFO] - Periodo: 2014-01-01 a 2025-04-01
+2025-05-16 16:43:51,171 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:51,176 [INFO] 
+Procesando: US_Initial_Jobless_Claims (unemployment_rate)
+2025-05-16 16:43:51,177 [INFO] - Archivo: US_Initial_Jobless_Claims.csv
+2025-05-16 16:43:51,178 [INFO] - Columna TARGET: ICSA
+2025-05-16 16:43:51,179 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_Initial_Jobless_Claims.csv
+2025-05-16 16:43:51,217 [INFO] - Filas encontradas: 591
+2025-05-16 16:43:51,220 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:51,221 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_Initial_Jobless_Claims.csv: ISO
+2025-05-16 16:43:51,451 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-04 00:00:00'), Timestamp('2014-01-11 00:00:00'), Timestamp('2014-01-18 00:00:00'), Timestamp('2014-01-25 00:00:00'), Timestamp('2014-02-01 00:00:00')]
+2025-05-16 16:43:51,462 [INFO] - Valores no nulos en TARGET: 591
+2025-05-16 16:43:51,463 [INFO] - Periodo: 2014-01-04 a 2025-04-26
+2025-05-16 16:43:51,465 [INFO] - Cobertura: 100.00%
+2025-05-16 16:43:51,470 [INFO] 
+Procesando: US_JOLTS (unemployment_rate)
+2025-05-16 16:43:51,470 [INFO] - Archivo: US_JOLTS.csv
+2025-05-16 16:43:51,471 [INFO] - Columna TARGET: JOLTS
+2025-05-16 16:43:51,472 [INFO] - Ruta encontrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_JOLTS.csv
+2025-05-16 16:43:51,507 [INFO] - Filas encontradas: 135
+2025-05-16 16:43:51,508 [INFO] Detección formato: 20/20 registros ISO (ratio 1.00)
+2025-05-16 16:43:51,509 [INFO] Formato detectado para C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_JOLTS.csv: ISO
+2025-05-16 16:43:51,563 [INFO] Primeras fechas convertidas: [Timestamp('2014-01-01 00:00:00'), Timestamp('2014-02-01 00:00:00'), Timestamp('2014-03-01 00:00:00'), Timestamp('2014-04-01 00:00:00'), Timestamp('2014-05-01 00:00:00')]
+2025-05-16 16:43:51,564 [ERROR] No se encontró columna TARGET ni alternativa en C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\unemployment_rate\US_JOLTS.csv
+2025-05-16 16:43:51,569 [INFO] Índice diario generado: 4140 días desde 2014-01-01 hasta 2025-05-02
+2025-05-16 16:43:52,060 [WARNING] Omitiendo US_JOLTS por falta de datos
+2025-05-16 16:43:52,060 [INFO] DataFrame final combinado: 4140 filas, 35 columnas
+2025-05-16 16:43:52,061 [INFO] 
+Resumen de Cobertura:
+2025-05-16 16:43:52,061 [INFO] - US_10Y_Treasury: 100.00% desde 2014-01-02 a 2025-04-28
+2025-05-16 16:43:52,063 [INFO] - US_2Y_Treasury: 100.00% desde 2014-01-02 a 2025-04-28
+2025-05-16 16:43:52,064 [INFO] - Corporate_Bond_AAA_Spread: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,065 [INFO] - Corporate_Bond_BBB_Spread: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,067 [INFO] - High_Yield_Bond_Spread: 100.00% desde 2014-01-02 a 2025-04-29
+2025-05-16 16:43:52,067 [INFO] - Denmark_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-02-01
+2025-05-16 16:43:52,068 [INFO] - US_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-02-01
+2025-05-16 16:43:52,069 [INFO] - SouthAfrica_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,070 [INFO] - United_Kingdom_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,071 [INFO] - Spain_Car_Registrations_MoM: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,073 [INFO] - US_Commercial_Loans: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,074 [INFO] - US_RealEstate_Commercial_Loans: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,075 [INFO] - US_Consumer_Credit: 100.00% desde 2014-01-01 a 2025-02-01
+2025-05-16 16:43:52,075 [INFO] - EuroZone_Consumer_Confidence: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,076 [INFO] - Switzerland_Consumer_Confidence: 100.00% desde 2014-01-01 a 2025-01-01
+2025-05-16 16:43:52,076 [INFO] - Michigan_Consumer_Sentiment: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,077 [INFO] - US_CPI: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,083 [INFO] - US_Core_CPI: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,087 [INFO] - US_PCE: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,088 [INFO] - US_Core_PCE: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,089 [INFO] - US_PPI: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,090 [INFO] - US_Industrial_Production_MoM: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,091 [INFO] - US_CaseShiller_HomePrice: 100.00% desde 2014-01-01 a 2025-02-01
+2025-05-16 16:43:52,092 [INFO] - US_GDP_Growth: 100.00% desde 2014-01-01 a 2025-01-01
+2025-05-16 16:43:52,092 [INFO] - US_Capacity_Utilization: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,093 [INFO] - US_Building_Permits: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,094 [INFO] - US_Housing_Starts: 100.00% desde 2014-01-01 a 2025-03-01
+2025-05-16 16:43:52,095 [INFO] - US_FedFunds_Rate: 100.00% desde 2014-01-01 a 2025-04-01
+2025-05-16 16:43:52,098 [INFO] - ECB_Deposit_Rate: 100.00% desde 2014-01-01 a 2025-05-02
+2025-05-16 16:43:52,099 [INFO] - Fed_Balance_Sheet: 100.00% desde 2014-01-01 a 2025-04-30
+2025-05-16 16:43:52,100 [INFO] - Dollar_Index_DXY: 100.00% desde 2014-01-02 a 2025-04-25
+2025-05-16 16:43:52,100 [INFO] - US_Unemployment_Rate: 100.00% desde 2014-01-01 a 2025-04-01
+2025-05-16 16:43:52,103 [INFO] - US_Nonfarm_Payrolls: 100.00% desde 2014-01-01 a 2025-04-01
+2025-05-16 16:43:52,104 [INFO] - US_Initial_Jobless_Claims: 100.00% desde 2014-01-04 a 2025-04-26
+2025-05-16 16:43:59,090 [INFO] Archivo guardado exitosamente: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_procesados_Fred.xlsx
+2025-05-16 16:43:59,090 [INFO] 
+Resumen de Ejecución:
+2025-05-16 16:43:59,091 [INFO] Tiempo de ejecución: 16.21 segundos
+2025-05-16 16:43:59,092 [INFO] Archivos procesados: 35
+2025-05-16 16:43:59,092 [INFO] Archivo de salida: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_procesados_Fred.xlsx
+2025-05-16 16:43:59,092 [INFO] Estado: COMPLETADO
+2025-05-16 16:43:59,096 [INFO] ================================================================================
+2025-05-16 16:43:59,096 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-05-16 16:43:59,097 [INFO] Archivo de configuración: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-05-16 16:43:59,097 [INFO] Directorio raíz de datos: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw
+2025-05-16 16:43:59,097 [INFO] Fecha y hora: 2025-05-16 16:43:59
+2025-05-16 16:43:59,098 [INFO] ================================================================================
+2025-05-16 16:43:59,098 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-05-16 16:43:59,100 [INFO] Leyendo archivo de configuración...
+2025-05-16 16:43:59,231 [INFO] Se encontraron 4 configuraciones para procesar con fuente 'Other'
+2025-05-16 16:43:59,231 [INFO] 
+Resumen de configuraciones a procesar:
+2025-05-16 16:43:59,233 [INFO] - US_Empire_State_Index (Tipo Macro: business_confidence, TARGET: nan)
+2025-05-16 16:43:59,234 [INFO] - AAII_Investor_Sentiment (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-05-16 16:43:59,234 [INFO] - Put_Call_Ratio_SPY (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-05-16 16:43:59,235 [INFO] - Chicago_Fed_NFCI (Tipo Macro: leading_economic_index, TARGET: ANFCI)
+2025-05-16 16:43:59,235 [INFO] 
+Procesando: US_Empire_State_Index (business_confidence)
+2025-05-16 16:43:59,236 [INFO] - Columna TARGET: nan
+2025-05-16 16:43:59,236 [INFO] - Tipo de preprocesamiento: Normal (Historical Tables)
+2025-05-16 16:43:59,236 [INFO] Procesando US_Empire_State_Index manualmente
+2025-05-16 16:43:59,237 [INFO] - Archivo de entrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_Empire_State_Index.csv
+2025-05-16 16:43:59,308 [INFO] - Archivo cargado: 286 filas, 24 columnas
+2025-05-16 16:43:59,314 [INFO] - Rango de fechas: 2001-07-31 a 2025-04-30
+2025-05-16 16:43:59,315 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-05-16 16:43:59,319 [INFO] - Columnas encontradas y procesadas: GACDISA, AWCDISA
+2025-05-16 16:43:59,323 [INFO] - Columna ESI_GACDISA_US_Empire_State_Index_business_confidence: 286 valores no nulos (100.00%), rango: 2001-07-31 a 2025-04-30
+2025-05-16 16:43:59,326 [INFO] - Columna ESI_AWCDISA_US_Empire_State_Index_business_confidence: 286 valores no nulos (100.00%), rango: 2001-07-31 a 2025-04-30
+2025-05-16 16:43:59,327 [INFO] - US_Empire_State_Index: 286 filas procesadas manualmente, periodo: 2001-07-31 a 2025-04-30
+2025-05-16 16:43:59,328 [INFO] 
+Procesando: AAII_Investor_Sentiment (consumer_confidence)
+2025-05-16 16:43:59,329 [INFO] - Columna TARGET: nan
+2025-05-16 16:43:59,329 [INFO] - Tipo de preprocesamiento: nan
+2025-05-16 16:43:59,330 [INFO] Procesando AAII_Investor_Sentiment manualmente
+2025-05-16 16:43:59,331 [INFO] - Archivo de entrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls
+2025-05-16 16:43:59,331 [INFO] Intentando leer Excel con engine: openpyxl
+2025-05-16 16:43:59,472 [WARNING] Error al leer con engine openpyxl: File is not a zip file
+2025-05-16 16:43:59,472 [INFO] Intentando leer Excel con engine: xlrd
+2025-05-16 16:43:59,478 [WARNING] Error al leer con engine xlrd: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-16 16:43:59,478 [INFO] Intentando leer como CSV...
+2025-05-16 16:43:59,482 [ERROR] Error al leer como CSV: 'utf-8' codec can't decode byte 0xd0 in position 0: invalid continuation byte
+2025-05-16 16:43:59,483 [INFO] 
+Procesando: Put_Call_Ratio_SPY (consumer_confidence)
+2025-05-16 16:43:59,483 [INFO] - Columna TARGET: nan
+2025-05-16 16:43:59,483 [INFO] - Tipo de preprocesamiento: nan
+2025-05-16 16:43:59,484 [WARNING] No existe procesador específico para Put_Call_Ratio_SPY, intentando procesamiento genérico
+2025-05-16 16:43:59,484 [INFO] Procesando Put_Call_Ratio_SPY de forma genérica
+2025-05-16 16:43:59,494 [ERROR] Archivo de entrada no encontrado para Put_Call_Ratio_SPY
+2025-05-16 16:43:59,495 [INFO] 
+Procesando: Chicago_Fed_NFCI (leading_economic_index)
+2025-05-16 16:43:59,495 [INFO] - Columna TARGET: ANFCI
+2025-05-16 16:43:59,496 [INFO] - Tipo de preprocesamiento: Normal
+2025-05-16 16:43:59,496 [INFO] Procesando Chicago_Fed_NFCI manualmente
+2025-05-16 16:43:59,497 [INFO] - Archivo de entrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\Chicago_Fed_NFCI.csv
+2025-05-16 16:43:59,585 [INFO] - Archivo cargado: 2834 filas, 7 columnas
+2025-05-16 16:43:59,585 [INFO] - Columnas disponibles: Friday_of_Week, NFCI, ANFCI, Risk, Credit, Leverage, Nonfinancial_Leverage
+2025-05-16 16:43:59,598 [INFO] - Usando columna 'Friday_of_Week' como fecha
+2025-05-16 16:43:59,599 [INFO] - Rango de fechas total: 1971-01-08 a 2025-04-25
+2025-05-16 16:43:59,601 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-05-16 16:43:59,602 [INFO] - Filtrando desde 2014-01-01: 591/2834 filas (20.85%)
+2025-05-16 16:43:59,608 [INFO] - Columna NFCI: Rango de fechas 2014-01-03 a 2025-04-25
+2025-05-16 16:43:59,613 [INFO] - Columna ANFCI: Rango de fechas 2014-01-03 a 2025-04-25
+2025-05-16 16:43:59,613 [INFO] - Columnas procesadas: NFCI, ANFCI
+2025-05-16 16:43:59,615 [INFO] - Chicago_Fed_NFCI: 591 filas procesadas manualmente, periodo: 2014-01-03 a 2025-04-25
+2025-05-16 16:43:59,615 [INFO] 
+Archivos procesados correctamente: 2/4
+2025-05-16 16:43:59,616 [INFO] 
+Generando índice temporal diario...
+2025-05-16 16:43:59,617 [INFO] - Rango de fechas global: 2001-07-31 a 2025-04-30
+2025-05-16 16:43:59,618 [INFO] - Total de fechas diarias generadas: 8675
+2025-05-16 16:43:59,619 [INFO] 
+Combinando datos con índice diario...
+2025-05-16 16:43:59,619 [INFO] - Combinando: US_Empire_State_Index
+2025-05-16 16:43:59,641 [INFO] - Combinando: Chicago_Fed_NFCI
+2025-05-16 16:43:59,651 [INFO] - DataFrame combinado: 8675 filas, 5 columnas
+2025-05-16 16:43:59,651 [INFO] 
+==================================================
+2025-05-16 16:43:59,652 [INFO] RESUMEN DE COBERTURA FINAL
+2025-05-16 16:43:59,652 [INFO] ==================================================
+2025-05-16 16:43:59,652 [INFO] Total indicadores procesados: 2
+2025-05-16 16:43:59,653 [INFO] Rango de fechas: 2001-07-31 a 2025-04-30
+2025-05-16 16:43:59,653 [INFO] Total días en la serie: 8675
+2025-05-16 16:43:59,656 [INFO] 
+Cobertura por indicador:
+2025-05-16 16:43:59,658 [INFO] - US_Empire_State_Index: 100.00%
+2025-05-16 16:43:59,660 [INFO] - Chicago_Fed_NFCI: 47.68%
+2025-05-16 16:43:59,660 [INFO] 
+==================================================
+2025-05-16 16:43:59,661 [INFO] ESTADÍSTICAS DE VALORES
+2025-05-16 16:43:59,662 [INFO] ==================================================
+2025-05-16 16:43:59,666 [INFO] 
+Estadísticas para ESI_GACDISA_US_Empire_State_Index_business_confidence:
+2025-05-16 16:43:59,667 [INFO] - Min: -79.9
+2025-05-16 16:43:59,667 [INFO] - Max: 39.0
+2025-05-16 16:43:59,667 [INFO] - Media: 6.513948126801153
+2025-05-16 16:43:59,668 [INFO] - Mediana: 7.8
+2025-05-16 16:43:59,668 [INFO] - Desv. Estándar: 15.765178178850778
+2025-05-16 16:43:59,669 [INFO] 
+Estadísticas para ESI_AWCDISA_US_Empire_State_Index_business_confidence:
+2025-05-16 16:43:59,670 [INFO] - Min: -63.2
+2025-05-16 16:43:59,670 [INFO] - Max: 33.5
+2025-05-16 16:43:59,670 [INFO] - Media: 1.1972795389048994
+2025-05-16 16:43:59,672 [INFO] - Mediana: 0.9
+2025-05-16 16:43:59,672 [INFO] - Desv. Estándar: 10.218786335281811
+2025-05-16 16:43:59,673 [INFO] 
+Estadísticas para NFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-05-16 16:43:59,674 [INFO] - Min: -0.800311472411577
+2025-05-16 16:43:59,674 [INFO] - Max: 0.489805067069755
+2025-05-16 16:43:59,675 [INFO] - Media: -0.47998396142941124
+2025-05-16 16:43:59,675 [INFO] - Mediana: -0.52272745621579
+2025-05-16 16:43:59,676 [INFO] - Desv. Estándar: 0.1864342240403559
+2025-05-16 16:43:59,677 [INFO] 
+Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-05-16 16:43:59,678 [INFO] - Min: -0.908415014064837
+2025-05-16 16:43:59,678 [INFO] - Max: 0.638367633514506
+2025-05-16 16:43:59,679 [INFO] - Media: -0.4684389231939767
+2025-05-16 16:43:59,679 [INFO] - Mediana: -0.501638363513306
+2025-05-16 16:43:59,679 [INFO] - Desv. Estándar: 0.21403217805825317
+2025-05-16 16:43:59,679 [INFO] 
+==================================================
+2025-05-16 16:43:59,680 [INFO] GUARDANDO RESULTADOS
+2025-05-16 16:43:59,680 [INFO] ==================================================
+2025-05-16 16:43:59,680 [INFO] Guardando resultados en: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx
+2025-05-16 16:43:59,685 [INFO] Guardando DataFrame combinado en 'C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx'...
+2025-05-16 16:44:00,561 [INFO] Guardando estadísticas de los indicadores...
+2025-05-16 16:44:02,304 [INFO] Archivo guardado exitosamente: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx
+2025-05-16 16:44:02,307 [INFO] 
+==================================================
+2025-05-16 16:44:02,307 [INFO] RESUMEN DE EJECUCIÓN
+2025-05-16 16:44:02,307 [INFO] ==================================================
+2025-05-16 16:44:02,308 [INFO] Proceso: OtherDataProcessor
+2025-05-16 16:44:02,309 [INFO] Tiempo de ejecución: 3.21 segundos
+2025-05-16 16:44:02,309 [INFO] Archivos procesados: 4
+2025-05-16 16:44:02,310 [INFO] Archivos con error: 2
+2025-05-16 16:44:02,310 [INFO] Archivos procesados correctamente: 2
+2025-05-16 16:44:02,312 [INFO] Periodo de datos: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,315 [INFO] Datos combinados: 8675 filas, 5 columnas
+2025-05-16 16:44:02,317 [INFO] Archivo de salida: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx
+2025-05-16 16:44:02,319 [INFO] Estado: COMPLETADO
+2025-05-16 16:44:02,320 [INFO] ==================================================
+2025-05-16 16:44:02,326 [INFO] ================================================================================
+2025-05-16 16:44:02,328 [INFO] INICIANDO PROCESO: OtherDataProcessor
+2025-05-16 16:44:02,329 [INFO] Archivo de configuración: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\pipelines/Data Engineering.xlsx
+2025-05-16 16:44:02,333 [INFO] Directorio raíz de datos: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw
+2025-05-16 16:44:02,337 [INFO] Fecha y hora: 2025-05-16 16:44:02
+2025-05-16 16:44:02,338 [INFO] ================================================================================
+2025-05-16 16:44:02,339 [INFO] Iniciando proceso completo OtherDataProcessor...
+2025-05-16 16:44:02,340 [INFO] Leyendo archivo de configuración...
+2025-05-16 16:44:02,497 [INFO] Se encontraron 4 configuraciones para procesar con fuente 'Other'
+2025-05-16 16:44:02,497 [INFO] 
+Resumen de configuraciones a procesar:
+2025-05-16 16:44:02,498 [INFO] - US_Empire_State_Index (Tipo Macro: business_confidence, TARGET: nan)
+2025-05-16 16:44:02,499 [INFO] - AAII_Investor_Sentiment (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-05-16 16:44:02,500 [INFO] - Put_Call_Ratio_SPY (Tipo Macro: consumer_confidence, TARGET: nan)
+2025-05-16 16:44:02,502 [INFO] - Chicago_Fed_NFCI (Tipo Macro: leading_economic_index, TARGET: ANFCI)
+2025-05-16 16:44:02,502 [INFO] 
+Procesando: US_Empire_State_Index (business_confidence)
+2025-05-16 16:44:02,511 [INFO] - Columna TARGET: nan
+2025-05-16 16:44:02,511 [INFO] - Tipo de preprocesamiento: Normal (Historical Tables)
+2025-05-16 16:44:02,514 [INFO] Procesando US_Empire_State_Index manualmente
+2025-05-16 16:44:02,516 [INFO] - Archivo de entrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\business_confidence\US_Empire_State_Index.csv
+2025-05-16 16:44:02,528 [INFO] - Archivo cargado: 286 filas, 24 columnas
+2025-05-16 16:44:02,537 [INFO] - Rango de fechas: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,543 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-05-16 16:44:02,547 [INFO] - Columnas encontradas y procesadas: GACDISA, AWCDISA
+2025-05-16 16:44:02,556 [INFO] - Columna ESI_GACDISA_US_Empire_State_Index_business_confidence: 286 valores no nulos (100.00%), rango: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,565 [INFO] - Columna ESI_AWCDISA_US_Empire_State_Index_business_confidence: 286 valores no nulos (100.00%), rango: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,566 [INFO] - US_Empire_State_Index: 286 filas procesadas manualmente, periodo: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,568 [INFO] 
+Procesando: AAII_Investor_Sentiment (consumer_confidence)
+2025-05-16 16:44:02,569 [INFO] - Columna TARGET: nan
+2025-05-16 16:44:02,570 [INFO] - Tipo de preprocesamiento: nan
+2025-05-16 16:44:02,576 [INFO] Procesando AAII_Investor_Sentiment manualmente
+2025-05-16 16:44:02,579 [INFO] - Archivo de entrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls
+2025-05-16 16:44:02,580 [INFO] Intentando leer Excel con engine: openpyxl
+2025-05-16 16:44:02,585 [WARNING] Error al leer con engine openpyxl: File is not a zip file
+2025-05-16 16:44:02,586 [INFO] Intentando leer Excel con engine: xlrd
+2025-05-16 16:44:02,598 [WARNING] Error al leer con engine xlrd: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-16 16:44:02,599 [INFO] Intentando leer como CSV...
+2025-05-16 16:44:02,603 [ERROR] Error al leer como CSV: 'utf-8' codec can't decode byte 0xd0 in position 0: invalid continuation byte
+2025-05-16 16:44:02,605 [INFO] 
+Procesando: Put_Call_Ratio_SPY (consumer_confidence)
+2025-05-16 16:44:02,607 [INFO] - Columna TARGET: nan
+2025-05-16 16:44:02,608 [INFO] - Tipo de preprocesamiento: nan
+2025-05-16 16:44:02,610 [WARNING] No existe procesador específico para Put_Call_Ratio_SPY, intentando procesamiento genérico
+2025-05-16 16:44:02,610 [INFO] Procesando Put_Call_Ratio_SPY de forma genérica
+2025-05-16 16:44:02,629 [ERROR] Archivo de entrada no encontrado para Put_Call_Ratio_SPY
+2025-05-16 16:44:02,630 [INFO] 
+Procesando: Chicago_Fed_NFCI (leading_economic_index)
+2025-05-16 16:44:02,632 [INFO] - Columna TARGET: ANFCI
+2025-05-16 16:44:02,632 [INFO] - Tipo de preprocesamiento: Normal
+2025-05-16 16:44:02,632 [INFO] Procesando Chicago_Fed_NFCI manualmente
+2025-05-16 16:44:02,633 [INFO] - Archivo de entrada: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw\leading_economic_index\Chicago_Fed_NFCI.csv
+2025-05-16 16:44:02,655 [INFO] - Archivo cargado: 2834 filas, 7 columnas
+2025-05-16 16:44:02,656 [INFO] - Columnas disponibles: Friday_of_Week, NFCI, ANFCI, Risk, Credit, Leverage, Nonfinancial_Leverage
+2025-05-16 16:44:02,682 [INFO] - Usando columna 'Friday_of_Week' como fecha
+2025-05-16 16:44:02,684 [INFO] - Rango de fechas total: 1971-01-08 a 2025-04-25
+2025-05-16 16:44:02,686 [INFO] - ¿Tiene datos desde 2014 o antes?: Sí
+2025-05-16 16:44:02,687 [INFO] - Filtrando desde 2014-01-01: 591/2834 filas (20.85%)
+2025-05-16 16:44:02,698 [INFO] - Columna NFCI: Rango de fechas 2014-01-03 a 2025-04-25
+2025-05-16 16:44:02,700 [INFO] - Columna ANFCI: Rango de fechas 2014-01-03 a 2025-04-25
+2025-05-16 16:44:02,701 [INFO] - Columnas procesadas: NFCI, ANFCI
+2025-05-16 16:44:02,702 [INFO] - Chicago_Fed_NFCI: 591 filas procesadas manualmente, periodo: 2014-01-03 a 2025-04-25
+2025-05-16 16:44:02,704 [INFO] 
+Archivos procesados correctamente: 2/4
+2025-05-16 16:44:02,707 [INFO] 
+Generando índice temporal diario...
+2025-05-16 16:44:02,708 [INFO] - Rango de fechas global: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,711 [INFO] - Total de fechas diarias generadas: 8675
+2025-05-16 16:44:02,712 [INFO] 
+Combinando datos con índice diario...
+2025-05-16 16:44:02,713 [INFO] - Combinando: US_Empire_State_Index
+2025-05-16 16:44:02,735 [INFO] - Combinando: Chicago_Fed_NFCI
+2025-05-16 16:44:02,751 [INFO] - DataFrame combinado: 8675 filas, 5 columnas
+2025-05-16 16:44:02,753 [INFO] 
+==================================================
+2025-05-16 16:44:02,754 [INFO] RESUMEN DE COBERTURA FINAL
+2025-05-16 16:44:02,763 [INFO] ==================================================
+2025-05-16 16:44:02,764 [INFO] Total indicadores procesados: 2
+2025-05-16 16:44:02,766 [INFO] Rango de fechas: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:02,766 [INFO] Total días en la serie: 8675
+2025-05-16 16:44:02,767 [INFO] 
+Cobertura por indicador:
+2025-05-16 16:44:02,769 [INFO] - US_Empire_State_Index: 100.00%
+2025-05-16 16:44:02,774 [INFO] - Chicago_Fed_NFCI: 47.68%
+2025-05-16 16:44:02,775 [INFO] 
+==================================================
+2025-05-16 16:44:02,777 [INFO] ESTADÍSTICAS DE VALORES
+2025-05-16 16:44:02,777 [INFO] ==================================================
+2025-05-16 16:44:02,781 [INFO] 
+Estadísticas para ESI_GACDISA_US_Empire_State_Index_business_confidence:
+2025-05-16 16:44:02,782 [INFO] - Min: -79.9
+2025-05-16 16:44:02,783 [INFO] - Max: 39.0
+2025-05-16 16:44:02,784 [INFO] - Media: 6.513948126801153
+2025-05-16 16:44:02,785 [INFO] - Mediana: 7.8
+2025-05-16 16:44:02,785 [INFO] - Desv. Estándar: 15.765178178850778
+2025-05-16 16:44:02,795 [INFO] 
+Estadísticas para ESI_AWCDISA_US_Empire_State_Index_business_confidence:
+2025-05-16 16:44:02,796 [INFO] - Min: -63.2
+2025-05-16 16:44:02,797 [INFO] - Max: 33.5
+2025-05-16 16:44:02,798 [INFO] - Media: 1.1972795389048994
+2025-05-16 16:44:02,799 [INFO] - Mediana: 0.9
+2025-05-16 16:44:02,800 [INFO] - Desv. Estándar: 10.218786335281811
+2025-05-16 16:44:02,802 [INFO] 
+Estadísticas para NFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-05-16 16:44:02,802 [INFO] - Min: -0.800311472411577
+2025-05-16 16:44:02,802 [INFO] - Max: 0.489805067069755
+2025-05-16 16:44:02,803 [INFO] - Media: -0.47998396142941124
+2025-05-16 16:44:02,808 [INFO] - Mediana: -0.52272745621579
+2025-05-16 16:44:02,810 [INFO] - Desv. Estándar: 0.1864342240403559
+2025-05-16 16:44:02,812 [INFO] 
+Estadísticas para ANFCI_Chicago_Fed_NFCI_leading_economic_index:
+2025-05-16 16:44:02,813 [INFO] - Min: -0.908415014064837
+2025-05-16 16:44:02,813 [INFO] - Max: 0.638367633514506
+2025-05-16 16:44:02,813 [INFO] - Media: -0.4684389231939767
+2025-05-16 16:44:02,815 [INFO] - Mediana: -0.501638363513306
+2025-05-16 16:44:02,815 [INFO] - Desv. Estándar: 0.21403217805825317
+2025-05-16 16:44:02,816 [INFO] 
+==================================================
+2025-05-16 16:44:02,817 [INFO] GUARDANDO RESULTADOS
+2025-05-16 16:44:02,817 [INFO] ==================================================
+2025-05-16 16:44:02,818 [INFO] Guardando resultados en: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx
+2025-05-16 16:44:02,829 [INFO] Guardando DataFrame combinado en 'C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx'...
+2025-05-16 16:44:03,792 [INFO] Guardando estadísticas de los indicadores...
+2025-05-16 16:44:06,184 [INFO] Archivo guardado exitosamente: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx
+2025-05-16 16:44:06,186 [INFO] 
+==================================================
+2025-05-16 16:44:06,186 [INFO] RESUMEN DE EJECUCIÓN
+2025-05-16 16:44:06,187 [INFO] ==================================================
+2025-05-16 16:44:06,188 [INFO] Proceso: OtherDataProcessor
+2025-05-16 16:44:06,188 [INFO] Tiempo de ejecución: 3.85 segundos
+2025-05-16 16:44:06,189 [INFO] Archivos procesados: 4
+2025-05-16 16:44:06,189 [INFO] Archivos con error: 2
+2025-05-16 16:44:06,190 [INFO] Archivos procesados correctamente: 2
+2025-05-16 16:44:06,191 [INFO] Periodo de datos: 2001-07-31 a 2025-04-30
+2025-05-16 16:44:06,194 [INFO] Datos combinados: 8675 filas, 5 columnas
+2025-05-16 16:44:06,195 [INFO] Archivo de salida: C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\data/0_raw/datos_economicos_other_procesados.xlsx
+2025-05-16 16:44:06,202 [INFO] Estado: COMPLETADO
+2025-05-16 16:44:06,206 [INFO] ==================================================
+2025-05-16 16:44:13,521 [INFO] Archivo Excel cargado exitosamente desde C:\Users\saule\Desktop\Pipeline\Otromas\SP500_INDEX_Analisis\Data\1_preprocess\MERGEDEXCELS.xlsx
+2025-05-16 16:44:13,522 [INFO] Iniciando la categorización de columnas...
+2025-05-16 16:44:13,542 [INFO] Proceso completado exitosamente.
