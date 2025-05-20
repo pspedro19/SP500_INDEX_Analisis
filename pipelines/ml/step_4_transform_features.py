@@ -84,6 +84,17 @@ def convert_dataframe(df, excluded_column, id_column='id', datetime_column='date
         df[col] = pd.to_numeric(df[col], errors='coerce')  # convierte a float y deja NaN si no se puede
     return df
 
+# Función para eliminar columnas completamente vacías
+def drop_empty_columns(df):
+    # Identificar columnas que son completamente NaN
+    empty_cols = [col for col in df.columns if df[col].isna().all()]
+    if empty_cols:
+        print(f"🧹 Eliminando {len(empty_cols)} columnas vacías")
+        return df.drop(columns=empty_cols)
+    else:
+        print("✅ No se encontraron columnas completamente vacías")
+        return df
+
 
 # ================================
 # NUEVAS FUNCIONES PARA FEATURES ADICIONALES
@@ -351,6 +362,9 @@ def main():
         print("✅ Archivo Excel cargado exitosamente.")
         print("🧪 Primeras filas del archivo:")
         print(df_raw.head())
+        
+        # Eliminar columnas completamente vacías del DataFrame bruto
+        df_raw = drop_empty_columns(df_raw)
     except Exception as e:
         print("❌ Error al leer el archivo Excel:", e)
         return
@@ -398,6 +412,9 @@ def main():
     df = convert_dataframe(df, excluded_column=None, id_column='id', datetime_column='date')
     df = impute_time_series_ffill(df, datetime_column="date", id_column="id")
     df = resample_to_business_day(df, input_frequency="D", column_date="date", id_column="id", output_frequency="B")
+
+    # Eliminar columnas que están completamente vacías después del procesamiento
+    df = drop_empty_columns(df)
 
     column_categories = dict(zip(headers, categories_row))
 
@@ -492,116 +509,3 @@ def main():
         "PRICE_US_Initial_Jobless_Claims_unemployment_rate": "M",
         "PRICE_US_JOLTS_unemployment_rate": "M"
     }
-
-    categories = {
-        'bond': transform_bond,
-        'business_confidence': transform_business_confidence,
-        'car_registrations': transform_car_registrations,
-        'comm_loans': transform_comm_loans,
-        'commodities': transform_commodities,
-        'consumer_confidence': transform_consumer_confidence,
-        'economics': transform_economics,
-        'exchange_rate': transform_exchange_rate,
-        'exports': transform_exports,
-        'index_pricing': transform_index_pricing,
-        'leading_economic_index': transform_leading_economic_index,
-        'unemployment_rate': transform_unemployment_rate
-    }
-
-    grouped = {cat: [] for cat in categories.keys()}
-    for col, cat in column_categories.items():
-        if cat in grouped:
-            grouped[cat].append(col)
-
-    print("\n📊 Columnas agrupadas por categoría:")
-    for cat, cols in grouped.items():
-        print(f"{cat}: {len(cols)} columnas")
-
-    transformed_dfs = []
-    untouched_cols = []
-
-    for cat, cols in grouped.items():
-        func = categories[cat]
-        for col in cols:
-            if col not in df.columns:
-                continue
-            temp_df = df[['date', 'id', col]].copy()
-            temp_df[col] = pd.to_numeric(temp_df[col], errors='coerce')
-            if temp_df[col].dropna().empty:
-                print(f"⚠️  Columna '{col}' está vacía o no tiene valores numéricos. Se omite.")
-                continue
-            freq = column_frequencies.get(col, None)
-            if freq != 'D':
-                print(f"⏭️  Columna '{col}' con frecuencia '{freq}' no es diaria. No se transforma.")
-                untouched_cols.append(temp_df)
-                continue
-            print(f"⚙️  Transformando '{col}' en categoría '{cat}'")
-            try:
-                transformed = func(temp_df, target_column=col, id_column='id')
-                transformed_dfs.append(transformed)
-            except Exception as e:
-                print(f"❌ Error al transformar '{col}': {e}")
-
-    all_dfs = transformed_dfs + untouched_cols
-    if not all_dfs:
-        print("❌ No se encontraron series válidas para procesar.")
-        return
-
-    final_df = all_dfs[0]
-    for tdf in all_dfs[1:]:
-        final_df = pd.merge(final_df, tdf, on=['date', 'id'], how='outer')
-
-    # ================================
-    # ✅ AGREGAR VARIABLE OBJETIVO COMO *_Target AL FINAL - CON DEPURACIÓN
-    # ================================
-    print(f"\n🔍 Debug: Variable objetivo = {variable_objetivo}")
-    print(f"🔍 Debug: ¿Variable en columnas? = {variable_objetivo in final_df.columns}")
-    print(f"🔍 Debug: Últimas 5 columnas antes = {final_df.columns[-5:].tolist()}")
-    
-# Eliminar filas que tengan CUALQUIER valor NaN en las columnas de datos
-    print(f"🔍 Debug: Cantidad de filas antes de eliminar filas con datos faltantes: {len(final_df)}")
-    
-    # Identificar columnas de datos (todas excepto 'date' e 'id')
-    data_columns = [col for col in final_df.columns if col not in ['date', 'id']]
-    
-    # Eliminar filas donde CUALQUIER columna de datos es NaN
-    final_df = final_df.dropna(subset=data_columns, how='any')
-    
-    print(f"🔍 Debug: Cantidad de filas después de eliminar filas con datos faltantes: {len(final_df)}")
-
-    if variable_objetivo and variable_objetivo in final_df.columns:
-        print(f"🔍 Debug: Creando columna target {variable_objetivo}_Target")
-        # Usar shift(-FORECAST_HORIZON) para que coincida con tu pipeline de inferencia
-        final_df[variable_objetivo + "_Target"] = final_df[variable_objetivo].shift(-FORECAST_HORIZON_1MONTH)
-        
-        # Añadir la transformación a retorno para la variable target
-        print(f"🔍 Debug: Creando columna de retorno {variable_objetivo}_Return_Target")
-        final_df[variable_objetivo + "_Return_Target"] = (final_df[variable_objetivo + "_Target"] / 
-                                                         final_df[variable_objetivo]) - 1
-        
-        # Asegurarnos de que ambas columnas se muevan al final
-        columnas = final_df.columns.tolist()
-        for col in [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]:
-            if col in columnas:
-                columnas.remove(col)
-                columnas.append(col)
-        final_df = final_df[columnas]
-        
-        print(f"\n🎯 Columnas objetivo '{variable_objetivo}_Target' (valor absoluto) y '{variable_objetivo}_Return_Target' (retorno) añadidas al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
-    else:
-        if variable_objetivo:
-            print(f"\n⚠️ Advertencia: La variable objetivo '{variable_objetivo}' no existe en el DataFrame final.")
-            print(f"⚠️ Columnas disponibles: {', '.join(final_df.columns[:10])}... (y más)")
-        else:
-            print("\n⚠️ No se seleccionó ninguna variable objetivo.")
-    
-    print(f"🔍 Debug: Últimas 5 columnas después = {final_df.columns[-5:].tolist()}")
-
-    try:
-        final_df.to_excel(output_file, index=False)
-        print(f"✅ Proceso completado. Archivo guardado en: {output_file}")
-    except Exception as e:
-        print("❌ Error al guardar el archivo:", e)
-
-if __name__ == "__main__":
-    main()
