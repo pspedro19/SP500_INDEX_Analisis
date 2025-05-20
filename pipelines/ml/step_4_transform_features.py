@@ -558,16 +558,36 @@ def main():
     print(f"🔍 Debug: ¿Variable en columnas? = {variable_objetivo in final_df.columns}")
     print(f"🔍 Debug: Últimas 5 columnas antes = {final_df.columns[-5:].tolist()}")
     
+# Eliminar filas que tengan CUALQUIER valor NaN en las columnas de datos
+    print(f"🔍 Debug: Cantidad de filas antes de eliminar filas con datos faltantes: {len(final_df)}")
+    
+    # Identificar columnas de datos (todas excepto 'date' e 'id')
+    data_columns = [col for col in final_df.columns if col not in ['date', 'id']]
+    
+    # Eliminar filas donde CUALQUIER columna de datos es NaN
+    final_df = final_df.dropna(subset=data_columns, how='any')
+    
+    print(f"🔍 Debug: Cantidad de filas después de eliminar filas con datos faltantes: {len(final_df)}")
+
     if variable_objetivo and variable_objetivo in final_df.columns:
         print(f"🔍 Debug: Creando columna target {variable_objetivo}_Target")
         # Usar shift(-FORECAST_HORIZON) para que coincida con tu pipeline de inferencia
         final_df[variable_objetivo + "_Target"] = final_df[variable_objetivo].shift(-FORECAST_HORIZON_1MONTH)
-        # Asegurarnos de que la columna se mueva al final
+        
+        # Añadir la transformación a retorno para la variable target
+        print(f"🔍 Debug: Creando columna de retorno {variable_objetivo}_Return_Target")
+        final_df[variable_objetivo + "_Return_Target"] = (final_df[variable_objetivo + "_Target"] / 
+                                                         final_df[variable_objetivo]) - 1
+        
+        # Asegurarnos de que ambas columnas se muevan al final
         columnas = final_df.columns.tolist()
-        columnas.remove(variable_objetivo + "_Target")
-        columnas.append(variable_objetivo + "_Target")
+        for col in [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]:
+            if col in columnas:
+                columnas.remove(col)
+                columnas.append(col)
         final_df = final_df[columnas]
-        print(f"\n🎯 Columna objetivo '{variable_objetivo}_Target' añadida al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
+        
+        print(f"\n🎯 Columnas objetivo '{variable_objetivo}_Target' (valor absoluto) y '{variable_objetivo}_Return_Target' (retorno) añadidas al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
     else:
         if variable_objetivo:
             print(f"\n⚠️ Advertencia: La variable objetivo '{variable_objetivo}' no existe en el DataFrame final.")
@@ -582,7 +602,6 @@ def main():
         print(f"✅ Proceso completado. Archivo guardado en: {output_file}")
     except Exception as e:
         print("❌ Error al guardar el archivo:", e)
-
 
 if __name__ == "__main__":
     main()
