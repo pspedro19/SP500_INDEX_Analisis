@@ -197,7 +197,7 @@ def main():
     # Configuraciones
     columna_fecha = DATE_COL  # Usar valor de configuración
     columnas_merge = [DATE_COL]  # Usar valor de configuración
-    fecha_inicio = "2014-02-01"
+    fecha_inicio = "2014-01-01"
     fecha_fin = "2025-03-27"
     archivo_salida = os.path.join(DATA_PREP, "MERGEDEXCELS.xlsx")
     
