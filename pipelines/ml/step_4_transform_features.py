@@ -587,6 +587,13 @@ def main():
                 columnas.append(col)
         final_df = final_df[columnas]
         
+        # NUEVO: Eliminar las filas que tienen NaN en las columnas target (últimas 20 filas)
+        target_columns = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
+        rows_before = len(final_df)
+        final_df = final_df.dropna(subset=target_columns)
+        rows_removed = rows_before - len(final_df)
+        
+        print(f"🔍 Debug: Se eliminaron {rows_removed} filas con valores NaN en las columnas target")
         print(f"\n🎯 Columnas objetivo '{variable_objetivo}_Target' (valor absoluto) y '{variable_objetivo}_Return_Target' (retorno) añadidas al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
     else:
         if variable_objetivo:
@@ -596,6 +603,7 @@ def main():
             print("\n⚠️ No se seleccionó ninguna variable objetivo.")
     
     print(f"🔍 Debug: Últimas 5 columnas después = {final_df.columns[-5:].tolist()}")
+    print(f"🔍 Debug: Cantidad final de filas en el DataFrame: {len(final_df)}")
 
     try:
         final_df.to_excel(output_file, index=False)
