@@ -626,7 +626,7 @@ def main():
     logging.info("Iniciando proceso de selección y filtrado de features para series temporales...")
     
     # Usar rutas definidas en config
-    archivo_entrada = os.path.join(PROCESSED_DIR, "datos_economicos_1month_procesados.xlsx")
+    archivo_entrada = os.path.join(PROCESSED_DIR, "datos_economicos_1month_SP500.xlsx")
     archivo_salida = os.path.join(PROCESSED_DIR, "ULTIMO_S&P500_final.xlsx")
     archivo_informe = os.path.join(PROCESSED_DIR, "reporte_variables.xlsx")
     

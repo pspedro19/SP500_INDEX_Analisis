@@ -22,6 +22,151 @@ LOCAL_REFINEMENT_DAYS = 225  # Número de días para refinamiento local
 TRAIN_TEST_SPLIT_RATIO = 0.8  # 80% training, 20% test en refinamiento local
 
 # ================================
+# FUNCIONES PARA CONFIGURAR LAG DE VARIABLE OBJETIVO
+# ================================
+
+def get_target_lag_configuration():
+    """
+    Permite al usuario seleccionar interactivamente la configuración del lag
+    """
+    print("\n🎯 CONFIGURACIÓN DE LAG PARA VARIABLE OBJETIVO")
+    print("=" * 50)
+    
+    # Pregunta 1: ¿Usar lag?
+    print("\n1. ¿Deseas aplicar un desplazamiento temporal (LAG) a la variable objetivo?")
+    print("   - Sí: Para predecir valores futuros o usar valores pasados")
+    print("   - No: Para usar el valor actual como target")
+    
+    while True:
+        use_lag_input = input("\n¿Usar LAG? (s/n): ").lower().strip()
+        if use_lag_input in ['s', 'si', 'sí', 'y', 'yes']:
+            use_lag = True
+            break
+        elif use_lag_input in ['n', 'no']:
+            use_lag = False
+            break
+        else:
+            print("❌ Por favor responde 's' o 'n'")
+    
+    if not use_lag:
+        return {
+            'use_lag': False,
+            'lag_days': 0,
+            'lag_type': 'current'
+        }
+    
+    # Pregunta 2: Tipo de lag
+    print("\n2. ¿Qué tipo de desplazamiento temporal deseas?")
+    print("   1. FUTURO: Predecir el valor en X días (lag negativo)")
+    print("   2. PASADO: Usar el valor de hace X días (lag positivo)")
+    print("   3. ACTUAL: Usar el valor del mismo día (sin lag)")
+    
+    while True:
+        try:
+            lag_type_choice = int(input("\nSelecciona el tipo (1, 2, o 3): "))
+            if lag_type_choice == 1:
+                lag_type = "future"
+                break
+            elif lag_type_choice == 2:
+                lag_type = "past"
+                break
+            elif lag_type_choice == 3:
+                lag_type = "current"
+                break
+            else:
+                print("❌ Por favor selecciona 1, 2, o 3")
+        except ValueError:
+            print("❌ Por favor ingresa un número válido")
+    
+    # Pregunta 3: Número de días (si no es current)
+    if lag_type == "current":
+        lag_days = 0
+    else:
+        print(f"\n3. ¿Cuántos días de desplazamiento? (actual: {FORECAST_HORIZON_1MONTH})")
+        print("   - Para predicción estándar: 20 días")
+        print("   - Para predicción a corto plazo: 5-10 días")
+        print("   - Para predicción a largo plazo: 60-120 días")
+        
+        while True:
+            try:
+                lag_days = int(input(f"\nNúmero de días (default {FORECAST_HORIZON_1MONTH}): ") 
+                              or FORECAST_HORIZON_1MONTH)
+                if lag_days > 0:
+                    break
+                else:
+                    print("❌ El número de días debe ser positivo")
+            except ValueError:
+                print("❌ Por favor ingresa un número válido")
+    
+    return {
+        'use_lag': use_lag,
+        'lag_days': lag_days,
+        'lag_type': lag_type
+    }
+
+def configure_target_variable(df, target_column, lag_config=None):
+    """
+    Configura la variable objetivo con diferentes opciones de lag
+    
+    Args:
+        df: DataFrame con los datos
+        target_column: Nombre de la columna objetivo
+        lag_config: Diccionario con configuración del lag
+    """
+    
+    # Configuración por defecto
+    if lag_config is None:
+        lag_config = {
+            'use_lag': True,
+            'lag_days': FORECAST_HORIZON_1MONTH,
+            'lag_type': 'future'
+        }
+    
+    print(f"\n🎯 Configurando variable objetivo: {target_column}")
+    print(f"📅 Configuración de LAG: {lag_config}")
+    
+    if not lag_config['use_lag']:
+        # Sin lag - usar valor actual
+        print("✅ Usando valor actual (sin lag)")
+        df[target_column + "_Target"] = df[target_column].copy()
+        # No crear columna de retorno si no hay desplazamiento temporal
+        # O crear como diferencia porcentual día a día
+        df[target_column + "_Return_Target"] = df[target_column].pct_change().fillna(0)
+        
+    else:
+        lag_days = lag_config['lag_days']
+        lag_type = lag_config['lag_type']
+        
+        if lag_type == "future":
+            # Lag negativo - predecir valores futuros
+            shift_value = -lag_days
+            print(f"🔮 Usando valor FUTURO (t+{lag_days})")
+            
+        elif lag_type == "past":
+            # Lag positivo - usar valores pasados
+            shift_value = lag_days
+            print(f"📚 Usando valor PASADO (t-{lag_days})")
+            
+        elif lag_type == "current":
+            # Sin lag
+            shift_value = 0
+            print(f"📅 Usando valor ACTUAL (t)")
+            
+        else:
+            raise ValueError(f"lag_type debe ser 'future', 'past' o 'current', recibido: {lag_type}")
+        
+        # Aplicar el shift
+        df[target_column + "_Target"] = df[target_column].shift(shift_value)
+        
+        # Calcular el retorno solo si hay desplazamiento temporal
+        if shift_value != 0:
+            df[target_column + "_Return_Target"] = (df[target_column + "_Target"] / df[target_column]) - 1
+        else:
+            df[target_column + "_Return_Target"] = 0
+    
+    return df
+
+# ================================
 # HELPER FUNCTIONS DE PREPROCESAMIENTO
 # ================================
 
@@ -779,38 +924,34 @@ def main():
     # En lugar de eliminar filas, rellenar valores NaN con el último valor válido
     print(f"🔍 Debug: Aplicando forward fill y backward fill para preservar todas las fechas")
 
-
-
     # Si todavía quedan NaN después del ffill/bfill, rellenar con ceros
     # Esto puede ocurrir en columnas que están completamente vacías
 
-
-    # CAMBIO IMPORTANTE: Para las variables objetivo, también usamos imputación
+    # NUEVA CONFIGURACIÓN DE LAG PARA VARIABLE OBJETIVO
     if variable_objetivo and variable_objetivo in final_df.columns:
-        print(f"🔍 Debug: Creando columna target {variable_objetivo}_Target")
-        # Usar shift(-FORECAST_HORIZON) para que coincida con tu pipeline de inferencia
-        final_df[variable_objetivo + "_Target"] = final_df[variable_objetivo].shift(-FORECAST_HORIZON_1MONTH)
+        print(f"\n🎯 Configurando variable objetivo: {variable_objetivo}")
         
-        # Añadir la transformación a retorno para la variable target
-        print(f"🔍 Debug: Creando columna de retorno {variable_objetivo}_Return_Target")
-        final_df[variable_objetivo + "_Return_Target"] = (final_df[variable_objetivo + "_Target"] / 
-                                                        final_df[variable_objetivo]) - 1
+        # Obtener configuración del usuario
+        lag_config = get_target_lag_configuration()
         
-        # Asegurarnos de que ambas columnas se muevan al final
+        # Aplicar la configuración
+        final_df = configure_target_variable(final_df, variable_objetivo, lag_config)
+        
+        # Mover las columnas target al final
         columnas = final_df.columns.tolist()
-        for col in [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]:
+        target_cols = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
+        for col in target_cols:
             if col in columnas:
                 columnas.remove(col)
                 columnas.append(col)
         final_df = final_df[columnas]
         
-        # En lugar de eliminar las filas con NaN en las columnas target,
-        # simplemente marcamos la información para conocimiento del usuario
+        # Información sobre valores NaN
         target_columns = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
         null_count_target = final_df[target_columns].isna().sum().sum()
         
-        print(f"🔍 Debug: Hay {null_count_target} valores NaN en las columnas target (esto es normal al final de la serie)")
-        print(f"\n🎯 Columnas objetivo '{variable_objetivo}_Target' (valor absoluto) y '{variable_objetivo}_Return_Target' (retorno) añadidas al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
+        print(f"🔍 Hay {null_count_target} valores NaN en las columnas target")
+        print(f"✅ Columnas objetivo configuradas con LAG: {lag_config}")
     else:
         if variable_objetivo:
             print(f"\n⚠️ Advertencia: La variable objetivo '{variable_objetivo}' no existe en el DataFrame final.")
@@ -825,36 +966,80 @@ def main():
     output_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
                               f"datos_economicos_1month_{analysis_type}.xlsx")
     
-        # Eliminar cualquier fila que tenga al menos un valor vacío
-
-    # Esto te mostrará exactamente en qué columnas se generan NaNs:
+    # Mostrar información sobre valores nulos
     null_counts = final_df.isnull().sum()
     print("🔍 Valores nulos por columna:")
     print(null_counts[null_counts > 0])
-    # Mostrar exactamente dónde y cuántos NaN tienes
     print(final_df.isnull().sum().sort_values(ascending=False).head(20))
 
-    
-    final_df.dropna(inplace=True)
-
-    # Confirmación
-    print(f"🔍 Debug: Cantidad de filas después de eliminar filas con datos faltantes: {len(final_df)}")
-
-# 1️⃣ Reemplazar infinitos por NaN
-    final_df.replace([np.inf, -np.inf], np.nan, inplace=True)
-
-# 2️⃣ Imputar valores faltantes restantes (forward y backward fill)
-    final_df = final_df.ffill().bfill()
-
-# 3️⃣ Si aún queda algún NaN (por columnas completamente vacías), reemplazar por 0
-    final_df.fillna(0, inplace=True)
-
-    try:
-        final_df.to_excel(output_file, index=False)
-        print(f"✅ Proceso completado para análisis de {analysis_type}. Archivo guardado en: {output_file}")
-        print(f"✅ El archivo contiene {len(final_df)} filas y {len(final_df.columns)} columnas.")
-    except Exception as e:
-        print(f"❌ Error al guardar el archivo:", e)
+    # 1. Identificar filas con target válido vs filas sin target (por LAG)
+    if variable_objetivo:
+        target_columns = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
+        
+        # Separar datos con target válido vs datos sin target (últimas filas por LAG)
+        mask_target_valido = final_df[target_columns].notna().all(axis=1)
+        
+        # DataFrame para entrenamiento (con target válido)
+        df_training = final_df[mask_target_valido].copy()
+        
+        # DataFrame para inferencia (últimas filas sin target)
+        df_inference = final_df[~mask_target_valido].copy()
+        
+        print(f"📊 Datos separados:")
+        print(f"   - Training set: {len(df_training)} filas (con target)")
+        print(f"   - Inference set: {len(df_inference)} filas (para predicción)")
+        
+        # Eliminar NaN solo en el conjunto de entrenamiento
+        df_training_clean = df_training.dropna()
+        
+        # Para el conjunto de inferencia, solo limpiar las columnas de features
+        feature_columns = [col for col in df_inference.columns if col not in target_columns + ['date', 'id']]
+        df_inference_clean = df_inference.copy()
+        
+        # Reemplazar infinitos por NaN en ambos conjuntos
+        df_training_clean.replace([np.inf, -np.inf], np.nan, inplace=True)
+        df_inference_clean.replace([np.inf, -np.inf], np.nan, inplace=True)
+        
+        # Imputar solo en features para el conjunto de inferencia
+        df_inference_clean[feature_columns] = df_inference_clean[feature_columns].ffill().bfill().fillna(0)
+        
+        # Imputar en training
+        df_training_clean = df_training_clean.ffill().bfill().fillna(0)
+        
+        # Guardar ambos archivos
+        training_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                                    f"datos_economicos_1month_{analysis_type}_TRAINING.xlsx")
+        inference_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                                    f"datos_economicos_1month_{analysis_type}_INFERENCE.xlsx")
+        
+        try:
+            df_training_clean.to_excel(training_file, index=False)
+            df_inference_clean.to_excel(inference_file, index=False)
+            
+            print(f"✅ Archivos guardados:")
+            print(f"   - Training: {training_file}")
+            print(f"     {len(df_training_clean)} filas × {len(df_training_clean.columns)} columnas")
+            print(f"   - Inference: {inference_file}")
+            print(f"     {len(df_inference_clean)} filas × {len(df_inference_clean.columns)} columnas")
+            print(f"   - Fechas de inferencia: {df_inference_clean['date'].min()} a {df_inference_clean['date'].max()}")
+            
+        except Exception as e:
+            print(f"❌ Error al guardar los archivos:", e)
+            
+    else:
+        # Si no hay variable objetivo, procesar como antes
+        final_df.replace([np.inf, -np.inf], np.nan, inplace=True)
+        final_df = final_df.ffill().bfill().fillna(0)
+        final_df.dropna(inplace=True)
+        
+        output_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                                f"datos_economicos_1month_{analysis_type}.xlsx")
+        try:
+            final_df.to_excel(output_file, index=False)
+            print(f"✅ Proceso completado para análisis de {analysis_type}. Archivo guardado en: {output_file}")
+            print(f"✅ El archivo contiene {len(final_df)} filas y {len(final_df.columns)} columnas.")
+        except Exception as e:
+            print(f"❌ Error al guardar el archivo:", e)
 
 if __name__ == "__main__":
     main()
