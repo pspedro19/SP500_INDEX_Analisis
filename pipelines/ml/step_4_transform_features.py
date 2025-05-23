@@ -22,6 +22,151 @@ LOCAL_REFINEMENT_DAYS = 225  # Número de días para refinamiento local
 TRAIN_TEST_SPLIT_RATIO = 0.8  # 80% training, 20% test en refinamiento local
 
 # ================================
+# FUNCIONES PARA CONFIGURAR LAG DE VARIABLE OBJETIVO
+# ================================
+
+def get_target_lag_configuration():
+    """
+    Permite al usuario seleccionar interactivamente la configuración del lag
+    """
+    print("\n🎯 CONFIGURACIÓN DE LAG PARA VARIABLE OBJETIVO")
+    print("=" * 50)
+    
+    # Pregunta 1: ¿Usar lag?
+    print("\n1. ¿Deseas aplicar un desplazamiento temporal (LAG) a la variable objetivo?")
+    print("   - Sí: Para predecir valores futuros o usar valores pasados")
+    print("   - No: Para usar el valor actual como target")
+    
+    while True:
+        use_lag_input = input("\n¿Usar LAG? (s/n): ").lower().strip()
+        if use_lag_input in ['s', 'si', 'sí', 'y', 'yes']:
+            use_lag = True
+            break
+        elif use_lag_input in ['n', 'no']:
+            use_lag = False
+            break
+        else:
+            print("❌ Por favor responde 's' o 'n'")
+    
+    if not use_lag:
+        return {
+            'use_lag': False,
+            'lag_days': 0,
+            'lag_type': 'current'
+        }
+    
+    # Pregunta 2: Tipo de lag
+    print("\n2. ¿Qué tipo de desplazamiento temporal deseas?")
+    print("   1. FUTURO: Predecir el valor en X días (lag negativo)")
+    print("   2. PASADO: Usar el valor de hace X días (lag positivo)")
+    print("   3. ACTUAL: Usar el valor del mismo día (sin lag)")
+    
+    while True:
+        try:
+            lag_type_choice = int(input("\nSelecciona el tipo (1, 2, o 3): "))
+            if lag_type_choice == 1:
+                lag_type = "future"
+                break
+            elif lag_type_choice == 2:
+                lag_type = "past"
+                break
+            elif lag_type_choice == 3:
+                lag_type = "current"
+                break
+            else:
+                print("❌ Por favor selecciona 1, 2, o 3")
+        except ValueError:
+            print("❌ Por favor ingresa un número válido")
+    
+    # Pregunta 3: Número de días (si no es current)
+    if lag_type == "current":
+        lag_days = 0
+    else:
+        print(f"\n3. ¿Cuántos días de desplazamiento? (actual: {FORECAST_HORIZON_1MONTH})")
+        print("   - Para predicción estándar: 20 días")
+        print("   - Para predicción a corto plazo: 5-10 días")
+        print("   - Para predicción a largo plazo: 60-120 días")
+        
+        while True:
+            try:
+                lag_days = int(input(f"\nNúmero de días (default {FORECAST_HORIZON_1MONTH}): ") 
+                              or FORECAST_HORIZON_1MONTH)
+                if lag_days > 0:
+                    break
+                else:
+                    print("❌ El número de días debe ser positivo")
+            except ValueError:
+                print("❌ Por favor ingresa un número válido")
+    
+    return {
+        'use_lag': use_lag,
+        'lag_days': lag_days,
+        'lag_type': lag_type
+    }
+
+def configure_target_variable(df, target_column, lag_config=None):
+    """
+    Configura la variable objetivo con diferentes opciones de lag
+    
+    Args:
+        df: DataFrame con los datos
+        target_column: Nombre de la columna objetivo
+        lag_config: Diccionario con configuración del lag
+    """
+    
+    # Configuración por defecto
+    if lag_config is None:
+        lag_config = {
+            'use_lag': True,
+            'lag_days': FORECAST_HORIZON_1MONTH,
+            'lag_type': 'future'
+        }
+    
+    print(f"\n🎯 Configurando variable objetivo: {target_column}")
+    print(f"📅 Configuración de LAG: {lag_config}")
+    
+    if not lag_config['use_lag']:
+        # Sin lag - usar valor actual
+        print("✅ Usando valor actual (sin lag)")
+        df[target_column + "_Target"] = df[target_column].copy()
+        # No crear columna de retorno si no hay desplazamiento temporal
+        # O crear como diferencia porcentual día a día
+        df[target_column + "_Return_Target"] = df[target_column].pct_change().fillna(0)
+        
+    else:
+        lag_days = lag_config['lag_days']
+        lag_type = lag_config['lag_type']
+        
+        if lag_type == "future":
+            # Lag negativo - predecir valores futuros
+            shift_value = -lag_days
+            print(f"🔮 Usando valor FUTURO (t+{lag_days})")
+            
+        elif lag_type == "past":
+            # Lag positivo - usar valores pasados
+            shift_value = lag_days
+            print(f"📚 Usando valor PASADO (t-{lag_days})")
+            
+        elif lag_type == "current":
+            # Sin lag
+            shift_value = 0
+            print(f"📅 Usando valor ACTUAL (t)")
+            
+        else:
+            raise ValueError(f"lag_type debe ser 'future', 'past' o 'current', recibido: {lag_type}")
+        
+        # Aplicar el shift
+        df[target_column + "_Target"] = df[target_column].shift(shift_value)
+        
+        # Calcular el retorno solo si hay desplazamiento temporal
+        if shift_value != 0:
+            df[target_column + "_Return_Target"] = (df[target_column + "_Target"] / df[target_column]) - 1
+        else:
+            df[target_column + "_Return_Target"] = 0
+    
+    return df
+
+# ================================
 # HELPER FUNCTIONS DE PREPROCESAMIENTO
 # ================================
 
@@ -145,11 +290,15 @@ def add_ytd_performance(df, target_column):
     return df
 
 def add_zscore(df, target_column, window=60):
-    # z-score basado en ventana móvil
     rolling_mean = df[target_column].rolling(window).mean()
     rolling_std = df[target_column].rolling(window).std()
-    df['zscore_' + target_column] = (df[target_column] - rolling_mean) / rolling_std
+
+    # Evita divisiones por cero o valores extremadamente pequeños
+    rolling_std_safe = rolling_std.replace(0, np.nan)
+    df['zscore_' + target_column] = (df[target_column] - rolling_mean) / rolling_std_safe
+
     return df
+
 
 def add_minmax_scaling(df, target_column):
     # Escalado MinMax a [0,1] de la serie completa
@@ -343,47 +492,208 @@ def transform_unemployment_rate(df, target_column, id_column='id'):
 # MAIN PIPELINE PARA 1MONTH
 # ================================
 def main():
+    # Ruta del archivo principal para el procesamiento
     input_file = os.path.join(PROJECT_ROOT, "data", "2_processed", "MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx")
-    output_file = os.path.join(PROJECT_ROOT, "data", "2_processed", "datos_economicos_1month_procesados.xlsx")
+    
+    # Mostrar las opciones de análisis
+    print("\n📊 Selecciona el análisis que deseas realizar:")
+    print("1. SP500 (usando todas las variables disponibles)")
+    print("2. USD/COP (filtrando según variables de Data Engineering.xlsx)")
+    
+    analysis_type = None
     
     try:
-        df_raw = pd.read_excel(input_file, header=None)
-        print("✅ Archivo Excel cargado exitosamente.")
-        print("🧪 Primeras filas del archivo:")
+        selection = int(input("\nEscribe tu selección (1 o 2): "))
+        if selection == 1:
+            analysis_type = "SP500"
+            print(f"\n✅ Análisis seleccionado: SP500 usando todas las variables disponibles")
+            # Para SP500, usamos el procesamiento normal sin filtrado adicional
+            variables_to_keep = None
+        elif selection == 2:
+            analysis_type = "USDCOP"
+            print(f"\n✅ Análisis seleccionado: USD/COP usando variables filtradas")
+            
+            # Para USD/COP, leemos las variables del archivo Data Engineering.xlsx
+            variables_file = os.path.join(PROJECT_ROOT, "pipelines", "Data Engineering.xlsx")
+            
+            try:
+                # Verificar que el archivo existe
+                if not os.path.exists(variables_file):
+                    print(f"❌ El archivo {variables_file} no existe.")
+                    return
+                
+                # Leer el archivo de variables, específicamente la hoja "Globales"
+                try:
+                    variables_df_globales = pd.read_excel(variables_file, sheet_name="Globales")
+                    variables_df_usdcop = pd.read_excel(variables_file, sheet_name="USDCOP")
+                    print("✅ Hojas 'Globales' y 'USDCOP' cargadas exitosamente.")
+
+                    # Obtener lista limpia de variables desde ambas hojas
+                    globales_vars = variables_df_globales.iloc[:, 0].dropna().astype(str).str.strip().tolist()
+                    usdcop_vars = variables_df_usdcop.iloc[:, 0].dropna().astype(str).str.strip().tolist()
+
+                    # Unir ambas listas y eliminar duplicados
+                    variables_to_keep = list(set(globales_vars + usdcop_vars))
+
+                    print(f"✅ Se encontraron {len(globales_vars)} variables en 'Globales' y {len(usdcop_vars)} en 'USDCOP'.")
+                    print(f"📋 Total variables combinadas sin duplicados: {len(variables_to_keep)}")
+                    print(f"📋 Ejemplo de variables: {variables_to_keep[:5]}")
+                    
+                    if not variables_to_keep:
+                        print("⚠️ No se encontraron variables válidas en las hojas combinadas.")
+                        return
+
+                except Exception as e:
+                    print(f"❌ Error al leer las hojas 'Globales' o 'USDCOP' del archivo de variables: {e}")
+                    return
+
+            except Exception as e:
+                print(f"❌ Error al procesar el archivo de variables: {e}")
+                return
+        else:
+            print("❌ Selección inválida. Se realizará análisis de SP500 por defecto.")
+            analysis_type = "SP500"
+            variables_to_keep = None
+    except Exception as e:
+        print(f"❌ Error en la selección: {e}. Se realizará análisis de SP500 por defecto.")
+        analysis_type = "SP500"
+        variables_to_keep = None
+    
+    # Verificar qué hojas existen en el archivo principal
+    try:
+        xlsx = pd.ExcelFile(input_file)
+        data_available_sheets = xlsx.sheet_names
+        print(f"\n📊 Hojas disponibles en el archivo principal: {data_available_sheets}")
+        
+        if not data_available_sheets:
+            print("❌ El archivo Excel principal no contiene hojas. Verifique el archivo.")
+            return
+            
+    except Exception as e:
+        print(f"❌ Error al abrir el archivo Excel principal: {e}")
+        print(f"⚠️ Ruta de archivo intentada: {input_file}")
+        print("⚠️ Verifique que el archivo existe y está en la ruta correcta.")
+        return
+    
+    # Cargar la primera hoja del archivo principal
+    try:
+        df_raw = pd.read_excel(input_file, sheet_name=data_available_sheets[0], header=None)
+        print(f"✅ Hoja '{data_available_sheets[0]}' del archivo principal cargada exitosamente.")
+        print("🧪 Primeras filas del archivo principal:")
         print(df_raw.head())
     except Exception as e:
-        print("❌ Error al leer el archivo Excel:", e)
+        print(f"❌ Error al leer la hoja '{data_available_sheets[0]}' del archivo principal:", e)
         return
-
+    
+    # Procesar el DataFrame principal
     headers = df_raw.iloc[0].tolist()
     categories_row = df_raw.iloc[1].tolist()
-    df = df_raw.iloc[2:].copy()  # Saltamos fila de frecuencia
-    df = df.apply(pd.to_numeric, errors='ignore')
+    df = df_raw.iloc[2:].copy()
     df.columns = headers
-
-    columnas_disponibles = [col for col in df.columns if col not in ['date', 'id']]
-    print("\n🎯 Columnas disponibles para seleccionar como variable objetivo:\n")
-    for idx, col in enumerate(columnas_disponibles):
-        print(f"{idx + 1}. {col}")
-
-    variable_objetivo = None
-    try:
-        seleccion = int(input("\nEscribe el número de la columna que deseas usar como variable objetivo: "))
-        if 1 <= seleccion <= len(columnas_disponibles):
-            variable_objetivo = columnas_disponibles[seleccion - 1]
-            print(f"\n✅ Variable objetivo seleccionada: {variable_objetivo}")
+    
+    # Aplicar tipo numérico a las columnas
+    df = df.apply(pd.to_numeric, errors='ignore')
+    
+    # Si estamos en modo USD/COP, filtrar columnas según las variables del primer archivo
+    if analysis_type == "USDCOP" and variables_to_keep:
+        # Filtrar columnas para mantener solo las variables especificadas
+        columnas_disponibles = []
+        for col in df.columns:
+            if col in ['date', 'id', 'fecha']:
+                continue
+                
+            # Verificar si esta columna contiene alguna de las variables a conservar
+            keep_column = False
+            for var in variables_to_keep:
+                if var.lower() in col.lower():  # Comparación no sensible a mayúsculas/minúsculas
+                    keep_column = True
+                    break
+            
+            if keep_column:
+                columnas_disponibles.append(col)
+        
+        print(f"\n🎯 Se procesarán {len(columnas_disponibles)} columnas para análisis de {analysis_type}.")
+        print(f"🎯 Primeras columnas seleccionadas: {columnas_disponibles[:5]}... (y más)")
+        print(f"⚠️ Se eliminarán {len(df.columns) - len(columnas_disponibles) - 2} columnas que no están en la lista de variables.")
+    else:
+        # Para SP500, usamos todas las columnas excepto date e id
+        columnas_disponibles = [col for col in df.columns if col not in ['date', 'id', 'fecha']]
+        print(f"\n🎯 Se procesarán {len(columnas_disponibles)} columnas para análisis de {analysis_type}.")
+        print(f"🎯 Primeras columnas seleccionadas: {columnas_disponibles[:5]}... (y más)")
+    
+    # Buscar columna objetivo según el tipo de análisis y asignarla automáticamente
+    if analysis_type == "SP500":
+        # Para SP500, buscar una columna con S&P500 automáticamente
+        posibles_cols_sp500 = [col for col in columnas_disponibles if 'S&P' in col or 'SP500' in col or 'S&P500' in col]
+        variable_objetivo = posibles_cols_sp500[0] if posibles_cols_sp500 else None
+        
+        if variable_objetivo:
+            print(f"🎯 Variable objetivo para SP500: {variable_objetivo}")
         else:
-            print("❌ Selección inválida. No se utilizará variable objetivo.")
-    except Exception as e:
-        print("❌ Error en la selección de la columna:", e)
-
+            print(f"⚠️ No se encontró automáticamente una variable objetivo para SP500.")
+            print("❌ Se requiere una variable objetivo para continuar.")
+            return
+    else:  # USDCOP
+        # Para USD/COP, buscar una columna con USD/COP o USD_COP automáticamente
+        posibles_cols_usdcop = [col for col in columnas_disponibles if ('USD' in col and 'COP' in col)]
+        
+        # Si no encontramos USD_COP, tomamos S&P500 como variable objetivo por defecto para USD/COP
+        if not posibles_cols_usdcop:
+            posibles_cols_sp500 = [col for col in columnas_disponibles if 'S&P' in col or 'SP500' in col or 'S&P500' in col]
+            variable_objetivo = posibles_cols_sp500[0] if posibles_cols_sp500 else None
+            
+            if variable_objetivo:
+                print(f"🎯 No se encontró USD/COP, se usará {variable_objetivo} como variable objetivo para USD/COP")
+            else:
+                print(f"⚠️ No se encontró automáticamente una variable objetivo para USD/COP.")
+                print("❌ Se requiere una variable objetivo para continuar.")
+                return
+        else:
+            variable_objetivo = posibles_cols_usdcop[0]
+            print(f"🎯 Variable objetivo para USD/COP: {variable_objetivo}")
+    
     print("\n✅ Headers corregidos:")
     print(df.columns[:10].tolist())
 
-    print("\n✅ Categorías detectadas:")
-    print(categories_row[:10])
-
-    df = df.rename(columns={"fecha": "date"})
+    if 'categories_row' in locals() and len(categories_row) > 0:
+        print("\n✅ Categorías detectadas:")
+        print(categories_row[:10])
+    else:
+        # Si no tenemos categorías, intentamos inferirlas de los nombres de columnas
+        print("\n⚠️ No se detectaron categorías. Se inferirán de los nombres de columnas.")
+        categories_row = []
+        for col in df.columns:
+            if 'bond' in col.lower():
+                categories_row.append('bond')
+            elif 'confidence' in col.lower() and 'business' in col.lower():
+                categories_row.append('business_confidence')
+            elif 'car' in col.lower() and 'registration' in col.lower():
+                categories_row.append('car_registrations')
+            elif 'loan' in col.lower():
+                categories_row.append('comm_loans')
+            elif 'commodity' in col.lower() or any(c in col.lower() for c in ['gold', 'silver', 'oil', 'copper']):
+                categories_row.append('commodities')
+            elif 'confidence' in col.lower() and 'consumer' in col.lower():
+                categories_row.append('consumer_confidence')
+            elif any(e in col.lower() for e in ['gdp', 'cpi', 'ppi', 'inflation']):
+                categories_row.append('economics')
+            elif 'exchange' in col.lower() or 'usd' in col.lower() or 'eur' in col.lower():
+                categories_row.append('exchange_rate')
+            elif 'export' in col.lower():
+                categories_row.append('exports')
+            elif 'index' in col.lower() or any(i in col.lower() for i in ['s&p', 'nasdaq', 'dow', 'ftse']):
+                categories_row.append('index_pricing')
+            elif 'lead' in col.lower() and 'economic' in col.lower():
+                categories_row.append('leading_economic_index')
+            elif 'unemployment' in col.lower() or 'jobless' in col.lower():
+                categories_row.append('unemployment_rate')
+            else:
+                categories_row.append('economics')  # Categoría por defecto
+    
+    # Asegurarse de que la columna 'date' existe y está en formato correcto
+    if 'fecha' in df.columns and 'date' not in df.columns:
+        df = df.rename(columns={"fecha": "date"})
+    
     df = df[df['date'].apply(lambda x: isinstance(x, str) or isinstance(x, pd.Timestamp))]
     try:
         df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')
@@ -392,16 +702,42 @@ def main():
 
     df = df[df['date'].notna()]
 
+    # Asegurarse de que la columna 'id' existe
     if 'id' not in df.columns:
         df.insert(1, 'id', 'serie_default')
 
+    # Crear un subconjunto del DataFrame con solo date, id y las columnas seleccionadas
+    cols_to_keep = ['date', 'id'] + columnas_disponibles
+    df = df[[col for col in cols_to_keep if col in df.columns]]
+
+    # Convertir columnas a tipo numérico y limpiar valores
     df = convert_dataframe(df, excluded_column=None, id_column='id', datetime_column='date')
+    
+    # Imputar valores faltantes y convertir a frecuencia diaria de negocio
     df = impute_time_series_ffill(df, datetime_column="date", id_column="id")
     df = resample_to_business_day(df, input_frequency="D", column_date="date", id_column="id", output_frequency="B")
 
-    column_categories = dict(zip(headers, categories_row))
+    # Crear diccionario de categorías para las columnas
+    if len(categories_row) == len(headers):
+        column_categories = dict(zip(headers, categories_row))
+    else:
+        # Si las longitudes no coinciden, crear un diccionario vacío
+        column_categories = {}
+        for i, col in enumerate(df.columns):
+            if i < len(categories_row):
+                column_categories[col] = categories_row[i]
+            else:
+                # Asignar una categoría basada en el nombre si está fuera de rango
+                if 'bond' in col.lower():
+                    column_categories[col] = 'bond'
+                elif any(i in col.lower() for i in ['s&p', 'nasdaq', 'dow', 'ftse']):
+                    column_categories[col] = 'index_pricing'
+                elif 'exchange' in col.lower() or 'usd' in col.lower() or 'eur' in col.lower():
+                    column_categories[col] = 'exchange_rate'
+                else:
+                    column_categories[col] = 'economics'  # Categoría por defecto
 
-    # ⚠️ Definir manualmente la frecuencia aquí:
+    # ⚠️ Definir manualmente la frecuencia aquí (se mantiene igual)
     column_frequencies = {
         "PRICE_Australia_10Y_Bond_bond": "D",
         "PRICE_Italy_10Y_Bond_bond": "D",
@@ -423,6 +759,7 @@ def main():
         "PRICE_CAD_USD_Spot_exchange_rate": "D",
         "PRICE_MXN_USD_Spot_exchange_rate": "D",
         "PRICE_EUR_GBP_Cross_exchange_rate": "D",
+        "PRICE_USD_COP_Spot_exchange_rate": "D",  # Añadido USD/COP
         "ULTIMO_S&P500_Index_index_pricing": "D",
         "ULTIMO_NASDAQ_Composite_index_pricing": "D",
         "ULTIMO_Russell_2000_index_pricing": "D",
@@ -492,7 +829,14 @@ def main():
         "PRICE_US_Initial_Jobless_Claims_unemployment_rate": "M",
         "PRICE_US_JOLTS_unemployment_rate": "M"
     }
+    
+    # Permitir inferir frecuencia para columnas no listadas explícitamente
+    for col in df.columns:
+        if col not in column_frequencies and col not in ['date', 'id']:
+            # Por defecto, asumir frecuencia diaria para columnas no listadas
+            column_frequencies[col] = "D"
 
+    # Definición de funciones de transformación por categoría (sin cambios)
     categories = {
         'bond': transform_bond,
         'business_confidence': transform_business_confidence,
@@ -508,15 +852,33 @@ def main():
         'unemployment_rate': transform_unemployment_rate
     }
 
+    # Agrupar columnas por categoría
     grouped = {cat: [] for cat in categories.keys()}
-    for col, cat in column_categories.items():
-        if cat in grouped:
-            grouped[cat].append(col)
+    for col in df.columns:
+        if col not in ['date', 'id']:
+            # Obtener categoría del diccionario o inferir del nombre de la columna
+            cat = column_categories.get(col, None)
+            if cat is None:
+                # Inferir categoría si no está en el diccionario
+                if 'bond' in col.lower():
+                    cat = 'bond'
+                elif any(i in col.lower() for i in ['s&p', 'nasdaq', 'dow', 'ftse']):
+                    cat = 'index_pricing'
+                elif 'exchange' in col.lower() or any(c in col.lower() for c in ['usd', 'eur', 'jpy', 'gbp']):
+                    cat = 'exchange_rate'
+                else:
+                    cat = 'economics'  # Categoría por defecto
+            
+            if cat in grouped:
+                grouped[cat].append(col)
+            else:
+                grouped['economics'].append(col)  # Si la categoría no existe, usar 'economics'
 
     print("\n📊 Columnas agrupadas por categoría:")
     for cat, cols in grouped.items():
         print(f"{cat}: {len(cols)} columnas")
 
+    # Transformar las columnas según su categoría
     transformed_dfs = []
     untouched_cols = []
 
@@ -530,7 +892,7 @@ def main():
             if temp_df[col].dropna().empty:
                 print(f"⚠️  Columna '{col}' está vacía o no tiene valores numéricos. Se omite.")
                 continue
-            freq = column_frequencies.get(col, None)
+            freq = column_frequencies.get(col, "D")  # Por defecto usar "D" si no está en el diccionario
             if freq != 'D':
                 print(f"⏭️  Columna '{col}' con frecuencia '{freq}' no es diaria. No se transforma.")
                 untouched_cols.append(temp_df)
@@ -541,7 +903,9 @@ def main():
                 transformed_dfs.append(transformed)
             except Exception as e:
                 print(f"❌ Error al transformar '{col}': {e}")
+                untouched_cols.append(temp_df)  # Agregar como no transformada si falla
 
+    # Combinar todos los DataFrames transformados
     all_dfs = transformed_dfs + untouched_cols
     if not all_dfs:
         print("❌ No se encontraron series válidas para procesar.")
@@ -551,23 +915,43 @@ def main():
     for tdf in all_dfs[1:]:
         final_df = pd.merge(final_df, tdf, on=['date', 'id'], how='outer')
 
-    # ================================
-    # ✅ AGREGAR VARIABLE OBJETIVO COMO *_Target AL FINAL - CON DEPURACIÓN
-    # ================================
-    print(f"\n🔍 Debug: Variable objetivo = {variable_objetivo}")
-    print(f"🔍 Debug: ¿Variable en columnas? = {variable_objetivo in final_df.columns}")
-    print(f"🔍 Debug: Últimas 5 columnas antes = {final_df.columns[-5:].tolist()}")
-    
+    # CAMBIO IMPORTANTE: Modificar esta parte para usar imputación en lugar de eliminación
+    print(f"🔍 Debug: Cantidad de filas antes de procesar datos faltantes: {len(final_df)}")
+
+    # Identificar columnas de datos (todas excepto 'date' e 'id')
+    data_columns = [col for col in final_df.columns if col not in ['date', 'id']]
+
+    # En lugar de eliminar filas, rellenar valores NaN con el último valor válido
+    print(f"🔍 Debug: Aplicando forward fill y backward fill para preservar todas las fechas")
+
+    # Si todavía quedan NaN después del ffill/bfill, rellenar con ceros
+    # Esto puede ocurrir en columnas que están completamente vacías
+
+    # NUEVA CONFIGURACIÓN DE LAG PARA VARIABLE OBJETIVO
     if variable_objetivo and variable_objetivo in final_df.columns:
-        print(f"🔍 Debug: Creando columna target {variable_objetivo}_Target")
-        # Usar shift(-FORECAST_HORIZON) para que coincida con tu pipeline de inferencia
-        final_df[variable_objetivo + "_Target"] = final_df[variable_objetivo].shift(-FORECAST_HORIZON_1MONTH)
-        # Asegurarnos de que la columna se mueva al final
+        print(f"\n🎯 Configurando variable objetivo: {variable_objetivo}")
+        
+        # Obtener configuración del usuario
+        lag_config = get_target_lag_configuration()
+        
+        # Aplicar la configuración
+        final_df = configure_target_variable(final_df, variable_objetivo, lag_config)
+        
+        # Mover las columnas target al final
         columnas = final_df.columns.tolist()
-        columnas.remove(variable_objetivo + "_Target")
-        columnas.append(variable_objetivo + "_Target")
+        target_cols = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
+        for col in target_cols:
+            if col in columnas:
+                columnas.remove(col)
+                columnas.append(col)
         final_df = final_df[columnas]
-        print(f"\n🎯 Columna objetivo '{variable_objetivo}_Target' añadida al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
+        
+        # Información sobre valores NaN
+        target_columns = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
+        null_count_target = final_df[target_columns].isna().sum().sum()
+        
+        print(f"🔍 Hay {null_count_target} valores NaN en las columnas target")
+        print(f"✅ Columnas objetivo configuradas con LAG: {lag_config}")
     else:
         if variable_objetivo:
             print(f"\n⚠️ Advertencia: La variable objetivo '{variable_objetivo}' no existe en el DataFrame final.")
@@ -576,13 +960,86 @@ def main():
             print("\n⚠️ No se seleccionó ninguna variable objetivo.")
     
     print(f"🔍 Debug: Últimas 5 columnas después = {final_df.columns[-5:].tolist()}")
+    print(f"🔍 Debug: Cantidad final de filas en el DataFrame: {len(final_df)}")
 
-    try:
-        final_df.to_excel(output_file, index=False)
-        print(f"✅ Proceso completado. Archivo guardado en: {output_file}")
-    except Exception as e:
-        print("❌ Error al guardar el archivo:", e)
+    # Crear el nombre del archivo de salida con el tipo de análisis
+    output_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                              f"datos_economicos_1month_{analysis_type}.xlsx")
+    
+    # Mostrar información sobre valores nulos
+    null_counts = final_df.isnull().sum()
+    print("🔍 Valores nulos por columna:")
+    print(null_counts[null_counts > 0])
+    print(final_df.isnull().sum().sort_values(ascending=False).head(20))
 
+    # 1. Identificar filas con target válido vs filas sin target (por LAG)
+    if variable_objetivo:
+        target_columns = [variable_objetivo + "_Target", variable_objetivo + "_Return_Target"]
+        
+        # Separar datos con target válido vs datos sin target (últimas filas por LAG)
+        mask_target_valido = final_df[target_columns].notna().all(axis=1)
+        
+        # DataFrame para entrenamiento (con target válido)
+        df_training = final_df[mask_target_valido].copy()
+        
+        # DataFrame para inferencia (últimas filas sin target)
+        df_inference = final_df[~mask_target_valido].copy()
+        
+        print(f"📊 Datos separados:")
+        print(f"   - Training set: {len(df_training)} filas (con target)")
+        print(f"   - Inference set: {len(df_inference)} filas (para predicción)")
+        
+        # Eliminar NaN solo en el conjunto de entrenamiento
+        df_training_clean = df_training.dropna()
+        
+        # Para el conjunto de inferencia, solo limpiar las columnas de features
+        feature_columns = [col for col in df_inference.columns if col not in target_columns + ['date', 'id']]
+        df_inference_clean = df_inference.copy()
+        
+        # Reemplazar infinitos por NaN en ambos conjuntos
+        df_training_clean.replace([np.inf, -np.inf], np.nan, inplace=True)
+        df_inference_clean.replace([np.inf, -np.inf], np.nan, inplace=True)
+        
+        # Imputar solo en features para el conjunto de inferencia
+        df_inference_clean[feature_columns] = df_inference_clean[feature_columns].ffill().bfill().fillna(0)
+        
+        # Imputar en training
+        df_training_clean = df_training_clean.ffill().bfill().fillna(0)
+        
+        # Guardar ambos archivos
+        training_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                                    f"datos_economicos_1month_{analysis_type}_TRAINING.xlsx")
+        inference_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                                    f"datos_economicos_1month_{analysis_type}_INFERENCE.xlsx")
+        
+        try:
+            df_training_clean.to_excel(training_file, index=False)
+            df_inference_clean.to_excel(inference_file, index=False)
+            
+            print(f"✅ Archivos guardados:")
+            print(f"   - Training: {training_file}")
+            print(f"     {len(df_training_clean)} filas × {len(df_training_clean.columns)} columnas")
+            print(f"   - Inference: {inference_file}")
+            print(f"     {len(df_inference_clean)} filas × {len(df_inference_clean.columns)} columnas")
+            print(f"   - Fechas de inferencia: {df_inference_clean['date'].min()} a {df_inference_clean['date'].max()}")
+            
+        except Exception as e:
+            print(f"❌ Error al guardar los archivos:", e)
+            
+    else:
+        # Si no hay variable objetivo, procesar como antes
+        final_df.replace([np.inf, -np.inf], np.nan, inplace=True)
+        final_df = final_df.ffill().bfill().fillna(0)
+        final_df.dropna(inplace=True)
+        
+        output_file = os.path.join(PROJECT_ROOT, "data", "2_processed", 
+                                f"datos_economicos_1month_{analysis_type}.xlsx")
+        try:
+            final_df.to_excel(output_file, index=False)
+            print(f"✅ Proceso completado para análisis de {analysis_type}. Archivo guardado en: {output_file}")
+            print(f"✅ El archivo contiene {len(final_df)} filas y {len(final_df.columns)} columnas.")
+        except Exception as e:
+            print(f"❌ Error al guardar el archivo:", e)
 
 if __name__ == "__main__":
     main()

@@ -628,7 +628,6 @@ def main():
     # Usar rutas definidas en config
     archivo_entrada = os.path.join(PROCESSED_DIR, "datos_economicos_1month_procesados.xlsx")
     archivo_salida = os.path.join(PROCESSED_DIR, "ULTIMO_S&P500_final.xlsx")
-    archivo_informe = os.path.join(PROCESSED_DIR, "reporte_variables.xlsx")
     
     # Verificar existencia del archivo
     if not os.path.exists(archivo_entrada):

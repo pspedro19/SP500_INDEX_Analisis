@@ -1,0 +1,273 @@
+2025-05-22 16:46:31,273 - INFO - ================================================================================
+2025-05-22 16:46:31,273 - INFO - INICIANDO PROCESO DE SELECCIÓN DE FEATURES POR FPI
+2025-05-22 16:46:31,273 - INFO - ================================================================================
+2025-05-22 16:46:31,273 - INFO - Timestamp: 20250522_164631
+2025-05-22 16:46:31,273 - INFO - Directorio de entrada: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\2_processed
+2025-05-22 16:46:31,273 - INFO - Directorio de salida: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\3_trainingdata
+2025-05-22 16:46:31,300 - INFO - Directorio de logs: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\logs
+2025-05-22 16:46:31,302 - INFO - Archivo de log: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\logs\fpi_selection_20250522_164631.log
+2025-05-22 16:46:31,305 - INFO - Período de forecasting: 1MONTH
+2025-05-22 16:46:31,309 - INFO - Gap para CV: 20 días
+2025-05-22 16:46:31,313 - INFO - Número de splits CV: 5
+2025-05-22 16:46:31,315 - INFO - Threshold FPI: 1e-06
+2025-05-22 16:46:31,315 - INFO - Aplicar escalado: False
+2025-05-22 16:46:31,315 - INFO - Semilla aleatoria: 42
+2025-05-22 16:46:31,315 - INFO - Parámetros CatBoost: {'loss_function': 'RMSE', 'eval_metric': 'RMSE', 'early_stopping_rounds': 50, 'verbose': 0, 'random_seed': 42, 'n_estimators': 500, 'learning_rate': 0.01, 'max_depth': 8}
+2025-05-22 16:46:31,315 - INFO - ================================================================================
+2025-05-22 16:46:31,315 - INFO - ============================================================
+2025-05-22 16:46:31,315 - INFO - INICIANDO SELECCIÓN DE FEATURES FPI
+2025-05-22 16:46:31,321 - INFO - ============================================================
+2025-05-22 16:46:31,321 - INFO - Usando el archivo más reciente: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\2_processed\ULTIMO_S&P500_final.xlsx
+2025-05-22 16:46:31,321 - INFO - La salida se guardará en: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx
+2025-05-22 16:46:39,390 - INFO - Archivo 'C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\2_processed\ULTIMO_S&P500_final.xlsx' cargado con forma (2953, 147).
+2025-05-22 16:46:39,422 - INFO - Memoria utilizada: 3.48 MB
+2025-05-22 16:46:39,422 - INFO - Columnas del DataFrame original: ['date', 'MoM_PRICE_Australia_10Y_Bond_bond', 'log_diff_PRICE_Australia_10Y_Bond_bond', 'zscore_PRICE_Australia_10Y_Bond_bond', 'MoM_PRICE_Italy_10Y_Bond_bond', 'log_diff_PRICE_Italy_10Y_Bond_bond', '3M_change_PRICE_Italy_10Y_Bond_bond', 'zscore_PRICE_Italy_10Y_Bond_bond', 'MoM_PRICE_Japan_10Y_Bond_bond', 'YoY_PRICE_Japan_10Y_Bond_bond', 'log_diff_PRICE_Japan_10Y_Bond_bond', 'rolling_var_PRICE_Japan_10Y_Bond_bond', '3M_change_PRICE_Japan_10Y_Bond_bond', '6M_change_PRICE_Japan_10Y_Bond_bond', 'YTD_PRICE_Japan_10Y_Bond_bond', 'zscore_PRICE_Japan_10Y_Bond_bond', 'MoM_PRICE_UK_10Y_Bond_bond', 'YoY_PRICE_UK_10Y_Bond_bond', 'log_diff_PRICE_UK_10Y_Bond_bond', '3M_change_PRICE_UK_10Y_Bond_bond', '6M_change_PRICE_UK_10Y_Bond_bond', 'zscore_PRICE_UK_10Y_Bond_bond', 'MoM_PRICE_Germany_10Y_Bond_bond', 'YoY_PRICE_Germany_10Y_Bond_bond', 'log_diff_PRICE_Germany_10Y_Bond_bond', '3M_change_PRICE_Germany_10Y_Bond_bond', '6M_change_PRICE_Germany_10Y_Bond_bond', 'MoM_PRICE_Canada_10Y_Bond_bond', 'log_diff_PRICE_Canada_10Y_Bond_bond', 'MoM_PRICE_China_10Y_Bond_bond', 'log_diff_PRICE_China_10Y_Bond_bond', 'rolling_std_PRICE_China_10Y_Bond_bond', '3M_change_PRICE_China_10Y_Bond_bond', 'YTD_PRICE_China_10Y_Bond_bond', 'zscore_PRICE_China_10Y_Bond_bond', 'MoM_AAA_Corporate_Bond_AAA_Spread_bond', 'log_diff_AAA_Corporate_Bond_AAA_Spread_bond', 'rolling_std_AAA_Corporate_Bond_AAA_Spread_bond', '3M_change_AAA_Corporate_Bond_AAA_Spread_bond', 'YTD_AAA_Corporate_Bond_AAA_Spread_bond', 'zscore_AAA_Corporate_Bond_AAA_Spread_bond', 'log_diff_PRICE_CrudeOil_WTI_commodities', 'MACD_signal_PRICE_CrudeOil_WTI_commodities', 'momentum_PRICE_CrudeOil_WTI_commodities', '3M_change_PRICE_CrudeOil_WTI_commodities', '6M_change_PRICE_CrudeOil_WTI_commodities', 'zscore_PRICE_CrudeOil_WTI_commodities', 'log_diff_PRICE_Gold_Spot_commodities', 'momentum_PRICE_Gold_Spot_commodities', '3M_change_PRICE_Gold_Spot_commodities', 'log_diff_PRICE_Silver_Spot_commodities', 'MACD_signal_PRICE_Silver_Spot_commodities', 'momentum_PRICE_Silver_Spot_commodities', '6M_change_PRICE_Silver_Spot_commodities', 'zscore_PRICE_Silver_Spot_commodities', 'log_diff_PRICE_Copper_Futures_commodities', 'rolling_std_PRICE_Copper_Futures_commodities', 'MACD_signal_PRICE_Copper_Futures_commodities', 'momentum_PRICE_Copper_Futures_commodities', 'zscore_PRICE_Copper_Futures_commodities', 'log_diff_PRICE_Platinum_Spot_commodities', 'momentum_PRICE_Platinum_Spot_commodities', '3M_change_PRICE_Platinum_Spot_commodities', 'YTD_PRICE_Platinum_Spot_commodities', 'zscore_PRICE_Platinum_Spot_commodities', 'MoM_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'YoY_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'log_diff_Actual_US_ConferenceBoard_LEI_leading_economic_index', '3M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index', '6M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'YTD_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'zscore_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'minmax_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'MoM_Actual_Japan_Leading_Indicator_leading_economic_index', 'log_diff_Actual_Japan_Leading_Indicator_leading_economic_index', '3M_change_Actual_Japan_Leading_Indicator_leading_economic_index', '6M_change_Actual_Japan_Leading_Indicator_leading_economic_index', 'YTD_Actual_Japan_Leading_Indicator_leading_economic_index', 'zscore_Actual_Japan_Leading_Indicator_leading_economic_index', 'minmax_Actual_Japan_Leading_Indicator_leading_economic_index', 'MACD_signal_PRICE_EUR_USD_Spot_exchange_rate', 'zscore_PRICE_EUR_USD_Spot_exchange_rate', 'log_diff_PRICE_GBP_USD_Spot_exchange_rate', 'rolling_std_PRICE_GBP_USD_Spot_exchange_rate', 'momentum_PRICE_GBP_USD_Spot_exchange_rate', 'log_diff_PRICE_JPY_USD_Spot_exchange_rate', 'rolling_std_PRICE_JPY_USD_Spot_exchange_rate', 'MACD_signal_PRICE_JPY_USD_Spot_exchange_rate', 'momentum_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', 'log_diff_PRICE_CNY_USD_Spot_exchange_rate', 'rolling_std_PRICE_CNY_USD_Spot_exchange_rate', 'momentum_PRICE_CNY_USD_Spot_exchange_rate', '3M_change_PRICE_CNY_USD_Spot_exchange_rate', '6M_change_PRICE_CNY_USD_Spot_exchange_rate', 'zscore_PRICE_CNY_USD_Spot_exchange_rate', 'log_diff_PRICE_AUD_USD_Spot_exchange_rate', 'MACD_signal_PRICE_AUD_USD_Spot_exchange_rate', 'momentum_PRICE_AUD_USD_Spot_exchange_rate', 'log_diff_PRICE_CAD_USD_Spot_exchange_rate', 'momentum_PRICE_CAD_USD_Spot_exchange_rate', '3M_change_PRICE_CAD_USD_Spot_exchange_rate', '6M_change_PRICE_CAD_USD_Spot_exchange_rate', 'zscore_PRICE_CAD_USD_Spot_exchange_rate', 'log_diff_PRICE_MXN_USD_Spot_exchange_rate', 'MACD_signal_PRICE_MXN_USD_Spot_exchange_rate', 'momentum_PRICE_MXN_USD_Spot_exchange_rate', 'zscore_PRICE_MXN_USD_Spot_exchange_rate', 'log_diff_PRICE_EUR_GBP_Cross_exchange_rate', 'MACD_signal_PRICE_EUR_GBP_Cross_exchange_rate', 'momentum_PRICE_EUR_GBP_Cross_exchange_rate', '3M_change_PRICE_EUR_GBP_Cross_exchange_rate', '6M_change_PRICE_EUR_GBP_Cross_exchange_rate', 'zscore_PRICE_EUR_GBP_Cross_exchange_rate', 'log_diff_PRICE_Shanghai_Composite_index_pricing', 'rolling_std_PRICE_Shanghai_Composite_index_pricing', 'MACD_PRICE_Shanghai_Composite_index_pricing', 'momentum_PRICE_Shanghai_Composite_index_pricing', '3M_change_PRICE_Shanghai_Composite_index_pricing', '6M_change_PRICE_Shanghai_Composite_index_pricing', 'YTD_PRICE_Shanghai_Composite_index_pricing', 'zscore_PRICE_Shanghai_Composite_index_pricing', 'BAA10YM_Corporate_Bond_BBB_Spread_bond', 'ESI_GACDISA_US_Empire_State_Index_business_confidence', 'ESI_AWCDISA_US_Empire_State_Index_business_confidence', 'Actual_US_Philly_Fed_Index_business_confidence', 'DNKSLRTCR03GPSAM_Denmark_Car_Registrations_MoM', 'USASLRTCR03GPSAM_US_Car_Registrations_MoM', 'ZAFSLRTCR03GPSAM_SouthAfrica_Car_Registrations_MoM', 'GBRSLRTCR03GPSAM_United_Kingdom_Car_Registrations_MoM', 'CSCICP02CHQ460S_Switzerland_Consumer_Confidence_consumer_confidence', 'Actual_China_PMI_Manufacturing_economics', 'Actual_Japan_M2_MoneySupply_YoY_economics', 'Actual_China_M2_MoneySupply_YoY_economics', 'Actual_Mexico_CPI_MoM_economics', 'Actual_BOJ_Policy_Rate_economics', 'Actual_UK_Retail_Sales_MoM_economics', 'CSCICP02EZM460S_EuroZone_Consumer_Confidence_consumer_confidence', 'HOUST_US_Housing_Starts_economics', 'FEDFUNDS_US_FedFunds_Rate_economics', 'ECBDFR_ECB_Deposit_Rate_economics', 'Actual_Singapore_NonOil_Exports_YoY_economics', 'Actual_China_Exports_exports', 'Actual_Eurozone_Unemployment_Rate_unemployment_rate', 'UNRATE_US_Unemployment_Rate_unemployment_rate', 'PRICE_EUR_USD_Spot_exchange_rate_Target', 'PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20']
+2025-05-22 16:46:39,422 - INFO - Tipos de datos: 
+date                                                    object
+MoM_PRICE_Australia_10Y_Bond_bond                      float64
+log_diff_PRICE_Australia_10Y_Bond_bond                 float64
+zscore_PRICE_Australia_10Y_Bond_bond                   float64
+MoM_PRICE_Italy_10Y_Bond_bond                          float64
+                                                        ...   
+Actual_China_Exports_exports                           float64
+Actual_Eurozone_Unemployment_Rate_unemployment_rate    float64
+UNRATE_US_Unemployment_Rate_unemployment_rate          float64
+PRICE_EUR_USD_Spot_exchange_rate_Target                float64
+PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20      float64
+Length: 147, dtype: object
+2025-05-22 16:46:39,609 - INFO - Primeras 3 filas (head) del DataFrame original:
+         date  ...  PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20
+0  2014-01-01  ...                                             1.3687
+1  2014-01-02  ...                                             1.3708
+2  2014-01-03  ...                                             1.3802
+
+[3 rows x 147 columns]
+2025-05-22 16:46:39,782 - INFO - Últimas 3 filas (tail) del DataFrame original:
+            date  ...  PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20
+2950  2025-04-23  ...                                                NaN
+2951  2025-04-24  ...                                                NaN
+2952  2025-04-25  ...                                                NaN
+
+[3 rows x 147 columns]
+2025-05-22 16:46:39,782 - INFO - Estadísticas básicas de algunas columnas numéricas:
+2025-05-22 16:46:39,789 - INFO -   - MoM_PRICE_Australia_10Y_Bond_bond: min=-0.4353, max=0.6429, mean=0.0056, std=0.1068
+2025-05-22 16:46:39,795 - INFO -   - log_diff_PRICE_Australia_10Y_Bond_bond: min=-0.1590, max=0.1590, mean=-0.0000, std=0.0158
+2025-05-22 16:46:39,800 - INFO -   - zscore_PRICE_Australia_10Y_Bond_bond: min=-3.7460, max=3.6778, mean=-0.1122, std=1.3799
+2025-05-22 16:46:39,806 - INFO -   - MoM_PRICE_Italy_10Y_Bond_bond: min=-0.5164, max=1.6486, mean=0.0120, std=0.1653
+2025-05-22 16:46:39,809 - INFO -   - log_diff_PRICE_Italy_10Y_Bond_bond: min=-0.2150, max=0.2809, mean=-0.0000, std=0.0212
+2025-05-22 16:46:39,817 - INFO - Convirtiendo columna 'date' a datetime...
+2025-05-22 16:46:39,837 - INFO - Fechas inválidas (NaT) encontradas: 0
+2025-05-22 16:46:39,839 - INFO - Rango de fechas después de limpiar: 2014-01-01 00:00:00 a 2025-04-25 00:00:00
+2025-05-22 16:46:39,839 - INFO - Cantidad de fechas únicas: 2953
+2025-05-22 16:46:39,843 - INFO - Días calendario totales en el rango: 4133
+2025-05-22 16:46:39,843 - INFO - Cobertura de fechas: 71.4% del rango total
+2025-05-22 16:46:39,844 - INFO - Construyendo calendario de días hábiles para NYSE...
+2025-05-22 16:46:40,501 - INFO - Días hábiles (NYSE) en el rango: 2846
+2025-05-22 16:46:40,503 - INFO - Primeros 5 días hábiles: [Timestamp('2014-01-02 00:00:00'), Timestamp('2014-01-03 00:00:00'), Timestamp('2014-01-06 00:00:00'), Timestamp('2014-01-07 00:00:00'), Timestamp('2014-01-08 00:00:00')]
+2025-05-22 16:46:40,505 - INFO - Últimos 5 días hábiles: [Timestamp('2025-04-21 00:00:00'), Timestamp('2025-04-22 00:00:00'), Timestamp('2025-04-23 00:00:00'), Timestamp('2025-04-24 00:00:00'), Timestamp('2025-04-25 00:00:00')]
+2025-05-22 16:46:40,505 - INFO - Rango total días hábiles: 2014-01-02 00:00:00 a 2025-04-25 00:00:00
+2025-05-22 16:46:40,691 - INFO - Filas totales antes de filtrar por días hábiles: 2953
+2025-05-22 16:46:40,691 - INFO - Filas totales después de filtrar por días hábiles: 2846
+2025-05-22 16:46:40,691 - INFO - Filas eliminadas (no días hábiles): 107
+2025-05-22 16:46:40,695 - INFO - Dataset tras filtrar días hábiles: (2846, 147)
+2025-05-22 16:46:40,695 - INFO - Columna target tomada como la última columna: 'PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20'
+2025-05-22 16:46:40,695 - INFO - Estadísticas del target 'PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20':
+2025-05-22 16:46:40,695 - INFO -   - count: 2807.0
+2025-05-22 16:46:40,695 - INFO -   - mean: 1.132828
+2025-05-22 16:46:40,695 - INFO -   - std: 0.075598
+2025-05-22 16:46:40,695 - INFO -   - min: 0.959200
+2025-05-22 16:46:40,702 - INFO -   - 25%: 1.085100
+2025-05-22 16:46:40,702 - INFO -   - 50%: 1.118500
+2025-05-22 16:46:40,703 - INFO -   - 75%: 1.172600
+2025-05-22 16:46:40,703 - INFO -   - max: 1.393300
+2025-05-22 16:46:40,707 - INFO - Separación de datos - X: (2846, 146), y: (2846,)
+2025-05-22 16:46:40,707 - INFO - Extrayendo 'date' de las features para conservarla aparte.
+2025-05-22 16:46:40,720 - INFO - Número de columnas numéricas: 145 de 145 originales
+2025-05-22 16:46:40,720 - INFO - Primeras 10 columnas numéricas: ['MoM_PRICE_Australia_10Y_Bond_bond', 'log_diff_PRICE_Australia_10Y_Bond_bond', 'zscore_PRICE_Australia_10Y_Bond_bond', 'MoM_PRICE_Italy_10Y_Bond_bond', 'log_diff_PRICE_Italy_10Y_Bond_bond', '3M_change_PRICE_Italy_10Y_Bond_bond', 'zscore_PRICE_Italy_10Y_Bond_bond', 'MoM_PRICE_Japan_10Y_Bond_bond', 'YoY_PRICE_Japan_10Y_Bond_bond', 'log_diff_PRICE_Japan_10Y_Bond_bond']
+2025-05-22 16:46:40,720 - INFO - ... y 135 más
+2025-05-22 16:46:40,726 - INFO - No se aplicó escalado; se mantienen los valores originales.
+2025-05-22 16:46:40,737 - INFO - Dimensiones tras eliminar NaNs - X: (2807, 145), y: (2807,)
+2025-05-22 16:46:40,742 - INFO - Índices reseteados para asegurar alineación 0..N-1
+2025-05-22 16:46:40,742 - INFO - Dimensión de X_scaled antes de FPI: (2807, 145)
+2025-05-22 16:46:40,745 - INFO - Dimensión de y antes de FPI: (2807,)
+2025-05-22 16:46:40,745 - INFO - Dimensión de date_data antes de FPI: (2807,)
+2025-05-22 16:46:40,937 - INFO - Últimas 3 filas de X_scaled:
+      MoM_PRICE_Australia_10Y_Bond_bond  ...  PRICE_EUR_USD_Spot_exchange_rate_Target
+2804                          -0.002750  ...                                   1.0752
+2805                          -0.011369  ...                                   1.0801
+2806                          -0.027759  ...                                   1.0827
+
+[3 rows x 145 columns]
+2025-05-22 16:46:40,937 - INFO - Últimas 3 filas de y:
+2804    1.1315
+2805    1.1389
+2806    1.1365
+Name: PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20, dtype: float64
+2025-05-22 16:46:40,937 - INFO - Últimas 3 filas de date_data:
+2804   2025-02-26
+2805   2025-02-27
+2806   2025-02-28
+Name: date, dtype: datetime64[ns]
+2025-05-22 16:46:40,937 - INFO - ============================================================
+2025-05-22 16:46:40,937 - INFO - INICIANDO SELECCIÓN DE FEATURES CON FPI
+2025-05-22 16:46:40,937 - INFO - ============================================================
+2025-05-22 16:46:40,937 - INFO - Número total de features antes de FPI: 145
+2025-05-22 16:46:40,947 - INFO - Forecast period: 1MONTH
+2025-05-22 16:46:40,949 - INFO - Gap usado para TimeSeriesSplit: 20 días
+2025-05-22 16:46:40,949 - INFO - Threshold FPI: 1e-06
+2025-05-22 16:46:40,950 - INFO - ==================================================
+2025-05-22 16:46:40,951 - INFO - [FPI] INICIANDO ANÁLISIS DE FEATURE PERMUTATION IMPORTANCE
+2025-05-22 16:46:40,953 - INFO - ==================================================
+2025-05-22 16:46:40,955 - INFO - [FPI] Dimensiones de datos - X: (2807, 145), y: (2807,)
+2025-05-22 16:46:40,958 - INFO - [FPI] Rango de valores target - Min: 0.959200, Max: 1.393300, Mean: 1.132828
+2025-05-22 16:46:40,958 - INFO - [FPI] Parámetros - CV splits: 5, gap: 20, threshold: 1e-06
+2025-05-22 16:46:42,663 - INFO - Gráfico de CV splits guardado en: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\plots\cv_splits_20250522_164631.png
+2025-05-22 16:46:42,667 - INFO - [FPI] Detalle de los splits de validación cruzada temporal:
+2025-05-22 16:46:42,671 - INFO - [FPI] Split 1:
+2025-05-22 16:46:42,682 - INFO -   - Train: 452 muestras (índices 0 a 451)
+2025-05-22 16:46:42,687 - INFO -   - Validation: 467 muestras (índices 472 a 938)
+2025-05-22 16:46:42,688 - INFO -   - Gap efectivo: 20 muestras
+2025-05-22 16:46:42,691 - INFO - [FPI] Split 2:
+2025-05-22 16:46:42,691 - INFO -   - Train: 919 muestras (índices 0 a 918)
+2025-05-22 16:46:42,691 - INFO -   - Validation: 467 muestras (índices 939 a 1405)
+2025-05-22 16:46:42,693 - INFO -   - Gap efectivo: 20 muestras
+2025-05-22 16:46:42,695 - INFO - [FPI] Split 3:
+2025-05-22 16:46:42,697 - INFO -   - Train: 1386 muestras (índices 0 a 1385)
+2025-05-22 16:46:42,697 - INFO -   - Validation: 467 muestras (índices 1406 a 1872)
+2025-05-22 16:46:42,699 - INFO -   - Gap efectivo: 20 muestras
+2025-05-22 16:46:42,707 - INFO - [FPI] Split 4:
+2025-05-22 16:46:42,713 - INFO -   - Train: 1853 muestras (índices 0 a 1852)
+2025-05-22 16:46:42,718 - INFO -   - Validation: 467 muestras (índices 1873 a 2339)
+2025-05-22 16:46:42,723 - INFO -   - Gap efectivo: 20 muestras
+2025-05-22 16:46:42,727 - INFO - [FPI] Split 5:
+2025-05-22 16:46:42,730 - INFO -   - Train: 2320 muestras (índices 0 a 2319)
+2025-05-22 16:46:42,732 - INFO -   - Validation: 467 muestras (índices 2340 a 2806)
+2025-05-22 16:46:42,733 - INFO -   - Gap efectivo: 20 muestras
+2025-05-22 16:46:42,739 - INFO - [FPI] Configurando CatBoostRegressor con los siguientes parámetros:
+2025-05-22 16:46:42,742 - INFO -   - loss_function: RMSE
+2025-05-22 16:46:42,743 - INFO -   - eval_metric: RMSE
+2025-05-22 16:46:42,748 - INFO -   - early_stopping_rounds: 50
+2025-05-22 16:46:42,749 - INFO -   - verbose: 0
+2025-05-22 16:46:42,749 - INFO -   - random_seed: 42
+2025-05-22 16:46:42,751 - INFO -   - n_estimators: 500
+2025-05-22 16:46:42,759 - INFO -   - learning_rate: 0.01
+2025-05-22 16:46:42,760 - INFO -   - max_depth: 8
+2025-05-22 16:46:42,765 - INFO - [FPI] Configurando SelectByShuffling con threshold=1e-06
+2025-05-22 16:46:42,766 - INFO - [FPI] Scorer utilizado: neg_mean_squared_error
+2025-05-22 16:46:42,768 - INFO - [FPI] Iniciando proceso de fit con SelectByShuffling...
+2025-05-22 16:50:02,709 - INFO - [FPI] Proceso de fit completado en 199.94 segundos
+2025-05-22 16:50:02,714 - INFO - [FPI] Se calcularon drift scores para 145 columnas.
+2025-05-22 16:50:02,714 - INFO - [FPI] Features seleccionadas por FPI: 52 de 145 (35.9%)
+2025-05-22 16:50:02,718 - INFO - [FPI] Top 10 features por importancia (performance drift):
+2025-05-22 16:50:02,773 - INFO - [FPI] Bottom 10 features con menor importancia:
+2025-05-22 16:50:03,021 - INFO - [FPI] CSV con todos los drift scores guardado en: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\plots\fpi_drifts_20250522_164631.csv
+2025-05-22 16:50:09,268 - INFO - Gráfico de performance drift guardado en: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\plots\performance_drift_20250522_164631.png
+2025-05-22 16:50:09,270 - INFO - [FPI] Proceso FPI completado en 208.32 segundos
+2025-05-22 16:50:09,274 - INFO - [FPI] Número de features seleccionadas: 52
+2025-05-22 16:50:09,280 - INFO - ==================================================
+2025-05-22 16:50:09,282 - INFO - Proceso FPI completado en 208.33 segundos
+2025-05-22 16:50:09,288 - INFO - Features finales seleccionadas (52/145 = 35.9%):
+2025-05-22 16:50:09,290 - INFO -   - Grupo 'zscore': 11 features
+2025-05-22 16:50:09,290 - INFO -     ['zscore_PRICE_Australia_10Y_Bond_bond', 'zscore_PRICE_Italy_10Y_Bond_bond', 'zscore_PRICE_Silver_Spot_commodities', 'zscore_PRICE_Platinum_Spot_commodities', 'zscore_PRICE_EUR_USD_Spot_exchange_rate']...
+2025-05-22 16:50:09,290 - INFO -   - Grupo 'MoM': 3 features
+2025-05-22 16:50:09,294 - INFO -     ['MoM_PRICE_Germany_10Y_Bond_bond', 'MoM_PRICE_China_10Y_Bond_bond', 'MoM_AAA_Corporate_Bond_AAA_Spread_bond']
+2025-05-22 16:50:09,294 - INFO -   - Grupo '6M': 6 features
+2025-05-22 16:50:09,294 - INFO -     ['6M_change_PRICE_Germany_10Y_Bond_bond', '6M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index', '6M_change_Actual_Japan_Leading_Indicator_leading_economic_index', '6M_change_PRICE_CNY_USD_Spot_exchange_rate', '6M_change_PRICE_CAD_USD_Spot_exchange_rate']...
+2025-05-22 16:50:09,294 - INFO -   - Grupo 'rolling': 5 features
+2025-05-22 16:50:09,296 - INFO -     ['rolling_std_PRICE_China_10Y_Bond_bond', 'rolling_std_AAA_Corporate_Bond_AAA_Spread_bond', 'rolling_std_PRICE_Copper_Futures_commodities', 'rolling_std_PRICE_GBP_USD_Spot_exchange_rate', 'rolling_std_PRICE_JPY_USD_Spot_exchange_rate']
+2025-05-22 16:50:09,297 - INFO -   - Grupo '3M': 5 features
+2025-05-22 16:50:09,297 - INFO -     ['3M_change_PRICE_China_10Y_Bond_bond', '3M_change_AAA_Corporate_Bond_AAA_Spread_bond', '3M_change_PRICE_CrudeOil_WTI_commodities', '3M_change_Actual_Japan_Leading_Indicator_leading_economic_index', '3M_change_PRICE_CNY_USD_Spot_exchange_rate']
+2025-05-22 16:50:09,297 - INFO -   - Grupo 'momentum': 2 features
+2025-05-22 16:50:09,298 - INFO -     ['momentum_PRICE_Platinum_Spot_commodities', 'momentum_PRICE_Shanghai_Composite_index_pricing']
+2025-05-22 16:50:09,298 - INFO -   - Grupo 'YTD': 2 features
+2025-05-22 16:50:09,298 - INFO -     ['YTD_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'YTD_Actual_Japan_Leading_Indicator_leading_economic_index']
+2025-05-22 16:50:09,298 - INFO -   - Grupo 'minmax': 2 features
+2025-05-22 16:50:09,299 - INFO -     ['minmax_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'minmax_Actual_Japan_Leading_Indicator_leading_economic_index']
+2025-05-22 16:50:09,299 - INFO -   - Grupo 'MACD': 1 features
+2025-05-22 16:50:09,300 - INFO -     ['MACD_signal_PRICE_EUR_USD_Spot_exchange_rate']
+2025-05-22 16:50:09,300 - INFO -   - Grupo 'BAA10YM': 1 features
+2025-05-22 16:50:09,300 - INFO -     ['BAA10YM_Corporate_Bond_BBB_Spread_bond']
+2025-05-22 16:50:09,300 - INFO -   - Grupo 'ESI': 2 features
+2025-05-22 16:50:09,300 - INFO -     ['ESI_GACDISA_US_Empire_State_Index_business_confidence', 'ESI_AWCDISA_US_Empire_State_Index_business_confidence']
+2025-05-22 16:50:09,302 - INFO -   - Grupo 'Actual': 7 features
+2025-05-22 16:50:09,302 - INFO -     ['Actual_US_Philly_Fed_Index_business_confidence', 'Actual_China_PMI_Manufacturing_economics', 'Actual_Japan_M2_MoneySupply_YoY_economics', 'Actual_Mexico_CPI_MoM_economics', 'Actual_BOJ_Policy_Rate_economics']...
+2025-05-22 16:50:09,302 - INFO -   - Grupo 'CSCICP02EZM460S': 1 features
+2025-05-22 16:50:09,302 - INFO -     ['CSCICP02EZM460S_EuroZone_Consumer_Confidence_consumer_confidence']
+2025-05-22 16:50:09,302 - INFO -   - Grupo 'HOUST': 1 features
+2025-05-22 16:50:09,302 - INFO -     ['HOUST_US_Housing_Starts_economics']
+2025-05-22 16:50:09,302 - INFO -   - Grupo 'FEDFUNDS': 1 features
+2025-05-22 16:50:09,302 - INFO -     ['FEDFUNDS_US_FedFunds_Rate_economics']
+2025-05-22 16:50:09,302 - INFO -   - Grupo 'UNRATE': 1 features
+2025-05-22 16:50:09,302 - INFO -     ['UNRATE_US_Unemployment_Rate_unemployment_rate']
+2025-05-22 16:50:09,302 - INFO -   - Grupo 'PRICE': 1 features
+2025-05-22 16:50:09,302 - INFO -     ['PRICE_EUR_USD_Spot_exchange_rate_Target']
+2025-05-22 16:50:09,314 - INFO - Shape final_X: (2807, 52), y: (2807,)
+2025-05-22 16:50:09,314 - INFO - Shape date_data: (2807,)
+2025-05-22 16:50:09,316 - INFO - Verificando longitudes antes de concat:
+2025-05-22 16:50:09,316 - INFO - Len final_X=2807, Len y=2807, Len date_data=2807
+2025-05-22 16:50:09,321 - INFO - Shape final tras la selección de features y concat: (2807, 54)
+2025-05-22 16:50:09,322 - INFO - Columnas del DataFrame final: ['date', 'zscore_PRICE_Australia_10Y_Bond_bond', 'zscore_PRICE_Italy_10Y_Bond_bond', 'MoM_PRICE_Germany_10Y_Bond_bond', '6M_change_PRICE_Germany_10Y_Bond_bond', 'MoM_PRICE_China_10Y_Bond_bond', 'rolling_std_PRICE_China_10Y_Bond_bond', '3M_change_PRICE_China_10Y_Bond_bond', 'MoM_AAA_Corporate_Bond_AAA_Spread_bond', 'rolling_std_AAA_Corporate_Bond_AAA_Spread_bond', '3M_change_AAA_Corporate_Bond_AAA_Spread_bond', '3M_change_PRICE_CrudeOil_WTI_commodities', 'zscore_PRICE_Silver_Spot_commodities', 'rolling_std_PRICE_Copper_Futures_commodities', 'momentum_PRICE_Platinum_Spot_commodities', 'zscore_PRICE_Platinum_Spot_commodities', '6M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'YTD_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'minmax_Actual_US_ConferenceBoard_LEI_leading_economic_index', '3M_change_Actual_Japan_Leading_Indicator_leading_economic_index', '6M_change_Actual_Japan_Leading_Indicator_leading_economic_index', 'YTD_Actual_Japan_Leading_Indicator_leading_economic_index', 'minmax_Actual_Japan_Leading_Indicator_leading_economic_index', 'MACD_signal_PRICE_EUR_USD_Spot_exchange_rate', 'zscore_PRICE_EUR_USD_Spot_exchange_rate', 'rolling_std_PRICE_GBP_USD_Spot_exchange_rate', 'rolling_std_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', '3M_change_PRICE_CNY_USD_Spot_exchange_rate', '6M_change_PRICE_CNY_USD_Spot_exchange_rate', 'zscore_PRICE_CNY_USD_Spot_exchange_rate', '6M_change_PRICE_CAD_USD_Spot_exchange_rate', 'zscore_PRICE_CAD_USD_Spot_exchange_rate', 'zscore_PRICE_MXN_USD_Spot_exchange_rate', '6M_change_PRICE_EUR_GBP_Cross_exchange_rate', 'zscore_PRICE_EUR_GBP_Cross_exchange_rate', 'momentum_PRICE_Shanghai_Composite_index_pricing', 'zscore_PRICE_Shanghai_Composite_index_pricing', 'BAA10YM_Corporate_Bond_BBB_Spread_bond', 'ESI_GACDISA_US_Empire_State_Index_business_confidence', 'ESI_AWCDISA_US_Empire_State_Index_business_confidence', 'Actual_US_Philly_Fed_Index_business_confidence', 'Actual_China_PMI_Manufacturing_economics', 'Actual_Japan_M2_MoneySupply_YoY_economics', 'Actual_Mexico_CPI_MoM_economics', 'Actual_BOJ_Policy_Rate_economics', 'CSCICP02EZM460S_EuroZone_Consumer_Confidence_consumer_confidence', 'HOUST_US_Housing_Starts_economics', 'FEDFUNDS_US_FedFunds_Rate_economics', 'Actual_China_Exports_exports', 'Actual_Eurozone_Unemployment_Rate_unemployment_rate', 'UNRATE_US_Unemployment_Rate_unemployment_rate', 'PRICE_EUR_USD_Spot_exchange_rate_Target', 'PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20']
+2025-05-22 16:50:09,395 - INFO - Primeras 3 filas del DataFrame final:
+        date  ...  PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20
+0 2014-01-02  ...                                             1.3708
+1 2014-01-03  ...                                             1.3802
+2 2014-01-06  ...                                             1.3734
+
+[3 rows x 54 columns]
+2025-05-22 16:50:09,463 - INFO - Últimas 3 filas del DataFrame final:
+           date  ...  PRICE_EUR_USD_Spot_exchange_rate_Target_lagged_20
+2804 2025-02-26  ...                                             1.1315
+2805 2025-02-27  ...                                             1.1389
+2806 2025-02-28  ...                                             1.1365
+
+[3 rows x 54 columns]
+2025-05-22 16:50:09,477 - WARNING -   - zscore_PRICE_Australia_10Y_Bond_bond: 56 valores nulos
+2025-05-22 16:50:09,479 - WARNING -   - zscore_PRICE_Italy_10Y_Bond_bond: 57 valores nulos
+2025-05-22 16:50:09,479 - WARNING -   - MoM_PRICE_Germany_10Y_Bond_bond: 19 valores nulos
+2025-05-22 16:50:09,484 - WARNING -   - 6M_change_PRICE_Germany_10Y_Bond_bond: 116 valores nulos
+2025-05-22 16:50:09,484 - WARNING -   - MoM_PRICE_China_10Y_Bond_bond: 19 valores nulos
+2025-05-22 16:50:09,484 - WARNING -   - rolling_std_PRICE_China_10Y_Bond_bond: 18 valores nulos
+2025-05-22 16:50:09,484 - WARNING -   - 3M_change_PRICE_China_10Y_Bond_bond: 58 valores nulos
+2025-05-22 16:50:09,484 - WARNING -   - MoM_AAA_Corporate_Bond_AAA_Spread_bond: 18 valores nulos
+2025-05-22 16:50:09,484 - WARNING -   - rolling_std_AAA_Corporate_Bond_AAA_Spread_bond: 17 valores nulos
+2025-05-22 16:50:09,488 - WARNING -   - 3M_change_AAA_Corporate_Bond_AAA_Spread_bond: 57 valores nulos
+2025-05-22 16:50:09,489 - WARNING -   - 3M_change_PRICE_CrudeOil_WTI_commodities: 57 valores nulos
+2025-05-22 16:50:09,489 - WARNING -   - zscore_PRICE_Silver_Spot_commodities: 57 valores nulos
+2025-05-22 16:50:09,489 - WARNING -   - rolling_std_PRICE_Copper_Futures_commodities: 18 valores nulos
+2025-05-22 16:50:09,491 - WARNING -   - momentum_PRICE_Platinum_Spot_commodities: 9 valores nulos
+2025-05-22 16:50:09,491 - WARNING -   - zscore_PRICE_Platinum_Spot_commodities: 56 valores nulos
+2025-05-22 16:50:09,491 - WARNING -   - 6M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index: 133 valores nulos
+2025-05-22 16:50:09,495 - WARNING -   - YTD_Actual_US_ConferenceBoard_LEI_leading_economic_index: 17 valores nulos
+2025-05-22 16:50:09,496 - WARNING -   - minmax_Actual_US_ConferenceBoard_LEI_leading_economic_index: 17 valores nulos
+2025-05-22 16:50:09,496 - WARNING -   - 3M_change_Actual_Japan_Leading_Indicator_leading_economic_index: 64 valores nulos
+2025-05-22 16:50:09,497 - WARNING -   - 6M_change_Actual_Japan_Leading_Indicator_leading_economic_index: 122 valores nulos
+2025-05-22 16:50:09,497 - WARNING -   - YTD_Actual_Japan_Leading_Indicator_leading_economic_index: 6 valores nulos
+2025-05-22 16:50:09,497 - WARNING -   - minmax_Actual_Japan_Leading_Indicator_leading_economic_index: 6 valores nulos
+2025-05-22 16:50:09,499 - WARNING -   - zscore_PRICE_EUR_USD_Spot_exchange_rate: 56 valores nulos
+2025-05-22 16:50:09,501 - WARNING -   - rolling_std_PRICE_GBP_USD_Spot_exchange_rate: 17 valores nulos
+2025-05-22 16:50:09,502 - WARNING -   - rolling_std_PRICE_JPY_USD_Spot_exchange_rate: 17 valores nulos
+2025-05-22 16:50:09,502 - WARNING -   - zscore_PRICE_JPY_USD_Spot_exchange_rate: 56 valores nulos
+2025-05-22 16:50:09,503 - WARNING -   - 3M_change_PRICE_CNY_USD_Spot_exchange_rate: 57 valores nulos
+2025-05-22 16:50:09,503 - WARNING -   - 6M_change_PRICE_CNY_USD_Spot_exchange_rate: 115 valores nulos
+2025-05-22 16:50:09,503 - WARNING -   - zscore_PRICE_CNY_USD_Spot_exchange_rate: 56 valores nulos
+2025-05-22 16:50:09,503 - WARNING -   - 6M_change_PRICE_CAD_USD_Spot_exchange_rate: 115 valores nulos
+2025-05-22 16:50:09,503 - WARNING -   - zscore_PRICE_CAD_USD_Spot_exchange_rate: 56 valores nulos
+2025-05-22 16:50:09,505 - WARNING -   - zscore_PRICE_MXN_USD_Spot_exchange_rate: 56 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - 6M_change_PRICE_EUR_GBP_Cross_exchange_rate: 115 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - zscore_PRICE_EUR_GBP_Cross_exchange_rate: 56 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - momentum_PRICE_Shanghai_Composite_index_pricing: 10 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - zscore_PRICE_Shanghai_Composite_index_pricing: 57 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - Actual_US_Philly_Fed_Index_business_confidence: 10 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - Actual_China_PMI_Manufacturing_economics: 20 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - Actual_BOJ_Policy_Rate_economics: 12 valores nulos
+2025-05-22 16:50:09,506 - WARNING -   - Actual_China_Exports_exports: 5 valores nulos
+2025-05-22 16:50:09,512 - WARNING -   - Actual_Eurozone_Unemployment_Rate_unemployment_rate: 4 valores nulos
+2025-05-22 16:50:14,496 - INFO - Dataset final guardado en 'C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx' con forma (2807, 54) en 4.98 segundos.
+2025-05-22 16:50:14,496 - INFO - Tamaño del archivo: 1.30 MB
+2025-05-22 16:50:14,496 - INFO - ============================================================
+2025-05-22 16:50:14,496 - INFO - PROCESO COMPLETADO EN 3m 43.18s
+2025-05-22 16:50:14,496 - INFO - Features originales: 145
+2025-05-22 16:50:14,496 - INFO - Features seleccionadas: 52 (35.9%)
+2025-05-22 16:50:14,502 - INFO - Reducción: 93 features (64.1%)
+2025-05-22 16:50:14,502 - INFO - Archivo final: C:\Users\saule\Desktop\Pipeline\UltimoHadid.exe\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx
+2025-05-22 16:50:14,505 - INFO - ============================================================

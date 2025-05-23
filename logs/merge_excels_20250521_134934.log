@@ -1,0 +1,19 @@
+2025-05-21 13:49:34,187 - INFO - === INICIANDO PROCESO DE COMBINACIÓN DE ARCHIVOS EXCEL ===
+2025-05-21 13:49:34,211 - INFO - Se encontraron 4 archivos Excel en la carpeta.
+2025-05-21 13:49:34,211 - INFO - Cargando archivo: datos_economicos_normales_procesados.xlsx
+2025-05-21 13:49:38,049 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado en 3.84s con 4157 filas.
+2025-05-21 13:49:38,049 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado correctamente con 4157 filas
+2025-05-21 13:49:38,049 - INFO - Después de filtrar por fecha: 4157 filas
+2025-05-21 13:49:38,049 - INFO - Cargando archivo: datos_economicos_other_procesados.xlsx
+2025-05-21 13:49:39,108 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado en 1.06s con 8675 filas.
+2025-05-21 13:49:39,115 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado correctamente con 8675 filas
+2025-05-21 13:49:39,115 - INFO - Después de filtrar por fecha: 8675 filas
+2025-05-21 13:49:39,115 - INFO - Cargando archivo: datos_economicos_procesados_cp.xlsx
+2025-05-21 13:49:40,612 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado en 1.50s con 4203 filas.
+2025-05-21 13:49:40,612 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado correctamente con 4203 filas
+2025-05-21 13:49:40,612 - INFO - Después de filtrar por fecha: 4203 filas
+2025-05-21 13:49:40,612 - INFO - Cargando archivo: datos_economicos_procesados_Fred.xlsx
+2025-05-21 13:49:42,930 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado en 2.32s con 4140 filas.
+2025-05-21 13:49:42,930 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado correctamente con 4140 filas
+2025-05-21 13:49:42,934 - INFO - Después de filtrar por fecha: 4140 filas
+2025-05-21 13:49:42,934 - INFO - Combinando DataFrame 1 con el resultado (4157 filas + 8675 filas)...
