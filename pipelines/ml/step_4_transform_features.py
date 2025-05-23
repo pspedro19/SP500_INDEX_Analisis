@@ -489,6 +489,75 @@ def transform_unemployment_rate(df, target_column, id_column='id'):
     return df
 
 # ================================
+# FUNCIONES AUXILIARES PARA MERGE SEGURO
+# ================================
+
+def check_for_duplicate_transformations(transformed_dfs):
+    """
+    Verifica y reporta posibles transformaciones duplicadas
+    """
+    all_columns = []
+    duplicate_sources = {}
+    
+    for i, df in enumerate(transformed_dfs):
+        data_cols = [col for col in df.columns if col not in ['date', 'id']]
+        for col in data_cols:
+            if col in all_columns:
+                if col not in duplicate_sources:
+                    duplicate_sources[col] = []
+                duplicate_sources[col].append(i)
+            all_columns.append(col)
+    
+    if duplicate_sources:
+        print("⚠️ COLUMNAS DUPLICADAS DETECTADAS:")
+        for col, sources in duplicate_sources.items():
+            print(f"   - {col}: aparece en DataFrames {sources}")
+    
+    return duplicate_sources
+
+def safe_merge_dataframes(all_dfs):
+    """
+    Función para hacer merge seguro de DataFrames evitando columnas duplicadas
+    """
+    if not all_dfs:
+        print("❌ No se encontraron series válidas para procesar.")
+        return None
+    
+    # Comenzar con el primer DataFrame
+    final_df = all_dfs[0].copy()
+    
+    print(f"🔍 Comenzando merge con DataFrame base: {len(final_df.columns)} columnas")
+    
+    for i, tdf in enumerate(all_dfs[1:], 1):
+        print(f"🔍 Procesando DataFrame {i}: {len(tdf.columns)} columnas")
+        
+        # Identificar columnas que NO son 'date' e 'id'
+        cols_to_merge = [col for col in tdf.columns if col not in ['date', 'id']]
+        
+        # Verificar si alguna de estas columnas ya existe en final_df
+        existing_cols = [col for col in cols_to_merge if col in final_df.columns]
+        
+        if existing_cols:
+            print(f"⚠️ Columnas duplicadas detectadas: {existing_cols[:3]}... (total: {len(existing_cols)})")
+            
+            # Crear un DataFrame temporal sin las columnas duplicadas
+            cols_to_keep = ['date', 'id'] + [col for col in cols_to_merge if col not in existing_cols]
+            tdf_clean = tdf[cols_to_keep].copy()
+            
+            if len(cols_to_keep) > 2:  # Si hay más columnas además de date e id
+                final_df = pd.merge(final_df, tdf_clean, on=['date', 'id'], how='outer')
+                print(f"✅ Merge exitoso con {len(cols_to_keep)-2} columnas nuevas")
+            else:
+                print(f"⏭️ DataFrame {i} omitido (solo columnas duplicadas)")
+        else:
+            # No hay columnas duplicadas, hacer merge normal
+            final_df = pd.merge(final_df, tdf, on=['date', 'id'], how='outer')
+            print(f"✅ Merge exitoso con {len(cols_to_merge)} columnas nuevas")
+    
+    print(f"🎯 DataFrame final: {len(final_df)} filas × {len(final_df.columns)} columnas")
+    return final_df
+
+# ================================
 # MAIN PIPELINE PARA 1MONTH
 # ================================
 def main():
@@ -827,14 +896,35 @@ def main():
         "PRICE_US_Unemployment_Rate_unemployment_rate": "M",
         "PRICE_US_Nonfarm_Payrolls_unemployment_rate": "M",
         "PRICE_US_Initial_Jobless_Claims_unemployment_rate": "M",
-        "PRICE_US_JOLTS_unemployment_rate": "M"
+        "PRICE_US_JOLTS_unemployment_rate": "M",
+        # AGREGAR LAS COLUMNAS FALTANTES QUE ESTÁN CAUSANDO PROBLEMAS:
+        "Actual_Eurozone_Unemployment_Rate_unemployment_rate": "M",
+        "UNRATE_US_Unemployment_Rate_unemployment_rate": "M",
+        "PAYEMS_US_Nonfarm_Payrolls_unemployment_rate": "M",
+        "ICSA_US_Initial_Jobless_Claims_unemployment_rate": "M",
+        "DGS10_DGS10_bond": "M",
+        # Agregar otras columnas con frecuencia específica según sea necesario
     }
     
     # Permitir inferir frecuencia para columnas no listadas explícitamente
+    # CAMBIO: Ser más conservador - si no está en la lista, asumir que NO es diaria
+    print(f"\n🔍 Revisando frecuencias de {len(df.columns)} columnas...")
+    
     for col in df.columns:
         if col not in column_frequencies and col not in ['date', 'id']:
-            # Por defecto, asumir frecuencia diaria para columnas no listadas
-            column_frequencies[col] = "D"
+            # NUEVO: Inferir frecuencia basado en patrones del nombre
+            if any(keyword in col.lower() for keyword in ['actual_', 'rate', 'unemployment', 'cpi', 'ppi', 'gdp', 'ism', 'confidence']):
+                # Estas son típicamente mensuales o trimestrales
+                column_frequencies[col] = "M"
+                print(f"🔍 Columna '{col}' inferida como MENSUAL (M)")
+            elif 'price_' in col.lower() and any(market in col.lower() for market in ['bond', 'spot', 'index', 'composite']):
+                # Estas son típicamente diarias
+                column_frequencies[col] = "D"
+                print(f"🔍 Columna '{col}' inferida como DIARIA (D)")
+            else:
+                # Por defecto, asumir mensual para ser conservador
+                column_frequencies[col] = "M"
+                print(f"🔍 Columna '{col}' inferida como MENSUAL (M) por defecto conservador")
 
     # Definición de funciones de transformación por categoría (sin cambios)
     categories = {
@@ -878,42 +968,136 @@ def main():
     for cat, cols in grouped.items():
         print(f"{cat}: {len(cols)} columnas")
 
-    # Transformar las columnas según su categoría
+    # Transformar las columnas según su categoría - CÓDIGO CORREGIDO
     transformed_dfs = []
     untouched_cols = []
+    processed_columns = set()  # ← NUEVO: Rastrear columnas ya procesadas
+
+    print("\n🔄 Iniciando transformaciones por categoría...")
 
     for cat, cols in grouped.items():
+        if not cols:
+            continue
+            
         func = categories[cat]
+        print(f"\n📊 Procesando categoría '{cat}': {len(cols)} columnas")
+        
         for col in cols:
             if col not in df.columns:
+                print(f"⚠️ Columna '{col}' no encontrada en DataFrame. Se omite.")
                 continue
+                
+            # NUEVO: Verificar si ya procesamos esta columna
+            if col in processed_columns:
+                print(f"⏭️ Columna '{col}' ya procesada. Se omite duplicado.")
+                continue
+
+            # Obtener frecuencia explícitamente y validar
+            freq = column_frequencies.get(col, 'D')  # Default a diaria
+
+            # ⚠️ Si la columna es la variable objetivo, transformarla de todos modos
+            if freq != 'D' and col != variable_objetivo:
+                print(f"⏭️ Columna '{col}' con frecuencia '{freq}' no es diaria. No se transforma.")
+                
+                # Agregar como columna no transformada SOLO si no está ya procesada
+                temp_df = df[['date', 'id', col]].copy()
+                temp_df[col] = pd.to_numeric(temp_df[col], errors='coerce')
+                
+                if not temp_df[col].dropna().empty:
+                    untouched_cols.append(temp_df)
+                processed_columns.add(col)  # ← NUEVO: Marcar como procesada
+                continue
+
+            # Crear DataFrame temporal para esta columna
             temp_df = df[['date', 'id', col]].copy()
             temp_df[col] = pd.to_numeric(temp_df[col], errors='coerce')
+
             if temp_df[col].dropna().empty:
-                print(f"⚠️  Columna '{col}' está vacía o no tiene valores numéricos. Se omite.")
+                print(f"⚠️ Columna '{col}' está vacía o no tiene valores numéricos. Se omite.")
                 continue
-            freq = column_frequencies.get(col, "D")  # Por defecto usar "D" si no está en el diccionario
-            if freq != 'D':
-                print(f"⏭️  Columna '{col}' con frecuencia '{freq}' no es diaria. No se transforma.")
-                untouched_cols.append(temp_df)
-                continue
-            print(f"⚙️  Transformando '{col}' en categoría '{cat}'")
+
+            print(f"⚙️ Transformando '{col}' en categoría '{cat}'")
+            
             try:
+                # Aplicar transformación
                 transformed = func(temp_df, target_column=col, id_column='id')
                 transformed_dfs.append(transformed)
+                processed_columns.add(col)  # ← NUEVO: Marcar como procesada
+                
+                print(f"✅ Transformación exitosa: {len(transformed.columns)} columnas generadas")
+                
             except Exception as e:
                 print(f"❌ Error al transformar '{col}': {e}")
-                untouched_cols.append(temp_df)  # Agregar como no transformada si falla
+                
+                # Agregar como no transformada si falla
+                untouched_cols.append(temp_df)
+                processed_columns.add(col)  # ← NUEVO: Marcar como procesada
 
-    # Combinar todos los DataFrames transformados
-    all_dfs = transformed_dfs + untouched_cols
-    if not all_dfs:
-        print("❌ No se encontraron series válidas para procesar.")
+    print(f"\n📊 Resumen de transformaciones:")
+    print(f"   - Columnas transformadas: {len(transformed_dfs)}")
+    print(f"   - Columnas no transformadas: {len(untouched_cols)}")
+    print(f"   - Total columnas procesadas: {len(processed_columns)}")
+
+    # Verificar duplicados antes del merge y limpiar
+    print("\n🔍 Verificando duplicados antes del merge...")
+    duplicates = check_for_duplicate_transformations(transformed_dfs)
+
+    # NUEVA ESTRATEGIA: Limpiar duplicados antes del merge
+    print("\n🧹 Limpiando DataFrames duplicados...")
+    
+    # Crear un conjunto para rastrear todas las columnas ya incluidas
+    all_included_columns = set(['date', 'id'])
+    cleaned_dfs = []
+    
+    # Procesar transformed_dfs primero (tienen prioridad)
+    for i, df in enumerate(transformed_dfs):
+        data_cols = [col for col in df.columns if col not in ['date', 'id']]
+        
+        # Filtrar solo las columnas que no hemos visto antes
+        new_cols = [col for col in data_cols if col not in all_included_columns]
+        
+        if new_cols:
+            # Crear DataFrame con solo las columnas nuevas
+            cols_to_keep = ['date', 'id'] + new_cols
+            cleaned_df = df[cols_to_keep].copy()
+            cleaned_dfs.append(cleaned_df)
+            
+            # Actualizar el conjunto de columnas incluidas
+            all_included_columns.update(new_cols)
+            print(f"✅ DataFrame transformado {i}: {len(new_cols)} columnas únicas")
+        else:
+            print(f"⏭️ DataFrame transformado {i}: todas las columnas ya existen")
+    
+    # Procesar untouched_cols después
+    for i, df in enumerate(untouched_cols):
+        data_cols = [col for col in df.columns if col not in ['date', 'id']]
+        
+        # Filtrar solo las columnas que no hemos visto antes
+        new_cols = [col for col in data_cols if col not in all_included_columns]
+        
+        if new_cols:
+            # Crear DataFrame con solo las columnas nuevas
+            cols_to_keep = ['date', 'id'] + new_cols
+            cleaned_df = df[cols_to_keep].copy()
+            cleaned_dfs.append(cleaned_df)
+            
+            # Actualizar el conjunto de columnas incluidas
+            all_included_columns.update(new_cols)
+            print(f"✅ DataFrame no transformado {i}: {len(new_cols)} columnas únicas")
+        else:
+            print(f"⏭️ DataFrame no transformado {i}: todas las columnas ya existen")
+
+    # Hacer merge simple ya que no hay duplicados
+    if not cleaned_dfs:
+        print("❌ No hay DataFrames para hacer merge.")
         return
-
-    final_df = all_dfs[0]
-    for tdf in all_dfs[1:]:
-        final_df = pd.merge(final_df, tdf, on=['date', 'id'], how='outer')
+    
+    final_df = cleaned_dfs[0].copy()
+    for i, df in enumerate(cleaned_dfs[1:], 1):
+        print(f"🔗 Merging DataFrame {i}: {len(df.columns)} columnas")
+        final_df = pd.merge(final_df, df, on=['date', 'id'], how='outer')
+    
+    print(f"🎯 Merge completado: {len(final_df)} filas × {len(final_df.columns)} columnas")
 
     # CAMBIO IMPORTANTE: Modificar esta parte para usar imputación en lugar de eliminación
     print(f"🔍 Debug: Cantidad de filas antes de procesar datos faltantes: {len(final_df)}")

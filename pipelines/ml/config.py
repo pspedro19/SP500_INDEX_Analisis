@@ -38,7 +38,7 @@ CSV_REPORTS_DIR = os.path.join(REPORTS_DIR, "csv")
 # ================================
 # COLUMNAS COMUNES
 # ================================
-DATE_COL = "date"
+DATE_COL = "fecha"
 ID_COL = "id"
 TARGET_SUFFIX = "_Target"
 

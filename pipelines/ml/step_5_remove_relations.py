@@ -55,31 +55,8 @@ def detect_feature_frequency(df, col, date_col=DATE_COL):
     else:
         return 'Q'  # Trimestral o menor frecuencia
 
-def create_lagged_target(df, target_col, lag=20):
-    """
-    Crea una versión retrocedida (lagged) del target.
-    
-    Args:
-        df (DataFrame): DataFrame con el target
-        target_col (str): Nombre de la columna target
-        lag (int): Número de días para el retroceso
-        
-    Returns:
-        DataFrame: DataFrame con la columna target original y la columna con lag
-    """
-    logging.info(f"Creando target con lag de {lag} días para '{target_col}'")
-    df_copy = df.copy()
-    
-    # Ordenar por fecha si existe la columna
-    if DATE_COL in df_copy.columns:
-        df_copy = df_copy.sort_values(DATE_COL)
-    
-    # Crear la columna con lag
-    target_lagged_col = f"{target_col}_lagged_{lag}"
-    df_copy[target_lagged_col] = df_copy[target_col].shift(-lag)
-    
-    logging.info(f"Columna con lag creada: {target_lagged_col}")
-    return df_copy
+# FUNCIÓN REMOVIDA: create_lagged_target
+# Esta función ya no se necesita ya que no aplicaremos LAG
 
 def remove_derived_target_features(df, target_col, date_col=DATE_COL):
     """
@@ -621,13 +598,14 @@ def main():
     4. Eliminar features correlacionadas por grupos de frecuencia
     5. Reducir multicolinealidad mediante VIF adaptado a frecuencias
     6. Generar informe detallado de variables
-    7. Aplicar lag al target
+    7. NOTA: Se removió la aplicación de LAG al target
     """
     logging.info("Iniciando proceso de selección y filtrado de features para series temporales...")
     
     # Usar rutas definidas en config
     archivo_entrada = os.path.join(PROCESSED_DIR, "datos_economicos_1month_procesados.xlsx")
     archivo_salida = os.path.join(PROCESSED_DIR, "ULTIMO_S&P500_final.xlsx")
+    archivo_informe = os.path.join(PROCESSED_DIR, "informe_variables.xlsx")
     
     # Verificar existencia del archivo
     if not os.path.exists(archivo_entrada):
@@ -685,7 +663,8 @@ def main():
         features_corr, dropped_corr = remove_correlated_features_by_frequency(temp_features, target)
         features_corr = features_corr.drop(columns=[DATE_COL]) if DATE_COL in features_corr.columns else features_corr
     else:
-        features_corr, dropped_corr = remove_correlated_features(numeric_features, target)
+        # Si no hay date_data, usar una función más simple
+        features_corr, dropped_corr = remove_correlated_features_by_frequency(numeric_features, target)
         
     if dropped_corr:
         logging.info(f"Features correlacionadas eliminadas: {len(dropped_corr)}")
@@ -699,7 +678,8 @@ def main():
         if DATE_COL in features_vif.columns:
             features_vif = features_vif.drop(columns=[DATE_COL])
     else:
-        features_vif, final_vif_df = iterative_vif_reduction(features_corr)
+        # Si no hay date_data, usar función más simple
+        features_vif, final_vif_df = iterative_vif_reduction_by_frequency(features_corr)
         
     logging.info(f"Features finales tras reducción VIF: {features_vif.shape[1]}")
     
@@ -735,15 +715,15 @@ def main():
     except Exception as e:
         logging.warning(f"No se pudo generar el informe detallado: {str(e)}")
     
-    # 7. Añadir lag al target (20 días)
-    lag = 20
-    final_df_with_lag = create_lagged_target(final_df, target_col, lag)
+    # 7. NOTA: Se removió la aplicación de LAG al target
+    # El dataset final mantiene el target original sin desplazamiento temporal
+    logging.info("✅ LAG al target removido - se mantiene el target original")
     
-    # 8. Guardar resultado
-    final_df_with_lag.to_excel(archivo_salida, index=False)
-    logging.info(f"Dataset final con lag de {lag} días guardado en: {archivo_salida}")
-    logging.info(f"Dimensiones finales: {final_df_with_lag.shape[0]} filas, {final_df_with_lag.shape[1]} columnas")
-    logging.info(f"Features finales: {final_df_with_lag.shape[1] - (1 if date_data is not None else 0) - 2}")  # -2 por el target y el target con lag
+    # 8. Guardar resultado final (sin LAG)
+    final_df.to_excel(archivo_salida, index=False)
+    logging.info(f"Dataset final SIN LAG guardado en: {archivo_salida}")
+    logging.info(f"Dimensiones finales: {final_df.shape[0]} filas, {final_df.shape[1]} columnas")
+    logging.info(f"Features finales: {final_df.shape[1] - (1 if date_data is not None else 0) - 1}")  # -1 solo por el target (sin target con lag)
 
 if __name__ == "__main__":
     main()

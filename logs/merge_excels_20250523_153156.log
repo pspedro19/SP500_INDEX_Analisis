@@ -1,0 +1,23 @@
+2025-05-23 15:31:56,526 - INFO - === INICIANDO PROCESO DE COMBINACIÓN DE ARCHIVOS EXCEL ===
+2025-05-23 15:31:56,543 - INFO - Se encontraron 5 archivos Excel en la carpeta.
+2025-05-23 15:31:56,543 - INFO - Cargando archivo: datos_banco_republica_procesados.xlsx
+2025-05-23 15:31:59,855 - INFO - Archivo datos_banco_republica_procesados.xlsx cargado en 3.31s con 23850 filas.
+2025-05-23 15:31:59,855 - INFO - Archivo datos_banco_republica_procesados.xlsx cargado correctamente con 23850 filas
+2025-05-23 15:31:59,860 - INFO - Después de filtrar por fecha: 23850 filas
+2025-05-23 15:31:59,860 - INFO - Cargando archivo: datos_economicos_normales_procesados.xlsx
+2025-05-23 15:32:02,698 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado en 2.84s con 4157 filas.
+2025-05-23 15:32:02,700 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado correctamente con 4157 filas
+2025-05-23 15:32:02,700 - INFO - Después de filtrar por fecha: 4157 filas
+2025-05-23 15:32:02,700 - INFO - Cargando archivo: datos_economicos_other_procesados.xlsx
+2025-05-23 15:32:03,435 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado en 0.73s con 8675 filas.
+2025-05-23 15:32:03,435 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado correctamente con 8675 filas
+2025-05-23 15:32:03,436 - INFO - Después de filtrar por fecha: 8675 filas
+2025-05-23 15:32:03,436 - INFO - Cargando archivo: datos_economicos_procesados_cp.xlsx
+2025-05-23 15:32:04,916 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado en 1.48s con 4214 filas.
+2025-05-23 15:32:04,916 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado correctamente con 4214 filas
+2025-05-23 15:32:04,916 - INFO - Después de filtrar por fecha: 4214 filas
+2025-05-23 15:32:04,916 - INFO - Cargando archivo: datos_economicos_procesados_Fred.xlsx
+2025-05-23 15:32:06,947 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado en 2.03s con 4153 filas.
+2025-05-23 15:32:06,947 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado correctamente con 4153 filas
+2025-05-23 15:32:06,947 - INFO - Después de filtrar por fecha: 4153 filas
+2025-05-23 15:32:06,947 - INFO - Combinando DataFrame 1 con el resultado (23850 filas + 4157 filas)...
