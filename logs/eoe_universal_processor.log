@@ -1,0 +1,83 @@
+2025-05-27 12:05:41,959 [INFO] ================================================================================
+2025-05-27 12:05:41,978 [INFO] Directorio de datos: data/0_raw
+2025-05-27 12:05:41,980 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe
+2025-05-27 12:05:41,981 [INFO] Fecha y hora: 2025-05-27 12:05:41
+2025-05-27 12:05:41,981 [INFO] ================================================================================
+2025-05-27 12:05:43,846 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 12:05:43,895 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 12:05:48,616 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICI): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 12:05:48,616 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICCO): 100.00% desde 1980-06-01 a 2025-03-01
+2025-05-27 12:05:52,019 [INFO] - Tiempo: 10.03 segundos
+2025-05-27 12:05:52,019 [INFO] - Archivos procesados: 2
+2025-05-27 12:05:52,020 [INFO] - Índices detectados: ICI, ICCO
+2025-05-27 12:05:52,020 [INFO] - Archivo de salida: datos_eoe_universal_procesados.xlsx
+2025-05-27 12:15:31,718 [INFO] ================================================================================
+2025-05-27 12:15:31,731 [INFO] Directorio de datos: data/0_raw
+2025-05-27 12:15:31,731 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe
+2025-05-27 12:15:31,732 [INFO] Fecha y hora: 2025-05-27 12:15:31
+2025-05-27 12:15:31,732 [INFO] ================================================================================
+2025-05-27 12:15:33,122 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 12:15:33,154 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 12:15:37,019 [INFO] - EOC_Abril_2025_Histórico (1) (ICC): 100.00% desde 2001-11-01 a 2025-04-01
+2025-05-27 12:15:37,022 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICI): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 12:15:37,022 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICCO): 100.00% desde 1980-06-01 a 2025-03-01
+2025-05-27 12:15:41,313 [INFO] - Tiempo: 9.57 segundos
+2025-05-27 12:15:41,315 [INFO] - Archivos procesados: 3
+2025-05-27 12:15:41,315 [INFO] - Índices detectados: ICC, ICI, ICCO
+2025-05-27 12:15:41,319 [INFO] - Archivo de salida: datos_eoe_universal_procesados.xlsx
+2025-05-27 12:29:59,801 [INFO] ================================================================================
+2025-05-27 12:29:59,810 [INFO] Directorio de datos: data/0_raw
+2025-05-27 12:29:59,811 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe
+2025-05-27 12:29:59,811 [INFO] Fecha y hora: 2025-05-27 12:29:59
+2025-05-27 12:29:59,812 [INFO] ================================================================================
+2025-05-27 12:30:01,083 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 12:30:01,101 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 12:30:04,012 [INFO] - EOC_Abril_2025_Histórico (1) (ICC): 100.00% desde 2001-11-01 a 2025-04-01
+2025-05-27 12:30:04,012 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICI): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 12:30:04,013 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICCO): 100.00% desde 1980-06-01 a 2025-03-01
+2025-05-27 12:30:04,109 [INFO] - Tiempo: 4.29 segundos
+2025-05-27 12:30:04,110 [INFO] - Archivos procesados: 3
+2025-05-27 12:30:04,110 [INFO] - Índices detectados: ICC, ICI, ICCO
+2025-05-27 12:30:04,110 [INFO] - Archivo de salida: datos_eoe_universal_procesados.xlsx
+2025-05-27 13:39:22,938 [INFO] ================================================================================
+2025-05-27 13:39:23,009 [INFO] Directorio de datos: data/0_raw
+2025-05-27 13:39:23,010 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe
+2025-05-27 13:39:23,011 [INFO] Fecha y hora: 2025-05-27 13:39:23
+2025-05-27 13:39:23,012 [INFO] ================================================================================
+2025-05-27 13:39:24,827 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:39:24,983 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:39:28,737 [INFO] - EOC_Abril_2025_Histórico (1) (ICC): 100.00% desde 2001-11-01 a 2025-04-01
+2025-05-27 13:39:28,737 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICI): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 13:39:28,737 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICCO): 100.00% desde 1980-06-01 a 2025-03-01
+2025-05-27 13:39:28,832 [INFO] - Tiempo: 5.82 segundos
+2025-05-27 13:39:28,832 [INFO] - Archivos procesados: 3
+2025-05-27 13:39:28,832 [INFO] - Índices detectados: ICC, ICI, ICCO
+2025-05-27 13:39:28,833 [INFO] - Archivo de salida: datos_eoe_universal_procesados.xlsx
+2025-05-27 13:42:08,188 [INFO] ================================================================================
+2025-05-27 13:42:08,198 [INFO] Directorio de datos: data/0_raw
+2025-05-27 13:42:08,199 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe
+2025-05-27 13:42:08,199 [INFO] Fecha y hora: 2025-05-27 13:42:08
+2025-05-27 13:42:08,199 [INFO] ================================================================================
+2025-05-27 13:42:09,587 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:42:09,619 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:42:11,993 [INFO] - EOC_Abril_2025_Histórico (1) (ICC): 100.00% desde 2001-11-01 a 2025-04-01
+2025-05-27 13:42:11,994 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICI): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 13:42:11,994 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICCO): 100.00% desde 1980-06-01 a 2025-03-01
+2025-05-27 13:42:14,449 [INFO] - Tiempo: 6.25 segundos
+2025-05-27 13:42:14,450 [INFO] - Archivos procesados: 3
+2025-05-27 13:42:14,450 [INFO] - Índices detectados: ICC, ICI, ICCO
+2025-05-27 13:42:14,451 [INFO] - Archivo de salida: datos_eoe_universal_procesados.xlsx
+2025-05-27 13:44:35,559 [INFO] ================================================================================
+2025-05-27 13:44:35,569 [INFO] Directorio de datos: data/0_raw
+2025-05-27 13:44:35,569 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe
+2025-05-27 13:44:35,570 [INFO] Fecha y hora: 2025-05-27 13:44:35
+2025-05-27 13:44:35,570 [INFO] ================================================================================
+2025-05-27 13:44:36,936 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:44:36,967 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:44:40,013 [INFO] - EOC_Abril_2025_Histórico (1) (ICC): 100.00% desde 2001-11-01 a 2025-04-01
+2025-05-27 13:44:40,013 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICI): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 13:44:40,014 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICCO): 100.00% desde 1980-06-01 a 2025-03-01
+2025-05-27 13:44:43,441 [INFO] - Tiempo: 7.87 segundos
+2025-05-27 13:44:43,441 [INFO] - Archivos procesados: 3
+2025-05-27 13:44:43,443 [INFO] - Índices detectados: ICC, ICI, ICCO
+2025-05-27 13:44:43,443 [INFO] - Archivo de salida: datos_eoe_universal_procesados.xlsx

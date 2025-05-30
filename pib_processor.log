@@ -1,0 +1,34 @@
+2025-05-30 09:48:43,370 [INFO] ================================================================================
+2025-05-30 09:48:43,370 [INFO] 🏗️ PIB PROCESSOR MEJORADO - Datos Trimestrales
+2025-05-30 09:48:43,370 [INFO] 📅 Fecha de procesamiento: 2025-05-30 09:48:43
+2025-05-30 09:48:43,370 [INFO] ================================================================================
+2025-05-30 09:48:43,370 [INFO] 🚀 Iniciando procesamiento completo PIB...
+2025-05-30 09:48:43,375 [INFO] 🔍 Buscando archivo PIB...
+2025-05-30 09:48:43,375 [INFO]    📁 Explorando: .
+2025-05-30 09:48:43,437 [INFO] ✅ Archivo PIB encontrado: .\Data\0_raw\bond\anex-ProduccionConstantes-Itrim2025.xlsx
+2025-05-30 09:48:43,437 [INFO] 📥 Leyendo archivo PIB: .\Data\0_raw\bond\anex-ProduccionConstantes-Itrim2025.xlsx
+2025-05-30 09:48:44,252 [INFO]    📊 Archivo cargado: 100 filas, 84 columnas
+2025-05-30 09:48:44,252 [INFO]    🎯 Concepto en fila 28: 'Producto Interno Bruto'
+2025-05-30 09:48:44,332 [INFO] ✅ PIB trimestral extraído exitosamente:
+2025-05-30 09:48:44,333 [INFO]    📊 Total trimestres: 81
+2025-05-30 09:48:44,333 [INFO]    📅 Período: 2005-01-01 a 2025-01-01
+2025-05-30 09:48:44,333 [INFO]    💰 PIB: Min=121,108, Max=265,546, Promedio=191,889
+2025-05-30 09:48:44,343 [INFO] 📅 Índice diario generado: 7306 días
+2025-05-30 09:48:44,343 [INFO]    📅 Desde: 2005-01-01
+2025-05-30 09:48:44,343 [INFO]    📅 Hasta: 2025-01-01
+2025-05-30 09:48:44,345 [INFO] 🔗 Creando serie diaria con forward-fill...
+2025-05-30 09:48:44,359 [INFO] ✅ Serie diaria creada: 7306 días
+2025-05-30 09:48:44,360 [INFO]    📊 Cobertura: 7306/7306 días (100.0%)
+2025-05-30 09:48:44,360 [INFO] 💾 Guardando resultados en: pib_diario_procesado.xlsx
+2025-05-30 09:48:45,494 [INFO] ✅ Archivo guardado exitosamente: pib_diario_procesado.xlsx
+2025-05-30 09:48:45,494 [INFO] 📊 Hojas creadas: PIB_Diario, PIB_Trimestral, Estadisticas
+2025-05-30 09:48:45,494 [INFO] 
+================================================================================
+2025-05-30 09:48:45,494 [INFO] 🎯 PROCESAMIENTO PIB COMPLETADO EXITOSAMENTE
+2025-05-30 09:48:45,494 [INFO] ================================================================================
+2025-05-30 09:48:45,494 [INFO] ⏱️  Tiempo total: 2.12 segundos
+2025-05-30 09:48:45,494 [INFO] 📁 Archivo procesado: .\Data\0_raw\bond\anex-ProduccionConstantes-Itrim2025.xlsx
+2025-05-30 09:48:45,494 [INFO] 📊 Trimestres procesados: 81
+2025-05-30 09:48:45,494 [INFO] 📅 Período: 2005-01-01 a 2025-01-01
+2025-05-30 09:48:45,494 [INFO] 💾 Archivo guardado: pib_diario_procesado.xlsx
+2025-05-30 09:48:45,494 [INFO] ================================================================================
