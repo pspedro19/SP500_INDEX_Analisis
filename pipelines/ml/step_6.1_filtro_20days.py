@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Rutas de los archivos
-archivo1_ruta = r"C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\Data\2_processed\datos_economicos_1month_procesados.xlsx"
+archivo1_ruta = r"C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\Data\2_processed\datos_economicos_1month_SP500_INFERENCE.xlsx"
 archivo2_ruta = r"C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\Data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx"
 
 # Ruta para el archivo de salida
