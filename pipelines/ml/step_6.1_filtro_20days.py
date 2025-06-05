@@ -1,11 +1,6 @@
 import pandas as pd
 import os
 
-<<<<<<< HEAD
-# Rutas de los archivos
-archivo1_ruta = r"C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\Data\2_processed\datos_economicos_1month_SP500_INFERENCE.xlsx"
-archivo2_ruta = r"C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\Data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx"
-=======
 # Obtener el directorio actual y buscar la carpeta del proyecto
 directorio_actual = os.getcwd()
 directorio_proyecto = None
@@ -33,7 +28,6 @@ if directorio_proyecto is None:
 # Rutas de los archivos usando rutas relativas al proyecto
 archivo1_ruta = os.path.join(directorio_proyecto, "Data", "2_processed", "datos_economicos_1month_SP500_INFERENCE.xlsx")
 archivo2_ruta = os.path.join(directorio_proyecto, "Data", "3_trainingdata", "ULTIMO_S&P500_final_FPI.xlsx")
->>>>>>> 72d1a5de70d697d27da0fe65079b0cf71b11688e
 
 # Ruta para el archivo de salida
 directorio_salida = os.path.join(directorio_proyecto, "Data", "3_trainingdata")
