@@ -17,15 +17,25 @@ from pathlib import Path
 # Asegurar que podemos importar módulos desde el directorio actual
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Importar configuraciones centralizadas
-from pipelines.ml.config import (
-    ROOT, DATA_RAW, DATA_PREP, PROCESSED_DIR, TRAINING_DIR, 
-    RESULTS_DIR, METRICS_DIR, LOG_DIR, REPORTS_DIR, 
-    IMG_CHARTS, METRICS_CHARTS, CSV_REPORTS, ensure_directories
-)
+from src.core.config.settings import settings
+
+ROOT = settings.project_root
+DATA_RAW = settings.data_raw
+DATA_PREP = settings.data_prep
+PROCESSED_DIR = settings.processed_dir
+TRAINING_DIR = settings.training_dir
+RESULTS_DIR = settings.results_dir
+METRICS_DIR = settings.metrics_dir
+LOG_DIR = settings.log_dir
+REPORTS_DIR = settings.reports_dir
+IMG_CHARTS = settings.img_charts_dir
+METRICS_CHARTS = settings.metrics_charts_dir
+CSV_REPORTS = settings.csv_reports_dir
+ensure_directories = settings.ensure_dirs
+
 
 # Crear directorio para logs si no existe
-LOG_DIR.mkdir(parents=True, exist_ok=True)
+Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
 
 # Configurar logging
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -95,7 +105,7 @@ def generate_timeline_chart(timings):
     """
     try:
         from pipelines.ml.utils.plots import plot_pipeline_timeline
-        chart_path = REPORTS_DIR / "pipeline_timeline.png"
+        chart_path = Path(REPORTS_DIR) / "pipeline_timeline.png"
         plot_pipeline_timeline(timings, chart_path)
         logging.info(f"Gráfico de timeline generado: {chart_path}")
         return str(chart_path)
@@ -125,7 +135,7 @@ def generate_html_report(timings, results, start_time):
         
         # Encontrar imágenes generadas
         chart_files = []
-        for chart_dir in [IMG_CHARTS, METRICS_CHARTS]:
+        for chart_dir in [IMG_CHARTS_DIR, METRICS_CHARTS_DIR]:
             if os.path.exists(chart_dir):
                 chart_files.extend([
                     str(chart_dir / f) for f in os.listdir(chart_dir) 
@@ -243,7 +253,7 @@ def generate_html_report(timings, results, start_time):
         )
         
         # Guardar archivo HTML
-        report_path = REPORTS_DIR / "pipeline_report.html"
+        report_path = Path(REPORTS_DIR) / "pipeline_report.html"
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
         
@@ -270,11 +280,11 @@ def main():
         ("Paso 4: Transformación de Features", "pipelines/ml/step_4_transform_features.py"),
         ("Paso 5: Eliminación de Relaciones", "pipelines/ml/step_5_remove_relations.py"),
         ("Paso 6: Selección FPI", "pipelines/ml/step_6_fpi_selection.py"),
-        ("Paso 7: Entrenamiento de Modelos", "pipelines/ml/step_7_0_train_models_mejorado.py"),
+        ("Paso 7: Entrenamiento de Modelos", "pipelines/ml/step_7_0_train_models.py"),
         ("Paso 7.5: Ensamblado", "pipelines/ml/step_7_5_ensemble.py"),
         ("Paso 8: Preparación de Salida", "pipelines/ml/step_8_prepare_output.py"),
-        ("Paso 9: Backtest", "pipelines/ml/step_9_backtest_mejorado.py"),
-        ("Paso 10: Inferencia", "pipelines/ml/step_10_inference_mejorado.py")
+        ("Paso 9: Backtest", "pipelines/ml/step_9_backtest.py"),
+        ("Paso 10: Inferencia", "pipelines/ml/step_10_inference.py")
     ]
     
     # Almacenar resultados y tiempos
@@ -297,7 +307,7 @@ def main():
             break
     
     # Guardar tiempos en JSON para referencia
-    timings_file = REPORTS_DIR / "pipeline_timings.json"
+    timings_file = Path(REPORTS_DIR) / "pipeline_timings.json"
     with open(timings_file, 'w') as f:
         json.dump(timings, f, indent=4)
     logging.info(f"Tiempos del pipeline guardados en: {timings_file}")
