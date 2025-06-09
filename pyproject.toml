@@ -29,8 +29,20 @@ dependencies = [
     "openpyxl>=3.0.0",
     "ta>=0.10.0",
     "statsmodels>=0.13.0",
+    "black>=23.7.0",
+    "isort>=5.12.0",
+    "pytest>=7.4.0",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra"
+addopts = "-ra -q"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+line_length = 88
