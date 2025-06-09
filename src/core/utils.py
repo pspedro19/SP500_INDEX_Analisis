@@ -1,18 +1,12 @@
 import logging
+from src.config.logging_config import setup_logging
 import pandas as pd
 import re
 from datetime import datetime
 
 def configure_logging(log_file: str, logger_name: str = __name__):
     """Set up a basic logger writing both to a file and stdout."""
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s [%(levelname)s] %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
+    setup_logging(log_file)
     return logging.getLogger(logger_name)
 
 
