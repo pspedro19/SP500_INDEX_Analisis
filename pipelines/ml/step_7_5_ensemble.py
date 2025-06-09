@@ -10,11 +10,19 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import TimeSeriesSplit
 
 # Importar configuraciones
-from config import (
-    PROJECT_ROOT, MODELS_DIR, RESULTS_DIR, TRAINING_DIR, IMG_CHARTS_DIR,
-    LOCAL_REFINEMENT_DAYS, FORECAST_HORIZON_1MONTH, 
-    TRAIN_TEST_SPLIT_RATIO, DATE_COL, RANDOM_SEED, ensure_directories
-)
+from src.core.config.settings import settings
+
+PROJECT_ROOT = settings.project_root
+MODELS_DIR = settings.models_dir
+RESULTS_DIR = settings.results_dir
+TRAINING_DIR = settings.training_dir
+IMG_CHARTS_DIR = settings.img_charts_dir
+LOCAL_REFINEMENT_DAYS = settings.local_refinement_days
+FORECAST_HORIZON_1MONTH = settings.forecast_horizon_1month
+TRAIN_TEST_SPLIT_RATIO = settings.train_test_split_ratio
+DATE_COL = settings.date_col
+RANDOM_SEED = settings.random_seed
+ensure_directories = settings.ensure_dirs
 
 # Importar funciones de visualización
 from utils.plots import plot_real_vs_pred

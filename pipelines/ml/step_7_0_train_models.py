@@ -81,12 +81,20 @@ def configure_gpu(use_gpu=USE_GPU, memory_limit=GPU_MEMORY_LIMIT):
 has_gpu = configure_gpu()
 
 # Importar configuraciones centralizadas
-from config import (
-    PROJECT_ROOT, MODELS_DIR, TRAINING_DIR, RESULTS_DIR, IMG_CHARTS_DIR,
-    DATE_COL, LOCAL_REFINEMENT_DAYS, TRAIN_TEST_SPLIT_RATIO,
-    FORECAST_HORIZON_1MONTH, FORECAST_HORIZON_3MONTHS, RANDOM_SEED,
-    ensure_directories
-)
+from src.core.config.settings import settings
+
+PROJECT_ROOT = settings.project_root
+MODELS_DIR = settings.models_dir
+TRAINING_DIR = settings.training_dir
+RESULTS_DIR = settings.results_dir
+IMG_CHARTS_DIR = settings.img_charts_dir
+DATE_COL = settings.date_col
+LOCAL_REFINEMENT_DAYS = settings.local_refinement_days
+TRAIN_TEST_SPLIT_RATIO = settings.train_test_split_ratio
+FORECAST_HORIZON_1MONTH = settings.forecast_horizon_1month
+FORECAST_HORIZON_3MONTHS = settings.forecast_horizon_3months
+RANDOM_SEED = settings.random_seed
+ensure_directories = settings.ensure_dirs
 
 # Importar funciones de visualización
 from utils.plots import (
