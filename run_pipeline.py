@@ -18,6 +18,8 @@ from pathlib import Path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from src.config.base import ProjectConfig
+from src.config.logging_config import setup_logging
+from src.core.gpu_manager import GPUManager
 
 config = ProjectConfig.from_env()
 
@@ -42,14 +44,10 @@ Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
 # Configurar logging
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_file = os.path.join(LOG_DIR, f"pipeline_run_{timestamp}.log")
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+setup_logging(log_file)
+
+# Configurar GPUs si están disponibles
+GPUManager().configure_all()
 
 def run_step(step_module, step_name=None):
     """
