@@ -3,3 +3,7 @@ models/*.pkl
 # Ignorar entorno virtual
 venv_MValores/
 
+
+# Ignore data and log directories
+Data/
+logs/
