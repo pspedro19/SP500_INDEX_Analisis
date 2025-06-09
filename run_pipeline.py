@@ -17,21 +17,23 @@ from pathlib import Path
 # Asegurar que podemos importar módulos desde el directorio actual
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from src.core.config.settings import settings
+from src.config.base import ProjectConfig
 
-ROOT = settings.project_root
-DATA_RAW = settings.data_raw
-DATA_PREP = settings.data_prep
-PROCESSED_DIR = settings.processed_dir
-TRAINING_DIR = settings.training_dir
-RESULTS_DIR = settings.results_dir
-METRICS_DIR = settings.metrics_dir
-LOG_DIR = settings.log_dir
-REPORTS_DIR = settings.reports_dir
-IMG_CHARTS = settings.img_charts_dir
-METRICS_CHARTS = settings.metrics_charts_dir
-CSV_REPORTS = settings.csv_reports_dir
-ensure_directories = settings.ensure_dirs
+config = ProjectConfig.from_env()
+
+ROOT = config.project_root
+DATA_RAW = config.data_raw
+DATA_PREP = config.data_prep
+PROCESSED_DIR = config.processed_dir
+TRAINING_DIR = config.training_dir
+RESULTS_DIR = config.results_dir
+METRICS_DIR = config.metrics_dir
+LOG_DIR = config.log_dir
+REPORTS_DIR = config.reports_dir
+IMG_CHARTS = config.img_charts_dir
+METRICS_CHARTS = config.metrics_charts_dir
+CSV_REPORTS = config.csv_reports_dir
+ensure_directories = config.ensure_dirs
 
 
 # Crear directorio para logs si no existe

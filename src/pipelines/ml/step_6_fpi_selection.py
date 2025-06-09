@@ -15,21 +15,23 @@ from feature_engine.selection import SelectByShuffling
 import pandas_market_calendars as mcal
 
 # Importar configuraciones centralizadas
-from src.core.config.settings import settings
+from src.config.base import ProjectConfig
 
-PROJECT_ROOT = settings.project_root
-PROCESSED_DIR = settings.processed_dir
-TRAINING_DIR = settings.training_dir
-DATE_COL = settings.date_col
-CV_SPLITS = settings.cv_splits
-FORECAST_HORIZON_1MONTH = settings.forecast_horizon_1month
-FORECAST_HORIZON_3MONTHS = settings.forecast_horizon_3months
-CV_GAP_1MONTH = settings.cv_gap_1month
-CV_GAP_3MONTHS = settings.cv_gap_3months
-FPI_THRESHOLD = settings.fpi_threshold
-CATBOOST_PARAMS = settings.catboost_params
-SCORER = settings.scorer
-RANDOM_SEED = settings.random_seed
+config = ProjectConfig.from_env()
+
+PROJECT_ROOT = config.project_root
+PROCESSED_DIR = config.processed_dir
+TRAINING_DIR = config.training_dir
+DATE_COL = config.date_col
+CV_SPLITS = config.cv_splits
+FORECAST_HORIZON_1MONTH = config.forecast_horizon_1month
+FORECAST_HORIZON_3MONTHS = config.forecast_horizon_3months
+CV_GAP_1MONTH = config.cv_gap_1month
+CV_GAP_3MONTHS = config.cv_gap_3months
+FPI_THRESHOLD = config.fpi_threshold
+CATBOOST_PARAMS = config.catboost_params
+SCORER = config.scorer
+RANDOM_SEED = config.random_seed
 
 # ------------------------------
 # CONFIGURACIÓN LOCAL

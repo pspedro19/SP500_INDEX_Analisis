@@ -10,15 +10,17 @@ from scipy.signal import hilbert
 import matplotlib.pyplot as plt
 
 # Importar configuraciones centralizadas
-from src.core.config.settings import settings
+from src.config.base import ProjectConfig
 
-PROJECT_ROOT = settings.project_root
-RESULTS_DIR = settings.results_dir
-METRICS_DIR = settings.metrics_dir
-METRICS_CHARTS = settings.metrics_charts_dir
-SUBPERIODS_CHARTS = settings.subperiods_charts_dir
-DATE_COL = settings.date_col
-ensure_directories = settings.ensure_dirs
+config = ProjectConfig.from_env()
+
+PROJECT_ROOT = config.project_root
+RESULTS_DIR = config.results_dir
+METRICS_DIR = config.metrics_dir
+METRICS_CHARTS = config.metrics_charts_dir
+SUBPERIODS_CHARTS = config.subperiods_charts_dir
+DATE_COL = config.date_col
+ensure_directories = config.ensure_dirs
 
 # Importar funciones de visualización
 from ml.utils.plots import (
