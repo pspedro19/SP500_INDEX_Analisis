@@ -23,7 +23,7 @@ DATE_COL = config.date_col
 ensure_directories = config.ensure_dirs
 
 # Importar funciones de visualización
-from ml.utils.plots import (
+from src.pipelines.ml.utils.plots import (
     plot_real_vs_pred, plot_metrics_by_subperiod, plot_radar_metrics,
     generate_report_figures
 )
@@ -31,7 +31,8 @@ from ml.utils.plots import (
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING
 # ------------------------------
-log_file = os.path.join(PROJECT_ROOT, "logs", f"backtest_{time.strftime('%Y%m%d_%H%M%S')}.log")
+LOG_DIR = config.log_dir
+log_file = os.path.join(LOG_DIR, f"backtest_{time.strftime('%Y%m%d_%H%M%S')}.log")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",

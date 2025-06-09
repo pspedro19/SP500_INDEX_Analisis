@@ -106,7 +106,7 @@ def generate_timeline_chart(timings):
         str: Ruta al archivo del gráfico generado
     """
     try:
-        from pipelines.ml.utils.plots import plot_pipeline_timeline
+        from src.pipelines.ml.utils.plots import plot_pipeline_timeline
         chart_path = Path(REPORTS_DIR) / "pipeline_timeline.png"
         plot_pipeline_timeline(timings, chart_path)
         logging.info(f"Gráfico de timeline generado: {chart_path}")
