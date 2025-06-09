@@ -63,12 +63,14 @@ venv_MValores/
 *.xlsx
 logs/
 models/
-data/
-Data/
+
 
 # Ignore pickle files
 *.pkl
 models/*.pkl
 
 
+
+logs/
 __pycache__/
+
