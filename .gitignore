@@ -74,3 +74,4 @@ models/*.pkl
 logs/
 __pycache__/
 
+!src/models/
