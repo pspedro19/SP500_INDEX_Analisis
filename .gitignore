@@ -1,10 +1,19 @@
-# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized files
 __pycache__/
 *.py[cod]
 *$py.class
 
 # C extensions
 *.so
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Distribution / packaging
 .Python
@@ -22,6 +31,8 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.manifest
+*.spec
 
 # Installer logs
 pip-log.txt
@@ -41,37 +52,28 @@ coverage.xml
 .pytest_cache/
 
 # Jupyter Notebook
-.ipynb_checkpoints
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-venv_MValores/
+.ipynb_checkpoints/
 
 # IDEs and editors
-.vscode/
 .idea/
+.vscode/
 
-# Logs and data
+# Logs
+logs/*
+!logs/.gitkeep
+*/logs/*
+!*/logs/.gitkeep
 *.log
-*.csv
-*.xlsx
-logs/
+
+# Data directories
+data/**
+!data/samples/
+!data/samples/**
+Data/
+
+# Models and generated output
 models/
-
-
-# Ignore pickle files
+output/
+reports/
+catboost_info/
 *.pkl
-models/*.pkl
-
-
-
-logs/
-__pycache__/
-
-!src/models/
