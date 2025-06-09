@@ -1,0 +1,37 @@
+2025-05-27 11:37:06,916 [INFO] ================================================================================
+2025-05-27 11:37:07,015 [INFO] Directorio de datos: data/0_raw
+2025-05-27 11:37:07,016 [INFO] Fecha y hora: 2025-05-27 11:37:07
+2025-05-27 11:37:07,016 [INFO] ================================================================================
+2025-05-27 11:37:09,394 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 11:37:09,557 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 11:37:48,915 [INFO] ================================================================================
+2025-05-27 11:37:48,924 [INFO] Directorio de datos: data/0_raw
+2025-05-27 11:37:48,925 [INFO] Fecha y hora: 2025-05-27 11:37:48
+2025-05-27 11:37:48,925 [INFO] ================================================================================
+2025-05-27 11:37:49,672 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 11:37:49,700 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 11:37:50,677 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 11:37:53,071 [INFO] - Tiempo: 4.14 segundos
+2025-05-27 11:37:53,071 [INFO] - Archivos procesados: 1
+2025-05-27 11:37:53,071 [INFO] - Archivo de salida: datos_eoe_procesados.xlsx
+2025-05-27 11:50:45,380 [INFO] ================================================================================
+2025-05-27 11:50:45,390 [INFO] Directorio de datos: data/0_raw
+2025-05-27 11:50:45,390 [INFO] Fecha y hora: 2025-05-27 11:50:45
+2025-05-27 11:50:45,392 [INFO] ================================================================================
+2025-05-27 11:50:46,980 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 11:50:47,022 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 11:50:48,469 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 11:50:50,704 [INFO] - Tiempo: 5.31 segundos
+2025-05-27 11:50:50,704 [INFO] - Archivos procesados: 1
+2025-05-27 11:50:50,704 [INFO] - Archivo de salida: datos_eoe_procesados.xlsx
+2025-05-27 13:43:11,674 [INFO] ================================================================================
+2025-05-27 13:43:11,681 [INFO] Directorio de datos: data/0_raw
+2025-05-27 13:43:11,681 [INFO] Fecha y hora: 2025-05-27 13:43:11
+2025-05-27 13:43:11,681 [INFO] ================================================================================
+2025-05-27 13:43:12,714 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:43:12,745 [WARNING] Error detectando archivo EOE data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 13:43:13,886 [INFO] - EOC_Abril_2025_Histórico (1): 100.00% desde 2001-11-01 a 2025-04-01
+2025-05-27 13:43:13,886 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1): 100.00% desde 1980-01-01 a 2025-03-01
+2025-05-27 13:43:15,894 [INFO] - Tiempo: 4.21 segundos
+2025-05-27 13:43:15,895 [INFO] - Archivos procesados: 2
+2025-05-27 13:43:15,895 [INFO] - Archivo de salida: datos_eoe_procesados.xlsx

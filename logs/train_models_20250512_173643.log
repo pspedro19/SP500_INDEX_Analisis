@@ -1,0 +1,427 @@
+2025-05-12 17:36:43,695 - INFO - Usando el archivo más reciente: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_S&P500_final_FPI.xlsx
+2025-05-12 17:36:43,698 - INFO - Usando horizonte de 20 días para forecast_period=1MONTH
+2025-05-12 17:36:46,184 - INFO - Datos leídos y ordenados por fecha.
+2025-05-12 17:36:46,193 - INFO - Se han imputado los valores NaN e inf (ffill y relleno con 0).
+2025-05-12 17:36:46,226 - INFO - Tiempo de carga y preprocesamiento: 2.53s
+2025-05-12 17:36:46,226 - INFO - Realizando división temporal por años (Year<=2022 para train+val)
+2025-05-12 17:36:46,232 - INFO - División por años: Train=2246 (years <= 2022), Val=20 (last 20 days of 2022), Test=560 (years > 2022)
+2025-05-12 17:36:46,233 - INFO - Tiempo para split de datos: 0.01s
+2025-05-12 17:36:46,233 - INFO - === Optimizando y entrenando CatBoost... ===
+2025-05-12 17:36:46,234 - INFO - [CatBoost] Iniciando optimización con 20 trials
+2025-05-12 17:38:55,824 - INFO - [CatBoost] Trial 0: RMSE=795.7534, Time=129.59s
+2025-05-12 17:40:38,415 - INFO - [CatBoost] Trial 1: RMSE=770.5186, Time=102.58s
+2025-05-12 17:40:53,337 - INFO - [CatBoost] Trial 2: RMSE=784.1255, Time=14.92s
+2025-05-12 17:41:04,571 - INFO - [CatBoost] Trial 3: RMSE=751.2042, Time=11.23s
+2025-05-12 17:41:21,675 - INFO - [CatBoost] Trial 4: RMSE=774.3871, Time=17.10s
+2025-05-12 17:41:25,691 - INFO - [CatBoost] Trial 5: RMSE=741.9516, Time=4.01s
+2025-05-12 17:41:44,671 - INFO - [CatBoost] Trial 6: RMSE=757.1669, Time=18.98s
+2025-05-12 17:42:15,933 - INFO - [CatBoost] Trial 7: RMSE=771.9025, Time=31.26s
+2025-05-12 17:44:32,812 - INFO - [CatBoost] Trial 8: RMSE=795.5935, Time=136.87s
+2025-05-12 17:44:49,815 - INFO - [CatBoost] Trial 9: RMSE=775.1395, Time=17.00s
+2025-05-12 17:44:55,293 - INFO - [CatBoost] Trial 10: RMSE=731.5925, Time=5.48s
+2025-05-12 17:45:00,288 - INFO - [CatBoost] Trial 11: RMSE=732.3438, Time=4.99s
+2025-05-12 17:45:06,230 - INFO - [CatBoost] Trial 12: RMSE=755.5508, Time=5.94s
+2025-05-12 17:45:11,800 - INFO - [CatBoost] Trial 13: RMSE=742.8191, Time=5.57s
+2025-05-12 17:45:21,992 - INFO - [CatBoost] Trial 14: RMSE=754.9563, Time=10.19s
+2025-05-12 17:45:28,173 - INFO - [CatBoost] Trial 15: RMSE=750.9027, Time=6.18s
+2025-05-12 17:45:40,325 - INFO - [CatBoost] Trial 16: RMSE=757.6876, Time=12.15s
+2025-05-12 17:45:48,142 - INFO - [CatBoost] Trial 17: RMSE=776.1052, Time=7.81s
+2025-05-12 17:45:54,161 - INFO - [CatBoost] Trial 18: RMSE=756.0116, Time=6.02s
+2025-05-12 17:46:01,391 - INFO - [CatBoost] Trial 19: RMSE=759.5340, Time=7.23s
+2025-05-12 17:46:01,393 - INFO - [CatBoost] Mejor RMSE en CV (Training): 731.5925
+2025-05-12 17:46:01,394 - INFO - [CatBoost] Mejores hiperparámetros: {'learning_rate': 0.04762432744580768, 'depth': 4, 'iterations': 1130}
+2025-05-12 17:46:01,395 - INFO - [CatBoost] Tiempo de optimización: 555.16s
+2025-05-12 17:46:01,671 - INFO - [CatBoost] Gráfico de evolución de trials guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trials_evolution.png
+2025-05-12 17:46:01,673 - INFO - [CatBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.04762432744580768, 'depth': 4, 'iterations': 1130}
+2025-05-12 17:46:05,043 - INFO - [CatBoost] Modelo entrenado inicialmente en 3.37s
+2025-05-12 17:46:07,210 - INFO - [CatBoost] Modelo refinado localmente en 2.17s
+2025-05-12 17:46:07,219 - INFO - [CatBoost] Training predictions generadas en 0.01s (RMSE=1598.7360)
+2025-05-12 17:46:07,225 - INFO - [CatBoost] Predicciones en Evaluacion generadas en 0.01s (RMSE=311.1355)
+2025-05-12 17:46:07,233 - INFO - [CatBoost] Predicciones en Test generadas en 0.01s (RMSE=981.6815)
+2025-05-12 17:46:07,240 - INFO - [CatBoost] Mejor modelo guardado como: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\catboost_best.pkl
+2025-05-12 17:46:07,241 - INFO - [CatBoost] Modelo refinado guardado en 0.01s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\catboosttrial10.pkl
+2025-05-12 17:46:07,264 - INFO - [CatBoost] Forecast de 20 días generado en 0.02s
+2025-05-12 17:46:07,634 - INFO - [CatBoost] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial10_full.png
+2025-05-12 17:46:07,666 - INFO - [CatBoost] CSV para Trial 10 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_catboost_trial10.csv
+2025-05-12 17:46:08,095 - INFO - [CatBoost] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial10_importance.png
+2025-05-12 17:46:08,095 - INFO - [CatBoost] Trial 10 métricas:
+2025-05-12 17:46:08,096 - INFO -   - Training: RMSE=1598.7360, MAE=1400.1424, R2=-2.6921
+2025-05-12 17:46:08,097 - INFO -   - Validación: RMSE=311.1355, MAE=300.4879, R2=-14.1030
+2025-05-12 17:46:08,098 - INFO -   - Test: RMSE=981.6815, MAE=783.9449, R2=-0.9965
+2025-05-12 17:46:08,099 - INFO - [CatBoost] Tiempo total para Trial 10: 6.43s
+2025-05-12 17:46:08,100 - INFO - [CatBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.045795469796455435, 'depth': 4, 'iterations': 1054}
+2025-05-12 17:46:11,273 - INFO - [CatBoost] Modelo entrenado inicialmente en 3.17s
+2025-05-12 17:46:13,511 - INFO - [CatBoost] Modelo refinado localmente en 2.24s
+2025-05-12 17:46:13,520 - INFO - [CatBoost] Training predictions generadas en 0.01s (RMSE=1587.6213)
+2025-05-12 17:46:13,525 - INFO - [CatBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=302.3479)
+2025-05-12 17:46:13,532 - INFO - [CatBoost] Predicciones en Test generadas en 0.01s (RMSE=983.0283)
+2025-05-12 17:46:13,537 - INFO - [CatBoost] Modelo refinado guardado en 0.00s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\catboosttrial11.pkl
+2025-05-12 17:46:13,556 - INFO - [CatBoost] Forecast de 20 días generado en 0.02s
+2025-05-12 17:46:13,924 - INFO - [CatBoost] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial11_full.png
+2025-05-12 17:46:13,945 - INFO - [CatBoost] CSV para Trial 11 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_catboost_trial11.csv
+2025-05-12 17:46:14,418 - INFO - [CatBoost] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial11_importance.png
+2025-05-12 17:46:14,419 - INFO - [CatBoost] Trial 11 métricas:
+2025-05-12 17:46:14,420 - INFO -   - Training: RMSE=1587.6213, MAE=1390.8142, R2=-2.6410
+2025-05-12 17:46:14,421 - INFO -   - Validación: RMSE=302.3479, MAE=290.9741, R2=-13.2619
+2025-05-12 17:46:14,421 - INFO -   - Test: RMSE=983.0283, MAE=780.5202, R2=-1.0019
+2025-05-12 17:46:14,422 - INFO - [CatBoost] Tiempo total para Trial 11: 6.32s
+2025-05-12 17:46:14,422 - INFO - [CatBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.04053171271934649, 'depth': 4, 'iterations': 1973}
+2025-05-12 17:46:19,919 - INFO - [CatBoost] Modelo entrenado inicialmente en 5.50s
+2025-05-12 17:46:23,663 - INFO - [CatBoost] Modelo refinado localmente en 3.74s
+2025-05-12 17:46:23,670 - INFO - [CatBoost] Training predictions generadas en 0.01s (RMSE=1595.6519)
+2025-05-12 17:46:23,676 - INFO - [CatBoost] Predicciones en Evaluacion generadas en 0.00s (RMSE=292.3938)
+2025-05-12 17:46:23,684 - INFO - [CatBoost] Predicciones en Test generadas en 0.01s (RMSE=986.2722)
+2025-05-12 17:46:23,688 - INFO - [CatBoost] Modelo refinado guardado en 0.00s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\catboosttrial5.pkl
+2025-05-12 17:46:23,711 - INFO - [CatBoost] Forecast de 20 días generado en 0.02s
+2025-05-12 17:46:24,079 - INFO - [CatBoost] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial5_full.png
+2025-05-12 17:46:24,100 - INFO - [CatBoost] CSV para Trial 5 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_catboost_trial5.csv
+2025-05-12 17:46:24,549 - INFO - [CatBoost] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\catboost_trial5_importance.png
+2025-05-12 17:46:24,550 - INFO - [CatBoost] Trial 5 métricas:
+2025-05-12 17:46:24,551 - INFO -   - Training: RMSE=1595.6519, MAE=1397.6121, R2=-2.6779
+2025-05-12 17:46:24,551 - INFO -   - Validación: RMSE=292.3938, MAE=281.6780, R2=-12.3383
+2025-05-12 17:46:24,552 - INFO -   - Test: RMSE=986.2722, MAE=783.9156, R2=-1.0152
+2025-05-12 17:46:24,553 - INFO - [CatBoost] Tiempo total para Trial 5: 10.13s
+2025-05-12 17:46:24,554 - INFO - [CatBoost] Procesamiento completo en 578.32s
+2025-05-12 17:46:24,556 - INFO - === Completado CatBoost en 578.32s ===
+2025-05-12 17:46:24,557 - INFO - === Optimizando y entrenando LightGBM... ===
+2025-05-12 17:46:24,557 - INFO - [LightGBM] Iniciando optimización con 20 trials
+2025-05-12 17:46:26,607 - INFO - [LightGBM] Trial 0: RMSE=671.8982, Time=2.05s
+2025-05-12 17:46:31,326 - INFO - [LightGBM] Trial 1: RMSE=717.2365, Time=4.72s
+2025-05-12 17:46:31,994 - INFO - [LightGBM] Trial 2: RMSE=670.7922, Time=0.66s
+2025-05-12 17:46:36,599 - INFO - [LightGBM] Trial 3: RMSE=665.3867, Time=4.60s
+2025-05-12 17:46:40,016 - INFO - [LightGBM] Trial 4: RMSE=664.3749, Time=3.41s
+2025-05-12 17:46:47,153 - INFO - [LightGBM] Trial 5: RMSE=703.7996, Time=7.13s
+2025-05-12 17:46:48,352 - INFO - [LightGBM] Trial 6: RMSE=679.0459, Time=1.19s
+2025-05-12 17:46:49,932 - INFO - [LightGBM] Trial 7: RMSE=663.5366, Time=1.58s
+2025-05-12 17:46:51,216 - INFO - [LightGBM] Trial 8: RMSE=678.9189, Time=1.28s
+2025-05-12 17:46:53,409 - INFO - [LightGBM] Trial 9: RMSE=667.2682, Time=2.19s
+2025-05-12 17:46:54,429 - INFO - [LightGBM] Trial 10: RMSE=665.3074, Time=1.02s
+2025-05-12 17:46:56,209 - INFO - [LightGBM] Trial 11: RMSE=664.7824, Time=1.78s
+2025-05-12 17:46:58,515 - INFO - [LightGBM] Trial 12: RMSE=664.0714, Time=2.30s
+2025-05-12 17:47:00,402 - INFO - [LightGBM] Trial 13: RMSE=665.1918, Time=1.88s
+2025-05-12 17:47:02,634 - INFO - [LightGBM] Trial 14: RMSE=664.1541, Time=2.23s
+2025-05-12 17:47:04,568 - INFO - [LightGBM] Trial 15: RMSE=664.6807, Time=1.93s
+2025-05-12 17:47:05,884 - INFO - [LightGBM] Trial 16: RMSE=665.7414, Time=1.31s
+2025-05-12 17:47:07,024 - INFO - [LightGBM] Trial 17: RMSE=664.3638, Time=1.14s
+2025-05-12 17:47:09,086 - INFO - [LightGBM] Trial 18: RMSE=663.8940, Time=2.06s
+2025-05-12 17:47:15,986 - INFO - [LightGBM] Trial 19: RMSE=666.0183, Time=6.90s
+2025-05-12 17:47:15,989 - INFO - [LightGBM] Mejor RMSE en CV (Training): 663.5366
+2025-05-12 17:47:15,990 - INFO - [LightGBM] Mejores hiperparámetros: {'learning_rate': 0.024853316599954007, 'max_depth': 10, 'n_estimators': 512}
+2025-05-12 17:47:15,991 - INFO - [LightGBM] Tiempo de optimización: 51.43s
+2025-05-12 17:47:16,216 - INFO - [LightGBM] Gráfico de evolución de trials guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trials_evolution.png
+2025-05-12 17:47:16,217 - INFO - [LightGBM] Entrenando modelo final con parámetros: {'learning_rate': 0.024853316599954007, 'max_depth': 10, 'n_estimators': 512}
+2025-05-12 17:47:17,304 - INFO - [LightGBM] Modelo entrenado inicialmente en 1.09s
+2025-05-12 17:47:17,413 - INFO - [LightGBM] Modelo refinado localmente en 0.11s
+2025-05-12 17:47:17,426 - INFO - [LightGBM] Training predictions generadas en 0.01s (RMSE=1686.5228)
+2025-05-12 17:47:17,431 - INFO - [LightGBM] Predicciones en Evaluacion generadas en 0.00s (RMSE=339.3806)
+2025-05-12 17:47:17,440 - INFO - [LightGBM] Predicciones en Test generadas en 0.01s (RMSE=918.4834)
+2025-05-12 17:47:17,471 - INFO - [LightGBM] Mejor modelo guardado como: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\lightgbm_best.pkl
+2025-05-12 17:47:17,472 - INFO - [LightGBM] Modelo refinado guardado en 0.03s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\lightgbmtrial7.pkl
+2025-05-12 17:47:17,522 - INFO - [LightGBM] Forecast de 20 días generado en 0.05s
+2025-05-12 17:47:17,942 - INFO - [LightGBM] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial7_full.png
+2025-05-12 17:47:17,964 - INFO - [LightGBM] CSV para Trial 7 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_lightgbm_trial7.csv
+2025-05-12 17:47:18,549 - INFO - [LightGBM] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial7_importance.png
+2025-05-12 17:47:18,550 - INFO - [LightGBM] Trial 7 métricas:
+2025-05-12 17:47:18,550 - INFO -   - Training: RMSE=1686.5228, MAE=1479.4276, R2=-3.1087
+2025-05-12 17:47:18,551 - INFO -   - Validación: RMSE=339.3806, MAE=319.0875, R2=-16.9696
+2025-05-12 17:47:18,552 - INFO -   - Test: RMSE=918.4834, MAE=768.0913, R2=-0.7477
+2025-05-12 17:47:18,553 - INFO - [LightGBM] Tiempo total para Trial 7: 2.34s
+2025-05-12 17:47:18,554 - INFO - [LightGBM] Entrenando modelo final con parámetros: {'learning_rate': 0.012142962694428688, 'max_depth': 10, 'n_estimators': 1069}
+2025-05-12 17:47:20,762 - INFO - [LightGBM] Modelo entrenado inicialmente en 2.21s
+2025-05-12 17:47:21,005 - INFO - [LightGBM] Modelo refinado localmente en 0.24s
+2025-05-12 17:47:21,031 - INFO - [LightGBM] Training predictions generadas en 0.03s (RMSE=1687.8015)
+2025-05-12 17:47:21,038 - INFO - [LightGBM] Predicciones en Evaluacion generadas en 0.01s (RMSE=349.8295)
+2025-05-12 17:47:21,049 - INFO - [LightGBM] Predicciones en Test generadas en 0.01s (RMSE=919.8923)
+2025-05-12 17:47:21,073 - INFO - [LightGBM] Modelo refinado guardado en 0.02s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\lightgbmtrial18.pkl
+2025-05-12 17:47:21,099 - INFO - [LightGBM] Forecast de 20 días generado en 0.02s
+2025-05-12 17:47:21,523 - INFO - [LightGBM] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial18_full.png
+2025-05-12 17:47:21,546 - INFO - [LightGBM] CSV para Trial 18 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_lightgbm_trial18.csv
+2025-05-12 17:47:22,050 - INFO - [LightGBM] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial18_importance.png
+2025-05-12 17:47:22,051 - INFO - [LightGBM] Trial 18 métricas:
+2025-05-12 17:47:22,052 - INFO -   - Training: RMSE=1687.8015, MAE=1480.4869, R2=-3.1150
+2025-05-12 17:47:22,054 - INFO -   - Validación: RMSE=349.8295, MAE=330.7028, R2=-18.0931
+2025-05-12 17:47:22,054 - INFO -   - Test: RMSE=919.8923, MAE=769.4360, R2=-0.7531
+2025-05-12 17:47:22,055 - INFO - [LightGBM] Tiempo total para Trial 18: 3.50s
+2025-05-12 17:47:22,055 - INFO - [LightGBM] Entrenando modelo final con parámetros: {'learning_rate': 0.014629696690600248, 'max_depth': 9, 'n_estimators': 873}
+2025-05-12 17:47:23,973 - INFO - [LightGBM] Modelo entrenado inicialmente en 1.92s
+2025-05-12 17:47:24,190 - INFO - [LightGBM] Modelo refinado localmente en 0.22s
+2025-05-12 17:47:24,214 - INFO - [LightGBM] Training predictions generadas en 0.02s (RMSE=1686.1045)
+2025-05-12 17:47:24,223 - INFO - [LightGBM] Predicciones en Evaluacion generadas en 0.01s (RMSE=346.6524)
+2025-05-12 17:47:24,240 - INFO - [LightGBM] Predicciones en Test generadas en 0.01s (RMSE=920.5975)
+2025-05-12 17:47:24,263 - INFO - [LightGBM] Modelo refinado guardado en 0.02s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\lightgbmtrial12.pkl
+2025-05-12 17:47:24,293 - INFO - [LightGBM] Forecast de 20 días generado en 0.03s
+2025-05-12 17:47:24,786 - INFO - [LightGBM] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial12_full.png
+2025-05-12 17:47:24,809 - INFO - [LightGBM] CSV para Trial 12 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_lightgbm_trial12.csv
+2025-05-12 17:47:25,272 - INFO - [LightGBM] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\lightgbm_trial12_importance.png
+2025-05-12 17:47:25,273 - INFO - [LightGBM] Trial 12 métricas:
+2025-05-12 17:47:25,273 - INFO -   - Training: RMSE=1686.1045, MAE=1478.9542, R2=-3.1067
+2025-05-12 17:47:25,274 - INFO -   - Validación: RMSE=346.6524, MAE=327.0343, R2=-17.7479
+2025-05-12 17:47:25,277 - INFO -   - Test: RMSE=920.5975, MAE=770.3008, R2=-0.7557
+2025-05-12 17:47:25,277 - INFO - [LightGBM] Tiempo total para Trial 12: 3.22s
+2025-05-12 17:47:25,280 - INFO - [LightGBM] Procesamiento completo en 60.72s
+2025-05-12 17:47:25,281 - INFO - === Completado LightGBM en 60.72s ===
+2025-05-12 17:47:25,284 - INFO - === Optimizando y entrenando XGBoost... ===
+2025-05-12 17:47:25,286 - INFO - [XGBoost] Iniciando optimización con 20 trials
+2025-05-12 17:47:37,040 - INFO - [XGBoost] Trial 0: RMSE=671.2707, Time=11.75s
+2025-05-12 17:47:40,887 - INFO - [XGBoost] Trial 1: RMSE=677.6597, Time=3.84s
+2025-05-12 17:47:57,531 - INFO - [XGBoost] Trial 2: RMSE=659.4508, Time=16.64s
+2025-05-12 17:48:15,568 - INFO - [XGBoost] Trial 3: RMSE=658.7265, Time=18.03s
+2025-05-12 17:49:11,273 - INFO - [XGBoost] Trial 4: RMSE=652.0029, Time=55.70s
+2025-05-12 17:49:13,004 - INFO - [XGBoost] Trial 5: RMSE=676.7929, Time=1.71s
+2025-05-12 17:49:17,847 - INFO - [XGBoost] Trial 6: RMSE=656.1135, Time=4.84s
+2025-05-12 17:49:21,078 - INFO - [XGBoost] Trial 7: RMSE=680.6667, Time=3.23s
+2025-05-12 17:49:37,375 - INFO - [XGBoost] Trial 8: RMSE=656.1098, Time=16.29s
+2025-05-12 17:50:12,187 - INFO - [XGBoost] Trial 9: RMSE=665.3800, Time=34.81s
+2025-05-12 17:50:44,830 - INFO - [XGBoost] Trial 10: RMSE=670.5645, Time=32.63s
+2025-05-12 17:51:04,737 - INFO - [XGBoost] Trial 11: RMSE=655.5514, Time=19.90s
+2025-05-12 17:51:23,590 - INFO - [XGBoost] Trial 12: RMSE=654.5241, Time=18.85s
+2025-05-12 17:51:30,958 - INFO - [XGBoost] Trial 13: RMSE=653.0240, Time=7.36s
+2025-05-12 17:51:50,927 - INFO - [XGBoost] Trial 14: RMSE=656.1388, Time=19.97s
+2025-05-12 17:51:59,074 - INFO - [XGBoost] Trial 15: RMSE=656.3751, Time=8.14s
+2025-05-12 17:52:12,514 - INFO - [XGBoost] Trial 16: RMSE=655.5942, Time=13.44s
+2025-05-12 17:52:25,301 - INFO - [XGBoost] Trial 17: RMSE=691.2553, Time=12.78s
+2025-05-12 17:52:51,374 - INFO - [XGBoost] Trial 18: RMSE=656.0916, Time=26.07s
+2025-05-12 17:52:58,886 - INFO - [XGBoost] Trial 19: RMSE=654.7592, Time=7.50s
+2025-05-12 17:52:58,889 - INFO - [XGBoost] Mejor RMSE en CV (Training): 652.0029
+2025-05-12 17:52:58,890 - INFO - [XGBoost] Mejores hiperparámetros: {'learning_rate': 0.009572044712582552, 'max_depth': 10, 'n_estimators': 1487, 'subsample': 0.9873606020929815}
+2025-05-12 17:52:58,891 - INFO - [XGBoost] Tiempo de optimización: 333.61s
+2025-05-12 17:52:59,103 - INFO - [XGBoost] Gráfico de evolución de trials guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trials_evolution.png
+2025-05-12 17:52:59,105 - INFO - [XGBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.009572044712582552, 'max_depth': 10, 'n_estimators': 1487, 'subsample': 0.9873606020929815}
+2025-05-12 17:53:39,232 - INFO - [XGBoost] Modelo entrenado inicialmente en 40.13s
+2025-05-12 17:53:46,922 - INFO - [XGBoost] Modelo refinado localmente en 7.69s
+2025-05-12 17:53:46,943 - INFO - [XGBoost] Training predictions generadas en 0.02s (RMSE=1742.5054)
+2025-05-12 17:53:46,955 - INFO - [XGBoost] Predicciones en Evaluacion generadas en 0.01s (RMSE=482.4015)
+2025-05-12 17:53:46,970 - INFO - [XGBoost] Predicciones en Test generadas en 0.01s (RMSE=904.3628)
+2025-05-12 17:53:47,046 - INFO - [XGBoost] Mejor modelo guardado como: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\xgboost_best.pkl
+2025-05-12 17:53:47,047 - INFO - [XGBoost] Modelo refinado guardado en 0.08s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\xgboosttrial4.pkl
+2025-05-12 17:53:47,062 - INFO - [XGBoost] Forecast de 20 días generado en 0.01s
+2025-05-12 17:53:47,482 - INFO - [XGBoost] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial4_full.png
+2025-05-12 17:53:47,505 - INFO - [XGBoost] CSV para Trial 4 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_xgboost_trial4.csv
+2025-05-12 17:53:47,966 - INFO - [XGBoost] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial4_importance.png
+2025-05-12 17:53:47,967 - INFO - [XGBoost] Trial 4 métricas:
+2025-05-12 17:53:47,968 - INFO -   - Training: RMSE=1742.5054, MAE=1527.2824, R2=-3.3860
+2025-05-12 17:53:47,968 - INFO -   - Validación: RMSE=482.4015, MAE=460.8049, R2=-35.3062
+2025-05-12 17:53:47,969 - INFO -   - Test: RMSE=904.3628, MAE=765.4471, R2=-0.6944
+2025-05-12 17:53:47,970 - INFO - [XGBoost] Tiempo total para Trial 4: 48.86s
+2025-05-12 17:53:47,971 - INFO - [XGBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.045860717323836835, 'max_depth': 7, 'n_estimators': 1121, 'subsample': 0.9901817323764411}
+2025-05-12 17:53:58,451 - INFO - [XGBoost] Modelo entrenado inicialmente en 10.48s
+2025-05-12 17:54:01,608 - INFO - [XGBoost] Modelo refinado localmente en 3.16s
+2025-05-12 17:54:01,621 - INFO - [XGBoost] Training predictions generadas en 0.01s (RMSE=1735.0566)
+2025-05-12 17:54:01,630 - INFO - [XGBoost] Predicciones en Evaluacion generadas en 0.01s (RMSE=481.5840)
+2025-05-12 17:54:01,640 - INFO - [XGBoost] Predicciones en Test generadas en 0.01s (RMSE=915.6324)
+2025-05-12 17:54:01,664 - INFO - [XGBoost] Modelo refinado guardado en 0.02s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\xgboosttrial13.pkl
+2025-05-12 17:54:01,675 - INFO - [XGBoost] Forecast de 20 días generado en 0.01s
+2025-05-12 17:54:02,045 - INFO - [XGBoost] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial13_full.png
+2025-05-12 17:54:02,067 - INFO - [XGBoost] CSV para Trial 13 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_xgboost_trial13.csv
+2025-05-12 17:54:02,470 - INFO - [XGBoost] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial13_importance.png
+2025-05-12 17:54:02,472 - INFO - [XGBoost] Trial 13 métricas:
+2025-05-12 17:54:02,472 - INFO -   - Training: RMSE=1735.0566, MAE=1520.7193, R2=-3.3486
+2025-05-12 17:54:02,473 - INFO -   - Validación: RMSE=481.5840, MAE=455.8407, R2=-35.1833
+2025-05-12 17:54:02,475 - INFO -   - Test: RMSE=915.6324, MAE=772.0468, R2=-0.7369
+2025-05-12 17:54:02,476 - INFO - [XGBoost] Tiempo total para Trial 13: 14.51s
+2025-05-12 17:54:02,476 - INFO - [XGBoost] Entrenando modelo final con parámetros: {'learning_rate': 0.009919060007628617, 'max_depth': 7, 'n_estimators': 1569, 'subsample': 0.9937203421404106}
+2025-05-12 17:54:18,180 - INFO - [XGBoost] Modelo entrenado inicialmente en 15.70s
+2025-05-12 17:54:22,794 - INFO - [XGBoost] Modelo refinado localmente en 4.61s
+2025-05-12 17:54:22,809 - INFO - [XGBoost] Training predictions generadas en 0.01s (RMSE=1742.9529)
+2025-05-12 17:54:22,818 - INFO - [XGBoost] Predicciones en Evaluacion generadas en 0.01s (RMSE=491.0647)
+2025-05-12 17:54:22,828 - INFO - [XGBoost] Predicciones en Test generadas en 0.01s (RMSE=905.9015)
+2025-05-12 17:54:22,868 - INFO - [XGBoost] Modelo refinado guardado en 0.04s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\xgboosttrial12.pkl
+2025-05-12 17:54:22,879 - INFO - [XGBoost] Forecast de 20 días generado en 0.01s
+2025-05-12 17:54:23,224 - INFO - [XGBoost] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial12_full.png
+2025-05-12 17:54:23,243 - INFO - [XGBoost] CSV para Trial 12 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_xgboost_trial12.csv
+2025-05-12 17:54:23,723 - INFO - [XGBoost] Gráfico de importancia de features guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\xgboost_trial12_importance.png
+2025-05-12 17:54:23,724 - INFO - [XGBoost] Trial 12 métricas:
+2025-05-12 17:54:23,725 - INFO -   - Training: RMSE=1742.9529, MAE=1527.1947, R2=-3.3883
+2025-05-12 17:54:23,725 - INFO -   - Validación: RMSE=491.0647, MAE=466.5848, R2=-36.6219
+2025-05-12 17:54:23,726 - INFO -   - Test: RMSE=905.9015, MAE=765.7403, R2=-0.7001
+2025-05-12 17:54:23,727 - INFO - [XGBoost] Tiempo total para Trial 12: 21.25s
+2025-05-12 17:54:23,728 - INFO - [XGBoost] Procesamiento completo en 418.44s
+2025-05-12 17:54:23,731 - INFO - === Completado XGBoost en 418.45s ===
+2025-05-12 17:54:23,732 - INFO - === Optimizando y entrenando MLP... ===
+2025-05-12 17:54:23,732 - INFO - [MLP] Iniciando optimización con 20 trials
+2025-05-12 17:55:18,536 - INFO - [MLP] Trial 0: RMSE=1650.2025, Time=54.80s
+2025-05-12 17:55:50,939 - INFO - [MLP] Trial 1: RMSE=1532.7158, Time=32.40s
+2025-05-12 17:56:29,017 - INFO - [MLP] Trial 2: RMSE=1839.9551, Time=38.08s
+2025-05-12 17:56:41,742 - INFO - [MLP] Trial 3: RMSE=1997.7919, Time=12.72s
+2025-05-12 17:57:31,230 - INFO - [MLP] Trial 4: RMSE=1604.4704, Time=49.49s
+2025-05-12 17:58:09,588 - INFO - [MLP] Trial 5: RMSE=1669.5225, Time=38.35s
+2025-05-12 17:58:43,518 - INFO - [MLP] Trial 6: RMSE=1578.4319, Time=33.92s
+2025-05-12 18:01:46,649 - INFO - [MLP] Trial 7: RMSE=1919.5220, Time=183.13s
+2025-05-12 18:02:21,413 - INFO - [MLP] Trial 8: RMSE=2264.8163, Time=34.76s
+2025-05-12 18:03:53,704 - INFO - [MLP] Trial 9: RMSE=1563.6739, Time=92.29s
+2025-05-12 18:04:59,391 - INFO - [MLP] Trial 10: RMSE=1518.1791, Time=65.68s
+2025-05-12 18:06:00,786 - INFO - [MLP] Trial 11: RMSE=1551.5533, Time=61.39s
+2025-05-12 18:06:59,361 - INFO - [MLP] Trial 12: RMSE=1545.6426, Time=58.57s
+2025-05-12 18:09:04,089 - INFO - [MLP] Trial 13: RMSE=1635.3011, Time=124.72s
+2025-05-12 18:09:47,369 - INFO - [MLP] Trial 14: RMSE=1539.7610, Time=43.28s
+2025-05-12 18:10:00,739 - INFO - [MLP] Trial 15: RMSE=1693.8948, Time=13.37s
+2025-05-12 18:10:26,693 - INFO - [MLP] Trial 16: RMSE=1571.4832, Time=25.95s
+2025-05-12 18:11:12,118 - INFO - [MLP] Trial 17: RMSE=1710.2855, Time=45.42s
+2025-05-12 18:11:35,866 - INFO - [MLP] Trial 18: RMSE=1597.4090, Time=23.75s
+2025-05-12 18:12:14,203 - INFO - [MLP] Trial 19: RMSE=1622.3098, Time=38.34s
+2025-05-12 18:12:14,206 - INFO - [MLP] Mejor RMSE en CV (Training): 1518.1791
+2025-05-12 18:12:14,207 - INFO - [MLP] Mejores hiperparámetros: {'hidden_neurons': 151, 'learning_rate_init': 0.00977754233165271, 'max_iter': 966}
+2025-05-12 18:12:14,207 - INFO - [MLP] Tiempo de optimización: 1070.47s
+2025-05-12 18:12:14,385 - INFO - [MLP] Gráfico de evolución de trials guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\mlp_trials_evolution.png
+2025-05-12 18:12:14,387 - INFO - [MLP] Entrenando modelo final con parámetros: {'hidden_neurons': 151, 'learning_rate_init': 0.00977754233165271, 'max_iter': 966}
+2025-05-12 18:12:19,363 - INFO - [MLP] Modelo entrenado inicialmente en 4.97s
+2025-05-12 18:12:21,554 - INFO - [MLP] Modelo refinado localmente en 2.19s
+2025-05-12 18:12:21,564 - INFO - [MLP] Training predictions generadas en 0.01s (RMSE=1635.4432)
+2025-05-12 18:12:21,568 - INFO - [MLP] Predicciones en Evaluacion generadas en 0.00s (RMSE=2461.3141)
+2025-05-12 18:12:21,575 - INFO - [MLP] Predicciones en Test generadas en 0.01s (RMSE=3686.7463)
+2025-05-12 18:12:21,604 - INFO - [MLP] Mejor modelo guardado como: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\mlp_best.pkl
+2025-05-12 18:12:21,605 - INFO - [MLP] Modelo refinado guardado en 0.03s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\mlptrial10.pkl
+2025-05-12 18:12:21,610 - INFO - [MLP] Forecast de 20 días generado en 0.00s
+2025-05-12 18:12:21,959 - INFO - [MLP] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\mlp_trial10_full.png
+2025-05-12 18:12:21,978 - INFO - [MLP] CSV para Trial 10 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_mlp_trial10.csv
+2025-05-12 18:12:21,978 - INFO - [MLP] Trial 10 métricas:
+2025-05-12 18:12:21,979 - INFO -   - Training: RMSE=1635.4432, MAE=1414.3810, R2=-2.8636
+2025-05-12 18:12:21,980 - INFO -   - Validación: RMSE=2461.3141, MAE=2405.7223, R2=-944.1434
+2025-05-12 18:12:21,981 - INFO -   - Test: RMSE=3686.7463, MAE=3539.6345, R2=-27.1584
+2025-05-12 18:12:21,982 - INFO - [MLP] Tiempo total para Trial 10: 7.59s
+2025-05-12 18:12:21,983 - INFO - [MLP] Entrenando modelo final con parámetros: {'hidden_neurons': 190, 'learning_rate_init': 0.006606014934352601, 'max_iter': 821}
+2025-05-12 18:12:28,983 - INFO - [MLP] Modelo entrenado inicialmente en 7.00s
+2025-05-12 18:12:31,131 - INFO - [MLP] Modelo refinado localmente en 2.15s
+2025-05-12 18:12:31,139 - INFO - [MLP] Training predictions generadas en 0.01s (RMSE=1653.9754)
+2025-05-12 18:12:31,142 - INFO - [MLP] Predicciones en Evaluacion generadas en 0.00s (RMSE=2497.7619)
+2025-05-12 18:12:31,147 - INFO - [MLP] Predicciones en Test generadas en 0.00s (RMSE=3659.2394)
+2025-05-12 18:12:31,159 - INFO - [MLP] Modelo refinado guardado en 0.01s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\mlptrial1.pkl
+2025-05-12 18:12:31,164 - INFO - [MLP] Forecast de 20 días generado en 0.00s
+2025-05-12 18:12:31,505 - INFO - [MLP] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\mlp_trial1_full.png
+2025-05-12 18:12:31,526 - INFO - [MLP] CSV para Trial 1 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_mlp_trial1.csv
+2025-05-12 18:12:31,527 - INFO - [MLP] Trial 1 métricas:
+2025-05-12 18:12:31,528 - INFO -   - Training: RMSE=1653.9754, MAE=1437.0649, R2=-2.9517
+2025-05-12 18:12:31,529 - INFO -   - Validación: RMSE=2497.7619, MAE=2453.2651, R2=-972.3425
+2025-05-12 18:12:31,530 - INFO -   - Test: RMSE=3659.2394, MAE=3513.4854, R2=-26.7398
+2025-05-12 18:12:31,530 - INFO - [MLP] Tiempo total para Trial 1: 9.55s
+2025-05-12 18:12:31,531 - INFO - [MLP] Entrenando modelo final con parámetros: {'hidden_neurons': 197, 'learning_rate_init': 0.005833165646607666, 'max_iter': 807}
+2025-05-12 18:12:39,041 - INFO - [MLP] Modelo entrenado inicialmente en 7.51s
+2025-05-12 18:12:41,270 - INFO - [MLP] Modelo refinado localmente en 2.23s
+2025-05-12 18:12:41,277 - INFO - [MLP] Training predictions generadas en 0.01s (RMSE=1665.3084)
+2025-05-12 18:12:41,281 - INFO - [MLP] Predicciones en Evaluacion generadas en 0.00s (RMSE=2364.0280)
+2025-05-12 18:12:41,286 - INFO - [MLP] Predicciones en Test generadas en 0.00s (RMSE=3660.6945)
+2025-05-12 18:12:41,298 - INFO - [MLP] Modelo refinado guardado en 0.01s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\mlptrial14.pkl
+2025-05-12 18:12:41,303 - INFO - [MLP] Forecast de 20 días generado en 0.00s
+2025-05-12 18:12:41,622 - INFO - [MLP] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\mlp_trial14_full.png
+2025-05-12 18:12:41,641 - INFO - [MLP] CSV para Trial 14 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_mlp_trial14.csv
+2025-05-12 18:12:41,642 - INFO - [MLP] Trial 14 métricas:
+2025-05-12 18:12:41,643 - INFO -   - Training: RMSE=1665.3084, MAE=1443.0338, R2=-3.0060
+2025-05-12 18:12:41,644 - INFO -   - Validación: RMSE=2364.0280, MAE=2322.3612, R2=-870.9044
+2025-05-12 18:12:41,646 - INFO -   - Test: RMSE=3660.6945, MAE=3513.4319, R2=-26.7618
+2025-05-12 18:12:41,646 - INFO - [MLP] Tiempo total para Trial 14: 10.12s
+2025-05-12 18:12:41,649 - INFO - [MLP] Procesamiento completo en 1097.92s
+2025-05-12 18:12:41,650 - INFO - === Completado MLP en 1097.92s ===
+2025-05-12 18:12:41,650 - INFO - === Optimizando y entrenando SVM... ===
+2025-05-12 18:12:41,651 - INFO - [SVM] Iniciando optimización con 20 trials
+2025-05-12 18:12:42,477 - INFO - [SVM] Trial 0: RMSE=900.6465, Time=0.82s
+2025-05-12 18:12:43,263 - INFO - [SVM] Trial 1: RMSE=903.4423, Time=0.78s
+2025-05-12 18:12:44,045 - INFO - [SVM] Trial 2: RMSE=903.3361, Time=0.78s
+2025-05-12 18:12:44,832 - INFO - [SVM] Trial 3: RMSE=903.4967, Time=0.78s
+2025-05-12 18:12:45,610 - INFO - [SVM] Trial 4: RMSE=903.6199, Time=0.78s
+2025-05-12 18:12:46,389 - INFO - [SVM] Trial 5: RMSE=903.4658, Time=0.78s
+2025-05-12 18:12:47,189 - INFO - [SVM] Trial 6: RMSE=903.1844, Time=0.80s
+2025-05-12 18:12:47,984 - INFO - [SVM] Trial 7: RMSE=903.7989, Time=0.79s
+2025-05-12 18:12:48,763 - INFO - [SVM] Trial 8: RMSE=903.6146, Time=0.78s
+2025-05-12 18:12:49,571 - INFO - [SVM] Trial 9: RMSE=903.9149, Time=0.81s
+2025-05-12 18:12:50,366 - INFO - [SVM] Trial 10: RMSE=896.7873, Time=0.79s
+2025-05-12 18:12:51,169 - INFO - [SVM] Trial 11: RMSE=895.7315, Time=0.80s
+2025-05-12 18:12:51,978 - INFO - [SVM] Trial 12: RMSE=901.4892, Time=0.81s
+2025-05-12 18:12:52,768 - INFO - [SVM] Trial 13: RMSE=896.8807, Time=0.79s
+2025-05-12 18:12:53,594 - INFO - [SVM] Trial 14: RMSE=904.8820, Time=0.82s
+2025-05-12 18:12:54,385 - INFO - [SVM] Trial 15: RMSE=905.3495, Time=0.79s
+2025-05-12 18:12:55,190 - INFO - [SVM] Trial 16: RMSE=896.1204, Time=0.80s
+2025-05-12 18:12:55,982 - INFO - [SVM] Trial 17: RMSE=903.2991, Time=0.79s
+2025-05-12 18:12:56,777 - INFO - [SVM] Trial 18: RMSE=903.9219, Time=0.79s
+2025-05-12 18:12:57,567 - INFO - [SVM] Trial 19: RMSE=905.2419, Time=0.79s
+2025-05-12 18:12:57,570 - INFO - [SVM] Mejor RMSE en CV (Training): 895.7315
+2025-05-12 18:12:57,570 - INFO - [SVM] Mejores hiperparámetros: {'C': 9.820859187995223, 'epsilon': 0.298696586932395}
+2025-05-12 18:12:57,571 - INFO - [SVM] Tiempo de optimización: 15.92s
+2025-05-12 18:12:57,741 - INFO - [SVM] Gráfico de evolución de trials guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\svm_trials_evolution.png
+2025-05-12 18:12:57,743 - INFO - [SVM] Entrenando modelo final con parámetros: {'C': 9.820859187995223, 'epsilon': 0.298696586932395}
+2025-05-12 18:12:57,922 - INFO - [SVM] Modelo entrenado inicialmente en 0.18s
+2025-05-12 18:12:57,926 - INFO - [SVM] Modelo refinado localmente en 0.00s
+2025-05-12 18:12:57,961 - INFO - [SVM] Training predictions generadas en 0.03s (RMSE=1572.7825)
+2025-05-12 18:12:57,964 - INFO - [SVM] Predicciones en Evaluacion generadas en 0.00s (RMSE=293.4587)
+2025-05-12 18:12:57,976 - INFO - [SVM] Predicciones en Test generadas en 0.01s (RMSE=1030.0655)
+2025-05-12 18:12:57,980 - INFO - [SVM] Mejor modelo guardado como: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\svm_best.pkl
+2025-05-12 18:12:57,981 - INFO - [SVM] Modelo refinado guardado en 0.00s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\svmtrial11.pkl
+2025-05-12 18:12:57,988 - INFO - [SVM] Forecast de 20 días generado en 0.01s
+2025-05-12 18:12:58,297 - INFO - [SVM] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\svm_trial11_full.png
+2025-05-12 18:12:58,316 - INFO - [SVM] CSV para Trial 11 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_svm_trial11.csv
+2025-05-12 18:12:58,316 - INFO - [SVM] Trial 11 métricas:
+2025-05-12 18:12:58,317 - INFO -   - Training: RMSE=1572.7825, MAE=1388.2125, R2=-2.5732
+2025-05-12 18:12:58,318 - INFO -   - Validación: RMSE=293.4587, MAE=282.2835, R2=-12.4356
+2025-05-12 18:12:58,319 - INFO -   - Test: RMSE=1030.0655, MAE=817.2798, R2=-1.1981
+2025-05-12 18:12:58,319 - INFO - [SVM] Tiempo total para Trial 11: 0.58s
+2025-05-12 18:12:58,320 - INFO - [SVM] Entrenando modelo final con parámetros: {'C': 9.50118487191471, 'epsilon': 0.4293822625126443}
+2025-05-12 18:12:58,506 - INFO - [SVM] Modelo entrenado inicialmente en 0.19s
+2025-05-12 18:12:58,512 - INFO - [SVM] Modelo refinado localmente en 0.00s
+2025-05-12 18:12:58,553 - INFO - [SVM] Training predictions generadas en 0.04s (RMSE=1572.3514)
+2025-05-12 18:12:58,557 - INFO - [SVM] Predicciones en Evaluacion generadas en 0.00s (RMSE=293.3508)
+2025-05-12 18:12:58,566 - INFO - [SVM] Predicciones en Test generadas en 0.01s (RMSE=1030.7599)
+2025-05-12 18:12:58,569 - INFO - [SVM] Modelo refinado guardado en 0.00s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\svmtrial16.pkl
+2025-05-12 18:12:58,576 - INFO - [SVM] Forecast de 20 días generado en 0.01s
+2025-05-12 18:12:58,896 - INFO - [SVM] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\svm_trial16_full.png
+2025-05-12 18:12:58,915 - INFO - [SVM] CSV para Trial 16 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_svm_trial16.csv
+2025-05-12 18:12:58,916 - INFO - [SVM] Trial 16 métricas:
+2025-05-12 18:12:58,916 - INFO -   - Training: RMSE=1572.3514, MAE=1387.9130, R2=-2.5713
+2025-05-12 18:12:58,917 - INFO -   - Validación: RMSE=293.3508, MAE=282.1282, R2=-12.4257
+2025-05-12 18:12:58,918 - INFO -   - Test: RMSE=1030.7599, MAE=817.8700, R2=-1.2011
+2025-05-12 18:12:58,919 - INFO - [SVM] Tiempo total para Trial 16: 0.60s
+2025-05-12 18:12:58,920 - INFO - [SVM] Entrenando modelo final con parámetros: {'C': 9.065008203862797, 'epsilon': 0.29308387373370737}
+2025-05-12 18:12:59,106 - INFO - [SVM] Modelo entrenado inicialmente en 0.19s
+2025-05-12 18:12:59,111 - INFO - [SVM] Modelo refinado localmente en 0.00s
+2025-05-12 18:12:59,144 - INFO - [SVM] Training predictions generadas en 0.03s (RMSE=1571.5130)
+2025-05-12 18:12:59,149 - INFO - [SVM] Predicciones en Evaluacion generadas en 0.00s (RMSE=292.7364)
+2025-05-12 18:12:59,160 - INFO - [SVM] Predicciones en Test generadas en 0.01s (RMSE=1031.9718)
+2025-05-12 18:12:59,163 - INFO - [SVM] Modelo refinado guardado en 0.00s: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\models\svmtrial10.pkl
+2025-05-12 18:12:59,169 - INFO - [SVM] Forecast de 20 días generado en 0.01s
+2025-05-12 18:12:59,484 - INFO - [SVM] Gráfico completo guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\svm_trial10_full.png
+2025-05-12 18:12:59,506 - INFO - [SVM] CSV para Trial 10 guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\s&p500_svm_trial10.csv
+2025-05-12 18:12:59,506 - INFO - [SVM] Trial 10 métricas:
+2025-05-12 18:12:59,507 - INFO -   - Training: RMSE=1571.5130, MAE=1387.2824, R2=-2.5675
+2025-05-12 18:12:59,509 - INFO -   - Validación: RMSE=292.7364, MAE=281.4568, R2=-12.3696
+2025-05-12 18:12:59,510 - INFO -   - Test: RMSE=1031.9718, MAE=818.9071, R2=-1.2063
+2025-05-12 18:12:59,511 - INFO - [SVM] Tiempo total para Trial 10: 0.59s
+2025-05-12 18:12:59,513 - INFO - [SVM] Procesamiento completo en 17.86s
+2025-05-12 18:12:59,514 - INFO - === Completado SVM en 17.86s ===
+2025-05-12 18:12:59,988 - INFO - Archivo final de predicciones guardado en C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\all_models_predictions.csv
+2025-05-12 18:13:00,882 - INFO - Gráfico comparativo de todos los modelos guardado: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\charts\all_models_comparison.png
+2025-05-12 18:13:01,131 - INFO - Resumen de métricas guardado en: C:\Users\natus\Documents\Trabajo\PEDRO_PEREZ\Proyecto_Mercado_de_Valores\SP500_INDEX_Analisis\data\4_results\resumen_metricas.csv
+2025-05-12 18:13:01,131 - INFO - Proceso completo terminado en 2177.43s
+2025-05-12 18:17:20,979 - INFO - Iniciando creación de ensamble greedy...
+2025-05-12 18:17:20,994 - INFO - Modelo cargado: catboosttrial10
+2025-05-12 18:17:21,008 - INFO - Modelo cargado: catboosttrial11
+2025-05-12 18:17:21,021 - INFO - Modelo cargado: catboosttrial13
+2025-05-12 18:17:21,033 - INFO - Modelo cargado: catboosttrial16
+2025-05-12 18:17:21,045 - INFO - Modelo cargado: catboosttrial4
+2025-05-12 18:17:21,057 - INFO - Modelo cargado: catboosttrial5
+2025-05-12 18:17:21,071 - INFO - Modelo cargado: catboost_best
+2025-05-12 18:17:21,105 - INFO - Modelo cargado: lightgbmtrial12
+2025-05-12 18:17:21,135 - INFO - Modelo cargado: lightgbmtrial15
+2025-05-12 18:17:21,152 - INFO - Modelo cargado: lightgbmtrial18
+2025-05-12 18:17:21,171 - INFO - Modelo cargado: lightgbmtrial19
+2025-05-12 18:17:21,193 - INFO - Modelo cargado: lightgbmtrial7
+2025-05-12 18:17:21,211 - INFO - Modelo cargado: lightgbm_best
+2025-05-12 18:17:21,227 - INFO - Modelo cargado: mlptrial0
+2025-05-12 18:17:21,250 - INFO - Modelo cargado: mlptrial1
+2025-05-12 18:17:21,268 - INFO - Modelo cargado: mlptrial10
+2025-05-12 18:17:21,282 - INFO - Modelo cargado: mlptrial11
+2025-05-12 18:17:21,297 - INFO - Modelo cargado: mlptrial12
+2025-05-12 18:17:21,317 - INFO - Modelo cargado: mlptrial14
+2025-05-12 18:17:21,344 - INFO - Modelo cargado: mlp_best
+2025-05-12 18:17:21,363 - INFO - Modelo cargado: svmtrial10
+2025-05-12 18:17:21,382 - INFO - Modelo cargado: svmtrial11
+2025-05-12 18:17:21,392 - INFO - Modelo cargado: svmtrial12
+2025-05-12 18:17:21,410 - INFO - Modelo cargado: svmtrial16
+2025-05-12 18:17:21,420 - INFO - Modelo cargado: svmtrial18
+2025-05-12 18:17:21,440 - INFO - Modelo cargado: svm_best
+2025-05-12 18:17:21,762 - INFO - Modelo cargado: xgboosttrial12
+2025-05-12 18:17:21,866 - INFO - Modelo cargado: xgboosttrial13
+2025-05-12 18:17:22,045 - INFO - Modelo cargado: xgboosttrial15
+2025-05-12 18:17:22,265 - INFO - Modelo cargado: xgboosttrial19
+2025-05-12 18:17:22,482 - INFO - Modelo cargado: xgboosttrial4
+2025-05-12 18:17:22,532 - INFO - Modelo cargado: xgboost_best
+2025-05-12 18:17:22,533 - INFO - Se cargaron 32 modelos para el ensamble.
+2025-05-12 18:17:22,535 - INFO - Usando datos: ULTIMO_S&P500_final_FPI.xlsx
+2025-05-12 18:17:24,489 - INFO - Datos cargados: 2826 filas, 111 columnas

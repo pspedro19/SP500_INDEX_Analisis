@@ -1,0 +1,30 @@
+2025-05-22 21:00:19,348 - INFO - === INICIANDO PROCESO DE COMBINACIÓN DE ARCHIVOS EXCEL ===
+2025-05-22 21:00:19,350 - INFO - Se encontraron 5 archivos Excel en la carpeta.
+2025-05-22 21:00:19,350 - INFO - Cargando archivo: datos_banco_republica_procesados.xlsx
+2025-05-22 21:00:20,078 - INFO - Archivo datos_banco_republica_procesados.xlsx cargado en 0.73s con 23850 filas.
+2025-05-22 21:00:20,078 - INFO - Archivo datos_banco_republica_procesados.xlsx cargado correctamente con 23850 filas
+2025-05-22 21:00:20,085 - INFO - Después de filtrar por fecha: 4135 filas
+2025-05-22 21:00:20,085 - INFO - Cargando archivo: datos_economicos_normales_procesados.xlsx
+2025-05-22 21:00:20,824 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado en 0.74s con 4157 filas.
+2025-05-22 21:00:20,824 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado correctamente con 4157 filas
+2025-05-22 21:00:20,828 - INFO - Después de filtrar por fecha: 4135 filas
+2025-05-22 21:00:20,828 - INFO - Cargando archivo: datos_economicos_other_procesados.xlsx
+2025-05-22 21:00:21,067 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado en 0.24s con 8675 filas.
+2025-05-22 21:00:21,068 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado correctamente con 8675 filas
+2025-05-22 21:00:21,072 - INFO - Después de filtrar por fecha: 4135 filas
+2025-05-22 21:00:21,072 - INFO - Cargando archivo: datos_economicos_procesados_cp.xlsx
+2025-05-22 21:00:21,425 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado en 0.35s con 4214 filas.
+2025-05-22 21:00:21,425 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado correctamente con 4214 filas
+2025-05-22 21:00:21,430 - INFO - Después de filtrar por fecha: 4135 filas
+2025-05-22 21:00:21,430 - INFO - Cargando archivo: datos_economicos_procesados_Fred.xlsx
+2025-05-22 21:00:21,994 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado en 0.56s con 4153 filas.
+2025-05-22 21:00:21,994 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado correctamente con 4153 filas
+2025-05-22 21:00:21,999 - INFO - Después de filtrar por fecha: 4135 filas
+2025-05-22 21:00:21,999 - INFO - Combinando DataFrame 1 con el resultado (4135 filas + 4135 filas)...
+2025-05-22 21:00:22,002 - INFO - Combinando DataFrame 2 con el resultado (4135 filas + 4135 filas)...
+2025-05-22 21:00:22,007 - INFO - Combinando DataFrame 3 con el resultado (4135 filas + 4135 filas)...
+2025-05-22 21:00:22,012 - INFO - Combinando DataFrame 4 con el resultado (4135 filas + 4135 filas)...
+2025-05-22 21:00:22,018 - INFO - Merge completado en 0.02s: 4135 filas, 113 columnas.
+2025-05-22 21:00:22,023 - INFO - Combinación exitosa. Resultado tiene 4135 filas y 113 columnas
+2025-05-22 21:00:25,051 - INFO - Archivo combinado guardado como: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\1_preprocess\MERGEDEXCELS.xlsx en 3.03s
+2025-05-22 21:00:25,053 - INFO - Proceso completo en 5.70s

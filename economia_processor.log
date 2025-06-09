@@ -1,0 +1,63 @@
+2025-05-30 10:22:33,676 [INFO] ================================================================================
+2025-05-30 10:22:33,676 [INFO] 🏗️ ECONOMIA PROCESSOR UNIFICADO - PIB + ISE
+2025-05-30 10:22:33,676 [INFO] 📅 Fecha de procesamiento: 2025-05-30 10:22:33
+2025-05-30 10:22:33,676 [INFO] ================================================================================
+2025-05-30 10:22:33,687 [INFO] 🚀 Iniciando procesamiento unificado PIB + ISE...
+2025-05-30 10:22:33,687 [INFO] 🔍 Buscando archivos de economía...
+2025-05-30 10:22:33,843 [ERROR] ❌ No se encontraron: PIB (anexProduccionConstantesItrim2025.xlsx), ISE (anexISE12actividadesmar2025.xlsx)
+2025-05-30 10:23:37,875 [INFO] ================================================================================
+2025-05-30 10:23:37,885 [INFO] 🏗️ ECONOMIA PROCESSOR UNIFICADO - PIB + ISE
+2025-05-30 10:23:37,885 [INFO] 📅 Fecha de procesamiento: 2025-05-30 10:23:37
+2025-05-30 10:23:37,885 [INFO] ================================================================================
+2025-05-30 10:23:37,885 [INFO] 🚀 Iniciando procesamiento unificado PIB + ISE...
+2025-05-30 10:23:37,885 [INFO] 🔍 Buscando archivos de economía...
+2025-05-30 10:23:37,999 [INFO] ✅ ISE encontrado: .\Data\0_raw\bond\anex-ISE-12actividades-mar2025.xlsx
+2025-05-30 10:23:37,999 [ERROR] ❌ No se encontraron: PIB (anexProduccionConstantesItrim2025.xlsx)
+2025-05-30 10:25:15,628 [INFO] ================================================================================
+2025-05-30 10:25:15,628 [INFO] 🏗️ ECONOMIA PROCESSOR UNIFICADO - PIB + ISE
+2025-05-30 10:25:15,628 [INFO] 📅 Fecha de procesamiento: 2025-05-30 10:25:15
+2025-05-30 10:25:15,634 [INFO] ================================================================================
+2025-05-30 10:25:15,634 [INFO] 🚀 Iniciando procesamiento unificado PIB + ISE...
+2025-05-30 10:25:15,634 [INFO] 🔍 Buscando archivos de economía...
+2025-05-30 10:25:15,741 [INFO] ✅ ISE encontrado: .\Data\0_raw\bond\anex-ISE-12actividades-mar2025.xlsx
+2025-05-30 10:25:15,741 [ERROR] ❌ No se encontraron: PIB (anexProduccionConstantesItrim2025.xlsx)
+2025-05-30 10:29:45,031 [INFO] ================================================================================
+2025-05-30 10:29:45,031 [INFO] 🏗️ ECONOMIA PROCESSOR UNIFICADO - PIB + ISE
+2025-05-30 10:29:45,031 [INFO] 📅 Fecha de procesamiento: 2025-05-30 10:29:45
+2025-05-30 10:29:45,031 [INFO] 🔍 Rutas de búsqueda: ['.', 'data', 'data/0_raw', 'downloads', 'raw_data', 'Data', 'Data/0_raw', 'Data/0_raw/bond', './Data', './Data/0_raw', './Data/0_raw/bond']
+2025-05-30 10:29:45,031 [INFO] ================================================================================
+2025-05-30 10:29:45,031 [INFO] 🚀 Iniciando procesamiento unificado PIB + ISE...
+2025-05-30 10:29:45,031 [INFO] 🔍 Buscando archivos de economía...
+2025-05-30 10:29:45,031 [INFO]    🔍 Buscando PIB...
+2025-05-30 10:29:45,031 [INFO]       📁 Explorando: .
+2025-05-30 10:29:45,092 [INFO] ✅ PIB encontrado: .\Data\0_raw\bond\anex-ProduccionConstantes-Itrim2025.xlsx
+2025-05-30 10:29:45,093 [INFO]    🔍 Buscando ISE...
+2025-05-30 10:29:45,093 [INFO]       📁 Explorando: .
+2025-05-30 10:29:45,125 [INFO] ✅ ISE encontrado: .\Data\0_raw\bond\anex-ISE-12actividades-mar2025.xlsx
+2025-05-30 10:29:45,126 [INFO] 📊 Procesando PIB: .\Data\0_raw\bond\anex-ProduccionConstantes-Itrim2025.xlsx
+2025-05-30 10:29:45,869 [INFO] ✅ PIB procesado: 81 trimestres
+2025-05-30 10:29:45,869 [INFO]    📅 Período PIB: 2005-01-01 a 2025-01-01
+2025-05-30 10:29:45,869 [INFO] 📊 Procesando ISE: .\Data\0_raw\bond\anex-ISE-12actividades-mar2025.xlsx
+2025-05-30 10:29:46,244 [INFO] ✅ ISE procesado: 243 meses
+2025-05-30 10:29:46,244 [INFO]    📅 Período ISE: 2005-01-01 a 2025-03-01
+2025-05-30 10:29:46,244 [INFO] 🔗 Generando serie diaria unificada PIB + ISE...
+2025-05-30 10:29:46,260 [INFO] 📅 Rango unificado: 2005-01-01 a 2025-03-01
+2025-05-30 10:29:46,260 [INFO] 📊 Días totales: 7365
+2025-05-30 10:29:46,268 [INFO] ✅ Serie unificada creada:
+2025-05-30 10:29:46,268 [INFO]    📊 PIB cobertura: 7365/7365 días (100.0%)
+2025-05-30 10:29:46,268 [INFO]    📊 ISE cobertura: 7365/7365 días (100.0%)
+2025-05-30 10:29:46,268 [INFO] 💾 Guardando economía unificada en: economia_integrada.xlsx
+2025-05-30 10:29:47,297 [INFO] ✅ Archivo guardado exitosamente: economia_integrada.xlsx
+2025-05-30 10:29:47,297 [INFO] 📊 Hojas: Economia_Diaria, PIB_Trimestral, ISE_Mensual, Estadisticas_Comparativas
+2025-05-30 10:29:47,297 [INFO] 
+================================================================================
+2025-05-30 10:29:47,297 [INFO] 🎯 PROCESAMIENTO UNIFICADO COMPLETADO EXITOSAMENTE
+2025-05-30 10:29:47,297 [INFO] ================================================================================
+2025-05-30 10:29:47,297 [INFO] ⏱️  Tiempo total: 2.27 segundos
+2025-05-30 10:29:47,297 [INFO] 📁 PIB procesado: .\Data\0_raw\bond\anex-ProduccionConstantes-Itrim2025.xlsx
+2025-05-30 10:29:47,297 [INFO] 📁 ISE procesado: .\Data\0_raw\bond\anex-ISE-12actividades-mar2025.xlsx
+2025-05-30 10:29:47,297 [INFO] 📊 Datos PIB: 81 trimestres
+2025-05-30 10:29:47,297 [INFO] 📊 Datos ISE: 243 meses
+2025-05-30 10:29:47,297 [INFO] 📅 Serie diaria: 7365 días
+2025-05-30 10:29:47,297 [INFO] 💾 Archivo guardado: economia_integrada.xlsx
+2025-05-30 10:29:47,297 [INFO] ================================================================================

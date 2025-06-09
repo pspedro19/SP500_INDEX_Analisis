@@ -1,0 +1,110 @@
+2025-05-13 08:15:39,773 - INFO - Iniciando creación de ensamble greedy...
+2025-05-13 08:16:03,294 - INFO - Modelo cargado: catboosttrial10
+2025-05-13 08:16:03,314 - INFO - Modelo cargado: catboosttrial11
+2025-05-13 08:16:03,339 - INFO - Modelo cargado: catboosttrial13
+2025-05-13 08:16:03,366 - INFO - Modelo cargado: catboosttrial16
+2025-05-13 08:16:03,399 - INFO - Modelo cargado: catboosttrial4
+2025-05-13 08:16:03,434 - INFO - Modelo cargado: catboosttrial5
+2025-05-13 08:16:03,467 - INFO - Modelo cargado: catboost_best
+2025-05-13 08:16:03,707 - INFO - Modelo cargado: lightgbmtrial12
+2025-05-13 08:16:03,733 - INFO - Modelo cargado: lightgbmtrial15
+2025-05-13 08:16:03,752 - INFO - Modelo cargado: lightgbmtrial18
+2025-05-13 08:16:03,774 - INFO - Modelo cargado: lightgbmtrial19
+2025-05-13 08:16:03,789 - INFO - Modelo cargado: lightgbmtrial7
+2025-05-13 08:16:03,805 - INFO - Modelo cargado: lightgbm_best
+2025-05-13 08:16:03,833 - INFO - Modelo cargado: mlptrial0
+2025-05-13 08:16:03,853 - INFO - Modelo cargado: mlptrial1
+2025-05-13 08:16:03,874 - INFO - Modelo cargado: mlptrial10
+2025-05-13 08:16:03,894 - INFO - Modelo cargado: mlptrial11
+2025-05-13 08:16:03,912 - INFO - Modelo cargado: mlptrial12
+2025-05-13 08:16:03,938 - INFO - Modelo cargado: mlptrial14
+2025-05-13 08:16:03,963 - INFO - Modelo cargado: mlp_best
+2025-05-13 08:16:04,509 - INFO - Modelo cargado: svmtrial10
+2025-05-13 08:16:04,527 - INFO - Modelo cargado: svmtrial11
+2025-05-13 08:16:04,553 - INFO - Modelo cargado: svmtrial12
+2025-05-13 08:16:04,579 - INFO - Modelo cargado: svmtrial16
+2025-05-13 08:16:04,603 - INFO - Modelo cargado: svmtrial18
+2025-05-13 08:16:04,626 - INFO - Modelo cargado: svm_best
+2025-05-13 08:16:05,845 - INFO - Modelo cargado: xgboosttrial12
+2025-05-13 08:16:05,902 - INFO - Modelo cargado: xgboosttrial13
+2025-05-13 08:16:05,978 - INFO - Modelo cargado: xgboosttrial15
+2025-05-13 08:16:06,074 - INFO - Modelo cargado: xgboosttrial19
+2025-05-13 08:16:06,155 - INFO - Modelo cargado: xgboosttrial4
+2025-05-13 08:16:06,208 - INFO - Modelo cargado: xgboost_best
+2025-05-13 08:16:06,209 - INFO - Se cargaron 32 modelos para el ensamble.
+2025-05-13 08:16:06,210 - INFO - Usando datos: ULTIMO_S&P500_final_FPI.xlsx
+2025-05-13 08:16:09,019 - INFO - Datos cargados: 2826 filas, 111 columnas
+2025-05-13 08:16:09,020 - INFO - Columnas en el DataFrame: ['date', '6M_change_PRICE_Australia_10Y_Bond_bond', 'zscore_PRICE_Australia_10Y_Bond_bond', 'log_diff_PRICE_Italy_10Y_Bond_bond', 'rolling_std_PRICE_Italy_10Y_Bond_bond', '3M_change_PRICE_Italy_10Y_Bond_bond', 'zscore_PRICE_Italy_10Y_Bond_bond', 'MoM_PRICE_Japan_10Y_Bond_bond', 'YoY_PRICE_Japan_10Y_Bond_bond', '3M_change_PRICE_Japan_10Y_Bond_bond', '6M_change_PRICE_Japan_10Y_Bond_bond', 'YTD_PRICE_Japan_10Y_Bond_bond', 'zscore_PRICE_Japan_10Y_Bond_bond', 'MoM_PRICE_UK_10Y_Bond_bond', 'log_diff_PRICE_UK_10Y_Bond_bond', '3M_change_PRICE_UK_10Y_Bond_bond', 'zscore_PRICE_UK_10Y_Bond_bond', 'MoM_PRICE_Germany_10Y_Bond_bond', 'YoY_PRICE_Germany_10Y_Bond_bond', 'log_diff_PRICE_Germany_10Y_Bond_bond', '3M_change_PRICE_Germany_10Y_Bond_bond', '6M_change_PRICE_Germany_10Y_Bond_bond', 'MoM_PRICE_Canada_10Y_Bond_bond', 'log_diff_PRICE_Canada_10Y_Bond_bond', 'YoY_PRICE_China_10Y_Bond_bond', 'log_diff_PRICE_China_10Y_Bond_bond', 'rolling_std_PRICE_China_10Y_Bond_bond', 'zscore_PRICE_China_10Y_Bond_bond', 'MoM_AAA_Corporate_Bond_AAA_Spread_bond', 'log_diff_AAA_Corporate_Bond_AAA_Spread_bond', 'zscore_AAA_Corporate_Bond_AAA_Spread_bond', 'log_diff_PRICE_CrudeOil_WTI_commodities', 'MACD_signal_PRICE_CrudeOil_WTI_commodities', '3M_change_PRICE_CrudeOil_WTI_commodities', '6M_change_PRICE_CrudeOil_WTI_commodities', 'YTD_PRICE_CrudeOil_WTI_commodities', 'zscore_PRICE_CrudeOil_WTI_commodities', 'log_diff_PRICE_Gold_Spot_commodities', 'log_diff_PRICE_Silver_Spot_commodities', 'MACD_signal_PRICE_Silver_Spot_commodities', 'zscore_PRICE_Silver_Spot_commodities', 'rolling_std_PRICE_Copper_Futures_commodities', 'MACD_signal_PRICE_Copper_Futures_commodities', '3M_change_PRICE_Copper_Futures_commodities', 'zscore_PRICE_Copper_Futures_commodities', 'log_diff_PRICE_Platinum_Spot_commodities', 'momentum_PRICE_Platinum_Spot_commodities', '3M_change_PRICE_Platinum_Spot_commodities', 'MoM_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'YoY_Actual_US_ConferenceBoard_LEI_leading_economic_index', '6M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'zscore_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'MoM_Actual_Japan_Leading_Indicator_leading_economic_index', 'YoY_Actual_Japan_Leading_Indicator_leading_economic_index', 'log_diff_Actual_Japan_Leading_Indicator_leading_economic_index', '3M_change_Actual_Japan_Leading_Indicator_leading_economic_index', '6M_change_Actual_Japan_Leading_Indicator_leading_economic_index', 'zscore_Actual_Japan_Leading_Indicator_leading_economic_index', 'log_diff_PRICE_EUR_USD_Spot_exchange_rate', 'rolling_std_PRICE_GBP_USD_Spot_exchange_rate', 'log_diff_PRICE_JPY_USD_Spot_exchange_rate', 'rolling_std_PRICE_JPY_USD_Spot_exchange_rate', '3M_change_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', 'log_diff_PRICE_CNY_USD_Spot_exchange_rate', 'rolling_std_PRICE_CNY_USD_Spot_exchange_rate', 'momentum_PRICE_CNY_USD_Spot_exchange_rate', '6M_change_PRICE_CNY_USD_Spot_exchange_rate', 'zscore_PRICE_CNY_USD_Spot_exchange_rate', 'log_diff_PRICE_AUD_USD_Spot_exchange_rate', 'MACD_signal_PRICE_AUD_USD_Spot_exchange_rate', 'momentum_PRICE_AUD_USD_Spot_exchange_rate', '3M_change_PRICE_CAD_USD_Spot_exchange_rate', '6M_change_PRICE_CAD_USD_Spot_exchange_rate', 'zscore_PRICE_CAD_USD_Spot_exchange_rate', 'rolling_var_PRICE_MXN_USD_Spot_exchange_rate', 'momentum_PRICE_MXN_USD_Spot_exchange_rate', '3M_change_PRICE_MXN_USD_Spot_exchange_rate', '6M_change_PRICE_MXN_USD_Spot_exchange_rate', 'log_diff_PRICE_EUR_GBP_Cross_exchange_rate', 'MACD_signal_PRICE_EUR_GBP_Cross_exchange_rate', 'momentum_PRICE_EUR_GBP_Cross_exchange_rate', '3M_change_PRICE_EUR_GBP_Cross_exchange_rate', '6M_change_PRICE_EUR_GBP_Cross_exchange_rate', 'zscore_PRICE_EUR_GBP_Cross_exchange_rate', 'momentum_ULTIMO_NASDAQ_Composite_index_pricing', 'MACD_signal_ULTIMO_FTSE_100_index_pricing', 'momentum_ULTIMO_FTSE_100_index_pricing', '3M_change_ULTIMO_FTSE_100_index_pricing', '6M_change_ULTIMO_FTSE_100_index_pricing', 'log_diff_ULTIMO_Nikkei_225_index_pricing', 'MACD_signal_ULTIMO_Nikkei_225_index_pricing', 'momentum_ULTIMO_Nikkei_225_index_pricing', 'YTD_ULTIMO_Nikkei_225_index_pricing', 'zscore_ULTIMO_Nikkei_225_index_pricing', 'log_diff_ULTIMO_DAX_30_index_pricing', 'zscore_ULTIMO_DAX_30_index_pricing', 'log_diff_PRICE_Shanghai_Composite_index_pricing', 'rolling_std_PRICE_Shanghai_Composite_index_pricing', 'momentum_PRICE_Shanghai_Composite_index_pricing', '6M_change_PRICE_Shanghai_Composite_index_pricing', 'zscore_PRICE_Shanghai_Composite_index_pricing', 'log_diff_ULTIMO_VIX_VolatilityIndex_index_pricing', 'momentum_ULTIMO_VIX_VolatilityIndex_index_pricing', '6M_change_ULTIMO_VIX_VolatilityIndex_index_pricing', 'Actual_US_Philly_Fed_Index_business_confidence', 'ZAFSLRTCR03GPSAM_SouthAfrica_Car_Registrations_MoM', 'PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence', 'ECBDFR_ECB_Deposit_Rate_economics', 'PRICE_US_Initial_Jobless_Claims_unemployment_rate', 'ULTIMO_S&P500_Index_index_pricing_Target']
+2025-05-13 08:16:09,029 - INFO - Columna fecha 'fecha' no encontrada. Usando 'date' en su lugar
+2025-05-13 08:16:09,041 - INFO - Entrenando ensemble usando 32 modelos base
+2025-05-13 08:16:09,042 - INFO - División de datos: train=2261, validación=565
+2025-05-13 08:16:09,043 - INFO - Entrenando modelo base catboosttrial10 (1/32)
+2025-05-13 08:45:16,191 - INFO - Iniciando creación de ensamble greedy...
+2025-05-13 08:45:16,209 - INFO - Modelo cargado: catboosttrial10
+2025-05-13 08:45:16,228 - INFO - Modelo cargado: catboosttrial11
+2025-05-13 08:45:16,241 - INFO - Modelo cargado: catboosttrial13
+2025-05-13 08:45:16,253 - INFO - Modelo cargado: catboosttrial16
+2025-05-13 08:45:16,268 - INFO - Modelo cargado: catboosttrial4
+2025-05-13 08:45:16,283 - INFO - Modelo cargado: catboosttrial5
+2025-05-13 08:45:16,305 - INFO - Modelo cargado: catboost_best
+2025-05-13 08:45:16,330 - INFO - Modelo cargado: lightgbmtrial12
+2025-05-13 08:45:16,351 - INFO - Modelo cargado: lightgbmtrial15
+2025-05-13 08:45:16,371 - INFO - Modelo cargado: lightgbmtrial18
+2025-05-13 08:45:16,390 - INFO - Modelo cargado: lightgbmtrial19
+2025-05-13 08:45:16,406 - INFO - Modelo cargado: lightgbmtrial7
+2025-05-13 08:45:16,421 - INFO - Modelo cargado: lightgbm_best
+2025-05-13 08:45:16,436 - INFO - Modelo cargado: mlptrial0
+2025-05-13 08:45:16,454 - INFO - Modelo cargado: mlptrial1
+2025-05-13 08:45:16,471 - INFO - Modelo cargado: mlptrial10
+2025-05-13 08:45:16,487 - INFO - Modelo cargado: mlptrial11
+2025-05-13 08:45:16,502 - INFO - Modelo cargado: mlptrial12
+2025-05-13 08:45:16,520 - INFO - Modelo cargado: mlptrial14
+2025-05-13 08:45:16,543 - INFO - Modelo cargado: mlp_best
+2025-05-13 08:45:16,560 - INFO - Modelo cargado: svmtrial10
+2025-05-13 08:45:16,579 - INFO - Modelo cargado: svmtrial11
+2025-05-13 08:45:16,596 - INFO - Modelo cargado: svmtrial12
+2025-05-13 08:45:16,614 - INFO - Modelo cargado: svmtrial16
+2025-05-13 08:45:16,632 - INFO - Modelo cargado: svmtrial18
+2025-05-13 08:45:16,648 - INFO - Modelo cargado: svm_best
+2025-05-13 08:45:16,730 - INFO - Modelo cargado: xgboosttrial12
+2025-05-13 08:45:16,775 - INFO - Modelo cargado: xgboosttrial13
+2025-05-13 08:45:16,841 - INFO - Modelo cargado: xgboosttrial15
+2025-05-13 08:45:16,912 - INFO - Modelo cargado: xgboosttrial19
+2025-05-13 08:45:16,984 - INFO - Modelo cargado: xgboosttrial4
+2025-05-13 08:45:17,031 - INFO - Modelo cargado: xgboost_best
+2025-05-13 08:45:17,032 - INFO - Se cargaron 32 modelos para el ensamble.
+2025-05-13 08:45:17,033 - INFO - Usando datos: ULTIMO_S&P500_final_FPI.xlsx
+2025-05-13 08:45:19,076 - INFO - Datos cargados: 2826 filas, 111 columnas
+2025-05-13 08:45:19,077 - INFO - Columnas en el DataFrame: ['date', '6M_change_PRICE_Australia_10Y_Bond_bond', 'zscore_PRICE_Australia_10Y_Bond_bond', 'log_diff_PRICE_Italy_10Y_Bond_bond', 'rolling_std_PRICE_Italy_10Y_Bond_bond', '3M_change_PRICE_Italy_10Y_Bond_bond', 'zscore_PRICE_Italy_10Y_Bond_bond', 'MoM_PRICE_Japan_10Y_Bond_bond', 'YoY_PRICE_Japan_10Y_Bond_bond', '3M_change_PRICE_Japan_10Y_Bond_bond', '6M_change_PRICE_Japan_10Y_Bond_bond', 'YTD_PRICE_Japan_10Y_Bond_bond', 'zscore_PRICE_Japan_10Y_Bond_bond', 'MoM_PRICE_UK_10Y_Bond_bond', 'log_diff_PRICE_UK_10Y_Bond_bond', '3M_change_PRICE_UK_10Y_Bond_bond', 'zscore_PRICE_UK_10Y_Bond_bond', 'MoM_PRICE_Germany_10Y_Bond_bond', 'YoY_PRICE_Germany_10Y_Bond_bond', 'log_diff_PRICE_Germany_10Y_Bond_bond', '3M_change_PRICE_Germany_10Y_Bond_bond', '6M_change_PRICE_Germany_10Y_Bond_bond', 'MoM_PRICE_Canada_10Y_Bond_bond', 'log_diff_PRICE_Canada_10Y_Bond_bond', 'YoY_PRICE_China_10Y_Bond_bond', 'log_diff_PRICE_China_10Y_Bond_bond', 'rolling_std_PRICE_China_10Y_Bond_bond', 'zscore_PRICE_China_10Y_Bond_bond', 'MoM_AAA_Corporate_Bond_AAA_Spread_bond', 'log_diff_AAA_Corporate_Bond_AAA_Spread_bond', 'zscore_AAA_Corporate_Bond_AAA_Spread_bond', 'log_diff_PRICE_CrudeOil_WTI_commodities', 'MACD_signal_PRICE_CrudeOil_WTI_commodities', '3M_change_PRICE_CrudeOil_WTI_commodities', '6M_change_PRICE_CrudeOil_WTI_commodities', 'YTD_PRICE_CrudeOil_WTI_commodities', 'zscore_PRICE_CrudeOil_WTI_commodities', 'log_diff_PRICE_Gold_Spot_commodities', 'log_diff_PRICE_Silver_Spot_commodities', 'MACD_signal_PRICE_Silver_Spot_commodities', 'zscore_PRICE_Silver_Spot_commodities', 'rolling_std_PRICE_Copper_Futures_commodities', 'MACD_signal_PRICE_Copper_Futures_commodities', '3M_change_PRICE_Copper_Futures_commodities', 'zscore_PRICE_Copper_Futures_commodities', 'log_diff_PRICE_Platinum_Spot_commodities', 'momentum_PRICE_Platinum_Spot_commodities', '3M_change_PRICE_Platinum_Spot_commodities', 'MoM_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'YoY_Actual_US_ConferenceBoard_LEI_leading_economic_index', '6M_change_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'zscore_Actual_US_ConferenceBoard_LEI_leading_economic_index', 'MoM_Actual_Japan_Leading_Indicator_leading_economic_index', 'YoY_Actual_Japan_Leading_Indicator_leading_economic_index', 'log_diff_Actual_Japan_Leading_Indicator_leading_economic_index', '3M_change_Actual_Japan_Leading_Indicator_leading_economic_index', '6M_change_Actual_Japan_Leading_Indicator_leading_economic_index', 'zscore_Actual_Japan_Leading_Indicator_leading_economic_index', 'log_diff_PRICE_EUR_USD_Spot_exchange_rate', 'rolling_std_PRICE_GBP_USD_Spot_exchange_rate', 'log_diff_PRICE_JPY_USD_Spot_exchange_rate', 'rolling_std_PRICE_JPY_USD_Spot_exchange_rate', '3M_change_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', 'log_diff_PRICE_CNY_USD_Spot_exchange_rate', 'rolling_std_PRICE_CNY_USD_Spot_exchange_rate', 'momentum_PRICE_CNY_USD_Spot_exchange_rate', '6M_change_PRICE_CNY_USD_Spot_exchange_rate', 'zscore_PRICE_CNY_USD_Spot_exchange_rate', 'log_diff_PRICE_AUD_USD_Spot_exchange_rate', 'MACD_signal_PRICE_AUD_USD_Spot_exchange_rate', 'momentum_PRICE_AUD_USD_Spot_exchange_rate', '3M_change_PRICE_CAD_USD_Spot_exchange_rate', '6M_change_PRICE_CAD_USD_Spot_exchange_rate', 'zscore_PRICE_CAD_USD_Spot_exchange_rate', 'rolling_var_PRICE_MXN_USD_Spot_exchange_rate', 'momentum_PRICE_MXN_USD_Spot_exchange_rate', '3M_change_PRICE_MXN_USD_Spot_exchange_rate', '6M_change_PRICE_MXN_USD_Spot_exchange_rate', 'log_diff_PRICE_EUR_GBP_Cross_exchange_rate', 'MACD_signal_PRICE_EUR_GBP_Cross_exchange_rate', 'momentum_PRICE_EUR_GBP_Cross_exchange_rate', '3M_change_PRICE_EUR_GBP_Cross_exchange_rate', '6M_change_PRICE_EUR_GBP_Cross_exchange_rate', 'zscore_PRICE_EUR_GBP_Cross_exchange_rate', 'momentum_ULTIMO_NASDAQ_Composite_index_pricing', 'MACD_signal_ULTIMO_FTSE_100_index_pricing', 'momentum_ULTIMO_FTSE_100_index_pricing', '3M_change_ULTIMO_FTSE_100_index_pricing', '6M_change_ULTIMO_FTSE_100_index_pricing', 'log_diff_ULTIMO_Nikkei_225_index_pricing', 'MACD_signal_ULTIMO_Nikkei_225_index_pricing', 'momentum_ULTIMO_Nikkei_225_index_pricing', 'YTD_ULTIMO_Nikkei_225_index_pricing', 'zscore_ULTIMO_Nikkei_225_index_pricing', 'log_diff_ULTIMO_DAX_30_index_pricing', 'zscore_ULTIMO_DAX_30_index_pricing', 'log_diff_PRICE_Shanghai_Composite_index_pricing', 'rolling_std_PRICE_Shanghai_Composite_index_pricing', 'momentum_PRICE_Shanghai_Composite_index_pricing', '6M_change_PRICE_Shanghai_Composite_index_pricing', 'zscore_PRICE_Shanghai_Composite_index_pricing', 'log_diff_ULTIMO_VIX_VolatilityIndex_index_pricing', 'momentum_ULTIMO_VIX_VolatilityIndex_index_pricing', '6M_change_ULTIMO_VIX_VolatilityIndex_index_pricing', 'Actual_US_Philly_Fed_Index_business_confidence', 'ZAFSLRTCR03GPSAM_SouthAfrica_Car_Registrations_MoM', 'PutCall_delta_Put_Call_Ratio_SPY_consumer_confidence', 'ECBDFR_ECB_Deposit_Rate_economics', 'PRICE_US_Initial_Jobless_Claims_unemployment_rate', 'ULTIMO_S&P500_Index_index_pricing_Target']
+2025-05-13 08:45:19,078 - INFO - Usando última columna como target: ULTIMO_S&P500_Index_index_pricing_Target
+2025-05-13 08:45:19,078 - INFO - Columna fecha encontrada por nombre: date
+2025-05-13 08:45:19,087 - INFO - Estadísticas del target: min=1741.9, max=6144.15, mean=3281.4004706298656
+2025-05-13 08:45:19,089 - INFO - Entrenando ensemble usando 32 modelos base
+2025-05-13 08:45:19,090 - INFO - División de datos: train=2261, validación=565
+2025-05-13 08:45:19,091 - INFO - Entrenando modelo base catboosttrial10 (1/32)
+2025-05-13 08:45:22,346 - INFO - Modelo catboosttrial10 entrenado en 3.25s - RMSE: 1313.2470
+2025-05-13 08:45:22,347 - INFO - Entrenando modelo base catboosttrial11 (2/32)
+2025-05-13 08:45:25,035 - INFO - Modelo catboosttrial11 entrenado en 2.69s - RMSE: 1300.7135
+2025-05-13 08:45:25,036 - INFO - Entrenando modelo base catboosttrial13 (3/32)
+2025-05-13 08:45:27,197 - INFO - Modelo catboosttrial13 entrenado en 2.16s - RMSE: 1302.5507
+2025-05-13 08:45:27,197 - INFO - Entrenando modelo base catboosttrial16 (4/32)
+2025-05-13 08:45:28,691 - INFO - Modelo catboosttrial16 entrenado en 1.49s - RMSE: 1291.8706
+2025-05-13 08:45:28,692 - INFO - Entrenando modelo base catboosttrial4 (5/32)
+2025-05-13 08:45:30,175 - INFO - Modelo catboosttrial4 entrenado en 1.48s - RMSE: 1322.7426
+2025-05-13 08:45:30,176 - INFO - Entrenando modelo base catboosttrial5 (6/32)
+2025-05-13 08:45:35,190 - INFO - Modelo catboosttrial5 entrenado en 5.01s - RMSE: 1330.8392
+2025-05-13 08:45:35,191 - INFO - Entrenando modelo base catboost_best (7/32)
+2025-05-13 08:45:38,425 - INFO - Modelo catboost_best entrenado en 3.23s - RMSE: 1313.2470
+2025-05-13 08:45:38,426 - INFO - Entrenando modelo base lightgbmtrial12 (8/32)
+2025-05-13 08:45:40,736 - INFO - Modelo lightgbmtrial12 entrenado en 2.31s - RMSE: 1018.2621
+2025-05-13 08:45:40,737 - INFO - Entrenando modelo base lightgbmtrial15 (9/32)
+2025-05-13 08:45:44,478 - INFO - Modelo lightgbmtrial15 entrenado en 3.74s - RMSE: 1010.1506
+2025-05-13 08:45:44,479 - INFO - Entrenando modelo base lightgbmtrial18 (10/32)
+2025-05-13 08:45:47,184 - INFO - Modelo lightgbmtrial18 entrenado en 2.70s - RMSE: 1019.6921
+2025-05-13 08:45:47,185 - INFO - Entrenando modelo base lightgbmtrial19 (11/32)
+2025-05-13 08:45:50,087 - INFO - Modelo lightgbmtrial19 entrenado en 2.90s - RMSE: 1019.1039
+2025-05-13 08:45:50,088 - INFO - Entrenando modelo base lightgbmtrial7 (12/32)
+2025-05-13 08:45:51,336 - INFO - Modelo lightgbmtrial7 entrenado en 1.25s - RMSE: 1014.8092
+2025-05-13 08:45:51,337 - INFO - Entrenando modelo base lightgbm_best (13/32)
+2025-05-13 08:45:52,613 - INFO - Modelo lightgbm_best entrenado en 1.28s - RMSE: 1014.8092
+2025-05-13 08:45:52,614 - INFO - Entrenando modelo base mlptrial0 (14/32)

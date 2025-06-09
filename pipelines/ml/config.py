@@ -38,7 +38,7 @@ CSV_REPORTS_DIR = os.path.join(REPORTS_DIR, "csv")
 # ================================
 # COLUMNAS COMUNES
 # ================================
-DATE_COL = "fecha"
+DATE_COL = "date"
 ID_COL = "id"
 TARGET_SUFFIX = "_Target"
 
@@ -55,7 +55,7 @@ TRAIN_TEST_SPLIT_RATIO = 0.8    # 80/20 split local
 # ================================
 CV_SPLITS = 5
 CV_GAP_1MONTH = FORECAST_HORIZON_1MONTH
-CV_GAP_3MONTHS = FORECAST_HORIZON_3MONTHS
+CV_GAP_3MONTHS = FORECAST_HORIZON_3MONTHS   
 
 # ================================
 # UMBRALES DE SELECCIÓN DE FEATURES
@@ -121,4 +121,3 @@ def ensure_directories():
     for directory in dirs:
         # Soporta tanto str como Path
         Path(directory).mkdir(parents=True, exist_ok=True)
-        

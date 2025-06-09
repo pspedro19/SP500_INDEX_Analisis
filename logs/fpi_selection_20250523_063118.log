@@ -1,0 +1,223 @@
+2025-05-23 06:31:18,187 - INFO - ================================================================================
+2025-05-23 06:31:18,187 - INFO - INICIANDO PROCESO DE SELECCIÓN DE FEATURES POR FPI
+2025-05-23 06:31:18,187 - INFO - ================================================================================
+2025-05-23 06:31:18,187 - INFO - Timestamp: 20250523_063118
+2025-05-23 06:31:18,188 - INFO - Directorio de entrada: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\2_processed
+2025-05-23 06:31:18,188 - INFO - Directorio de salida: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\3_trainingdata
+2025-05-23 06:31:18,188 - INFO - Directorio de logs: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\logs
+2025-05-23 06:31:18,188 - INFO - Archivo de log: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\logs\fpi_selection_20250523_063118.log
+2025-05-23 06:31:18,188 - INFO - Período de forecasting: 1MONTH
+2025-05-23 06:31:18,188 - INFO - Gap para CV: 20 días
+2025-05-23 06:31:18,188 - INFO - Número de splits CV: 5
+2025-05-23 06:31:18,189 - INFO - Threshold FPI: 1e-06
+2025-05-23 06:31:18,189 - INFO - Aplicar escalado: False
+2025-05-23 06:31:18,189 - INFO - Semilla aleatoria: 42
+2025-05-23 06:31:18,189 - INFO - Parámetros CatBoost: {'loss_function': 'RMSE', 'eval_metric': 'RMSE', 'early_stopping_rounds': 50, 'verbose': 0, 'random_seed': 42, 'n_estimators': 500, 'learning_rate': 0.01, 'max_depth': 8}
+2025-05-23 06:31:18,189 - INFO - ================================================================================
+2025-05-23 06:31:18,190 - INFO - ============================================================
+2025-05-23 06:31:18,190 - INFO - INICIANDO SELECCIÓN DE FEATURES FPI
+2025-05-23 06:31:18,190 - INFO - ============================================================
+2025-05-23 06:31:18,190 - INFO - Usando el archivo más reciente: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\2_processed\ULTIMO_USDCOP_final.xlsx
+2025-05-23 06:31:18,190 - INFO - La salida se guardará en: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_USDCOP_final_FPI.xlsx
+2025-05-23 06:31:20,028 - INFO - Archivo 'C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\2_processed\ULTIMO_USDCOP_final.xlsx' cargado con forma (2310, 161).
+2025-05-23 06:31:20,034 - INFO - Memoria utilizada: 2.95 MB
+2025-05-23 06:31:20,035 - INFO - Columnas del DataFrame original: ['date', 'MoM_PRICE_Japan_10Y_Bond_bond', 'YoY_PRICE_Japan_10Y_Bond_bond', 'log_diff_PRICE_Japan_10Y_Bond_bond', 'rolling_var_PRICE_Japan_10Y_Bond_bond', '3M_change_PRICE_Japan_10Y_Bond_bond', '6M_change_PRICE_Japan_10Y_Bond_bond', 'YTD_PRICE_Japan_10Y_Bond_bond', 'zscore_PRICE_Japan_10Y_Bond_bond', 'MoM_PRICE_UK_10Y_Bond_bond', 'log_diff_PRICE_UK_10Y_Bond_bond', '3M_change_PRICE_UK_10Y_Bond_bond', '6M_change_PRICE_UK_10Y_Bond_bond', 'zscore_PRICE_UK_10Y_Bond_bond', 'MoM_PRICE_Germany_10Y_Bond_bond', 'YoY_PRICE_Germany_10Y_Bond_bond', 'log_diff_PRICE_Germany_10Y_Bond_bond', '3M_change_PRICE_Germany_10Y_Bond_bond', '6M_change_PRICE_Germany_10Y_Bond_bond', 'zscore_PRICE_Germany_10Y_Bond_bond', 'log_diff_PRICE_Colombia_5_Year_Bond_bond', 'bollinger_upper_PRICE_Colombia_5_Year_Bond_bond', 'YTD_PRICE_Colombia_5_Year_Bond_bond', 'log_diff_PRICE_Colombia_10_Year_Bond_bond', '3M_change_PRICE_Colombia_10_Year_Bond_bond', 'zscore_PRICE_Colombia_10_Year_Bond_bond', 'MoM_DGS10_DGS10_bond', 'log_diff_DGS10_DGS10_bond', 'rolling_var_DGS10_DGS10_bond', 'log_diff_PRICE_CrudeOil_WTI_commodities', 'rolling_var_PRICE_CrudeOil_WTI_commodities', 'MACD_PRICE_CrudeOil_WTI_commodities', 'momentum_PRICE_CrudeOil_WTI_commodities', '3M_change_PRICE_CrudeOil_WTI_commodities', '6M_change_PRICE_CrudeOil_WTI_commodities', 'log_diff_PRICE_Gold_Spot_commodities', 'momentum_PRICE_Gold_Spot_commodities', '3M_change_PRICE_Gold_Spot_commodities', 'log_diff_PRICE_Silver_Spot_commodities', 'momentum_PRICE_Silver_Spot_commodities', 'zscore_PRICE_Silver_Spot_commodities', 'log_diff_PRICE_Copper_Futures_commodities', 'MACD_PRICE_Copper_Futures_commodities', 'momentum_PRICE_Copper_Futures_commodities', 'zscore_PRICE_Copper_Futures_commodities', 'MoM_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'YoY_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'log_diff_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', '3M_change_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', '6M_change_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'YTD_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'zscore_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'MoM_Actual_Japan_M2_MoneySupply_YoY_economics', 'YoY_Actual_Japan_M2_MoneySupply_YoY_economics', 'log_diff_Actual_Japan_M2_MoneySupply_YoY_economics', '3M_change_Actual_Japan_M2_MoneySupply_YoY_economics', '6M_change_Actual_Japan_M2_MoneySupply_YoY_economics', 'zscore_Actual_Japan_M2_MoneySupply_YoY_economics', 'MoM_Actual_China_M2_MoneySupply_YoY_economics', 'YoY_Actual_China_M2_MoneySupply_YoY_economics', 'log_diff_Actual_China_M2_MoneySupply_YoY_economics', '3M_change_Actual_China_M2_MoneySupply_YoY_economics', '6M_change_Actual_China_M2_MoneySupply_YoY_economics', 'YTD_Actual_China_M2_MoneySupply_YoY_economics', 'zscore_Actual_China_M2_MoneySupply_YoY_economics', 'MoM_Actual_IPC Colombia_economics', 'YoY_Actual_IPC Colombia_economics', 'log_diff_Actual_IPC Colombia_economics', '3M_change_Actual_IPC Colombia_economics', '6M_change_Actual_IPC Colombia_economics', 'YTD_Actual_IPC Colombia_economics', 'zscore_Actual_IPC Colombia_economics', 'MoM_Actual_IPC EEUU_economics', 'YoY_Actual_IPC EEUU_economics', 'log_diff_Actual_IPC EEUU_economics', '3M_change_Actual_IPC EEUU_economics', '6M_change_Actual_IPC EEUU_economics', 'YTD_Actual_IPC EEUU_economics', 'zscore_Actual_IPC EEUU_economics', 'log_diff_PRICE_EUR_USD_Spot_exchange_rate', 'MACD_signal_PRICE_EUR_USD_Spot_exchange_rate', 'momentum_PRICE_EUR_USD_Spot_exchange_rate', 'log_diff_PRICE_GBP_USD_Spot_exchange_rate', 'MACD_PRICE_GBP_USD_Spot_exchange_rate', 'momentum_PRICE_GBP_USD_Spot_exchange_rate', '3M_change_PRICE_GBP_USD_Spot_exchange_rate', '6M_change_PRICE_GBP_USD_Spot_exchange_rate', 'log_diff_PRICE_JPY_USD_Spot_exchange_rate', 'MACD_signal_PRICE_JPY_USD_Spot_exchange_rate', 'momentum_PRICE_JPY_USD_Spot_exchange_rate', '6M_change_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', 'log_diff_PRICE_CNY_USD_Spot_exchange_rate', 'rolling_std_PRICE_CNY_USD_Spot_exchange_rate', 'momentum_PRICE_CNY_USD_Spot_exchange_rate', '3M_change_PRICE_CNY_USD_Spot_exchange_rate', 'zscore_PRICE_CNY_USD_Spot_exchange_rate', 'log_diff_PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate', 'momentum_PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate', 'zscore_PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate', 'MoM_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', 'YoY_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', 'log_diff_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', '3M_change_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', '6M_change_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', 'zscore_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', 'MoM_Actual_China_Exports_exports', 'YoY_Actual_China_Exports_exports', 'log_Actual_China_Exports_exports', 'log_diff_Actual_China_Exports_exports', '3M_change_Actual_China_Exports_exports', '6M_change_Actual_China_Exports_exports', 'YTD_Actual_China_Exports_exports', 'zscore_Actual_China_Exports_exports', 'log_diff_Índice_COLCAPDato_diario_Índice_COLCAP_index_pricing', 'momentum_Índice_COLCAPDato_diario_Índice_COLCAP_index_pricing', '6M_change_Índice_COLCAPDato_diario_Índice_COLCAP_index_pricing', 'zscore_Índice_COLCAPDato_diario_Índice_COLCAP_index_pricing', 'momentum_PRICE_S&P500_Index_index_pricing', 'log_diff_PRICE_FTSE_100_index_pricing', 'momentum_PRICE_FTSE_100_index_pricing', 'zscore_PRICE_FTSE_100_index_pricing', 'log_diff_PRICE_Nikkei_225_index_pricing', 'rolling_var_PRICE_Nikkei_225_index_pricing', 'momentum_PRICE_Nikkei_225_index_pricing', 'zscore_PRICE_Nikkei_225_index_pricing', 'log_diff_PRICE_DAX_30_index_pricing', 'momentum_PRICE_DAX_30_index_pricing', '3M_change_PRICE_DAX_30_index_pricing', 'log_diff_PRICE_Shanghai_Composite_index_pricing', 'MACD_PRICE_Shanghai_Composite_index_pricing', 'momentum_PRICE_Shanghai_Composite_index_pricing', '3M_change_PRICE_Shanghai_Composite_index_pricing', '6M_change_PRICE_Shanghai_Composite_index_pricing', 'zscore_PRICE_Shanghai_Composite_index_pricing', 'log_diff_PRICE_VIX_VolatilityIndex_index_pricing', 'MACD_signal_PRICE_VIX_VolatilityIndex_index_pricing', 'momentum_PRICE_VIX_VolatilityIndex_index_pricing', '6M_change_PRICE_VIX_VolatilityIndex_index_pricing', 'zscore_PRICE_VIX_VolatilityIndex_index_pricing', 'log_diff_PRICE_Dow_Jones_Industrial_Average_index_pricing', 'log_diff_DTWEXBGS_Dollar_Index_DXY_index_pricing', 'rolling_var_DTWEXBGS_Dollar_Index_DXY_index_pricing', 'MoM_Actual_Eurozone_Unemployment_Rate_unemployment_rate', 'log_diff_Actual_Eurozone_Unemployment_Rate_unemployment_rate', '3M_change_Actual_Eurozone_Unemployment_Rate_unemployment_rate', '6M_change_Actual_Eurozone_Unemployment_Rate_unemployment_rate', 'zscore_Actual_Eurozone_Unemployment_Rate_unemployment_rate', 'MoM_UNRATE_US_Unemployment_Rate_unemployment_rate', 'log_diff_UNRATE_US_Unemployment_Rate_unemployment_rate', '6M_change_UNRATE_US_Unemployment_Rate_unemployment_rate', 'zscore_UNRATE_US_Unemployment_Rate_unemployment_rate', '3M_change_PAYEMS_US_Nonfarm_Payrolls_unemployment_rate', 'MoM_ICSA_US_Initial_Jobless_Claims_unemployment_rate', 'log_diff_ICSA_US_Initial_Jobless_Claims_unemployment_rate', '3M_change_ICSA_US_Initial_Jobless_Claims_unemployment_rate', 'zscore_ICSA_US_Initial_Jobless_Claims_unemployment_rate', 'ANFCI_Chicago_Fed_NFCI_leading_economic_index', 'ECBDFR_ECB_Deposit_Rate_economics', 'PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target', 'PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20']
+2025-05-23 06:31:20,036 - INFO - Tipos de datos: 
+date                                                                            object
+MoM_PRICE_Japan_10Y_Bond_bond                                                  float64
+YoY_PRICE_Japan_10Y_Bond_bond                                                  float64
+log_diff_PRICE_Japan_10Y_Bond_bond                                             float64
+rolling_var_PRICE_Japan_10Y_Bond_bond                                          float64
+                                                                                ...   
+zscore_ICSA_US_Initial_Jobless_Claims_unemployment_rate                        float64
+ANFCI_Chicago_Fed_NFCI_leading_economic_index                                  float64
+ECBDFR_ECB_Deposit_Rate_economics                                              float64
+PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target              float64
+PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20    float64
+Length: 161, dtype: object
+2025-05-23 06:31:20,083 - INFO - Primeras 3 filas (head) del DataFrame original:
+         date  MoM_PRICE_Japan_10Y_Bond_bond  ...  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20
+0  2015-01-30                      -0.133333  ...                                           0.024582                                                           0.023408                          
+1  2015-02-02                      -0.110769  ...                                           0.053646                                                           0.015933                          
+2  2015-02-03                       0.263889  ...                                           0.083623                                                           0.017712                          
+
+[3 rows x 161 columns]
+2025-05-23 06:31:20,129 - INFO - Últimas 3 filas (tail) del DataFrame original:
+            date  MoM_PRICE_Japan_10Y_Bond_bond  ...  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20
+2307  2025-03-26                       0.150554  ...                                           0.043950                                                                NaN                          
+2308  2025-03-27                       0.131789  ...                                           0.019397                                                                NaN                          
+2309  2025-03-28                       0.123529  ...                                           0.004308                                                                NaN                          
+
+[3 rows x 161 columns]
+2025-05-23 06:31:20,129 - INFO - Estadísticas básicas de algunas columnas numéricas:
+2025-05-23 06:31:20,132 - INFO -   - MoM_PRICE_Japan_10Y_Bond_bond: min=-49.5000, max=58.0000, mean=0.0079, std=2.8943
+2025-05-23 06:31:20,133 - INFO -   - YoY_PRICE_Japan_10Y_Bond_bond: min=-90.0000, max=99.0000, mean=0.3610, std=6.1732
+2025-05-23 06:31:20,134 - INFO -   - log_diff_PRICE_Japan_10Y_Bond_bond: min=-0.1031, max=0.1334, mean=0.0003, std=0.0143
+2025-05-23 06:31:20,134 - INFO -   - rolling_var_PRICE_Japan_10Y_Bond_bond: min=0.0000, max=0.0113, mean=0.0010, std=0.0017
+2025-05-23 06:31:20,135 - INFO -   - 3M_change_PRICE_Japan_10Y_Bond_bond: min=-64.0000, max=139.0000, mean=0.3162, std=4.7952
+2025-05-23 06:31:20,137 - INFO - Convirtiendo columna 'date' a datetime...
+2025-05-23 06:31:20,148 - INFO - Fechas inválidas (NaT) encontradas: 0
+2025-05-23 06:31:20,149 - INFO - Rango de fechas después de limpiar: 2015-01-30 00:00:00 a 2025-03-28 00:00:00
+2025-05-23 06:31:20,149 - INFO - Cantidad de fechas únicas: 2310
+2025-05-23 06:31:20,149 - INFO - Días calendario totales en el rango: 3711
+2025-05-23 06:31:20,149 - INFO - Cobertura de fechas: 62.2% del rango total
+2025-05-23 06:31:20,149 - INFO - Construyendo calendario de días hábiles para NYSE...
+2025-05-23 06:31:20,301 - INFO - Días hábiles (NYSE) en el rango: 2556
+2025-05-23 06:31:20,301 - INFO - Primeros 5 días hábiles: [Timestamp('2015-01-30 00:00:00'), Timestamp('2015-02-02 00:00:00'), Timestamp('2015-02-03 00:00:00'), Timestamp('2015-02-04 00:00:00'), Timestamp('2015-02-05 00:00:00')]
+2025-05-23 06:31:20,302 - INFO - Últimos 5 días hábiles: [Timestamp('2025-03-24 00:00:00'), Timestamp('2025-03-25 00:00:00'), Timestamp('2025-03-26 00:00:00'), Timestamp('2025-03-27 00:00:00'), Timestamp('2025-03-28 00:00:00')]
+2025-05-23 06:31:20,302 - INFO - Rango total días hábiles: 2015-01-30 00:00:00 a 2025-03-28 00:00:00
+2025-05-23 06:31:20,307 - WARNING - Ejemplos de días hábiles faltantes: [Timestamp('2015-06-18 00:00:00'), Timestamp('2015-06-19 00:00:00'), Timestamp('2015-06-22 00:00:00'), Timestamp('2015-06-23 00:00:00'), Timestamp('2015-06-24 00:00:00')]
+2025-05-23 06:31:20,309 - INFO - Filas totales antes de filtrar por días hábiles: 2310
+2025-05-23 06:31:20,309 - INFO - Filas totales después de filtrar por días hábiles: 2229
+2025-05-23 06:31:20,309 - INFO - Filas eliminadas (no días hábiles): 81
+2025-05-23 06:31:20,310 - INFO - Dataset tras filtrar días hábiles: (2229, 161)
+2025-05-23 06:31:20,310 - INFO - Columna target tomada como la última columna: 'PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20'
+2025-05-23 06:31:20,311 - INFO - Estadísticas del target 'PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20':
+2025-05-23 06:31:20,311 - INFO -   - count: 2209.0
+2025-05-23 06:31:20,312 - INFO -   - mean: 0.001531
+2025-05-23 06:31:20,312 - INFO -   - std: 0.039762
+2025-05-23 06:31:20,312 - INFO -   - min: -0.093200
+2025-05-23 06:31:20,312 - INFO -   - 25%: -0.024245
+2025-05-23 06:31:20,312 - INFO -   - 50%: -0.001823
+2025-05-23 06:31:20,312 - INFO -   - 75%: 0.023969
+2025-05-23 06:31:20,312 - INFO -   - max: 0.228179
+2025-05-23 06:31:20,314 - INFO - Separación de datos - X: (2229, 160), y: (2229,)
+2025-05-23 06:31:20,314 - INFO - Extrayendo 'date' de las features para conservarla aparte.
+2025-05-23 06:31:20,316 - INFO - Número de columnas numéricas: 159 de 159 originales
+2025-05-23 06:31:20,316 - INFO - Primeras 10 columnas numéricas: ['MoM_PRICE_Japan_10Y_Bond_bond', 'YoY_PRICE_Japan_10Y_Bond_bond', 'log_diff_PRICE_Japan_10Y_Bond_bond', 'rolling_var_PRICE_Japan_10Y_Bond_bond', '3M_change_PRICE_Japan_10Y_Bond_bond', '6M_change_PRICE_Japan_10Y_Bond_bond', 'YTD_PRICE_Japan_10Y_Bond_bond', 'zscore_PRICE_Japan_10Y_Bond_bond', 'MoM_PRICE_UK_10Y_Bond_bond', 'log_diff_PRICE_UK_10Y_Bond_bond']
+2025-05-23 06:31:20,316 - INFO - ... y 149 más
+2025-05-23 06:31:20,317 - INFO - No se aplicó escalado; se mantienen los valores originales.
+2025-05-23 06:31:20,321 - INFO - Dimensiones tras eliminar NaNs - X: (2209, 159), y: (2209,)
+2025-05-23 06:31:20,322 - INFO - Índices reseteados para asegurar alineación 0..N-1
+2025-05-23 06:31:20,322 - INFO - Dimensión de X_scaled antes de FPI: (2209, 159)
+2025-05-23 06:31:20,322 - INFO - Dimensión de y antes de FPI: (2209,)
+2025-05-23 06:31:20,323 - INFO - Dimensión de date_data antes de FPI: (2209,)
+2025-05-23 06:31:20,370 - INFO - Últimas 3 filas de X_scaled:
+      MoM_PRICE_Japan_10Y_Bond_bond  YoY_PRICE_Japan_10Y_Bond_bond  ...  ECBDFR_ECB_Deposit_Rate_economics  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target
+2206                       0.182592                       0.721763  ...                                3.0                                          -0.031508                
+2207                       0.123249                       0.689607  ...                                3.0                                          -0.047177                
+2208                       0.149425                       0.630435  ...                                3.0                                          -0.049276                
+
+[3 rows x 159 columns]
+2025-05-23 06:31:20,371 - INFO - Últimas 3 filas de y:
+2206    0.047189
+2207    0.043950
+2208    0.019397
+Name: PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20, dtype: float64
+2025-05-23 06:31:20,371 - INFO - Últimas 3 filas de date_data:
+2206   2025-01-15
+2207   2025-01-16
+2208   2025-01-17
+Name: date, dtype: datetime64[ns]
+2025-05-23 06:31:20,371 - INFO - ============================================================
+2025-05-23 06:31:20,372 - INFO - INICIANDO SELECCIÓN DE FEATURES CON FPI
+2025-05-23 06:31:20,372 - INFO - ============================================================
+2025-05-23 06:31:20,372 - INFO - Número total de features antes de FPI: 159
+2025-05-23 06:31:20,372 - INFO - Forecast period: 1MONTH
+2025-05-23 06:31:20,372 - INFO - Gap usado para TimeSeriesSplit: 20 días
+2025-05-23 06:31:20,372 - INFO - Threshold FPI: 1e-06
+2025-05-23 06:31:20,373 - INFO - ==================================================
+2025-05-23 06:31:20,373 - INFO - [FPI] INICIANDO ANÁLISIS DE FEATURE PERMUTATION IMPORTANCE
+2025-05-23 06:31:20,373 - INFO - ==================================================
+2025-05-23 06:31:20,373 - INFO - [FPI] Dimensiones de datos - X: (2209, 159), y: (2209,)
+2025-05-23 06:31:20,373 - INFO - [FPI] Rango de valores target - Min: -0.093200, Max: 0.228179, Mean: 0.001531
+2025-05-23 06:31:20,373 - INFO - [FPI] Parámetros - CV splits: 5, gap: 20, threshold: 1e-06
+2025-05-23 06:31:20,998 - INFO - Gráfico de CV splits guardado en: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\plots\cv_splits_20250523_063118.png
+2025-05-23 06:31:20,999 - INFO - [FPI] Detalle de los splits de validación cruzada temporal:
+2025-05-23 06:31:20,999 - INFO - [FPI] Split 1:
+2025-05-23 06:31:21,000 - INFO -   - Train: 349 muestras (índices 0 a 348)
+2025-05-23 06:31:21,000 - INFO -   - Validation: 368 muestras (índices 369 a 736)
+2025-05-23 06:31:21,002 - INFO -   - Gap efectivo: 20 muestras
+2025-05-23 06:31:21,002 - INFO - [FPI] Split 2:
+2025-05-23 06:31:21,003 - INFO -   - Train: 717 muestras (índices 0 a 716)
+2025-05-23 06:31:21,003 - INFO -   - Validation: 368 muestras (índices 737 a 1104)
+2025-05-23 06:31:21,003 - INFO -   - Gap efectivo: 20 muestras
+2025-05-23 06:31:21,003 - INFO - [FPI] Split 3:
+2025-05-23 06:31:21,003 - INFO -   - Train: 1085 muestras (índices 0 a 1084)
+2025-05-23 06:31:21,003 - INFO -   - Validation: 368 muestras (índices 1105 a 1472)
+2025-05-23 06:31:21,003 - INFO -   - Gap efectivo: 20 muestras
+2025-05-23 06:31:21,003 - INFO - [FPI] Split 4:
+2025-05-23 06:31:21,003 - INFO -   - Train: 1453 muestras (índices 0 a 1452)
+2025-05-23 06:31:21,004 - INFO -   - Validation: 368 muestras (índices 1473 a 1840)
+2025-05-23 06:31:21,004 - INFO -   - Gap efectivo: 20 muestras
+2025-05-23 06:31:21,004 - INFO - [FPI] Split 5:
+2025-05-23 06:31:21,004 - INFO -   - Train: 1821 muestras (índices 0 a 1820)
+2025-05-23 06:31:21,005 - INFO -   - Validation: 368 muestras (índices 1841 a 2208)
+2025-05-23 06:31:21,005 - INFO -   - Gap efectivo: 20 muestras
+2025-05-23 06:31:21,005 - INFO - [FPI] Configurando CatBoostRegressor con los siguientes parámetros:
+2025-05-23 06:31:21,005 - INFO -   - loss_function: RMSE
+2025-05-23 06:31:21,005 - INFO -   - eval_metric: RMSE
+2025-05-23 06:31:21,005 - INFO -   - early_stopping_rounds: 50
+2025-05-23 06:31:21,006 - INFO -   - verbose: 0
+2025-05-23 06:31:21,006 - INFO -   - random_seed: 42
+2025-05-23 06:31:21,006 - INFO -   - n_estimators: 500
+2025-05-23 06:31:21,006 - INFO -   - learning_rate: 0.01
+2025-05-23 06:31:21,006 - INFO -   - max_depth: 8
+2025-05-23 06:31:21,007 - INFO - [FPI] Configurando SelectByShuffling con threshold=1e-06
+2025-05-23 06:31:21,008 - INFO - [FPI] Scorer utilizado: neg_mean_squared_error
+2025-05-23 06:31:21,008 - INFO - [FPI] Iniciando proceso de fit con SelectByShuffling...
+2025-05-23 06:32:32,992 - INFO - [FPI] Proceso de fit completado en 71.98 segundos
+2025-05-23 06:32:32,993 - INFO - [FPI] Se calcularon drift scores para 159 columnas.
+2025-05-23 06:32:32,993 - INFO - [FPI] Features seleccionadas por FPI: 25 de 159 (15.7%)
+2025-05-23 06:32:32,994 - INFO - [FPI] Top 10 features por importancia (performance drift):
+2025-05-23 06:32:33,007 - INFO - [FPI] Bottom 10 features con menor importancia:
+2025-05-23 06:32:33,023 - INFO - [FPI] CSV con todos los drift scores guardado en: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\plots\fpi_drifts_20250523_063118.csv
+2025-05-23 06:32:34,780 - INFO - Gráfico de performance drift guardado en: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\plots\performance_drift_20250523_063118.png
+2025-05-23 06:32:34,780 - INFO - [FPI] Proceso FPI completado en 74.41 segundos
+2025-05-23 06:32:34,780 - INFO - [FPI] Número de features seleccionadas: 25
+2025-05-23 06:32:34,780 - INFO - ==================================================
+2025-05-23 06:32:34,781 - INFO - Proceso FPI completado en 74.41 segundos
+2025-05-23 06:32:34,781 - INFO - Features finales seleccionadas (25/159 = 15.7%):
+2025-05-23 06:32:34,781 - INFO -   - Grupo 'rolling': 3 features
+2025-05-23 06:32:34,781 - INFO -     ['rolling_var_PRICE_Japan_10Y_Bond_bond', 'rolling_std_PRICE_CNY_USD_Spot_exchange_rate', 'rolling_var_PRICE_Nikkei_225_index_pricing']
+2025-05-23 06:32:34,781 - INFO -   - Grupo '3M': 3 features
+2025-05-23 06:32:34,781 - INFO -     ['3M_change_PRICE_Germany_10Y_Bond_bond', '3M_change_PRICE_CrudeOil_WTI_commodities', '3M_change_ICSA_US_Initial_Jobless_Claims_unemployment_rate']
+2025-05-23 06:32:34,781 - INFO -   - Grupo 'bollinger': 1 features
+2025-05-23 06:32:34,781 - INFO -     ['bollinger_upper_PRICE_Colombia_5_Year_Bond_bond']
+2025-05-23 06:32:34,782 - INFO -   - Grupo 'zscore': 4 features
+2025-05-23 06:32:34,782 - INFO -     ['zscore_PRICE_Colombia_10_Year_Bond_bond', 'zscore_PRICE_Silver_Spot_commodities', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_ICSA_US_Initial_Jobless_Claims_unemployment_rate']
+2025-05-23 06:32:34,782 - INFO -   - Grupo 'MoM': 4 features
+2025-05-23 06:32:34,782 - INFO -     ['MoM_DGS10_DGS10_bond', 'MoM_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'MoM_Actual_China_M2_MoneySupply_YoY_economics', 'MoM_ICSA_US_Initial_Jobless_Claims_unemployment_rate']
+2025-05-23 06:32:34,782 - INFO -   - Grupo 'MACD': 1 features
+2025-05-23 06:32:34,782 - INFO -     ['MACD_PRICE_CrudeOil_WTI_commodities']
+2025-05-23 06:32:34,783 - INFO -   - Grupo '6M': 3 features
+2025-05-23 06:32:34,783 - INFO -     ['6M_change_PRICE_CrudeOil_WTI_commodities', '6M_change_Actual_IPC Colombia_economics', '6M_change_PRICE_JPY_USD_Spot_exchange_rate']
+2025-05-23 06:32:34,783 - INFO -   - Grupo 'YTD': 2 features
+2025-05-23 06:32:34,783 - INFO -     ['YTD_Actual_IPC Colombia_economics', 'YTD_Actual_IPC EEUU_economics']
+2025-05-23 06:32:34,783 - INFO -   - Grupo 'YoY': 1 features
+2025-05-23 06:32:34,783 - INFO -     ['YoY_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing']
+2025-05-23 06:32:34,784 - INFO -   - Grupo 'momentum': 1 features
+2025-05-23 06:32:34,784 - INFO -     ['momentum_Índice_COLCAPDato_diario_Índice_COLCAP_index_pricing']
+2025-05-23 06:32:34,784 - INFO -   - Grupo 'ANFCI': 1 features
+2025-05-23 06:32:34,784 - INFO -     ['ANFCI_Chicago_Fed_NFCI_leading_economic_index']
+2025-05-23 06:32:34,784 - INFO -   - Grupo 'PRICE': 1 features
+2025-05-23 06:32:34,784 - INFO -     ['PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target']
+2025-05-23 06:32:34,785 - INFO - Shape final_X: (2209, 25), y: (2209,)
+2025-05-23 06:32:34,785 - INFO - Shape date_data: (2209,)
+2025-05-23 06:32:34,785 - INFO - Verificando longitudes antes de concat:
+2025-05-23 06:32:34,786 - INFO - Len final_X=2209, Len y=2209, Len date_data=2209
+2025-05-23 06:32:34,787 - INFO - Shape final tras la selección de features y concat: (2209, 27)
+2025-05-23 06:32:34,787 - INFO - Columnas del DataFrame final: ['date', 'rolling_var_PRICE_Japan_10Y_Bond_bond', '3M_change_PRICE_Germany_10Y_Bond_bond', 'bollinger_upper_PRICE_Colombia_5_Year_Bond_bond', 'zscore_PRICE_Colombia_10_Year_Bond_bond', 'MoM_DGS10_DGS10_bond', 'MACD_PRICE_CrudeOil_WTI_commodities', '3M_change_PRICE_CrudeOil_WTI_commodities', '6M_change_PRICE_CrudeOil_WTI_commodities', 'zscore_PRICE_Silver_Spot_commodities', 'MoM_Reservas_internacionales_brutasDato_fin_de_mes_Brute_Internacional_Reservoir_economics', 'MoM_Actual_China_M2_MoneySupply_YoY_economics', '6M_change_Actual_IPC Colombia_economics', 'YTD_Actual_IPC Colombia_economics', 'YTD_Actual_IPC EEUU_economics', '6M_change_PRICE_JPY_USD_Spot_exchange_rate', 'zscore_PRICE_JPY_USD_Spot_exchange_rate', 'rolling_std_PRICE_CNY_USD_Spot_exchange_rate', 'YoY_Índice_de_precios_de_exportaciones_según_ippDato_f_Indice_Intercambios_IPP_index_pricing', 'momentum_Índice_COLCAPDato_diario_Índice_COLCAP_index_pricing', 'rolling_var_PRICE_Nikkei_225_index_pricing', 'MoM_ICSA_US_Initial_Jobless_Claims_unemployment_rate', '3M_change_ICSA_US_Initial_Jobless_Claims_unemployment_rate', 'zscore_ICSA_US_Initial_Jobless_Claims_unemployment_rate', 'ANFCI_Chicago_Fed_NFCI_leading_economic_index', 'PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target', 'PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20']
+2025-05-23 06:32:34,798 - INFO - Primeras 3 filas del DataFrame final:
+        date  rolling_var_PRICE_Japan_10Y_Bond_bond  ...  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20
+0 2015-01-30                               0.001010  ...                                           0.024582                                                           0.023408                          
+1 2015-02-02                               0.000864  ...                                           0.053646                                                           0.015933                          
+2 2015-02-03                               0.001317  ...                                           0.083623                                                           0.017712                          
+
+[3 rows x 27 columns]
+2025-05-23 06:32:34,810 - INFO - Últimas 3 filas del DataFrame final:
+           date  rolling_var_PRICE_Japan_10Y_Bond_bond  ...  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target  PRICE_USDCOP-US_Dollar_Colombian_Peso_exchange_rate_Return_Target_lagged_20
+2206 2025-01-15                               0.004175  ...                                          -0.031508                                                           0.047189                          
+2207 2025-01-16                               0.004405  ...                                          -0.047177                                                           0.043950                          
+2208 2025-01-17                               0.004312  ...                                          -0.049276                                                           0.019397                          
+
+[3 rows x 27 columns]
+2025-05-23 06:32:35,363 - INFO - Dataset final guardado en 'C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_USDCOP_final_FPI.xlsx' con forma (2209, 27) en 0.55 segundos.
+2025-05-23 06:32:35,365 - INFO - Tamaño del archivo: 0.56 MB
+2025-05-23 06:32:35,365 - INFO - ============================================================
+2025-05-23 06:32:35,365 - INFO - PROCESO COMPLETADO EN 1m 17.18s
+2025-05-23 06:32:35,365 - INFO - Features originales: 159
+2025-05-23 06:32:35,365 - INFO - Features seleccionadas: 25 (15.7%)
+2025-05-23 06:32:35,366 - INFO - Reducción: 134 features (84.3%)
+2025-05-23 06:32:35,366 - INFO - Archivo final: C:\Users\Home\Desktop\Clonea\clone4\SP500_INDEX_Analisis\data\3_trainingdata\ULTIMO_USDCOP_final_FPI.xlsx
+2025-05-23 06:32:35,366 - INFO - ============================================================

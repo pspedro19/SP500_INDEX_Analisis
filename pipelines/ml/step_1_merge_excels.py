@@ -198,7 +198,7 @@ def main():
     columna_fecha = DATE_COL  # Usar valor de configuración
     columnas_merge = [DATE_COL]  # Usar valor de configuración
     fecha_inicio = "2014-01-01"
-    fecha_fin = "2025-03-27"
+    fecha_fin = "2025-05-31"
     archivo_salida = os.path.join(DATA_PREP, "MERGEDEXCELS.xlsx")
     
     # Obtener lista de archivos
@@ -236,6 +236,40 @@ def main():
     
     # Combinar los DataFrames
     df_combinado = merge_dataframes(dfs, columnas_merge)
+
+        # Verificamos que el DataFrame no esté vacío
+    if df_combinado is None:
+        logging.error("No se pudo combinar los archivos")
+        return False
+
+    logging.info(f"Combinación exitosa. Resultado tiene {len(df_combinado)} filas y {len(df_combinado.columns)} columnas")
+
+    # Asegurar que columna_fecha esté en formato datetime y ordenado
+    df_combinado[columna_fecha] = pd.to_datetime(df_combinado[columna_fecha])
+    df_combinado = df_combinado.sort_values(by=columna_fecha)
+
+    # Crear rango completo de fechas desde el mínimo hasta el máximo
+    fecha_min = df_combinado[columna_fecha].min()
+    fecha_max = df_combinado[columna_fecha].max()
+    fechas_completas = pd.date_range(start=fecha_min, end=fecha_max, freq='D')
+
+    # Guardar el orden original de columnas
+    columnas_originales = df_combinado.columns.tolist()
+
+    # Reindexar usando fechas completas
+    df_combinado = df_combinado.set_index(columna_fecha)
+    df_combinado = df_combinado.reindex(fechas_completas)
+
+    # Aplicar forward fill
+    df_combinado = df_combinado.ffill()
+
+    # Restaurar columna de fecha al inicio
+    df_combinado[columna_fecha] = df_combinado.index
+    columnas_ordenadas = [columna_fecha] + [col for col in columnas_originales if col != columna_fecha]
+    df_combinado = df_combinado[columnas_ordenadas].reset_index(drop=True)
+
+    logging.info(f"Forward fill aplicado y fechas normalizadas desde {fecha_min.date()} hasta {fecha_max.date()}")
+
     
     if df_combinado is None:
         logging.error("No se pudo combinar los archivos")

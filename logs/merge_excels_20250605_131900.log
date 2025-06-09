@@ -1,0 +1,27 @@
+2025-06-05 13:19:00,255 - INFO - === INICIANDO PROCESO DE COMBINACIÓN DE ARCHIVOS EXCEL ===
+2025-06-05 13:19:00,281 - INFO - Se encontraron 6 archivos Excel en la carpeta.
+2025-06-05 13:19:00,281 - INFO - Cargando archivo: datos_banco_republica_procesados.xlsx
+2025-06-05 13:19:05,226 - INFO - Archivo datos_banco_republica_procesados.xlsx cargado en 4.94s con 23850 filas.
+2025-06-05 13:19:05,227 - INFO - Archivo datos_banco_republica_procesados.xlsx cargado correctamente con 23850 filas
+2025-06-05 13:19:05,228 - INFO - Después de filtrar por fecha: 23850 filas
+2025-06-05 13:19:05,231 - INFO - Cargando archivo: datos_dane_exportaciones_procesadas.xlsx
+2025-06-05 13:19:06,360 - INFO - Archivo datos_dane_exportaciones_procesadas.xlsx cargado en 1.13s con 12114 filas.
+2025-06-05 13:19:06,361 - INFO - Archivo datos_dane_exportaciones_procesadas.xlsx cargado correctamente con 12114 filas
+2025-06-05 13:19:06,362 - INFO - Después de filtrar por fecha: 12114 filas
+2025-06-05 13:19:06,362 - INFO - Cargando archivo: datos_economicos_normales_procesados.xlsx
+2025-06-05 13:19:11,598 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado en 5.24s con 4174 filas.
+2025-06-05 13:19:11,599 - INFO - Archivo datos_economicos_normales_procesados.xlsx cargado correctamente con 4174 filas
+2025-06-05 13:19:11,600 - INFO - Después de filtrar por fecha: 4174 filas
+2025-06-05 13:19:11,600 - INFO - Cargando archivo: datos_economicos_other_procesados.xlsx
+2025-06-05 13:19:15,615 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado en 4.01s con 8706 filas.
+2025-06-05 13:19:15,615 - INFO - Archivo datos_economicos_other_procesados.xlsx cargado correctamente con 8706 filas
+2025-06-05 13:19:15,615 - INFO - Después de filtrar por fecha: 8706 filas
+2025-06-05 13:19:15,616 - INFO - Cargando archivo: datos_economicos_procesados_cp.xlsx
+2025-06-05 13:19:17,684 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado en 2.07s con 4172 filas.
+2025-06-05 13:19:17,685 - INFO - Archivo datos_economicos_procesados_cp.xlsx cargado correctamente con 4172 filas
+2025-06-05 13:19:17,686 - INFO - Después de filtrar por fecha: 4172 filas
+2025-06-05 13:19:17,686 - INFO - Cargando archivo: datos_economicos_procesados_Fred.xlsx
+2025-06-05 13:19:20,687 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado en 3.00s con 4174 filas.
+2025-06-05 13:19:20,687 - INFO - Archivo datos_economicos_procesados_Fred.xlsx cargado correctamente con 4174 filas
+2025-06-05 13:19:20,688 - INFO - Después de filtrar por fecha: 4174 filas
+2025-06-05 13:19:20,690 - INFO - Combinando DataFrame 1 con el resultado (23850 filas + 12114 filas)...

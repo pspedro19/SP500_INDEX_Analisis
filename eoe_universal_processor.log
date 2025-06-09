@@ -1,0 +1,1849 @@
+2025-05-27 14:13:06,605 [INFO] ================================================================================
+2025-05-27 14:13:06,615 [INFO] Directorio de datos: data/0_raw
+2025-05-27 14:13:06,615 [INFO] T�rminos detectados: confianza, expectativa, opini�n empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-27 14:13:06,616 [INFO] Fecha y hora: 2025-05-27 14:13:06
+2025-05-27 14:13:06,616 [INFO] ================================================================================
+2025-05-27 14:13:07,564 [INFO] Header de variables encontrado en fila 0
+2025-05-27 14:13:07,566 [INFO] Variables encontradas: 5
+2025-05-27 14:13:07,567 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-27 14:13:07,567 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-27 14:13:07,567 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-27 14:13:07,568 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-27 14:13:07,568 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-27 14:13:07,762 [INFO] Header de variables encontrado en fila 0
+2025-05-27 14:13:07,762 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:13:07,763 [INFO] Variables encontradas: 3
+2025-05-27 14:13:07,763 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 14:13:07,763 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 14:13:07,763 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 14:13:07,967 [INFO] Header de variables encontrado en fila 1
+2025-05-27 14:13:07,967 [INFO] Variables encontradas: 1
+2025-05-27 14:13:07,968 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-27 14:13:08,121 [INFO] Header de variables encontrado en fila 1
+2025-05-27 14:13:08,122 [INFO] Variables encontradas: 1
+2025-05-27 14:13:08,122 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-27 14:13:08,316 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 14:13:08,351 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 14:13:08,946 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:13:08,946 [INFO] Variables encontradas: 3
+2025-05-27 14:13:08,946 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 14:13:08,946 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 14:13:08,946 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 14:13:09,485 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:13:09,485 [INFO] Variables encontradas: 3
+2025-05-27 14:13:09,485 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 14:13:09,487 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 14:13:09,487 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 14:13:25,245 [INFO]    - Indice_Confianza_Col1_IC1_business_confidence
+2025-05-27 14:13:25,245 [INFO]    - Indice_Confianza_Col2_IC2_business_confidence
+2025-05-27 14:13:25,245 [INFO]    - Indice_Confianza_Col3_IC3_business_confidence
+2025-05-27 14:13:25,246 [INFO]    - Indice_Condiciones_Economicas_ICE_consumer_confidence
+2025-05-27 14:13:25,246 [INFO]    - Indice_Confianza_Consumidor_ICC_consumer_confidence
+2025-05-27 14:13:25,249 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-27 14:13:25,249 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-27 14:13:25,250 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-27 14:13:25,250 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-27 14:13:25,250 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-27 14:13:30,467 [INFO] 
+================================================================================
+2025-05-27 14:13:30,476 [INFO] ================================================================================
+2025-05-27 14:13:30,492 [INFO]    - IC1: Indice_Confianza_Col1 (282 registros)
+2025-05-27 14:13:30,492 [INFO]    - IC2: Indice_Confianza_Col2 (282 registros)
+2025-05-27 14:13:30,495 [INFO]    - IC3: Indice_Confianza_Col3 (282 registros)
+2025-05-27 14:13:30,495 [INFO]    - ICE: Indice_Condiciones_Economicas (543 registros)
+2025-05-27 14:13:30,495 [INFO]    - ICC: Indice_Confianza_Consumidor (538 registros)
+2025-05-27 14:13:30,502 [INFO] ================================================================================
+2025-05-27 14:40:18,561 [INFO] ================================================================================
+2025-05-27 14:40:18,572 [INFO] Directorio de datos: data/0_raw
+2025-05-27 14:40:18,572 [INFO] T�rminos detectados: confianza, expectativa, opini�n empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-27 14:40:18,572 [INFO] Fecha y hora: 2025-05-27 14:40:18
+2025-05-27 14:40:18,572 [INFO] ================================================================================
+2025-05-27 14:40:19,494 [INFO] Header de variables encontrado en fila 0
+2025-05-27 14:40:19,499 [INFO] Variables encontradas: 5
+2025-05-27 14:40:19,499 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-27 14:40:19,500 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-27 14:40:19,500 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-27 14:40:19,500 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-27 14:40:19,500 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-27 14:40:19,681 [INFO] Header de variables encontrado en fila 0
+2025-05-27 14:40:19,684 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:40:19,684 [INFO] Variables encontradas: 3
+2025-05-27 14:40:19,684 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 14:40:19,684 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 14:40:19,684 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 14:40:19,885 [INFO] Header de variables encontrado en fila 1
+2025-05-27 14:40:19,886 [INFO] Variables encontradas: 1
+2025-05-27 14:40:19,887 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-27 14:40:20,035 [INFO] Header de variables encontrado en fila 1
+2025-05-27 14:40:20,037 [INFO] Variables encontradas: 1
+2025-05-27 14:40:20,037 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-27 14:40:20,230 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 14:40:20,270 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 14:40:20,812 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:40:20,812 [INFO] Variables encontradas: 3
+2025-05-27 14:40:20,812 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 14:40:20,814 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 14:40:20,814 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 14:40:21,345 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:40:21,347 [INFO] Variables encontradas: 3
+2025-05-27 14:40:21,347 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 14:40:21,347 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 14:40:21,347 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 14:40:36,929 [INFO]    - Columna 1 (IC1)
+2025-05-27 14:40:36,929 [INFO]    - Columna 2 (IC2)
+2025-05-27 14:40:36,931 [INFO]    - Columna 3 (IC3)
+2025-05-27 14:40:36,931 [INFO]    - �ndice de Confianza Industrial (ICI) (ICE)
+2025-05-27 14:40:36,931 [INFO]    - �ndice de Confianza Comercial (ICCO) (ICC)
+2025-05-27 14:40:36,935 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-27 14:40:36,935 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-27 14:40:36,936 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-27 14:40:36,936 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-27 14:40:36,936 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-27 14:40:41,462 [INFO] 
+================================================================================
+2025-05-27 14:40:41,467 [INFO] ================================================================================
+2025-05-27 14:40:41,482 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-27 14:40:41,484 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-27 14:40:41,485 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-27 14:40:41,485 [INFO]    - ICE: '�ndice de Confianza Industrial (ICI)' (543 registros)
+2025-05-27 14:40:41,486 [INFO]    - ICC: '�ndice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-27 14:40:41,492 [INFO] ================================================================================
+2025-05-27 14:56:29,462 [INFO] ================================================================================
+2025-05-27 14:56:29,474 [INFO] Directorio de datos: data/0_raw
+2025-05-27 14:56:29,475 [INFO] T�rminos detectados: confianza, expectativa, opini�n empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-27 14:56:29,475 [INFO] Fecha y hora: 2025-05-27 14:56:29
+2025-05-27 14:56:29,475 [INFO] ================================================================================
+2025-05-27 14:56:30,471 [INFO] Header de variables encontrado en fila 0
+2025-05-27 14:56:30,471 [INFO] Variables encontradas: 5
+2025-05-27 14:56:30,471 [INFO]   - IC1: 'PRICE_Australia_10Y_Bond_bond' (col 1)
+2025-05-27 14:56:30,474 [INFO]   - IC2: 'PRICE_Italy_10Y_Bond_bond' (col 2)
+2025-05-27 14:56:30,474 [INFO]   - IC3: 'PRICE_Japan_10Y_Bond_bond' (col 3)
+2025-05-27 14:56:30,474 [INFO]   - IC4: 'PRICE_UK_10Y_Bond_bond' (col 4)
+2025-05-27 14:56:30,474 [INFO]   - IC5: 'PRICE_Germany_10Y_Bond_bond' (col 5)
+2025-05-27 14:56:30,679 [INFO] Header de variables encontrado en fila 0
+2025-05-27 14:56:30,679 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:56:30,679 [INFO] Variables encontradas: 3
+2025-05-27 14:56:30,679 [INFO]   - IC1: '�ndice de Confianza del Consumidor (ICC)' (col 1)
+2025-05-27 14:56:30,679 [INFO]   - IC2: '�ndice de Expectativas de los Consumidores (IEC)' (col 2)
+2025-05-27 14:56:30,679 [INFO]   - IC3: '�ndice de Condiciones Econ�micas (ICE)' (col 3)
+2025-05-27 14:56:30,894 [INFO] Header de variables encontrado en fila 1
+2025-05-27 14:56:30,894 [INFO] Variables encontradas: 4
+2025-05-27 14:56:30,894 [INFO]   - IC1: '�ndice de Confianza Industrial (ICI)' (col 1)
+2025-05-27 14:56:30,894 [INFO]   - IC2: 'Volumen actual de pedidos' (col 2)
+2025-05-27 14:56:30,894 [INFO]   - IC3: 'Nivel de existencias' (col 3)
+2025-05-27 14:56:30,898 [INFO]   - IC4: 'Expectativas de
+producci�n para el pr�ximo trimestre' (col 4)
+2025-05-27 14:56:31,057 [INFO] Header de variables encontrado en fila 1
+2025-05-27 14:56:31,057 [INFO] Variables encontradas: 4
+2025-05-27 14:56:31,063 [INFO]   - IC1: '�ndice de
+Confianza
+Comercial (ICCO)' (col 1)
+2025-05-27 14:56:31,063 [INFO]   - IC2: 'Situaci�n econ�mica actual de la empresa o negocio' (col 2)
+2025-05-27 14:56:31,063 [INFO]   - IC3: 'Nivel de existencias' (col 3)
+2025-05-27 14:56:31,063 [INFO]   - IC4: 'Expectativas de
+situaci�n
+econ�mica para el pr�ximo semestre' (col 4)
+2025-05-27 14:56:31,274 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 14:56:31,314 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 14:56:31,875 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:56:31,875 [INFO] Variables encontradas: 3
+2025-05-27 14:56:31,875 [INFO]   - IC1: '�ndice' (col 1)
+2025-05-27 14:56:31,875 [INFO]   - IC2: '�ndice' (col 2)
+2025-05-27 14:56:31,875 [INFO]   - IC3: '�ndice' (col 3)
+2025-05-27 14:56:32,391 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 14:56:32,391 [INFO] Variables encontradas: 3
+2025-05-27 14:56:32,391 [INFO]   - IC1: '�ndice' (col 1)
+2025-05-27 14:56:32,391 [INFO]   - IC2: '�ndice' (col 2)
+2025-05-27 14:56:32,391 [INFO]   - IC3: '�ndice' (col 3)
+2025-05-27 14:56:52,320 [INFO]    - �ndice de Confianza del Consumidor (ICC) (IC1)
+2025-05-27 14:56:52,320 [INFO]    - �ndice de Expectativas de los Consumidores (IEC) (IC2)
+2025-05-27 14:56:52,322 [INFO]    - �ndice de Condiciones Econ�micas (ICE) (IC3)
+2025-05-27 14:56:52,322 [INFO]    - �ndice de Confianza Industrial (ICI) (IC1)
+2025-05-27 14:56:52,322 [INFO]    - Volumen actual de pedidos (IC2)
+2025-05-27 14:56:52,322 [INFO]    - Nivel de existencias (IC3)
+2025-05-27 14:56:52,323 [INFO]    - Expectativas de producci�n para el pr�ximo trimestre (IC4)
+2025-05-27 14:56:52,323 [INFO]    - �ndice de Confianza Comercial (ICCO) (IC1)
+2025-05-27 14:56:52,323 [INFO]    - Situaci�n econ�mica actual de la empresa o negocio (IC2)
+2025-05-27 14:56:52,324 [INFO]    - Expectativas de situaci�n econ�mica para el pr�ximo semestre (IC4)
+2025-05-27 14:56:52,326 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-27 14:56:52,326 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-27 14:56:52,327 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-27 14:56:52,327 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC1 (IC1): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-27 14:56:52,328 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC2 (IC2): 100.0% desde 1980-01-01 a 2025-03-01 [-72.0 a 20.0]
+2025-05-27 14:56:52,328 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC3 (IC3): 100.0% desde 1980-01-01 a 2025-03-01 [-21.0 a 38.0]
+2025-05-27 14:56:52,328 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC4 (IC4): 100.0% desde 1980-01-01 a 2025-03-01 [-43.3 a 61.0]
+2025-05-27 14:56:52,329 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC1 (IC1): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-27 14:56:52,329 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC2 (IC2): 100.0% desde 1980-06-01 a 2025-03-01 [-37.0 a 74.1]
+2025-05-27 14:56:52,329 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC3 (IC3): 100.0% desde 1980-06-01 a 2025-03-01 [-31.0 a 33.5]
+2025-05-27 14:56:52,329 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC4 (IC4): 100.0% desde 1980-06-01 a 2025-03-01 [-62.8 a 65.0]
+2025-05-27 14:56:52,344 [ERROR]    Traceback: Traceback (most recent call last):
+  File "C:\Users\saule\Desktop\Pipeline\UltimoHadidMayo\SP500_INDEX_Analisis\pipelines\ml\step_0_preprocess2.py", line 603, in save_results
+    with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\saule\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\io\excel\_openpyxl.py", line 61, in __init__
+    super().__init__(
+  File "C:\Users\saule\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\io\excel\_base.py", line 1246, in __init__
+    self._handles = get_handle(
+                    ^^^^^^^^^^^
+  File "C:\Users\saule\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'datos_eoe_universal_procesados.xlsx'
+
+2025-05-27 14:56:52,345 [INFO] 
+================================================================================
+2025-05-27 14:56:52,348 [INFO] ================================================================================
+2025-05-27 14:56:52,362 [INFO]    - IC1: '�ndice de Confianza del Consumidor (ICC)' (282 registros)
+2025-05-27 14:56:52,362 [INFO]    - IC2: '�ndice de Expectativas de los Consumidores (IEC)' (282 registros)
+2025-05-27 14:56:52,362 [INFO]    - IC3: '�ndice de Condiciones Econ�micas (ICE)' (282 registros)
+2025-05-27 14:56:52,363 [INFO]    - IC1: '�ndice de Confianza Industrial (ICI)' (543 registros)
+2025-05-27 14:56:52,363 [INFO]    - IC2: 'Volumen actual de pedidos' (543 registros)
+2025-05-27 14:56:52,363 [INFO]    - IC3: 'Nivel de existencias' (543 registros)
+2025-05-27 14:56:52,364 [INFO]    - IC4: 'Expectativas de producci�n para el pr�ximo trimestre' (543 registros)
+2025-05-27 14:56:52,364 [INFO]    - IC1: '�ndice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-27 14:56:52,364 [INFO]    - IC2: 'Situaci�n econ�mica actual de la empresa o negocio' (538 registros)
+2025-05-27 14:56:52,365 [INFO]    - IC3: 'Nivel de existencias' (538 registros)
+2025-05-27 14:56:52,365 [INFO]    - IC4: 'Expectativas de situaci�n econ�mica para el pr�ximo semestre' (538 registros)
+2025-05-27 14:56:52,369 [INFO] ================================================================================
+2025-05-27 15:01:51,229 [INFO] ================================================================================
+2025-05-27 15:01:51,247 [INFO] Directorio de datos: data/0_raw
+2025-05-27 15:01:51,248 [INFO] T�rminos detectados: confianza, expectativa, opini�n empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-27 15:01:51,248 [INFO] Fecha y hora: 2025-05-27 15:01:51
+2025-05-27 15:01:51,248 [INFO] ================================================================================
+2025-05-27 15:01:52,064 [INFO] Header de variables encontrado en fila 0
+2025-05-27 15:01:52,064 [INFO] Variables encontradas: 5
+2025-05-27 15:01:52,065 [INFO]   - IC1: 'PRICE_Australia_10Y_Bond_bond' (col 1)
+2025-05-27 15:01:52,065 [INFO]   - IC2: 'PRICE_Italy_10Y_Bond_bond' (col 2)
+2025-05-27 15:01:52,065 [INFO]   - IC3: 'PRICE_Japan_10Y_Bond_bond' (col 3)
+2025-05-27 15:01:52,065 [INFO]   - IC4: 'PRICE_UK_10Y_Bond_bond' (col 4)
+2025-05-27 15:01:52,065 [INFO]   - IC5: 'PRICE_Germany_10Y_Bond_bond' (col 5)
+2025-05-27 15:01:52,253 [INFO] Header de variables encontrado en fila 0
+2025-05-27 15:01:52,253 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 15:01:52,253 [INFO] Variables encontradas: 3
+2025-05-27 15:01:52,253 [INFO]   - IC1: '�ndice de Confianza del Consumidor (ICC)' (col 1)
+2025-05-27 15:01:52,253 [INFO]   - IC2: '�ndice de Expectativas de los Consumidores (IEC)' (col 2)
+2025-05-27 15:01:52,253 [INFO]   - IC3: '�ndice de Condiciones Econ�micas (ICE)' (col 3)
+2025-05-27 15:01:52,417 [INFO] Header de variables encontrado en fila 1
+2025-05-27 15:01:52,418 [INFO] Variables encontradas: 4
+2025-05-27 15:01:52,418 [INFO]   - IC1: '�ndice de Confianza Industrial (ICI)' (col 1)
+2025-05-27 15:01:52,419 [INFO]   - IC2: 'Volumen actual de pedidos' (col 2)
+2025-05-27 15:01:52,419 [INFO]   - IC3: 'Nivel de existencias' (col 3)
+2025-05-27 15:01:52,419 [INFO]   - IC4: 'Expectativas de
+producci�n para el pr�ximo trimestre' (col 4)
+2025-05-27 15:01:52,532 [INFO] Header de variables encontrado en fila 1
+2025-05-27 15:01:52,532 [INFO] Variables encontradas: 4
+2025-05-27 15:01:52,539 [INFO]   - IC1: '�ndice de
+Confianza
+Comercial (ICCO)' (col 1)
+2025-05-27 15:01:52,539 [INFO]   - IC2: 'Situaci�n econ�mica actual de la empresa o negocio' (col 2)
+2025-05-27 15:01:52,539 [INFO]   - IC3: 'Nivel de existencias' (col 3)
+2025-05-27 15:01:52,539 [INFO]   - IC4: 'Expectativas de
+situaci�n
+econ�mica para el pr�ximo semestre' (col 4)
+2025-05-27 15:01:52,699 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 15:01:52,727 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 15:01:53,104 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 15:01:53,108 [INFO] Variables encontradas: 3
+2025-05-27 15:01:53,108 [INFO]   - IC1: '�ndice' (col 1)
+2025-05-27 15:01:53,108 [INFO]   - IC2: '�ndice' (col 2)
+2025-05-27 15:01:53,108 [INFO]   - IC3: '�ndice' (col 3)
+2025-05-27 15:01:53,470 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 15:01:53,471 [INFO] Variables encontradas: 3
+2025-05-27 15:01:53,471 [INFO]   - IC1: '�ndice' (col 1)
+2025-05-27 15:01:53,471 [INFO]   - IC2: '�ndice' (col 2)
+2025-05-27 15:01:53,472 [INFO]   - IC3: '�ndice' (col 3)
+2025-05-27 15:02:10,240 [INFO]    - �ndice de Confianza del Consumidor (ICC) (IC1)
+2025-05-27 15:02:10,240 [INFO]    - �ndice de Expectativas de los Consumidores (IEC) (IC2)
+2025-05-27 15:02:10,241 [INFO]    - �ndice de Condiciones Econ�micas (ICE) (IC3)
+2025-05-27 15:02:10,241 [INFO]    - �ndice de Confianza Industrial (ICI) (IC1)
+2025-05-27 15:02:10,241 [INFO]    - Volumen actual de pedidos (IC2)
+2025-05-27 15:02:10,241 [INFO]    - Nivel de existencias (IC3)
+2025-05-27 15:02:10,241 [INFO]    - Expectativas de producci�n para el pr�ximo trimestre (IC4)
+2025-05-27 15:02:10,241 [INFO]    - �ndice de Confianza Comercial (ICCO) (IC1)
+2025-05-27 15:02:10,241 [INFO]    - Situaci�n econ�mica actual de la empresa o negocio (IC2)
+2025-05-27 15:02:10,241 [INFO]    - Expectativas de situaci�n econ�mica para el pr�ximo semestre (IC4)
+2025-05-27 15:02:10,246 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-27 15:02:10,246 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-27 15:02:10,248 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-27 15:02:10,248 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC1 (IC1): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-27 15:02:10,248 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC2 (IC2): 100.0% desde 1980-01-01 a 2025-03-01 [-72.0 a 20.0]
+2025-05-27 15:02:10,249 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC3 (IC3): 100.0% desde 1980-01-01 a 2025-03-01 [-21.0 a 38.0]
+2025-05-27 15:02:10,249 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1)_IC4 (IC4): 100.0% desde 1980-01-01 a 2025-03-01 [-43.3 a 61.0]
+2025-05-27 15:02:10,249 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC1 (IC1): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-27 15:02:10,249 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC2 (IC2): 100.0% desde 1980-06-01 a 2025-03-01 [-37.0 a 74.1]
+2025-05-27 15:02:10,249 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC3 (IC3): 100.0% desde 1980-06-01 a 2025-03-01 [-31.0 a 33.5]
+2025-05-27 15:02:10,249 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio_IC4 (IC4): 100.0% desde 1980-06-01 a 2025-03-01 [-62.8 a 65.0]
+2025-05-27 15:02:16,560 [INFO] 
+================================================================================
+2025-05-27 15:02:16,569 [INFO] ================================================================================
+2025-05-27 15:02:16,582 [INFO]    - IC1: '�ndice de Confianza del Consumidor (ICC)' (282 registros)
+2025-05-27 15:02:16,582 [INFO]    - IC2: '�ndice de Expectativas de los Consumidores (IEC)' (282 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC3: '�ndice de Condiciones Econ�micas (ICE)' (282 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC1: '�ndice de Confianza Industrial (ICI)' (543 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC2: 'Volumen actual de pedidos' (543 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC3: 'Nivel de existencias' (543 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC4: 'Expectativas de producci�n para el pr�ximo trimestre' (543 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC1: '�ndice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-27 15:02:16,583 [INFO]    - IC2: 'Situaci�n econ�mica actual de la empresa o negocio' (538 registros)
+2025-05-27 15:02:16,585 [INFO]    - IC3: 'Nivel de existencias' (538 registros)
+2025-05-27 15:02:16,623 [INFO]    - IC4: 'Expectativas de situaci�n econ�mica para el pr�ximo semestre' (538 registros)
+2025-05-27 15:02:16,638 [INFO] ================================================================================
+2025-05-27 15:03:44,453 [INFO] ================================================================================
+2025-05-27 15:03:44,463 [INFO] Directorio de datos: data/0_raw
+2025-05-27 15:03:44,463 [INFO] T�rminos detectados: confianza, expectativa, opini�n empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-27 15:03:44,464 [INFO] Fecha y hora: 2025-05-27 15:03:44
+2025-05-27 15:03:44,464 [INFO] ================================================================================
+2025-05-27 15:03:45,201 [INFO] Header de variables encontrado en fila 0
+2025-05-27 15:03:45,201 [INFO] Variables encontradas: 5
+2025-05-27 15:03:45,201 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-27 15:03:45,201 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-27 15:03:45,207 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-27 15:03:45,207 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-27 15:03:45,207 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-27 15:03:45,390 [INFO] Header de variables encontrado en fila 0
+2025-05-27 15:03:45,390 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 15:03:45,391 [INFO] Variables encontradas: 3
+2025-05-27 15:03:45,391 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 15:03:45,391 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 15:03:45,391 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 15:03:45,529 [INFO] Header de variables encontrado en fila 1
+2025-05-27 15:03:45,530 [INFO] Variables encontradas: 1
+2025-05-27 15:03:45,530 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-27 15:03:45,662 [INFO] Header de variables encontrado en fila 1
+2025-05-27 15:03:45,663 [INFO] Variables encontradas: 1
+2025-05-27 15:03:45,663 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-27 15:03:45,840 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 15:03:45,884 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-27 15:03:46,346 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 15:03:46,348 [INFO] Variables encontradas: 3
+2025-05-27 15:03:46,348 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 15:03:46,348 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 15:03:46,348 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 15:03:46,792 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-27 15:03:46,793 [INFO] Variables encontradas: 3
+2025-05-27 15:03:46,793 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-27 15:03:46,794 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-27 15:03:46,794 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-27 15:04:04,405 [INFO]    - Columna 1 (IC1)
+2025-05-27 15:04:04,405 [INFO]    - Columna 2 (IC2)
+2025-05-27 15:04:04,405 [INFO]    - Columna 3 (IC3)
+2025-05-27 15:04:04,405 [INFO]    - �ndice de Confianza Industrial (ICI) (ICE)
+2025-05-27 15:04:04,407 [INFO]    - �ndice de Confianza Comercial (ICCO) (ICC)
+2025-05-27 15:04:04,409 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-27 15:04:04,409 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-27 15:04:04,409 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-27 15:04:04,410 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-27 15:04:04,410 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-27 15:04:08,030 [INFO] 
+================================================================================
+2025-05-27 15:04:08,036 [INFO] ================================================================================
+2025-05-27 15:04:08,052 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-27 15:04:08,052 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-27 15:04:08,052 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-27 15:04:08,052 [INFO]    - ICE: '�ndice de Confianza Industrial (ICI)' (543 registros)
+2025-05-27 15:04:08,053 [INFO]    - ICC: '�ndice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-27 15:04:08,058 [INFO] ================================================================================
+2025-05-28 15:18:39,862 [INFO] ================================================================================
+2025-05-28 15:18:39,874 [INFO] Directorio de datos: data/0_raw
+2025-05-28 15:18:39,875 [INFO] T�rminos detectados: confianza, expectativa, opini�n empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-28 15:18:39,875 [INFO] Fecha y hora: 2025-05-28 15:18:39
+2025-05-28 15:18:39,876 [INFO] ================================================================================
+2025-05-28 15:18:40,871 [INFO] Header de variables encontrado en fila 0
+2025-05-28 15:18:40,871 [INFO] Variables encontradas: 5
+2025-05-28 15:18:40,871 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 15:18:40,871 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-28 15:18:40,871 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-28 15:18:40,871 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-28 15:18:40,871 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-28 15:18:41,073 [INFO] Header de variables encontrado en fila 0
+2025-05-28 15:18:41,073 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-28 15:18:41,073 [INFO] Variables encontradas: 3
+2025-05-28 15:18:41,073 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 15:18:41,073 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 15:18:41,073 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 15:18:41,265 [INFO] Header de variables encontrado en fila 1
+2025-05-28 15:18:41,265 [INFO] Variables encontradas: 1
+2025-05-28 15:18:41,265 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 15:18:41,447 [INFO] Header de variables encontrado en fila 1
+2025-05-28 15:18:41,449 [INFO] Variables encontradas: 1
+2025-05-28 15:18:41,449 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-28 15:18:41,644 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 15:18:41,681 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 15:18:42,240 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-28 15:18:42,247 [INFO] Variables encontradas: 3
+2025-05-28 15:18:42,247 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 15:18:42,247 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 15:18:42,247 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 15:18:42,896 [WARNING] No se encontraron headers espec�ficos, usando estructura por defecto
+2025-05-28 15:18:42,897 [INFO] Variables encontradas: 3
+2025-05-28 15:18:42,897 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 15:18:42,897 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 15:18:42,897 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 15:19:01,006 [INFO]    - Columna 1 (IC1)
+2025-05-28 15:19:01,006 [INFO]    - Columna 2 (IC2)
+2025-05-28 15:19:01,007 [INFO]    - Columna 3 (IC3)
+2025-05-28 15:19:01,007 [INFO]    - �ndice de Confianza Industrial (ICI) (ICE)
+2025-05-28 15:19:01,008 [INFO]    - �ndice de Confianza Comercial (ICCO) (ICC)
+2025-05-28 15:19:01,011 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-28 15:19:01,011 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-28 15:19:01,012 [INFO] - EOC_Abril_2025_Hist�rico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-28 15:19:01,012 [INFO] - EOE_Marzo_2025_Hist�rico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-28 15:19:01,012 [INFO] - EOE_Marzo_2025_Hist�rico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-28 15:19:01,137 [ERROR]    Traceback: Traceback (most recent call last):
+  File "C:\Users\saule\Desktop\Pipeline\UltimoHadidMayo\SP500_INDEX_Analisis\pipelines\ml\step_0_preprocess2.py", line 576, in save_results
+    with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\saule\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\io\excel\_openpyxl.py", line 61, in __init__
+    super().__init__(
+  File "C:\Users\saule\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\io\excel\_base.py", line 1246, in __init__
+    self._handles = get_handle(
+                    ^^^^^^^^^^^
+  File "C:\Users\saule\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'datos_eoe_universal_procesados.xlsx'
+
+2025-05-28 15:19:01,137 [INFO] 
+================================================================================
+2025-05-28 15:19:01,137 [INFO] ================================================================================
+2025-05-28 15:19:01,155 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-28 15:19:01,156 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-28 15:19:01,156 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-28 15:19:01,156 [INFO]    - ICE: '�ndice de Confianza Industrial (ICI)' (543 registros)
+2025-05-28 15:19:01,156 [INFO]    - ICC: '�ndice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-28 15:19:01,162 [INFO] ================================================================================
+2025-05-28 16:01:36,417 [INFO] ================================================================================
+2025-05-28 16:01:36,418 [INFO] 🌟 EOE UNIVERSAL PROCESSOR - Todos los Índices de Confianza
+2025-05-28 16:01:36,418 [INFO] Directorio de datos: data/0_raw
+2025-05-28 16:01:36,419 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-28 16:01:36,419 [INFO] Fecha y hora: 2025-05-28 16:01:36
+2025-05-28 16:01:36,420 [INFO] ================================================================================
+2025-05-28 16:01:36,421 [INFO] 🚀 Iniciando proceso EOE Universal...
+2025-05-28 16:01:36,421 [INFO] 🔍 Buscando TODOS los archivos EOE (Universal)...
+2025-05-28 16:01:36,573 [INFO] Header de variables encontrado en fila 0
+2025-05-28 16:01:36,576 [INFO] Variables encontradas: 5
+2025-05-28 16:01:36,576 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 16:01:36,576 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-28 16:01:36,576 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-28 16:01:36,576 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-28 16:01:36,576 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-28 16:01:36,974 [INFO] Header de variables encontrado en fila 0
+2025-05-28 16:01:36,976 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:01:36,976 [INFO] Variables encontradas: 3
+2025-05-28 16:01:36,978 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:01:36,978 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:01:36,978 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:01:37,234 [INFO] Header de variables encontrado en fila 1
+2025-05-28 16:01:37,234 [INFO] Variables encontradas: 1
+2025-05-28 16:01:37,234 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 16:01:37,428 [INFO] Header de variables encontrado en fila 1
+2025-05-28 16:01:37,428 [INFO] Variables encontradas: 1
+2025-05-28 16:01:37,428 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-28 16:01:37,666 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 16:01:37,718 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 16:01:38,514 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:01:38,514 [INFO] Variables encontradas: 3
+2025-05-28 16:01:38,514 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:01:38,514 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:01:38,514 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:01:39,228 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:01:39,229 [INFO] Variables encontradas: 3
+2025-05-28 16:01:39,229 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:01:39,229 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:01:39,229 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:01:39,508 [INFO] ✅ Encontrados 16 variables en archivos EOE:
+2025-05-28 16:01:39,508 [INFO]    📁 datos_economicos_normales_procesados.xlsx:
+2025-05-28 16:01:39,508 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:01:39,508 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:01:39,508 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:01:39,508 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:01:39,508 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:01:39,508 [INFO]    📁 EOC_Abril_2025_Histórico (1).xlsx:
+2025-05-28 16:01:39,517 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:01:39,517 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:01:39,517 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:01:39,517 [INFO]    📁 EOE_Marzo_2025_Histórico_ Industria (1).xlsx:
+2025-05-28 16:01:39,517 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:01:39,517 [INFO]    📁 EOE_Marzo_2025_Histórico_Comercio.xlsx:
+2025-05-28 16:01:39,520 [INFO]       → ICC: Indice_Confianza_Consumidor (consumer_confidence)
+2025-05-28 16:01:39,520 [INFO]    📁 ITCR_PP.xlsx:
+2025-05-28 16:01:39,521 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:01:39,521 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:01:39,523 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:01:39,524 [INFO]    📁 Índice_COLCAP.xlsx:
+2025-05-28 16:01:39,525 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:01:39,525 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:01:39,525 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:01:39,525 [INFO] 
+⚡ Procesando 16 variables...
+2025-05-28 16:01:39,525 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:39,525 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:01:39,528 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:01:39,528 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:01:39,529 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:39,529 [INFO]    📊 Columna: 1
+2025-05-28 16:01:42,847 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:01:43,132 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:43,135 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:43,135 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:01:43,137 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:01:43,137 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:01:43,137 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:43,138 [INFO]    📊 Columna: 2
+2025-05-28 16:01:46,002 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:01:46,258 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:46,258 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:46,258 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:01:46,258 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:01:46,258 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:01:46,258 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:46,268 [INFO]    📊 Columna: 3
+2025-05-28 16:01:48,703 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:01:48,981 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:48,989 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:48,990 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:01:48,990 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:01:48,990 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:01:48,990 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:48,994 [INFO]    📊 Columna: 4
+2025-05-28 16:01:52,309 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:01:52,547 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:52,550 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:52,552 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:01:52,552 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:01:52,552 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:01:52,552 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:52,552 [INFO]    📊 Columna: 5
+2025-05-28 16:01:55,837 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:01:56,105 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:01:56,114 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC1
+2025-05-28 16:01:56,114 [INFO]    📁 Carpeta: bond
+2025-05-28 16:01:56,114 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:01:56,114 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:01:56,114 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:56,114 [INFO]    📊 Columna: 1
+2025-05-28 16:01:56,208 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:01:56,232 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:01:56,285 [INFO]    📈 Estadísticas: Min=-41.3, Max=38.8, Media=4.6
+2025-05-28 16:01:56,285 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:01:56,288 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:01:56,289 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC2
+2025-05-28 16:01:56,289 [INFO]    📁 Carpeta: bond
+2025-05-28 16:01:56,289 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:01:56,289 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:01:56,289 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:56,289 [INFO]    📊 Columna: 2
+2025-05-28 16:01:56,379 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:01:56,409 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:01:56,427 [INFO]    📈 Estadísticas: Min=-28.3, Max=48.8, Media=9.8
+2025-05-28 16:01:56,430 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:01:56,430 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:01:56,430 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC3
+2025-05-28 16:01:56,430 [INFO]    📁 Carpeta: bond
+2025-05-28 16:01:56,430 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:01:56,430 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:01:56,434 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:56,434 [INFO]    📊 Columna: 3
+2025-05-28 16:01:56,513 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:01:56,541 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:01:56,554 [INFO]    📈 Estadísticas: Min=-73.0, Max=40.8, Media=-3.3
+2025-05-28 16:01:56,554 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:01:56,557 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:01:56,557 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_ Industria (1)
+2025-05-28 16:01:56,557 [INFO]    📁 Carpeta: bond
+2025-05-28 16:01:56,559 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:01:56,560 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:01:56,560 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:56,560 [INFO]    📊 Columna: 1
+2025-05-28 16:01:56,680 [INFO]    📊 Archivo cargado: 567 filas total
+2025-05-28 16:01:56,733 [INFO]    ✅ 543 registros válidos encontrados
+2025-05-28 16:01:56,754 [INFO]    📈 Estadísticas: Min=-35.8, Max=20.4, Media=0.1
+2025-05-28 16:01:56,757 [INFO]    ✅ 543 valores procesados correctamente
+2025-05-28 16:01:56,758 [INFO]    📅 Período: 1980-01-01 a 2025-03-01
+2025-05-28 16:01:56,758 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_Comercio
+2025-05-28 16:01:56,758 [INFO]    📁 Carpeta: bond
+2025-05-28 16:01:56,758 [INFO]    🎯 TARGET: Indice_Confianza_Consumidor
+2025-05-28 16:01:56,758 [INFO]    🏷️  Sigla: ICC
+2025-05-28 16:01:56,758 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:01:56,761 [INFO]    📊 Columna: 1
+2025-05-28 16:01:56,903 [INFO]    📊 Archivo cargado: 576 filas total
+2025-05-28 16:01:56,946 [INFO]    ✅ 538 registros válidos encontrados
+2025-05-28 16:01:56,971 [INFO]    📈 Estadísticas: Min=-30.8, Max=43.5, Media=17.9
+2025-05-28 16:01:56,974 [INFO]    ✅ 538 valores procesados correctamente
+2025-05-28 16:01:56,974 [INFO]    📅 Período: 1980-06-01 a 2025-03-01
+2025-05-28 16:01:56,974 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC1
+2025-05-28 16:01:56,974 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:01:56,974 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:01:56,974 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:01:56,974 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:56,978 [INFO]    📊 Columna: 1
+2025-05-28 16:01:57,045 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:01:57,076 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC1
+2025-05-28 16:01:57,076 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC2
+2025-05-28 16:01:57,076 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:01:57,076 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:01:57,076 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:01:57,079 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:57,079 [INFO]    📊 Columna: 2
+2025-05-28 16:01:57,150 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:01:57,181 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC2
+2025-05-28 16:01:57,181 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC3
+2025-05-28 16:01:57,181 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:01:57,181 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:01:57,181 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:01:57,181 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:57,181 [INFO]    📊 Columna: 3
+2025-05-28 16:01:57,256 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:01:57,282 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC3
+2025-05-28 16:01:57,282 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC1
+2025-05-28 16:01:57,282 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:01:57,286 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:01:57,286 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:01:57,288 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:57,289 [INFO]    📊 Columna: 1
+2025-05-28 16:01:58,117 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:01:58,426 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC1
+2025-05-28 16:01:58,426 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC2
+2025-05-28 16:01:58,426 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:01:58,429 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:01:58,429 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:01:58,429 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:58,429 [INFO]    📊 Columna: 2
+2025-05-28 16:01:59,325 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:01:59,616 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC2
+2025-05-28 16:01:59,618 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC3
+2025-05-28 16:01:59,618 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:01:59,620 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:01:59,620 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:01:59,620 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:01:59,622 [INFO]    📊 Columna: 3
+2025-05-28 16:02:00,209 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:02:00,445 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC3
+2025-05-28 16:02:00,445 [INFO] ✅ 5/16 variables procesadas exitosamente
+2025-05-28 16:02:00,445 [INFO] 
+📅 Generando índice diario...
+2025-05-28 16:02:00,445 [INFO] 📅 Índice diario generado: 16528 días
+2025-05-28 16:02:00,454 [INFO]    📅 Desde: 1980-01-01
+2025-05-28 16:02:00,454 [INFO]    📅 Hasta: 2025-04-01
+2025-05-28 16:02:00,454 [INFO] 
+🔗 Combinando datos...
+2025-05-28 16:02:00,456 [WARNING] ⚠️ Omitiendo datos_economicos_normales_procesados_ICE por falta de datos
+2025-05-28 16:02:00,492 [WARNING] ⚠️ Omitiendo ITCR_PP_IC1 por falta de datos
+2025-05-28 16:02:00,492 [WARNING] ⚠️ Omitiendo ITCR_PP_IC2 por falta de datos
+2025-05-28 16:02:00,492 [WARNING] ⚠️ Omitiendo ITCR_PP_IC3 por falta de datos
+2025-05-28 16:02:00,492 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC1 por falta de datos
+2025-05-28 16:02:00,494 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC2 por falta de datos
+2025-05-28 16:02:00,494 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC3 por falta de datos
+2025-05-28 16:02:00,494 [INFO] 🔗 Datos combinados: 16528 filas, 6 columnas
+2025-05-28 16:02:00,494 [INFO] 📊 Variables en dataset final:
+2025-05-28 16:02:00,494 [INFO]    - Columna 1 (IC1)
+2025-05-28 16:02:00,494 [INFO]    - Columna 2 (IC2)
+2025-05-28 16:02:00,494 [INFO]    - Columna 3 (IC3)
+2025-05-28 16:02:00,494 [INFO]    - Índice de Confianza Industrial (ICI) (ICE)
+2025-05-28 16:02:00,494 [INFO]    - Índice de Confianza Comercial (ICCO) (ICC)
+2025-05-28 16:02:00,494 [INFO] 
+📊 Resumen de Cobertura EOE Universal:
+2025-05-28 16:02:00,494 [INFO] - EOC_Abril_2025_Histórico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-28 16:02:00,494 [INFO] - EOC_Abril_2025_Histórico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-28 16:02:00,494 [INFO] - EOC_Abril_2025_Histórico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-28 16:02:00,494 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-28 16:02:00,500 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-28 16:02:00,500 [INFO] 
+💾 Guardando resultados en output\datos_eoe_universal_procesados.xlsx...
+2025-05-28 16:02:06,109 [INFO] 💾 Archivo guardado exitosamente: output\datos_eoe_universal_procesados.xlsx
+2025-05-28 16:02:06,120 [INFO] 📊 Hojas creadas: Datos_Diarios, Estadisticas, Resumen_Archivos, Metadatos
+2025-05-28 16:02:06,120 [INFO] 
+================================================================================
+2025-05-28 16:02:06,120 [INFO] ⏱️ RESUMEN DE EJECUCIÓN EOE UNIVERSAL
+2025-05-28 16:02:06,120 [INFO] ================================================================================
+2025-05-28 16:02:06,120 [INFO] ⏰ Tiempo total: 29.70 segundos
+2025-05-28 16:02:06,120 [INFO] 📁 Archivos únicos procesados: 6
+2025-05-28 16:02:06,120 [INFO] 📊 Variables procesadas: 5
+2025-05-28 16:02:06,120 [INFO] 📅 Período de datos: 1980-01-01 a 2025-04-01
+2025-05-28 16:02:06,120 [INFO] 🏷️  Índices detectados:
+2025-05-28 16:02:06,125 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-28 16:02:06,125 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-28 16:02:06,125 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-28 16:02:06,127 [INFO]    - ICE: 'Índice de Confianza Industrial (ICI)' (543 registros)
+2025-05-28 16:02:06,127 [INFO]    - ICC: 'Índice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-28 16:02:06,127 [INFO] 💾 Archivo de salida: output\datos_eoe_universal_procesados.xlsx
+2025-05-28 16:02:06,127 [INFO] 🎯 Estado: ✅ COMPLETADO EXITOSAMENTE
+2025-05-28 16:02:06,130 [INFO] ================================================================================
+2025-05-28 16:02:06,132 [INFO] ✅ Procesamiento EOE completado exitosamente
+2025-05-28 16:02:06,133 [INFO] 
+================================================================================
+2025-05-28 16:02:06,133 [INFO] 📊 RESUMEN DE PROCESAMIENTO INTEGRADO
+2025-05-28 16:02:06,133 [INFO] ================================================================================
+2025-05-28 16:02:06,138 [INFO] TES: ✅ EXITOSO
+2025-05-28 16:02:06,138 [INFO] EOE: ✅ EXITOSO
+2025-05-28 16:02:06,139 [INFO] Directorio de salida: output
+2025-05-28 16:02:06,139 [INFO] ================================================================================
+2025-05-28 16:22:46,490 [INFO] ================================================================================
+2025-05-28 16:22:46,493 [INFO] 🌟 EOE UNIVERSAL PROCESSOR - Todos los Índices de Confianza
+2025-05-28 16:22:46,493 [INFO] Directorio de datos: data/0_raw
+2025-05-28 16:22:46,493 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-28 16:22:46,493 [INFO] Fecha y hora: 2025-05-28 16:22:46
+2025-05-28 16:22:46,493 [INFO] ================================================================================
+2025-05-28 16:22:46,495 [INFO] 🚀 Iniciando proceso EOE Universal...
+2025-05-28 16:22:46,495 [INFO] 🔍 Buscando TODOS los archivos EOE (Universal)...
+2025-05-28 16:22:46,654 [INFO] Header de variables encontrado en fila 0
+2025-05-28 16:22:46,656 [INFO] Variables encontradas: 5
+2025-05-28 16:22:46,656 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 16:22:46,656 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-28 16:22:46,656 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-28 16:22:46,656 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-28 16:22:46,658 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-28 16:22:46,888 [INFO] Header de variables encontrado en fila 0
+2025-05-28 16:22:46,888 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:22:46,888 [INFO] Variables encontradas: 3
+2025-05-28 16:22:46,888 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:22:46,888 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:22:46,888 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:22:47,187 [INFO] Header de variables encontrado en fila 1
+2025-05-28 16:22:47,187 [INFO] Variables encontradas: 1
+2025-05-28 16:22:47,196 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 16:22:47,453 [INFO] Header de variables encontrado en fila 1
+2025-05-28 16:22:47,453 [INFO] Variables encontradas: 1
+2025-05-28 16:22:47,453 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-28 16:22:47,696 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 16:22:47,762 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 16:22:48,515 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:22:48,515 [INFO] Variables encontradas: 3
+2025-05-28 16:22:48,515 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:22:48,515 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:22:48,515 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:22:49,183 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:22:49,183 [INFO] Variables encontradas: 3
+2025-05-28 16:22:49,183 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:22:49,183 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:22:49,183 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:22:49,480 [INFO] ✅ Encontrados 16 variables en archivos EOE:
+2025-05-28 16:22:49,480 [INFO]    📁 datos_economicos_normales_procesados.xlsx:
+2025-05-28 16:22:49,480 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:22:49,480 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:22:49,482 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:22:49,482 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:22:49,482 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:22:49,482 [INFO]    📁 EOC_Abril_2025_Histórico (1).xlsx:
+2025-05-28 16:22:49,482 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:22:49,484 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:22:49,484 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:22:49,484 [INFO]    📁 EOE_Marzo_2025_Histórico_ Industria (1).xlsx:
+2025-05-28 16:22:49,484 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:22:49,486 [INFO]    📁 EOE_Marzo_2025_Histórico_Comercio.xlsx:
+2025-05-28 16:22:49,486 [INFO]       → ICC: Indice_Confianza_Consumidor (consumer_confidence)
+2025-05-28 16:22:49,486 [INFO]    📁 ITCR_PP.xlsx:
+2025-05-28 16:22:49,486 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:22:49,488 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:22:49,488 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:22:49,488 [INFO]    📁 Índice_COLCAP.xlsx:
+2025-05-28 16:22:49,490 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:22:49,492 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:22:49,495 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:22:49,495 [INFO] 
+⚡ Procesando 16 variables...
+2025-05-28 16:22:49,495 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:22:49,495 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:22:49,495 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:22:49,495 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:22:49,498 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:22:49,498 [INFO]    📊 Columna: 1
+2025-05-28 16:22:52,765 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:22:53,106 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:22:53,110 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:22:53,110 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:22:53,110 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:22:53,110 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:22:53,110 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:22:53,110 [INFO]    📊 Columna: 2
+2025-05-28 16:22:57,269 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:22:57,565 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:22:57,572 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:22:57,572 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:22:57,572 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:22:57,572 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:22:57,576 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:22:57,576 [INFO]    📊 Columna: 3
+2025-05-28 16:23:00,851 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:23:01,187 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:23:01,192 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:23:01,192 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:23:01,192 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:23:01,192 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:23:01,192 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:23:01,192 [INFO]    📊 Columna: 4
+2025-05-28 16:23:03,525 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:23:03,757 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:23:03,763 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:23:03,763 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:23:03,763 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:23:03,763 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:23:03,763 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:23:03,763 [INFO]    📊 Columna: 5
+2025-05-28 16:23:06,162 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:23:06,584 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:23:06,588 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC1
+2025-05-28 16:23:06,588 [INFO]    📁 Carpeta: bond
+2025-05-28 16:23:06,588 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:23:06,589 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:23:06,589 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:06,589 [INFO]    📊 Columna: 1
+2025-05-28 16:23:06,695 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:23:06,731 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:23:06,750 [INFO]    📈 Estadísticas: Min=-41.3, Max=38.8, Media=4.6
+2025-05-28 16:23:06,754 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:23:06,754 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:23:06,756 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC2
+2025-05-28 16:23:06,756 [INFO]    📁 Carpeta: bond
+2025-05-28 16:23:06,756 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:23:06,756 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:23:06,756 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:06,758 [INFO]    📊 Columna: 2
+2025-05-28 16:23:06,852 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:23:06,879 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:23:06,894 [INFO]    📈 Estadísticas: Min=-28.3, Max=48.8, Media=9.8
+2025-05-28 16:23:06,896 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:23:06,896 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:23:06,898 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC3
+2025-05-28 16:23:06,900 [INFO]    📁 Carpeta: bond
+2025-05-28 16:23:06,902 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:23:06,904 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:23:06,905 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:06,907 [INFO]    📊 Columna: 3
+2025-05-28 16:23:07,009 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:23:07,038 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:23:07,056 [INFO]    📈 Estadísticas: Min=-73.0, Max=40.8, Media=-3.3
+2025-05-28 16:23:07,058 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:23:07,058 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:23:07,058 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_ Industria (1)
+2025-05-28 16:23:07,058 [INFO]    📁 Carpeta: bond
+2025-05-28 16:23:07,058 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:23:07,058 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:23:07,058 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:23:07,058 [INFO]    📊 Columna: 1
+2025-05-28 16:23:07,249 [INFO]    📊 Archivo cargado: 567 filas total
+2025-05-28 16:23:07,314 [INFO]    ✅ 543 registros válidos encontrados
+2025-05-28 16:23:07,342 [INFO]    📈 Estadísticas: Min=-35.8, Max=20.4, Media=0.1
+2025-05-28 16:23:07,347 [INFO]    ✅ 543 valores procesados correctamente
+2025-05-28 16:23:07,347 [INFO]    📅 Período: 1980-01-01 a 2025-03-01
+2025-05-28 16:23:07,347 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_Comercio
+2025-05-28 16:23:07,347 [INFO]    📁 Carpeta: bond
+2025-05-28 16:23:07,349 [INFO]    🎯 TARGET: Indice_Confianza_Consumidor
+2025-05-28 16:23:07,349 [INFO]    🏷️  Sigla: ICC
+2025-05-28 16:23:07,349 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:23:07,351 [INFO]    📊 Columna: 1
+2025-05-28 16:23:07,589 [INFO]    📊 Archivo cargado: 576 filas total
+2025-05-28 16:23:07,649 [INFO]    ✅ 538 registros válidos encontrados
+2025-05-28 16:23:07,668 [INFO]    📈 Estadísticas: Min=-30.8, Max=43.5, Media=17.9
+2025-05-28 16:23:07,673 [INFO]    ✅ 538 valores procesados correctamente
+2025-05-28 16:23:07,673 [INFO]    📅 Período: 1980-06-01 a 2025-03-01
+2025-05-28 16:23:07,675 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC1
+2025-05-28 16:23:07,675 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:23:07,675 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:23:07,675 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:23:07,675 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:07,677 [INFO]    📊 Columna: 1
+2025-05-28 16:23:07,771 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:23:07,794 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC1
+2025-05-28 16:23:07,794 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC2
+2025-05-28 16:23:07,794 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:23:07,794 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:23:07,794 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:23:07,794 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:07,794 [INFO]    📊 Columna: 2
+2025-05-28 16:23:07,922 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:23:07,954 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC2
+2025-05-28 16:23:07,954 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC3
+2025-05-28 16:23:07,954 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:23:07,954 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:23:07,954 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:23:07,954 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:07,954 [INFO]    📊 Columna: 3
+2025-05-28 16:23:08,054 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:23:08,089 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC3
+2025-05-28 16:23:08,090 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC1
+2025-05-28 16:23:08,091 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:23:08,091 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:23:08,092 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:23:08,092 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:08,092 [INFO]    📊 Columna: 1
+2025-05-28 16:23:08,846 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:23:09,130 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC1
+2025-05-28 16:23:09,130 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC2
+2025-05-28 16:23:09,130 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:23:09,130 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:23:09,130 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:23:09,130 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:09,130 [INFO]    📊 Columna: 2
+2025-05-28 16:23:09,821 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:23:10,162 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC2
+2025-05-28 16:23:10,162 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC3
+2025-05-28 16:23:10,162 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:23:10,162 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:23:10,162 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:23:10,162 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:23:10,162 [INFO]    📊 Columna: 3
+2025-05-28 16:23:11,069 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:23:11,362 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC3
+2025-05-28 16:23:11,362 [INFO] ✅ 5/16 variables procesadas exitosamente
+2025-05-28 16:23:11,368 [INFO] 
+📅 Generando índice diario...
+2025-05-28 16:23:11,368 [INFO] 📅 Índice diario generado: 16528 días
+2025-05-28 16:23:11,368 [INFO]    📅 Desde: 1980-01-01
+2025-05-28 16:23:11,371 [INFO]    📅 Hasta: 2025-04-01
+2025-05-28 16:23:11,371 [INFO] 
+🔗 Combinando datos...
+2025-05-28 16:23:11,372 [WARNING] ⚠️ Omitiendo datos_economicos_normales_procesados_ICE por falta de datos
+2025-05-28 16:23:11,415 [WARNING] ⚠️ Omitiendo ITCR_PP_IC1 por falta de datos
+2025-05-28 16:23:11,415 [WARNING] ⚠️ Omitiendo ITCR_PP_IC2 por falta de datos
+2025-05-28 16:23:11,415 [WARNING] ⚠️ Omitiendo ITCR_PP_IC3 por falta de datos
+2025-05-28 16:23:11,415 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC1 por falta de datos
+2025-05-28 16:23:11,415 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC2 por falta de datos
+2025-05-28 16:23:11,415 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC3 por falta de datos
+2025-05-28 16:23:11,415 [INFO] 🔗 Datos combinados: 16528 filas, 6 columnas
+2025-05-28 16:23:11,415 [INFO] 📊 Variables en dataset final:
+2025-05-28 16:23:11,421 [INFO]    - Columna 1 (IC1)
+2025-05-28 16:23:11,421 [INFO]    - Columna 2 (IC2)
+2025-05-28 16:23:11,421 [INFO]    - Columna 3 (IC3)
+2025-05-28 16:23:11,423 [INFO]    - Índice de Confianza Industrial (ICI) (ICE)
+2025-05-28 16:23:11,424 [INFO]    - Índice de Confianza Comercial (ICCO) (ICC)
+2025-05-28 16:23:11,424 [INFO] 
+📊 Resumen de Cobertura EOE Universal:
+2025-05-28 16:23:11,424 [INFO] - EOC_Abril_2025_Histórico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-28 16:23:11,424 [INFO] - EOC_Abril_2025_Histórico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-28 16:23:11,424 [INFO] - EOC_Abril_2025_Histórico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-28 16:23:11,424 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-28 16:23:11,424 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-28 16:23:11,424 [INFO] 
+💾 Guardando resultados en output\datos_eoe_universal_procesados.xlsx...
+2025-05-28 16:23:17,281 [INFO] 💾 Archivo guardado exitosamente: output\datos_eoe_universal_procesados.xlsx
+2025-05-28 16:23:17,283 [INFO] 📊 Hojas creadas: Datos_Diarios, Estadisticas, Resumen_Archivos, Metadatos
+2025-05-28 16:23:17,283 [INFO] 
+================================================================================
+2025-05-28 16:23:17,283 [INFO] ⏱️ RESUMEN DE EJECUCIÓN EOE UNIVERSAL
+2025-05-28 16:23:17,283 [INFO] ================================================================================
+2025-05-28 16:23:17,285 [INFO] ⏰ Tiempo total: 30.79 segundos
+2025-05-28 16:23:17,285 [INFO] 📁 Archivos únicos procesados: 6
+2025-05-28 16:23:17,285 [INFO] 📊 Variables procesadas: 5
+2025-05-28 16:23:17,285 [INFO] 📅 Período de datos: 1980-01-01 a 2025-04-01
+2025-05-28 16:23:17,285 [INFO] 🏷️  Índices detectados:
+2025-05-28 16:23:17,288 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-28 16:23:17,288 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-28 16:23:17,288 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-28 16:23:17,288 [INFO]    - ICE: 'Índice de Confianza Industrial (ICI)' (543 registros)
+2025-05-28 16:23:17,288 [INFO]    - ICC: 'Índice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-28 16:23:17,288 [INFO] 💾 Archivo de salida: output\datos_eoe_universal_procesados.xlsx
+2025-05-28 16:23:17,291 [INFO] 🎯 Estado: ✅ COMPLETADO EXITOSAMENTE
+2025-05-28 16:23:17,291 [INFO] ================================================================================
+2025-05-28 16:23:17,291 [INFO] ✅ Procesamiento EOE completado exitosamente
+2025-05-28 16:23:17,291 [INFO] 
+================================================================================
+2025-05-28 16:23:17,291 [INFO] 📊 RESUMEN DE PROCESAMIENTO INTEGRADO
+2025-05-28 16:23:17,291 [INFO] ================================================================================
+2025-05-28 16:23:17,294 [INFO] TES: ❌ ERROR
+2025-05-28 16:23:17,294 [INFO] EOE: ✅ EXITOSO
+2025-05-28 16:23:17,294 [INFO] Directorio de salida: output
+2025-05-28 16:23:17,294 [INFO] ================================================================================
+2025-05-28 16:25:36,156 [INFO] ================================================================================
+2025-05-28 16:25:36,156 [INFO] 🌟 EOE UNIVERSAL PROCESSOR - Todos los Índices de Confianza
+2025-05-28 16:25:36,156 [INFO] Directorio de datos: data/0_raw
+2025-05-28 16:25:36,156 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-28 16:25:36,156 [INFO] Fecha y hora: 2025-05-28 16:25:36
+2025-05-28 16:25:36,156 [INFO] ================================================================================
+2025-05-28 16:25:36,156 [INFO] 🚀 Iniciando proceso EOE Universal...
+2025-05-28 16:25:36,156 [INFO] 🔍 Buscando TODOS los archivos EOE (Universal)...
+2025-05-28 16:25:36,274 [INFO] Header de variables encontrado en fila 0
+2025-05-28 16:25:36,274 [INFO] Variables encontradas: 5
+2025-05-28 16:25:36,274 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 16:25:36,274 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-28 16:25:36,274 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-28 16:25:36,274 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-28 16:25:36,274 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-28 16:25:36,535 [INFO] Header de variables encontrado en fila 0
+2025-05-28 16:25:36,535 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:25:36,535 [INFO] Variables encontradas: 3
+2025-05-28 16:25:36,535 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:25:36,535 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:25:36,535 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:25:36,700 [INFO] Header de variables encontrado en fila 1
+2025-05-28 16:25:36,700 [INFO] Variables encontradas: 1
+2025-05-28 16:25:36,700 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-28 16:25:36,862 [INFO] Header de variables encontrado en fila 1
+2025-05-28 16:25:36,862 [INFO] Variables encontradas: 1
+2025-05-28 16:25:36,862 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-28 16:25:37,014 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 16:25:37,044 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-28 16:25:37,618 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:25:37,618 [INFO] Variables encontradas: 3
+2025-05-28 16:25:37,618 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:25:37,618 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:25:37,618 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:25:38,066 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-28 16:25:38,066 [INFO] Variables encontradas: 3
+2025-05-28 16:25:38,066 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-28 16:25:38,066 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-28 16:25:38,066 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-28 16:25:38,347 [INFO] ✅ Encontrados 16 variables en archivos EOE:
+2025-05-28 16:25:38,347 [INFO]    📁 datos_economicos_normales_procesados.xlsx:
+2025-05-28 16:25:38,347 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:25:38,347 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:25:38,347 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:25:38,347 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:25:38,347 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:25:38,347 [INFO]    📁 EOC_Abril_2025_Histórico (1).xlsx:
+2025-05-28 16:25:38,347 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:25:38,347 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:25:38,347 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:25:38,347 [INFO]    📁 EOE_Marzo_2025_Histórico_ Industria (1).xlsx:
+2025-05-28 16:25:38,347 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-28 16:25:38,347 [INFO]    📁 EOE_Marzo_2025_Histórico_Comercio.xlsx:
+2025-05-28 16:25:38,354 [INFO]       → ICC: Indice_Confianza_Consumidor (consumer_confidence)
+2025-05-28 16:25:38,354 [INFO]    📁 ITCR_PP.xlsx:
+2025-05-28 16:25:38,354 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:25:38,354 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:25:38,354 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:25:38,355 [INFO]    📁 Índice_COLCAP.xlsx:
+2025-05-28 16:25:38,356 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-28 16:25:38,358 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-28 16:25:38,358 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-28 16:25:38,358 [INFO] 
+⚡ Procesando 16 variables...
+2025-05-28 16:25:38,358 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:38,358 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:25:38,358 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:25:38,358 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:25:38,358 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:38,358 [INFO]    📊 Columna: 1
+2025-05-28 16:25:40,773 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:25:41,067 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:41,067 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:41,067 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:25:41,067 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:25:41,067 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:25:41,067 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:41,067 [INFO]    📊 Columna: 2
+2025-05-28 16:25:43,324 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:25:43,506 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:43,506 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:43,506 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:25:43,506 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:25:43,506 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:25:43,515 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:43,515 [INFO]    📊 Columna: 3
+2025-05-28 16:25:45,622 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:25:45,909 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:45,909 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:45,909 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:25:45,909 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:25:45,909 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:25:45,909 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:45,909 [INFO]    📊 Columna: 4
+2025-05-28 16:25:49,100 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:25:49,383 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:49,393 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:49,393 [INFO]    📁 Carpeta: 0_raw
+2025-05-28 16:25:49,393 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:25:49,393 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:25:49,398 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:49,399 [INFO]    📊 Columna: 5
+2025-05-28 16:25:52,487 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-28 16:25:52,796 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-28 16:25:52,800 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC1
+2025-05-28 16:25:52,800 [INFO]    📁 Carpeta: bond
+2025-05-28 16:25:52,800 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:25:52,800 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:25:52,800 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:52,805 [INFO]    📊 Columna: 1
+2025-05-28 16:25:52,881 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:25:52,903 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:25:52,917 [INFO]    📈 Estadísticas: Min=-41.3, Max=38.8, Media=4.6
+2025-05-28 16:25:52,919 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:25:52,919 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:25:52,919 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC2
+2025-05-28 16:25:52,919 [INFO]    📁 Carpeta: bond
+2025-05-28 16:25:52,919 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:25:52,919 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:25:52,919 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:52,919 [INFO]    📊 Columna: 2
+2025-05-28 16:25:52,992 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:25:53,015 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:25:53,020 [INFO]    📈 Estadísticas: Min=-28.3, Max=48.8, Media=9.8
+2025-05-28 16:25:53,025 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:25:53,025 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:25:53,025 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC3
+2025-05-28 16:25:53,029 [INFO]    📁 Carpeta: bond
+2025-05-28 16:25:53,030 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:25:53,030 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:25:53,030 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:53,031 [INFO]    📊 Columna: 3
+2025-05-28 16:25:53,109 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-28 16:25:53,145 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-28 16:25:53,164 [INFO]    📈 Estadísticas: Min=-73.0, Max=40.8, Media=-3.3
+2025-05-28 16:25:53,166 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-28 16:25:53,166 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-28 16:25:53,166 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_ Industria (1)
+2025-05-28 16:25:53,166 [INFO]    📁 Carpeta: bond
+2025-05-28 16:25:53,169 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-28 16:25:53,169 [INFO]    🏷️  Sigla: ICE
+2025-05-28 16:25:53,169 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:53,171 [INFO]    📊 Columna: 1
+2025-05-28 16:25:53,397 [INFO]    📊 Archivo cargado: 567 filas total
+2025-05-28 16:25:53,468 [INFO]    ✅ 543 registros válidos encontrados
+2025-05-28 16:25:53,490 [INFO]    📈 Estadísticas: Min=-35.8, Max=20.4, Media=0.1
+2025-05-28 16:25:53,492 [INFO]    ✅ 543 valores procesados correctamente
+2025-05-28 16:25:53,493 [INFO]    📅 Período: 1980-01-01 a 2025-03-01
+2025-05-28 16:25:53,494 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_Comercio
+2025-05-28 16:25:53,496 [INFO]    📁 Carpeta: bond
+2025-05-28 16:25:53,496 [INFO]    🎯 TARGET: Indice_Confianza_Consumidor
+2025-05-28 16:25:53,496 [INFO]    🏷️  Sigla: ICC
+2025-05-28 16:25:53,496 [INFO]    📂 Tipo: consumer_confidence
+2025-05-28 16:25:53,499 [INFO]    📊 Columna: 1
+2025-05-28 16:25:53,671 [INFO]    📊 Archivo cargado: 576 filas total
+2025-05-28 16:25:53,749 [INFO]    ✅ 538 registros válidos encontrados
+2025-05-28 16:25:53,775 [INFO]    📈 Estadísticas: Min=-30.8, Max=43.5, Media=17.9
+2025-05-28 16:25:53,778 [INFO]    ✅ 538 valores procesados correctamente
+2025-05-28 16:25:53,778 [INFO]    📅 Período: 1980-06-01 a 2025-03-01
+2025-05-28 16:25:53,778 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC1
+2025-05-28 16:25:53,778 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:25:53,778 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:25:53,778 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:25:53,778 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:53,778 [INFO]    📊 Columna: 1
+2025-05-28 16:25:53,889 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:25:53,938 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC1
+2025-05-28 16:25:53,940 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC2
+2025-05-28 16:25:53,941 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:25:53,941 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:25:53,941 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:25:53,941 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:53,941 [INFO]    📊 Columna: 2
+2025-05-28 16:25:54,023 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:25:54,066 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC2
+2025-05-28 16:25:54,066 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC3
+2025-05-28 16:25:54,066 [INFO]    📁 Carpeta: exchange_rate
+2025-05-28 16:25:54,066 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:25:54,066 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:25:54,066 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:54,066 [INFO]    📊 Columna: 3
+2025-05-28 16:25:54,187 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-28 16:25:54,236 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC3
+2025-05-28 16:25:54,236 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC1
+2025-05-28 16:25:54,236 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:25:54,241 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-28 16:25:54,241 [INFO]    🏷️  Sigla: IC1
+2025-05-28 16:25:54,243 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:54,243 [INFO]    📊 Columna: 1
+2025-05-28 16:25:55,111 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:25:55,442 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC1
+2025-05-28 16:25:55,442 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC2
+2025-05-28 16:25:55,442 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:25:55,442 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-28 16:25:55,442 [INFO]    🏷️  Sigla: IC2
+2025-05-28 16:25:55,442 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:55,442 [INFO]    📊 Columna: 2
+2025-05-28 16:25:56,254 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:25:56,593 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC2
+2025-05-28 16:25:56,595 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC3
+2025-05-28 16:25:56,595 [INFO]    📁 Carpeta: index_pricing
+2025-05-28 16:25:56,595 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-28 16:25:56,595 [INFO]    🏷️  Sigla: IC3
+2025-05-28 16:25:56,595 [INFO]    📂 Tipo: business_confidence
+2025-05-28 16:25:56,595 [INFO]    📊 Columna: 3
+2025-05-28 16:25:57,358 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-28 16:25:57,628 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC3
+2025-05-28 16:25:57,628 [INFO] ✅ 5/16 variables procesadas exitosamente
+2025-05-28 16:25:57,628 [INFO] 
+📅 Generando índice diario...
+2025-05-28 16:25:57,628 [INFO] 📅 Índice diario generado: 16528 días
+2025-05-28 16:25:57,628 [INFO]    📅 Desde: 1980-01-01
+2025-05-28 16:25:57,628 [INFO]    📅 Hasta: 2025-04-01
+2025-05-28 16:25:57,628 [INFO] 
+🔗 Combinando datos...
+2025-05-28 16:25:57,628 [WARNING] ⚠️ Omitiendo datos_economicos_normales_procesados_ICE por falta de datos
+2025-05-28 16:25:57,667 [WARNING] ⚠️ Omitiendo ITCR_PP_IC1 por falta de datos
+2025-05-28 16:25:57,671 [WARNING] ⚠️ Omitiendo ITCR_PP_IC2 por falta de datos
+2025-05-28 16:25:57,672 [WARNING] ⚠️ Omitiendo ITCR_PP_IC3 por falta de datos
+2025-05-28 16:25:57,672 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC1 por falta de datos
+2025-05-28 16:25:57,672 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC2 por falta de datos
+2025-05-28 16:25:57,672 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC3 por falta de datos
+2025-05-28 16:25:57,672 [INFO] 🔗 Datos combinados: 16528 filas, 6 columnas
+2025-05-28 16:25:57,672 [INFO] 📊 Variables en dataset final:
+2025-05-28 16:25:57,675 [INFO]    - Columna 1 (IC1)
+2025-05-28 16:25:57,675 [INFO]    - Columna 2 (IC2)
+2025-05-28 16:25:57,675 [INFO]    - Columna 3 (IC3)
+2025-05-28 16:25:57,675 [INFO]    - Índice de Confianza Industrial (ICI) (ICE)
+2025-05-28 16:25:57,675 [INFO]    - Índice de Confianza Comercial (ICCO) (ICC)
+2025-05-28 16:25:57,677 [INFO] 
+📊 Resumen de Cobertura EOE Universal:
+2025-05-28 16:25:57,677 [INFO] - EOC_Abril_2025_Histórico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-28 16:25:57,677 [INFO] - EOC_Abril_2025_Histórico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-28 16:25:57,677 [INFO] - EOC_Abril_2025_Histórico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-28 16:25:57,677 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-28 16:25:57,677 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-28 16:25:57,677 [INFO] 
+💾 Guardando resultados en output\datos_eoe_universal_procesados.xlsx...
+2025-05-28 16:26:02,274 [INFO] 💾 Archivo guardado exitosamente: output\datos_eoe_universal_procesados.xlsx
+2025-05-28 16:26:02,276 [INFO] 📊 Hojas creadas: Datos_Diarios, Estadisticas, Resumen_Archivos, Metadatos
+2025-05-28 16:26:02,276 [INFO] 
+================================================================================
+2025-05-28 16:26:02,276 [INFO] ⏱️ RESUMEN DE EJECUCIÓN EOE UNIVERSAL
+2025-05-28 16:26:02,276 [INFO] ================================================================================
+2025-05-28 16:26:02,276 [INFO] ⏰ Tiempo total: 26.12 segundos
+2025-05-28 16:26:02,276 [INFO] 📁 Archivos únicos procesados: 6
+2025-05-28 16:26:02,276 [INFO] 📊 Variables procesadas: 5
+2025-05-28 16:26:02,276 [INFO] 📅 Período de datos: 1980-01-01 a 2025-04-01
+2025-05-28 16:26:02,276 [INFO] 🏷️  Índices detectados:
+2025-05-28 16:26:02,276 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-28 16:26:02,279 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-28 16:26:02,279 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-28 16:26:02,279 [INFO]    - ICE: 'Índice de Confianza Industrial (ICI)' (543 registros)
+2025-05-28 16:26:02,279 [INFO]    - ICC: 'Índice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-28 16:26:02,279 [INFO] 💾 Archivo de salida: output\datos_eoe_universal_procesados.xlsx
+2025-05-28 16:26:02,279 [INFO] 🎯 Estado: ✅ COMPLETADO EXITOSAMENTE
+2025-05-28 16:26:02,279 [INFO] ================================================================================
+2025-05-28 16:26:02,279 [INFO] ✅ Procesamiento EOE completado exitosamente
+2025-05-28 16:26:02,279 [INFO] 
+================================================================================
+2025-05-28 16:26:02,283 [INFO] 📊 RESUMEN DE PROCESAMIENTO INTEGRADO
+2025-05-28 16:26:02,283 [INFO] ================================================================================
+2025-05-28 16:26:02,283 [INFO] TES: ✅ EXITOSO
+2025-05-28 16:26:02,284 [INFO] EOE: ✅ EXITOSO
+2025-05-28 16:26:02,284 [INFO] Directorio de salida: output
+2025-05-28 16:26:02,284 [INFO] ================================================================================
+2025-05-29 15:36:14,651 [INFO] ================================================================================
+2025-05-29 15:36:14,653 [INFO] 🌟 EOE UNIVERSAL PROCESSOR - Todos los Índices de Confianza
+2025-05-29 15:36:14,653 [INFO] Directorio de datos: data/0_raw
+2025-05-29 15:36:14,654 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-29 15:36:14,654 [INFO] Fecha y hora: 2025-05-29 15:36:14
+2025-05-29 15:36:14,654 [INFO] ================================================================================
+2025-05-29 15:36:14,655 [INFO] 🚀 Iniciando proceso EOE Universal...
+2025-05-29 15:36:14,655 [INFO] 🔍 Buscando TODOS los archivos EOE (Universal)...
+2025-05-29 15:36:14,868 [INFO] Header de variables encontrado en fila 0
+2025-05-29 15:36:14,868 [INFO] Variables encontradas: 5
+2025-05-29 15:36:14,868 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-29 15:36:14,868 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-29 15:36:14,868 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-29 15:36:14,868 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-29 15:36:14,871 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-29 15:36:15,332 [INFO] Header de variables encontrado en fila 0
+2025-05-29 15:36:15,332 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-29 15:36:15,337 [INFO] Variables encontradas: 3
+2025-05-29 15:36:15,337 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-29 15:36:15,337 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-29 15:36:15,337 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-29 15:36:15,497 [INFO] Header de variables encontrado en fila 1
+2025-05-29 15:36:15,497 [INFO] Variables encontradas: 1
+2025-05-29 15:36:15,497 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-29 15:36:15,711 [INFO] Header de variables encontrado en fila 1
+2025-05-29 15:36:15,711 [INFO] Variables encontradas: 1
+2025-05-29 15:36:15,711 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-29 15:36:16,180 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-29 15:36:16,287 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-29 15:36:17,046 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-29 15:36:17,046 [INFO] Variables encontradas: 3
+2025-05-29 15:36:17,046 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-29 15:36:17,046 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-29 15:36:17,046 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-29 15:36:17,680 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-29 15:36:17,680 [INFO] Variables encontradas: 3
+2025-05-29 15:36:17,680 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-29 15:36:17,680 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-29 15:36:17,680 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-29 15:36:18,084 [INFO] ✅ Encontrados 16 variables en archivos EOE:
+2025-05-29 15:36:18,084 [INFO]    📁 datos_economicos_normales_procesados.xlsx:
+2025-05-29 15:36:18,084 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 15:36:18,084 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 15:36:18,084 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 15:36:18,084 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 15:36:18,084 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 15:36:18,084 [INFO]    📁 EOC_Abril_2025_Histórico (1).xlsx:
+2025-05-29 15:36:18,084 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-29 15:36:18,084 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-29 15:36:18,084 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-29 15:36:18,084 [INFO]    📁 EOE_Marzo_2025_Histórico_ Industria (1).xlsx:
+2025-05-29 15:36:18,084 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 15:36:18,090 [INFO]    📁 EOE_Marzo_2025_Histórico_Comercio.xlsx:
+2025-05-29 15:36:18,091 [INFO]       → ICC: Indice_Confianza_Consumidor (consumer_confidence)
+2025-05-29 15:36:18,091 [INFO]    📁 ITCR_PP.xlsx:
+2025-05-29 15:36:18,091 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-29 15:36:18,091 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-29 15:36:18,092 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-29 15:36:18,092 [INFO]    📁 Índice_COLCAP.xlsx:
+2025-05-29 15:36:18,092 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-29 15:36:18,092 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-29 15:36:18,092 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-29 15:36:18,093 [INFO] 
+⚡ Procesando 16 variables...
+2025-05-29 15:36:18,093 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:18,094 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 15:36:18,094 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 15:36:18,094 [INFO]    🏷️  Sigla: ICE
+2025-05-29 15:36:18,094 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:18,095 [INFO]    📊 Columna: 1
+2025-05-29 15:36:20,735 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 15:36:20,948 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:20,948 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:20,948 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 15:36:20,948 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 15:36:20,948 [INFO]    🏷️  Sigla: ICE
+2025-05-29 15:36:20,953 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:20,953 [INFO]    📊 Columna: 2
+2025-05-29 15:36:23,514 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 15:36:23,725 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:23,725 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:23,725 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 15:36:23,725 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 15:36:23,725 [INFO]    🏷️  Sigla: ICE
+2025-05-29 15:36:23,725 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:23,725 [INFO]    📊 Columna: 3
+2025-05-29 15:36:26,396 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 15:36:26,623 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:26,629 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:26,631 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 15:36:26,631 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 15:36:26,632 [INFO]    🏷️  Sigla: ICE
+2025-05-29 15:36:26,632 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:26,632 [INFO]    📊 Columna: 4
+2025-05-29 15:36:29,407 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 15:36:29,615 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:29,620 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:29,620 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 15:36:29,620 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 15:36:29,620 [INFO]    🏷️  Sigla: ICE
+2025-05-29 15:36:29,620 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:29,620 [INFO]    📊 Columna: 5
+2025-05-29 15:36:32,035 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 15:36:32,187 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 15:36:32,191 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC1
+2025-05-29 15:36:32,191 [INFO]    📁 Carpeta: bond
+2025-05-29 15:36:32,191 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-29 15:36:32,191 [INFO]    🏷️  Sigla: IC1
+2025-05-29 15:36:32,191 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,191 [INFO]    📊 Columna: 1
+2025-05-29 15:36:32,244 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-29 15:36:32,264 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-29 15:36:32,280 [INFO]    📈 Estadísticas: Min=-41.3, Max=38.8, Media=4.6
+2025-05-29 15:36:32,281 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-29 15:36:32,281 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-29 15:36:32,281 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC2
+2025-05-29 15:36:32,281 [INFO]    📁 Carpeta: bond
+2025-05-29 15:36:32,281 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-29 15:36:32,281 [INFO]    🏷️  Sigla: IC2
+2025-05-29 15:36:32,281 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,281 [INFO]    📊 Columna: 2
+2025-05-29 15:36:32,329 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-29 15:36:32,346 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-29 15:36:32,352 [INFO]    📈 Estadísticas: Min=-28.3, Max=48.8, Media=9.8
+2025-05-29 15:36:32,352 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-29 15:36:32,356 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-29 15:36:32,356 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC3
+2025-05-29 15:36:32,356 [INFO]    📁 Carpeta: bond
+2025-05-29 15:36:32,357 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-29 15:36:32,357 [INFO]    🏷️  Sigla: IC3
+2025-05-29 15:36:32,357 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,357 [INFO]    📊 Columna: 3
+2025-05-29 15:36:32,398 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-29 15:36:32,413 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-29 15:36:32,415 [INFO]    📈 Estadísticas: Min=-73.0, Max=40.8, Media=-3.3
+2025-05-29 15:36:32,423 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-29 15:36:32,424 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-29 15:36:32,424 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_ Industria (1)
+2025-05-29 15:36:32,425 [INFO]    📁 Carpeta: bond
+2025-05-29 15:36:32,426 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 15:36:32,426 [INFO]    🏷️  Sigla: ICE
+2025-05-29 15:36:32,426 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:32,428 [INFO]    📊 Columna: 1
+2025-05-29 15:36:32,553 [INFO]    📊 Archivo cargado: 567 filas total
+2025-05-29 15:36:32,585 [INFO]    ✅ 543 registros válidos encontrados
+2025-05-29 15:36:32,597 [INFO]    📈 Estadísticas: Min=-35.8, Max=20.4, Media=0.1
+2025-05-29 15:36:32,599 [INFO]    ✅ 543 valores procesados correctamente
+2025-05-29 15:36:32,599 [INFO]    📅 Período: 1980-01-01 a 2025-03-01
+2025-05-29 15:36:32,599 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_Comercio
+2025-05-29 15:36:32,599 [INFO]    📁 Carpeta: bond
+2025-05-29 15:36:32,599 [INFO]    🎯 TARGET: Indice_Confianza_Consumidor
+2025-05-29 15:36:32,599 [INFO]    🏷️  Sigla: ICC
+2025-05-29 15:36:32,599 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 15:36:32,599 [INFO]    📊 Columna: 1
+2025-05-29 15:36:32,699 [INFO]    📊 Archivo cargado: 576 filas total
+2025-05-29 15:36:32,725 [INFO]    ✅ 538 registros válidos encontrados
+2025-05-29 15:36:32,748 [INFO]    📈 Estadísticas: Min=-30.8, Max=43.5, Media=17.9
+2025-05-29 15:36:32,748 [INFO]    ✅ 538 valores procesados correctamente
+2025-05-29 15:36:32,748 [INFO]    📅 Período: 1980-06-01 a 2025-03-01
+2025-05-29 15:36:32,748 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC1
+2025-05-29 15:36:32,748 [INFO]    📁 Carpeta: exchange_rate
+2025-05-29 15:36:32,751 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-29 15:36:32,751 [INFO]    🏷️  Sigla: IC1
+2025-05-29 15:36:32,751 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,751 [INFO]    📊 Columna: 1
+2025-05-29 15:36:32,799 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-29 15:36:32,820 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC1
+2025-05-29 15:36:32,820 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC2
+2025-05-29 15:36:32,820 [INFO]    📁 Carpeta: exchange_rate
+2025-05-29 15:36:32,823 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-29 15:36:32,823 [INFO]    🏷️  Sigla: IC2
+2025-05-29 15:36:32,824 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,824 [INFO]    📊 Columna: 2
+2025-05-29 15:36:32,876 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-29 15:36:32,898 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC2
+2025-05-29 15:36:32,902 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC3
+2025-05-29 15:36:32,902 [INFO]    📁 Carpeta: exchange_rate
+2025-05-29 15:36:32,902 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-29 15:36:32,902 [INFO]    🏷️  Sigla: IC3
+2025-05-29 15:36:32,902 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,902 [INFO]    📊 Columna: 3
+2025-05-29 15:36:32,952 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-29 15:36:32,964 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC3
+2025-05-29 15:36:32,968 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC1
+2025-05-29 15:36:32,968 [INFO]    📁 Carpeta: index_pricing
+2025-05-29 15:36:32,968 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-29 15:36:32,969 [INFO]    🏷️  Sigla: IC1
+2025-05-29 15:36:32,970 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:32,970 [INFO]    📊 Columna: 1
+2025-05-29 15:36:33,476 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-29 15:36:33,613 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC1
+2025-05-29 15:36:33,613 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC2
+2025-05-29 15:36:33,613 [INFO]    📁 Carpeta: index_pricing
+2025-05-29 15:36:33,613 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-29 15:36:33,613 [INFO]    🏷️  Sigla: IC2
+2025-05-29 15:36:33,615 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:33,615 [INFO]    📊 Columna: 2
+2025-05-29 15:36:34,097 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-29 15:36:34,239 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC2
+2025-05-29 15:36:34,239 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC3
+2025-05-29 15:36:34,239 [INFO]    📁 Carpeta: index_pricing
+2025-05-29 15:36:34,239 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-29 15:36:34,239 [INFO]    🏷️  Sigla: IC3
+2025-05-29 15:36:34,239 [INFO]    📂 Tipo: business_confidence
+2025-05-29 15:36:34,239 [INFO]    📊 Columna: 3
+2025-05-29 15:36:34,637 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-29 15:36:34,777 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC3
+2025-05-29 15:36:34,777 [INFO] ✅ 5/16 variables procesadas exitosamente
+2025-05-29 15:36:34,777 [INFO] 
+📅 Generando índice diario...
+2025-05-29 15:36:34,777 [INFO] 📅 Índice diario generado: 16528 días
+2025-05-29 15:36:34,777 [INFO]    📅 Desde: 1980-01-01
+2025-05-29 15:36:34,777 [INFO]    📅 Hasta: 2025-04-01
+2025-05-29 15:36:34,777 [INFO] 
+🔗 Combinando datos...
+2025-05-29 15:36:34,777 [WARNING] ⚠️ Omitiendo datos_economicos_normales_procesados_ICE por falta de datos
+2025-05-29 15:36:34,803 [WARNING] ⚠️ Omitiendo ITCR_PP_IC1 por falta de datos
+2025-05-29 15:36:34,804 [WARNING] ⚠️ Omitiendo ITCR_PP_IC2 por falta de datos
+2025-05-29 15:36:34,804 [WARNING] ⚠️ Omitiendo ITCR_PP_IC3 por falta de datos
+2025-05-29 15:36:34,804 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC1 por falta de datos
+2025-05-29 15:36:34,804 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC2 por falta de datos
+2025-05-29 15:36:34,805 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC3 por falta de datos
+2025-05-29 15:36:34,806 [INFO] 🔗 Datos combinados: 16528 filas, 6 columnas
+2025-05-29 15:36:34,806 [INFO] 📊 Variables en dataset final:
+2025-05-29 15:36:34,806 [INFO]    - Columna 1 (IC1)
+2025-05-29 15:36:34,806 [INFO]    - Columna 2 (IC2)
+2025-05-29 15:36:34,806 [INFO]    - Columna 3 (IC3)
+2025-05-29 15:36:34,808 [INFO]    - Índice de Confianza Industrial (ICI) (ICE)
+2025-05-29 15:36:34,808 [INFO]    - Índice de Confianza Comercial (ICCO) (ICC)
+2025-05-29 15:36:34,808 [INFO] 
+📊 Resumen de Cobertura EOE Universal:
+2025-05-29 15:36:34,808 [INFO] - EOC_Abril_2025_Histórico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-29 15:36:34,808 [INFO] - EOC_Abril_2025_Histórico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-29 15:36:34,808 [INFO] - EOC_Abril_2025_Histórico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-29 15:36:34,808 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-29 15:36:34,808 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-29 15:36:34,808 [INFO] 
+💾 Guardando resultados en output\datos_eoe_universal_procesados.xlsx...
+2025-05-29 15:36:37,880 [INFO] 💾 Archivo guardado exitosamente: output\datos_eoe_universal_procesados.xlsx
+2025-05-29 15:36:37,880 [INFO] 📊 Hojas creadas: Datos_Diarios, Estadisticas, Resumen_Archivos, Metadatos
+2025-05-29 15:36:37,887 [INFO] 
+================================================================================
+2025-05-29 15:36:37,887 [INFO] ⏱️ RESUMEN DE EJECUCIÓN EOE UNIVERSAL
+2025-05-29 15:36:37,887 [INFO] ================================================================================
+2025-05-29 15:36:37,887 [INFO] ⏰ Tiempo total: 23.23 segundos
+2025-05-29 15:36:37,887 [INFO] 📁 Archivos únicos procesados: 6
+2025-05-29 15:36:37,887 [INFO] 📊 Variables procesadas: 5
+2025-05-29 15:36:37,887 [INFO] 📅 Período de datos: 1980-01-01 a 2025-04-01
+2025-05-29 15:36:37,887 [INFO] 🏷️  Índices detectados:
+2025-05-29 15:36:37,887 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-29 15:36:37,887 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-29 15:36:37,887 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-29 15:36:37,887 [INFO]    - ICE: 'Índice de Confianza Industrial (ICI)' (543 registros)
+2025-05-29 15:36:37,887 [INFO]    - ICC: 'Índice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-29 15:36:37,887 [INFO] 💾 Archivo de salida: output\datos_eoe_universal_procesados.xlsx
+2025-05-29 15:36:37,887 [INFO] 🎯 Estado: ✅ COMPLETADO EXITOSAMENTE
+2025-05-29 15:36:37,887 [INFO] ================================================================================
+2025-05-29 15:36:37,887 [INFO] ✅ Procesamiento EOE completado exitosamente
+2025-05-29 15:36:37,887 [INFO] 
+================================================================================
+2025-05-29 15:36:37,887 [INFO] 📊 RESUMEN DE PROCESAMIENTO INTEGRADO
+2025-05-29 15:36:37,887 [INFO] ================================================================================
+2025-05-29 15:36:37,887 [INFO] TES: ✅ EXITOSO
+2025-05-29 15:36:37,887 [INFO] EOE: ✅ EXITOSO
+2025-05-29 15:36:37,887 [INFO] Directorio de salida: output
+2025-05-29 15:36:37,887 [INFO] ================================================================================
+2025-05-29 15:36:48,154 [INFO] 🚀 Iniciando procesamiento de remesas...
+2025-05-29 15:36:48,203 [INFO] ✅ Archivo de remesas hallado: .\Data\0_raw\bond\IngresosEgresos de remesas de trabajadores en Colombia.xlsx
+2025-05-29 15:36:48,206 [INFO] 📥 Leyendo archivo: .\Data\0_raw\bond\IngresosEgresos de remesas de trabajadores en Colombia.xlsx
+2025-05-29 15:36:48,233 [INFO] 🔍 Detected single-column with tabs → expanding
+2025-05-29 15:36:48,235 [INFO] ✅ Header encontrado en fila 1
+2025-05-29 15:36:48,237 [INFO] ✅ Columnas normalizadas: ['fecha', 'descripcion', 'valor_remesa']
+2025-05-29 15:36:48,237 [INFO] 🔄 Convirtiendo fechas...
+2025-05-29 15:36:48,250 [INFO] ✅ Fechas convertidas. Rango: 2008-09-30 a 2025-04-30
+2025-05-29 15:36:48,251 [INFO] 📅 Índice diario generado: 6057 días desde 2008-09-30 hasta 2025-04-30
+2025-05-29 15:36:48,251 [INFO] 🔗 Combinando datos y aplicando forward-fill...
+2025-05-29 15:36:48,254 [ERROR] ❌ Error en RemesasProcessor.run: right keys must be sorted
+2025-05-29 15:36:48,255 [INFO] 🚀 Iniciando procesamiento de IED (diario)...
+2025-05-29 15:36:48,257 [INFO] ✅ IED hallado: data/0_raw\bond\3_Inversion_Extranjera_Directa_en_Colombia_(IED)_por_pais_origen.xlsx
+2025-05-29 15:36:48,257 [INFO] 📥 Leyendo IED: data/0_raw\bond\3_Inversion_Extranjera_Directa_en_Colombia_(IED)_por_pais_origen.xlsx
+2025-05-29 15:36:48,455 [INFO] ✅ IED trimestral normalizado: 72 registros
+2025-05-29 15:36:48,455 [INFO] 📅 Índice diario generado: 6484 días (2007-01-01 → 2024-10-01)
+2025-05-29 15:36:48,458 [INFO] 🔗 Combinando trimestral con diario y forward-fill...
+2025-05-29 15:36:48,458 [INFO] ✅ Serie diaria creada: 6484 registros
+2025-05-29 15:36:48,551 [ERROR] ❌ Error en IEDProcessor: Invalid file path or buffer object type: <class 'NoneType'>
+2025-05-29 16:50:23,306 [INFO] ================================================================================
+2025-05-29 16:50:23,308 [INFO] 🌟 EOE UNIVERSAL PROCESSOR - Todos los Índices de Confianza
+2025-05-29 16:50:23,309 [INFO] Directorio de datos: data/0_raw
+2025-05-29 16:50:23,309 [INFO] Términos detectados: confianza, expectativa, opinión empresarial, encuesta, ici, icco, icc, iec, ice, eoe, consumidor, industrial, comercial
+2025-05-29 16:50:23,310 [INFO] Fecha y hora: 2025-05-29 16:50:23
+2025-05-29 16:50:23,310 [INFO] ================================================================================
+2025-05-29 16:50:23,310 [INFO] 🚀 Iniciando proceso EOE Universal...
+2025-05-29 16:50:23,311 [INFO] 🔍 Buscando TODOS los archivos EOE (Universal)...
+2025-05-29 16:50:23,408 [INFO] Header de variables encontrado en fila 0
+2025-05-29 16:50:23,408 [INFO] Variables encontradas: 5
+2025-05-29 16:50:23,408 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-29 16:50:23,408 [INFO]   - ICE: Indice_Condiciones_Economicas (col 2)
+2025-05-29 16:50:23,408 [INFO]   - ICE: Indice_Condiciones_Economicas (col 3)
+2025-05-29 16:50:23,408 [INFO]   - ICE: Indice_Condiciones_Economicas (col 4)
+2025-05-29 16:50:23,408 [INFO]   - ICE: Indice_Condiciones_Economicas (col 5)
+2025-05-29 16:50:23,700 [INFO] Header de variables encontrado en fila 0
+2025-05-29 16:50:23,700 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-29 16:50:23,700 [INFO] Variables encontradas: 3
+2025-05-29 16:50:23,700 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-29 16:50:23,700 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-29 16:50:23,700 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-29 16:50:23,805 [INFO] Header de variables encontrado en fila 1
+2025-05-29 16:50:23,805 [INFO] Variables encontradas: 1
+2025-05-29 16:50:23,806 [INFO]   - ICE: Indice_Condiciones_Economicas (col 1)
+2025-05-29 16:50:23,917 [INFO] Header de variables encontrado en fila 1
+2025-05-29 16:50:23,917 [INFO] Variables encontradas: 1
+2025-05-29 16:50:23,918 [INFO]   - ICC: Indice_Confianza_Consumidor (col 1)
+2025-05-29 16:50:24,072 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\AAII_Investor_Sentiment.xls: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-29 16:50:24,107 [WARNING] Error detectando archivo EOE Universal data/0_raw\consumer_confidence\sentiment.xlsx: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-29 16:50:24,536 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-29 16:50:24,536 [INFO] Variables encontradas: 3
+2025-05-29 16:50:24,536 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-29 16:50:24,536 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-29 16:50:24,536 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-29 16:50:24,895 [WARNING] No se encontraron headers específicos, usando estructura por defecto
+2025-05-29 16:50:24,895 [INFO] Variables encontradas: 3
+2025-05-29 16:50:24,895 [INFO]   - IC1: Indice_Confianza_Col1 (col 1)
+2025-05-29 16:50:24,895 [INFO]   - IC2: Indice_Confianza_Col2 (col 2)
+2025-05-29 16:50:24,895 [INFO]   - IC3: Indice_Confianza_Col3 (col 3)
+2025-05-29 16:50:25,104 [INFO] ✅ Encontrados 16 variables en archivos EOE:
+2025-05-29 16:50:25,104 [INFO]    📁 datos_economicos_normales_procesados.xlsx:
+2025-05-29 16:50:25,105 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 16:50:25,105 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 16:50:25,105 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 16:50:25,106 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 16:50:25,106 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 16:50:25,106 [INFO]    📁 EOC_Abril_2025_Histórico (1).xlsx:
+2025-05-29 16:50:25,107 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-29 16:50:25,107 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-29 16:50:25,107 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-29 16:50:25,108 [INFO]    📁 EOE_Marzo_2025_Histórico_ Industria (1).xlsx:
+2025-05-29 16:50:25,108 [INFO]       → ICE: Indice_Condiciones_Economicas (consumer_confidence)
+2025-05-29 16:50:25,108 [INFO]    📁 EOE_Marzo_2025_Histórico_Comercio.xlsx:
+2025-05-29 16:50:25,108 [INFO]       → ICC: Indice_Confianza_Consumidor (consumer_confidence)
+2025-05-29 16:50:25,109 [INFO]    📁 ITCR_PP.xlsx:
+2025-05-29 16:50:25,109 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-29 16:50:25,109 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-29 16:50:25,109 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-29 16:50:25,111 [INFO]    📁 Índice_COLCAP.xlsx:
+2025-05-29 16:50:25,111 [INFO]       → IC1: Indice_Confianza_Col1 (business_confidence)
+2025-05-29 16:50:25,111 [INFO]       → IC2: Indice_Confianza_Col2 (business_confidence)
+2025-05-29 16:50:25,111 [INFO]       → IC3: Indice_Confianza_Col3 (business_confidence)
+2025-05-29 16:50:25,112 [INFO] 
+⚡ Procesando 16 variables...
+2025-05-29 16:50:25,112 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:25,112 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 16:50:25,112 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 16:50:25,112 [INFO]    🏷️  Sigla: ICE
+2025-05-29 16:50:25,113 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:25,113 [INFO]    📊 Columna: 1
+2025-05-29 16:50:27,064 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 16:50:27,282 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:27,282 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:27,282 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 16:50:27,282 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 16:50:27,282 [INFO]    🏷️  Sigla: ICE
+2025-05-29 16:50:27,282 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:27,282 [INFO]    📊 Columna: 2
+2025-05-29 16:50:30,021 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 16:50:30,229 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:30,245 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:30,245 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 16:50:30,245 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 16:50:30,245 [INFO]    🏷️  Sigla: ICE
+2025-05-29 16:50:30,245 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:30,245 [INFO]    📊 Columna: 3
+2025-05-29 16:50:32,748 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 16:50:32,956 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:32,956 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:32,956 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 16:50:32,956 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 16:50:32,956 [INFO]    🏷️  Sigla: ICE
+2025-05-29 16:50:32,956 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:32,956 [INFO]    📊 Columna: 4
+2025-05-29 16:50:35,475 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 16:50:35,691 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:35,701 [INFO] 
+🌟 Procesando EOE Universal: datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:35,701 [INFO]    📁 Carpeta: 0_raw
+2025-05-29 16:50:35,701 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 16:50:35,701 [INFO]    🏷️  Sigla: ICE
+2025-05-29 16:50:35,701 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:35,701 [INFO]    📊 Columna: 5
+2025-05-29 16:50:38,047 [INFO]    📊 Archivo cargado: 4158 filas total
+2025-05-29 16:50:38,192 [ERROR] ❌ No se encontraron datos válidos en datos_economicos_normales_procesados_ICE
+2025-05-29 16:50:38,202 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC1
+2025-05-29 16:50:38,202 [INFO]    📁 Carpeta: bond
+2025-05-29 16:50:38,202 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-29 16:50:38,202 [INFO]    🏷️  Sigla: IC1
+2025-05-29 16:50:38,202 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,202 [INFO]    📊 Columna: 1
+2025-05-29 16:50:38,264 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-29 16:50:38,296 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-29 16:50:38,304 [INFO]    📈 Estadísticas: Min=-41.3, Max=38.8, Media=4.6
+2025-05-29 16:50:38,310 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-29 16:50:38,312 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-29 16:50:38,313 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC2
+2025-05-29 16:50:38,313 [INFO]    📁 Carpeta: bond
+2025-05-29 16:50:38,314 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-29 16:50:38,314 [INFO]    🏷️  Sigla: IC2
+2025-05-29 16:50:38,314 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,314 [INFO]    📊 Columna: 2
+2025-05-29 16:50:38,360 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-29 16:50:38,377 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-29 16:50:38,385 [INFO]    📈 Estadísticas: Min=-28.3, Max=48.8, Media=9.8
+2025-05-29 16:50:38,385 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-29 16:50:38,390 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-29 16:50:38,390 [INFO] 
+🌟 Procesando EOE Universal: EOC_Abril_2025_Histórico (1)_IC3
+2025-05-29 16:50:38,390 [INFO]    📁 Carpeta: bond
+2025-05-29 16:50:38,390 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-29 16:50:38,391 [INFO]    🏷️  Sigla: IC3
+2025-05-29 16:50:38,391 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,391 [INFO]    📊 Columna: 3
+2025-05-29 16:50:38,430 [INFO]    📊 Archivo cargado: 292 filas total
+2025-05-29 16:50:38,456 [INFO]    ✅ 282 registros válidos encontrados
+2025-05-29 16:50:38,463 [INFO]    📈 Estadísticas: Min=-73.0, Max=40.8, Media=-3.3
+2025-05-29 16:50:38,465 [INFO]    ✅ 282 valores procesados correctamente
+2025-05-29 16:50:38,465 [INFO]    📅 Período: 2001-11-01 a 2025-04-01
+2025-05-29 16:50:38,466 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_ Industria (1)
+2025-05-29 16:50:38,466 [INFO]    📁 Carpeta: bond
+2025-05-29 16:50:38,466 [INFO]    🎯 TARGET: Indice_Condiciones_Economicas
+2025-05-29 16:50:38,466 [INFO]    🏷️  Sigla: ICE
+2025-05-29 16:50:38,467 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:38,468 [INFO]    📊 Columna: 1
+2025-05-29 16:50:38,575 [INFO]    📊 Archivo cargado: 567 filas total
+2025-05-29 16:50:38,602 [INFO]    ✅ 543 registros válidos encontrados
+2025-05-29 16:50:38,614 [INFO]    📈 Estadísticas: Min=-35.8, Max=20.4, Media=0.1
+2025-05-29 16:50:38,615 [INFO]    ✅ 543 valores procesados correctamente
+2025-05-29 16:50:38,615 [INFO]    📅 Período: 1980-01-01 a 2025-03-01
+2025-05-29 16:50:38,615 [INFO] 
+🌟 Procesando EOE Universal: EOE_Marzo_2025_Histórico_Comercio
+2025-05-29 16:50:38,615 [INFO]    📁 Carpeta: bond
+2025-05-29 16:50:38,616 [INFO]    🎯 TARGET: Indice_Confianza_Consumidor
+2025-05-29 16:50:38,616 [INFO]    🏷️  Sigla: ICC
+2025-05-29 16:50:38,616 [INFO]    📂 Tipo: consumer_confidence
+2025-05-29 16:50:38,616 [INFO]    📊 Columna: 1
+2025-05-29 16:50:38,706 [INFO]    📊 Archivo cargado: 576 filas total
+2025-05-29 16:50:38,732 [INFO]    ✅ 538 registros válidos encontrados
+2025-05-29 16:50:38,752 [INFO]    📈 Estadísticas: Min=-30.8, Max=43.5, Media=17.9
+2025-05-29 16:50:38,753 [INFO]    ✅ 538 valores procesados correctamente
+2025-05-29 16:50:38,753 [INFO]    📅 Período: 1980-06-01 a 2025-03-01
+2025-05-29 16:50:38,754 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC1
+2025-05-29 16:50:38,754 [INFO]    📁 Carpeta: exchange_rate
+2025-05-29 16:50:38,754 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-29 16:50:38,754 [INFO]    🏷️  Sigla: IC1
+2025-05-29 16:50:38,754 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,755 [INFO]    📊 Columna: 1
+2025-05-29 16:50:38,796 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-29 16:50:38,818 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC1
+2025-05-29 16:50:38,818 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC2
+2025-05-29 16:50:38,818 [INFO]    📁 Carpeta: exchange_rate
+2025-05-29 16:50:38,818 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-29 16:50:38,818 [INFO]    🏷️  Sigla: IC2
+2025-05-29 16:50:38,818 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,818 [INFO]    📊 Columna: 2
+2025-05-29 16:50:38,863 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-29 16:50:38,878 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC2
+2025-05-29 16:50:38,878 [INFO] 
+🌟 Procesando EOE Universal: ITCR_PP_IC3
+2025-05-29 16:50:38,878 [INFO]    📁 Carpeta: exchange_rate
+2025-05-29 16:50:38,878 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-29 16:50:38,878 [INFO]    🏷️  Sigla: IC3
+2025-05-29 16:50:38,878 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,878 [INFO]    📊 Columna: 3
+2025-05-29 16:50:38,945 [INFO]    📊 Archivo cargado: 466 filas total
+2025-05-29 16:50:38,968 [ERROR] ❌ No se encontraron datos válidos en ITCR_PP_IC3
+2025-05-29 16:50:38,968 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC1
+2025-05-29 16:50:38,968 [INFO]    📁 Carpeta: index_pricing
+2025-05-29 16:50:38,968 [INFO]    🎯 TARGET: Indice_Confianza_Col1
+2025-05-29 16:50:38,968 [INFO]    🏷️  Sigla: IC1
+2025-05-29 16:50:38,968 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:38,968 [INFO]    📊 Columna: 1
+2025-05-29 16:50:39,401 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-29 16:50:39,541 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC1
+2025-05-29 16:50:39,541 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC2
+2025-05-29 16:50:39,541 [INFO]    📁 Carpeta: index_pricing
+2025-05-29 16:50:39,541 [INFO]    🎯 TARGET: Indice_Confianza_Col2
+2025-05-29 16:50:39,541 [INFO]    🏷️  Sigla: IC2
+2025-05-29 16:50:39,541 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:39,541 [INFO]    📊 Columna: 2
+2025-05-29 16:50:40,030 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-29 16:50:40,174 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC2
+2025-05-29 16:50:40,174 [INFO] 
+🌟 Procesando EOE Universal: Índice_COLCAP_IC3
+2025-05-29 16:50:40,174 [INFO]    📁 Carpeta: index_pricing
+2025-05-29 16:50:40,174 [INFO]    🎯 TARGET: Indice_Confianza_Col3
+2025-05-29 16:50:40,174 [INFO]    🏷️  Sigla: IC3
+2025-05-29 16:50:40,174 [INFO]    📂 Tipo: business_confidence
+2025-05-29 16:50:40,190 [INFO]    📊 Columna: 3
+2025-05-29 16:50:40,639 [INFO]    📊 Archivo cargado: 4219 filas total
+2025-05-29 16:50:40,800 [ERROR] ❌ No se encontraron datos válidos en Índice_COLCAP_IC3
+2025-05-29 16:50:40,806 [INFO] ✅ 5/16 variables procesadas exitosamente
+2025-05-29 16:50:40,806 [INFO] 
+📅 Generando índice diario...
+2025-05-29 16:50:40,806 [INFO] 📅 Índice diario generado: 16528 días
+2025-05-29 16:50:40,806 [INFO]    📅 Desde: 1980-01-01
+2025-05-29 16:50:40,806 [INFO]    📅 Hasta: 2025-04-01
+2025-05-29 16:50:40,806 [INFO] 
+🔗 Combinando datos...
+2025-05-29 16:50:40,806 [WARNING] ⚠️ Omitiendo datos_economicos_normales_procesados_ICE por falta de datos
+2025-05-29 16:50:40,834 [WARNING] ⚠️ Omitiendo ITCR_PP_IC1 por falta de datos
+2025-05-29 16:50:40,834 [WARNING] ⚠️ Omitiendo ITCR_PP_IC2 por falta de datos
+2025-05-29 16:50:40,834 [WARNING] ⚠️ Omitiendo ITCR_PP_IC3 por falta de datos
+2025-05-29 16:50:40,834 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC1 por falta de datos
+2025-05-29 16:50:40,834 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC2 por falta de datos
+2025-05-29 16:50:40,834 [WARNING] ⚠️ Omitiendo Índice_COLCAP_IC3 por falta de datos
+2025-05-29 16:50:40,834 [INFO] 🔗 Datos combinados: 16528 filas, 6 columnas
+2025-05-29 16:50:40,834 [INFO] 📊 Variables en dataset final:
+2025-05-29 16:50:40,834 [INFO]    - Columna 1 (IC1)
+2025-05-29 16:50:40,834 [INFO]    - Columna 2 (IC2)
+2025-05-29 16:50:40,834 [INFO]    - Columna 3 (IC3)
+2025-05-29 16:50:40,834 [INFO]    - Índice de Confianza Industrial (ICI) (ICE)
+2025-05-29 16:50:40,834 [INFO]    - Índice de Confianza Comercial (ICCO) (ICC)
+2025-05-29 16:50:40,834 [INFO] 
+📊 Resumen de Cobertura EOE Universal:
+2025-05-29 16:50:40,834 [INFO] - EOC_Abril_2025_Histórico (1)_IC1 (IC1): 100.0% desde 2001-11-01 a 2025-04-01 [-41.3 a 38.8]
+2025-05-29 16:50:40,834 [INFO] - EOC_Abril_2025_Histórico (1)_IC2 (IC2): 100.0% desde 2001-11-01 a 2025-04-01 [-28.3 a 48.8]
+2025-05-29 16:50:40,834 [INFO] - EOC_Abril_2025_Histórico (1)_IC3 (IC3): 100.0% desde 2001-11-01 a 2025-04-01 [-73.0 a 40.8]
+2025-05-29 16:50:40,834 [INFO] - EOE_Marzo_2025_Histórico_ Industria (1) (ICE): 100.0% desde 1980-01-01 a 2025-03-01 [-35.8 a 20.4]
+2025-05-29 16:50:40,834 [INFO] - EOE_Marzo_2025_Histórico_Comercio (ICC): 100.0% desde 1980-06-01 a 2025-03-01 [-30.8 a 43.5]
+2025-05-29 16:50:40,834 [INFO] 
+💾 Guardando resultados en output\datos_eoe_universal_procesados.xlsx...
+2025-05-29 16:50:43,823 [INFO] 💾 Archivo guardado exitosamente: output\datos_eoe_universal_procesados.xlsx
+2025-05-29 16:50:43,823 [INFO] 📊 Hojas creadas: Datos_Diarios, Estadisticas, Resumen_Archivos, Metadatos
+2025-05-29 16:50:43,823 [INFO] 
+================================================================================
+2025-05-29 16:50:43,823 [INFO] ⏱️ RESUMEN DE EJECUCIÓN EOE UNIVERSAL
+2025-05-29 16:50:43,823 [INFO] ================================================================================
+2025-05-29 16:50:43,839 [INFO] ⏰ Tiempo total: 20.51 segundos
+2025-05-29 16:50:43,839 [INFO] 📁 Archivos únicos procesados: 6
+2025-05-29 16:50:43,839 [INFO] 📊 Variables procesadas: 5
+2025-05-29 16:50:43,839 [INFO] 📅 Período de datos: 1980-01-01 a 2025-04-01
+2025-05-29 16:50:43,839 [INFO] 🏷️  Índices detectados:
+2025-05-29 16:50:43,839 [INFO]    - IC1: 'Columna 1' (282 registros)
+2025-05-29 16:50:43,839 [INFO]    - IC2: 'Columna 2' (282 registros)
+2025-05-29 16:50:43,839 [INFO]    - IC3: 'Columna 3' (282 registros)
+2025-05-29 16:50:43,839 [INFO]    - ICE: 'Índice de Confianza Industrial (ICI)' (543 registros)
+2025-05-29 16:50:43,839 [INFO]    - ICC: 'Índice de Confianza Comercial (ICCO)' (538 registros)
+2025-05-29 16:50:43,839 [INFO] 💾 Archivo de salida: output\datos_eoe_universal_procesados.xlsx
+2025-05-29 16:50:43,839 [INFO] 🎯 Estado: ✅ COMPLETADO EXITOSAMENTE
+2025-05-29 16:50:43,839 [INFO] ================================================================================
+2025-05-29 16:50:43,839 [INFO] ✅ Procesamiento EOE completado exitosamente
+2025-05-29 16:50:43,839 [INFO] 
+================================================================================
+2025-05-29 16:50:43,839 [INFO] 📊 RESUMEN DE PROCESAMIENTO INTEGRADO
+2025-05-29 16:50:43,839 [INFO] ================================================================================
+2025-05-29 16:50:43,839 [INFO] TES: ✅ EXITOSO
+2025-05-29 16:50:43,839 [INFO] EOE: ✅ EXITOSO
+2025-05-29 16:50:43,844 [INFO] Directorio de salida: output
+2025-05-29 16:50:43,844 [INFO] ================================================================================
+2025-05-29 16:52:56,898 [INFO] 🚀 Iniciando procesamiento de remesas...
+2025-05-29 16:52:56,970 [INFO] ✅ Archivo de remesas hallado: .\Data\0_raw\remesas_diarias.xlsx
+2025-05-29 16:52:56,971 [INFO] 📥 Leyendo archivo: .\Data\0_raw\remesas_diarias.xlsx
+2025-05-29 16:52:57,341 [INFO] ✅ Header encontrado en fila 0
+2025-05-29 16:52:57,341 [ERROR] ❌ Faltan columnas tras mapeo: ['descripcion']
+2025-05-29 16:52:57,341 [ERROR] 💥 Error en procesamiento: "Faltan columnas: ['descripcion']"
