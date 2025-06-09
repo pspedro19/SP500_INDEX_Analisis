@@ -29,10 +29,11 @@ FORECAST_HORIZON_3MONTHS = config.forecast_horizon_3months
 ensure_directories = config.ensure_dirs
 
 # Importar funciones de visualización
-from ml.utils.plots import plot_forecast
+from src.pipelines.ml.utils.plots import plot_forecast
 
 # Configuración de logging
-log_file = os.path.join(PROJECT_ROOT, "logs", f"inference_{time.strftime('%Y%m%d_%H%M%S')}.log")
+LOG_DIR = config.log_dir
+log_file = os.path.join(LOG_DIR, f"inference_{time.strftime('%Y%m%d_%H%M%S')}.log")
 logging.basicConfig(
     level=logging.INFO, 
     format="%(asctime)s - %(levelname)s - %(message)s",
