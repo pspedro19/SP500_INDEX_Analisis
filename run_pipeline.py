@@ -17,12 +17,22 @@ from pathlib import Path
 # Asegurar que podemos importar módulos desde el directorio actual
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Importar configuraciones centralizadas
-from pipelines.ml.config import (
-    ROOT, DATA_RAW, DATA_PREP, PROCESSED_DIR, TRAINING_DIR, 
-    RESULTS_DIR, METRICS_DIR, LOG_DIR, REPORTS_DIR, 
-    IMG_CHARTS_DIR, METRICS_CHARTS_DIR, CSV_REPORTS, ensure_directories
-)
+from src.core.config.settings import settings
+
+ROOT = settings.project_root
+DATA_RAW = settings.data_raw
+DATA_PREP = settings.data_prep
+PROCESSED_DIR = settings.processed_dir
+TRAINING_DIR = settings.training_dir
+RESULTS_DIR = settings.results_dir
+METRICS_DIR = settings.metrics_dir
+LOG_DIR = settings.log_dir
+REPORTS_DIR = settings.reports_dir
+IMG_CHARTS = settings.img_charts_dir
+METRICS_CHARTS = settings.metrics_charts_dir
+CSV_REPORTS = settings.csv_reports_dir
+ensure_directories = settings.ensure_dirs
+
 
 # Crear directorio para logs si no existe
 Path(LOG_DIR).mkdir(parents=True, exist_ok=True)

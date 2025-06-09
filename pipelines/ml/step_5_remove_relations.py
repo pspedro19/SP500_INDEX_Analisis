@@ -9,10 +9,15 @@ import matplotlib.pyplot as plt
 from scipy.stats import entropy
 
 # Importar constantes centralizadas
-from config import (
-    PROJECT_ROOT, PROCESSED_DIR, DATE_COL, TARGET_SUFFIX,
-    CONSTANT_THRESHOLD, CORR_THRESHOLD, VIF_THRESHOLD
-)
+from src.core.config.settings import settings
+
+PROJECT_ROOT = settings.project_root
+PROCESSED_DIR = settings.processed_dir
+DATE_COL = settings.date_col
+TARGET_SUFFIX = settings.target_suffix
+CONSTANT_THRESHOLD = settings.constant_threshold
+CORR_THRESHOLD = settings.corr_threshold
+VIF_THRESHOLD = settings.vif_threshold
 
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING
