@@ -7,6 +7,13 @@ name = "sp500-index-analysis"
 version = "0.1.0"
 description = "Data transformation pipeline for SP500 index analysis"
 authors = [{name = "Pedro"}]
+license = {text = "MIT"}
+keywords = ["sp500", "machine-learning", "finance"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+urls = {"repository" = "https://github.com/pspedro19/sp500-index-analysis"}
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
