@@ -3,10 +3,12 @@ import os
 import logging
 
 # Importar configuraciones centralizadas
-from src.core.config.settings import settings
+from src.config.base import ProjectConfig
 
-PROJECT_ROOT = settings.project_root
-RESULTS_DIR = settings.results_dir
+config = ProjectConfig.from_env()
+
+PROJECT_ROOT = config.project_root
+RESULTS_DIR = config.results_dir
 
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING

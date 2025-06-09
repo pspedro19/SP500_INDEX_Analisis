@@ -5,15 +5,17 @@ import time
 from pathlib import Path
 
 # Importar configuración centralizada
-from src.core.config.settings import settings
+from src.config.base import ProjectConfig
 
-ROOT = settings.project_root
-DATA_RAW = settings.data_raw
-DATA_PREP = settings.data_prep
-LOG_DIR = settings.log_dir
-CSV_REPORTS = settings.csv_reports_dir
-DATE_COL = settings.date_col
-ensure_directories = settings.ensure_dirs
+config = ProjectConfig.from_env()
+
+ROOT = config.project_root
+DATA_RAW = config.data_raw
+DATA_PREP = config.data_prep
+LOG_DIR = config.log_dir
+CSV_REPORTS = config.csv_reports_dir
+DATE_COL = config.date_col
+ensure_directories = config.ensure_dirs
 
 # Configuración de logging
 log_file = os.path.join(LOG_DIR, f"merge_excels_{time.strftime('%Y%m%d_%H%M%S')}.log")

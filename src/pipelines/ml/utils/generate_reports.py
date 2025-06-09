@@ -17,17 +17,19 @@ from pathlib import Path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importar configuraciones centralizadas
-from src.core.config.settings import settings
+from src.config.base import ProjectConfig
 
-PROJECT_ROOT = settings.project_root
-MODELS_DIR = settings.models_dir
-RESULTS_DIR = settings.results_dir
-METRICS_DIR = settings.metrics_dir
-IMG_CHARTS = settings.img_charts_dir
-METRICS_CHARTS = settings.metrics_charts_dir
-REPORTS_DIR = settings.reports_dir
-CSV_REPORTS = settings.csv_reports_dir
-ensure_directories = settings.ensure_dirs
+config = ProjectConfig.from_env()
+
+PROJECT_ROOT = config.project_root
+MODELS_DIR = config.models_dir
+RESULTS_DIR = config.results_dir
+METRICS_DIR = config.metrics_dir
+IMG_CHARTS = config.img_charts_dir
+METRICS_CHARTS = config.metrics_charts_dir
+REPORTS_DIR = config.reports_dir
+CSV_REPORTS = config.csv_reports_dir
+ensure_directories = config.ensure_dirs
 
 # Configuración de logging
 log_file = os.path.join(PROJECT_ROOT, "logs", f"report_generation_{time.strftime('%Y%m%d_%H%M%S')}.log")
