@@ -3,3 +3,5 @@ models/*.pkl
 # Ignorar entorno virtual
 venv_MValores/
 
+
+__pycache__/
