@@ -274,17 +274,17 @@ def main():
     
     # Definir los pasos del pipeline
     pipeline_steps = [
-        ("Paso 1: Merge de Excels", "pipelines/ml/step_1_merge_excels.py"),
-        ("Paso 2: Generación de Categorías", "pipelines/ml/step_2_generate_categories.py"),
-        ("Paso 3: Limpieza de Columnas", "pipelines/ml/step_3_clean_columns.py"),
-        ("Paso 4: Transformación de Features", "pipelines/ml/step_4_transform_features.py"),
-        ("Paso 5: Eliminación de Relaciones", "pipelines/ml/step_5_remove_relations.py"),
-        ("Paso 6: Selección FPI", "pipelines/ml/step_6_fpi_selection.py"),
-        ("Paso 7: Entrenamiento de Modelos", "pipelines/ml/step_7_0_train_models.py"),
-        ("Paso 7.5: Ensamblado", "pipelines/ml/step_7_5_ensemble.py"),
-        ("Paso 8: Preparación de Salida", "pipelines/ml/step_8_prepare_output.py"),
-        ("Paso 9: Backtest", "pipelines/ml/step_9_backtest.py"),
-        ("Paso 10: Inferencia", "pipelines/ml/step_10_inference.py")
+        ("Paso 1: Merge de Excels", "src/pipelines/ml/step_1_merge_excels.py"),
+        ("Paso 2: Generación de Categorías", "src/pipelines/ml/step_2_generate_categories.py"),
+        ("Paso 3: Limpieza de Columnas", "src/pipelines/ml/step_3_clean_columns.py"),
+        ("Paso 4: Transformación de Features", "src/pipelines/ml/step_4_transform_features.py"),
+        ("Paso 5: Eliminación de Relaciones", "src/pipelines/ml/step_5_remove_relations.py"),
+        ("Paso 6: Selección FPI", "src/pipelines/ml/step_6_fpi_selection.py"),
+        ("Paso 7: Entrenamiento de Modelos", "src/pipelines/ml/step_7_0_train_models.py"),
+        ("Paso 7.5: Ensamblado", "src/pipelines/ml/step_7_5_ensemble.py"),
+        ("Paso 8: Preparación de Salida", "src/pipelines/ml/step_8_prepare_output.py"),
+        ("Paso 9: Backtest", "src/pipelines/ml/step_9_backtest.py"),
+        ("Paso 10: Inferencia", "src/pipelines/ml/step_10_inference.py")
     ]
     
     # Almacenar resultados y tiempos
