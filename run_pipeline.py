@@ -305,7 +305,10 @@ def main():
         ("Paso 4: Transformación de Features", "pipelines/ml/step_4_transform_features.py"),
         ("Paso 5: Eliminación de Relaciones", "pipelines/ml/step_5_remove_relations.py"),
         ("Paso 6: Selección FPI", "pipelines/ml/step_6_fpi_selection.py"),
-        ("Paso 7: Entrenamiento de Modelos", "src/sp500_analysis/application/model_training/trainer.py"),
+        (
+            "Paso 7: Entrenamiento de Modelos",
+            lambda: container.resolve("training_service").run_training(),
+        ),
         ("Paso 7.5: Ensamblado", "pipelines/ml/step_7_5_ensemble.py"),
         ("Paso 8: Preparación de Salida", "pipelines/ml/step_8_prepare_output.py"),
         (
