@@ -42,13 +42,20 @@ python run_pipeline.py
 
 ### Uso de la CLI
 
-También puedes ejecutar los pasos principales mediante el comando `sp500`:
+Instala el paquete en modo editable y luego ejecuta los comandos `sp500` para
+invocar los distintos servicios:
 
 ```bash
 sp500 preprocess  # preprocesamiento de datos
 sp500 train       # entrenamiento de modelos
 sp500 infer       # generar predicciones
 sp500 backtest   # ejecutar backtests
+```
+
+Para ver todas las opciones disponibles también puedes ejecutar:
+
+```bash
+sp500 --help
 ```
 ### Ejecutar pasos individualmente
 

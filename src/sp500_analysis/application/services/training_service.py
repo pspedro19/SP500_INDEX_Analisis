@@ -54,3 +54,12 @@ class TrainingService:
             json.dump(results, f, indent=4)
         logging.info("Metrics saved to %s", metrics_file)
         return results
+
+
+def run_training() -> Dict[str, Dict[str, float]]:
+    """Entry point used by the CLI to run training via the DI container."""
+    from sp500_analysis.shared.container import container, setup_container
+
+    setup_container()
+    service: TrainingService = container.resolve("training_service")
+    return service.run_training()
