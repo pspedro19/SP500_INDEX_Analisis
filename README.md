@@ -36,6 +36,16 @@ SP500_index_analysis/
 python run_pipeline.py
 ```
 
+### Uso de la CLI
+
+También puedes ejecutar los pasos principales mediante el comando `sp500`:
+
+```bash
+sp500 preprocess  # preprocesamiento de datos
+sp500 train       # entrenamiento de modelos
+sp500 infer       # generar predicciones
+```
+
 ---
 
 ## 🧩 Descripción de cada paso

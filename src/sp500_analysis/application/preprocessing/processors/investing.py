@@ -5,15 +5,16 @@ import pandas as pd
 from datetime import datetime, timedelta
 from sp500_analysis.shared.logging.logger import configurar_logging
 
+
 class InvestingProcessor:
     """
-    Clase para procesar datos macroeconómicos con robustez en el manejo de fechas y 
+    Clase para procesar datos macroeconómicos con robustez en el manejo de fechas y
     forward filling de series de frecuencia (por ejemplo, mensuales a diarios).
 
     Funcionalidades:
       - Conversión robusta de cadenas de fecha usando múltiples estrategias.
       - Transformación de series (generalmente mensuales) a datos diarios mediante merge_asof.
-      - Renombrado de la columna de valores usando el patrón: 
+      - Renombrado de la columna de valores usando el patrón:
             {target_col}_{variable}_{tipo_macro}
       - Validación y log detallado en cada etapa.
     """
@@ -44,8 +45,8 @@ class InvestingProcessor:
             self.logger.info("Leyendo archivo de configuración...")
             df_config = pd.read_excel(self.config_file)
             self.config_data = df_config[
-                (df_config['Fuente'] == 'Investing Data') &
-                (df_config['Tipo de Preprocesamiento Según la Fuente'] == 'Copiar y Pegar')
+                (df_config['Fuente'] == 'Investing Data')
+                & (df_config['Tipo de Preprocesamiento Según la Fuente'] == 'Copiar y Pegar')
             ].copy()
             self.logger.info(f"Se encontraron {len(self.config_data)} configuraciones para procesar")
             return self.config_data
@@ -190,10 +191,10 @@ class InvestingProcessor:
             """Maneja múltiples formatos numéricos incluyendo sufijos y símbolos"""
             if pd.isna(val) or val == '':
                 return None
-                
+
             # Convertir a string y limpiar
             val_str = str(val).strip()
-            
+
             # Manejar sufijos multiplicadores
             multiplicador = 1
             if val_str.endswith('B') or val_str.endswith('b'):  # Billones
@@ -205,24 +206,24 @@ class InvestingProcessor:
             elif val_str.endswith('K') or val_str.endswith('k'):  # Miles
                 multiplicador = 1e3
                 val_str = val_str[:-1].strip()
-                
+
             # Eliminar porcentaje
             if val_str.endswith('%'):
                 val_str = val_str[:-1].strip()
                 multiplicador *= 0.01  # Para convertir 5% a 0.05
-                
+
             # Reemplazar comas por puntos (formato europeo)
             val_str = val_str.replace(',', '.')
-            
+
             try:
                 return float(val_str) * multiplicador
             except ValueError:
                 return None
-        
+
         # Aplicar la función de conversión robusta
         df['valor'] = df[target_col].apply(convertir_valor_robusto)
         df = df.dropna(subset=['valor'])
-        
+
         if df.empty:
             self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
             return variable, None
@@ -249,7 +250,7 @@ class InvestingProcessor:
             'coverage': cobertura,
             'date_min': current_min,
             'date_max': current_max,
-            'nuevo_nombre': nuevo_nombre
+            'nuevo_nombre': nuevo_nombre,
         }
         self.logger.info(f"- Valores no nulos en TARGET: {len(df)}")
         self.logger.info(f"- Periodo: {current_min.strftime('%Y-%m-%d')} a {current_max.strftime('%Y-%m-%d')}")
@@ -263,10 +264,12 @@ class InvestingProcessor:
         if self.global_min_date is None or self.global_max_date is None:
             self.logger.error("No se pudieron determinar las fechas globales")
             return None
-        self.daily_index = pd.DataFrame({
-            'fecha': pd.date_range(start=self.global_min_date, end=self.global_max_date, freq='D')
-        })
-        self.logger.info(f"Índice diario generado: {len(self.daily_index)} días desde {self.global_min_date.strftime('%Y-%m-%d')} hasta {self.global_max_date.strftime('%Y-%m-%d')}")
+        self.daily_index = pd.DataFrame(
+            {'fecha': pd.date_range(start=self.global_min_date, end=self.global_max_date, freq='D')}
+        )
+        self.logger.info(
+            f"Índice diario generado: {len(self.daily_index)} días desde {self.global_min_date.strftime('%Y-%m-%d')} hasta {self.global_max_date.strftime('%Y-%m-%d')}"
+        )
         return self.daily_index
 
     def combine_data(self):
@@ -291,7 +294,9 @@ class InvestingProcessor:
             df_daily[col_name] = df_daily[col_name].ffill()
             combined = combined.merge(df_daily[['fecha', col_name]], on='fecha', how='left')
         self.final_df = combined
-        self.logger.info(f"DataFrame final combinado: {len(self.final_df)} filas, {len(self.final_df.columns)} columnas")
+        self.logger.info(
+            f"DataFrame final combinado: {len(self.final_df)} filas, {len(self.final_df.columns)} columnas"
+        )
         return self.final_df
 
     def analyze_coverage(self):
@@ -301,7 +306,9 @@ class InvestingProcessor:
         total_days = len(self.daily_index)
         self.logger.info("\nResumen de Cobertura:")
         for variable, stats in self.stats.items():
-            self.logger.info(f"- {variable}: {stats['coverage']:.2f}% desde {stats['date_min'].strftime('%Y-%m-%d')} a {stats['date_max'].strftime('%Y-%m-%d')}")
+            self.logger.info(
+                f"- {variable}: {stats['coverage']:.2f}% desde {stats['date_min'].strftime('%Y-%m-%d')} a {stats['date_max'].strftime('%Y-%m-%d')}"
+            )
 
     def save_results(self, output_file='datos_economicos_procesados.xlsx'):
         """
@@ -319,8 +326,10 @@ class InvestingProcessor:
                     'Proceso': ['InvestingProcessor'],
                     'Fecha de proceso': [datetime.now().strftime('%Y-%m-%d %H:%M:%S')],
                     'Total indicadores': [len(self.stats)],
-                    'Periodo': [f"{self.global_min_date.strftime('%Y-%m-%d')} a {self.global_max_date.strftime('%Y-%m-%d')}"],
-                    'Total días': [len(self.daily_index)]
+                    'Periodo': [
+                        f"{self.global_min_date.strftime('%Y-%m-%d')} a {self.global_max_date.strftime('%Y-%m-%d')}"
+                    ],
+                    'Total días': [len(self.daily_index)],
                 }
                 pd.DataFrame(meta).to_excel(writer, sheet_name='Metadatos', index=False)
             self.logger.info(f"Archivo guardado exitosamente: {output_file}")
@@ -363,4 +372,3 @@ class InvestingProcessor:
         self.logger.info(f"Archivo de salida: {output_file}")
         self.logger.info(f"Estado: {'COMPLETADO' if result else 'ERROR'}")
         return result
-

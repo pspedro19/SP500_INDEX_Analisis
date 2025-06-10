@@ -1,5 +1,6 @@
 from sklearn.svm import SVR
 
+
 class SVMWrapper:
     def __init__(self, **params):
         self.model = SVR(**params)
