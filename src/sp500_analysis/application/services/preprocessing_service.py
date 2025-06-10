@@ -6,6 +6,12 @@ from sp500_analysis.config.settings import settings
 from sp500_analysis.shared.logging.logger import configurar_logging
 
 
+try:  # pragma: no cover - heavy optional dependency
+    from pipelines.ml.step_0_preprocess import ejecutar_todos_los_procesadores
+except Exception:  # pragma: no cover - step may not be available
+    ejecutar_todos_los_procesadores = None
+
+
 class PreprocessingService:
     """Service responsible for running the preprocessing pipeline."""
 
@@ -13,7 +19,14 @@ class PreprocessingService:
         log_file = settings.log_dir / f"preprocessing_service_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
         configurar_logging(str(log_file))
         logging.info("Running preprocessing service")
-        return True
+        if ejecutar_todos_los_procesadores is None:  # pragma: no cover - safeguard
+            logging.error("step_0_preprocess module not available")
+            return False
+        try:
+            return ejecutar_todos_los_procesadores()
+        except Exception as exc:  # pragma: no cover - runtime failure
+            logging.error("Preprocessing failed: %s", exc)
+            return False
 
 
 def run_preprocessing() -> bool:
