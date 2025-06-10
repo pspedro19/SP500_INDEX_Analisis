@@ -1,18 +1,18 @@
 .PHONY: install test lint format clean
 
 install:
-	pip install -r requirement.txt
+        pip install -e .[dev]
 
 test:
 	pytest
 
 lint:
-	black --check .
-	isort --check-only .
+        black --check .
+        ruff .
 
 format:
-	black .
-	isort .
+        black .
+        ruff --fix .
 
 clean:
 	find . -type d -name '__pycache__' -exec rm -r {} +
