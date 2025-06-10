@@ -30,3 +30,13 @@ def test_infer_invokes_service():
         result = runner.invoke(cli, ["infer"])
         assert result.exit_code == 0
         run.assert_called_once()
+
+
+def test_backtest_invokes_service():
+    runner = CliRunner()
+    dummy = types.SimpleNamespace(run_backtest=lambda **kwargs: None)
+    sys.modules["sp500_analysis.application.evaluation.backtester"] = dummy
+    with mock.patch.object(dummy, "run_backtest") as run:
+        result = runner.invoke(cli, ["backtest"])
+        assert result.exit_code == 0
+        run.assert_called_once()
