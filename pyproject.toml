@@ -27,10 +27,16 @@ dependencies = [
     "ta>=0.10.0",
     "statsmodels>=0.13.0",
     "pydantic>=1.10",
+    "jinja2",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "black", "ruff", "mypy"]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
+    "mypy",
+]
 
 [project.scripts]
 sp500 = "sp500_analysis.interfaces.cli.main:cli"
