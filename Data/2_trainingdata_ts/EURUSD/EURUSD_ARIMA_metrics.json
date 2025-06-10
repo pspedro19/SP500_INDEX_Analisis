@@ -1,0 +1,21 @@
+{
+    "instrument": "EURUSD",
+    "model_type": "ARIMA",
+    "order": "(0, 0, 1)",
+    "seasonal_order": "None",
+    "hyperparameters": {
+        "p": 0,
+        "d": 0,
+        "q": 1
+    },
+    "metrics": {
+        "rmse": 0.003874087623240411,
+        "mae": 0.0025005727024841836,
+        "mape": NaN,
+        "hit_direction": 15.139442231075698,
+        "naive_rmse": 0.005370265205106533,
+        "naive_drift_rmse": 1.086052533077072,
+        "improvement_vs_naive": 27.860403997244333,
+        "improvement_vs_drift": 99.64328727154071
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "instrument": "USDJPY",
+    "model_type": "ARIMA",
+    "order": "(0, 0, 1)",
+    "seasonal_order": "None",
+    "hyperparameters": {
+        "p": 0,
+        "d": 0,
+        "q": 1
+    },
+    "metrics": {
+        "rmse": 0.006603414580727591,
+        "mae": 0.004917418897924931,
+        "mape": NaN,
+        "hit_direction": 0.398406374501992,
+        "naive_rmse": 0.007228034142078886,
+        "naive_drift_rmse": 0.5213608476246772,
+        "improvement_vs_naive": 8.641624390164344,
+        "improvement_vs_drift": 98.73342722016571
+    }
+}

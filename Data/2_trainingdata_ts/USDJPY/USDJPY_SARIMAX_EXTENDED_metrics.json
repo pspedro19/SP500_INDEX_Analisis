@@ -1,0 +1,25 @@
+{
+    "instrument": "USDJPY",
+    "model_type": "SARIMAX_EXTENDED",
+    "order": "(1, 0, 0)",
+    "seasonal_order": "(0, 1, 1, 5)",
+    "hyperparameters": {
+        "p": 1,
+        "d": 0,
+        "q": 0,
+        "P": 0,
+        "D": 1,
+        "Q": 1,
+        "m": 5
+    },
+    "metrics": {
+        "rmse": 0.006418422178046906,
+        "mae": 0.004750679092337436,
+        "mape": NaN,
+        "hit_direction": 51.39442231075697,
+        "naive_rmse": 0.007228034142078886,
+        "naive_drift_rmse": 0.5213608476246772,
+        "improvement_vs_naive": 11.200998060021949,
+        "improvement_vs_drift": 98.76890982372588
+    }
+}

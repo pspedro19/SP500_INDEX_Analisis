@@ -1,0 +1,114 @@
+### Flujo “práctico‑profesional” **+ inventario completo de columnas**  
+*(integra tus reglas, el esquema 7‑2‑1 y la lista de variables definitivas)*  
+
+---
+
+## 0 · Arquitectura temporal
+
+```
+|── 10 años ─┬───────── 7 años ─────────┬──────── 2 años ───────┬──── 1 año ────|
+             |      TRAIN‑core          |   WALK‑FORWARD CV     |   HOLD‑OUT    |
+             |  ajuste (p,d,q)(P,D,Q,s) | 24 ventanas de 21 BD  | 12×21 BD test |
+```
+
+---
+
+## 1 · Catálogo de columnas por modelo  
+
+| Tipo de modelo | Columnas finales que entran al **X** | Comentario |
+|----------------|--------------------------------------|------------|
+| **ARIMA / SARIMA**<br>(univariado) | `date`, `sp500_close` | Target en log1p + diff |
+| **SARIMAX básico** | `date`, `sp500_close`, `vix`, `term_spread`, `cpi_yoy_lag1m`, `wti_crude`, `putcall_vol`, `unemployment_lag1m`, `volume_lag1` | 9 predictoras → k≈10 |
+| **SARIMAX extendido** | Todas las anteriores **+** `norm_range`, `pct_gap`, `vol_ma5` | k≈13; quita primero `vol_ma5` si N < 1000 |
+
+### Mapeo «raw → canonical»
+
+| Archivo | Raw column | Alias usado en X | Etapa donde aparece |
+|---------|------------|------------------|---------------------|
+| CSV | `Fecha` | `date` | inicio |
+| CSV | `Último` | `sp500_close` | ARIMA / SARIMAX |
+| CSV | `Apertura` | `sp500_open` | *solo* para derivar `pct_gap` |
+| CSV | `Máximo`, `Mínimo` | `sp500_high`, `sp500_low` | derivar `norm_range` |
+| CSV | `Vol.` | `sp500_volume` | rezagar→`volume_lag1`, `vol_ma5` |
+| Excel | `ULTIMO_VIX_VolatilityIndex_index_pricing` | `vix` | básico / extendido |
+| Excel | `DGS10_US_10Y_Treasury_bond` | `ust10y` (raw) | derivar `term_spread` |
+| Excel | `FEDFUNDS_US_FedFunds_Rate_economics` | `fedfunds` (raw) | derivar `term_spread` |
+| — |  | `term_spread` | final X |
+| Excel | `CPIAUCSL_US_CPI_economics` | `cpi_yoy_lag1m` | macro lag |
+| Excel | `PRICE_CrudeOil_WTI_commodities` | `wti_crude` | log + diff |
+| Excel | `PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence` | `putcall_vol` | diff / log‑diff |
+| Excel | `PRICE_US_Unemployment_Rate_unemployment_rate` | `unemployment_lag1m` | macro lag |
+
+---
+
+## 2 · Pipeline determinístico
+
+```
+RAW
+  ↳ cleaning + calendar_align
+  ↳ feature_derive: term_spread, norm_range, pct_gap
+  ↳ lag:  volume_lag1, vol_ma5, macro_lags
+  ↳ log / log1p
+  ↳ diff  (ADF > 0.05)
+  ↳ robust_scale (solo X)
+```
+
+- **Orden inmutable**: *derive → lag → log/log1p → diff*.  
+- Guarda la secuencia en un YAML para que producción la replique.
+
+---
+
+## 3 · Validación walk‑forward mensual (2021‑2022)  
+
+*(igual al script anterior, ahora con `X_basic` o `X_ext` según test)*  
+
+- **Input**:  
+  ```python
+  X_basic = df[['vix','term_spread','cpi_yoy_lag1m','wti_crude',
+                'putcall_vol','unemployment_lag1m','volume_lag1']]
+  X_ext   = X_basic.join(df[['norm_range','pct_gap','vol_ma5']])
+  ```
+- **Criterio**: AIC interno + sMAPE externo.  
+- Modo(`spec`) → configuración más estable.
+
+---
+
+## 4 · Prueba ciega 2023
+
+Mismo código → usa `X_basic` o `X_ext` según el modelo ganador.
+
+| Métrica | Umbral éxito |
+|---------|--------------|
+| RMSE vs Naïve drift | −10 % |
+| sMAPE | < 7 % |
+| Hit Direction | > 60 % |
+
+---
+
+## 5 · Producción mensual  
+
+1. Descarga raw CSV/Excel.  
+2. Ejecuta pipeline YAML → genera **df_production.parquet**.  
+3. `model.filter()` con últimos 21 BD.  
+4. Forecast 21 BD → guarda CSV + métricas.  
+5. **Alertas** si `RMSE_month` > 1.2×promedio 12 m.
+
+---
+
+## 6 · Micro‑check list (reglas de oro)  
+
+| Regla | Validación | Estado |
+|-------|------------|--------|
+| Exogeneidad | CPI +14, UNRATE +3 → lags explícitos | ✔️ |
+| Parsimonia  | k_basic = 10 < 48; k_ext = 13 < 48 | ✔️ |
+| Colinealidad | VIF pos‑derivación < 5 | ✔️ |
+| Estacionariedad | ADF/KPSS antes de diff | ✔️ |
+| Horizonte | Variables normalizadas 21 BD | ✔️ |
+
+---
+
+### Conclusión
+
+- La división **7‑2‑1 + walk‑forward** maximiza realismo y estabilidad.  
+- Las listas de columnas anteriores son las **únicas** que entran al modelo después de la tubería.  
+- Tu sistema queda reproducible, auditable y alineado con las 12 reglas de oro.

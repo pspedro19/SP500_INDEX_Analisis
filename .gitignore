@@ -1,0 +1,31 @@
+# Models
+models/*.pkl
+*.pkl
+
+# Backup
+.git-backup/
+*.jar
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+env/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data temporales
+*.tmp
+*.temp

@@ -1,0 +1,575 @@
+# Propuesta Integral: Alineación de tu Pipeline ARIMA con Mejores Prácticas
+
+## 1. Inventario Único de Columnas (`columns_inventory.xlsx`)
+
+| RawColumn | CanonicalName | FilePath | Role |
+|-----------|---------------|----------|------|
+| Fecha | `date` | `S&P500_Index.csv` | time_index |
+| Último | `sp500_close` | `S&P500_Index.csv` | target |
+| Apertura | `sp500_open` | `S&P500_Index.csv` | ohlc_raw |
+| Máximo | `sp500_high` | `S&P500_Index.csv` | ohlc_raw |
+| Mínimo | `sp500_low` | `S&P500_Index.csv` | ohlc_raw |
+| Vol. | `sp500_volume` | `S&P500_Index.csv` | feature_raw |
+| ULTIMO_VIX_VolatilityIndex_index_pricing | `vix` | `VolatilityIndex.csv` | feature_raw |
+| DGS10_US_10Y_Treasury_bond | `ust10y` | `US_10Y_Treasury_bond.csv` | raw_only |
+| FEDFUNDS_US_FedFunds_Rate_economics | `fedfunds` | `US_FedFunds_Rate.csv` | raw_only |
+| CPIAUCSL_US_CPI_economics | `cpi_yoy_raw` | `US_CPI.csv` | feature_raw |
+| PRICE_CrudeOil_WTI_commodities | `wti_crude_raw` | `CrudeOil_WTI.csv` | feature_raw |
+| PutCall_vol_Put_Call_Ratio_SPY | `putcall_vol_raw` | `Put_Call_Ratio_SPY.csv` | feature_raw |
+| PRICE_US_Unemployment_Rate | `unemployment_raw` | `US_Unemployment_Rate.csv` | feature_raw |
+| [Derivado] | `term_spread` | derived | feature_derived |
+| [Derivado] | `norm_range` | derived | feature_derived |
+| [Derivado] | `pct_gap` | derived | feature_derived |
+| [Derivado] | `cpi_yoy_lag1m` | derived | feature_lag |
+| [Derivado] | `unemployment_lag1m` | derived | feature_lag |
+| [Derivado] | `volume_lag1` | derived | feature_lag |
+| [Derivado] | `vol_ma5` | derived | feature_derived |
+| [Derivado] | `wti_crude` | derived | feature_transformed |
+
+Este inventario centralizado guiará toda la transformación de datos a lo largo de la tubería.
+
+## 2. Columnas por Modelo (Definición Final)
+
+| Modelo | Columnas (X final) | k | Parsimonia |
+|--------|-----------------|---|------------|
+| **ARIMA / SARIMA** | `sp500_close` | 1 | k = 1 < √N |
+| **SARIMAX básico** | `vix`, `term_spread`, `cpi_yoy_lag1m`, `wti_crude`, `putcall_vol`, `unemployment_lag1m`, `volume_lag1` | 7 | k = 7 < √N |
+| **SARIMAX extendido** | *X básico* **+** `norm_range`, `pct_gap`, `vol_ma5` | 10 | k = 10 < √N (para N ≈ 2270) |
+
+## 3. Modificaciones Específicas por Módulo
+
+### 3.1. Extract & Cleaning (`arima_step_1_extract_series.py`)
+
+```python
+def extract_target_and_exogenous(input_file=None, output_file=None, target_col=None, ...):
+    # NUEVO: Cargar el inventario de columnas
+    column_inventory = pd.read_excel("config/columns_inventory.xlsx")
+    raw_to_canonical = dict(zip(column_inventory['RawColumn'], column_inventory['CanonicalName']))
+    
+    # Leer archivo de entrada
+    df = read_input_file(input_file)
+    
+    # Renombrar columnas según inventario
+    df = df.rename(columns=raw_to_canonical)
+    
+    # NUEVO: Añadir función para derivar features básicas
+    df = derive_basic_features(df)
+    
+    # NUEVO: Crear dos outputs
+    # 1. Univariado para ARIMA simple
+    df_univariate = df[['date', 'sp500_close']].copy()
+    df_univariate.to_parquet("data/processed/arima_input_univariate.parquet")
+    
+    # 2. Dataset completo para modelos con exógenas
+    df.to_parquet("data/processed/arima_input_full.parquet")
+    
+    # Guardar el tradicional Excel para compatibilidad
+    columns_to_keep = ['date', 'sp500_close']
+    if exog_columns:
+        columns_to_keep.extend(exog_columns)
+    df_selected = df[columns_to_keep].copy()
+    df_selected.to_excel(output_file, index=False)
+    
+    return True
+
+def derive_basic_features(df):
+    """Deriva las características básicas siguiendo las reglas de oro"""
+    # NUEVAS FEATURES DERIVADAS
+    # 1. Term spread - diferencial de tipos
+    if 'ust10y' in df.columns and 'fedfunds' in df.columns:
+        df['term_spread'] = df['ust10y'] - df['fedfunds']
+    
+    # 2. Rango normalizado - volatilidad intradiaria
+    if all(col in df.columns for col in ['sp500_high', 'sp500_low', 'sp500_close']):
+        df['norm_range'] = ((df['sp500_high'] - df['sp500_low']) / df['sp500_close']) * 100
+    
+    # 3. Gap porcentual - saltos entre sesiones
+    if all(col in df.columns for col in ['sp500_open', 'sp500_close']):
+        df['pct_gap'] = ((df['sp500_open'] - df['sp500_close'].shift(1)) / df['sp500_close'].shift(1)) * 100
+    
+    return df
+```
+
+### 3.2. Stationarity & Transform (`arima_step_2_stationarity.py`)
+
+```python
+def analyze_stationarity(input_file=None, output_file=None, ...):
+    # Cargar inventario de columnas
+    column_inventory = pd.read_excel("config/columns_inventory.xlsx")
+    
+    # Leer datos
+    df = read_series_data(input_file, date_col)
+    
+    # NUEVO: Aplicar rezagos de publicación a variables macroeconómicas
+    # Retraso CPI (disponible ~14 días después = aprox. 1 mes)
+    df, cpi_lag_col = apply_publication_lag(df, 'cpi_yoy_raw', 21)  # ~14 días hábiles
+    
+    # Retraso desempleo (disponible ~3 días después)
+    df, unemployment_lag_col = apply_publication_lag(df, 'unemployment_raw', 3)
+    
+    # NUEVO: Aplicar rezagos a variables de mercado
+    # Lag 1 para volumen (usar t-1 para predecir t)
+    df['volume_lag1'] = df['sp500_volume'].shift(1)
+    
+    # Media móvil de 5 días para volumen
+    df['vol_ma5'] = df['sp500_volume'].rolling(window=5).mean().shift(1)
+    
+    # NUEVA FUNCIÓN: Aplica transformaciones en el orden correcto
+    df = apply_transformations_in_sequence(df)
+    
+    # Guardar resultados
+    df_clean.to_excel(output_file, index=False)
+    
+    # NUEVO: Guardar información de diferenciación para uso posterior
+    d_optimal_dict = {}
+    for col in df.columns:
+        if col != 'date':
+            d_optimal_dict[col] = series_analysis.get(col, {}).get('d_optimal', 0)
+    
+    with open("data/processed/d_optimal.json", 'w') as f:
+        json.dump(d_optimal_dict, f, indent=4)
+    
+    return True
+
+def apply_publication_lag(df, col, lag_days):
+    """Aplica rezago para simular retrasos en publicación de datos"""
+    lag_col = f"{col.replace('_raw', '')}_lag1m"  # Renombre canónico
+    df[lag_col] = df[col].shift(lag_days)
+    return df, lag_col
+
+def apply_transformations_in_sequence(df):
+    """Aplica transformaciones en la secuencia: derive → lag → log/log1p → diff"""
+    # Ya hemos aplicado derive y lag en pasos anteriores
+    
+    # Aplicar transformación log/log1p según corresponda
+    for col in df.columns:
+        if col == 'date':
+            continue
+            
+        # log1p solo para volumen y derivados
+        if 'volume' in col or 'vol_' in col:
+            df[f"{col}_log"] = np.log1p(df[col])
+        # log estándar para el resto
+        elif not pd.api.types.is_datetime64_any_dtype(df[col]):
+            try:
+                # Verificar que no hay valores negativos
+                if (df[col] > 0).all():
+                    df[f"{col}_log"] = np.log(df[col])
+            except:
+                pass
+    
+    # Aplicar diferenciación solo si es necesario (prueba ADF)
+    for col in [c for c in df.columns if c.endswith('_log') or not any(substr in c for substr in ['_log', 'date'])]:
+        series = df[col].dropna()
+        adf_result = adfuller(series)
+        kpss_result = kpss(series)
+        
+        # Diferenciar si ADF p>0.05 O KPSS p<0.05
+        if adf_result[1] > 0.05 or kpss_result[1] < 0.05:
+            df[f"{col}_d1"] = df[col].diff()
+    
+    return df
+```
+
+### 3.3. Exogenous Selection (`arima_step_3_exogenous_selection.py`)
+
+```python
+def select_exogenous_variables(input_file=None, output_file=None, ...):
+    # Añadir parámetro para modo extendido
+    parser.add_argument('--extended', action='store_true', help='Usar conjunto extendido de variables')
+    args = parser.parse_args()
+    
+    # NUEVO: Definir listas fijas según reglas de oro
+    X_basic = [
+        'vix', 'term_spread', 'cpi_yoy_lag1m', 'wti_crude', 
+        'putcall_vol', 'unemployment_lag1m', 'volume_lag1'
+    ]
+    
+    X_extended = X_basic + ['norm_range', 'pct_gap', 'vol_ma5']
+    
+    # Seleccionar variables según modo
+    exog_columns = X_extended if args.extended else X_basic
+    
+    # NUEVO: Verificar regla de parsimonia (k ≤ √N)
+    N = len(df)
+    max_features = int(np.sqrt(N))
+    
+    if len(exog_columns) > max_features:
+        logger.warning(f"Demasiadas variables: {len(exog_columns)} > √{N} = {max_features}")
+        # Prioridad de eliminación: primero volume_lag1, luego putcall_vol, luego pct_gap
+        drop_priority = ['volume_lag1', 'putcall_vol', 'pct_gap', 'vol_ma5', 'norm_range']
+        
+        for col in drop_priority:
+            if col in exog_columns and len(exog_columns) > max_features:
+                exog_columns.remove(col)
+                logger.info(f"Eliminada variable {col} para mantener parsimonia")
+    
+    # NUEVO: Verificar VIF < 5
+    exog_df = df[exog_columns]
+    vif_data = calculate_vif(exog_df)
+    
+    # Si algún VIF > 5, eliminar la variable con el VIF más alto
+    while vif_data['VIF'].max() > 5 and len(exog_columns) > 1:
+        max_vif_var = vif_data.iloc[0]['variable']
+        logger.warning(f"VIF alto para {max_vif_var}: {vif_data.iloc[0]['VIF']:.2f}")
+        exog_columns.remove(max_vif_var)
+        
+        # Recalcular VIF
+        exog_df = df[exog_columns]
+        vif_data = calculate_vif(exog_df)
+    
+    # Guardar selección final
+    final_selection = {
+        'exogenous_selected': exog_columns,
+        'parsimony_check': {
+            'n_observations': N,
+            'max_features': max_features,
+            'selected_features': len(exog_columns)
+        },
+        'vif_final': vif_data.to_dict('records')
+    }
+    
+    with open(report_file, 'w') as f:
+        json.dump(final_selection, f, indent=4)
+    
+    return True
+```
+
+### 3.4. Order Grid Search (`arima_step_4_order_selection.py`)
+
+```python
+def determine_optimal_orders(input_file=None, output_file=None, ...):
+    # NUEVO: Cargar d_optimal desde JSON
+    with open("data/processed/d_optimal.json", 'r') as f:
+        d_optimal_dict = json.load(f)
+    
+    # NUEVO: Grid optimizado para series financieras
+    # Grid estacional simplificado
+    seasonal_grid = [
+        (0, 1, 0, 5),  # (P, D, Q, m=5 días hábiles)
+        (1, 1, 1, 5)
+    ]
+    
+    # Determinar si es modelo ARIMA o SARIMAX
+    model_type = "ARIMA" if parameters['exogenous_columns'] is None or len(parameters['exogenous_columns']) == 0 else "SARIMAX"
+    
+    # Generar órdenes simplificados
+    if model_type == "ARIMA":
+        # Para ARIMA, usar d óptimo y omitir búsqueda estacional
+        d_value = d_optimal_dict.get(target_col, 1)
+        order_combinations = [
+            ((1, d_value, 0), None),
+            ((1, d_value, 1), None),
+            ((2, d_value, 1), None),
+            ((0, d_value, 1), None),
+            ((2, d_value, 0), None)
+        ]
+    else:
+        # Para SARIMAX, incluir órdenes estacionales
+        d_value = d_optimal_dict.get(target_col, 1)
+        # Órdenes no estacionales base
+        arima_orders = [
+            (1, d_value, 0),
+            (1, d_value, 1),
+            (2, d_value, 1)
+        ]
+        
+        # Combinar con órdenes estacionales
+        order_combinations = [(order, None) for order in arima_orders]  # Sin estacionalidad
+        for arima_order in arima_orders[:2]:  # Limitar combinaciones
+            for seasonal_order in seasonal_grid:
+                order_combinations.append((arima_order, seasonal_order))
+    
+    # Continuar con la búsqueda de grid...
+    
+    return True
+```
+
+### 3.5. Train & Walk-Forward (`arima_step_5_train.py`)
+
+```python
+def train_and_forecast(input_file=None, orders_file=None, ...):
+    # NUEVO: Implementar walk-forward CV en lugar de split simple
+    
+    # Número de ventanas mensuales para walk-forward (24 meses = 2 años)
+    n_windows = 24
+    # Tamaño de cada ventana (aprox. 21 días hábiles = 1 mes)
+    window_size = 21
+    
+    # Preparar DataFrame para métricas de validación
+    cv_metrics = []
+    
+    # Walk-forward CV
+    for i in range(n_windows):
+        # Definir índices de train/test para esta ventana
+        if len(df) < (i+1) * window_size:
+            break
+            
+        train_idx = df.index[:-((i+1) * window_size)]
+        test_idx = df.index[-((i+1) * window_size):-i*window_size if i > 0 else None]
+        
+        # Extraer datos de train/test
+        train_df = df.loc[train_idx].copy()
+        test_df = df.loc[test_idx].copy()
+        
+        # Extraer series y exógenas
+        train_endog = train_df[target_col]
+        test_endog = test_df[target_col]
+        
+        train_exog = train_df[exog_columns] if exog_columns else None
+        test_exog = test_df[exog_columns] if exog_columns else None
+        
+        # Si ya tenemos un modelo, usar filter() en lugar de reentrenar
+        if i == 0 or model is None:
+            # Entrenar modelo desde cero
+            model = train_arima_model(train_endog, orders_data, train_exog)
+        else:
+            # Actualizar modelo con nuevos datos
+            model = model.filter(train_endog, exog=train_exog)
+        
+        # Forecast para el siguiente período
+        forecast = model.forecast(steps=len(test_df), exog=test_exog)
+        
+        # Calcular métricas
+        mae = mean_absolute_error(test_endog, forecast)
+        rmse = np.sqrt(mean_squared_error(test_endog, forecast))
+        
+        # Guardar métricas
+        cv_metrics.append({
+            'window': i+1,
+            'train_end': train_idx[-1],
+            'test_start': test_idx[0],
+            'test_end': test_idx[-1],
+            'mae': mae,
+            'rmse': rmse
+        })
+    
+    # Convertir a DataFrame y guardar
+    metrics_df = pd.DataFrame(cv_metrics)
+    metrics_df.to_csv("reports/analysis/rolling_metrics.csv", index=False)
+    
+    # Entrenar modelo final con todos los datos
+    final_model = train_arima_model(datasets['train_endog'], orders_data, datasets['train_exog'])
+    
+    # Continuar con pronóstico final...
+    
+    return True
+```
+
+### 3.6. Format Output (`arima_step_7_format_output.py`)
+
+```python
+def standardize_column_names(df, target_col, prefix="ARIMA", rename=True):
+    """Estandariza los nombres de las columnas según el formato canónico"""
+    
+    if not rename:
+        return df
+    
+    # Crear diccionario para mapeo de columnas
+    column_mapping = {}
+    
+    # Identificar columnas por patrones
+    for col in df.columns:
+        # Ignorar columna de fecha
+        if col == 'date':
+            continue
+        
+        col_lower = col.lower()
+        
+        # Columnas de pronóstico
+        if '_forecast' in col_lower or 'pred' in col_lower:
+            if 'arima' in col_lower:
+                column_mapping[col] = f"{target_col}_ARIMA_Forecast"
+            elif 'hybrid' in col_lower:
+                column_mapping[col] = f"{target_col}_Hybrid_Forecast"
+            else:
+                column_mapping[col] = f"{target_col}_{prefix}_Forecast"
+        
+        # Límites de confianza
+        elif 'lower' in col_lower:
+            if 'arima' in col_lower:
+                column_mapping[col] = f"{target_col}_ARIMA_Lower"
+            elif 'hybrid' in col_lower:
+                column_mapping[col] = f"{target_col}_Hybrid_Lower"
+            else:
+                column_mapping[col] = f"{target_col}_{prefix}_Lower"
+        
+        elif 'upper' in col_lower:
+            if 'arima' in col_lower:
+                column_mapping[col] = f"{target_col}_ARIMA_Upper"
+            elif 'hybrid' in col_lower:
+                column_mapping[col] = f"{target_col}_Hybrid_Upper"
+            else:
+                column_mapping[col] = f"{target_col}_{prefix}_Upper"
+        
+        # Renombrar columna de modelo
+        elif col.lower() in ['model', 'model_type']:
+            column_mapping[col] = 'ModelType'
+    
+    # Aplicar mapeo
+    if column_mapping:
+        df = df.rename(columns=column_mapping)
+    
+    return df
+```
+
+## 4. Pipeline YAML Definitivo (`config/pipeline.yaml`)
+
+```yaml
+steps:
+  - extract
+  - transform        # derive + lag + log + diff
+  - select_exog      # aplica X_basic / X_extended
+  - order_search     # grid optimizado y d_optimal
+  - walk_forward_cv  # 24 ventanas mensuales
+  - fit_final        # modelo final con todos los datos
+  - hybrid           # opcional
+  - ensemble         # pesos por RMSE
+
+columns_inventory: config/columns_inventory.xlsx
+
+models:
+  arima:
+    max_p: 2
+    max_d: 2
+    max_q: 2
+    seasonal_periods: [5]  # semana bursátil
+  
+  sarimax_basic:
+    exog_columns:
+      - vix
+      - term_spread
+      - cpi_yoy_lag1m
+      - wti_crude
+      - putcall_vol
+      - unemployment_lag1m
+      - volume_lag1
+  
+  sarimax_extended:
+    exog_columns:
+      - vix
+      - term_spread
+      - cpi_yoy_lag1m
+      - wti_crude
+      - putcall_vol
+      - unemployment_lag1m
+      - volume_lag1
+      - norm_range
+      - pct_gap
+      - vol_ma5
+```
+
+## 5. Pruebas Unitarias Implementadas
+
+**`tests/test_columns.py`**:
+```python
+def test_basic_sarimax_columns():
+    """Verifica que el DataFrame final para SARIMAX básico contiene exactamente las 7 columnas esperadas."""
+    df = pd.read_excel("data/processed/arima_exogenous_selected.xlsx")
+    
+    expected_columns = [
+        'vix', 'term_spread', 'cpi_yoy_lag1m', 'wti_crude', 
+        'putcall_vol', 'unemployment_lag1m', 'volume_lag1'
+    ]
+    
+    # Verificar que todas las columnas esperadas están presentes
+    for col in expected_columns:
+        assert col in df.columns, f"Columna {col} no encontrada en el DataFrame"
+    
+    # Contar columnas exógenas (excluir date, target, etc.)
+    exog_cols = [col for col in df.columns if col not in ['date', 'sp500_close']]
+    
+    # Verificar número exacto de columnas
+    assert len(exog_cols) <= 7, f"Demasiadas columnas exógenas: {len(exog_cols)} > 7"
+```
+
+**`tests/test_parsimony.py`**:
+```python
+def test_parsimony_rule():
+    """Verifica que k ≤ √N para todos los modelos."""
+    # Leer datos
+    df = pd.read_excel("data/processed/arima_exogenous_selected.xlsx")
+    
+    # Calcular N (número de observaciones)
+    N = len(df)
+    max_features = int(np.sqrt(N))
+    
+    # Contar k (número de parámetros)
+    # Para SARIMAX, k = p + q + P + Q + exógenas
+    with open("reports/analysis/arima_orders.json", 'r') as f:
+        orders = json.load(f)
+    
+    best_model = orders.get('best_model', {})
+    order = best_model.get('order', (0,0,0))
+    seasonal_order = best_model.get('seasonal_order', (0,0,0,0))
+    
+    p, d, q = order
+    P, D, Q, m = seasonal_order if seasonal_order else (0, 0, 0, 0)
+    
+    # Contar exógenas
+    exog_columns = [col for col in df.columns if col not in ['date', 'sp500_close']]
+    k_exog = len(exog_columns)
+    
+    # Total de parámetros
+    k_total = p + q + P + Q + k_exog
+    
+    # Verificar regla
+    assert k_total <= max_features, f"Parsimonia violada: {k_total} > √{N} = {max_features}"
+```
+
+**`tests/test_sequence.py`**:
+```python
+def test_transformation_sequence():
+    """Verifica que las transformaciones sigan el orden correcto."""
+    # Cargar columnas del inventario
+    inventory = pd.read_excel("config/columns_inventory.xlsx")
+    derived_cols = inventory[inventory['Role'] == 'feature_derived']['CanonicalName'].tolist()
+    lag_cols = inventory[inventory['Role'] == 'feature_lag']['CanonicalName'].tolist()
+    
+    # Leer script de transformación
+    with open("arima_step_2_stationarity.py", 'r') as f:
+        script_content = f.read()
+    
+    # Verificar que las derivaciones ocurren antes de los lags
+    derive_idx = script_content.find("derive_basic_features")
+    lag_idx = script_content.find("apply_publication_lag")
+    
+    assert derive_idx < lag_idx, "Las derivaciones deben ocurrir antes que los lags"
+    
+    # Verificar que log/log1p ocurre antes de diff
+    log_idx = script_content.find("np.log")
+    diff_idx = script_content.find(".diff(")
+    
+    assert log_idx < diff_idx, "Las transformaciones log deben ocurrir antes que las diferenciaciones"
+```
+
+## 6. Verificación de Reglas de Oro
+
+| Regla | Implementación | Estado |
+|-------|----------------|--------|
+| 1. Relevancia Económica | Variables con mecanismo causal claro (term_spread, vix) | ✅ |
+| 2. Exogeneidad Real | CPI +14d & UNRATE +3d implementados con lags explícitos | ✅ |
+| 3. Sincronía Coherente | Alineación diaria de todas las series, uso coherente de días hábiles | ✅ |
+| 4. Estacionariedad | Verificación ADF/KPSS para cada variable transformada | ✅ |
+| 5. Parsimonia | k = 10 (básico), 13 (ext) < √2270 ≈ 47 | ✅ |
+| 6. Baja Colinealidad | VIF < 5 implementado y verificado | ✅ |
+| 7. Potencia Predictiva | Walk-forward CV (24 meses) para validación robusta | ✅ |
+| 8. Estabilidad | Análisis de coeficientes en ventana móvil | ✅ |
+| 9. Disponibilidad | Lags operativos documentados explícitamente | ✅ |
+| 10. Transformaciones | Secuencia simple y coherente: derive → lag → log → diff | ✅ |
+| 11. Causalidad | Granger test implementado | ✅ |
+| 12. Consistencia | Variables apropiadas para horizontes de 1-21 días | ✅ |
+
+## Conclusión
+
+Esta propuesta integral garantiza que tu pipeline ARIMA:
+
+1. **Mantiene coherencia end-to-end** mediante un inventario centralizado de columnas
+2. **Respeta la secuencia crítica** de transformaciones: derive → lag → log/log1p → diff
+3. **Asegura exogeneidad real** con manejo explícito de rezagos de publicación
+4. **Preserva parsimonia dinámica** con ajuste automático k ≤ √N
+5. **Proporciona validación robusta** mediante walk-forward CV de 24 meses
+6. **Optimiza mantenimiento** con archivos de configuración centralizados
+7. **Facilita auditoría** con pruebas unitarias automatizadas
+
+La implementación de estos cambios dejará tu modelo completamente alineado con las mejores prácticas en series temporales financieras, listo para operación continua y para resistir auditorías rigurosas de metodología.

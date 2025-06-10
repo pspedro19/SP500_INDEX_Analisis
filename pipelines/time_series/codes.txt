@@ -1,0 +1,164 @@
+# Las 12 Reglas de Oro para Selección de Variables en Series Temporales
+
+## 1. Relevancia Económica
+- **Prioriza mecanismos causales**: Selecciona variables con narrativa económica clara respecto al target
+- **Evita correlaciones sin fundamento**: La correlación histórica sin mecanismo causal suele fallar en producción
+- **Pregunta clave**: "¿Existe un mecanismo económico/financiero que explique por qué esta variable influye en el S&P 500?"
+
+## 2. Exogeneidad Real → Sin Look-ahead Bias
+- **Conocimiento previo garantizado**: Los valores deben estar disponibles *antes* del instante t para pronosticar yt+h
+- **Cuidado con revisiones**: Evita datos que se actualizan retroactivamente (PIB, algunos indicadores económicos)
+- **Documentación de disponibilidad**: Especifica cuándo está realmente disponible cada dato (t+0, t+3, t+14...)
+
+## 3. Sincronía y Granularidad Coherentes
+- **Alineación de frecuencias**: Ajusta datos diarios → semanales o mensuales → forward-fill/interpolación
+- **Evita superposición**: No mezcles datos que representan diferentes ventanas temporales
+- **Muestreo uniforme**: Mantén la misma definición de período para todas las variables (días hábiles vs. naturales)
+
+## 4. Estacionariedad Alineada
+- **Mismo orden de integración**: Si el target requiere diferenciación d, aplica la misma transformación a exógenas
+- **Pruebas formales**: Verifica con ADF/KPSS cada variable transformada antes de incorporarla
+- **Coherencia de transformación**: Series vinculadas económicamente deben transformarse de manera similar
+
+## 5. Parsimony Beats Gluttony
+- **Regla cuantitativa**: k ≤ √N (k = parámetros totales, N = observaciones de entrenamiento)
+- **Penalización automática**: Prioriza modelos con menor AIC/BIC, que equilibran ajuste y complejidad
+- **Principio de Occam**: Ante igual rendimiento predictivo, escoge el modelo más simple
+
+## 6. Baja Colinealidad
+- **Umbral estricto**: Evita correlaciones >0.8 entre predictores para evitar inestabilidad
+- **Factor de Inflación de la Varianza**: VIF < 5 ideal para cada variable incluida
+- **Soluciones efectivas**: Eliminar redundantes, derivar spreads o aplicar reducción dimensional (PCA)
+
+## 7. Potencia Predictiva Demostrada
+- **Validación rigurosa**: Walk-forward o time-series CV con ventanas expandibles o móviles
+- **Comparativa incremental**: Evalúa métricas de error con/sin cada variable para cuantificar su aporte
+- **Significancia estadística**: Prueba de Wald o LR test para confirmar que los coeficientes no son colectivamente cero
+
+## 8. Estabilidad Estructural
+- **Invarianza temporal**: Los coeficientes no deben cambiar radicalmente ni invertir su signo entre períodos
+- **Validación en submuestras**: Re-entrena en distintos períodos (2008-2012, 2015-2024) y compara
+- **Pruebas formales**: Test de Chow break o coeficientes en ventana móvil para detectar inestabilidad
+
+## 9. Disponibilidad Operativa
+- **Retrasos documentados**: Incorpora explícitamente los delays de publicación (CPI+14d, desempleo+3d)
+- **Versiones vintage**: Usa los datos tal como estaban disponibles históricamente, no los revisados
+- **Plan para missing values**: Estrategia robusta para imputación o manejo de datos faltantes/outliers
+
+## 10. Transformaciones Simples y Coherentes
+- **Preferencia por lo interpretable**: log, diff, porcentajes, spreads son superiores a fórmulas complejas
+- **Consistencia de unidades**: Asegura que las transformaciones mantienen las variables comparables
+- **Justificación clara**: Cada transformación debe tener un propósito específico (estabilizar varianza, estacionariedad)
+
+## 11. Pruebas de Causalidad y Respuesta Dinámica
+- **Causalidad de Granger**: Verifica que el pasado de la variable X ayuda a predecir el futuro de Y
+- **Análisis de impulso-respuesta**: Cuantifica magnitud y duración del impacto de shocks en las exógenas
+- **Descomposición de varianza**: Evalúa la contribución de cada variable a la variabilidad del pronóstico
+
+## 12. Consistencia con el Horizonte de Forecast
+- **Adecuación al plazo**: Variables útiles para h=1 pueden perder relevancia para h=21 o h=63
+- **Degradación de señal**: Verifica que la variable mantiene poder predictivo en el horizonte deseado
+- **Agregación temporal**: Usa promedios o acumulados para variables de alta frecuencia en horizontes largos
+
+## Pipeline Práctico de Selección de Variables
+
+```
+1. Teoría → Identifica variables con fundamento económico/financiero
+2. Ingeniería → Limpia, transforma, rezaga adecuadamente
+3. Filtrado → Evalúa correlación, VIF, pruebas de estacionariedad
+4. Modelado → Ajusta SARIMAX, compara criterios de información
+5. Validación → Realiza pruebas out-of-sample, confirma mejora incremental
+6. Robustez → Verifica estabilidad en distintas submuestras y condiciones de mercado
+```
+
+# VARIABLES POR TIPO DE MODELO: VERSIÓN FINAL PERFECCIONADA
+
+## 1. ARMA / ARIMA / SARIMA (Modelos Univariados)
+
+| Variable | Origen | Modificación |
+|----------|--------|--------------|
+| date | Fecha (CSV) o date (Excel) | Sin modificación - usar como índice |
+| sp500_close | Último (CSV) o ULTIMO_S&P500_Index_index_pricing (Excel) | Transformar: **log1p + diff** (log1p protege contra posibles valores nulos en histórico antiguo) |
+
+## 2. SARIMAX Básico (Con Exógenas)
+
+| Variable | Origen | Modificación |
+|----------|--------|--------------|
+| date | Fecha (CSV) o date (Excel) | Sin modificación - usar como índice |
+| sp500_close | Último (CSV) o ULTIMO_S&P500_Index_index_pricing (Excel) | Transformar: log1p + diff para estacionariedad |
+| vix | ULTIMO_VIX_VolatilityIndex_index_pricing (Excel) | Transformar: log + diff (igual que target) |
+| ust10y | DGS10_US_10Y_Treasury_bond (Excel) | **MANTENER EN PIPELINE CRUDO solo para calcular term_spread** |
+| fedfunds | FEDFUNDS_US_FedFunds_Rate_economics (Excel) | **MANTENER EN PIPELINE CRUDO solo para calcular term_spread** |
+| term_spread | Derivado: ust10y - fedfunds | **Verificar con ADF si necesita diferenciación; podría quedarse en nivel si ya es I(0)** |
+| cpi_yoy | CPIAUCSL_US_CPI_economics (Excel) | **Rezagar explícitamente (cpi_yoy_lag1m) + mantener en nivel (ya es tasa) + documentar "disponible día t+14"** |
+| wti_crude | PRICE_CrudeOil_WTI_commodities (Excel) | Transformar: log + diff |
+| putcall_vol | PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence (Excel) | **Probar: 1) diff simple, 2) log-diff, 3) transformación Box-Cox (λ≈0) si distribución es sesgada - comparar AIC/BIC** |
+| unemployment_rate | PRICE_US_Unemployment_Rate_unemployment_rate (Excel) | **Rezagar explícitamente (unemployment_lag1m) + mantener en nivel (ya es tasa) + documentar "disponible día t+3"** |
+| volume_lag1 | Vol. (CSV) | **Primero reemplazar ceros por np.nan, luego rezago (t-1), después np.log1p(), finalmente diff** |
+
+## 3. SARIMAX Extendido (Macro + OHLC/Volumen)
+
+| Variable | Origen | Modificación |
+|----------|--------|--------------|
+| date | Fecha (CSV) o date (Excel) | Sin modificación - usar como índice |
+| sp500_close | Último (CSV) o ULTIMO_S&P500_Index_index_pricing (Excel) | Transformar: log1p + diff para estacionariedad |
+| sp500_open | Apertura (CSV) | **MANTENER EN PIPELINE CRUDO para calcular pct_gap** |
+| sp500_high | Máximo (CSV) | **MANTENER EN PIPELINE CRUDO para calcular norm_range** |
+| sp500_low | Mínimo (CSV) | **MANTENER EN PIPELINE CRUDO para calcular norm_range** |
+| norm_range | Derivado | **Calcular: ((sp500_high - sp500_low) / sp500_close) × 100** (multiplicar por 100 después de la división para evitar overflow en floats) |
+| pct_gap | Derivado | **Calcular: ((sp500_open - sp500_close.shift(1)) / sp500_close.shift(1)) × 100** (multiplicar por 100 después de la división) |
+| volume_lag1 | Vol. (CSV) | **Reemplazar ceros por np.nan → rezago (t-1) → np.log1p() → diff** |
+| vol_ma5 | Vol. (CSV) | **Reemplazar ceros por np.nan → calcular MA-5 → rezago (t-1) → log1p** (considerar MA-10 para horizontes >1 día) |
+| vix | ULTIMO_VIX_VolatilityIndex_index_pricing (Excel) | Transformar: log + diff |
+| term_spread | Derivado: ust10y - fedfunds | **Verificar con ADF si necesita diferenciación; mantener en nivel si ya es I(0)** |
+| cpi_yoy_lag1m | CPIAUCSL_US_CPI_economics (Excel) | **Rezagar explícitamente 1 mes + mantener en nivel (ya es tasa anual) + documentar lag de publicación** |
+| wti_crude | PRICE_CrudeOil_WTI_commodities (Excel) | Transformar: log + diff |
+| putcall_vol | PutCall_vol_Put_Call_Ratio_SPY_consumer_confidence (Excel) | **Probar transformaciones alternativas (diff simple vs. log-diff vs. Box-Cox) y seleccionar mediante AIC/BIC** |
+| unemployment_lag1m | PRICE_US_Unemployment_Rate_unemployment_rate (Excel) | **Rezagar explícitamente 1 mes + mantener en nivel (ya es tasa) + documentar lag de publicación** |
+
+## Pipeline Definitivo de Procesamiento
+
+1. **Secuencia rígida de transformaciones** (preservar este orden exacto en código):
+   ```
+   raw → derive → lag → log/log1p → diff → model
+   ```
+
+2. **Manejo de casos especiales**:
+   - **Series con posibles ceros/valores nulos**: reemplazar con np.nan antes de log1p
+   - **Derivados porcentuales**: multiplicar por 100 después de la operación de división
+   - **Variables ya estacionarias**: verificar con ADF/KPSS antes de decidir si aplicar diff
+
+## Checklist Final de Implementación
+
+1. **Reproducibilidad**:
+   - Fijar `random_seed` en todos los modelos
+   - Documentar versiones de paquetes en `requirements.txt` (statsmodels, pandas)
+
+2. **Validación estadística**:
+   - Ejecutar pruebas ADF/KPSS para cada variable transformada
+   - Guardar p-values en CSV de auditoría
+   - Verificar VIF < 5 tras incluir todos los predictores (eliminar pct_gap primero si hay colinealidad)
+
+3. **Diagnóstico de residuos**:
+   - Pruebas Ljung-Box para autocorrelación
+   - Pruebas Jarque-Bera para normalidad
+   - Exportar gráficos de diagnóstico a PNG/PDF
+
+4. **Backtest óptimo**:
+   - Implementar walk-forward con ventana expandible
+   - Comparar con ventana móvil
+   - Reportar MAPE y RMSPE para cada configuración
+
+5. **Parsimonia del modelo**:
+   - Vigilar ratio k/√N (número de parámetros vs. raíz cuadrada del tamaño muestral)
+   - Si N < 1000, desactivar primero vol_ma5 o norm_range
+
+## Notas de Control de Calidad
+
+- **Estacionariedad**: Verificar especialmente term_spread después de transformación
+- **Tratamiento de ceros**: Confirmar ausencia de ceros en volumen antes de log1p
+- **Colinealidad residual**: Reevaluar tras añadir derivados OHLC
+- **Alineación temporal**: Asegurar que todos los rezagos estén correctamente aplicados
+- **Metadatos documentados**: Incluir información sobre retrasos de publicación en variables macro
+
+Con estas especificaciones detalladas, el conjunto de variables está completamente alineado con las reglas de oro y listo para implementación en producción.
