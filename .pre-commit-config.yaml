@@ -7,6 +7,10 @@ repos:
     rev: v0.4.4
     hooks:
       - id: ruff
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
   - repo: https://github.com/pytest-dev/pytest
     rev: 8.1.1
     hooks:
