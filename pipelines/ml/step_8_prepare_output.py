@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 import logging
+from datetime import datetime
+from sp500_analysis.shared.logging.logger import configurar_logging
 
 # Importar configuraciones centralizadas
 from sp500_analysis.config.settings import settings
@@ -11,7 +13,8 @@ RESULTS_DIR = settings.results_dir
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING
 # ------------------------------
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file = os.path.join(PROJECT_ROOT, "logs", f"prepare_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 
 def prepare_powerbi_format(input_df):
     """

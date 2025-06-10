@@ -16,6 +16,7 @@ Salidas:
 import os
 import json
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -48,14 +49,7 @@ def setup_logging():
     log_file = log_dir / f"arima_ensemble_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
     
     # Configurar logger
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s  %(levelname)-8s  %(message)s",
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
+    configurar_logging(str(log_file))
     
     logger = logging.getLogger(__name__)
     logger.info(f"Logging configurado en {log_file}")

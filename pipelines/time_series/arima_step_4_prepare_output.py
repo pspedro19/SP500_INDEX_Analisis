@@ -18,6 +18,7 @@ import os
 import sys
 import json
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import numpy as np
 import pandas as pd
 import argparse
@@ -40,14 +41,7 @@ LOG_DIR = PROJECT_ROOT / "logs"
 # Configuración de logging
 LOG_DIR.mkdir(exist_ok=True)
 log_file = LOG_DIR / f"prepare_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
-logging.basicConfig(
-    level=logging.INFO, 
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+configurar_logging(str(log_file))
 
 # Importar módulos de utilidades para reportes avanzados
 try:

@@ -15,6 +15,7 @@ Salida:
 """
 
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import os
 import json
 import pickle
@@ -189,17 +190,9 @@ def setup_logging(config: Config) -> logging.Logger:
     
     # Configurar archivo de log con timestamp
     log_file = config.logs_dir / f"arima_train_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
-    
+
     # Configurar logger
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
+    configurar_logging(str(log_file))
     
     logger = logging.getLogger(__name__)
     logger.info(f"Logging configurado en {log_file}")

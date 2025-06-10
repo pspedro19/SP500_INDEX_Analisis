@@ -1,5 +1,7 @@
 import re
 import logging
+from datetime import datetime
+from sp500_analysis.shared.logging.logger import configurar_logging
 import pandas as pd
 import os
 
@@ -8,8 +10,8 @@ import os
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 
 # Configuración de logging
-logging.basicConfig(level=logging.INFO, 
-                    format="%(asctime)s - %(levelname)s - %(message)s")
+log_file = os.path.join(PROJECT_ROOT, "logs", f"clean_columns_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 
 # Rutas absolutas usando PROJECT_ROOT (corrigiendo la duplicación de archivo_entrada)
 archivo_entrada = os.path.join(PROJECT_ROOT, "data", "1_preprocess", "MERGEDEXCELS_CATEGORIZADO.xlsx")

@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import time
 from pathlib import Path
 
@@ -17,14 +18,7 @@ DATE_COL = settings.date_col
 
 # Configuración de logging
 log_file = os.path.join(LOG_DIR, f"merge_excels_{time.strftime('%Y%m%d_%H%M%S')}.log")
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()  # También imprimir en consola
-    ]
-)
+configurar_logging(log_file)
 
 def cargar_archivo(ruta_archivo):
     """

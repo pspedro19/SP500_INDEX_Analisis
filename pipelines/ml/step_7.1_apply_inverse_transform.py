@@ -11,12 +11,12 @@ import numpy as np
 import os
 from datetime import datetime
 import logging
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 
 # Configurar logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+log_file = os.path.join(settings.log_dir, f"apply_inverse_transform_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 
 class SP500RealValueMapper:
     """

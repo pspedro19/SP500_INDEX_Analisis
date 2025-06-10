@@ -23,6 +23,7 @@ import sys
 import os
 import json
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import glob
 import numpy as np
 import pandas as pd
@@ -70,14 +71,7 @@ for directory in [RESULTS_DIR, METRICS_DIR, CHARTS_DIR, LOG_DIR]:
 
 # Configuración de logging
 log_file = LOG_DIR / f"backtest_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+configurar_logging(str(log_file))
 
 def get_most_recent_file(directory: Path, pattern: str = '*.csv') -> Optional[Path]:
     """Obtiene el archivo más reciente en un directorio con un patrón dado."""

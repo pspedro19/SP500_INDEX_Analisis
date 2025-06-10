@@ -2,9 +2,13 @@ import pandas as pd
 import numpy as np
 import os
 import logging
+from datetime import datetime
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 
 # Configurar logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file = os.path.join(settings.log_dir, f"limpiar_ultimo_nan_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 
 def clean_dataframe_up_to_last_nan(file_path, output_path=None):
     """

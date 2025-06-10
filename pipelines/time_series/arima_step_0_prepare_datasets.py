@@ -11,6 +11,9 @@ Usage:
 import os
 import sys
 import logging
+from datetime import datetime
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 import json
 import re
 from pathlib import Path
@@ -30,13 +33,8 @@ DEFAULT_OUTDIR = Path("../data/1_preprocess_ts")
 IS_NOTEBOOK = 'ipykernel' in sys.modules
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s  %(levelname)-8s  %(message)s",
-    handlers=[
-        logging.StreamHandler(sys.stdout)
-    ]
-)
+log_file = os.path.join(settings.log_dir, f"arima_step0_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 log = logging.getLogger(__name__)
 
 # Utility function for exception handling
