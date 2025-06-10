@@ -3604,7 +3604,9 @@ def ejecutar_banco_republica_processor(
     ✅ Detecta y procesa archivos del Banco República automáticamente
     ✅ Genera Excel independiente con misma estructura que los otros
     """
-    processor = BancoRepublicaProcessor(data_root, log_file)
+    processor = ProcessorFactory.get_processor(
+        'banco_republica', data_root=data_root, log_file=log_file
+    )
     return processor.run(output_file)
 
 # FUNCIÓN PARA EJECUTAR TODOS LOS PROCESADORES (incluyendo Banco República)
