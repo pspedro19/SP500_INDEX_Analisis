@@ -61,21 +61,22 @@ coverage.xml
 # Logs
 logs/*
 !logs/.gitkeep
+!logs/README.md
 */logs/*
 !*/logs/.gitkeep
+!*/logs/README.md
 *.log
 
 # Data directories
-# Ignore all subfolders under data/ except for samples
 data/*/
 !data/samples/
 !data/samples/**
-# Ignore CSV and XLSX files within data directories (but keep samples)
+!data/README.md
+# Ignore CSV and XLSX files within data (except samples)
 data/**/*.csv
 data/**/*.xlsx
 !data/samples/**/*.csv
 !data/samples/**/*.xlsx
-!data/README.md
 
 # Models and generated output
 models/
