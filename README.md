@@ -1,4 +1,5 @@
 # 📊 SP500 Index Analysis - Data Transformation Pipeline
+[![CI](https://github.com/pspedro19/SP500_INDEX_Analisis/actions/workflows/ci.yml/badge.svg)](https://github.com/pspedro19/SP500_INDEX_Analisis/actions/workflows/ci.yml)
 
 Este proyecto aplica una serie de transformaciones modulares y secuenciales sobre datos macroeconómicos para generar datasets entrenables para modelos predictivos, orientados al análisis del índice S&P500.
 
@@ -132,6 +133,12 @@ pip install -r requirement.txt
 # o
 pip install -e .
 ```
+
+---
+
+## 🚦 Integración Continua
+
+Las pruebas se ejecutan automáticamente mediante **GitHub Actions** en cada *push* o *pull request* hacia la rama `main`. El flujo está definido en [.github/workflows/ci.yml](.github/workflows/ci.yml) e instala las dependencias desde `requirement.txt` para luego ejecutar `pytest`.
 
 ---
 
