@@ -11,6 +11,7 @@ import os
 import subprocess
 import sys
 import time
+import traceback
 from datetime import datetime
 from pathlib import Path
 
@@ -49,6 +50,17 @@ logging.basicConfig(
 )
 
 
+class StepExecutionError(Exception):
+    """Exception raised when a pipeline step fails."""
+
+    def __init__(self, step_name: str, original_exc: Exception, elapsed_time: float):
+        super().__init__(str(original_exc))
+        self.step_name = step_name
+        self.original_exc = original_exc
+        self.elapsed_time = elapsed_time
+        self.traceback = traceback.format_exc()
+
+
 def run_step(step_module, step_name=None):
     """
     Ejecuta un paso del pipeline y registra el tiempo de ejecución.
@@ -59,6 +71,9 @@ def run_step(step_module, step_name=None):
 
     Returns:
         tuple: (éxito, tiempo de ejecución, errores)
+
+    Raises:
+        StepExecutionError: si la ejecución del paso falla
     """
     if step_name is None:
         step_name = os.path.basename(step_module).replace('.py', '')
@@ -91,7 +106,7 @@ def run_step(step_module, step_name=None):
     except Exception as e:
         elapsed_time = time.time() - start_time
         logging.error(f"❌ Error en {step_name}: {str(e)}")
-        return False, elapsed_time, str(e)
+        raise StepExecutionError(step_name, e, elapsed_time) from e
 
 
 def generate_timeline_chart(timings):
@@ -191,6 +206,7 @@ def generate_html_report(timings, results, start_time):
                             <th>Estado</th>
                             <th>Tiempo (seg)</th>
                             <th>Detalles</th>
+                            <th>Traceback</th>
                         </tr>
                         {% for step, data in results.items() %}
                         <tr>
@@ -200,6 +216,7 @@ def generate_html_report(timings, results, start_time):
                             </td>
                             <td>{{ "%.2f"|format(data.time) }}</td>
                             <td>{{ data.error if data.error else "" }}</td>
+                            <td><pre>{{ data.traceback if data.traceback else "" }}</pre></td>
                         </tr>
                         {% endfor %}
                     </table>
@@ -293,14 +310,23 @@ def main():
 
     # Ejecutar cada paso del pipeline
     for step_name, step_module in pipeline_steps:
-        success, elapsed_time, error = run_step(step_module, step_name)
-        results[step_name] = {"success": success, "time": elapsed_time, "error": error}
-        timings[step_name] = elapsed_time
+        try:
+            success, elapsed_time, _ = run_step(step_module, step_name)
+            results[step_name] = {"success": True, "time": elapsed_time, "error": None, "traceback": None}
+            timings[step_name] = elapsed_time
+        except StepExecutionError as exc:
+            results[step_name] = {
+                "success": False,
+                "time": exc.elapsed_time,
+                "error": str(exc.original_exc),
+                "traceback": exc.traceback,
+            }
+            timings[step_name] = exc.elapsed_time
 
-        # Si el paso falló y es crítico, detener el pipeline
-        if not success and step_name in ["Paso 1", "Paso 2", "Paso 3", "Paso 4", "Paso 5", "Paso 6"]:
-            logging.error(f"Paso crítico {step_name} falló. Deteniendo el pipeline.")
-            break
+            # Si el paso falló y es crítico, detener el pipeline
+            if step_name in ["Paso 1", "Paso 2", "Paso 3", "Paso 4", "Paso 5", "Paso 6"]:
+                logging.error(f"Paso crítico {step_name} falló. Deteniendo el pipeline.")
+                break
 
     # Guardar tiempos en JSON para referencia
     timings_file = REPORTS_DIR / "pipeline_timings.json"
