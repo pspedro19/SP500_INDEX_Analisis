@@ -8,7 +8,6 @@ models/*.pkl
 
 # Logs
 *.log
-logs/
 
 # Python
 __pycache__/
