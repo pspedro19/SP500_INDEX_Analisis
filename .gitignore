@@ -67,6 +67,10 @@ logs/*
 
 # Data directories
 data/**
+!data/processed/
+!data/processed/**
+!data/4_results/
+!data/4_results/**
 !data/samples/
 !data/samples/**
 !data/README.md

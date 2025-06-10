@@ -221,6 +221,9 @@ def main():
     print("🇪🇸 CONVERTIDOR CSV PARA POWER BI ESPAÑA - VERSIÓN MEJORADA")
     print("=" * 60)
     
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
+
     # Configuración de archivos
     archivos_config = [
         {
@@ -236,21 +239,27 @@ def main():
     ]
     
     archivos_procesados = 0
-    
+
     # Procesar cada archivo
     for config in archivos_config:
-        if os.path.exists(config['entrada']):
-            tamaño = os.path.getsize(config['entrada']) / (1024 * 1024)  # MB
-            print(f"\n📁 Archivo encontrado: {config['entrada']} ({tamaño:.1f} MB)")
-            
-            if convertir_csv_powerbi_espanol(
-                config['entrada'],
-                config['columnas_decimales'],
-                config['salida']
-            ):
-                archivos_procesados += 1
-        else:
-            print(f"\n❌ Archivo no encontrado: {config['entrada']}")
+        input_path = config['entrada']
+        if not os.path.exists(input_path):
+            alt_path = os.path.join(repo_root, 'data', '4_results', input_path)
+            if os.path.exists(alt_path):
+                input_path = alt_path
+            else:
+                print(f"\n❌ Archivo no encontrado: {input_path}")
+                continue
+
+        tamaño = os.path.getsize(input_path) / (1024 * 1024)  # MB
+        print(f"\n📁 Archivo encontrado: {input_path} ({tamaño:.1f} MB)")
+
+        if convertir_csv_powerbi_espanol(
+            input_path,
+            config['columnas_decimales'],
+            config['salida']
+        ):
+            archivos_procesados += 1
     
     # Resumen final
     print(f"\n{'='*60}")
