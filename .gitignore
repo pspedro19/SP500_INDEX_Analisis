@@ -131,4 +131,5 @@ models/
 
 # Data
 data/
+!data/README.md
 
