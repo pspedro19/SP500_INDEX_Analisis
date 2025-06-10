@@ -372,7 +372,6 @@ def run_economic_data_processor(config_file=os.path.join(PROJECT_ROOT, 'pipeline
 # Ejemplo de uso
 if __name__ == "__main__":
     success = run_economic_data_processor()
-    print(f"Proceso {'completado exitosamente' if success else 'finalizado con errores'}")
 
 # ## MyInvesting Normal
 
@@ -962,7 +961,6 @@ def ejecutar_myinvestingreportnormal(
 
 if __name__ == "__main__":
     resultado = ejecutar_myinvestingreportnormal()
-    print(f"Proceso {'completado exitosamente' if resultado else 'finalizado con errores'}")
 
 # ## FRED-NORMAL
 
@@ -1373,7 +1371,6 @@ def run_fred_data_processor(
 # Ejemplo de uso
 if __name__ == "__main__":
     success = run_fred_data_processor()
-    print(f"Proceso {'completado exitosamente' if success else 'finalizado con errores'}")
 
 # ## Other
 
@@ -2621,7 +2618,6 @@ def ejecutar_otherdataprocessor(
 # Ejemplo de uso
 if __name__ == "__main__":
     resultado = ejecutar_otherdataprocessor()
-    print(f"Proceso {'completado exitosamente' if resultado else 'finalizado con errores'}")
 
 import pandas as pd
 import numpy as np
@@ -3515,7 +3511,6 @@ def ejecutar_otherdataprocessor(
 # Ejemplo de uso
 if __name__ == "__main__":
     resultado = ejecutar_otherdataprocessor()
-    print(f"Proceso {'completado exitosamente' if resultado else 'finalizado con errores'}")
 
 # ## Categorizar Columnas
 
@@ -3573,10 +3568,7 @@ def main():
 
     # Imprimir el resultado en el formato solicitado
     for category, cols in grouped_columns.items():
-        print(f"columnas encontradas para {category}:")
         for col in cols:
-            print(col)
-        print()  # Línea en blanco para separar grupos
 
     logging.info("Proceso completado exitosamente.")
 

@@ -305,9 +305,7 @@ def main():
     # Generar reporte HTML
     report_path = generate_html_report(timings, results, pipeline_start_time)
     if report_path:
-        print(f"\n✅ Pipeline completado. Reporte generado en: {report_path}\n")
     else:
-        print("\n⚠️ Pipeline completado pero no se pudo generar el reporte.\n")
     
     # Calcular y mostrar tiempo total
     total_time = time.time() - pipeline_start_time
@@ -316,19 +314,15 @@ def main():
     time_str = f"{int(hours)}h {int(minutes)}m {seconds:.2f}s" if hours > 0 else f"{int(minutes)}m {seconds:.2f}s"
     
     logging.info(f"Pipeline completado en {time_str}")
-    print(f"⏱️ Tiempo total de ejecución: {time_str}")
     
     # Resumen de éxito/error
     success_count = sum(1 for r in results.values() if r["success"])
     error_count = len(results) - success_count
-    print(f"📊 Resumen: {success_count} pasos exitosos, {error_count} con errores.")
     
     # Mostrar los pasos con error
     if error_count > 0:
-        print("\nPasos con errores:")
         for step, data in results.items():
             if not data["success"]:
-                print(f"  - {step}: {data['error']}")
     
     return results
 

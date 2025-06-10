@@ -1070,7 +1070,6 @@ def main():
             save_subperiod_report(subperiod_results, METRICS_DIR)
         
         logging.info(" Proceso de backtesting completado con éxito")
-        print(f"\n Resultados exportados correctamente a: {METRICS_DIR}")
         return 0
     
     except Exception as e:

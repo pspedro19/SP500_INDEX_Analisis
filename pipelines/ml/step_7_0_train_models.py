@@ -901,11 +901,6 @@ def run_training():
     logging.info(f"Proceso completo terminado en {total_time:.2f}s")
     
     # Imprimir resumen final
-    print(f"✅ Entrenamiento completado para {len(algorithms)} algoritmos")
-    print(f"✅ Visualizaciones generadas en: {IMG_CHARTS}")
-    print(f"✅ Modelos guardados en: {args.output_dir}")
-    print(f"✅ Predicciones consolidadas en: {args.output_predictions}")
-    print(f"✅ Tiempo total de ejecución: {total_time:.2f}s")
 
 if __name__ == "__main__":
     run_training()
