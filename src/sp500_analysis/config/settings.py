@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from functools import lru_cache
 from pathlib import Path
 
 from pydantic import BaseSettings, Field
@@ -8,7 +9,10 @@ from pydantic import BaseSettings, Field
 class Settings(BaseSettings):
     """Central project configuration loaded from environment variables."""
 
-    project_root: Path = Field(default_factory=lambda: Path(__file__).resolve().parents[3])
+    project_root: Path = Field(
+        default_factory=lambda: Path(__file__).resolve().parents[3],
+        env="PROJECT_ROOT",
+    )
     log_level: str = Field("INFO", env="LOG_LEVEL")
     data_path: Path = Field(Path("./data"), env="DATA_PATH")
 
@@ -23,12 +27,16 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
+        env_file_encoding = "utf-8"
 
     def __init__(self, **data) -> None:  # noqa: D401 - pydantic init override
         """Populate defaults and derived paths after validation."""
         super().__init__(**data)
         self.root = self.project_root
-        self.data_dir = self.project_root / "data"
+        data_dir = Path(self.data_path)
+        self.data_dir = (
+            data_dir if data_dir.is_absolute() else self.project_root / data_dir
+        )
         self.raw_dir = self.data_dir / "0_raw"
         self.preprocess_dir = self.data_dir / "1_preprocess"
         self.ts_prep_dir = self.data_dir / "1_preprocess_ts"
@@ -100,4 +108,11 @@ class Settings(BaseSettings):
         self.csv_reports = self.csv_reports_dir
 
 
-settings = Settings()
+
+@lru_cache()
+def get_settings() -> Settings:
+    """Return a cached Settings instance."""
+    return Settings()
+
+
+settings = get_settings()
