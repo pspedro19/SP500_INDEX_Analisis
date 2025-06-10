@@ -17,3 +17,12 @@ class EvaluationService:
             date_col=settings.date_col,
         )
         return True
+
+
+def run_evaluation() -> bool:
+    """Entry point used by the CLI to run evaluation via the DI container."""
+    from sp500_analysis.shared.container import container, setup_container
+
+    setup_container()
+    service: EvaluationService = container.resolve("evaluation_service")
+    return service.run_evaluation()
