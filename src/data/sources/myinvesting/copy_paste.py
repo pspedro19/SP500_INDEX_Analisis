@@ -21,7 +21,7 @@ class EconomicDataProcessor:
       - Validación y log detallado en cada etapa.
     """
 
-    def __init__(self, config_file, data_root='data/0_raw', log_file='myinvestingreportcp.log'):
+    def __init__(self, config_file, data_root='data/0_raw', log_file='logs/myinvestingreportcp.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)

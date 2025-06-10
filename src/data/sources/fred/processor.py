@@ -27,7 +27,7 @@ class FredDataProcessor:
       - Genera un índice diario global y usa merge_asof para imputar los datos (forward fill).
     """
 
-    def __init__(self, config_file, data_root='Data/raw', log_file='freddataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='logs/freddataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -410,7 +410,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Configuración de logging
-def configurar_logging(log_file='otherdataprocessor.log'):
+def configurar_logging(log_file='logs/otherdataprocessor.log'):
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s [%(levelname)s] %(message)s',
