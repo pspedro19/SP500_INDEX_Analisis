@@ -1,28 +1,32 @@
 from __future__ import annotations
 
-import os
-from dataclasses import dataclass, field
 from pathlib import Path
 
+from pydantic import BaseSettings, Field
 
-@dataclass
-class Settings:
+
+class Settings(BaseSettings):
     """Central project configuration loaded from environment variables."""
 
-    project_root: Path = field(default_factory=lambda: Path(__file__).resolve().parents[3])
-    log_level: str = field(default_factory=lambda: os.getenv("LOG_LEVEL", "INFO"))
-    data_path: Path = field(default_factory=lambda: Path(os.getenv("DATA_PATH", "./data")))
+    project_root: Path = Field(default_factory=lambda: Path(__file__).resolve().parents[3])
+    log_level: str = Field("INFO", env="LOG_LEVEL")
+    data_path: Path = Field(Path("./data"), env="DATA_PATH")
 
-    db_host: str = field(default_factory=lambda: os.getenv("DB_HOST", "localhost"))
-    db_port: int = field(default_factory=lambda: int(os.getenv("DB_PORT", 5432)))
-    db_user: str = field(default_factory=lambda: os.getenv("DB_USER", "user"))
-    db_password: str = field(default_factory=lambda: os.getenv("DB_PASSWORD", "password"))
-    db_name: str = field(default_factory=lambda: os.getenv("DB_NAME", "sp500"))
+    db_host: str = Field("localhost", env="DB_HOST")
+    db_port: int = Field(5432, env="DB_PORT")
+    db_user: str = Field("user", env="DB_USER")
+    db_password: str = Field("password", env="DB_PASSWORD")
+    db_name: str = Field("sp500", env="DB_NAME")
 
-    alpha_vantage_key: str = field(default_factory=lambda: os.getenv("ALPHA_VANTAGE_KEY", ""))
-    another_api_key: str = field(default_factory=lambda: os.getenv("ANOTHER_API_KEY", ""))
+    alpha_vantage_key: str = Field("", env="ALPHA_VANTAGE_KEY")
+    another_api_key: str = Field("", env="ANOTHER_API_KEY")
 
-    def __post_init__(self) -> None:
+    class Config:
+        env_file = ".env"
+
+    def __init__(self, **data) -> None:  # noqa: D401 - pydantic init override
+        """Populate defaults and derived paths after validation."""
+        super().__init__(**data)
         self.root = self.project_root
         self.data_dir = self.project_root / "data"
         self.raw_dir = self.data_dir / "0_raw"
