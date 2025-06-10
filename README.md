@@ -4,7 +4,8 @@
 
 Este proyecto aplica una serie de transformaciones modulares y secuenciales sobre datos macroeconómicos para generar datasets entrenables para modelos predictivos, orientados al análisis del índice S&P500.
 
-El proceso está completamente orquestado por el archivo `run_pipeline.py` que ejecuta los 11 pasos del pipeline desde la carpeta `pipelines/`.
+El proceso inicia con `pipelines/ml/step_0_preprocess.py`, que se ejecuta por separado mediante `sp500 preprocess`.
+Luego, `run_pipeline.py` orquesta los pasos 1–10 (incluido el 7.5) desde la carpeta `pipelines/`.
 
 ---
 
@@ -50,6 +51,7 @@ sp500 backtest   # ejecutar backtests
 
 Cada script puede ejecutarse por separado:
 ```bash
+python pipelines/ml/step_0_preprocess.py          # Paso 0
 python pipelines/ml/step_1_merge_excels.py       # Paso 1
 python pipelines/ml/step_2_generate_categories.py # Paso 2
 python pipelines/ml/step_3_clean_columns.py       # Paso 3
@@ -59,8 +61,8 @@ python pipelines/ml/step_6_fpi_selection.py       # Paso 6
 python src/sp500_analysis/application/model_training/trainer.py  # Paso 7
 python pipelines/ml/step_7_5_ensemble.py          # Paso 7.5
 python pipelines/ml/step_8_prepare_output.py      # Paso 8
-python pipelines/ml/step_9_backtest.py            # Paso 9
-python pipelines/ml/step_10_inference.py          # Paso 10
+python -m sp500_analysis.application.services.evaluation_service  # Paso 9
+python -m sp500_analysis.application.services.inference_service   # Paso 10
 ```
 
 ---
@@ -139,12 +141,12 @@ python pipelines/ml/step_10_inference.py          # Paso 10
 - **Output:** `outputs/archivo_para_powerbi.csv`
 
 ### 🟢 Paso 9 - Backtest de Estrategias
-**Script:** `pipelines/ml/step_9_backtest.py`
+**Servicio:** `EvaluationService` (`src/sp500_analysis/application/services/evaluation_service.py`)
 - Evalúa el desempeño histórico de las predicciones.
 - **Output:** métricas y gráficos en `metrics/`.
 
 ### 🟢 Paso 10 - Inferencia
-**Script:** `pipelines/ml/step_10_inference.py`
+**Servicio:** `InferenceService` (`src/sp500_analysis/application/services/inference_service.py`)
 - Genera pronósticos usando los modelos entrenados.
 - **Output:** `predictions_api.json` y visualizaciones de forecast.
 
