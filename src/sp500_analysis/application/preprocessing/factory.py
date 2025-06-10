@@ -4,6 +4,7 @@ from sp500_analysis.application.preprocessing.processors.eoe import EOEProcessor
 from sp500_analysis.application.preprocessing.processors.economic import EconomicDataProcessor
 from sp500_analysis.application.preprocessing.processors.fred_data import FredDataProcessor
 from sp500_analysis.application.preprocessing.processors.banco_republica import BancoRepublicaProcessor
+from sp500_analysis.application.preprocessing.processors.dane import DANEProcessor
 
 
 class ProcessorFactory:
@@ -22,6 +23,8 @@ class ProcessorFactory:
             return FredDataProcessor(*args, **kwargs)
         if name == 'banco_republica':
             return BancoRepublicaProcessor(*args, **kwargs)
+        if name == 'dane':
+            return DANEProcessor(*args, **kwargs)
         if name == 'eoe':
             return EOEProcessor(*args, **kwargs)
         raise ValueError(f"Unknown processor: {name}")

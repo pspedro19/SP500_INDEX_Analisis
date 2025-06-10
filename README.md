@@ -4,8 +4,11 @@
 
 Este proyecto aplica una serie de transformaciones modulares y secuenciales sobre datos macroeconómicos para generar datasets entrenables para modelos predictivos, orientados al análisis del índice S&P500.
 
-El proceso inicia con `pipelines/ml/step_0_preprocess.py`, que se ejecuta por separado mediante `sp500 preprocess`.
-Luego, `run_pipeline.py` orquesta los pasos 1–10 (incluido el 7.5) desde la carpeta `pipelines/`.
+El proceso inicia con `pipelines/ml/step_0_preprocess.py`, que **no se ejecuta**
+automáticamente al correr `run_pipeline.py`. Este paso debe lanzarse de forma
+manual o a través del comando `sp500 preprocess`. Posteriormente,
+`run_pipeline.py` orquesta los pasos 1–10 (incluido el 7.5) desde la carpeta
+`pipelines/`.
 
 ---
 
