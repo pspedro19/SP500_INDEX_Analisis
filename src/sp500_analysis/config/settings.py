@@ -34,9 +34,7 @@ class Settings(BaseSettings):
         super().__init__(**data)
         self.root = self.project_root
         data_dir = Path(self.data_path)
-        self.data_dir = (
-            data_dir if data_dir.is_absolute() else self.project_root / data_dir
-        )
+        self.data_dir = data_dir if data_dir.is_absolute() else self.project_root / data_dir
         self.raw_dir = self.data_dir / "0_raw"
         self.preprocess_dir = self.data_dir / "1_preprocess"
         self.ts_prep_dir = self.data_dir / "1_preprocess_ts"
@@ -106,7 +104,6 @@ class Settings(BaseSettings):
         self.data_raw = self.raw_dir
         self.data_prep = self.preprocess_dir
         self.csv_reports = self.csv_reports_dir
-
 
 
 @lru_cache()
