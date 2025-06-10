@@ -558,7 +558,8 @@ def main():
     
     # Configurar archivos usando la ruta del script
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_file = os.path.join(script_dir, "hechos_predicciones_fields_con_sp500.csv")
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", "..", ".."))
+    input_file = os.path.join(repo_root, "data", "4_results", "hechos_predicciones_fields_con_sp500.csv")
     
     # Mostrar información de rutas para debug
     logging.info(f"📂 Directorio del script: {script_dir}")
@@ -573,7 +574,8 @@ def main():
         alternative_paths = [
             "hechos_predicciones_fields_con_sp500.csv",  # Directorio actual
             os.path.join(os.getcwd(), "hechos_predicciones_fields_con_sp500.csv"),
-            os.path.join(script_dir, "..", "..", "Data", "4_results", "hechos_predicciones_fields_con_sp500.csv")
+            os.path.join(repo_root, "data", "4_results", "hechos_predicciones_fields_con_sp500.csv"),
+            os.path.join(repo_root, "Data", "4_results", "hechos_predicciones_fields_con_sp500.csv")
         ]
         
         for alt_path in alternative_paths:
