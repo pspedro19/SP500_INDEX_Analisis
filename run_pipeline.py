@@ -120,7 +120,7 @@ def generate_timeline_chart(timings):
         str: Ruta al archivo del gráfico generado
     """
     try:
-        from pipelines.ml.utils.plots import plot_pipeline_timeline
+        from sp500_analysis.shared.visualization.plotters import plot_pipeline_timeline
 
         chart_path = REPORTS_DIR / "pipeline_timeline.png"
         plot_pipeline_timeline(timings, chart_path)
