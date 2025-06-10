@@ -23,6 +23,7 @@ sys.path.append(str(repo_root / "src"))
 # Importar configuraciones centralizadas
 from pipelines.ml.config import ensure_directories
 from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.container import container, setup_container
 
 CSV_REPORTS = settings.csv_reports_dir
 DATA_PREP = settings.preprocess_dir
@@ -66,7 +67,8 @@ def run_step(step_module, step_name=None):
     Ejecuta un paso del pipeline y registra el tiempo de ejecución.
 
     Args:
-        step_module (str): Ruta al módulo Python a ejecutar
+        step_module (str | Callable[[], Any]): Ruta al módulo a ejecutar o
+            callable a invocar
         step_name (str): Nombre descriptivo para el paso (opcional)
 
     Returns:
@@ -76,14 +78,21 @@ def run_step(step_module, step_name=None):
         StepExecutionError: si la ejecución del paso falla
     """
     if step_name is None:
-        step_name = os.path.basename(step_module).replace('.py', '')
+        step_name = (
+            os.path.basename(step_module).replace(".py", "")
+            if isinstance(step_module, str)
+            else getattr(step_module, "__name__", str(step_module))
+        )
 
     logging.info(f"Iniciando {step_name}...")
     start_time = time.time()
 
     try:
+        # Ejecutar callable si se proporciona
+        if callable(step_module) and not isinstance(step_module, str):
+            step_module()
         # Intentar importar y ejecutar como módulo
-        if step_module.endswith('.py'):
+        elif isinstance(step_module, str) and step_module.endswith('.py'):
             module_path = step_module.replace('/', '.').replace('\\', '.').replace('.py', '')
             module = importlib.import_module(module_path)
             if hasattr(module, 'main'):
@@ -93,7 +102,7 @@ def run_step(step_module, step_name=None):
                 result = subprocess.run([sys.executable, step_module], check=True)
                 if result.returncode != 0:
                     raise Exception(f"Script terminó con código {result.returncode}")
-        else:
+        elif isinstance(step_module, str):
             # Ejecutar como script directamente
             result = subprocess.run([sys.executable, step_module], check=True)
             if result.returncode != 0:
@@ -285,6 +294,7 @@ def main():
     """Función principal que ejecuta todo el pipeline."""
     # Asegurar que existen todos los directorios necesarios
     ensure_directories()
+    setup_container()
 
     # Registrar tiempo de inicio global
     pipeline_start_time = time.time()
@@ -300,8 +310,14 @@ def main():
         ("Paso 7: Entrenamiento de Modelos", "src/sp500_analysis/application/model_training/trainer.py"),
         ("Paso 7.5: Ensamblado", "pipelines/ml/step_7_5_ensemble.py"),
         ("Paso 8: Preparación de Salida", "pipelines/ml/step_8_prepare_output.py"),
-        ("Paso 9: Backtest", "pipelines/ml/step_9_backtest.py"),
-        ("Paso 10: Inferencia", "pipelines/ml/step_10_inference.py"),
+        (
+            "Paso 9: Backtest",
+            lambda: container.resolve("evaluation_service").run_evaluation(),
+        ),
+        (
+            "Paso 10: Inferencia",
+            lambda: container.resolve("inference_service").run_inference(),
+        ),
     ]
 
     # Almacenar resultados y tiempos
