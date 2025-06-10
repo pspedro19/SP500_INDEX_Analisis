@@ -522,11 +522,7 @@ def main():
     elapsed_time = end_time - start_time
     logging.info(f"Reporte generado en {elapsed_time:.2f} segundos")
     
-    print("\n----- GENERACIÓN DE REPORTE COMPLETADA -----")
-    print(f"Reporte HTML: {html_path}")
     if pdf_path:
-        print(f"Reporte PDF: {pdf_path}")
-    print(f"Tiempo total: {elapsed_time:.2f} segundos")
 
 if __name__ == "__main__":
     main()

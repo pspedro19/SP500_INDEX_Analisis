@@ -771,7 +771,6 @@ def generate_html_report(
                 charts['radar_metrics'] = _fig_to_base64(fig)
                 plt.close(fig)
         except Exception as e:
-            print(f"Error generando gráficos de métricas: {str(e)}")
     
     # 2. Pronósticos
     if include_forecast and forecast_data:
@@ -807,7 +806,6 @@ def generate_html_report(
                         charts['forecast_example'] = _fig_to_base64(fig)
                         plt.close(fig)
         except Exception as e:
-            print(f"Error generando gráficos de pronóstico: {str(e)}")
     
     # 3. Backtesting
     if backtest_data and instrument in backtest_data:
@@ -872,7 +870,6 @@ def generate_html_report(
                         
                         break  # Solo usar el primer modelo con datos
         except Exception as e:
-            print(f"Error generando gráficos de backtesting: {str(e)}")
     
     # Plantilla HTML
     html_template = """
@@ -1156,7 +1153,6 @@ def generate_html_report(
         
         return output_file
     except Exception as e:
-        print(f"Error generando informe HTML: {str(e)}")
         return None
 
 def generate_executive_summary(

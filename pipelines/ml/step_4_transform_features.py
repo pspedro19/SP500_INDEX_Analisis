@@ -37,7 +37,6 @@ def rename_dataframe(dataset, datetime_column, target_columns, date_format):
         else:
             renamed['date'] = pd.to_datetime(renamed['date'], infer_datetime_format=True).dt.strftime('%Y-%m-%d')
     except Exception as e:
-        print("Error al convertir fecha:", e)
 
     first_col = dataset.columns[0]
     if first_col != datetime_column:
@@ -348,11 +347,7 @@ def main():
     
     try:
         df_raw = pd.read_excel(input_file, header=None)
-        print("✅ Archivo Excel cargado exitosamente.")
-        print("🧪 Primeras filas del archivo:")
-        print(df_raw.head())
     except Exception as e:
-        print("❌ Error al leer el archivo Excel:", e)
         return
 
     headers = df_raw.iloc[0].tolist()
@@ -362,33 +357,23 @@ def main():
     df.columns = headers
 
     columnas_disponibles = [col for col in df.columns if col not in ['date', 'id']]
-    print("\n🎯 Columnas disponibles para seleccionar como variable objetivo:\n")
     for idx, col in enumerate(columnas_disponibles):
-        print(f"{idx + 1}. {col}")
 
     variable_objetivo = None
     try:
         seleccion = int(input("\nEscribe el número de la columna que deseas usar como variable objetivo: "))
         if 1 <= seleccion <= len(columnas_disponibles):
             variable_objetivo = columnas_disponibles[seleccion - 1]
-            print(f"\n✅ Variable objetivo seleccionada: {variable_objetivo}")
         else:
-            print("❌ Selección inválida. No se utilizará variable objetivo.")
     except Exception as e:
-        print("❌ Error en la selección de la columna:", e)
 
-    print("\n✅ Headers corregidos:")
-    print(df.columns[:10].tolist())
 
-    print("\n✅ Categorías detectadas:")
-    print(categories_row[:10])
 
     df = df.rename(columns={"fecha": "date"})
     df = df[df['date'].apply(lambda x: isinstance(x, str) or isinstance(x, pd.Timestamp))]
     try:
         df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')
     except Exception as e:
-        print("❌ Error al convertir fechas:", e)
 
     df = df[df['date'].notna()]
 
@@ -513,9 +498,7 @@ def main():
         if cat in grouped:
             grouped[cat].append(col)
 
-    print("\n📊 Columnas agrupadas por categoría:")
     for cat, cols in grouped.items():
-        print(f"{cat}: {len(cols)} columnas")
 
     transformed_dfs = []
     untouched_cols = []
@@ -528,23 +511,18 @@ def main():
             temp_df = df[['date', 'id', col]].copy()
             temp_df[col] = pd.to_numeric(temp_df[col], errors='coerce')
             if temp_df[col].dropna().empty:
-                print(f"⚠️  Columna '{col}' está vacía o no tiene valores numéricos. Se omite.")
                 continue
             freq = column_frequencies.get(col, None)
             if freq != 'D':
-                print(f"⏭️  Columna '{col}' con frecuencia '{freq}' no es diaria. No se transforma.")
                 untouched_cols.append(temp_df)
                 continue
-            print(f"⚙️  Transformando '{col}' en categoría '{cat}'")
             try:
                 transformed = func(temp_df, target_column=col, id_column='id')
                 transformed_dfs.append(transformed)
             except Exception as e:
-                print(f"❌ Error al transformar '{col}': {e}")
 
     all_dfs = transformed_dfs + untouched_cols
     if not all_dfs:
-        print("❌ No se encontraron series válidas para procesar.")
         return
 
     final_df = all_dfs[0]
@@ -554,12 +532,8 @@ def main():
     # ================================
     # ✅ AGREGAR VARIABLE OBJETIVO COMO *_Target AL FINAL - CON DEPURACIÓN
     # ================================
-    print(f"\n🔍 Debug: Variable objetivo = {variable_objetivo}")
-    print(f"🔍 Debug: ¿Variable en columnas? = {variable_objetivo in final_df.columns}")
-    print(f"🔍 Debug: Últimas 5 columnas antes = {final_df.columns[-5:].tolist()}")
     
     if variable_objetivo and variable_objetivo in final_df.columns:
-        print(f"🔍 Debug: Creando columna target {variable_objetivo}_Target")
         # Usar shift(-FORECAST_HORIZON) para que coincida con tu pipeline de inferencia
         final_df[variable_objetivo + "_Target"] = final_df[variable_objetivo].shift(-FORECAST_HORIZON_1MONTH)
         # Asegurarnos de que la columna se mueva al final
@@ -567,21 +541,14 @@ def main():
         columnas.remove(variable_objetivo + "_Target")
         columnas.append(variable_objetivo + "_Target")
         final_df = final_df[columnas]
-        print(f"\n🎯 Columna objetivo '{variable_objetivo}_Target' añadida al final (con horizonte de {FORECAST_HORIZON_1MONTH} días).")
     else:
         if variable_objetivo:
-            print(f"\n⚠️ Advertencia: La variable objetivo '{variable_objetivo}' no existe en el DataFrame final.")
-            print(f"⚠️ Columnas disponibles: {', '.join(final_df.columns[:10])}... (y más)")
         else:
-            print("\n⚠️ No se seleccionó ninguna variable objetivo.")
     
-    print(f"🔍 Debug: Últimas 5 columnas después = {final_df.columns[-5:].tolist()}")
 
     try:
         final_df.to_excel(output_file, index=False)
-        print(f"✅ Proceso completado. Archivo guardado en: {output_file}")
     except Exception as e:
-        print("❌ Error al guardar el archivo:", e)
 
 
 if __name__ == "__main__":

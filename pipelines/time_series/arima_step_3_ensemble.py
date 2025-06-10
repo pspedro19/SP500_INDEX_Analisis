@@ -36,7 +36,6 @@ except ImportError:
         sys.path.append(os.path.abspath("../pipelines"))
         from time_series.utils import plots
     except ImportError:
-        print("No se pudieron importar los módulos de utilidades. Las visualizaciones avanzadas no estarán disponibles.")
 
 # Configuración de logging
 def setup_logging():

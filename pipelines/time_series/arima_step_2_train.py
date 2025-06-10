@@ -54,7 +54,6 @@ except ImportError:
         sys.path.append(os.path.abspath("../pipelines"))
         from time_series.utils import plots
     except ImportError:
-        print("No se pudieron importar los módulos de utilidades. Las visualizaciones no estarán disponibles.")
 
 # ====================================
 # CONFIGURACIÓN Y ESTRUCTURAS DE DATOS

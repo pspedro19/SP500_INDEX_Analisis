@@ -910,31 +910,22 @@ def main():
         
         # Mostrar resultados
         logging.info(" Proceso de preparación de salida y generación de reportes completado")
-        print(f"\n Proceso completado. Archivos generados:")
-        print(f"   - PowerBI: {powerbi_file}")
-        print(f"   - API: {api_file}")
         
         if summary_file:
-            print(f"   - Resumen Ejecutivo: {summary_file}")
         
         if forecast_file:
-            print(f"   - Resumen Forecast: {forecast_file}")
         
         # Mostrar reportes avanzados generados - CORRECCIÓN AQUÍ
         if reports_paths:
-            print(f"   - Reportes avanzados:")
             for instrument, reports in reports_paths.items():
                 # Verificar tipo antes de usar len()
                 try:
                     num_reports = count_reports_safely(reports)
-                    print(f"     * {instrument}: {num_reports} reportes")
                 except Exception as e:
                     logging.error(f"Error al contar reportes para {instrument}: {str(e)}")
-                    print(f"     * {instrument}: reportes generados")
         
         # Mencionar gráficos en escala de precios si fueron generados
         if args.plot_price_scale and 'plots' in globals():
-            print(f"   - Gráficos en escala de precios generados en: {OUTPUT_DIR / 'charts'}")
         
         return 0
     

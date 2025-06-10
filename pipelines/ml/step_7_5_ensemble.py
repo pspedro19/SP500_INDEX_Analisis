@@ -453,9 +453,6 @@ def main():
     logging.info(f"Visualizaciones generadas: {', '.join(visualization_paths)}")
     logging.info(f"Proceso completado en {end_time - start_time:.2f}s")
     
-    print(f"✅ Ensemble creado con {len(ensemble.selected_models)} modelos seleccionados de {len(models)} totales")
-    print(f"✅ Métricas del ensemble: RMSE={ensemble.metrics['RMSE']:.4f}, R2={ensemble.metrics['R2']:.4f}")
-    print(f"✅ Visualizaciones guardadas en: {IMG_CHARTS}")
     
     return ensemble
 
