@@ -134,3 +134,6 @@ models/
 data/
 !data/README.md
 
+
+# Windows shortcuts
+*.lnk
