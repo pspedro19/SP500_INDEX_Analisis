@@ -14,7 +14,7 @@ from dateutil.parser import parse
 import warnings
 warnings.filterwarnings('ignore')
 from sp500_analysis.application.preprocessing.factory import ProcessorFactory
-from sp500_analysis.shared.logging.logger import configurar_logging
+from sp500_analysis.shared.logging.logger import configurar_logging as shared_configurar_logging
 
 
 # Al inicio del script
@@ -48,15 +48,7 @@ warnings.filterwarnings('ignore')
 # Configuración de logging
 # ---------------------------------------------------
 def configurar_logging(log_file='myinvestingreportnormal.log'):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s [%(levelname)s] %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
-    return logging.getLogger('MyinvestingreportNormal')
+    return shared_configurar_logging(log_file, 'MyinvestingreportNormal')
 
 # ---------------------------------------------------
 # Función para convertir valores numéricos
@@ -636,15 +628,7 @@ warnings.filterwarnings('ignore')
 
 # Configuración de logging
 def configurar_logging(log_file='freddataprocessor.log'):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s [%(levelname)s] %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
-    return logging.getLogger('FredDataProcessor')
+    return shared_configurar_logging(log_file, 'FredDataProcessor')
 
 class FredDataProcessor:
     """
@@ -1049,15 +1033,7 @@ warnings.filterwarnings('ignore')
 
 # Configuración de logging
 def configurar_logging(log_file='otherdataprocessor.log'):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s [%(levelname)s] %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
-    return logging.getLogger('OtherDataProcessor')
+    return shared_configurar_logging(log_file, 'OtherDataProcessor')
 
 # Función para convertir fechas en diversos formatos
 def convertir_fecha(fecha_str):
@@ -2292,15 +2268,7 @@ warnings.filterwarnings('ignore')
 
 # Configuración de logging
 def configurar_logging(log_file='otherdataprocessor.log'):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s [%(levelname)s] %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
-    return logging.getLogger('OtherDataProcessor')
+    return shared_configurar_logging(log_file, 'OtherDataProcessor')
 
 # Función para convertir fechas en diversos formatos
 def convertir_fecha(fecha_str):
@@ -3176,8 +3144,7 @@ import logging
 import pandas as pd
 
 # Configuración básica de logging
-logging.basicConfig(level=logging.INFO, 
-                    format="%(asctime)s - %(levelname)s - %(message)s")
+shared_configurar_logging('categorize_columns.log')
 
 # Definición de patrones regex para cada categoría (buscando al final de la cadena)
 regex_patterns = {
@@ -3750,14 +3717,7 @@ class DANEExportacionesProcessor:
             self.logger.info("=" * 80)
         
         def configurar_logging(log_file):
-            import logging
-            logging.basicConfig(
-                filename=log_file,
-                level=logging.INFO,
-                format='%(asctime)s [%(levelname)s] %(message)s',
-                datefmt='%Y-%m-%d %H:%M:%S'
-            )
-            return logging.getLogger(__name__)
+            return shared_configurar_logging(log_file, __name__)
     
         def detect_dane_exportaciones_file(self, file_path):
             try:

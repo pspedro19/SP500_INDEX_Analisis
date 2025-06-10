@@ -10,6 +10,9 @@ Incluye la columna `date` en la salida y no genera filas sintéticas.
 """
 
 import logging
+from datetime import datetime
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 from pathlib import Path
 import warnings
 
@@ -24,15 +27,8 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 # ──────────────────────────────────────────────────────────────────────────────
 # 0 · Logging
 # ──────────────────────────────────────────────────────────────────────────────
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-    handlers=[
-        logging.FileHandler("preprocess_arima_sarimax.log"),
-        logging.StreamHandler()
-    ]
-)
+log_file = os.path.join(settings.log_dir, f"arima_step1_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 logger = logging.getLogger(__name__)
 
 # ──────────────────────────────────────────────────────────────────────────────

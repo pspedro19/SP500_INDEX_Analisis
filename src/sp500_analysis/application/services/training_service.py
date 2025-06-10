@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import logging
+from datetime import datetime
+from sp500_analysis.shared.logging.logger import configurar_logging
 import os
 from typing import Dict
 
@@ -27,7 +29,8 @@ class TrainingService:
         self.registry = registry
 
     def run_training(self) -> Dict[str, Dict[str, float]]:
-        logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+        log_file = settings.log_dir / f"training_service_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+        configurar_logging(str(log_file))
         ensure_directories()
         configure_gpu(use_gpu=True)
 

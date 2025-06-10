@@ -10,6 +10,7 @@ import time
 import pandas as pd
 import numpy as np
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 from datetime import datetime
 from pathlib import Path
 
@@ -31,14 +32,7 @@ CSV_REPORTS = settings.csv_reports_dir
 
 # Configuración de logging
 log_file = os.path.join(PROJECT_ROOT, "logs", f"report_generation_{time.strftime('%Y%m%d_%H%M%S')}.log")
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+configurar_logging(log_file)
 
 def find_files(directory, pattern):
     """

@@ -20,6 +20,8 @@ Fecha: [Fecha Actual]
 import os
 import json
 import logging
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 import argparse
 import numpy as np
 import pandas as pd
@@ -27,14 +29,8 @@ from datetime import datetime, timedelta
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
 
 # Configuración de logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("combine_predictions.log"),
-        logging.StreamHandler()
-    ]
-)
+log_file = os.path.join(settings.log_dir, f"combine_predictions_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 logger = logging.getLogger(__name__)
 
 def parse_arguments():

@@ -4,6 +4,7 @@ import random
 import numpy as np
 import pandas as pd
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import time
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -73,14 +74,7 @@ timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_file = os.path.join(LOG_DIR, f"fpi_selection_{timestamp}.log")
 
 # Configuración de logging a archivo y consola
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+configurar_logging(log_file)
 
 # Configuración adicional para capturar más información
 logger = logging.getLogger()

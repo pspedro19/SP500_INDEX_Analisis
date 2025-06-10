@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import re
 import logging
+from datetime import datetime
+from sp500_analysis.shared.logging.logger import configurar_logging
 import os
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tsa.stattools import adfuller
@@ -22,7 +24,8 @@ VIF_THRESHOLD = settings.vif_threshold
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING
 # ------------------------------
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file = os.path.join(PROJECT_ROOT, "logs", f"remove_relations_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 
 def detect_feature_frequency(df, col, date_col=DATE_COL):
     """

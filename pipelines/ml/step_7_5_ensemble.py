@@ -3,6 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import logging
+from sp500_analysis.shared.logging.logger import configurar_logging
 import glob
 import time
 import matplotlib.pyplot as plt
@@ -31,11 +32,7 @@ from sp500_analysis.shared.visualization.plotters import plot_real_vs_pred
 # CONFIGURACIÓN DE LOGGING
 # ------------------------------
 log_file = os.path.join(PROJECT_ROOT, "logs", f"ensemble_{time.strftime('%Y%m%d_%H%M%S')}.log")
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler(log_file), logging.StreamHandler()],
-)
+configurar_logging(log_file)
 
 # Asegurar que existen los directorios
 ensure_directories()

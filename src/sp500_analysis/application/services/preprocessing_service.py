@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 import logging
+from datetime import datetime
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 
 
 class PreprocessingService:
     """Service responsible for running the preprocessing pipeline."""
 
     def run_preprocessing(self) -> bool:
-        logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+        log_file = settings.log_dir / f"preprocessing_service_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+        configurar_logging(str(log_file))
         logging.info("Running preprocessing service")
         return True
 

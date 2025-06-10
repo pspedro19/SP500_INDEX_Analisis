@@ -25,9 +25,13 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.dates as mdates
 from matplotlib.ticker import MaxNLocator
 import logging
+from datetime import datetime
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 
 # Configurar logger básico
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+log_file = os.path.join(settings.log_dir, f"plots_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+configurar_logging(log_file)
 logger = logging.getLogger(__name__)
 
 # Configuración de estilos
