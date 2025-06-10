@@ -4,13 +4,13 @@
 Orquestador principal del pipeline ML.
 Ejecuta todos los pasos en secuencia y genera un reporte final.
 """
-import os
-import sys
-import time
+import importlib
 import json
 import logging
-import importlib
+import os
 import subprocess
+import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -19,13 +19,23 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importar configuraciones centralizadas
 from pipelines.ml.config import (
-    ROOT, DATA_RAW, DATA_PREP, PROCESSED_DIR, TRAINING_DIR, 
-    RESULTS_DIR, METRICS_DIR, LOG_DIR, REPORTS_DIR, 
-    IMG_CHARTS, METRICS_CHARTS, CSV_REPORTS, ensure_directories
+    CSV_REPORTS,
+    DATA_PREP,
+    DATA_RAW,
+    IMG_CHARTS_DIR,
+    LOG_DIR,
+    METRICS_CHARTS_DIR,
+    METRICS_DIR,
+    PROCESSED_DIR,
+    REPORTS_DIR,
+    RESULTS_DIR,
+    ROOT,
+    TRAINING_DIR,
+    ensure_directories,
 )
 
 # Crear directorio para logs si no existe
-LOG_DIR.mkdir(parents=True, exist_ok=True)
+Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
 
 # Configurar logging
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -33,29 +43,27 @@ log_file = os.path.join(LOG_DIR, f"pipeline_run_{timestamp}.log")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
+    handlers=[logging.FileHandler(log_file), logging.StreamHandler()],
 )
+
 
 def run_step(step_module, step_name=None):
     """
     Ejecuta un paso del pipeline y registra el tiempo de ejecución.
-    
+
     Args:
         step_module (str): Ruta al módulo Python a ejecutar
         step_name (str): Nombre descriptivo para el paso (opcional)
-    
+
     Returns:
         tuple: (éxito, tiempo de ejecución, errores)
     """
     if step_name is None:
         step_name = os.path.basename(step_module).replace('.py', '')
-    
+
     logging.info(f"Iniciando {step_name}...")
     start_time = time.time()
-    
+
     try:
         # Intentar importar y ejecutar como módulo
         if step_module.endswith('.py'):
@@ -73,28 +81,30 @@ def run_step(step_module, step_name=None):
             result = subprocess.run([sys.executable, step_module], check=True)
             if result.returncode != 0:
                 raise Exception(f"Script terminó con código {result.returncode}")
-        
+
         elapsed_time = time.time() - start_time
         logging.info(f"✅ {step_name} completado en {elapsed_time:.2f}s")
         return True, elapsed_time, None
-    
+
     except Exception as e:
         elapsed_time = time.time() - start_time
         logging.error(f"❌ Error en {step_name}: {str(e)}")
         return False, elapsed_time, str(e)
 
+
 def generate_timeline_chart(timings):
     """
     Genera un gráfico de línea de tiempo con los tiempos de ejecución.
-    
+
     Args:
         timings (dict): Diccionario con {nombre_paso: tiempo_segundos}
-    
+
     Returns:
         str: Ruta al archivo del gráfico generado
     """
     try:
         from pipelines.ml.utils.plots import plot_pipeline_timeline
+
         chart_path = REPORTS_DIR / "pipeline_timeline.png"
         plot_pipeline_timeline(timings, chart_path)
         logging.info(f"Gráfico de timeline generado: {chart_path}")
@@ -103,44 +113,41 @@ def generate_timeline_chart(timings):
         logging.error(f"Error al generar timeline: {e}")
         return None
 
+
 def generate_html_report(timings, results, start_time):
     """
     Genera un informe HTML simple con los resultados del pipeline.
-    
+
     Args:
         timings (dict): Diccionario con tiempos de ejecución
         results (dict): Resultados de cada paso
         start_time (float): Tiempo de inicio del pipeline
-    
+
     Returns:
         str: Ruta al archivo HTML generado
     """
     try:
         from jinja2 import Template
-        
+
         # Preparar datos para la plantilla
         total_time = sum(timings.values())
         end_time = time.time()
         pipeline_time = end_time - start_time
-        
+
         # Encontrar imágenes generadas
         chart_files = []
-        for chart_dir in [IMG_CHARTS, METRICS_CHARTS]:
-            if os.path.exists(chart_dir):
-                chart_files.extend([
-                    str(chart_dir / f) for f in os.listdir(chart_dir) 
-                    if f.endswith(('.png', '.jpg', '.svg'))
-                ])
-        
+        for chart_dir in [Path(IMG_CHARTS_DIR), Path(METRICS_CHARTS_DIR)]:
+            if chart_dir.exists():
+                chart_files.extend(
+                    [str(chart_dir / f) for f in os.listdir(chart_dir) if f.endswith((".png", ".jpg", ".svg"))]
+                )
+
         # Encontrar archivos CSV generados
         csv_files = []
-        for csv_dir in [CSV_REPORTS, RESULTS_DIR, METRICS_DIR]:
-            if os.path.exists(csv_dir):
-                csv_files.extend([
-                    str(csv_dir / f) for f in os.listdir(csv_dir) 
-                    if f.endswith(('.csv', '.xlsx'))
-                ])
-        
+        for csv_dir in [Path(CSV_REPORTS), Path(RESULTS_DIR), Path(METRICS_DIR)]:
+            if csv_dir.exists():
+                csv_files.extend([str(csv_dir / f) for f in os.listdir(csv_dir) if f.endswith((".csv", ".xlsx"))])
+
         # Plantilla HTML
         template_str = """
         <!DOCTYPE html>
@@ -231,7 +238,7 @@ def generate_html_report(timings, results, start_time):
         </body>
         </html>
         """
-        
+
         template = Template(template_str)
         html_content = template.render(
             date=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -239,29 +246,30 @@ def generate_html_report(timings, results, start_time):
             results=results,
             timeline_path=generate_timeline_chart(timings),
             charts=chart_files,
-            csv_files=csv_files
+            csv_files=csv_files,
         )
-        
+
         # Guardar archivo HTML
         report_path = REPORTS_DIR / "pipeline_report.html"
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
-        
+
         logging.info(f"Reporte HTML generado: {report_path}")
         return str(report_path)
-    
+
     except Exception as e:
         logging.error(f"Error al generar reporte HTML: {e}")
         return None
+
 
 def main():
     """Función principal que ejecuta todo el pipeline."""
     # Asegurar que existen todos los directorios necesarios
     ensure_directories()
-    
+
     # Registrar tiempo de inicio global
     pipeline_start_time = time.time()
-    
+
     # Definir los pasos del pipeline
     pipeline_steps = [
         ("Paso 1: Merge de Excels", "pipelines/ml/step_1_merge_excels.py"),
@@ -273,58 +281,58 @@ def main():
         ("Paso 7: Entrenamiento de Modelos", "src/sp500_analysis/application/model_training/trainer.py"),
         ("Paso 7.5: Ensamblado", "pipelines/ml/step_7_5_ensemble.py"),
         ("Paso 8: Preparación de Salida", "pipelines/ml/step_8_prepare_output.py"),
-        ("Paso 9: Backtest", "pipelines/ml/step_9_backtest_mejorado.py"),
-        ("Paso 10: Inferencia", "pipelines/ml/step_10_inference_mejorado.py")
+        ("Paso 9: Backtest", "pipelines/ml/step_9_backtest.py"),
+        ("Paso 10: Inferencia", "pipelines/ml/step_10_inference.py"),
     ]
-    
+
     # Almacenar resultados y tiempos
     results = {}
     timings = {}
-    
+
     # Ejecutar cada paso del pipeline
     for step_name, step_module in pipeline_steps:
         success, elapsed_time, error = run_step(step_module, step_name)
-        results[step_name] = {
-            "success": success,
-            "time": elapsed_time,
-            "error": error
-        }
+        results[step_name] = {"success": success, "time": elapsed_time, "error": error}
         timings[step_name] = elapsed_time
-        
+
         # Si el paso falló y es crítico, detener el pipeline
         if not success and step_name in ["Paso 1", "Paso 2", "Paso 3", "Paso 4", "Paso 5", "Paso 6"]:
             logging.error(f"Paso crítico {step_name} falló. Deteniendo el pipeline.")
             break
-    
+
     # Guardar tiempos en JSON para referencia
     timings_file = REPORTS_DIR / "pipeline_timings.json"
     with open(timings_file, 'w') as f:
         json.dump(timings, f, indent=4)
     logging.info(f"Tiempos del pipeline guardados en: {timings_file}")
-    
+
     # Generar reporte HTML
     report_path = generate_html_report(timings, results, pipeline_start_time)
     if report_path:
+        logging.info(f"Reporte HTML disponible en {report_path}")
     else:
-    
+        logging.warning("No se pudo generar el reporte HTML")
+
     # Calcular y mostrar tiempo total
     total_time = time.time() - pipeline_start_time
     hours, remainder = divmod(total_time, 3600)
     minutes, seconds = divmod(remainder, 60)
     time_str = f"{int(hours)}h {int(minutes)}m {seconds:.2f}s" if hours > 0 else f"{int(minutes)}m {seconds:.2f}s"
-    
+
     logging.info(f"Pipeline completado en {time_str}")
-    
+
     # Resumen de éxito/error
     success_count = sum(1 for r in results.values() if r["success"])
     error_count = len(results) - success_count
-    
+
     # Mostrar los pasos con error
     if error_count > 0:
         for step, data in results.items():
             if not data["success"]:
-    
+                logging.error(f"Paso con error: {step} -> {data['error']}")
+
     return results
+
 
 if __name__ == "__main__":
     main()
