@@ -19,6 +19,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
+from sp500_analysis.application.preprocessing.factory import ProcessorFactory
 # =============================================================================
 # SECCIÓN 1: TES PROCESSOR - Tasas Cero Cupón
 # =============================================================================
@@ -2072,7 +2073,7 @@ def ejecutar_eoe_universal_processor(
     os.makedirs(os.path.dirname(log_file) if os.path.dirname(log_file) else '.', exist_ok=True)
     
     # Crear y ejecutar procesador
-    processor = EOEUniversalProcessor(data_root, log_file)
+    processor = ProcessorFactory.get_processor('eoe', data_root=data_root, log_file=log_file)
     return processor.run(output_file)
 
 
@@ -2112,7 +2113,7 @@ def procesar_archivo_eoc_especifico(archivo_path, output_file=None):
         # Crear procesador apuntando al directorio temporal
 
 
-        processor = EOEUniversalProcessor(temp_dir, log_file)
+        processor = ProcessorFactory.get_processor('eoe', data_root=temp_dir, log_file=log_file)
         
         # Ejecutar procesamiento
         result = processor.run(output_file)
