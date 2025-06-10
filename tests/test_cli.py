@@ -1,9 +1,32 @@
 from unittest import mock
+import types
+import sys
+from click.testing import CliRunner
 
-import sp500_analysis.__main__ as cli
+from sp500_analysis.interfaces.cli.main import cli
 
 
-def test_cli_invokes_run_pipeline_main():
-    with mock.patch("sp500_analysis.__main__.run_pipeline_main") as run:
-        cli.main()
+def test_preprocess_invokes_service():
+    runner = CliRunner()
+    with mock.patch("sp500_analysis.application.services.preprocessing_service.run_preprocessing") as run:
+        result = runner.invoke(cli, ["preprocess"])
+        assert result.exit_code == 0
+        run.assert_called_once()
+
+
+def test_train_invokes_service():
+    runner = CliRunner()
+    dummy = types.SimpleNamespace(run_training=lambda: None)
+    sys.modules["sp500_analysis.application.model_training.trainer"] = dummy
+    with mock.patch.object(dummy, "run_training") as run:
+        result = runner.invoke(cli, ["train"])
+        assert result.exit_code == 0
+        run.assert_called_once()
+
+
+def test_infer_invokes_service():
+    runner = CliRunner()
+    with mock.patch("sp500_analysis.application.services.inference_service.run_inference") as run:
+        result = runner.invoke(cli, ["infer"])
+        assert result.exit_code == 0
         run.assert_called_once()

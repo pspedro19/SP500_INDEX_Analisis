@@ -46,3 +46,8 @@ def setup_container() -> None:
         ),
         singleton=True,
     )
+    from sp500_analysis.application.services.preprocessing_service import PreprocessingService
+    from sp500_analysis.application.services.inference_service import InferenceService
+
+    container.register("preprocessing_service", PreprocessingService, singleton=True)
+    container.register("inference_service", InferenceService, singleton=True)

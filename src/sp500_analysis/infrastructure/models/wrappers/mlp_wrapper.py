@@ -1,5 +1,6 @@
 from sklearn.neural_network import MLPRegressor
 
+
 class MLPWrapper:
     def __init__(self, **params):
         self.model = MLPRegressor(**params)
