@@ -11,13 +11,7 @@ from sp500_analysis.config.settings import settings
 from sp500_analysis.application.model_training.trainer import ModelTrainer
 from sp500_analysis.domain.data_repository import DataRepository
 from sp500_analysis.infrastructure.compute.gpu_manager import configure_gpu
-from sp500_analysis.infrastructure.models.wrappers import (
-    CatBoostWrapper,
-    LightGBMWrapper,
-    MLPWrapper,
-    SVMWrapper,
-    XGBoostWrapper,
-)
+from sp500_analysis.infrastructure.models.registry import ModelRegistry
 
 RESULTS_DIR = settings.results_dir
 
@@ -25,16 +19,12 @@ RESULTS_DIR = settings.results_dir
 class TrainingService:
     """Service orchestrating full model training."""
 
-    def __init__(self, repository: DataRepository, trainer: ModelTrainer) -> None:
+    def __init__(
+        self, repository: DataRepository, trainer: ModelTrainer, registry: ModelRegistry
+    ) -> None:
         self.repository = repository
         self.trainer = trainer
-        self.models = {
-            "CatBoost": CatBoostWrapper,
-            "LightGBM": LightGBMWrapper,
-            "XGBoost": XGBoostWrapper,
-            "MLP": MLPWrapper,
-            "SVM": SVMWrapper,
-        }
+        self.registry = registry
 
     def run_training(self) -> Dict[str, Dict[str, float]]:
         logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -51,7 +41,7 @@ class TrainingService:
         y = df[target]
 
         results: Dict[str, Dict[str, float]] = {}
-        for name, cls in self.models.items():
+        for name, cls in self.registry.items():
             logging.info("Training %s", name)
             results[name] = self.trainer.train_model(cls, X, y)
 

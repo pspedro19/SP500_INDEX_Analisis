@@ -35,14 +35,17 @@ def setup_container() -> None:
     from sp500_analysis.domain.data_repository import DataRepository
     from sp500_analysis.application.model_training.trainer import ModelTrainer
     from sp500_analysis.application.services.training_service import TrainingService
+    from sp500_analysis.infrastructure.models.registry import model_registry
 
     container.register("data_repository", DataRepository, singleton=True)
     container.register("model_trainer", ModelTrainer, singleton=True)
+    container.register("model_registry", lambda: model_registry, singleton=True)
     container.register(
         "training_service",
         lambda: TrainingService(
             container.resolve("data_repository"),
             container.resolve("model_trainer"),
+            container.resolve("model_registry"),
         ),
         singleton=True,
     )
