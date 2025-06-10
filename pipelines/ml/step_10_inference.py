@@ -12,11 +12,19 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 # Importar configuraciones centralizadas
-from config import (
-    PROJECT_ROOT, MODELS_DIR, TRAINING_DIR, RESULTS_DIR, IMG_CHARTS,
-    DATE_COL, LOCAL_REFINEMENT_DAYS, TRAIN_TEST_SPLIT_RATIO,
-    FORECAST_HORIZON_1MONTH, FORECAST_HORIZON_3MONTHS, ensure_directories
-)
+from sp500_analysis.config.settings import settings
+from pipelines.ml.config import ensure_directories
+
+PROJECT_ROOT = settings.project_root
+MODELS_DIR = settings.models_dir
+TRAINING_DIR = settings.training_dir
+RESULTS_DIR = settings.results_dir
+IMG_CHARTS = settings.img_charts_dir
+DATE_COL = settings.date_col
+LOCAL_REFINEMENT_DAYS = settings.local_refinement_days
+TRAIN_TEST_SPLIT_RATIO = settings.train_test_split_ratio
+FORECAST_HORIZON_1MONTH = settings.forecast_horizon_1month
+FORECAST_HORIZON_3MONTHS = settings.forecast_horizon_3months
 
 # Importar funciones de visualización
 from ml.utils.plots import plot_forecast
