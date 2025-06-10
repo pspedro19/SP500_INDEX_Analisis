@@ -42,15 +42,15 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Combina predicciones de pipelines ML y ARIMA')
     
     parser.add_argument('--ml_predictions_file', type=str, 
-                        default='Data/predictions/all_models_predictions.csv',
+                        default='data/predictions/all_models_predictions.csv',
                         help='Ruta al archivo con predicciones del pipeline ML.')
     
     parser.add_argument('--arima_predictions_file', type=str, 
-                        default='Data/predictions/arima_for_powerbi.csv',
+                        default='data/predictions/arima_for_powerbi.csv',
                         help='Ruta al archivo con predicciones del pipeline ARIMA.')
     
     parser.add_argument('--output_file', type=str, 
-                        default='Data/predictions/combined_predictions_for_powerbi.csv',
+                        default='data/predictions/combined_predictions_for_powerbi.csv',
                         help='Ruta al archivo de salida con predicciones combinadas.')
     
     parser.add_argument('--target_col', type=str, 

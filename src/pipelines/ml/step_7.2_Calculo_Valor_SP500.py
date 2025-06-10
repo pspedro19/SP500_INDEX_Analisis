@@ -575,7 +575,7 @@ def main():
             "hechos_predicciones_fields_con_sp500.csv",  # Directorio actual
             os.path.join(os.getcwd(), "hechos_predicciones_fields_con_sp500.csv"),
             os.path.join(repo_root, "data", "4_results", "hechos_predicciones_fields_con_sp500.csv"),
-            os.path.join(repo_root, "Data", "4_results", "hechos_predicciones_fields_con_sp500.csv")
+            os.path.join(repo_root, "data", "4_results", "hechos_predicciones_fields_con_sp500.csv")
         ]
         
         for alt_path in alternative_paths:

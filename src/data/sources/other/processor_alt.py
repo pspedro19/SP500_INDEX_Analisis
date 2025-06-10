@@ -12,7 +12,7 @@ class OtherDataProcessor:
     """
     Clase para procesar datos de la fuente "Other" usando scripts personalizados.
     """
-    def __init__(self, config_file, data_root='Data/raw', log_file='logs/otherdataprocessor.log'):
+    def __init__(self, config_file, data_root='data/raw', log_file='logs/otherdataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -871,7 +871,7 @@ def main():
     repo_root = script_dir.parent.parent
 
     # 2) Construir la ruta relativa al Excel
-    merge_path = repo_root / "Data" / "1_preprocess" / "MERGEDEXCELS.xlsx"
+    merge_path = repo_root / "data" / "1_preprocess" / "MERGEDEXCELS.xlsx"
 
     # 3) Intentar leer el archivo Excel
     try:

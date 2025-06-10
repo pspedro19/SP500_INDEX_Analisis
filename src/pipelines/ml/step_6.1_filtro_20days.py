@@ -26,11 +26,11 @@ if directorio_proyecto is None:
         directorio_proyecto = directorio_actual
 
 # Rutas de los archivos usando rutas relativas al proyecto
-archivo1_ruta = os.path.join(directorio_proyecto, "Data", "2_processed", "datos_economicos_1month_SP500_INFERENCE.xlsx")
-archivo2_ruta = os.path.join(directorio_proyecto, "Data", "3_trainingdata", "ULTIMO_S&P500_final_FPI.xlsx")
+archivo1_ruta = os.path.join(directorio_proyecto, "data", "2_processed", "datos_economicos_1month_SP500_INFERENCE.xlsx")
+archivo2_ruta = os.path.join(directorio_proyecto, "data", "3_trainingdata", "ULTIMO_S&P500_final_FPI.xlsx")
 
 # Ruta para el archivo de salida
-directorio_salida = os.path.join(directorio_proyecto, "Data", "3_trainingdata")
+directorio_salida = os.path.join(directorio_proyecto, "data", "3_trainingdata")
 archivo_salida = os.path.join(directorio_salida, "datos_economicos_filtrados.xlsx")
 
 # Leer los archivos Excel

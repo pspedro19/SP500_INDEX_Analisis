@@ -91,8 +91,8 @@ class EconomiaProcessor:
         # Usar exactamente las mismas rutas que PIBProcessor
         self.search_paths = search_paths or [
             '.', 'data', 'data/0_raw', 'downloads', 'raw_data',
-            'Data', 'Data/0_raw', 'Data/0_raw/bond',  # ← AGREGAR ESTAS RUTAS
-            './Data', './Data/0_raw', './Data/0_raw/bond'
+            'data', 'data/0_raw', 'data/0_raw/bond',  # ← AGREGAR ESTAS RUTAS
+            './data', './data/0_raw', './data/0_raw/bond'
         ]
         
         # Configurar logging

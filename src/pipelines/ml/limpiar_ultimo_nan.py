@@ -93,7 +93,7 @@ def clean_dataframe_up_to_last_nan(file_path, output_path=None):
 # Para ejecutar este script independientemente
 if __name__ == "__main__":
     # Ruta del archivo a procesar
-    input_file = r"C:/Users/natus/Documents/Trabajo/PEDRO_PEREZ/Proyecto_Mercado_de_Valores/SP500_INDEX_Analisis/Data/3_trainingdata/ULTIMO_S&P500_final_FPI.xlsx"
+    input_file = r"C:/Users/natus/Documents/Trabajo/PEDRO_PEREZ/Proyecto_Mercado_de_Valores/SP500_INDEX_Analisis/data/3_trainingdata/ULTIMO_S&P500_final_FPI.xlsx"
     
     # Crear nombre de salida personalizado para la prueba
     input_dir = os.path.dirname(input_file)

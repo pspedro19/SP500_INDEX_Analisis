@@ -14,7 +14,7 @@ El proceso está completamente orquestado por el archivo `run_pipeline.py` que e
 ```
 SP500_index_analysis/
 │
-├── Data/               # Carpeta de datos (configurable por entorno)
+├── data/               # Carpeta de datos (configurable por entorno)
 ├── src/
 │   ├── config/         # Configuración y logging
 │   ├── core/           # Utilidades de bajo nivel
