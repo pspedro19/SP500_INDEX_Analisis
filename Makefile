@@ -1,16 +1,21 @@
 .PHONY: install test lint format clean
 
+PYTHON := python3
+SOURCES := src tests
+
 install:
-	pip install -r requirement.txt
+	$(PYTHON) -m pip install -r requirement.txt
 
 test:
-	pytest -q
+	$(PYTHON) -m pytest -q
 
 lint:
-	flake8 src tests
+	flake8 $(SOURCES)
+	mypy $(SOURCES)
 
 format:
-	black src tests
+	isort $(SOURCES)
+	black $(SOURCES)
 
 clean:
 	find . -type f -name '*.pyc' -delete
