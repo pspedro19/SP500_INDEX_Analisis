@@ -31,5 +31,20 @@ def infer_command() -> None:
     run_inference()
 
 
+@cli.command()
+def backtest() -> None:
+    """Run model backtests on the latest predictions."""
+    from sp500_analysis.config.settings import settings
+    from sp500_analysis.application.evaluation.backtester import run_backtest
+
+    run_backtest(
+        results_dir=settings.results_dir,
+        metrics_dir=settings.metrics_dir,
+        charts_dir=settings.metrics_charts_dir,
+        subperiods_dir=settings.subperiods_charts_dir,
+        date_col=settings.date_col,
+    )
+
+
 if __name__ == "__main__":  # pragma: no cover
     cli()
