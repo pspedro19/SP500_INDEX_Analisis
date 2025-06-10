@@ -5,7 +5,11 @@ from typing import Dict
 
 import pandas as pd
 
-from pipelines.ml.config import RESULTS_DIR, TRAINING_DIR, ensure_directories
+from pipelines.ml.config import ensure_directories
+from sp500_analysis.config.settings import settings
+
+RESULTS_DIR = settings.results_dir
+TRAINING_DIR = settings.training_dir
 from ...infrastructure.compute.gpu_manager import configure_gpu
 from ...infrastructure.models.wrappers import (
     CatBoostWrapper,

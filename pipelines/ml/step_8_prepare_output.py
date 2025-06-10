@@ -3,7 +3,10 @@ import os
 import logging
 
 # Importar configuraciones centralizadas
-from config import PROJECT_ROOT, RESULTS_DIR
+from sp500_analysis.config.settings import settings
+
+PROJECT_ROOT = settings.project_root
+RESULTS_DIR = settings.results_dir
 
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING

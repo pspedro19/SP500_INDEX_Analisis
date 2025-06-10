@@ -5,10 +5,15 @@ import time
 from pathlib import Path
 
 # Importar configuración centralizada
-from config import (
-    ROOT, DATA_RAW, DATA_PREP, LOG_DIR, CSV_REPORTS,
-    DATE_COL, ensure_directories
-)
+from sp500_analysis.config.settings import settings
+from pipelines.ml.config import ensure_directories
+
+ROOT = settings.root
+DATA_RAW = settings.raw_dir
+DATA_PREP = settings.preprocess_dir
+LOG_DIR = settings.log_dir
+CSV_REPORTS = settings.csv_reports_dir
+DATE_COL = settings.date_col
 
 # Configuración de logging
 log_file = os.path.join(LOG_DIR, f"merge_excels_{time.strftime('%Y%m%d_%H%M%S')}.log")

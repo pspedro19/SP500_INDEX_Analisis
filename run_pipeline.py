@@ -14,25 +14,27 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-# Asegurar que podemos importar módulos desde el directorio actual
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Asegurar que podemos importar módulos desde el directorio actual y src/
+repo_root = Path(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(str(repo_root))
+sys.path.append(str(repo_root / "src"))
 
 # Importar configuraciones centralizadas
-from pipelines.ml.config import (
-    CSV_REPORTS,
-    DATA_PREP,
-    DATA_RAW,
-    IMG_CHARTS_DIR,
-    LOG_DIR,
-    METRICS_CHARTS_DIR,
-    METRICS_DIR,
-    PROCESSED_DIR,
-    REPORTS_DIR,
-    RESULTS_DIR,
-    ROOT,
-    TRAINING_DIR,
-    ensure_directories,
-)
+from pipelines.ml.config import ensure_directories
+from sp500_analysis.config.settings import settings
+
+CSV_REPORTS = settings.csv_reports_dir
+DATA_PREP = settings.preprocess_dir
+DATA_RAW = settings.raw_dir
+IMG_CHARTS_DIR = settings.img_charts_dir
+LOG_DIR = settings.log_dir
+METRICS_CHARTS_DIR = settings.metrics_charts_dir
+METRICS_DIR = settings.metrics_dir
+PROCESSED_DIR = settings.processed_dir
+REPORTS_DIR = settings.reports_dir
+RESULTS_DIR = settings.results_dir
+ROOT = settings.root
+TRAINING_DIR = settings.training_dir
 
 # Crear directorio para logs si no existe
 Path(LOG_DIR).mkdir(parents=True, exist_ok=True)

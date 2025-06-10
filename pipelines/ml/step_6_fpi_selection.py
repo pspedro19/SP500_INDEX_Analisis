@@ -15,11 +15,22 @@ from feature_engine.selection import SelectByShuffling
 import pandas_market_calendars as mcal
 
 # Importar configuraciones centralizadas
-from config import (
-    PROJECT_ROOT, PROCESSED_DIR, TRAINING_DIR, 
-    DATE_COL, CV_SPLITS, FORECAST_HORIZON_1MONTH, FORECAST_HORIZON_3MONTHS,
-    CV_GAP_1MONTH, FPI_THRESHOLD, CATBOOST_PARAMS, SCORER, RANDOM_SEED, CV_GAP_3MONTHS
-)
+from sp500_analysis.config.settings import settings
+from pipelines.ml.config import ensure_directories
+
+PROJECT_ROOT = settings.project_root
+PROCESSED_DIR = settings.processed_dir
+TRAINING_DIR = settings.training_dir
+DATE_COL = settings.date_col
+CV_SPLITS = settings.cv_splits
+FORECAST_HORIZON_1MONTH = settings.forecast_horizon_1month
+FORECAST_HORIZON_3MONTHS = settings.forecast_horizon_3months
+CV_GAP_1MONTH = settings.cv_gap_1month
+CV_GAP_3MONTHS = settings.cv_gap_3months
+FPI_THRESHOLD = settings.fpi_threshold
+CATBOOST_PARAMS = settings.catboost_params
+SCORER = settings.scorer
+RANDOM_SEED = settings.random_seed
 
 # ------------------------------
 # CONFIGURACIÓN LOCAL

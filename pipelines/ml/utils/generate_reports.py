@@ -17,11 +17,17 @@ from pathlib import Path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importar configuraciones centralizadas
-from config import (
-    PROJECT_ROOT, MODELS_DIR, RESULTS_DIR, METRICS_DIR, 
-    IMG_CHARTS, METRICS_CHARTS, REPORTS_DIR, CSV_REPORTS,
-    ensure_directories
-)
+from sp500_analysis.config.settings import settings
+from pipelines.ml.config import ensure_directories
+
+PROJECT_ROOT = settings.project_root
+MODELS_DIR = settings.models_dir
+RESULTS_DIR = settings.results_dir
+METRICS_DIR = settings.metrics_dir
+IMG_CHARTS = settings.img_charts_dir
+METRICS_CHARTS = settings.metrics_charts_dir
+REPORTS_DIR = settings.reports_dir
+CSV_REPORTS = settings.csv_reports_dir
 
 # Configuración de logging
 log_file = os.path.join(PROJECT_ROOT, "logs", f"report_generation_{time.strftime('%Y%m%d_%H%M%S')}.log")
