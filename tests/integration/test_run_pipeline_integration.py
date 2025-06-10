@@ -25,7 +25,14 @@ def test_run_pipeline_with_sample_data(monkeypatch, tmp_path):
         return True, 0.0, None
 
     monkeypatch.setattr(run_pipeline, 'run_step', fake_run_step)
-    monkeypatch.setattr(run_pipeline, 'generate_html_report', lambda *a, **k: None)
+
+    def fake_generate_html(t, r, s):
+        path = run_pipeline.REPORTS_DIR / 'pipeline_report.html'
+        with open(path, 'w') as f:
+            f.write('report')
+        return str(path)
+
+    monkeypatch.setattr(run_pipeline, 'generate_html_report', fake_generate_html)
     monkeypatch.setattr(run_pipeline, 'ensure_directories', lambda: None)
 
     run_pipeline.REPORTS_DIR = tmp_path / 'reports'
@@ -49,3 +56,5 @@ def test_run_pipeline_with_sample_data(monkeypatch, tmp_path):
     results = run_pipeline.main()
     assert len(executed) == len(results) == 11
     assert all(data['success'] for data in results.values())
+    assert (run_pipeline.REPORTS_DIR / 'pipeline_timings.json').exists()
+    assert (run_pipeline.REPORTS_DIR / 'pipeline_report.html').exists()
