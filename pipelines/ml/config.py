@@ -1,7 +1,8 @@
 """Utility helpers for ML pipelines."""
+
 from pathlib import Path
 
-from sp500_analysis.config.settings import settings
+from sp500_analysis.config import settings
 
 __all__ = ["settings", "ensure_directories"]
 
