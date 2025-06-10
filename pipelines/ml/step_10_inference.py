@@ -524,6 +524,9 @@ def main():
     logging.info(f"Tiempo total: {t5-t0:.2f}s")
     
     logging.info(f"Proceso de inferencia completado exitosamente para {len(results)} modelos.")
+    print(f"✅ Inferencia completada para {len(results)} modelos.")
+    print(f"✅ Visualizaciones de forecast generadas en: {IMG_CHARTS}")
+    print(f"✅ Resultados guardados en API: {os.path.join(RESULTS_DIR, 'predictions_api.json')}")
 
 if __name__ == "__main__":
     main()

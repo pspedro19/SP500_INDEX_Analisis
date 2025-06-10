@@ -55,7 +55,7 @@ TRAIN_TEST_SPLIT_RATIO = 0.8    # 80/20 split local
 # ================================
 CV_SPLITS = 5
 CV_GAP_1MONTH = FORECAST_HORIZON_1MONTH
-CV_GAP_3MONTHS = FORECAST_HORIZON_3MONTHS
+CV_GAP_3MONTHS = FORECAST_HORIZON_3MONTHS   
 
 # ================================
 # UMBRALES DE SELECCIÓN DE FEATURES
@@ -104,6 +104,9 @@ PERIODO_LABELS = {
     "Forecast": "Pronóstico"
 }
 
+DATA_RAW = RAW_DIR
+DATA_PREP = PREPROCESS_DIR
+CSV_REPORTS = CSV_REPORTS_DIR
 # ================================
 # FUNCIONES AUXILIARES
 # ================================

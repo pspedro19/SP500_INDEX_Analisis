@@ -526,6 +526,9 @@ def main():
             t4 = time.perf_counter()
             logging.info(f"Procesamiento consolidado completado en {t4-t3:.2f}s")
             
+            print(f"✅ Resultados exportados correctamente a: {output_dir}")
+            print(f"✅ Visualizaciones generadas en: {output_charts}")
+            print(f"✅ Análisis por subperíodos en: {subperiods_dir}")
         else:
             logging.warning("No se generaron resultados para guardar")
             

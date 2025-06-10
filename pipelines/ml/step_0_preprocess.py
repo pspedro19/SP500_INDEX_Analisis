@@ -1,10 +1,11 @@
+##step_0_preprocess.py
 #pip install openpyxl
-
 # ## MyInvesting Copy-Paste
 
 import pandas as pd
 import numpy as np
 import os
+from pathlib import Path
 import re
 import time
 import logging
@@ -132,16 +133,7 @@ class EconomicDataProcessor:
 
     def process_file(self, config_row):
         """
-        Procesa un archivo individual:
-          - Lee el archivo (se usa estrategia especial para US_Leading_EconIndex).
-          - Convierte la columna 'Release Date' robustamente.
-          - Detecta y convierte la columna target a numérico.
-          - Renombra la columna de valor usando el patrón:
-                {target_col}_{variable}_{tipo_macro}
-          - Selecciona solo las columnas 'fecha' y la columna renombrada.
-
-        Returns:
-            tuple: (variable, DataFrame procesado) o (variable, None) en caso de error.
+        Procesa un archivo individual con manejo robusto de formatos numéricos.
         """
         variable = config_row['Variable']
         macro_type = config_row['Tipo Macro']
@@ -214,9 +206,44 @@ class EconomicDataProcessor:
             self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
             return variable, None
 
-        # Convertir la columna target a numérico y descartar valores no válidos
-        df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
+        # FUNCIÓN MEJORADA: Convertir la columna target a numérico con manejo de formatos especiales
+        def convertir_valor_robusto(val):
+            """Maneja múltiples formatos numéricos incluyendo sufijos y símbolos"""
+            if pd.isna(val) or val == '':
+                return None
+                
+            # Convertir a string y limpiar
+            val_str = str(val).strip()
+            
+            # Manejar sufijos multiplicadores
+            multiplicador = 1
+            if val_str.endswith('B') or val_str.endswith('b'):  # Billones
+                multiplicador = 1e9
+                val_str = val_str[:-1].strip()
+            elif val_str.endswith('M') or val_str.endswith('m'):  # Millones
+                multiplicador = 1e6
+                val_str = val_str[:-1].strip()
+            elif val_str.endswith('K') or val_str.endswith('k'):  # Miles
+                multiplicador = 1e3
+                val_str = val_str[:-1].strip()
+                
+            # Eliminar porcentaje
+            if val_str.endswith('%'):
+                val_str = val_str[:-1].strip()
+                multiplicador *= 0.01  # Para convertir 5% a 0.05
+                
+            # Reemplazar comas por puntos (formato europeo)
+            val_str = val_str.replace(',', '.')
+            
+            try:
+                return float(val_str) * multiplicador
+            except ValueError:
+                return None
+        
+        # Aplicar la función de conversión robusta
+        df['valor'] = df[target_col].apply(convertir_valor_robusto)
         df = df.dropna(subset=['valor'])
+        
         if df.empty:
             self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
             return variable, None
@@ -372,6 +399,7 @@ def run_economic_data_processor(config_file=os.path.join(PROJECT_ROOT, 'pipeline
 # Ejemplo de uso
 if __name__ == "__main__":
     success = run_economic_data_processor()
+    print(f"Proceso {'completado exitosamente' if success else 'finalizado con errores'}")
 
 # ## MyInvesting Normal
 
@@ -562,7 +590,7 @@ class MyinvestingreportNormal:
     validación para evitar interpretaciones erróneas (como fechas en abril cuando
     los datos crudos solo llegan hasta marzo).
     """
-    def __init__(self, config_file, data_root='data/raw', log_file='myinvestingreportnormal.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='myinvestingreportnormal.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -961,6 +989,7 @@ def ejecutar_myinvestingreportnormal(
 
 if __name__ == "__main__":
     resultado = ejecutar_myinvestingreportnormal()
+    print(f"Proceso {'completado exitosamente' if resultado else 'finalizado con errores'}")
 
 # ## FRED-NORMAL
 
@@ -1005,7 +1034,7 @@ class FredDataProcessor:
       - Genera un índice diario global y usa merge_asof para imputar los datos (forward fill).
     """
 
-    def __init__(self, config_file, data_root='data/raw', log_file='freddataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='freddataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -1222,7 +1251,7 @@ class FredDataProcessor:
             self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
             return variable, None
 
-        df['valor'] = pd.to_numeric(df[target_col], errors='coerce')
+        df['valor'] = df[target_col].astype(str).str.replace(',', '.').str.replace('%', '').astype(float)
         df = df.dropna(subset=['valor'])
         if df.empty:
             self.logger.error(f"No se encontraron valores válidos para '{target_col}' en {ruta}")
@@ -1371,6 +1400,7 @@ def run_fred_data_processor(
 # Ejemplo de uso
 if __name__ == "__main__":
     success = run_fred_data_processor()
+    print(f"Proceso {'completado exitosamente' if success else 'finalizado con errores'}")
 
 # ## Other
 
@@ -1451,7 +1481,7 @@ class OtherDataProcessor:
     """
     Clase para procesar datos de la fuente "Other" usando scripts personalizados.
     """
-    def __init__(self, config_file, data_root='data/raw', log_file='otherdataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='otherdataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -1467,7 +1497,6 @@ class OtherDataProcessor:
         self.data_paths = {
             'US_Empire_State_Index': os.path.join('business_confidence', 'US_Empire_State_Index.csv'),
             'AAII_Investor_Sentiment': os.path.join('consumer_confidence', 'AAII_Investor_Sentiment.xls'),
-            'Put_Call_Ratio_SPY': os.path.join('consumer_confidence', 'Put_Call_Ratio_SPY.csv'),
             'Chicago_Fed_NFCI': os.path.join('leading_economic_index', 'Chicago_Fed_NFCI.csv')
         }
 
@@ -2279,8 +2308,6 @@ class OtherDataProcessor:
             return self.procesar_empire_state_manualmente(variable, tipo_macro, target_col)
         elif variable == 'AAII_Investor_Sentiment':
             return self.procesar_aaii_investor_sentiment(variable, tipo_macro, target_col)
-        elif variable == 'Put_Call_Ratio_SPY':
-            return self.procesar_put_call_ratio(variable, tipo_macro, target_col) 
         elif variable == 'Chicago_Fed_NFCI':
             return self.procesar_chicago_fed_manualmente(variable, tipo_macro, target_col)
         else:
@@ -2618,6 +2645,7 @@ def ejecutar_otherdataprocessor(
 # Ejemplo de uso
 if __name__ == "__main__":
     resultado = ejecutar_otherdataprocessor()
+    print(f"Proceso {'completado exitosamente' if resultado else 'finalizado con errores'}")
 
 import pandas as pd
 import numpy as np
@@ -2693,7 +2721,7 @@ class OtherDataProcessor:
     """
     Clase para procesar datos de la fuente "Other" usando scripts personalizados.
     """
-    def __init__(self, config_file, data_root='data/raw', log_file='otherdataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='otherdataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -2709,7 +2737,6 @@ class OtherDataProcessor:
         self.data_paths = {
             'US_Empire_State_Index': os.path.join('business_confidence', 'US_Empire_State_Index.csv'),
             'AAII_Investor_Sentiment': os.path.join('consumer_confidence', 'AAII_Investor_Sentiment.xls'),
-            'Put_Call_Ratio_SPY': os.path.join('consumer_confidence', 'Put_Call_Ratio_SPY.csv'),
             'Chicago_Fed_NFCI': os.path.join('leading_economic_index', 'Chicago_Fed_NFCI.csv')
         }
 
@@ -3261,8 +3288,6 @@ class OtherDataProcessor:
             return self.procesar_empire_state_manualmente(variable, tipo_macro, target_col)
         elif variable == 'AAII_Investor_Sentiment':
             return self.procesar_aaii_investor_sentiment(variable, tipo_macro, target_col)
-        elif variable == 'Put_Call_Ratio_SPY':
-            return self.procesar_put_call_ratio(variable, tipo_macro, target_col) 
         elif variable == 'Chicago_Fed_NFCI':
             return self.procesar_chicago_fed_manualmente(variable, tipo_macro, target_col)
         else:
@@ -3511,6 +3536,7 @@ def ejecutar_otherdataprocessor(
 # Ejemplo de uso
 if __name__ == "__main__":
     resultado = ejecutar_otherdataprocessor()
+    print(f"Proceso {'completado exitosamente' if resultado else 'finalizado con errores'}")
 
 # ## Categorizar Columnas
 
@@ -3549,11 +3575,21 @@ def categorize_column(col_name: str) -> str:
     return "Sin categoría"
 
 def main():
-    # Intentar leer el archivo Excel
+    # 1) Determinar la ruta del repositorio (dos niveles arriba de este archivo)
+    script_dir = Path(__file__).resolve().parent
+    repo_root = script_dir.parent.parent
+
+    # 2) Construir la ruta relativa al Excel
+    merge_path = repo_root / "Data" / "1_preprocess" / "MERGEDEXCELS.xlsx"
+
+    # 3) Intentar leer el archivo Excel
     try:
-        df = pd.read_excel("MERGEDEXCELS.xlsx")
+        df = pd.read_excel(merge_path, engine="openpyxl")
         columns = df.columns.tolist()
-        logging.info("Archivo Excel cargado exitosamente.")
+        logging.info(f"Archivo Excel cargado exitosamente desde {merge_path}")
+    except FileNotFoundError:
+        logging.error(f"No se encontró el fichero: {merge_path}")
+        return
     except Exception as e:
         logging.error("Error al leer el archivo Excel: %s", e)
         return
@@ -3568,10 +3604,1132 @@ def main():
 
     # Imprimir el resultado en el formato solicitado
     for category, cols in grouped_columns.items():
+        print(f"columnas encontradas para {category}:")
         for col in cols:
+            print(col)
+        print()  # Línea en blanco para separar grupos
 
     logging.info("Proceso completado exitosamente.")
 
+# =============================================================================
+# BANCO REPÚBLICA PROCESSOR - INTEGRADO
+# Agregar este código al final de step_0_preprocess.py (antes del if __name__)
+# =============================================================================
+
+class BancoRepublicaProcessor:
+    """
+    🤖 PROCESADOR AUTOMÁTICO para archivos del Banco de la República
+    INTEGRADO directamente en step_0_preprocess.py
+    
+    ✅ COMPLETAMENTE AUTOMÁTICO: Detecta y procesa cualquier archivo Excel del Banco República
+    ✅ BUSCA EN SUBCARPETAS: Recorre todas las carpetas categorizadas automáticamente
+    ✅ FORMATO COLOMBIANO: Maneja dd/mm/aaaa y comas como decimales
+    ✅ INTEGRACIÓN TOTAL: Mismo patrón que los otros procesadores del sistema
+    """
+    
+    def __init__(self, data_root='data/0_raw', log_file='banco_republica.log'):
+        self.data_root = data_root
+        self.logger = configurar_logging(log_file)
+        self.global_min_date = None
+        self.global_max_date = None
+        self.daily_index = None
+        self.processed_data = {}
+        self.final_df = None
+        self.stats = {}
+        self.discovered_files = []
+        
+        self.logger.info("=" * 80)
+        self.logger.info("🤖 BANCO REPÚBLICA PROCESSOR - AUTOMÁTICO (INTEGRADO)")
+        self.logger.info(f"Directorio de datos: {data_root}")
+        self.logger.info(f"Fecha y hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        self.logger.info("=" * 80)
+
+    def detect_banco_republica_file(self, file_path):
+        """🔍 DETECCIÓN AUTOMÁTICA: ¿Es un archivo del Banco República?"""
+        try:
+            df = pd.read_excel(file_path, sheet_name=0, header=None, nrows=10)
+            indicators = 0
+            
+            # 1. Primera columna contiene "Fecha"
+            if 'fecha' in str(df.iloc[0, 0]).lower():
+                indicators += 2
+                
+            # 2. Formato típico dd/mm/aaaa
+            if 'dd/mm/aaaa' in str(df.iloc[1, 0]):
+                indicators += 3
+                
+            # 3. Datos con formato colombiano (comas)
+            sample_value = str(df.iloc[2, 1]) if len(df.columns) > 1 else ""
+            if ',' in sample_value and any(c.isdigit() for c in sample_value):
+                indicators += 2
+                
+            # 4. Pie de página "Descargado de sistema del Banco..."
+            try:
+                bottom_df = pd.read_excel(file_path, sheet_name=0, header=None, skiprows=max(0, len(df)-5))
+                for _, row in bottom_df.iterrows():
+                    if any('descargado' in str(cell).lower() for cell in row if pd.notna(cell)):
+                        indicators += 3
+                        break
+            except:
+                pass
+            
+            return indicators >= 5
+            
+        except Exception:
+            return False
+
+    def auto_discover_files(self):
+        """🔍 DESCUBRIMIENTO AUTOMÁTICO en todas las subcarpetas categorizadas"""
+        self.logger.info("🔍 Buscando archivos del Banco de la República en subcarpetas...")
+        
+        discovered = []
+        
+        # Buscar recursivamente en TODAS las subcarpetas
+        for root, dirs, files in os.walk(self.data_root):
+            for file in files:
+                if file.endswith(('.xlsx', '.xls')) and not file.startswith('~'):
+                    file_path = os.path.join(root, file)
+                    
+                    if self.detect_banco_republica_file(file_path):
+                        variable_name = Path(file).stem
+                        target_col, macro_type = self.extract_file_info(file_path)
+                        
+                        discovered.append({
+                            'Variable': variable_name,
+                            'Archivo': file_path,
+                            'TARGET': target_col,
+                            'Tipo_Macro': macro_type,
+                            'Carpeta': os.path.basename(os.path.dirname(file_path))
+                        })
+        
+        self.discovered_files = discovered
+        self.logger.info(f"✅ Encontrados {len(discovered)} archivos del Banco República:")
+        
+        for file_info in discovered:
+            self.logger.info(f"   📁 {file_info['Carpeta']}/{file_info['Variable']} → {file_info['Tipo_Macro']}")
+        
+        return discovered
+
+    def extract_file_info(self, file_path):
+        """📊 EXTRACCIÓN AUTOMÁTICA usando carpeta + contenido"""
+        try:
+            df = pd.read_excel(file_path, sheet_name=0, header=None, nrows=3)
+            target_col = str(df.iloc[0, 1]) if len(df.columns) > 1 else "valor"
+            
+            # Usar nombre de carpeta como clasificador principal
+            folder_name = os.path.basename(os.path.dirname(file_path)).lower()
+            
+            folder_to_macro = {
+                'bond': 'bond',
+                'business_confidence': 'business_confidence', 
+                'car_registrations': 'car_registrations',
+                'comm_loans': 'comm_loans',
+                'commodities': 'commodities',
+                'consumer_confidence': 'consumer_confidence',
+                'economics': 'economics',
+                'exchange_rate': 'exchange_rate',
+                'exports': 'exports',
+                'index_pricing': 'index_pricing',
+                'leading_economic_index': 'leading_economic_index',
+                'unemployment_rate': 'unemployment_rate'
+            }
+            
+            if folder_name in folder_to_macro:
+                macro_type = folder_to_macro[folder_name]
+            else:
+                # Fallback: clasificación por contenido
+                header_text = target_col.lower()
+                if any(term in header_text for term in ['colcap', 'índice', 'bursátil']):
+                    macro_type = 'index_pricing'
+                elif any(term in header_text for term in ['tasa de cambio', 'itcr']):
+                    macro_type = 'exchange_rate'
+                elif any(term in header_text for term in ['reservas', 'internacional']):
+                    macro_type = 'exchange_rate'
+                elif any(term in header_text for term in ['balanza', 'cuenta', 'inversión']):
+                    macro_type = 'economics'
+                else:
+                    macro_type = 'economics'
+                
+            return target_col, macro_type
+            
+        except Exception:
+            return "valor", "economics"
+
+    def convert_colombian_date(self, date_str):
+        """📅 Conversión de fechas formato colombiano"""
+        if pd.isna(date_str) or not isinstance(date_str, str):
+            return None
+        try:
+            return pd.to_datetime(date_str, format='%d/%m/%Y', dayfirst=True)
+        except:
+            try:
+                return pd.to_datetime(date_str, dayfirst=True)
+            except:
+                return None
+
+    def convert_colombian_number(self, value_str):
+        """💰 Conversión de números formato colombiano"""
+        if pd.isna(value_str):
+            return None
+        if isinstance(value_str, (int, float)):
+            return float(value_str)
+        if not isinstance(value_str, str):
+            return None
+            
+        value_str = str(value_str).strip()
+        if value_str in ['-', '', 'N/A', 'n/a']:
+            return None
+            
+        try:
+            # Formato colombiano: 1.234.567,89 → 1234567.89
+            if '.' in value_str and ',' in value_str:
+                value_str = value_str.replace('.', '').replace(',', '.')
+            elif ',' in value_str and '.' not in value_str:
+                value_str = value_str.replace(',', '.')
+            elif '.' in value_str and ',' not in value_str:
+                if value_str.count('.') == 1 and len(value_str.split('.')[1]) <= 2:
+                    pass  # Es decimal
+                else:
+                    value_str = value_str.replace('.', '')  # Separador de miles
+            return float(value_str)
+        except (ValueError, TypeError):
+            return None
+
+    def process_file_automatically(self, file_info):
+        """⚡ Procesamiento automático de un archivo"""
+        variable = file_info['Variable']
+        target_col = file_info['TARGET']
+        macro_type = file_info['Tipo_Macro']
+        file_path = file_info['Archivo']
+        
+        self.logger.info(f"\n📊 Procesando: {variable}")
+        self.logger.info(f"   📁 Carpeta: {file_info['Carpeta']}")
+        self.logger.info(f"   🎯 TARGET: {target_col}")
+        self.logger.info(f"   📂 Tipo: {macro_type}")
+        
+        try:
+            df = pd.read_excel(file_path, sheet_name=0, header=None)
+            
+            # Saltar headers y limpiar datos
+            data_rows = df.iloc[2:].copy()
+            data_rows = data_rows.dropna(subset=[0])
+            data_rows = data_rows[~data_rows[0].astype(str).str.contains('Descargado|descargado', na=False)]
+            
+            if len(data_rows) == 0:
+                self.logger.error(f"❌ No hay datos válidos en {variable}")
+                return variable, None
+            
+            # Procesamiento automático: fecha (A) + valor (B)
+            result_df = pd.DataFrame()
+            result_df['fecha'] = data_rows[0].apply(self.convert_colombian_date)
+            result_df = result_df.dropna(subset=['fecha'])
+            
+            if len(data_rows.columns) > 1:
+                # Nombre estandarizado compatible con sistema principal
+                clean_name = re.sub(r'[^\w\s]', '', target_col).replace(' ', '_')[:50]
+                nuevo_nombre = f"{clean_name}_{variable}_{macro_type}"
+                
+                result_df[nuevo_nombre] = data_rows[1].apply(self.convert_colombian_number)
+                result_df = result_df.dropna(subset=[nuevo_nombre])
+            
+            result_df = result_df.sort_values('fecha')
+            
+            if len(result_df) == 0:
+                self.logger.error(f"❌ Sin valores válidos: {variable}")
+                return variable, None
+            
+            # Actualizar fechas globales
+            current_min = result_df['fecha'].min()
+            current_max = result_df['fecha'].max()
+            
+            if self.global_min_date is None or current_min < self.global_min_date:
+                self.global_min_date = current_min
+            if self.global_max_date is None or current_max > self.global_max_date:
+                self.global_max_date = current_max
+            
+            # Estadísticas (formato compatible)
+            self.stats[variable] = {
+                'macro_type': macro_type,
+                'target_column': target_col,
+                'total_rows': len(result_df),
+                'valid_values': result_df.iloc[:, 1].notna().sum(),
+                'coverage': 100.0,
+                'date_min': current_min,
+                'date_max': current_max,
+                'nuevo_nombre': nuevo_nombre
+            }
+            
+            self.logger.info(f"   ✅ {len(result_df)} valores válidos")
+            self.logger.info(f"   📅 {current_min.strftime('%Y-%m-%d')} a {current_max.strftime('%Y-%m-%d')}")
+            
+            return variable, result_df
+            
+        except Exception as e:
+            self.logger.error(f"❌ Error procesando {variable}: {str(e)}")
+            return variable, None
+
+    def generate_daily_index(self):
+        """📅 Generar índice diario"""
+        if self.global_min_date is None or self.global_max_date is None:
+            self.logger.error("❌ No se pudieron determinar fechas globales")
+            return None
+            
+        self.daily_index = pd.DataFrame({
+            'fecha': pd.date_range(start=self.global_min_date, end=self.global_max_date, freq='D')
+        })
+        
+        self.logger.info(f"📅 Índice diario: {len(self.daily_index)} días")
+        return self.daily_index
+
+    def combine_data(self):
+        """🔗 Combinar datos con merge_asof"""
+        if self.daily_index is None:
+            return None
+            
+        combined = self.daily_index.copy()
+        
+        for variable, df in self.processed_data.items():
+            if df is None or df.empty:
+                continue
+                
+            df = df.sort_values('fecha')
+            df_daily = pd.merge_asof(combined, df, on='fecha', direction='backward')
+            col_name = self.stats[variable]['nuevo_nombre']
+            df_daily[col_name] = df_daily[col_name].ffill()
+            combined = combined.merge(df_daily[['fecha', col_name]], on='fecha', how='left')
+                                   
+        self.final_df = combined
+        self.logger.info(f"🔗 Datos combinados: {len(self.final_df)} filas, {len(self.final_df.columns)} columnas")
+        return self.final_df
+
+    def save_results(self, output_file):
+        """💾 Guardar resultados"""
+        if self.final_df is None:
+            self.logger.error("❌ No hay datos para guardar")
+            return False
+            
+        try:
+            with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
+                self.final_df.to_excel(writer, sheet_name='Datos Diarios', index=False)
+                df_stats = pd.DataFrame(self.stats).T
+                df_stats.to_excel(writer, sheet_name='Estadisticas')
+                
+                meta = {
+                    'Proceso': ['BancoRepublicaProcessor'],
+                    'Fecha de proceso': [datetime.now().strftime('%Y-%m-%d %H:%M:%S')],
+                    'Total indicadores': [len(self.stats)],
+                    'Periodo': [f"{self.global_min_date.strftime('%Y-%m-%d')} a {self.global_max_date.strftime('%Y-%m-%d')}"],
+                    'Total días': [len(self.daily_index)]
+                }
+                pd.DataFrame(meta).to_excel(writer, sheet_name='Metadatos', index=False)
+                
+            self.logger.info(f"💾 Archivo guardado: {output_file}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"❌ Error guardando: {str(e)}")
+            return False
+
+    def run(self, output_file):
+        """🚀 Ejecutar proceso completo"""
+        start_time = time.time()
+        
+        if not self.auto_discover_files():
+            self.logger.error("❌ No se encontraron archivos del Banco República")
+            return False
+        
+        for file_info in self.discovered_files:
+            var, df_processed = self.process_file_automatically(file_info)
+            self.processed_data[var] = df_processed
+        
+        successful = len([df for df in self.processed_data.values() if df is not None])
+        if successful == 0:
+            self.logger.error("❌ No se procesó ningún archivo correctamente")
+            return False
+        
+        self.generate_daily_index()
+        self.combine_data()
+        result = self.save_results(output_file)
+        
+        end_time = time.time()
+        self.logger.info(f"\n⏱️  Tiempo: {end_time - start_time:.2f} segundos")
+        self.logger.info(f"✅ Archivos procesados: {successful}")
+        self.logger.info(f"🎯 Estado: {'COMPLETADO' if result else 'ERROR'}")
+        
+        return result
+
+# FUNCIÓN INTEGRADA para usar como las otras
+def ejecutar_banco_republica_processor(
+    config_file=os.path.join(PROJECT_ROOT, 'pipelines/Data Engineering.xlsx'),
+    output_file=os.path.join(PROJECT_ROOT, 'data/0_raw/datos_banco_republica_procesados.xlsx'),
+    data_root=os.path.join(PROJECT_ROOT, 'data/0_raw'),
+    log_file=os.path.join(PROJECT_ROOT, 'logs/banco_republica.log')
+):
+    """
+    🤖 PROCESADOR DEL BANCO REPÚBLICA - INTEGRADO
+    Función que sigue el mismo patrón que las otras del sistema
+    
+    ✅ Busca automáticamente en todas las subcarpetas categorizadas
+    ✅ Detecta y procesa archivos del Banco República automáticamente
+    ✅ Genera Excel independiente con misma estructura que los otros
+    """
+    processor = BancoRepublicaProcessor(data_root, log_file)
+    return processor.run(output_file)
+
+# FUNCIÓN PARA EJECUTAR TODOS LOS PROCESADORES (incluyendo Banco República)
+def ejecutar_todos_los_procesadores():
+    """
+    🚀 Ejecuta TODOS los procesadores del sistema:
+    1. MyInvesting Copy-Paste
+    2. MyInvesting Normal  
+    3. FRED Data
+    4. Other Data
+    5. 🆕 Banco República (AUTOMÁTICO)
+    
+    Mantiene los 5 Excel separados como está originalmente
+    """
+    print("🚀 Ejecutando TODOS los procesadores de datos económicos...")
+    print("=" * 70)
+    
+    resultados = {}
+    
+    # 1. MyInvesting Copy-Paste
+    print("\n1️⃣ MyInvesting Copy-Paste...")
+    try:
+        success1 = run_economic_data_processor()
+        resultados['MyInvesting CP'] = success1
+        print("✅ Completado" if success1 else "❌ Error")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        resultados['MyInvesting CP'] = False
+    
+    # 2. MyInvesting Normal
+    print("\n2️⃣ MyInvesting Normal...")
+    try:
+        success2 = ejecutar_myinvestingreportnormal()
+        resultados['MyInvesting Normal'] = success2
+        print("✅ Completado" if success2 else "❌ Error")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        resultados['MyInvesting Normal'] = False
+    
+    # 3. FRED Data
+    print("\n3️⃣ FRED Data...")
+    try:
+        success3 = run_fred_data_processor()
+        resultados['FRED'] = success3
+        print("✅ Completado" if success3 else "❌ Error")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        resultados['FRED'] = False
+    
+    # 4. Other Data
+    print("\n4️⃣ Other Data...")
+    try:
+        success4 = ejecutar_otherdataprocessor()
+        resultados['Other'] = success4
+        print("✅ Completado" if success4 else "❌ Error")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        resultados['Other'] = False
+    
+    # 5. 🆕 Banco República
+    print("\n5️⃣ 🆕 Banco República (AUTOMÁTICO)...")
+    try:
+        success5 = ejecutar_banco_republica_processor()
+        resultados['Banco República'] = success5
+        print("✅ Completado" if success5 else "❌ Error")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        resultados['Banco República'] = False
+    
+    # Resumen final
+    print("\n" + "=" * 70)
+    print("📊 RESUMEN FINAL")
+    print("=" * 70)
+    
+    exitosos = sum(resultados.values())
+    total = len(resultados)
+    
+    print(f"📈 Procesadores exitosos: {exitosos}/{total}")
+    print(f"\n📁 Archivos generados:")
+    
+    archivos_esperados = [
+        "datos_economicos_procesados_cp.xlsx",
+        "datos_economicos_normales_procesados.xlsx", 
+        "datos_economicos_procesados_Fred.xlsx",
+        "datos_economicos_other_procesados.xlsx",
+        "datos_banco_republica_procesados.xlsx"
+    ]
+    
+    for i, (nombre, success) in enumerate(resultados.items()):
+        icono = "✅" if success else "❌"
+        archivo = archivos_esperados[i] if success else "No generado"
+        print(f"   {icono} {nombre}: {archivo}")
+    
+    print(f"\n🎯 Estado general: {'EXITOSO' if exitosos >= 3 else 'PARCIAL' if exitosos > 0 else 'FALLIDO'}")
+    print(f"📂 Ubicación: data/0_raw/")
+    
+    return exitosos >= 3
+
+
+
+# PROCESADOR DANE EXPORTACIONES - INTEGRADO AL SISTEMA
+# Agregar este código al archivo step_0_preprocess.py existente
+
+import pandas as pd
+import numpy as np
+import os
+import re
+import time
+import logging
+from datetime import datetime, timedelta
+from pathlib import Path
+import warnings
+warnings.filterwarnings('ignore')
+
+# CORRECCIÓN DANE PROCESSOR - Reemplazar en step_0_preprocess.py
+
+class DANEExportacionesProcessor:
+
+
+        import re
+        import time
+        import pandas as pd
+        from datetime import datetime
+        from pathlib import Path
+
+        def __init__(self, data_root='data/0_raw', log_file='dane_exportaciones.log'):
+            self.data_root = data_root
+            self.logger = configurar_logging(log_file)
+            self.global_min_date = None
+            self.global_max_date = None
+            self.daily_index = None
+            self.processed_data = {}
+            self.final_df = None
+            self.stats = {}
+            self.discovered_files = []
+
+            self.logger.info("=" * 80)
+            self.logger.info("DANE EXPORTACIONES PROCESSOR")
+            self.logger.info(f"Directorio de datos: {data_root}")
+            self.logger.info(f"Fecha y hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            self.logger.info("=" * 80)
+        
+        def configurar_logging(log_file):
+            import logging
+            logging.basicConfig(
+                filename=log_file,
+                level=logging.INFO,
+                format='%(asctime)s [%(levelname)s] %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S'
+            )
+            return logging.getLogger(__name__)
+    
+        def detect_dane_exportaciones_file(self, file_path):
+            try:
+                df = pd.read_excel(file_path, sheet_name=0, header=None, nrows=15)
+                indicators = 0
+                for i in range(5):
+                    for j in range(df.shape[1]):
+                        cell_value = str(df.iloc[i, j]).upper()
+                        if 'DANE' in cell_value:
+                            indicators += 3
+                            break
+                for i in range(10):
+                    for j in range(df.shape[1]):
+                        cell_value = str(df.iloc[i, j]).lower()
+                        if 'exportaciones' in cell_value:
+                            indicators += 2
+                            break
+                for i in range(10, 20):
+                    if i < len(df):
+                        cell_value = str(df.iloc[i, 0]).lower().strip()
+                        if re.match(r'^[a-z]{3}-\d{2}$', cell_value):
+                            indicators += 3
+                            break
+                        if cell_value == 'mes':
+                            indicators += 3
+                            break
+                for i in range(15):
+                    for j in range(df.shape[1]):
+                        if i < len(df) and j < df.shape[1]:
+                            cell_value = str(df.iloc[i, j]).lower()
+                            if any(word in cell_value for word in ['café', 'carbón', 'petróleo', 'tradicionales']):
+                                indicators += 1
+                                break
+                return indicators >= 6
+            except Exception as e:
+                self.logger.warning(f"Error detectando archivo DANE: {e}")
+                return False
+
+        def auto_discover_files(self):
+            self.logger.info("Buscando archivos de exportaciones DANE...")
+            discovered = []
+            for root, dirs, files in os.walk(self.data_root):
+                for file in files:
+                    if file.endswith(('.xlsx', '.xls')) and not file.startswith('~'):
+                        file_path = os.path.join(root, file)
+                        if self.detect_dane_exportaciones_file(file_path):
+                            variable_name = Path(file).stem
+                            discovered.append({
+                                'Variable': variable_name,
+                                'Archivo': file_path,
+                                'TARGET': 'Total_Exportaciones_Tradicionales',
+                                'Tipo_Macro': 'exports',
+                                'Carpeta': os.path.basename(os.path.dirname(file_path))
+                            })
+            self.discovered_files = discovered
+            self.logger.info(f"Encontrados {len(discovered)} archivos DANE Exportaciones:")
+            for file_info in discovered:
+                self.logger.info(f"   Carpeta: {file_info['Carpeta']}/{file_info['Variable']}")
+            return discovered
+
+        def convert_colombian_number(self, value):
+            if pd.isna(value):
+                return None
+            if isinstance(value, (int, float)):
+                return float(value)
+            value = str(value).strip()
+            if value in ['-', '', 'N/A', 'n/a', '0']:
+                return None
+            try:
+                if '.' in value and ',' in value:
+                    value = value.replace('.', '').replace(',', '.')
+                elif ',' in value:
+                    value = value.replace(',', '.')
+                elif '.' in value:
+                    if value.count('.') == 1 and len(value.split('.')[1]) <= 2:
+                        pass
+                    else:
+                        value = value.replace('.', '')
+                return float(value)
+            except:
+                return None
+
+        def process_file_automatically(self, file_info):
+            variable = file_info['Variable']
+            target_col = file_info['TARGET']
+            macro_type = file_info['Tipo_Macro']
+            file_path = file_info['Archivo']
+
+            self.logger.info(f"\nProcesando: {variable}")
+            self.logger.info(f"   Archivo: {file_path}")
+            self.logger.info(f"   TARGET: {target_col}")
+
+            try:
+                df = pd.read_excel(file_path, sheet_name=0, header=None)
+
+                # Buscar la fila donde comienzan los datos
+                start_row = None
+                for i in range(len(df)):
+                    cell_value = str(df.iloc[i, 0]).lower().strip()
+                    if cell_value == 'mes':
+                        start_row = i + 1
+                        self.logger.info(f"   Encontrado header 'MES' en fila {i+1}, datos inician en fila {start_row+1}")
+                        break
+
+                if start_row is None:
+                    self.logger.error(f"No se encontró inicio de datos en {variable}")
+                    return variable, None
+
+                data_section = df.iloc[start_row:].copy()
+                data_section = data_section.reset_index(drop=True)
+
+                # Seleccionar solo las columnas relevantes
+                if 18 >= data_section.shape[1]:
+                    self.logger.error(f"El archivo {variable} no tiene columna 18 para total exportaciones.")
+                    return variable, None
+
+                df_filtered = data_section[[0, 18]].copy()
+                df_filtered.columns = ['fecha', 'total_exportaciones']
+
+                # Limpiar: eliminar totales, notas, fuentes, NaN
+                df_filtered = df_filtered[df_filtered['fecha'].notna()]
+                df_filtered = df_filtered[~df_filtered['fecha'].astype(str).str.lower().str.contains('total|nan|fuente|nota|actualizado')]
+                df_filtered['fecha'] = pd.to_datetime(df_filtered['fecha'], format='%b-%y', errors='coerce')
+                df_filtered = df_filtered[df_filtered['fecha'].notna()]
+                df_filtered['total_exportaciones'] = df_filtered['total_exportaciones'].apply(self.convert_colombian_number)
+                df_filtered = df_filtered.dropna(subset=['total_exportaciones'])
+
+                if df_filtered.empty:
+                    self.logger.error(f"No se encontraron datos válidos en {variable}")
+                    return variable, None
+
+                df_filtered = df_filtered.sort_values('fecha').reset_index(drop=True)
+                nuevo_nombre = f"{target_col}_{variable}_{macro_type}"
+                df_filtered.rename(columns={'total_exportaciones': nuevo_nombre}, inplace=True)
+
+                current_min = df_filtered['fecha'].min()
+                current_max = df_filtered['fecha'].max()
+                if self.global_min_date is None or current_min < self.global_min_date:
+                    self.global_min_date = current_min
+                if self.global_max_date is None or current_max > self.global_max_date:
+                    self.global_max_date = current_max
+
+                self.stats[variable] = {
+                    'macro_type': macro_type,
+                    'target_column': target_col,
+                    'total_rows': len(df_filtered),
+                    'valid_values': df_filtered[nuevo_nombre].notna().sum(),
+                    'coverage': 100.0,
+                    'date_min': current_min,
+                    'date_max': current_max,
+                    'nuevo_nombre': nuevo_nombre
+                }
+
+                self.logger.info(f"   EXITO: {len(df_filtered)} registros válidos procesados")
+                self.logger.info(f"   Periodo: {current_min.strftime('%Y-%m-%d')} a {current_max.strftime('%Y-%m-%d')}")
+
+                return variable, df_filtered
+
+            except Exception as e:
+                self.logger.error(f"Error procesando {variable}: {str(e)}")
+                return variable, None
+
+        def generate_daily_index(self):
+            if self.global_min_date is None or self.global_max_date is None:
+                self.logger.error("No se pudieron determinar fechas globales")
+                return None
+            self.daily_index = pd.DataFrame({
+                'fecha': pd.date_range(start=self.global_min_date, end=self.global_max_date, freq='D')
+            })
+            self.logger.info(f"Índice diario: {len(self.daily_index)} días")
+            return self.daily_index
+
+        def combine_data(self):
+            if self.daily_index is None:
+                return None
+            combined = self.daily_index.copy()
+            for variable, df in self.processed_data.items():
+                if df is None or df.empty:
+                    continue
+                df = df.sort_values('fecha')
+                df_daily = pd.merge_asof(combined, df, on='fecha', direction='backward')
+                col_name = self.stats[variable]['nuevo_nombre']
+                df_daily[col_name] = df_daily[col_name].ffill()
+                combined = combined.merge(df_daily[['fecha', col_name]], on='fecha', how='left')
+            self.final_df = combined
+            self.logger.info(f"Datos combinados: {len(self.final_df)} filas, {len(self.final_df.columns)} columnas")
+            return self.final_df
+
+        def save_results(self, output_file):
+            if self.final_df is None:
+                self.logger.error("No hay datos para guardar")
+                return False
+            try:
+                with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
+                    self.final_df.to_excel(writer, sheet_name='Datos Diarios', index=False)
+                    df_stats = pd.DataFrame(self.stats).T
+                    df_stats.to_excel(writer, sheet_name='Estadisticas')
+                    meta = {
+                        'Proceso': ['DANEExportacionesProcessor'],
+                        'Fecha de proceso': [datetime.now().strftime('%Y-%m-%d %H:%M:%S')],
+                        'Total indicadores': [len(self.stats)],
+                        'Periodo': [f"{self.global_min_date.strftime('%Y-%m-%d')} a {self.global_max_date.strftime('%Y-%m-%d')}"],
+                        'Total días': [len(self.daily_index)]
+                    }
+                    pd.DataFrame(meta).to_excel(writer, sheet_name='Metadatos', index=False)
+                self.logger.info(f"Archivo guardado: {output_file}")
+                return True
+            except Exception as e:
+                self.logger.error(f"Error guardando: {str(e)}")
+                return False
+
+        def run(self, output_file):
+            start_time = time.time()
+
+            if not self.auto_discover_files():
+                self.logger.error("No se encontraron archivos DANE Exportaciones")
+                return False
+
+            for file_info in self.discovered_files:
+                var, df_processed = self.process_file_automatically(file_info)
+                self.processed_data[var] = df_processed
+
+            successful = len([df for df in self.processed_data.values() if df is not None])
+            if successful == 0:
+                self.logger.error("No se procesó ningún archivo correctamente")
+                return False
+
+            self.generate_daily_index()
+            self.combine_data()
+            result = self.save_results(output_file)
+
+            end_time = time.time()
+            self.logger.info(f"\\nTiempo: {end_time - start_time:.2f} segundos")
+            self.logger.info(f"Archivos procesados: {successful}")
+            self.logger.info(f"Estado: {'COMPLETADO' if result else 'ERROR'}")
+
+            return result
+
+            
+
+        # FUNCIÓN INTEGRADA para usar con el sistema principal
+        def ejecutar_dane_exportaciones_processor(
+            config_file=None,  # No necesita configuración
+            output_file=os.path.join(PROJECT_ROOT, 'data/0_raw/datos_dane_exportaciones_procesados.xlsx'),
+            data_root=os.path.join(PROJECT_ROOT, 'data/0_raw'),
+            log_file=os.path.join(PROJECT_ROOT, 'logs/dane_exportaciones.log')
+        ):
+
+
+
+
+            """
+            🇨🇴 PROCESADOR DANE EXPORTACIONES - INTEGRADO
+            
+            ✅ Detecta automáticamente archivos de exportaciones DANE
+            ✅ Elimina totales anuales y filas en blanco
+            ✅ Convierte fechas mes-año a formato estándar
+            ✅ Compatible con sistema principal de procesamiento
+            """
+            processor = DANEExportacionesProcessor(data_root, log_file)
+            return processor.run(output_file)
+
+    
+   
+
+def ejecutar_dane_exportaciones_processor():
+    processor = DANEExportacionesProcessor(
+        data_root='data/0_raw',
+        log_file='logs/dane_exportaciones.log'
+    )
+    output_file = 'data/0_raw/datos_dane_exportaciones_procesadas.xlsx'
+    return processor.run(output_file)
+
+
+
+
+# MODIFICAR LA FUNCIÓN ejecutar_todos_los_procesadores() para incluir DANE
+def ejecutar_todos_los_procesadores_v2():
+    """
+    🚀 Ejecuta TODOS los procesadores del sistema (ACTUALIZADO):
+    1. MyInvesting Copy-Paste
+    2. MyInvesting Normal  
+    3. FRED Data
+    4. Other Data
+    5. Banco República (AUTOMÁTICO)
+    6. 🆕 DANE Exportaciones (AUTOMÁTICO)
+    
+    Mantiene los 6 Excel separados
+    """
+    print("🚀 Ejecutando TODOS los procesadores de datos económicos (ACTUALIZADO)...")
+    print("=" * 80)
+    
+    resultados = {}
+    
+    # 1-5. Procesadores originales (mismo código)
+    procesadores = [
+        ("1️⃣ MyInvesting Copy-Paste", run_economic_data_processor, 'MyInvesting CP'),
+        ("2️⃣ MyInvesting Normal", ejecutar_myinvestingreportnormal, 'MyInvesting Normal'),
+        ("3️⃣ FRED Data", run_fred_data_processor, 'FRED'),
+        ("4️⃣ Other Data", ejecutar_otherdataprocessor, 'Other'),
+        ("5️⃣ Banco República", ejecutar_banco_republica_processor, 'Banco República')
+    ]
+    
+    for nombre, funcion, clave in procesadores:
+        print(f"\n{nombre}...")
+        try:
+            success = funcion()
+            resultados[clave] = success
+            print("✅ Completado" if success else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados[clave] = False
+    
+    # 6. 🆕 DANE Exportaciones
+    print("\n6️⃣ 🆕 DANE Exportaciones (AUTOMÁTICO)...")
+    try:
+        success6 = ejecutar_dane_exportaciones_processor()
+        resultados['DANE Exportaciones'] = success6
+        print("✅ Completado" if success6 else "❌ Error")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        resultados['DANE Exportaciones'] = False
+    
+    # Resumen final
+    print("\n" + "=" * 80)
+    print("📊 RESUMEN FINAL (ACTUALIZADO)")
+    print("=" * 80)
+    
+    exitosos = sum(resultados.values())
+    total = len(resultados)
+    
+    print(f"📈 Procesadores exitosos: {exitosos}/{total}")
+    print(f"\n📁 Archivos generados:")
+    
+    archivos_esperados = [
+        "datos_economicos_procesados_cp.xlsx",
+        "datos_economicos_normales_procesados.xlsx", 
+        "datos_economicos_procesados_Fred.xlsx",
+        "datos_economicos_other_procesados.xlsx",
+        "datos_banco_republica_procesados.xlsx",
+        "datos_dane_exportaciones_procesados.xlsx"
+    ]
+    
+    for i, (nombre, success) in enumerate(resultados.items()):
+        icono = "✅" if success else "❌"
+        archivo = archivos_esperados[i] if success else "No generado"
+        print(f"   {icono} {nombre}: {archivo}")
+    
+    print(f"\n🎯 Estado general: {'EXITOSO' if exitosos >= 4 else 'PARCIAL' if exitosos > 0 else 'FALLIDO'}")
+    print(f"📂 Ubicación: data/0_raw/")
+    
+    return exitosos >= 4
+
+# INSTRUCCIONES DE INTEGRACIÓN:
+# 1. Agregar este código al final de step_0_preprocess.py
+# 2. Reemplazar ejecutar_todos_los_procesadores() con ejecutar_todos_los_procesadores_v2()
+# 3. Actualizar el if __name__ == "__main__" para incluir opción --dane
+
+
+
+# =============================================================================
+# MODIFICAR LA SECCIÓN if __name__ == "__main__" EXISTENTE
+# =============================================================================
+
+# Reemplazar el if __name__ == "__main__" existente con esto:
+# =============================================================================
+# SECCIÓN if __name__ == "__main__" ACTUALIZADA - INCLUYE DANE EXPORTACIONES
+# Reemplazar completamente la sección existente con este código
+# =============================================================================
+
+if __name__ == "__main__":
+    import sys
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--banco':
+            # Solo Banco República
+            print("🇨🇴 Ejecutando solo Banco República...")
+            success = ejecutar_banco_republica_processor()
+            print(f"Resultado: {'✅ Exitoso' if success else '❌ Error'}")
+            
+        elif sys.argv[1] == '--dane':
+            # Solo DANE Exportaciones
+            print("🇨🇴 Ejecutando solo DANE Exportaciones...")
+            success = ejecutar_dane_exportaciones_processor()
+            print(f"Resultado: {'✅ Exitoso' if success else '❌ Error'}")
+            
+        elif sys.argv[1] == '--originales':
+            # Solo procesadores originales (sin Banco República ni DANE)
+            print("Ejecutando solo procesadores originales...")
+            resultados = {}
+            
+            print("\n1️⃣ MyInvesting Copy-Paste...")
+            try:
+                success1 = run_economic_data_processor()
+                resultados['MyInvesting CP'] = success1
+                print("✅ Completado" if success1 else "❌ Error")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                resultados['MyInvesting CP'] = False
+            
+            print("\n2️⃣ MyInvesting Normal...")
+            try:
+                success2 = ejecutar_myinvestingreportnormal()
+                resultados['MyInvesting Normal'] = success2
+                print("✅ Completado" if success2 else "❌ Error")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                resultados['MyInvesting Normal'] = False
+            
+            print("\n3️⃣ FRED Data...")
+            try:
+                success3 = run_fred_data_processor()
+                resultados['FRED'] = success3
+                print("✅ Completado" if success3 else "❌ Error")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                resultados['FRED'] = False
+            
+            print("\n4️⃣ Other Data...")
+            try:
+                success4 = ejecutar_otherdataprocessor()
+                resultados['Other'] = success4
+                print("✅ Completado" if success4 else "❌ Error")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                resultados['Other'] = False
+            
+            exitosos = sum(resultados.values())
+            print(f"\nProcesadores originales completados: {exitosos}/4")
+            
+        elif sys.argv[1] == '--colombianos':
+            # Solo procesadores colombianos (Banco República + DANE)
+            print("🇨🇴 Ejecutando solo procesadores colombianos...")
+            resultados = {}
+            
+            print("\n1️⃣ Banco República...")
+            try:
+                success1 = ejecutar_banco_republica_processor()
+                resultados['Banco República'] = success1
+                print("✅ Completado" if success1 else "❌ Error")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                resultados['Banco República'] = False
+            
+            print("\n2️⃣ DANE Exportaciones...")
+            try:
+                success2 = ejecutar_dane_exportaciones_processor()
+                resultados['DANE Exportaciones'] = success2
+                print("✅ Completado" if success2 else "❌ Error")
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                resultados['DANE Exportaciones'] = False
+            
+            exitosos = sum(resultados.values())
+            print(f"\nProcesadores colombianos completados: {exitosos}/2")
+            
+        elif sys.argv[1] == '--help':
+            print("🚀 SISTEMA DE PROCESAMIENTO DE DATOS ECONÓMICOS")
+            print("=" * 60)
+            print("Opciones disponibles:")
+            print("  (sin argumentos)  : TODOS los procesadores (6 total)")
+            print("  --banco          : Solo Banco República")
+            print("  --dane           : Solo DANE Exportaciones")
+            print("  --originales     : Solo procesadores originales (4)")
+            print("  --colombianos    : Solo Banco República + DANE")
+            print("  --help           : Mostrar esta ayuda")
+            print("\n📁 Archivos generados en: data/0_raw/")
+            print("📊 Total procesadores disponibles: 6")
+            
+        else:
+            print("❌ Opción no reconocida. Usa --help para ver opciones disponibles")
+            
+    else:
+        # 🎯 COMPORTAMIENTO POR DEFECTO: TODOS LOS PROCESADORES (incluye DANE)
+        print("🚀 Ejecutando TODOS los procesadores por defecto...")
+        print("📊 Total: 6 procesadores (incluye Banco República + DANE Exportaciones)")
+        print("=" * 80)
+        
+        resultados = {}
+        
+        # 1. MyInvesting Copy-Paste
+        print("\n1️⃣ MyInvesting Copy-Paste...")
+        try:
+            success1 = run_economic_data_processor()
+            resultados['MyInvesting CP'] = success1
+            print("✅ Completado" if success1 else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados['MyInvesting CP'] = False
+        
+        # 2. MyInvesting Normal
+        print("\n2️⃣ MyInvesting Normal...")
+        try:
+            success2 = ejecutar_myinvestingreportnormal()
+            resultados['MyInvesting Normal'] = success2
+            print("✅ Completado" if success2 else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados['MyInvesting Normal'] = False
+        
+        # 3. FRED Data
+        print("\n3️⃣ FRED Data...")
+        try:
+            success3 = run_fred_data_processor()
+            resultados['FRED'] = success3
+            print("✅ Completado" if success3 else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados['FRED'] = False
+        
+        # 4. Other Data
+        print("\n4️⃣ Other Data...")
+        try:
+            success4 = ejecutar_otherdataprocessor()
+            resultados['Other'] = success4
+            print("✅ Completado" if success4 else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados['Other'] = False
+        
+        # 5. Banco República
+        print("\n5️⃣ 🇨🇴 Banco República (AUTOMÁTICO)...")
+        try:
+            success5 = ejecutar_banco_republica_processor()
+            resultados['Banco República'] = success5
+            print("✅ Completado" if success5 else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados['Banco República'] = False
+        
+        # 6. 🆕 DANE Exportaciones
+        print("\n6️⃣ 🆕 DANE Exportaciones (AUTOMÁTICO)...")
+        try:
+            success6 = ejecutar_dane_exportaciones_processor()
+            resultados['DANE Exportaciones'] = success6
+            print("✅ Completado" if success6 else "❌ Error")
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            resultados['DANE Exportaciones'] = False
+        
+        # Resumen final
+        print("\n" + "=" * 80)
+        print("📊 RESUMEN FINAL - TODOS LOS PROCESADORES")
+        print("=" * 80)
+        
+        exitosos = sum(resultados.values())
+        total = len(resultados)
+        
+        print(f"📈 Procesadores exitosos: {exitosos}/{total}")
+        print(f"\n📁 Archivos generados:")
+        
+        archivos_esperados = [
+            "datos_economicos_procesados_cp.xlsx",
+            "datos_economicos_normales_procesados.xlsx", 
+            "datos_economicos_procesados_Fred.xlsx",
+            "datos_economicos_other_procesados.xlsx",
+            "datos_banco_republica_procesados.xlsx",
+            "datos_dane_exportaciones_procesados.xlsx"
+        ]
+        
+        for i, (nombre, success) in enumerate(resultados.items()):
+            icono = "✅" if success else "❌"
+            archivo = archivos_esperados[i] if success else "No generado"
+            print(f"   {icono} {nombre}: {archivo}")
+        
+        print(f"\n🎯 Estado general: {'EXITOSO' if exitosos >= 4 else 'PARCIAL' if exitosos > 0 else 'FALLIDO'}")
+        print(f"📂 Ubicación: data/0_raw/")
+        print(f"🕐 Usa --help para ver todas las opciones disponibles")
+        
+        # También ejecutar la categorización de columnas si existe
+        try:
+            if 'main' in globals():
+                print(f"\n🏷️  Ejecutando categorización de columnas...")
+                main()
+        except Exception as e:
+            print(f"⚠️  Categorización omitida: {e}")
+
+# =============================================================================
+# INSTRUCCIONES FINALES
+# =============================================================================
+
+"""
+🎯 NUEVAS OPCIONES DE EJECUCIÓN:
+
+1. TODOS (por defecto):
+   python step_0_preprocess.py
+
+2. Solo procesadores originales:
+   python step_0_preprocess.py --originales
+
+3. Solo Banco República:
+   python step_0_preprocess.py --banco
+
+4. Solo DANE Exportaciones:
+   python step_0_preprocess.py --dane
+
+5. Solo procesadores colombianos:
+   python step_0_preprocess.py --colombianos
+
+6. Ver ayuda:
+   python step_0_preprocess.py --help
+
+📊 TOTAL PROCESADORES: 6
+📁 ARCHIVOS GENERADOS: 6 Excel independientes
+🇨🇴 PROCESADORES COLOMBIANOS: 2 (Banco República + DANE)
+"""
 if __name__ == "__main__":
     main()
-
