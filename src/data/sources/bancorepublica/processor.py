@@ -19,7 +19,7 @@ class BancoRepublicaProcessor:
     ✅ INTEGRACIÓN TOTAL: Mismo patrón que los otros procesadores del sistema
     """
     
-    def __init__(self, data_root='data/0_raw', log_file='banco_republica.log'):
+    def __init__(self, data_root='data/0_raw', log_file='logs/banco_republica.log'):
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
         self.global_min_date = None

@@ -17,7 +17,7 @@ class DANEExportacionesProcessor:
         from datetime import datetime
         from pathlib import Path
 
-        def __init__(self, data_root='data/0_raw', log_file='dane_exportaciones.log'):
+        def __init__(self, data_root='data/0_raw', log_file='logs/dane_exportaciones.log'):
             self.data_root = data_root
             self.logger = configurar_logging(log_file)
             self.global_min_date = None

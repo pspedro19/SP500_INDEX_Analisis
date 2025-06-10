@@ -15,7 +15,7 @@ class MyinvestingreportNormal:
     validación para evitar interpretaciones erróneas (como fechas en abril cuando
     los datos crudos solo llegan hasta marzo).
     """
-    def __init__(self, config_file, data_root='Data/raw', log_file='myinvestingreportnormal.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='logs/myinvestingreportnormal.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configure_logging(log_file)

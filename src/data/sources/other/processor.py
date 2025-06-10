@@ -12,7 +12,7 @@ class OtherDataProcessor:
     """
     Clase para procesar datos de la fuente "Other" usando scripts personalizados.
     """
-    def __init__(self, config_file, data_root='Data/raw', log_file='otherdataprocessor.log'):
+    def __init__(self, config_file, data_root='Data/raw', log_file='logs/otherdataprocessor.log'):
         self.config_file = config_file
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
@@ -1191,7 +1191,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Configuración de logging
-def configurar_logging(log_file='otherdataprocessor.log'):
+def configurar_logging(log_file='logs/otherdataprocessor.log'):
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s [%(levelname)s] %(message)s',

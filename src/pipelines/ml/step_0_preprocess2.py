@@ -27,7 +27,7 @@ import logging
 from datetime import datetime
 
 # 🧠 Definir logging UTF-8 compatible (antes de usarlo)
-def configurar_logging(log_file='eoe_universal_processor.log'):
+def configurar_logging(log_file='logs/eoe_universal_processor.log'):
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
@@ -86,7 +86,7 @@ class EconomiaProcessor:
         'octubre': '10-01', 'noviembre': '11-01', 'diciembre': '12-01'
     }
 
-    def __init__(self, search_paths=None, log_file='economia_processor.log'):
+    def __init__(self, search_paths=None, log_file='logs/economia_processor.log'):
         """Inicializar procesador unificado - RUTAS CORREGIDAS"""
         # Usar exactamente las mismas rutas que PIBProcessor
         self.search_paths = search_paths or [
@@ -503,7 +503,7 @@ class EconomiaProcessor:
 # =============================================================================
 
 def procesar_economia_integrada(pib_file=None, ise_file=None, output_file='economia_integrada.xlsx',
-                               search_paths=None, log_file='economia_processor.log'):
+                               search_paths=None, log_file='logs/economia_processor.log'):
     """
     🚀 Función principal para procesar PIB + ISE de forma unificada
     
@@ -533,8 +533,8 @@ def procesar_economia_integrada(pib_file=None, ise_file=None, output_file='econo
 # FUNCIÓN DE UTILIDAD PARA EL SISTEMA PRINCIPAL
 # =============================================================================
 
-def procesar_pib_trimestral(file_path=None, output_file='pib_diario_procesado.xlsx', 
-                           search_paths=None, log_file='pib_processor.log'):
+def procesar_pib_trimestral(file_path=None, output_file='pib_diario_procesado.xlsx',
+                           search_paths=None, log_file='logs/pib_processor.log'):
     """
     🚀 Función principal para procesar el PIB trimestral
     
@@ -582,7 +582,7 @@ class RemesasProcessor:
     Procesador de Excel de remesas: lee un archivo con columnas Fecha, Descripción y VALOR_REMESA,
     convierte la fecha, genera un índice diario, hace forward-fill y guarda resultados.
     """
-    def __init__(self, log_file='remesas_processor.log'):
+    def __init__(self, log_file='logs/remesas_processor.log'):
         # Configurar logging
         logging.basicConfig(
             level=logging.INFO,
@@ -789,7 +789,7 @@ class IEDProcessor:
         'Q4': '-10-01',
     }
 
-    def __init__(self, search_paths=None, log_file='ied_processor.log'):
+    def __init__(self, search_paths=None, log_file='logs/ied_processor.log'):
         self.search_paths = search_paths or ['data/0_raw', 'data/0_raw/bond', '.']
         logging.basicConfig(
             level=logging.INFO,
@@ -921,7 +921,7 @@ class EOEUniversalProcessor:
         # Configurar logging manualmente para usar UTF-8
 
 
-    def __init__(self, data_root='data/0_raw', log_file='eoe_universal_processor.log'):
+    def __init__(self, data_root='data/0_raw', log_file='logs/eoe_universal_processor.log'):
         self.data_root = data_root
         self.logger = configurar_logging(log_file)
         self.global_min_date = None
@@ -1588,7 +1588,7 @@ class TESProcessor:
     - TES pesos 10 años
     """
     
-    def __init__(self, log_file='tes_processor.log'):
+    def __init__(self, log_file='logs/tes_processor.log'):
         self.logger = self.configurar_logging(log_file)
         self.global_min_date = None
         self.global_max_date = None
@@ -2009,8 +2009,8 @@ def procesar_tasas_tes(file_path=None, output_file='datos_tes_procesados.xlsx'):
     processor = TESProcessor()
     return processor.run(file_path, output_file)
 
-def procesar_pib_trimestral(file_path=None, output_file='pib_diario_procesado.xlsx', 
-                           search_paths=None, log_file='pib_processor.log'):
+def procesar_pib_trimestral(file_path=None, output_file='pib_diario_procesado.xlsx',
+                           search_paths=None, log_file='logs/pib_processor.log'):
     """
     🚀 Función principal para procesar el PIB trimestral
     
@@ -2065,7 +2065,7 @@ def ejecutar_eoe_universal_processor(
         output_file = 'datos_eoe_universal_procesados.xlsx'
     
     if log_file is None:
-        log_file = 'eoe_universal_processor.log'
+        log_file = 'logs/eoe_universal_processor.log'
     
     # Crear directorios si no existen
     os.makedirs(os.path.dirname(output_file) if os.path.dirname(output_file) else '.', exist_ok=True)
@@ -2089,7 +2089,7 @@ def procesar_archivo_eoc_especifico(archivo_path, output_file=None):
     if output_file is None:
         output_file = 'EOC_procesado_3_variables.xlsx'
     
-    log_file = 'eoc_processor.log'
+    log_file = 'logs/eoc_processor.log'
     
     # Configurar logging
     logger = configurar_logging_eoe(log_file)
@@ -2156,7 +2156,7 @@ class IntegratedProcessor:
     Maneja ambos tipos de archivos de forma unificada
     """
     
-    def __init__(self, log_file='integrated_processor.log'):
+    def __init__(self, log_file='logs/integrated_processor.log'):
         self.logger = self.configurar_logging(log_file)
         self.results = {
             'tes': None,
@@ -2689,7 +2689,7 @@ if __name__ == "__main__":
 # SECCIÓN 2: EOE UNIVERSAL PROCESSOR - Índices de Confianza
 # =============================================================================
 
-def configurar_logging_eoe(log_file='eoe_universal_processor.log'):
+def configurar_logging_eoe(log_file='logs/eoe_universal_processor.log'):
     """Configuración del sistema de logging para EOE"""
     logging.basicConfig(
         level=logging.INFO,
