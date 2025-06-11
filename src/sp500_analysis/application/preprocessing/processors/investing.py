@@ -3,10 +3,12 @@ import re
 import time
 import pandas as pd
 from datetime import datetime, timedelta
+
+from sp500_analysis.application.preprocessing.base import BaseProcessor
 from sp500_analysis.shared.logging.logger import configurar_logging
 
 
-class InvestingProcessor:
+class InvestingProcessor(BaseProcessor):
     """
     Clase para procesar datos macroeconómicos con robustez en el manejo de fechas y
     forward filling de series de frecuencia (por ejemplo, mensuales a diarios).
@@ -20,9 +22,8 @@ class InvestingProcessor:
     """
 
     def __init__(self, config_file, data_root='data/0_raw', log_file='myinvestingreportcp.log'):
+        super().__init__(data_root=data_root, log_file=log_file)
         self.config_file = config_file
-        self.data_root = data_root
-        self.logger = configurar_logging(log_file)
         self.config_data = None
         self.global_min_date = None
         self.global_max_date = None
@@ -39,6 +40,9 @@ class InvestingProcessor:
         self.logger.info(f"Directorio raíz de datos: {data_root}")
         self.logger.info(f"Fecha y hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         self.logger.info("=" * 80)
+
+    def _validate_input(self, data):
+        return True
 
     def read_config(self):
         try:
@@ -338,20 +342,10 @@ class InvestingProcessor:
             self.logger.error(f"Error al guardar resultados: {e}")
             return False
 
-    def run(self, output_file='datos_economicos_procesados.xlsx'):
-        """
-        Ejecuta el proceso completo:
-          1. Lee la configuración.
-          2. Procesa cada archivo.
-          3. Determina el rango global de fechas.
-          4. Genera el índice diario.
-          5. Convierte cada serie a datos diarios y los combina.
-          6. Realiza un análisis de cobertura.
-          7. Guarda los resultados.
-        """
+    def _transform(self, data):
         start_time = time.time()
         if self.read_config() is None:
-            return False
+            return None
 
         for _, config_row in self.config_data.iterrows():
             var, df_processed = self.process_file(config_row)
@@ -359,16 +353,20 @@ class InvestingProcessor:
 
         if len([df for df in self.processed_data.values() if df is not None]) == 0:
             self.logger.error("No se procesó ningún archivo correctamente")
-            return False
+            return None
 
         self.generate_daily_index()
         self.combine_data()
         self.analyze_coverage()
-        result = self.save_results(output_file)
         end_time = time.time()
         self.logger.info("\nResumen de Ejecución:")
         self.logger.info(f"Tiempo de ejecución: {end_time - start_time:.2f} segundos")
         self.logger.info(f"Archivos procesados: {len(self.config_data)}")
-        self.logger.info(f"Archivo de salida: {output_file}")
-        self.logger.info(f"Estado: {'COMPLETADO' if result else 'ERROR'}")
-        return result
+        return self.final_df
+
+    def save(self, data, output_file):
+        self.final_df = data
+        return self.save_results(output_file)
+
+    def run(self, output_file='datos_economicos_procesados.xlsx'):
+        return super().run(None, output_file)
