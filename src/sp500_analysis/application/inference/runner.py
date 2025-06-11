@@ -248,7 +248,7 @@ def save_all_inference_results(
 
                 rmse = np.sqrt(mean_squared_error(df_eval["Valor_Real"], df_eval["Valor_Predicho"]))
                 metrics["RMSE"] = rmse
-            from sp500_analysis.shared.visualization.plotters import plot_forecast
+            from sp500_analysis.shared.visualization.time_series_plots import plot_forecast
             plot_forecast(
                 forecasts_df[name],
                 inference_date=res["date_inference"],

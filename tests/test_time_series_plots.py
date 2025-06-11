@@ -3,7 +3,7 @@ import pytest
 matplotlib = pytest.importorskip("matplotlib")
 matplotlib.use("Agg")
 import pandas as pd
-from sp500_analysis.shared.visualization.plotters import plot_real_vs_pred
+from sp500_analysis.shared.visualization.time_series_plots import plot_real_vs_pred
 
 
 def test_plot_real_vs_pred_returns_figure(tmp_path):
