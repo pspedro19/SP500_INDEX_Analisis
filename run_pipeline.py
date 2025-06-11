@@ -299,12 +299,12 @@ def main():
 
     # Definir los pasos del pipeline
     pipeline_steps = [
-        ("Paso 1: Merge de Excels", "pipelines/ml/step_1_merge_excels.py"),
-        ("Paso 2: Generación de Categorías", "pipelines/ml/step_2_generate_categories.py"),
-        ("Paso 3: Limpieza de Columnas", "pipelines/ml/step_3_clean_columns.py"),
-        ("Paso 4: Transformación de Features", "pipelines/ml/step_4_transform_features.py"),
-        ("Paso 5: Eliminación de Relaciones", "pipelines/ml/step_5_remove_relations.py"),
-        ("Paso 6: Selección FPI", "pipelines/ml/step_6_fpi_selection.py"),
+        ("Paso 1: Merge de Excels", "pipelines/ml/01_step_merge_excels.py"),
+        ("Paso 2: Generación de Categorías", "pipelines/ml/02_step_generate_categories.py"),
+        ("Paso 3: Limpieza de Columnas", "pipelines/ml/03_step_clean_columns.py"),
+        ("Paso 4: Transformación de Features", "pipelines/ml/04_step_transform_features.py"),
+        ("Paso 5: Eliminación de Relaciones", "pipelines/ml/05_step_remove_relations.py"),
+        ("Paso 6: Selección FPI", "pipelines/ml/06_step_fpi_selection.py"),
         (
             "Paso 7: Entrenamiento de Modelos",
             lambda: container.resolve("training_service").run_training(),
@@ -313,7 +313,7 @@ def main():
             "Paso 7.5: Ensamblado",
             lambda: container.resolve("ensemble_builder").build(),
         ),
-        ("Paso 8: Preparación de Salida", "pipelines/ml/step_8_prepare_output.py"),
+        ("Paso 8: Preparación de Salida", "pipelines/ml/08_step_prepare_output.py"),
         (
             "Paso 9: Backtest",
             lambda: container.resolve("evaluation_service").run_evaluation(),

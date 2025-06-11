@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 import logging
+import importlib
 from datetime import datetime
 from sp500_analysis.config.settings import settings
 from sp500_analysis.shared.logging.logger import configurar_logging
 
 
 try:  # pragma: no cover - heavy optional dependency
-    from pipelines.ml.step_0_preprocess import ejecutar_todos_los_procesadores
+    ejecutar_todos_los_procesadores = importlib.import_module(
+        "pipelines.ml.00_step_preprocess"
+    ).ejecutar_todos_los_procesadores
 except Exception:  # pragma: no cover - step may not be available
     ejecutar_todos_los_procesadores = None
 
@@ -20,7 +23,7 @@ class PreprocessingService:
         configurar_logging(str(log_file))
         logging.info("Running preprocessing service")
         if ejecutar_todos_los_procesadores is None:  # pragma: no cover - safeguard
-            logging.error("step_0_preprocess module not available")
+            logging.error("00_step_preprocess module not available")
             return False
         try:
             return ejecutar_todos_los_procesadores()
