@@ -213,7 +213,8 @@ pip install -r requirements.txt
 
 Este proyecto utiliza **GitHub Actions** para ejecutar automáticamente las
 pruebas y las tareas de linting en cada commit. El flujo de trabajo principal se
-encuentra en `.github/workflows/ci.yml`.
+encuentra en `.github/workflows/ci.yml` y ejecuta `pip install -e .[dev]`,
+`ruff check .`, `black --check .` y `pytest`.
 
 ### Ejecutar pruebas localmente
 
