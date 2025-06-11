@@ -28,6 +28,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
+        extra = "allow"
 
     def __init__(self, **data) -> None:  # noqa: D401 - pydantic init override
         """Populate defaults and derived paths after validation."""
@@ -106,9 +107,9 @@ class Settings(BaseSettings):
         self.csv_reports = self.csv_reports_dir
 
 
-@lru_cache()
+@lru_cache(maxsize=1)
 def get_settings() -> Settings:
-    """Return a cached Settings instance."""
+    """Return a cached singleton Settings instance."""
     return Settings()
 
 
