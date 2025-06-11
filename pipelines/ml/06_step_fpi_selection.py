@@ -3,11 +3,11 @@ import glob
 import random
 import numpy as np
 import pandas as pd
+from pandas import DataFrame
 import logging
 from sp500_analysis.shared.logging.logger import configurar_logging
 import time
 import matplotlib.pyplot as plt
-import seaborn as sns
 from datetime import datetime
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.preprocessing import StandardScaler
@@ -17,7 +17,6 @@ import pandas_market_calendars as mcal
 
 # Importar configuraciones centralizadas
 from sp500_analysis.config.settings import settings
-from pipelines.ml.config import ensure_directories
 
 PROJECT_ROOT = settings.project_root
 PROCESSED_DIR = settings.processed_dir
@@ -106,14 +105,15 @@ logging.info("=" * 80)
 # FUNCIONES AUXILIARES
 # ------------------------------
 
-def get_most_recent_file(directory, extension='.xlsx'):
+
+def get_most_recent_file(directory: str, extension: str = '.xlsx') -> str | None:
     """
     Obtiene el archivo más reciente en un directorio con la extensión especificada.
-    
+
     Args:
         directory (str): Ruta al directorio
         extension (str): Extensión del archivo incluyendo el punto
-        
+
     Returns:
         str: Ruta completa al archivo más reciente
     """
@@ -122,48 +122,59 @@ def get_most_recent_file(directory, extension='.xlsx'):
         return None
     return max(files, key=os.path.getmtime)
 
-def plot_cv_splits(X, tscv, output_path):
+
+def plot_cv_splits(
+    X: DataFrame,
+    tscv: TimeSeriesSplit,
+    output_path: str,
+) -> None:
     """
     Visualiza los splits de validación cruzada temporal.
-    
+
     Args:
         X (DataFrame): Features
         tscv (TimeSeriesSplit): Objeto de validación cruzada
         output_path (str): Ruta donde guardar el gráfico
     """
-    fig, ax = plt.figure(figsize=(15, 5)), plt.gca()
-    
+    fig, ax = plt.subplots(figsize=(15, 5))
+
     for i, (train_idx, val_idx) in enumerate(tscv.split(X)):
         # Graficar índices de entrenamiento
-        ax.scatter(train_idx, [i + 0.5] * len(train_idx), 
-                  c='blue', marker='_', s=40, label='Train' if i == 0 else "")
-        
+        ax.scatter(train_idx, [i + 0.5] * len(train_idx), c='blue', marker='_', s=40, label='Train' if i == 0 else "")
+
         # Graficar índices de validación
-        ax.scatter(val_idx, [i + 0.5] * len(val_idx), 
-                  c='red', marker='_', s=40, label='Validation' if i == 0 else "")
-        
+        ax.scatter(val_idx, [i + 0.5] * len(val_idx), c='red', marker='_', s=40, label='Validation' if i == 0 else "")
+
         # Añadir textos informativos
-        ax.text(X.shape[0] + 5, i + 0.5, f"Split {i+1}: {len(train_idx)} train, {len(val_idx)} val",
-               va='center', ha='left')
-    
+        ax.text(
+            X.shape[0] + 5, i + 0.5, f"Split {i+1}: {len(train_idx)} train, {len(val_idx)} val", va='center', ha='left'
+        )
+
     # Añadir leyenda y etiquetas
     ax.legend(loc='upper right')
     ax.set_xlabel('Índice de muestra')
     ax.set_yticks(range(1, CV_SPLITS + 1))
     ax.set_yticklabels([f'Split {i+1}' for i in range(CV_SPLITS)])
     ax.set_title(f'Validación Cruzada Temporal (CV_SPLITS={CV_SPLITS}, GAP={GAP})')
-    
+
     # Guardar gráfico
     plt.tight_layout()
     plt.savefig(output_path, dpi=300)
     plt.close()
-    
+
     logging.info(f"Gráfico de CV splits guardado en: {output_path}")
 
-def plot_performance_drift(features, drifts, selected, threshold, output_path):
+
+def plot_performance_drift(
+    features: list[str],
+    drifts: list[float] | dict[str, float],
+    selected: list[str],
+    threshold: float,
+    output_path: str,
+) -> None:
     """
     Visualiza los performance drifts de las features.
-    
+
     Args:
         features (list): Lista de nombres de features
         drifts (list): Lista de performance drifts
@@ -177,59 +188,63 @@ def plot_performance_drift(features, drifts, selected, threshold, output_path):
         drifts_list = [drifts.get(feature, 0) for feature in features]
     else:
         drifts_list = drifts
-        
+
     # Crear DataFrame con los datos
     df = pd.DataFrame({'feature': features, 'drift': drifts_list})
     df['selected'] = df['feature'].isin(selected)
     df = df.sort_values('drift', ascending=False)
-    
+
     # Crear gráfico
-    fig, ax = plt.subplots(figsize=(12, max(8, len(features)/5)))
-    
+    fig, ax = plt.subplots(figsize=(12, max(8, len(features) / 5)))
+
     # Graficar barras con colores según selección
     colors = ['green' if sel else 'red' for sel in df['selected']]
     bars = ax.barh(df['feature'], df['drift'], color=colors)
-    
+
     # Añadir línea de threshold
-    ax.axvline(x=threshold, color='black', linestyle='--', 
-              label=f'Threshold ({threshold:.4f})')
-    
+    ax.axvline(x=threshold, color='black', linestyle='--', label=f'Threshold ({threshold:.4f})')
+
     # Añadir etiquetas
     for i, bar in enumerate(bars):
         width = bar.get_width()
         label = f"{width:.4f}"
-        ax.text(width + 0.01, bar.get_y() + bar.get_height()/2, 
-               label, va='center', ha='left')
-    
+        ax.text(width + 0.01, bar.get_y() + bar.get_height() / 2, label, va='center', ha='left')
+
     # Configurar leyenda y etiquetas
     ax.legend()
     ax.set_xlabel('Performance Drift')
     ax.set_ylabel('Feature')
     ax.set_title('Performance Drift por Feature (FPI)')
-    
+
     # Guardar gráfico
     plt.tight_layout()
     plt.savefig(output_path, dpi=300)
     plt.close()
-    
+
     logging.info(f"Gráfico de performance drift guardado en: {output_path}")
 
 
-def select_features_fpi(X, y, cv_splits=CV_SPLITS, gap=GAP, threshold=THRESHOLD):
+def select_features_fpi(
+    X: pd.DataFrame,
+    y: pd.Series,
+    cv_splits: int = CV_SPLITS,
+    gap: int = GAP,
+    threshold: float = THRESHOLD,
+) -> tuple[list[str], list[float]]:
     """
     Realiza Feature Permutation Importance (FPI) usando CatBoostRegressor y SelectByShuffling.
     Usa un threshold para hacer la selección menos agresiva.
-    
+
     La validación usa TimeSeriesSplit con gap explícito para evitar data leakage,
     especialmente importante cuando hay features rezagadas o acumuladas.
-    
+
     Args:
         X (DataFrame): Features
         y (Series): Target
         cv_splits (int): Número de folds para cross-validation
         gap (int): Tamaño del gap en días entre train y valid (debe coincidir con horizonte)
         threshold (float): Valor límite para considerar una feature relevante
-        
+
     Returns:
         tuple: (lista de nombres de features seleccionadas, array con drift scores)
     """
@@ -240,52 +255,47 @@ def select_features_fpi(X, y, cv_splits=CV_SPLITS, gap=GAP, threshold=THRESHOLD)
     logging.info(f"[FPI] Dimensiones de datos - X: {X.shape}, y: {y.shape}")
     logging.info(f"[FPI] Rango de valores target - Min: {y.min():.6f}, Max: {y.max():.6f}, Mean: {y.mean():.6f}")
     logging.info(f"[FPI] Parámetros - CV splits: {cv_splits}, gap: {gap}, threshold: {threshold}")
-    
+
     # Validación temporal con gap explícito igual al horizonte de predicción
     tscv = TimeSeriesSplit(n_splits=cv_splits, gap=gap)
-    
+
     # Visualizar los splits de CV
     cv_plot_path = os.path.join(PLOTS_DIR, f"cv_splits_{timestamp}.png")
     plot_cv_splits(X, tscv, cv_plot_path)
-    
+
     # Log información detallada de los splits
     logging.info("[FPI] Detalle de los splits de validación cruzada temporal:")
     for i, (train_idx, val_idx) in enumerate(tscv.split(X)):
         train_start, train_end = min(train_idx), max(train_idx)
         val_start, val_end = min(val_idx), max(val_idx)
         train_size, val_size = len(train_idx), len(val_idx)
-        
+
         logging.info(f"[FPI] Split {i+1}:")
         logging.info(f"  - Train: {train_size} muestras (índices {train_start} a {train_end})")
         logging.info(f"  - Validation: {val_size} muestras (índices {val_start} a {val_end})")
         logging.info(f"  - Gap efectivo: {val_start - train_end - 1} muestras")
-    
+
     # Crear regressor con los parámetros definidos
     logging.info("[FPI] Configurando CatBoostRegressor con los siguientes parámetros:")
     for param, value in CATBOOST_PARAMS.items():
         logging.info(f"  - {param}: {value}")
-    
+
     regressor = CatBoostRegressor(**CATBOOST_PARAMS)
 
     # Configurar el selector
     logging.info(f"[FPI] Configurando SelectByShuffling con threshold={threshold}")
     logging.info(f"[FPI] Scorer utilizado: {SCORER}")
-    
-    selector = SelectByShuffling(
-        estimator=regressor,
-        scoring=SCORER,
-        cv=tscv,
-        threshold=threshold
-    )
+
+    selector = SelectByShuffling(estimator=regressor, scoring=SCORER, cv=tscv, threshold=threshold)
 
     # Iniciar proceso de fitting
     logging.info("[FPI] Iniciando proceso de fit con SelectByShuffling...")
     fit_start_time = time.time()
-    
+
     # Verificar por NaN o infinitos
     if X.isna().any().any() or np.isinf(X).any().any():
         logging.warning("[FPI] ⚠️ Detectados valores NaN o infinitos en X. Puede causar problemas.")
-        
+
     try:
         selector.fit(X, y)
         fit_time = time.time() - fit_start_time
@@ -297,22 +307,25 @@ def select_features_fpi(X, y, cv_splits=CV_SPLITS, gap=GAP, threshold=THRESHOLD)
     # Obtener resultados
     selected_features = selector.get_feature_names_out()
     performance_drifts = selector.performance_drifts_
-    
+
     if hasattr(selector, 'baseline_score_'):
         logging.info(f"[FPI] Baseline score (sin permutación): {selector.baseline_score_:.6f}")
-    
+
     logging.info(f"[FPI] Se calcularon drift scores para {len(X.columns)} columnas.")
-    logging.info(f"[FPI] Features seleccionadas por FPI: {len(selected_features)} de {len(X.columns)} ({len(selected_features)/len(X.columns)*100:.1f}%)")
+    logging.info(
+        f"[FPI] Features seleccionadas por FPI: {len(selected_features)} de {len(X.columns)} ({len(selected_features)/len(X.columns)*100:.1f}%)"
+    )
 
     # Verificar longitudes
     if len(performance_drifts) != len(X.columns):
-        logging.error(f"[FPI] ❌ Mismatch entre número de columnas de X ({len(X.columns)}) y performance drifts ({len(performance_drifts)}). Abortando.")
+        logging.error(
+            f"[FPI] ❌ Mismatch entre número de columnas de X ({len(X.columns)}) y performance drifts ({len(performance_drifts)}). Abortando."
+        )
         return [], []
 
     # Construir DataFrame con los drifts
     drift_df = pd.DataFrame(
-        list(zip(X.columns, performance_drifts)),
-        columns=['feature', 'performance_drift']
+        list(zip(X.columns, performance_drifts)), columns=['feature', 'performance_drift']
     ).sort_values('performance_drift', ascending=False)
 
     logging.info("[FPI] Top 10 features por importancia (performance drift):")
@@ -324,7 +337,7 @@ def select_features_fpi(X, y, cv_splits=CV_SPLITS, gap=GAP, threshold=THRESHOLD)
             logging.info(f"  - {feature}: {drift:.6f} [{status}]")
         else:
             logging.info(f"  - {feature}: {drift} [{status}]")
-    
+
     logging.info("[FPI] Bottom 10 features con menor importancia:")
     for _, row in drift_df.tail(10).iterrows():
         feature = row['feature']
@@ -334,16 +347,16 @@ def select_features_fpi(X, y, cv_splits=CV_SPLITS, gap=GAP, threshold=THRESHOLD)
             logging.info(f"  - {feature}: {drift:.6f} [{status}]")
         else:
             logging.info(f"  - {feature}: {drift} [{status}]")
-    
+
     # Guardar DataFrame completo de drifts
     drift_csv_path = os.path.join(PLOTS_DIR, f"fpi_drifts_{timestamp}.csv")
     drift_df.to_csv(drift_csv_path, index=False)
     logging.info(f"[FPI] CSV con todos los drift scores guardado en: {drift_csv_path}")
-    
+
     # Visualizar performance drifts
     drift_plot_path = os.path.join(PLOTS_DIR, f"performance_drift_{timestamp}.png")
     plot_performance_drift(X.columns, performance_drifts, selected_features, threshold, drift_plot_path)
-    
+
     # Tiempo total
     total_time = time.time() - start_time
     logging.info(f"[FPI] Proceso FPI completado en {total_time:.2f} segundos")
@@ -352,14 +365,16 @@ def select_features_fpi(X, y, cv_splits=CV_SPLITS, gap=GAP, threshold=THRESHOLD)
 
     return list(selected_features), performance_drifts
 
+
 # ------------------------------
 # FUNCIÓN PRINCIPAL
 # ------------------------------
 
-def main():
+
+def main() -> None:
     """
     Función principal que ejecuta la selección de features FPI.
-    
+
     Proceso:
     1. Carga el archivo más reciente
     2. Preprocesa los datos (fechas, filtrado por días hábiles)
@@ -367,24 +382,24 @@ def main():
     4. Guarda el dataset final con las features seleccionadas
     """
     main_start_time = time.time()
-    
+
     # 1) Obtener el archivo más reciente en la carpeta de entrada
     input_file = get_most_recent_file(INPUT_DIR)
     if not input_file:
         logging.error(f"❌ No se encontraron archivos Excel en {INPUT_DIR}")
         return
-    
+
     # Extraer el nombre base del archivo para generar el nombre de salida
     base_name = os.path.basename(input_file)
     file_name, file_ext = os.path.splitext(base_name)
     output_file = os.path.join(OUTPUT_DIR, f"{file_name}_FPI{file_ext}")
-    
+
     logging.info("=" * 60)
-    logging.info(f"INICIANDO SELECCIÓN DE FEATURES FPI")
+    logging.info("INICIANDO SELECCIÓN DE FEATURES FPI")
     logging.info("=" * 60)
     logging.info(f"Usando el archivo más reciente: {input_file}")
     logging.info(f"La salida se guardará en: {output_file}")
-    
+
     try:
         df_original = pd.read_excel(input_file)
         logging.info(f"Archivo '{input_file}' cargado con forma {df_original.shape}.")
@@ -397,13 +412,15 @@ def main():
     logging.info(f"Tipos de datos: \n{df_original.dtypes}")
     logging.info(f"Primeras 3 filas (head) del DataFrame original:\n{df_original.head(3)}")
     logging.info(f"Últimas 3 filas (tail) del DataFrame original:\n{df_original.tail(3)}")
-    
+
     # Estadísticas básicas del DataFrame original
     logging.info("Estadísticas básicas de algunas columnas numéricas:")
     num_cols = df_original.select_dtypes(include=[np.number]).columns[:5]  # Limitar a 5 columnas
     for col in num_cols:
         stats = df_original[col].describe()
-        logging.info(f"  - {col}: min={stats['min']:.4f}, max={stats['max']:.4f}, mean={stats['mean']:.4f}, std={stats['std']:.4f}")
+        logging.info(
+            f"  - {col}: min={stats['min']:.4f}, max={stats['max']:.4f}, mean={stats['mean']:.4f}, std={stats['std']:.4f}"
+        )
 
     # 2) Verificar que existe la columna de fecha
     if DATE_COL not in df_original.columns:
@@ -423,7 +440,7 @@ def main():
     df_before_drop = df.shape[0]
     na_dates = df[DATE_COL].isna().sum()
     logging.info(f"Fechas inválidas (NaT) encontradas: {na_dates}")
-    
+
     if na_dates > 0:
         df.dropna(subset=[DATE_COL], inplace=True)
         logging.info(f"Filas eliminadas por fecha inválida (NaT): {df_before_drop - df.shape[0]}")
@@ -433,7 +450,7 @@ def main():
     data_max_date = df[DATE_COL].max()
     num_unique_dates = df[DATE_COL].nunique()
     total_days = (data_max_date - data_min_date).days + 1
-    
+
     logging.info(f"Rango de fechas después de limpiar: {data_min_date} a {data_max_date}")
     logging.info(f"Cantidad de fechas únicas: {num_unique_dates}")
     logging.info(f"Días calendario totales en el rango: {total_days}")
@@ -448,12 +465,12 @@ def main():
 
     num_trading_days = len(trading_days)
     logging.info(f"Días hábiles (NYSE) en el rango: {num_trading_days}")
-    
+
     if num_trading_days > 0:
         logging.info(f"Primeros 5 días hábiles: {trading_days[:5].to_list()}")
         logging.info(f"Últimos 5 días hábiles: {trading_days[-5:].to_list()}")
         logging.info(f"Rango total días hábiles: {trading_days.min()} a {trading_days.max()}")
-        
+
         # Verificar días faltantes
         dates_in_df = set(df[DATE_COL].dt.normalize())
         missing_trading_days = [d for d in trading_days if d not in dates_in_df]
@@ -499,7 +516,7 @@ def main():
     logging.info(f"  - 50%: {target_stats['50%']:.6f}")
     logging.info(f"  - 75%: {target_stats['75%']:.6f}")
     logging.info(f"  - max: {target_stats['max']:.6f}")
-    
+
     # 10) Separar target y features
     y = df[target_col]
     X = df.drop(columns=[target_col], errors='ignore')
@@ -517,11 +534,11 @@ def main():
     non_numeric_cols = X.select_dtypes(exclude=[np.number]).columns.tolist()
     if non_numeric_cols:
         logging.warning(f"⚠️ Eliminando {len(non_numeric_cols)} columnas no numéricas: {non_numeric_cols}")
-    
+
     X_numeric = X.select_dtypes(include=[np.number])
     logging.info(f"Número de columnas numéricas: {len(X_numeric.columns)} de {len(X.columns)} originales")
     logging.info(f"Primeras 10 columnas numéricas: {list(X_numeric.columns[:10])}")
-    
+
     if len(X_numeric.columns) > 10:
         logging.info(f"... y {len(X_numeric.columns) - 10} más")
 
@@ -534,13 +551,15 @@ def main():
         logging.info("Aplicando StandardScaler a las features...")
         scaler = StandardScaler()
         X_scaled = pd.DataFrame(scaler.fit_transform(X_numeric), columns=X_numeric.columns)
-        
+
         # Comparar estadísticas antes y después del escalado
         logging.info("Estadísticas antes/después del escalado (para primeras 3 columnas):")
         for col in X_numeric.columns[:3]:
             before_mean, before_std = X_numeric[col].mean(), X_numeric[col].std()
             after_mean, after_std = X_scaled[col].mean(), X_scaled[col].std()
-            logging.info(f"  - {col}: antes [mean={before_mean:.4f}, std={before_std:.4f}], después [mean={after_mean:.4f}, std={after_std:.4f}]")
+            logging.info(
+                f"  - {col}: antes [mean={before_mean:.4f}, std={before_std:.4f}], después [mean={after_mean:.4f}, std={after_std:.4f}]"
+            )
     else:
         X_scaled = X_numeric.copy()
         logging.info("No se aplicó escalado; se mantienen los valores originales.")
@@ -548,7 +567,9 @@ def main():
     # 14) Eliminar filas donde el target sea NaN (si las hay)
     if y.isna().any():
         num_nans = y.isna().sum()
-        logging.warning(f"⚠️ El target contiene {num_nans} valores NaN ({num_nans/len(y)*100:.2f}%); se eliminarán esas filas.")
+        logging.warning(
+            f"⚠️ El target contiene {num_nans} valores NaN ({num_nans/len(y)*100:.2f}%); se eliminarán esas filas."
+        )
         valid_idx = ~y.isna()
         y = y[valid_idx]
         X_scaled = X_scaled[valid_idx]
@@ -568,14 +589,14 @@ def main():
     logging.info(f"Dimensión de y antes de FPI: {y.shape}")
     if date_data is not None:
         logging.info(f"Dimensión de date_data antes de FPI: {date_data.shape}")
-    
+
     # Verificar valores extremos o problemas
     for col in X_scaled.columns[:5]:  # Primeras 5 columnas
         na_count = X_scaled[col].isna().sum()
         inf_count = np.isinf(X_scaled[col]).sum()
         if na_count > 0 or inf_count > 0:
             logging.warning(f"⚠️ Columna '{col}' tiene {na_count} NaNs y {inf_count} infinitos")
-    
+
     logging.info(f"Últimas 3 filas de X_scaled:\n{X_scaled.tail(3)}")
     logging.info(f"Últimas 3 filas de y:\n{y.tail(3)}")
     if date_data is not None:
@@ -583,19 +604,19 @@ def main():
 
     # 16) Selección de features con FPI - usando gap específico según forecast period
     logging.info("=" * 60)
-    logging.info(f"INICIANDO SELECCIÓN DE FEATURES CON FPI")
+    logging.info("INICIANDO SELECCIÓN DE FEATURES CON FPI")
     logging.info("=" * 60)
     logging.info(f"Número total de features antes de FPI: {X_scaled.shape[1]}")
     logging.info(f"Forecast period: {FORECAST_PERIOD}")
     gap = CV_GAP_1MONTH if FORECAST_PERIOD == "1MONTH" else CV_GAP_3MONTHS
     logging.info(f"Gap usado para TimeSeriesSplit: {gap} días")
     logging.info(f"Threshold FPI: {THRESHOLD}")
-    
+
     # Verificar valores NaN o inf en el target
     if y.isna().any() or np.isinf(y).any().any():
         logging.error("❌ El target contiene valores NaN o infinitos. FPI fallará.")
         return
-    
+
     fpi_start_time = time.time()
     selected_features, performance_drifts = select_features_fpi(
         X_scaled, y, cv_splits=CV_SPLITS, gap=gap, threshold=THRESHOLD
@@ -607,24 +628,26 @@ def main():
         logging.error("❌ No se logró seleccionar ninguna feature (posible error en FPI). Terminando.")
         return
 
-    logging.info(f"Features finales seleccionadas ({len(selected_features)}/{X_scaled.shape[1]} = {len(selected_features)/X_scaled.shape[1]*100:.1f}%):")
-    
+    logging.info(
+        f"Features finales seleccionadas ({len(selected_features)}/{X_scaled.shape[1]} = {len(selected_features)/X_scaled.shape[1]*100:.1f}%):"
+    )
+
     # Agrupar features por prefijos para mejor visualización
     feature_prefixes = {}
     for feature in selected_features:
         # Intentar extraer prefijo (suponiendo formato como prefix_featurename)
         parts = feature.split('_', 1)
         prefix = parts[0] if len(parts) > 1 else "otros"
-        
+
         if prefix not in feature_prefixes:
             feature_prefixes[prefix] = []
         feature_prefixes[prefix].append(feature)
-    
+
     # Mostrar features agrupadas por prefijo
     for prefix, features in feature_prefixes.items():
         logging.info(f"  - Grupo '{prefix}': {len(features)} features")
         logging.info(f"    {features[:5]}{'...' if len(features) > 5 else ''}")
-    
+
     # 17) Reconstruir X final
     final_X = X_scaled[selected_features].copy()
 
@@ -640,7 +663,9 @@ def main():
         date_data = date_data.reset_index(drop=True)
 
     logging.info("Verificando longitudes antes de concat:")
-    logging.info(f"Len final_X={len(final_X)}, Len y={len(y)}, Len date_data={len(date_data) if date_data is not None else 'None'}")
+    logging.info(
+        f"Len final_X={len(final_X)}, Len y={len(y)}, Len date_data={len(date_data) if date_data is not None else 'None'}"
+    )
 
     if date_data is not None:
         final_df = pd.concat([date_data, final_X, y], axis=1)
@@ -655,13 +680,15 @@ def main():
     logging.info(f"Columnas del DataFrame final: {list(final_df.columns)}")
     logging.info(f"Primeras 3 filas del DataFrame final:\n{final_df.head(3)}")
     logging.info(f"Últimas 3 filas del DataFrame final:\n{final_df.tail(3)}")
-    
+
     # Log de la reducción de dimensionalidad
     original_features = X.shape[1]
     final_features = final_X.shape[1]
     reduction_pct = (original_features - final_features) / original_features * 100
-    logging.info(f"Reducción de dimensionalidad: {original_features} → {final_features} features ({reduction_pct:.1f}% reducción)")
-    
+    logging.info(
+        f"Reducción de dimensionalidad: {original_features} → {final_features} features ({reduction_pct:.1f}% reducción)"
+    )
+
     # Verificar nulls en el dataset final
     null_counts = final_df.isna().sum()
     if null_counts.sum() > 0:
@@ -674,14 +701,16 @@ def main():
         save_start_time = time.time()
         final_df.to_excel(output_file, index=False)
         save_time = time.time() - save_start_time
-        logging.info(f"Dataset final guardado en '{output_file}' con forma {final_df.shape} en {save_time:.2f} segundos.")
-        
+        logging.info(
+            f"Dataset final guardado en '{output_file}' con forma {final_df.shape} en {save_time:.2f} segundos."
+        )
+
         # Tamaño de archivo
         file_size_mb = os.path.getsize(output_file) / (1024 * 1024)
         logging.info(f"Tamaño del archivo: {file_size_mb:.2f} MB")
     except Exception as e:
         logging.error(f"❌ Error al guardar el dataset final: {e}")
-    
+
     # Tiempo total de ejecución
     total_time = time.time() - main_start_time
     mins, secs = divmod(total_time, 60)
@@ -692,6 +721,7 @@ def main():
     logging.info(f"Reducción: {original_features - final_features} features ({reduction_pct:.1f}%)")
     logging.info(f"Archivo final: {output_file}")
     logging.info("=" * 60)
+
 
 if __name__ == "__main__":
     main()

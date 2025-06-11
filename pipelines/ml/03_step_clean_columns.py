@@ -1,4 +1,5 @@
 """Pipeline step to clean column names in the merged dataset."""
+
 from __future__ import annotations
 
 from pathlib import Path

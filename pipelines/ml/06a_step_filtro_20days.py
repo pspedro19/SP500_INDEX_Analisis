@@ -11,6 +11,7 @@ archivo2_ruta = settings.training_dir / "ULTIMO_S&P500_final_FPI.xlsx"
 # Ruta para el archivo de salida
 archivo_salida = settings.training_dir / "datos_economicos_filtrados.xlsx"
 
+
 def main() -> None:
     """Filter economic input data to the last configured days."""
     df1 = pd.read_excel(archivo1_ruta)

@@ -16,6 +16,8 @@ def main(
     lag_days: int = 20,
     lag_type: str = "future",
 ) -> None:
+    """Run the feature engineering step."""
+
     service = FeatureEngineeringService(Path(__file__).resolve().parents[2])
     service.run(
         input_file=input_file,
@@ -44,4 +46,3 @@ if __name__ == "__main__":  # pragma: no cover - manual execution
         lag_days=args.lag_days,
         lag_type=args.lag_type,
     )
-
