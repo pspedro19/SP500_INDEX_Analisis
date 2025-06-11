@@ -89,10 +89,20 @@ def test_run_pipeline_executes_services(monkeypatch, tmp_path):
     monkeypatch.setattr(di_container.container, "resolve", lambda name: fake_resolve(name))
 
     def fake_run_step(step_module, step_name=None):
-        if callable(step_module):
+        name = step_module if isinstance(step_module, str) else getattr(step_module, "__name__", "")
+        if "07_step_train_models.py" in name:
+            (run_pipeline.RESULTS_DIR / "metrics_simple.json").write_text("{}")
+        elif "07b_step_ensemble.py" in name:
+            (run_pipeline.RESULTS_DIR / "ensemble.csv").write_text("ok")
+        elif "09_step_backtest.py" in name:
+            run_pipeline.METRICS_DIR.mkdir(parents=True, exist_ok=True)
+            (run_pipeline.METRICS_DIR / "resultados_totales.csv").write_text("a,b\n1,2")
+        elif "10_step_inference.py" in name:
+            (run_pipeline.RESULTS_DIR / "inference.csv").write_text("x")
+        elif callable(step_module):
             step_module()
         else:
-            Path(run_pipeline.RESULTS_DIR / Path(step_module).stem).write_text("done")
+            Path(run_pipeline.RESULTS_DIR / Path(str(name)).stem).write_text("done")
         return True, 0.0, None
 
     monkeypatch.setattr(run_pipeline, "run_step", fake_run_step)
@@ -119,7 +129,7 @@ def test_run_pipeline_executes_services(monkeypatch, tmp_path):
 
     results = run_pipeline.main()
 
-    assert len(results) == 11
+    assert len(results) == 15
     assert all(r["success"] for r in results.values())
     assert (run_pipeline.RESULTS_DIR / "metrics_simple.json").exists()
     assert (run_pipeline.METRICS_DIR / "resultados_totales.csv").exists()
