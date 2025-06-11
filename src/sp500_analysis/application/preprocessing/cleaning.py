@@ -39,11 +39,7 @@ def limpiar_nombre_columna(nombre: str) -> str:
             componentes = base_name.split("_")
             terminos_post = nombre.split(sufijo)[1].strip("_").split("_")
             nombre_limpio = base_name + sufijo
-            if any(
-                comp.lower() == term.lower()
-                for comp in componentes
-                for term in terminos_post
-            ):
+            if any(comp.lower() == term.lower() for comp in componentes for term in terminos_post):
                 return nombre_limpio
     return nombre
 

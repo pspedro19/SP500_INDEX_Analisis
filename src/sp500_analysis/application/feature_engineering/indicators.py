@@ -23,7 +23,9 @@ def add_log_and_diff_features(df: pd.DataFrame, target_column: str) -> pd.DataFr
     return df
 
 
-def add_volatility_features(df: pd.DataFrame, target_column: str, window: int = FORECAST_HORIZON_1MONTH) -> pd.DataFrame:
+def add_volatility_features(
+    df: pd.DataFrame, target_column: str, window: int = FORECAST_HORIZON_1MONTH
+) -> pd.DataFrame:
     df[f"rolling_std_{target_column}"] = df[target_column].rolling(window).std()
     df[f"rolling_var_{target_column}"] = df[target_column].rolling(window).var()
     ma = df[target_column].rolling(window).mean()
@@ -117,5 +119,3 @@ def transform_exchange_rate(df: pd.DataFrame, target_column: str) -> pd.DataFram
     df = add_zscore(df, target_column)
     df = add_minmax_scaling(df, target_column)
     return df
-
-

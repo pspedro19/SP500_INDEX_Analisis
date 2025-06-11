@@ -1,4 +1,5 @@
 """Backward compatible exports for visualization helpers."""
+
 from __future__ import annotations
 
 from .common import COLORS, create_directory

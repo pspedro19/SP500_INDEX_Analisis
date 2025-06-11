@@ -21,9 +21,7 @@ RESULTS_DIR = settings.results_dir
 class TrainingService:
     """Service orchestrating full model training."""
 
-    def __init__(
-        self, repository: DataRepository, trainer: ModelTrainer, registry: ModelRegistry
-    ) -> None:
+    def __init__(self, repository: DataRepository, trainer: ModelTrainer, registry: ModelRegistry) -> None:
         self.repository = repository
         self.trainer = trainer
         self.registry = registry

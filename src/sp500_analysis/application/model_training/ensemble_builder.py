@@ -31,6 +31,7 @@ class GreedyEnsembleRegressor:
         import numpy as np
         import pandas as pd
         from sklearn.metrics import mean_squared_error
+
         n = len(X)
         val_size = max(1, int(n * 0.2))
         X_train, X_val = X.iloc[:-val_size], X.iloc[-val_size:]
@@ -74,6 +75,7 @@ class GreedyEnsembleRegressor:
 
     def predict(self, X):
         import numpy as np
+
         if not self.selected_models:
             raise ValueError("Ensemble has not been fitted")
         preds = np.array([m.predict(X) for m in self.selected_models])
@@ -137,7 +139,7 @@ class EnsembleBuilder:
 
         info = {
             "selected_models": ensemble.selected_names,
-            "metrics": ensemble.metrics(X.iloc[-int(len(X)*0.2):], y.iloc[-int(len(y)*0.2):]),
+            "metrics": ensemble.metrics(X.iloc[-int(len(X) * 0.2) :], y.iloc[-int(len(y) * 0.2) :]),
             "score_history": ensemble.score_history,
             "individual_scores": ensemble.individual_scores,
         }

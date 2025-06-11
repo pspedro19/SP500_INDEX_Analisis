@@ -31,11 +31,7 @@ def filter_last_n_days(
     if pd is None:  # pragma: no cover - pandas optional
         raise ImportError("pandas is required for filter_last_n_days")
 
-    columnas_comunes = [
-        col
-        for col in df.columns
-        if col in reference_df.columns and not col.endswith(target_suffix)
-    ]
+    columnas_comunes = [col for col in df.columns if col in reference_df.columns and not col.endswith(target_suffix)]
     filtrado = df[columnas_comunes]
 
     if date_col in filtrado.columns:
