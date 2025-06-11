@@ -54,7 +54,7 @@ def test_run_pipeline_with_sample_data(monkeypatch, tmp_path):
         p.mkdir(parents=True, exist_ok=True)
 
     results = run_pipeline.main()
-    assert len(executed) == len(results) == 11
+    assert len(executed) == len(results) == 15
     assert all(data['success'] for data in results.values())
     assert (run_pipeline.REPORTS_DIR / 'pipeline_timings.json').exists()
     assert (run_pipeline.REPORTS_DIR / 'pipeline_report.html').exists()

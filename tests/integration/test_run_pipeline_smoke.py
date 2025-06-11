@@ -46,6 +46,24 @@ def test_run_pipeline_steps_importable():
                         results = run_pipeline.main()
 
     assert executed_steps
+    expected_scripts = [
+        "pipelines/ml/01_step_merge_excels.py",
+        "pipelines/ml/02_step_generate_categories.py",
+        "pipelines/ml/03_step_clean_columns.py",
+        "pipelines/ml/04_step_transform_features.py",
+        "pipelines/ml/05_step_remove_relations.py",
+        "pipelines/ml/06_step_fpi_selection.py",
+        "pipelines/ml/06a_step_filtro_20days.py",
+        "pipelines/ml/07_step_train_models.py",
+        "pipelines/ml/07a_step_apply_inverse_transform.py",
+        "pipelines/ml/07b_step_ensemble.py",
+        "pipelines/ml/07c_step_Calculo_Valor_SP500.py",
+        "pipelines/ml/07d_step_Transform_to_PowerBI.py",
+        "pipelines/ml/08_step_prepare_output.py",
+        "pipelines/ml/09_step_backtest.py",
+        "pipelines/ml/10_step_inference.py",
+    ]
+    assert executed_steps == expected_scripts
     assert len(executed_steps) == len(results)
     assert all(data["success"] for data in results.values())
 
