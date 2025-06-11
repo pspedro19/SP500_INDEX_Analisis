@@ -3,11 +3,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from sp500_analysis.application.preprocessing.factory import ProcessorFactory
+from sp500_analysis.config.settings import settings
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DATA_ROOT = PROJECT_ROOT / "data" / "0_raw"
+PROJECT_ROOT = settings.project_root
+DATA_ROOT = settings.raw_dir
 CONFIG_FILE = PROJECT_ROOT / "pipelines" / "Data Engineering.xlsx"
-LOG_DIR = PROJECT_ROOT / "logs"
+LOG_DIR = settings.log_dir
 
 
 def _run_processor(name: str, output_file: Path, config_file: Path | None = None) -> bool:
