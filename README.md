@@ -18,19 +18,24 @@ manual o a través del comando `sp500 preprocess`. Posteriormente,
 SP500_index_analysis/
 │
 ├── data/
-│   ├── raw/           # Datos crudos originales
-│   ├── processed/     # Datos transformados intermedios
-│   └── final/         # Datos finales listos para entrenamiento
+│   ├── raw/        # Datos crudos originales (0_raw)
+│   ├── interim/    # Transformaciones intermedias (1_preprocess*)
+│   ├── features/   # Insumos para modelado (2_model_input)
+│   ├── processed/  # Datos limpios o finales
+│   └── samples/    # Subconjuntos de prueba
+│   # Al ejecutar el pipeline se crearán `3_trainingdata/`,
+│   # `4_results/` y `5_metrics/` en esta carpeta.
 │
-├── models/            # Modelos entrenados (.pkl)
-├── pipelines/         # Scripts de procesamiento por paso
-├── logs/              # Logs de ejecución
-├── outputs/           # Predicciones listas para visualización (ej. Power BI)
-├── notebooks/         # Jupyter notebooks exploratorios
-├── run_pipeline.py    # Orquestador principal del pipeline
-├── .gitignore         # Exclusión de archivos sensibles
-└── requirements.txt   # Dependencias del proyecto
+├── pipelines/      # Scripts de procesamiento por paso
+├── notebooks/      # Jupyter notebooks exploratorios
+├── logs/           # Registros de ejecución
+├── run_pipeline.py # Orquestador principal del pipeline
+├── .gitignore
+└── requirements.txt
 ```
+
+Las carpetas `models/` y `data/4_results/` se generan automáticamente
+al ejecutar el pipeline y no están versionadas.
 
 ---
 
@@ -146,8 +151,8 @@ python pipelines/ml/10_step_inference.py                  # Paso 10
 **Script:** `pipelines/ml/07_step_train_models.py`
 - Entrena y optimiza modelos CatBoost, LightGBM, XGBoost, MLP, SVM con Optuna.
 - **Output:**
-  - Modelos `.pkl` en `models/`
-  - Predicciones en `data/final/all_models_predictions.csv`
+  - Modelos `.pkl` en `models/` (carpeta creada al ejecutar el pipeline)
+  - Predicciones en `data/4_results/all_models_predictions.csv`
 
 ### 🟢 Paso 7a - Aplicar Transformación Inversa
 **Script:** `pipelines/ml/07a_step_apply_inverse_transform.py`
@@ -167,19 +172,19 @@ python pipelines/ml/10_step_inference.py                  # Paso 10
 ### 🟢 Paso 7d - Formato compatible con Power BI
 **Script:** `pipelines/ml/07d_step_Transform_to_PowerBI.py`
 - Adapta los CSV al formato regional español para Power BI.
-- **Output:** `outputs/archivo_powerbi_es.csv`
+- **Output:** `data/4_results/archivo_powerbi_es.csv`
 
 ---
 
 ### 🟢 Paso 8 - Preparación de Resultados para Dashboard
 **Script:** `pipelines/ml/08_step_prepare_output.py`
-- Convierte los resultados a formato `.csv` compatible con Power BI (formato español).  
-- **Output:** `outputs/archivo_para_powerbi.csv`
+- Convierte los resultados a formato `.csv` compatible con Power BI (formato español).
+- **Output:** `data/4_results/archivo_para_powerbi.csv`
 
 ### 🟢 Paso 9 - Backtest de Estrategias
 **Script:** `pipelines/ml/09_step_backtest.py`
 - Evalúa el desempeño histórico de las predicciones.
-- **Output:** métricas y gráficos en `metrics/`.
+- **Output:** métricas y gráficos en `data/5_metrics/`.
 
 ### 🟢 Paso 10 - Inferencia
 **Script:** `pipelines/ml/10_step_inference.py`
@@ -191,7 +196,7 @@ python pipelines/ml/10_step_inference.py                  # Paso 10
 ## 🛡️ Seguridad y control de versiones
 
 - Variables sensibles están definidas en `.env` (excluido con `.gitignore`)
-- Los datos, modelos y logs están excluidos del versionado
+- Los datos, los modelos y los logs generados se excluyen del versionado
 - Usa ramas `feature/` o `refactor/` para nuevas funcionalidades
 
 ---
