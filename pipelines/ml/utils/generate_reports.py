@@ -2,17 +2,17 @@
 Script para generar un reporte final consolidado de todo el pipeline en formato PDF.
 Recopila gráficos, tablas de métricas, tiempos de ejecución y resultados de los modelos.
 """
+
 import os
 import sys
 import json
 import glob
 import time
 import pandas as pd
-import numpy as np
 import logging
+from typing import Dict, List, Optional
 from sp500_analysis.shared.logging.logger import configurar_logging
 from datetime import datetime
-from pathlib import Path
 
 # Asegurar que podemos importar desde el directorio actual
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -34,27 +34,29 @@ CSV_REPORTS = settings.csv_reports_dir
 log_file = os.path.join(PROJECT_ROOT, "logs", f"report_generation_{time.strftime('%Y%m%d_%H%M%S')}.log")
 configurar_logging(log_file)
 
-def find_files(directory, pattern):
+
+def find_files(directory: str, pattern: str) -> List[str]:
     """
     Encuentra archivos que coinciden con un patrón en un directorio.
-    
+
     Args:
         directory (str): Directorio donde buscar
         pattern (str): Patrón glob para archivos
-        
+
     Returns:
         list: Lista de rutas a archivos
     """
     return glob.glob(os.path.join(directory, pattern))
 
-def get_most_recent_file(directory, pattern='*.csv'):
+
+def get_most_recent_file(directory: str, pattern: str = '*.csv') -> Optional[str]:
     """
     Obtiene el archivo más reciente que coincide con un patrón.
-    
+
     Args:
         directory (str): Directorio donde buscar
         pattern (str): Patrón glob para archivos
-        
+
     Returns:
         str: Ruta al archivo más reciente
     """
@@ -63,15 +65,16 @@ def get_most_recent_file(directory, pattern='*.csv'):
         return None
     return max(files, key=os.path.getmtime)
 
-def gather_metrics():
+
+def gather_metrics() -> Dict[str, object]:
     """
     Recopila métricas de archivos CSV y JSON.
-    
+
     Returns:
         dict: Métricas consolidadas
     """
     metrics = {}
-    
+
     # Buscar archivo de resultados totales
     resultados_file = os.path.join(METRICS_DIR, "resultados_totales.csv")
     if os.path.exists(resultados_file):
@@ -81,7 +84,7 @@ def gather_metrics():
             logging.info(f"Métricas de backtest cargadas: {len(df_metrics)} registros")
         except Exception as e:
             logging.error(f"Error al cargar resultados_totales.csv: {e}")
-    
+
     # Buscar información del ensemble
     ensemble_info_file = os.path.join(RESULTS_DIR, "ensemble_info.json")
     if os.path.exists(ensemble_info_file):
@@ -92,7 +95,7 @@ def gather_metrics():
             logging.info("Información del ensemble cargada")
         except Exception as e:
             logging.error(f"Error al cargar información del ensemble: {e}")
-    
+
     # Buscar métricas de entrenamiento
     training_file = os.path.join(RESULTS_DIR, "resumen_metricas.csv")
     if os.path.exists(training_file):
@@ -102,7 +105,7 @@ def gather_metrics():
             logging.info(f"Métricas de entrenamiento cargadas: {len(df_training)} registros")
         except Exception as e:
             logging.error(f"Error al cargar resumen_metricas.csv: {e}")
-    
+
     # Buscar tiempos de ejecución
     timings_file = os.path.join(REPORTS_DIR, "pipeline_timings.json")
     if os.path.exists(timings_file):
@@ -113,7 +116,7 @@ def gather_metrics():
             logging.info("Tiempos de ejecución cargados")
         except Exception as e:
             logging.error(f"Error al cargar tiempos de ejecución: {e}")
-    
+
     # Buscar información de inferencia
     inference_file = os.path.join(RESULTS_DIR, "predictions_api.json")
     if os.path.exists(inference_file):
@@ -124,29 +127,23 @@ def gather_metrics():
             logging.info("Resultados de inferencia cargados")
         except Exception as e:
             logging.error(f"Error al cargar resultados de inferencia: {e}")
-    
+
     return metrics
 
-def gather_visualizations():
+
+def gather_visualizations() -> Dict[str, List[str]]:
     """
     Recopila todas las visualizaciones disponibles.
-    
+
     Returns:
         dict: Visualizaciones agrupadas por categoría
     """
-    visualizations = {
-        'models': [],
-        'backtest': [],
-        'inference': [],
-        'ensemble': [],
-        'timelines': [],
-        'subperiods': []
-    }
-    
+    visualizations = {'models': [], 'backtest': [], 'inference': [], 'ensemble': [], 'timelines': [], 'subperiods': []}
+
     # Charts de modelos
     for img in find_files(IMG_CHARTS, "*.png"):
         filename = os.path.basename(img)
-        
+
         # Clasificar por nombre
         if "ensemble" in filename.lower():
             visualizations['ensemble'].append(img)
@@ -158,45 +155,46 @@ def gather_visualizations():
             visualizations['backtest'].append(img)
         else:
             visualizations['models'].append(img)
-    
+
     # Metrics charts
     for img in find_files(METRICS_CHARTS, "*.png"):
         filename = os.path.basename(img)
-        
+
         if "radar" in filename.lower():
             visualizations['backtest'].append(img)
         elif "comparison" in filename.lower():
             visualizations['backtest'].append(img)
         else:
             visualizations['backtest'].append(img)
-    
+
     # Subperiods
     subperiods_dir = os.path.join(METRICS_CHARTS, "subperiods")
     if os.path.exists(subperiods_dir):
         for img in find_files(subperiods_dir, "*.png"):
             visualizations['subperiods'].append(img)
-    
+
     # Contar imágenes encontradas
     total_images = sum(len(v) for v in visualizations.values())
     logging.info(f"Total de visualizaciones encontradas: {total_images}")
     for cat, images in visualizations.items():
         logging.info(f"  - {cat}: {len(images)} imágenes")
-    
+
     return visualizations
 
-def generate_html_report(metrics, visualizations):
+
+def generate_html_report(metrics: Dict[str, object], visualizations: Dict[str, List[str]]) -> str:
     """
     Genera un reporte HTML completo.
-    
+
     Args:
         metrics (dict): Métricas recopiladas
         visualizations (dict): Visualizaciones recopiladas
-        
+
     Returns:
         str: Ruta al archivo HTML generado
     """
     from jinja2 import Template
-    
+
     # Plantilla HTML
     template_str = """
     <!DOCTYPE html>
@@ -400,7 +398,7 @@ def generate_html_report(metrics, visualizations):
     </body>
     </html>
     """
-    
+
     # Preparar datos para la plantilla
     template_data = {
         'date': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -416,75 +414,76 @@ def generate_html_report(metrics, visualizations):
         'ensemble_rmse': 0,
         'inference_date': datetime.now().strftime("%Y-%m-%d"),
         'timings': {},
-        'total_time': "0s"
+        'total_time': "0s",
     }
-    
+
     # Extraer datos de las métricas recopiladas
     if 'backtest' in metrics and metrics['backtest']:
         # Top modelos por RMSE
         df_backtest = pd.DataFrame(metrics['backtest'])
         df_backtest = df_backtest.sort_values('RMSE')
         template_data['top_models'] = df_backtest.to_dict('records')[:5]
-        
+
         # Mejor modelo
         best_model_row = df_backtest.iloc[0]
         template_data['best_model'] = best_model_row['Modelo']
         template_data['best_rmse'] = round(best_model_row['RMSE'], 4)
-    
+
     if 'ensemble' in metrics:
         template_data['ensemble_info'] = metrics['ensemble']
         if 'selected_models' in metrics['ensemble']:
             template_data['ensemble_models_count'] = len(metrics['ensemble']['selected_models'])
         if 'metrics' in metrics['ensemble'] and 'RMSE' in metrics['ensemble']['metrics']:
             template_data['ensemble_rmse'] = round(metrics['ensemble']['metrics']['RMSE'], 4)
-    
+
     if 'inference' in metrics:
         template_data['inference'] = metrics['inference']
         if metrics['inference']:
             first_model = list(metrics['inference'].values())[0]
             template_data['inference_date'] = first_model.get('date_inference', 'N/A')
-    
+
     if 'timings' in metrics:
         template_data['timings'] = metrics['timings']
         total_seconds = sum(metrics['timings'].values())
         minutes, seconds = divmod(total_seconds, 60)
         hours, minutes = divmod(minutes, 60)
-        
+
         if hours > 0:
             template_data['total_time'] = f"{int(hours)}h {int(minutes)}m {seconds:.2f}s"
         elif minutes > 0:
             template_data['total_time'] = f"{int(minutes)}m {seconds:.2f}s"
         else:
             template_data['total_time'] = f"{seconds:.2f}s"
-    
+
     # Crear el reporte HTML
     template = Template(template_str)
     html_content = template.render(**template_data)
-    
+
     # Guardar archivo HTML
     html_path = os.path.join(REPORTS_DIR, "reporte_final.html")
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    
+
     logging.info(f"Reporte HTML generado: {html_path}")
     return html_path
 
-def convert_html_to_pdf(html_path):
+
+def convert_html_to_pdf(html_path: str) -> str | None:
     """
     Convierte un archivo HTML a PDF usando weasyprint.
-    
+
     Args:
         html_path (str): Ruta al archivo HTML
-        
+
     Returns:
         str: Ruta al archivo PDF generado
     """
     try:
         from weasyprint import HTML
-        
+
         # Determinar ruta de salida
         pdf_path = html_path.replace('.html', '.pdf')
-        
+
         # Convertir a PDF
         HTML(html_path).write_pdf(pdf_path)
         logging.info(f"PDF generado correctamente: {pdf_path}")
@@ -497,34 +496,35 @@ def convert_html_to_pdf(html_path):
         logging.error(f"Error al generar PDF: {e}")
         return None
 
-def main():
+
+def main() -> None:
     """
     Función principal para generar el reporte final.
     """
     logging.info("Iniciando generación de reporte final...")
     start_time = time.time()
-    
+
     # Asegurar que los directorios existen
     ensure_directories()
-    
+
     # Recopilar métricas y visualizaciones
     metrics = gather_metrics()
     visualizations = gather_visualizations()
-    
+
     # Generar reporte HTML
     html_path = generate_html_report(metrics, visualizations)
-    
+
     # Convertir a PDF
     pdf_path = convert_html_to_pdf(html_path)
-    
+
     # Calcular tiempo total
     end_time = time.time()
     elapsed_time = end_time - start_time
     logging.info(f"Reporte generado en {elapsed_time:.2f} segundos")
-    
+
     if pdf_path:
         logging.info(f"PDF generado: {pdf_path}")
 
+
 if __name__ == "__main__":
     main()
-

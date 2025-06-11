@@ -1,10 +1,10 @@
 import pandas as pd
+from pandas import DataFrame, Series
 import numpy as np
 import re
 import logging
 from datetime import datetime
 import os
-from matplotlib import pyplot as plt
 from sp500_analysis.shared.logging.logger import configurar_logging
 from sp500_analysis.application.feature_engineering import (
     FeatureSelector,
@@ -28,12 +28,18 @@ VIF_THRESHOLD = settings.vif_threshold
 # ------------------------------
 # CONFIGURACIÓN DE LOGGING
 # ------------------------------
-log_file = os.path.join(PROJECT_ROOT, "logs", f"remove_relations_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+log_file = os.path.join(
+    PROJECT_ROOT,
+    "logs",
+    f"remove_relations_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log",
+)
 configurar_logging(log_file)
 
 
 # Wrapper for frequency detection
-def detect_feature_frequency(df, col, date_col=DATE_COL):
+
+
+def detect_feature_frequency(df: DataFrame, col: str, date_col: str = DATE_COL) -> str:
     return detect_freq(df, col, date_col)
 
 
@@ -41,7 +47,11 @@ def detect_feature_frequency(df, col, date_col=DATE_COL):
 # Esta función ya no se necesita ya que no aplicaremos LAG
 
 
-def remove_derived_target_features(df, target_col, date_col=DATE_COL):
+def remove_derived_target_features(
+    df: DataFrame,
+    target_col: str,
+    date_col: str = DATE_COL,
+) -> tuple[DataFrame, list[str]]:
     """
     Elimina features derivadas del target para evitar leakage.
 
@@ -65,13 +75,22 @@ def remove_derived_target_features(df, target_col, date_col=DATE_COL):
     return df.drop(columns=cols_to_drop, errors='ignore'), cols_to_drop
 
 
-def drop_constant_features(df, threshold=CONSTANT_THRESHOLD, date_col=DATE_COL):
+def drop_constant_features(
+    df: DataFrame,
+    threshold: float = CONSTANT_THRESHOLD,
+    date_col: str = DATE_COL,
+) -> tuple[DataFrame, list[str]]:
     """Wrapper around :class:`FeatureSelector` to drop near constant columns."""
     selector = FeatureSelector(date_col=date_col, constant_threshold=threshold)
     return selector.drop_constant_features(df)
 
 
-def analyze_lags_with_target(df, target_col, date_col=DATE_COL, max_lag=10):
+def analyze_lags_with_target(
+    df: DataFrame,
+    target_col: str,
+    date_col: str = DATE_COL,
+    max_lag: int = 10,
+) -> DataFrame:
     """
     Analiza correlaciones con lags entre variables y el target.
 
@@ -123,27 +142,45 @@ def analyze_lags_with_target(df, target_col, date_col=DATE_COL, max_lag=10):
 
 
 # Wrapper for stationarity testing
-def test_feature_stationarity(df, date_col=DATE_COL, significance=0.05):
+def test_feature_stationarity(
+    df: DataFrame,
+    date_col: str = DATE_COL,
+    significance: float = 0.05,
+) -> DataFrame:
     selector = FeatureSelector(date_col=date_col)
     return selector.test_stationarity(df, significance)
 
 
 # Wrapper for correlation removal
-def remove_correlated_features_by_frequency(df_features, target, date_col=DATE_COL, threshold=CORR_THRESHOLD):
+def remove_correlated_features_by_frequency(
+    df_features: DataFrame,
+    target: Series,
+    date_col: str = DATE_COL,
+    threshold: float = CORR_THRESHOLD,
+) -> tuple[DataFrame, list[str]]:
     return remove_corr_by_freq(df_features, target, date_col=date_col, threshold=threshold)
 
 
 # Wrapper for VIF computation
-def compute_vif_by_frequency(df_features, date_col=DATE_COL):
+def compute_vif_by_frequency(df_features: DataFrame, date_col: str = DATE_COL) -> DataFrame:
     return compute_vif(df_features, date_col=date_col)
 
 
 # Wrapper for iterative VIF reduction
-def iterative_vif_reduction_by_frequency(df_features, date_col=DATE_COL, threshold=VIF_THRESHOLD):
+def iterative_vif_reduction_by_frequency(
+    df_features: DataFrame,
+    date_col: str = DATE_COL,
+    threshold: float = VIF_THRESHOLD,
+) -> tuple[DataFrame, DataFrame]:
     return vif_reduction(df_features, date_col=date_col, threshold=threshold)
 
 
-def create_feature_summary_report(df, target_col, date_col=DATE_COL, output_file=None):
+def create_feature_summary_report(
+    df: DataFrame,
+    target_col: str,
+    date_col: str = DATE_COL,
+    output_file: str | None = None,
+) -> DataFrame:
     """
     Genera un informe detallado de las características de las variables.
 
@@ -252,7 +289,7 @@ def create_feature_summary_report(df, target_col, date_col=DATE_COL, output_file
     return report_df
 
 
-def main():
+def main() -> None:
     """
     Función principal que ejecuta el proceso de reducción de dimensionalidad
     con mejoras para series temporales financieras.
@@ -317,7 +354,7 @@ def main():
 
         lag_correlations = analyze_lags_with_target(temp_df, target_col)
         top_predictors = lag_correlations.head(10)
-        logging.info(f"Top 10 predictores por correlación temporal:")
+        logging.info("Top 10 predictores por correlación temporal:")
         for _, row in top_predictors.iterrows():
             logging.info(
                 f"  {row['column']} ({row['frequency']}): "
@@ -365,11 +402,12 @@ def main():
     # Generar informe detallado de variables finales
     try:
         feature_report = create_feature_summary_report(final_df, target_col, DATE_COL, archivo_informe)
-        logging.info(f"Informe detallado de variables generado con éxito")
+        logging.info("Informe detallado de variables generado con éxito")
 
         # Análisis de estacionariedad
-        stationary_vars = feature_report[feature_report['is_stationary'] == True].shape[0]
-        nonstationary_vars = feature_report[feature_report['is_stationary'] == False].shape[0]
+        stationary_mask = feature_report["is_stationary"]
+        stationary_vars = stationary_mask.sum()
+        nonstationary_vars = (~stationary_mask).sum()
         if stationary_vars + nonstationary_vars > 0:
             stat_pct = stationary_vars / (stationary_vars + nonstationary_vars) * 100
             logging.info(

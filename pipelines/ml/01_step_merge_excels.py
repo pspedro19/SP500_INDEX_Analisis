@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import logging
 import time
+from typing import Iterable, List
+
 from sp500_analysis.shared.logging.logger import setup_logging
 from sp500_analysis.shared.io.file_utils import read_dataframe, write_dataframe
 
@@ -20,7 +22,12 @@ DATE_COL = settings.date_col
 logger = setup_logging(LOG_DIR, "merge_excels")
 
 
-def filtrar_por_fecha(df, columna_fecha, fecha_inicio, fecha_fin):
+def filtrar_por_fecha(
+    df: pd.DataFrame,
+    columna_fecha: str,
+    fecha_inicio: str,
+    fecha_fin: str,
+) -> pd.DataFrame:
     """
     Filtra un DataFrame por un rango de fechas.
 
@@ -54,7 +61,12 @@ def filtrar_por_fecha(df, columna_fecha, fecha_inicio, fecha_fin):
     return df_filtrado
 
 
-def imputar_valor_fecha_faltante(df, columna_fecha, fecha_base, fecha_objetivo):
+def imputar_valor_fecha_faltante(
+    df: pd.DataFrame,
+    columna_fecha: str,
+    fecha_base: str,
+    fecha_objetivo: str,
+) -> pd.DataFrame:
     """
     Si 'fecha_objetivo' no existe en el DataFrame, copia la fila de 'fecha_base' y la agrega con la nueva fecha.
 
@@ -92,7 +104,11 @@ def imputar_valor_fecha_faltante(df, columna_fecha, fecha_base, fecha_objetivo):
     return df
 
 
-def merge_dataframes(dfs, columnas_merge, como_merge='outer'):
+def merge_dataframes(
+    dfs: Iterable[pd.DataFrame | None],
+    columnas_merge: List[str],
+    como_merge: str = "outer",
+) -> pd.DataFrame | None:
     """
     Combina múltiples DataFrames en uno solo.
 
@@ -156,7 +172,7 @@ def merge_dataframes(dfs, columnas_merge, como_merge='outer'):
     return resultado
 
 
-def main():
+def main() -> bool:
     """
     Función principal para ejecutar el proceso de combinación de archivos Excel.
 

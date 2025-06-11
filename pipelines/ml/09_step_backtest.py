@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 """Pipeline step to run model backtests."""
+
+from __future__ import annotations
 
 from sp500_analysis.config.settings import settings
 from sp500_analysis.application.evaluation.backtester import run_backtest
