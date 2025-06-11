@@ -1,38 +1,34 @@
+from __future__ import annotations
+
 import os
 import re
 import time
-import pandas as pd
+from pathlib import Path
 from datetime import datetime, timedelta
+
+import pandas as pd
 
 from sp500_analysis.application.preprocessing.base import BaseProcessor
 from sp500_analysis.shared.logging.logger import configurar_logging
 
 
 class InvestingProcessor(BaseProcessor):
-    """
-    Clase para procesar datos macroeconómicos con robustez en el manejo de fechas y
-    forward filling de series de frecuencia (por ejemplo, mensuales a diarios).
+    """Processor for economic data exported from Investing."""
 
-    Funcionalidades:
-      - Conversión robusta de cadenas de fecha usando múltiples estrategias.
-      - Transformación de series (generalmente mensuales) a datos diarios mediante merge_asof.
-      - Renombrado de la columna de valores usando el patrón:
-            {target_col}_{variable}_{tipo_macro}
-      - Validación y log detallado en cada etapa.
-    """
-
-    def __init__(self, config_file, data_root='data/0_raw', log_file='myinvestingreportcp.log'):
+    def __init__(
+        self, config_file: str, data_root: str | Path = "data/0_raw", log_file: str = "myinvestingreportcp.log"
+    ) -> None:
+        """Create a new processor using *config_file* as source configuration."""
         super().__init__(data_root=data_root, log_file=log_file)
         self.config_file = config_file
-        self.config_data = None
-        self.global_min_date = None
-        self.global_max_date = None
-        self.daily_index = None
-        self.processed_data = {}  # Diccionario {variable: DataFrame procesado}
-        self.final_df = None
-        self.stats = {}
-        # Cache para la preferencia de conversión de fecha
-        self.date_cache = {}
+        self.config_data: pd.DataFrame | None = None
+        self.global_min_date: pd.Timestamp | None = None
+        self.global_max_date: pd.Timestamp | None = None
+        self.daily_index: pd.DataFrame | None = None
+        self.processed_data: dict[str, pd.DataFrame | None] = {}
+        self.final_df: pd.DataFrame | None = None
+        self.stats: dict[str, dict] = {}
+        self.date_cache: dict[str, bool] = {}
 
         self.logger.info("=" * 80)
         self.logger.info("INICIANDO PROCESO: InvestingProcessor")
@@ -41,37 +37,27 @@ class InvestingProcessor(BaseProcessor):
         self.logger.info(f"Fecha y hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         self.logger.info("=" * 80)
 
-    def _validate_input(self, data):
+    def _validate_input(self, data: object) -> bool:
+        """Always return ``True`` as no validation is required."""
         return True
 
-    def read_config(self):
+    def read_config(self) -> pd.DataFrame | None:
+        """Load and filter the Excel configuration file."""
         try:
             self.logger.info("Leyendo archivo de configuración...")
             df_config = pd.read_excel(self.config_file)
             self.config_data = df_config[
-                (df_config['Fuente'] == 'Investing Data')
-                & (df_config['Tipo de Preprocesamiento Según la Fuente'] == 'Copiar y Pegar')
+                (df_config["Fuente"] == "Investing Data")
+                & (df_config["Tipo de Preprocesamiento Según la Fuente"] == "Copiar y Pegar")
             ].copy()
             self.logger.info(f"Se encontraron {len(self.config_data)} configuraciones para procesar")
             return self.config_data
-        except Exception as e:
+        except Exception as e:  # pragma: no cover - runtime behaviour
             self.logger.error(f"Error al leer configuración: {e}")
             return None
 
-    def robust_parse_date(self, date_str, preferred_dayfirst=None):
-        """
-        Intenta convertir la cadena de fecha usando múltiples estrategias.
-        - Primero, busca patrones como "Apr 01, 2025 (Mar)".
-        - Luego utiliza pd.to_datetime con la opción dayfirst según la preferencia.
-        - Si no se especifica, prueba ambas opciones y elige la que dé una fecha razonable.
-
-        Args:
-            date_str (str): Cadena de fecha.
-            preferred_dayfirst (bool, opcional): Preferencia de interpretación.
-
-        Returns:
-            pd.Timestamp o None.
-        """
+    def robust_parse_date(self, date_str: str, preferred_dayfirst: bool | None = None) -> pd.Timestamp | None:
+        """Parse *date_str* trying several strategies."""
         if not isinstance(date_str, str):
             return None
         date_str = date_str.strip()
@@ -115,13 +101,73 @@ class InvestingProcessor(BaseProcessor):
             self.logger.warning(f"Error en robust_parse_date para '{date_str}': {e}")
             return None
 
-    def process_file(self, config_row):
-        """
-        Procesa un archivo individual con manejo robusto de formatos numéricos.
-        """
-        variable = config_row['Variable']
-        macro_type = config_row['Tipo Macro']
-        target_col = config_row['TARGET']
+    def _parse_dates(self, df: pd.DataFrame, ruta: str) -> pd.DataFrame:
+        """Add a ``fecha`` column parsed from ``Release Date``."""
+        if ruta not in self.date_cache:
+            sample = df["Release Date"].dropna().head(10)
+            count_true, count_false = 0, 0
+            threshold = pd.Timestamp.today() + pd.Timedelta(days=30)
+            for val in sample:
+                dt_true = pd.to_datetime(val, dayfirst=True, errors="coerce")
+                dt_false = pd.to_datetime(val, dayfirst=False, errors="coerce")
+                if pd.notnull(dt_true) and dt_true <= threshold:
+                    count_true += 1
+                if pd.notnull(dt_false) and dt_false <= threshold:
+                    count_false += 1
+            preferred = count_true >= count_false
+            self.date_cache[ruta] = preferred
+            self.logger.info(f"Preferencia de dayfirst para {ruta}: {preferred}")
+        else:
+            preferred = self.date_cache[ruta]
+
+        df["fecha"] = df["Release Date"].apply(lambda x: self.robust_parse_date(x, preferred_dayfirst=preferred))
+        df = df.dropna(subset=["fecha"]).sort_values("fecha")
+        return df
+
+    def _convert_values(self, series: pd.Series) -> pd.Series:
+        """Convert numeric strings with suffixes and symbols to floats."""
+
+        def convertir_valor_robusto(val: object) -> float | None:
+            if pd.isna(val) or val == "":
+                return None
+
+            val_str = str(val).strip()
+
+            multiplicador = 1.0
+            if val_str.endswith("B") or val_str.endswith("b"):
+                multiplicador = 1e9
+                val_str = val_str[:-1].strip()
+            elif val_str.endswith("M") or val_str.endswith("m"):
+                multiplicador = 1e6
+                val_str = val_str[:-1].strip()
+            elif val_str.endswith("K") or val_str.endswith("k"):
+                multiplicador = 1e3
+                val_str = val_str[:-1].strip()
+
+            if val_str.endswith("%"):
+                val_str = val_str[:-1].strip()
+                multiplicador *= 0.01
+
+            val_str = val_str.replace(",", ".")
+            try:
+                return float(val_str) * multiplicador
+            except ValueError:
+                return None
+
+        return series.apply(convertir_valor_robusto)
+
+    def _merge_daily(self, base: pd.DataFrame, df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+        """Merge ``df`` into ``base`` using an asof join and forward fill."""
+        df = df.sort_values("fecha")
+        daily = pd.merge_asof(base, df, on="fecha", direction="backward")
+        daily[col_name] = daily[col_name].ffill()
+        return base.merge(daily[["fecha", col_name]], on="fecha", how="left")
+
+    def process_file(self, config_row: pd.Series) -> tuple[str, pd.DataFrame | None]:
+        """Process a single Excel file defined in ``config_row``."""
+        variable = config_row["Variable"]
+        macro_type = config_row["Tipo Macro"]
+        target_col = config_row["TARGET"]
 
         # Construir la ruta (buscando también en subdirectorios)
         ruta = os.path.join(self.data_root, macro_type, f"{variable}.xlsx")
@@ -140,15 +186,14 @@ class InvestingProcessor(BaseProcessor):
         self.logger.info(f"- Ruta encontrada: {ruta}")
 
         try:
-            # Estrategia especial para US_Leading_EconIndex: ajustar header y limpiar columnas
             if variable == "US_Leading_EconIndex":
                 self.logger.info("Utilizando estrategia especial para US_Leading_EconIndex (header=2)")
-                df = pd.read_excel(ruta, header=2, engine='openpyxl')
+                df = pd.read_excel(ruta, header=2, engine="openpyxl")
                 df.columns = df.columns.str.strip()
                 self.logger.info(f"Columnas leídas: {df.columns.tolist()}")
             else:
-                df = pd.read_excel(ruta, engine='openpyxl')
-        except Exception as e:
+                df = pd.read_excel(ruta, engine="openpyxl")
+        except Exception as e:  # pragma: no cover - runtime behaviour
             self.logger.error(f"Error al leer {ruta}: {e}")
             return variable, None
 
@@ -157,27 +202,7 @@ class InvestingProcessor(BaseProcessor):
             self.logger.error(f"No se encontró la columna 'Release Date' en {ruta}")
             return variable, None
 
-        # Determinar preferencia de dayfirst (cacheada)
-        if ruta not in self.date_cache:
-            sample = df['Release Date'].dropna().head(10)
-            count_true, count_false = 0, 0
-            threshold = pd.Timestamp.today() + pd.Timedelta(days=30)
-            for val in sample:
-                dt_true = pd.to_datetime(val, dayfirst=True, errors='coerce')
-                dt_false = pd.to_datetime(val, dayfirst=False, errors='coerce')
-                if pd.notnull(dt_true) and dt_true <= threshold:
-                    count_true += 1
-                if pd.notnull(dt_false) and dt_false <= threshold:
-                    count_false += 1
-            preferred = count_true >= count_false
-            self.date_cache[ruta] = preferred
-            self.logger.info(f"Preferencia de dayfirst para {ruta}: {preferred}")
-        else:
-            preferred = self.date_cache[ruta]
-
-        df['fecha'] = df['Release Date'].apply(lambda x: self.robust_parse_date(x, preferred_dayfirst=preferred))
-        df = df.dropna(subset=['fecha'])
-        df = df.sort_values('fecha')
+        df = self._parse_dates(df, ruta)
 
         # Si el target especificado no está, intenta buscar una alternativa
         if target_col not in df.columns:
@@ -190,42 +215,7 @@ class InvestingProcessor(BaseProcessor):
             self.logger.error(f"No se encontró columna TARGET ni alternativa en {ruta}")
             return variable, None
 
-        # FUNCIÓN MEJORADA: Convertir la columna target a numérico con manejo de formatos especiales
-        def convertir_valor_robusto(val):
-            """Maneja múltiples formatos numéricos incluyendo sufijos y símbolos"""
-            if pd.isna(val) or val == '':
-                return None
-
-            # Convertir a string y limpiar
-            val_str = str(val).strip()
-
-            # Manejar sufijos multiplicadores
-            multiplicador = 1
-            if val_str.endswith('B') or val_str.endswith('b'):  # Billones
-                multiplicador = 1e9
-                val_str = val_str[:-1].strip()
-            elif val_str.endswith('M') or val_str.endswith('m'):  # Millones
-                multiplicador = 1e6
-                val_str = val_str[:-1].strip()
-            elif val_str.endswith('K') or val_str.endswith('k'):  # Miles
-                multiplicador = 1e3
-                val_str = val_str[:-1].strip()
-
-            # Eliminar porcentaje
-            if val_str.endswith('%'):
-                val_str = val_str[:-1].strip()
-                multiplicador *= 0.01  # Para convertir 5% a 0.05
-
-            # Reemplazar comas por puntos (formato europeo)
-            val_str = val_str.replace(',', '.')
-
-            try:
-                return float(val_str) * multiplicador
-            except ValueError:
-                return None
-
-        # Aplicar la función de conversión robusta
-        df['valor'] = df[target_col].apply(convertir_valor_robusto)
+        df["valor"] = self._convert_values(df[target_col])
         df = df.dropna(subset=['valor'])
 
         if df.empty:
@@ -261,10 +251,8 @@ class InvestingProcessor(BaseProcessor):
         self.logger.info(f"- Cobertura: {cobertura:.2f}%")
         return variable, df[['fecha', nuevo_nombre]].copy()
 
-    def generate_daily_index(self):
-        """
-        Genera un DataFrame con un índice diario desde la fecha global mínima hasta la máxima.
-        """
+    def generate_daily_index(self) -> pd.DataFrame | None:
+        """Create the daily index covering the global date range."""
         if self.global_min_date is None or self.global_max_date is None:
             self.logger.error("No se pudieron determinar las fechas globales")
             return None
@@ -276,11 +264,8 @@ class InvestingProcessor(BaseProcessor):
         )
         return self.daily_index
 
-    def combine_data(self):
-        """
-        Convierte cada serie (generalmente reportada en frecuencias bajas) a datos diarios usando merge_asof.
-        Para cada archivo, se asocia el dato reportado más reciente a cada día.
-        """
+    def combine_data(self) -> pd.DataFrame | None:
+        """Merge all processed series into the daily index."""
         if self.daily_index is None:
             self.logger.error("El índice diario no ha sido generado")
             return None
@@ -290,23 +275,16 @@ class InvestingProcessor(BaseProcessor):
             if df is None or df.empty:
                 self.logger.warning(f"Omitiendo {variable} por falta de datos")
                 continue
-            df = df.sort_values('fecha')
-            # merge_asof para asignar cada día con el valor reportado más reciente
-            df_daily = pd.merge_asof(combined, df, on='fecha', direction='backward')
-            col_name = self.stats[variable]['nuevo_nombre']
-            # Como precaución se aplica ffill
-            df_daily[col_name] = df_daily[col_name].ffill()
-            combined = combined.merge(df_daily[['fecha', col_name]], on='fecha', how='left')
+            col_name = self.stats[variable]["nuevo_nombre"]
+            combined = self._merge_daily(combined, df, col_name)
         self.final_df = combined
         self.logger.info(
             f"DataFrame final combinado: {len(self.final_df)} filas, {len(self.final_df.columns)} columnas"
         )
         return self.final_df
 
-    def analyze_coverage(self):
-        """
-        Genera un resumen de cobertura y estadísticas para cada indicador.
-        """
+    def analyze_coverage(self) -> None:
+        """Log coverage statistics for each indicator."""
         total_days = len(self.daily_index)
         self.logger.info("\nResumen de Cobertura:")
         for variable, stats in self.stats.items():
@@ -314,10 +292,8 @@ class InvestingProcessor(BaseProcessor):
                 f"- {variable}: {stats['coverage']:.2f}% desde {stats['date_min'].strftime('%Y-%m-%d')} a {stats['date_max'].strftime('%Y-%m-%d')}"
             )
 
-    def save_results(self, output_file='datos_economicos_procesados.xlsx'):
-        """
-        Guarda el DataFrame final combinado y las estadísticas en un archivo Excel.
-        """
+    def save_results(self, output_file: str = "datos_economicos_procesados.xlsx") -> bool:
+        """Save the final combined DataFrame and stats to an Excel file."""
         if self.final_df is None:
             self.logger.error("No hay datos combinados para guardar")
             return False
@@ -342,7 +318,8 @@ class InvestingProcessor(BaseProcessor):
             self.logger.error(f"Error al guardar resultados: {e}")
             return False
 
-    def _transform(self, data):
+    def _transform(self, data: object) -> pd.DataFrame | None:
+        """Execute the full processing pipeline."""
         start_time = time.time()
         if self.read_config() is None:
             return None
@@ -364,9 +341,10 @@ class InvestingProcessor(BaseProcessor):
         self.logger.info(f"Archivos procesados: {len(self.config_data)}")
         return self.final_df
 
-    def save(self, data, output_file):
+    def save(self, data: pd.DataFrame | None, output_file: str) -> bool:
         self.final_df = data
         return self.save_results(output_file)
 
-    def run(self, output_file='datos_economicos_procesados.xlsx'):
+    def run(self, output_file: str = "datos_economicos_procesados.xlsx") -> bool:
+        """Run the processor end-to-end."""
         return super().run(None, output_file)

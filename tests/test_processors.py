@@ -1,5 +1,10 @@
 from pathlib import Path
 import pytest
+
+try:
+    import pandas as pd
+except Exception:  # pragma: no cover - optional dependency missing
+    pd = None
 from sp500_analysis.application.preprocessing.processors.eoe import EOEProcessor
 from sp500_analysis.application.preprocessing.processors.fred import FredProcessor
 from sp500_analysis.application.preprocessing.processors.banco_republica import (
@@ -103,3 +108,27 @@ def test_base_processor_validation_failure(tmp_path):
     assert proc.run("bad", output_file=out_file) is False
     assert not out_file.exists()
     assert proc.steps == ["validate"]
+
+
+@pytest.mark.skipif(InvestingProcessor is None or pd is None, reason="pandas not available")
+def test_investing_private_helpers():
+    proc = InvestingProcessor(config_file="dummy.xlsx")
+
+    df = pd.DataFrame({"Release Date": ["01/02/2020", "02/02/2020"]})
+    parsed = proc._parse_dates(df.copy(), "dummy")
+    assert "fecha" in parsed.columns
+    assert parsed["fecha"].is_monotonic_increasing
+
+    series = pd.Series(["1K", "2M", "3%", "4.5"])
+    converted = proc._convert_values(series)
+    assert converted.tolist() == [1000.0, 2e6, 0.03, 4.5]
+
+    base = pd.DataFrame({"fecha": pd.date_range("2020-01-01", periods=3)})
+    df_merge = pd.DataFrame(
+        {
+            "fecha": [pd.Timestamp("2020-01-01"), pd.Timestamp("2020-01-03")],
+            "col": [1, 3],
+        }
+    )
+    merged = proc._merge_daily(base, df_merge, "col")
+    assert merged["col"].tolist() == [1, 1, 3]
