@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 try:
     import pandas as pd
 except Exception:  # pragma: no cover - optional
@@ -121,7 +123,9 @@ def infer_frequencies(df: pd.DataFrame) -> dict[str, str]:
     return frequencies
 
 
-def rename_dataframe(dataset: pd.DataFrame, datetime_column: str, target_columns: str | None, date_format: str | None) -> pd.DataFrame:
+def rename_dataframe(
+    dataset: pd.DataFrame, datetime_column: str, target_columns: str | None, date_format: str | None
+) -> pd.DataFrame:
     renamed = dataset.rename(columns={datetime_column: "date"})
     renamed = renamed[renamed["date"].apply(lambda x: isinstance(x, str) and not re.search(r"[a-zA-Z]", x))]
     if date_format:
@@ -141,14 +145,22 @@ def rename_dataframe(dataset: pd.DataFrame, datetime_column: str, target_columns
     return renamed[cols_to_keep]
 
 
-def impute_time_series_ffill(dataset: pd.DataFrame, datetime_column: str = "date", id_column: str = "id") -> pd.DataFrame:
+def impute_time_series_ffill(
+    dataset: pd.DataFrame, datetime_column: str = "date", id_column: str = "id"
+) -> pd.DataFrame:
     df = dataset.copy()
     if df.isnull().values.any():
         df = df.ffill()
     return df
 
 
-def resample_to_business_day(dataset: pd.DataFrame, input_frequency: str, column_date: str = "date", id_column: str = "id", output_frequency: str = "B") -> pd.DataFrame:
+def resample_to_business_day(
+    dataset: pd.DataFrame,
+    input_frequency: str,
+    column_date: str = "date",
+    id_column: str = "id",
+    output_frequency: str = "B",
+) -> pd.DataFrame:
     df = dataset.copy()
     df[column_date] = pd.to_datetime(df[column_date], format="%Y-%m-%d")
     df = df.drop_duplicates(subset=[column_date], keep="last")
@@ -162,12 +174,11 @@ def resample_to_business_day(dataset: pd.DataFrame, input_frequency: str, column
     return resampled
 
 
-def convert_dataframe(df: pd.DataFrame, excluded_column: str | None, id_column: str = "id", datetime_column: str = "date") -> pd.DataFrame:
+def convert_dataframe(
+    df: pd.DataFrame, excluded_column: str | None, id_column: str = "id", datetime_column: str = "date"
+) -> pd.DataFrame:
     cols = df.columns.difference([id_column, datetime_column] + ([excluded_column] if excluded_column else []))
     for col in cols:
-        df[col] = (
-            df[col].astype(str).str.replace(",", ".", regex=False).str.replace(r"[^\d\.-]", "", regex=True)
-        )
+        df[col] = df[col].astype(str).str.replace(",", ".", regex=False).str.replace(r"[^\d\.-]", "", regex=True)
         df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
-
