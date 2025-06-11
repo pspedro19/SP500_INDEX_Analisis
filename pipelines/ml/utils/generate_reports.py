@@ -523,6 +523,8 @@ def main():
     logging.info(f"Reporte generado en {elapsed_time:.2f} segundos")
     
     if pdf_path:
+        logging.info(f"PDF generado: {pdf_path}")
 
 if __name__ == "__main__":
     main()
+
