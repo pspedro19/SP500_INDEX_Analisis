@@ -198,3 +198,7 @@ make test
 ## 🧠 Autor
 
 Proyecto desarrollado por Pedro para análisis avanzado del índice S&P500 usando datos macroeconómicos estructurados y modelado basado en aprendizaje automático.
+
+## ❌ Scripts eliminados
+
+El script `pipelines/ml/limpiar_ultimo_nan.py` se eliminó del repositorio al no formar parte del flujo de procesamiento actual.
