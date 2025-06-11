@@ -305,23 +305,15 @@ def main():
         ("Paso 4: Transformación de Features", "pipelines/ml/04_step_transform_features.py"),
         ("Paso 5: Eliminación de Relaciones", "pipelines/ml/05_step_remove_relations.py"),
         ("Paso 6: Selección FPI", "pipelines/ml/06_step_fpi_selection.py"),
-        (
-            "Paso 7: Entrenamiento de Modelos",
-            lambda: container.resolve("training_service").run_training(),
-        ),
-        (
-            "Paso 7.5: Ensamblado",
-            lambda: container.resolve("ensemble_builder").build(),
-        ),
+        ("Paso 6a: Filtro 20 días", "pipelines/ml/06a_step_filtro_20days.py"),
+        ("Paso 7: Entrenamiento de Modelos", "pipelines/ml/07_step_train_models.py"),
+        ("Paso 7a: Aplicar Transformación Inversa", "pipelines/ml/07a_step_apply_inverse_transform.py"),
+        ("Paso 7b: Ensamblado", "pipelines/ml/07b_step_ensemble.py"),
+        ("Paso 7c: Cálculo Valor SP500", "pipelines/ml/07c_step_Calculo_Valor_SP500.py"),
+        ("Paso 7d: Formato Power BI", "pipelines/ml/07d_step_Transform_to_PowerBI.py"),
         ("Paso 8: Preparación de Salida", "pipelines/ml/08_step_prepare_output.py"),
-        (
-            "Paso 9: Backtest",
-            lambda: container.resolve("evaluation_service").run_evaluation(),
-        ),
-        (
-            "Paso 10: Inferencia",
-            lambda: container.resolve("inference_service").run_inference(),
-        ),
+        ("Paso 9: Backtest", "pipelines/ml/09_step_backtest.py"),
+        ("Paso 10: Inferencia", "pipelines/ml/10_step_inference.py"),
     ]
 
     # Almacenar resultados y tiempos

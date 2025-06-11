@@ -61,18 +61,22 @@ sp500 --help
 
 Cada script puede ejecutarse por separado:
 ```bash
-python pipelines/ml/00_step_preprocess.py          # Paso 0
-python pipelines/ml/01_step_merge_excels.py       # Paso 1
-python pipelines/ml/02_step_generate_categories.py # Paso 2
-python pipelines/ml/03_step_clean_columns.py       # Paso 3
-python pipelines/ml/04_step_transform_features.py  # Paso 4
-python pipelines/ml/05_step_remove_relations.py    # Paso 5
-python pipelines/ml/06_step_fpi_selection.py       # Paso 6
-python src/sp500_analysis/application/model_training/trainer.py  # Paso 7
-python pipelines/ml/07b_step_ensemble.py          # Paso 7.5
-python pipelines/ml/08_step_prepare_output.py      # Paso 8
-python -m sp500_analysis.application.services.evaluation_service  # Paso 9
-python -m sp500_analysis.application.services.inference_service   # Paso 10
+python pipelines/ml/00_step_preprocess.py                 # Paso 0
+python pipelines/ml/01_step_merge_excels.py               # Paso 1
+python pipelines/ml/02_step_generate_categories.py        # Paso 2
+python pipelines/ml/03_step_clean_columns.py              # Paso 3
+python pipelines/ml/04_step_transform_features.py         # Paso 4
+python pipelines/ml/05_step_remove_relations.py           # Paso 5
+python pipelines/ml/06_step_fpi_selection.py              # Paso 6
+python pipelines/ml/06a_step_filtro_20days.py             # Paso 6a
+python pipelines/ml/07_step_train_models.py               # Paso 7
+python pipelines/ml/07a_step_apply_inverse_transform.py   # Paso 7a
+python pipelines/ml/07b_step_ensemble.py                  # Paso 7b
+python pipelines/ml/07c_step_Calculo_Valor_SP500.py       # Paso 7c
+python pipelines/ml/07d_step_Transform_to_PowerBI.py      # Paso 7d
+python pipelines/ml/08_step_prepare_output.py             # Paso 8
+python pipelines/ml/09_step_backtest.py                   # Paso 9
+python pipelines/ml/10_step_inference.py                  # Paso 10
 ```
 
 ---
@@ -126,22 +130,44 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
 
 ### 🟡 Paso 6 - Selección de Variables Relevantes (FPI)
 **Script:** `pipelines/ml/06_step_fpi_selection.py`
-- Selecciona variables clave usando Feature Permutation Importance con CatBoost y validación temporal.  
+- Selecciona variables clave usando Feature Permutation Importance con CatBoost y validación temporal.
 - **Output:** `EUR_final_FPI.xlsx`
 
 ---
 
+### 🟡 Paso 6a - Filtro de 20 días
+**Script:** `pipelines/ml/06a_step_filtro_20days.py`
+- Reduce el ruido eliminando filas muy cercanas en el tiempo.
+- **Output:** Dataset filtrado.
+
+---
+
 ### 🟢 Paso 7 - Entrenamiento de Modelos
-**Script:** `src/sp500_analysis/application/model_training/trainer.py`  
-- Entrena y optimiza modelos CatBoost, LightGBM, XGBoost, MLP, SVM con Optuna.  
-- **Output:**  
-  - Modelos `.pkl` en `models/`  
+**Script:** `pipelines/ml/07_step_train_models.py`
+- Entrena y optimiza modelos CatBoost, LightGBM, XGBoost, MLP, SVM con Optuna.
+- **Output:**
+  - Modelos `.pkl` en `models/`
   - Predicciones en `data/final/all_models_predictions.csv`
 
-### 🟢 Paso 7.5 - Ensamble de Modelos
+### 🟢 Paso 7a - Aplicar Transformación Inversa
+**Script:** `pipelines/ml/07a_step_apply_inverse_transform.py`
+- Restaura las predicciones a su escala original.
+- **Output:** `predicciones_reales.csv`
+
+### 🟢 Paso 7b - Ensamble de Modelos
 **Script:** `pipelines/ml/07b_step_ensemble.py`
 - Combina las predicciones de los modelos base con un enfoque greedy.
 - **Output:** `ensemble_greedy.pkl` y `ensemble_info.json`
+
+### 🟢 Paso 7c - Cálculo del Valor del S&P500
+**Script:** `pipelines/ml/07c_step_Calculo_Valor_SP500.py`
+- Convierte los retornos pronosticados en valores del índice.
+- **Output:** `valor_sp500.csv`
+
+### 🟢 Paso 7d - Formato compatible con Power BI
+**Script:** `pipelines/ml/07d_step_Transform_to_PowerBI.py`
+- Adapta los CSV al formato regional español para Power BI.
+- **Output:** `outputs/archivo_powerbi_es.csv`
 
 ---
 
@@ -151,12 +177,12 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
 - **Output:** `outputs/archivo_para_powerbi.csv`
 
 ### 🟢 Paso 9 - Backtest de Estrategias
-**Servicio:** `EvaluationService` (`src/sp500_analysis/application/services/evaluation_service.py`)
+**Script:** `pipelines/ml/09_step_backtest.py`
 - Evalúa el desempeño histórico de las predicciones.
 - **Output:** métricas y gráficos en `metrics/`.
 
 ### 🟢 Paso 10 - Inferencia
-**Servicio:** `InferenceService` (`src/sp500_analysis/application/services/inference_service.py`)
+**Script:** `pipelines/ml/10_step_inference.py`
 - Genera pronósticos usando los modelos entrenados.
 - **Output:** `predictions_api.json` y visualizaciones de forecast.
 
