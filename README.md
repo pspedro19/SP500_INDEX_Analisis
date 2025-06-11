@@ -56,7 +56,9 @@ SP500_index_analysis/
 │   # Al ejecutar el pipeline se crearán `3_trainingdata/`,
 │   # `4_results/` y `5_metrics/` en esta carpeta.
 │
-├── pipelines/      # Scripts de procesamiento por paso
+├── pipelines/                       # Scripts de procesamiento por paso
+│   ├── ml/                          # Pipeline principal de datos
+│   └── time_series/                 # Pipeline de series de tiempo (legacy)
 ├── notebooks/      # Jupyter notebooks exploratorios
 ├── logs/           # Registros de ejecución
 ├── run_pipeline.py # Orquestador principal del pipeline
@@ -291,3 +293,5 @@ Proyecto desarrollado por Pedro para análisis avanzado del índice S&P500 usand
 ## ❌ Scripts eliminados
 
 El script `pipelines/ml/limpiar_ultimo_nan.py` se eliminó del repositorio al no formar parte del flujo de procesamiento actual.
+
+La carpeta `pipelines/time_series/` permanece en el repositorio únicamente con fines históricos. Estos scripts implementan un pipeline de series de tiempo que no se usa actualmente ni está cubierto por las pruebas automatizadas.
