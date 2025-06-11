@@ -7,4 +7,5 @@ __all__ = [
     "EconomicDataProcessor",
     "FredDataProcessor",
     "BancoRepublicaProcessor",
+    "filter_last_n_days",
 ]
