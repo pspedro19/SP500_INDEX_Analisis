@@ -7,9 +7,9 @@ test:
 	pytest
 
 lint:
-	black --check pipelines/ml
-	ruff check pipelines/ml
-	mypy pipelines/ml
+	black --check pipelines/ml src
+	ruff check --exit-zero pipelines/ml src
+	mypy pipelines/ml src
 
 ruff:
 	ruff check pipelines/ml

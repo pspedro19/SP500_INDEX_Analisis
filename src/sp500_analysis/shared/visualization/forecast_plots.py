@@ -1,4 +1,5 @@
 """Forecast and comparison plotting utilities."""
+
 from __future__ import annotations
 
 import logging
@@ -129,21 +130,58 @@ def plot_forecast(
     ax.plot(hist_subset.index, hist_subset, label="Histórico", color=COLORS["real"], linewidth=2)
 
     if pred_series is not None:
-        ps = pd.Series(inverse_transform(pred_series.values), index=pred_series.index) if inverse_transform else pred_series
+        ps = (
+            pd.Series(inverse_transform(pred_series.values), index=pred_series.index)
+            if inverse_transform
+            else pred_series
+        )
         ax.plot(ps.index, ps, label="Predicción (Val/Test)", color=COLORS["prediction"], linestyle="--", linewidth=2)
 
     if train_end_date is not None:
         ax.axvline(x=train_end_date, color="gray", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax.annotate("FIN TRAIN", xy=(train_end_date, ax.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="gray", fontweight="bold", fontsize=10)
+        ax.annotate(
+            "FIN TRAIN",
+            xy=(train_end_date, ax.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="gray",
+            fontweight="bold",
+            fontsize=10,
+        )
     if val_end_date is not None:
         ax.axvline(x=val_end_date, color="black", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax.annotate("FIN VALIDACIÓN", xy=(val_end_date, ax.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="black", fontweight="bold", fontsize=10)
+        ax.annotate(
+            "FIN VALIDACIÓN",
+            xy=(val_end_date, ax.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="black",
+            fontweight="bold",
+            fontsize=10,
+        )
 
     if len(fc_plot) == 0:
         logger.warning("El pronóstico está vacío, no hay datos para graficar")
-        ax.text(0.5, 0.5, "SIN DATOS DE PRONÓSTICO", ha="center", va="center", transform=ax.transAxes, fontsize=14, color="red")
+        ax.text(
+            0.5,
+            0.5,
+            "SIN DATOS DE PRONÓSTICO",
+            ha="center",
+            va="center",
+            transform=ax.transAxes,
+            fontsize=14,
+            color="red",
+        )
     else:
-        ax.plot(fc_plot.index, fc_plot, label=f"Pronóstico ({len(fc_plot)} días)", color=COLORS["forecast"], linewidth=3.0, marker="o", markersize=4)
+        ax.plot(
+            fc_plot.index,
+            fc_plot,
+            label=f"Pronóstico ({len(fc_plot)} días)",
+            color=COLORS["forecast"],
+            linewidth=3.0,
+            marker="o",
+            markersize=4,
+        )
         if len(fc_plot) >= 2:
             forecast_mean = fc_plot.mean()
             forecast_std = fc_plot.std()
@@ -167,10 +205,26 @@ def plot_forecast(
 
     if train_end_date is not None:
         ax.axvline(x=train_end_date, color="gray", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax.annotate("FIN TRAIN", xy=(train_end_date, ax.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="gray", fontweight="bold", fontsize=10)
+        ax.annotate(
+            "FIN TRAIN",
+            xy=(train_end_date, ax.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="gray",
+            fontweight="bold",
+            fontsize=10,
+        )
     if val_end_date is not None:
         ax.axvline(x=val_end_date, color="black", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax.annotate("FIN VALIDACIÓN", xy=(val_end_date, ax.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="black", fontweight="bold", fontsize=10)
+        ax.annotate(
+            "FIN VALIDACIÓN",
+            xy=(val_end_date, ax.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="black",
+            fontweight="bold",
+            fontsize=10,
+        )
 
     if ci_low is not None and ci_up is not None:
         ax.fill_between(fc_plot.index, ci_low, ci_up, color=COLORS["ci_lower"], alpha=0.3, label="95% CI")
@@ -230,7 +284,9 @@ def plot_ensemble_comparison(
     ax.plot(ens_plot.index, ens_plot, label="ENSEMBLE", color=COLORS["ensemble"], linewidth=2.5)
 
     if ci_low is not None and ci_up is not None:
-        ax.fill_between(ens_plot.index, ci_low, ci_up, color=COLORS["ensemble_ci"], alpha=0.2, label="95% CI (ENSEMBLE)")
+        ax.fill_between(
+            ens_plot.index, ci_low, ci_up, color=COLORS["ensemble_ci"], alpha=0.2, label="95% CI (ENSEMBLE)"
+        )
 
     last_historical_date = hist_plot.index[-1]
     ax.axvline(x=last_historical_date, color="#95A5A6", linestyle="--", alpha=0.5)
@@ -290,10 +346,26 @@ def create_dashboard(
     ax1.plot(pred_plot.index, pred_plot, label="Predicción", color=COLORS["prediction"], linewidth=2, linestyle="--")
     if train_end_date is not None:
         ax1.axvline(x=train_end_date, color="gray", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax1.annotate("FIN TRAIN", xy=(train_end_date, ax1.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="gray", fontweight="bold", fontsize=10)
+        ax1.annotate(
+            "FIN TRAIN",
+            xy=(train_end_date, ax1.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="gray",
+            fontweight="bold",
+            fontsize=10,
+        )
     if val_end_date is not None:
         ax1.axvline(x=val_end_date, color="black", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax1.annotate("FIN VALIDACIÓN", xy=(val_end_date, ax1.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="black", fontweight="bold", fontsize=10)
+        ax1.annotate(
+            "FIN VALIDACIÓN",
+            xy=(val_end_date, ax1.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="black",
+            fontweight="bold",
+            fontsize=10,
+        )
     ax1.set_title("Serie Histórica vs Predicción", fontsize=12)
     ax1.legend(loc="best")
     ax1.set_ylabel(ylabel, fontsize=12)
@@ -305,9 +377,26 @@ def create_dashboard(
     ax2.plot(hist_subset.index, hist_subset, label="Histórico", color=COLORS["real"], linewidth=2)
     if len(fc_plot) == 0:
         logger.warning("El pronóstico está vacío, no hay datos para graficar en el dashboard")
-        ax2.text(0.5, 0.5, "SIN DATOS DE PRONÓSTICO", ha="center", va="center", transform=ax2.transAxes, fontsize=14, color="red")
+        ax2.text(
+            0.5,
+            0.5,
+            "SIN DATOS DE PRONÓSTICO",
+            ha="center",
+            va="center",
+            transform=ax2.transAxes,
+            fontsize=14,
+            color="red",
+        )
     else:
-        ax2.plot(fc_plot.index, fc_plot, label=f"Pronóstico ({len(fc_plot)} días)", color=COLORS["forecast"], linewidth=3.0, marker="o", markersize=4)
+        ax2.plot(
+            fc_plot.index,
+            fc_plot,
+            label=f"Pronóstico ({len(fc_plot)} días)",
+            color=COLORS["forecast"],
+            linewidth=3.0,
+            marker="o",
+            markersize=4,
+        )
         if ci_low is not None and ci_up is not None:
             ax2.fill_between(fc_plot.index, ci_low, ci_up, color=COLORS["ci_lower"], alpha=0.3, label="95% CI")
         last_historical_date = real_plot.index[-1]
@@ -324,10 +413,26 @@ def create_dashboard(
         )
     if train_end_date is not None:
         ax2.axvline(x=train_end_date, color="gray", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax2.annotate("FIN TRAIN", xy=(train_end_date, ax2.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="gray", fontweight="bold", fontsize=10)
+        ax2.annotate(
+            "FIN TRAIN",
+            xy=(train_end_date, ax2.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="gray",
+            fontweight="bold",
+            fontsize=10,
+        )
     if val_end_date is not None:
         ax2.axvline(x=val_end_date, color="black", linestyle="--", linewidth=1.5, alpha=0.7)
-        ax2.annotate("FIN VALIDACIÓN", xy=(val_end_date, ax2.get_ylim()[0]), xytext=(5, 15), textcoords="offset points", color="black", fontweight="bold", fontsize=10)
+        ax2.annotate(
+            "FIN VALIDACIÓN",
+            xy=(val_end_date, ax2.get_ylim()[0]),
+            xytext=(5, 15),
+            textcoords="offset points",
+            color="black",
+            fontweight="bold",
+            fontsize=10,
+        )
     ax2.set_title("Pronóstico", fontsize=12)
     ax2.legend(loc="best")
     ax2.set_ylabel(ylabel, fontsize=12)
@@ -341,7 +446,14 @@ def create_dashboard(
         bars = ax3.bar(available_metrics, metric_values, color="#3498DB")
         for bar in bars:
             height = bar.get_height()
-            ax3.text(bar.get_x() + bar.get_width() / 2.0, height + 0.01 * max(metric_values), f"{height:.4f}", ha="center", va="bottom", fontsize=9)
+            ax3.text(
+                bar.get_x() + bar.get_width() / 2.0,
+                height + 0.01 * max(metric_values),
+                f"{height:.4f}",
+                ha="center",
+                va="bottom",
+                fontsize=9,
+            )
         ax3.set_title("Métricas Clave", fontsize=12)
 
     ax4 = fig.add_subplot(gs[2, 2])
@@ -453,7 +565,9 @@ def generate_model_visualizations(
                 logger.warning(f"Error en segunda llamada a plot_forecast: {e2}. Creando gráfico básico.")
                 plt.figure(figsize=(12, 6))
                 plt.plot(y_train.iloc[-90:].index, y_train.iloc[-90:], label="Histórico", color="blue")
-                plt.plot(forecast_series.index, forecast_series, label="Pronóstico", color="red", linewidth=2, linestyle="--")
+                plt.plot(
+                    forecast_series.index, forecast_series, label="Pronóstico", color="red", linewidth=2, linestyle="--"
+                )
                 if ci_lower is not None and ci_upper is not None:
                     plt.fill_between(forecast_series.index, ci_lower, ci_upper, alpha=0.3, color="lightblue")
                 plt.title(f"Pronóstico - {instrument} - {model_type}")

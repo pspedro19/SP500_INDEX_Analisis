@@ -40,10 +40,7 @@ def configure_target_variable(
 
     df[f"{target_column}_Target"] = df[target_column].shift(shift_value)
     if shift_value != 0:
-        df[f"{target_column}_Return_Target"] = (
-            df[f"{target_column}_Target"] / df[target_column]
-        ) - 1
+        df[f"{target_column}_Return_Target"] = (df[f"{target_column}_Target"] / df[target_column]) - 1
     else:
         df[f"{target_column}_Return_Target"] = 0
     return df
-

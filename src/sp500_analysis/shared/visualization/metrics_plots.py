@@ -1,4 +1,5 @@
 """Visualization helpers for metric comparison charts."""
+
 from __future__ import annotations
 
 import os

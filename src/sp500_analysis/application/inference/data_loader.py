@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 from typing import Any
+
 try:  # pragma: no cover - optional dependency
     import pandas as pd
 except Exception:  # pragma: no cover - pandas may be unavailable

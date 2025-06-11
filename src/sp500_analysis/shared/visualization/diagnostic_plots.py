@@ -1,4 +1,5 @@
 """Diagnostics and metric visualization utilities."""
+
 from __future__ import annotations
 
 import logging
@@ -96,7 +97,14 @@ def plot_metrics_comparison(
 
     for bar in bars:
         height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2.0, height + 0.01 * max(sorted_values), f"{height:.4f}", ha="center", va="bottom", fontsize=9)
+        ax.text(
+            bar.get_x() + bar.get_width() / 2.0,
+            height + 0.01 * max(sorted_values),
+            f"{height:.4f}",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
 
     plt.xticks(rotation=45)
     plt.tight_layout()
@@ -205,21 +213,39 @@ def plot_metric_evolution(
 ) -> plt.Figure:
     """Plot metric value evolution over time."""
     fig, ax = plt.subplots(figsize=figsize)
-    full_title = f"{title} - {metric_name} - {instrument} - {model_name}" if model_name and instrument else f"{title} - {metric_name}"
+    full_title = (
+        f"{title} - {metric_name} - {instrument} - {model_name}"
+        if model_name and instrument
+        else f"{title} - {metric_name}"
+    )
     ax.plot(metric_values.index, metric_values[metric_name], marker="o", linewidth=2, color="#3498DB")
 
     if len(metric_values) > 3:
         window = min(5, len(metric_values) // 2)
         if window > 0:
             rolling_mean = metric_values[metric_name].rolling(window=window).mean()
-            ax.plot(metric_values.index, rolling_mean, color="#E74C3C", linewidth=2, linestyle="--", label=f"Media Móvil ({window} períodos)")
+            ax.plot(
+                metric_values.index,
+                rolling_mean,
+                color="#E74C3C",
+                linewidth=2,
+                linestyle="--",
+                label=f"Media Móvil ({window} períodos)",
+            )
 
     ax.set_title(full_title, fontsize=14)
     ax.set_ylabel(metric_name, fontsize=12)
     ax.grid(True, linestyle="--", alpha=0.7)
     if len(metric_values) > 0:
         last_value = metric_values[metric_name].iloc[-1]
-        ax.annotate(f"{last_value:.4f}", xy=(metric_values.index[-1], last_value), xytext=(10, 0), textcoords="offset points", fontsize=10, fontweight="bold")
+        ax.annotate(
+            f"{last_value:.4f}",
+            xy=(metric_values.index[-1], last_value),
+            xytext=(10, 0),
+            textcoords="offset points",
+            fontsize=10,
+            fontweight="bold",
+        )
     ax.legend(loc="best")
     configure_axis_date(ax)
     plt.tight_layout()

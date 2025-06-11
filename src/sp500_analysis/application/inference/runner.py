@@ -45,6 +45,7 @@ def load_all_models(models_dir: str | os.PathLike) -> Dict[str, Any]:
     t0 = time.perf_counter()
     models: Dict[str, Any] = {}
     from importlib import import_module
+
     try:
         joblib = import_module("joblib")  # type: ignore
     except Exception:  # pragma: no cover - joblib optional
@@ -180,13 +181,15 @@ def get_inference_for_all_models(
         hist_pred = [np.nan] * len(hist_df) + [pred]
         future_dates = dates_future.tolist()
         future_real = [np.nan] * len(future_dates)
-        forecast_df = pd.DataFrame({
-            DATE_COL: hist_dates + future_dates,
-            "Valor_Real": hist_real + future_real,
-            "Valor_Predicho": hist_pred + future_preds,
-            "Modelo": name,
-            "Periodo": ["Historico"] * len(hist_dates) + ["Forecast"] * len(future_dates),
-        })
+        forecast_df = pd.DataFrame(
+            {
+                DATE_COL: hist_dates + future_dates,
+                "Valor_Real": hist_real + future_real,
+                "Valor_Predicho": hist_pred + future_preds,
+                "Modelo": name,
+                "Periodo": ["Historico"] * len(hist_dates) + ["Forecast"] * len(future_dates),
+            }
+        )
         forecasts_df[name] = forecast_df
     logging.info("Tiempo total de inferencia: %.2fs", time.perf_counter() - t0)
     return results, forecasts_df
@@ -217,17 +220,19 @@ def save_all_inference_results(
     with open(consolidated_file, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4)
     fecha_inf = list(results.values())[0]["date_inference"]
-    consolidated_df = pd.DataFrame([
-        {
-            "Fecha_Inferencia": fecha_inf,
-            "Modelo": name,
-            "Prediccion": res["prediction"],
-            "Fecha_Objetivo": res["target_date"],
-            "Horizonte_Dias": res["forecast_horizon"],
-            "Tiempo_Ejecucion": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        }
-        for name, res in results.items()
-    ])
+    consolidated_df = pd.DataFrame(
+        [
+            {
+                "Fecha_Inferencia": fecha_inf,
+                "Modelo": name,
+                "Prediccion": res["prediction"],
+                "Fecha_Objetivo": res["target_date"],
+                "Horizonte_Dias": res["forecast_horizon"],
+                "Tiempo_Ejecucion": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            }
+            for name, res in results.items()
+        ]
+    )
     consolidated_csv = output_dir / "predictions_api.csv"
     consolidated_df.to_csv(consolidated_csv, index=False)
     api_json = Path(RESULTS_DIR) / "predictions_api.json"
@@ -249,6 +254,7 @@ def save_all_inference_results(
                 rmse = np.sqrt(mean_squared_error(df_eval["Valor_Real"], df_eval["Valor_Predicho"]))
                 metrics["RMSE"] = rmse
             from sp500_analysis.shared.visualization.time_series_plots import plot_forecast
+
             plot_forecast(
                 forecasts_df[name],
                 inference_date=res["date_inference"],

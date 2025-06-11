@@ -1,4 +1,5 @@
 """Shared helpers for visualization modules."""
+
 from __future__ import annotations
 
 import os

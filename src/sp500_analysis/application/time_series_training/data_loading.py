@@ -18,7 +18,9 @@ def load_data(path: str | Path) -> pd.DataFrame:
     return df
 
 
-def split_data(df: pd.DataFrame, val_size: int = 5, test_size: int = 5) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def split_data(
+    df: pd.DataFrame, val_size: int = 5, test_size: int = 5
+) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Split the dataframe into train/validation/test subsets."""
     if len(df) < val_size + test_size + 1:
         raise ValueError("not enough data to split")
