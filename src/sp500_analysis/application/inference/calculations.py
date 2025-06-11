@@ -1,11 +1,19 @@
-import pandas as pd
-import numpy as np
+try:  # pragma: no cover - optional dependency
+    import pandas as pd
+    import numpy as np
+except Exception:  # pragma: no cover - optional dependency
+    pd = None
+    np = None
 
 
 def parse_european_number(value):
     """Convert numbers in European format to float."""
-    if pd.isna(value) or value == "" or str(value).lower() == "nan":
-        return np.nan
+    if pd is not None:
+        if pd.isna(value) or value == "" or str(value).lower() == "nan":
+            return float("nan")
+    else:
+        if value is None or value == "" or str(value).lower() == "nan":
+            return float("nan")
     if isinstance(value, (int, float)):
         return float(value)
     str_value = str(value).strip()
@@ -23,8 +31,12 @@ def parse_european_number(value):
 
 def format_number_for_powerbi(value):
     """Format numeric value for Power BI with up to two decimals."""
-    if pd.isna(value):
-        return ""
+    if pd is not None:
+        if pd.isna(value):
+            return ""
+    else:
+        if value is None or (isinstance(value, float) and value != value):
+            return ""
     num = float(value)
     if num == int(num):
         return str(int(num))
@@ -33,8 +45,13 @@ def format_number_for_powerbi(value):
     return f"{num:.2f}"
 
 
-def compute_predicted_sp500(df: pd.DataFrame) -> pd.DataFrame:
+from typing import Any
+
+
+def compute_predicted_sp500(df: Any) -> Any:
     """Add ValorPredicho_SP500 column using the last known real price."""
+    if pd is None or np is None:
+        raise ImportError("pandas and numpy are required for compute_predicted_sp500")
     df = df.copy()
     df["ValorPredicho_SP500"] = np.nan
 
@@ -62,7 +79,10 @@ def compute_predicted_sp500(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def format_for_powerbi(df: pd.DataFrame) -> pd.DataFrame:
+def format_for_powerbi(df: Any) -> Any:
+    if pd is None:
+        raise ImportError("pandas is required for format_for_powerbi")
+
     df = df.copy()
     df["ValorReal_SP500"] = df["ValorReal_SP500"].apply(
         lambda x: format_number_for_powerbi(parse_european_number(x)) if pd.notna(x) and str(x).strip() != "" else ""

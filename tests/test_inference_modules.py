@@ -1,4 +1,11 @@
-import pandas as pd
+import pytest
+
+try:
+    import pandas as pd
+    import numpy as np  # noqa: F401 - used indirectly
+except Exception:
+    pd = None
+
 from pytest import approx
 
 from sp500_analysis.application.inference.data_loader import load_csv, save_csv
@@ -16,6 +23,12 @@ def test_parse_european_number():
 
 
 def test_compute_predicted_sp500(tmp_path):
+    if pd is None:
+        pytest.skip("pandas not available")
+    try:
+        import numpy  # noqa: F401
+    except Exception:
+        pytest.skip("numpy not available")
     data = {
         "ValorReal": [0.02, 0.03],
         "ValorPredicho": [0.03, 0.05],
