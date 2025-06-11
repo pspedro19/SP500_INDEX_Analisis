@@ -6,3 +6,9 @@ from .correlation_remover import (
     compute_vif_by_frequency,
     iterative_vif_reduction_by_frequency,
 )
+from .fpi_selection import (
+    get_most_recent_file,
+    plot_cv_splits,
+    plot_performance_drift,
+    select_features_fpi,
+)
