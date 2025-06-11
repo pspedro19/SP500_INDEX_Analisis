@@ -7,17 +7,15 @@ from pandas import DataFrame
 import logging
 from sp500_analysis.shared.logging.logger import configurar_logging
 import time
-import matplotlib.pyplot as plt
 from datetime import datetime
-from sklearn.model_selection import TimeSeriesSplit
 from sklearn.preprocessing import StandardScaler
-from catboost import CatBoostRegressor
-from feature_engine.selection import SelectByShuffling
 import pandas_market_calendars as mcal
 
 # Importar configuraciones centralizadas
 from sp500_analysis.config.settings import settings
 
+
+from sp500_analysis.application.feature_engineering import get_most_recent_file, plot_cv_splits, plot_performance_drift, select_features_fpi
 PROJECT_ROOT = settings.project_root
 PROCESSED_DIR = settings.processed_dir
 TRAINING_DIR = settings.training_dir
@@ -100,271 +98,6 @@ logging.info(f"Aplicar escalado: {APPLY_SCALING}")
 logging.info(f"Semilla aleatoria: {RANDOM_SEED}")
 logging.info(f"Parámetros CatBoost: {CATBOOST_PARAMS}")
 logging.info("=" * 80)
-
-# ------------------------------
-# FUNCIONES AUXILIARES
-# ------------------------------
-
-
-def get_most_recent_file(directory: str, extension: str = '.xlsx') -> str | None:
-    """
-    Obtiene el archivo más reciente en un directorio con la extensión especificada.
-
-    Args:
-        directory (str): Ruta al directorio
-        extension (str): Extensión del archivo incluyendo el punto
-
-    Returns:
-        str: Ruta completa al archivo más reciente
-    """
-    files = glob.glob(os.path.join(directory, f'*{extension}'))
-    if not files:
-        return None
-    return max(files, key=os.path.getmtime)
-
-
-def plot_cv_splits(
-    X: DataFrame,
-    tscv: TimeSeriesSplit,
-    output_path: str,
-) -> None:
-    """
-    Visualiza los splits de validación cruzada temporal.
-
-    Args:
-        X (DataFrame): Features
-        tscv (TimeSeriesSplit): Objeto de validación cruzada
-        output_path (str): Ruta donde guardar el gráfico
-    """
-    fig, ax = plt.subplots(figsize=(15, 5))
-
-    for i, (train_idx, val_idx) in enumerate(tscv.split(X)):
-        # Graficar índices de entrenamiento
-        ax.scatter(train_idx, [i + 0.5] * len(train_idx), c='blue', marker='_', s=40, label='Train' if i == 0 else "")
-
-        # Graficar índices de validación
-        ax.scatter(val_idx, [i + 0.5] * len(val_idx), c='red', marker='_', s=40, label='Validation' if i == 0 else "")
-
-        # Añadir textos informativos
-        ax.text(
-            X.shape[0] + 5, i + 0.5, f"Split {i+1}: {len(train_idx)} train, {len(val_idx)} val", va='center', ha='left'
-        )
-
-    # Añadir leyenda y etiquetas
-    ax.legend(loc='upper right')
-    ax.set_xlabel('Índice de muestra')
-    ax.set_yticks(range(1, CV_SPLITS + 1))
-    ax.set_yticklabels([f'Split {i+1}' for i in range(CV_SPLITS)])
-    ax.set_title(f'Validación Cruzada Temporal (CV_SPLITS={CV_SPLITS}, GAP={GAP})')
-
-    # Guardar gráfico
-    plt.tight_layout()
-    plt.savefig(output_path, dpi=300)
-    plt.close()
-
-    logging.info(f"Gráfico de CV splits guardado en: {output_path}")
-
-
-def plot_performance_drift(
-    features: list[str],
-    drifts: list[float] | dict[str, float],
-    selected: list[str],
-    threshold: float,
-    output_path: str,
-) -> None:
-    """
-    Visualiza los performance drifts de las features.
-
-    Args:
-        features (list): Lista de nombres de features
-        drifts (list): Lista de performance drifts
-        selected (list): Lista de features seleccionadas
-        threshold (float): Umbral de selección
-        output_path (str): Ruta donde guardar el gráfico
-    """
-    # Asegurarnos que drifts sea una lista o array
-    if isinstance(drifts, dict):
-        # Si es un diccionario, convertirlo a lista manteniendo el orden de features
-        drifts_list = [drifts.get(feature, 0) for feature in features]
-    else:
-        drifts_list = drifts
-
-    # Crear DataFrame con los datos
-    df = pd.DataFrame({'feature': features, 'drift': drifts_list})
-    df['selected'] = df['feature'].isin(selected)
-    df = df.sort_values('drift', ascending=False)
-
-    # Crear gráfico
-    fig, ax = plt.subplots(figsize=(12, max(8, len(features) / 5)))
-
-    # Graficar barras con colores según selección
-    colors = ['green' if sel else 'red' for sel in df['selected']]
-    bars = ax.barh(df['feature'], df['drift'], color=colors)
-
-    # Añadir línea de threshold
-    ax.axvline(x=threshold, color='black', linestyle='--', label=f'Threshold ({threshold:.4f})')
-
-    # Añadir etiquetas
-    for i, bar in enumerate(bars):
-        width = bar.get_width()
-        label = f"{width:.4f}"
-        ax.text(width + 0.01, bar.get_y() + bar.get_height() / 2, label, va='center', ha='left')
-
-    # Configurar leyenda y etiquetas
-    ax.legend()
-    ax.set_xlabel('Performance Drift')
-    ax.set_ylabel('Feature')
-    ax.set_title('Performance Drift por Feature (FPI)')
-
-    # Guardar gráfico
-    plt.tight_layout()
-    plt.savefig(output_path, dpi=300)
-    plt.close()
-
-    logging.info(f"Gráfico de performance drift guardado en: {output_path}")
-
-
-def select_features_fpi(
-    X: pd.DataFrame,
-    y: pd.Series,
-    cv_splits: int = CV_SPLITS,
-    gap: int = GAP,
-    threshold: float = THRESHOLD,
-) -> tuple[list[str], list[float]]:
-    """
-    Realiza Feature Permutation Importance (FPI) usando CatBoostRegressor y SelectByShuffling.
-    Usa un threshold para hacer la selección menos agresiva.
-
-    La validación usa TimeSeriesSplit con gap explícito para evitar data leakage,
-    especialmente importante cuando hay features rezagadas o acumuladas.
-
-    Args:
-        X (DataFrame): Features
-        y (Series): Target
-        cv_splits (int): Número de folds para cross-validation
-        gap (int): Tamaño del gap en días entre train y valid (debe coincidir con horizonte)
-        threshold (float): Valor límite para considerar una feature relevante
-
-    Returns:
-        tuple: (lista de nombres de features seleccionadas, array con drift scores)
-    """
-    start_time = time.time()
-    logging.info("=" * 50)
-    logging.info("[FPI] INICIANDO ANÁLISIS DE FEATURE PERMUTATION IMPORTANCE")
-    logging.info("=" * 50)
-    logging.info(f"[FPI] Dimensiones de datos - X: {X.shape}, y: {y.shape}")
-    logging.info(f"[FPI] Rango de valores target - Min: {y.min():.6f}, Max: {y.max():.6f}, Mean: {y.mean():.6f}")
-    logging.info(f"[FPI] Parámetros - CV splits: {cv_splits}, gap: {gap}, threshold: {threshold}")
-
-    # Validación temporal con gap explícito igual al horizonte de predicción
-    tscv = TimeSeriesSplit(n_splits=cv_splits, gap=gap)
-
-    # Visualizar los splits de CV
-    cv_plot_path = os.path.join(PLOTS_DIR, f"cv_splits_{timestamp}.png")
-    plot_cv_splits(X, tscv, cv_plot_path)
-
-    # Log información detallada de los splits
-    logging.info("[FPI] Detalle de los splits de validación cruzada temporal:")
-    for i, (train_idx, val_idx) in enumerate(tscv.split(X)):
-        train_start, train_end = min(train_idx), max(train_idx)
-        val_start, val_end = min(val_idx), max(val_idx)
-        train_size, val_size = len(train_idx), len(val_idx)
-
-        logging.info(f"[FPI] Split {i+1}:")
-        logging.info(f"  - Train: {train_size} muestras (índices {train_start} a {train_end})")
-        logging.info(f"  - Validation: {val_size} muestras (índices {val_start} a {val_end})")
-        logging.info(f"  - Gap efectivo: {val_start - train_end - 1} muestras")
-
-    # Crear regressor con los parámetros definidos
-    logging.info("[FPI] Configurando CatBoostRegressor con los siguientes parámetros:")
-    for param, value in CATBOOST_PARAMS.items():
-        logging.info(f"  - {param}: {value}")
-
-    regressor = CatBoostRegressor(**CATBOOST_PARAMS)
-
-    # Configurar el selector
-    logging.info(f"[FPI] Configurando SelectByShuffling con threshold={threshold}")
-    logging.info(f"[FPI] Scorer utilizado: {SCORER}")
-
-    selector = SelectByShuffling(estimator=regressor, scoring=SCORER, cv=tscv, threshold=threshold)
-
-    # Iniciar proceso de fitting
-    logging.info("[FPI] Iniciando proceso de fit con SelectByShuffling...")
-    fit_start_time = time.time()
-
-    # Verificar por NaN o infinitos
-    if X.isna().any().any() or np.isinf(X).any().any():
-        logging.warning("[FPI] ⚠️ Detectados valores NaN o infinitos en X. Puede causar problemas.")
-
-    try:
-        selector.fit(X, y)
-        fit_time = time.time() - fit_start_time
-        logging.info(f"[FPI] Proceso de fit completado en {fit_time:.2f} segundos")
-    except Exception as e:
-        logging.error(f"[FPI] ❌ Error durante el proceso de fit: {e}")
-        return [], []
-
-    # Obtener resultados
-    selected_features = selector.get_feature_names_out()
-    performance_drifts = selector.performance_drifts_
-
-    if hasattr(selector, 'baseline_score_'):
-        logging.info(f"[FPI] Baseline score (sin permutación): {selector.baseline_score_:.6f}")
-
-    logging.info(f"[FPI] Se calcularon drift scores para {len(X.columns)} columnas.")
-    logging.info(
-        f"[FPI] Features seleccionadas por FPI: {len(selected_features)} de {len(X.columns)} ({len(selected_features)/len(X.columns)*100:.1f}%)"
-    )
-
-    # Verificar longitudes
-    if len(performance_drifts) != len(X.columns):
-        logging.error(
-            f"[FPI] ❌ Mismatch entre número de columnas de X ({len(X.columns)}) y performance drifts ({len(performance_drifts)}). Abortando."
-        )
-        return [], []
-
-    # Construir DataFrame con los drifts
-    drift_df = pd.DataFrame(
-        list(zip(X.columns, performance_drifts)), columns=['feature', 'performance_drift']
-    ).sort_values('performance_drift', ascending=False)
-
-    logging.info("[FPI] Top 10 features por importancia (performance drift):")
-    for _, row in drift_df.head(10).iterrows():
-        feature = row['feature']
-        drift = row['performance_drift']
-        status = "✅ SELECCIONADA" if feature in selected_features else "❌ DESCARTADA"
-        if isinstance(drift, (int, float)):
-            logging.info(f"  - {feature}: {drift:.6f} [{status}]")
-        else:
-            logging.info(f"  - {feature}: {drift} [{status}]")
-
-    logging.info("[FPI] Bottom 10 features con menor importancia:")
-    for _, row in drift_df.tail(10).iterrows():
-        feature = row['feature']
-        drift = row['performance_drift']
-        status = "✅ SELECCIONADA" if feature in selected_features else "❌ DESCARTADA"
-        if isinstance(drift, (int, float)):
-            logging.info(f"  - {feature}: {drift:.6f} [{status}]")
-        else:
-            logging.info(f"  - {feature}: {drift} [{status}]")
-
-    # Guardar DataFrame completo de drifts
-    drift_csv_path = os.path.join(PLOTS_DIR, f"fpi_drifts_{timestamp}.csv")
-    drift_df.to_csv(drift_csv_path, index=False)
-    logging.info(f"[FPI] CSV con todos los drift scores guardado en: {drift_csv_path}")
-
-    # Visualizar performance drifts
-    drift_plot_path = os.path.join(PLOTS_DIR, f"performance_drift_{timestamp}.png")
-    plot_performance_drift(X.columns, performance_drifts, selected_features, threshold, drift_plot_path)
-
-    # Tiempo total
-    total_time = time.time() - start_time
-    logging.info(f"[FPI] Proceso FPI completado en {total_time:.2f} segundos")
-    logging.info(f"[FPI] Número de features seleccionadas: {len(selected_features)}")
-    logging.info("=" * 50)
-
-    return list(selected_features), performance_drifts
-
 
 # ------------------------------
 # FUNCIÓN PRINCIPAL
@@ -488,7 +221,6 @@ def main() -> None:
     logging.info(f"Filas eliminadas (no días hábiles): {before_filter_shape[0] - after_filter_shape[0]}")
     logging.info(f"Dataset tras filtrar días hábiles: {df.shape}")
 
-    # 8) Verificar si hay datos suficientes para TimeSeriesSplit
     horizon = FORECAST_HORIZON_1MONTH if FORECAST_PERIOD == "1MONTH" else FORECAST_HORIZON_3MONTHS
     if df.shape[0] < CV_SPLITS * horizon:
         logging.warning(
@@ -609,7 +341,6 @@ def main() -> None:
     logging.info(f"Número total de features antes de FPI: {X_scaled.shape[1]}")
     logging.info(f"Forecast period: {FORECAST_PERIOD}")
     gap = CV_GAP_1MONTH if FORECAST_PERIOD == "1MONTH" else CV_GAP_3MONTHS
-    logging.info(f"Gap usado para TimeSeriesSplit: {gap} días")
     logging.info(f"Threshold FPI: {THRESHOLD}")
 
     # Verificar valores NaN o inf en el target
@@ -619,7 +350,9 @@ def main() -> None:
 
     fpi_start_time = time.time()
     selected_features, performance_drifts = select_features_fpi(
-        X_scaled, y, cv_splits=CV_SPLITS, gap=gap, threshold=THRESHOLD
+        X_scaled, y, cv_splits=CV_SPLITS, gap=gap, threshold=THRESHOLD,
+        catboost_params=CATBOOST_PARAMS, scorer=SCORER,
+        plots_dir=PLOTS_DIR, timestamp=timestamp
     )
     fpi_time = time.time() - fpi_start_time
     logging.info(f"Proceso FPI completado en {fpi_time:.2f} segundos")
