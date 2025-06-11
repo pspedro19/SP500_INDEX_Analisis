@@ -1,97 +1,45 @@
-import re
-import logging
-from datetime import datetime
-from sp500_analysis.shared.logging.logger import configurar_logging
+"""Pipeline step to clean column names in the merged dataset."""
+from __future__ import annotations
+
+from pathlib import Path
+
 import pandas as pd
-import os
 
-# Configuración de logging
-# Definir la raíz del proyecto de manera robusta
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import setup_logging
+from sp500_analysis.application.preprocessing import (
+    STANDARD_NAMES,
+    clean_dataframe_columns,
+)
 
-# Configuración de logging
-log_file = os.path.join(PROJECT_ROOT, "logs", f"clean_columns_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
-configurar_logging(log_file)
 
-# Rutas absolutas usando PROJECT_ROOT (corrigiendo la duplicación de archivo_entrada)
-archivo_entrada = os.path.join(PROJECT_ROOT, "data", "1_preprocess", "MERGEDEXCELS_CATEGORIZADO.xlsx")
-carpeta_salida = os.path.join(PROJECT_ROOT, "data", "2_processed")
-archivo_salida = os.path.join(carpeta_salida, "MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx")
+def main() -> None:
+    logger = setup_logging(settings.log_dir, "clean_columns")
 
-# Crear carpeta si no existe
-if not os.path.exists(carpeta_salida):
-    os.makedirs(carpeta_salida)
+    input_file = Path(settings.preprocess_dir) / "MERGEDEXCELS_CATEGORIZADO.xlsx"
+    output_dir = Path(settings.processed_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_file = output_dir / "MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx"
 
-def limpiar_nombre_columna(nombre):
-    """
-    Limpia nombres de columnas duplicados como 'Denmark_Car_Registrations_MoM_Registrations'
-    para convertirlos en 'Denmark_Car_Registrations_MoM'
-    """
-    sufijos = ["_MoM", "_YoY"]
-    for sufijo in sufijos:
-        if sufijo in nombre:
-            base_name = nombre.split(sufijo)[0]
-            componentes = base_name.split('_')
-            terminos_post_sufijo = nombre.split(sufijo)[1].strip('_').split('_')
-            nombre_limpio = base_name + sufijo
-            if any(comp.lower() == term.lower() for comp in componentes for term in terminos_post_sufijo):
-                return nombre_limpio
-    return nombre
+    if not input_file.exists():
+        logger.error(f"El archivo de entrada no existe: {input_file}")
+        return
 
-def main():
-    try:
-        if not os.path.exists(archivo_entrada):
-            logging.error(f"El archivo de entrada no existe: {archivo_entrada}")
-            return
-        
-        df = pd.read_excel(archivo_entrada)
-        columnas_originales = list(df.columns)
-        logging.info(f"Archivo cargado correctamente. Columnas: {len(columnas_originales)}")
+    df = pd.read_excel(input_file)
+    logger.info("Archivo cargado correctamente. Columnas: %d", len(df.columns))
 
-        nombres_estandar = [
-            "Denmark_Car_Registrations_MoM",
-            "US_Car_Registrations_MoM",
-            "SouthAfrica_Car_Registrations_MoM",
-            "United_Kingdom_Car_Registrations_MoM",
-            "Spain_Car_Registrations_MoM",
-            "Singapore_NonOil_Exports_YoY",
-            "Japan_M2_MoneySupply_YoY",
-            "China_M2_MoneySupply_YoY",
-            "US_Industrial_Production_MoM",
-            "UK_Retail_Sales_MoM"
-        ]
+    df, renamed = clean_dataframe_columns(df, STANDARD_NAMES)
 
-        renombres_directos = {}
-        for estandar in nombres_estandar:
-            for col in columnas_originales:
-                if col.startswith(estandar) and col != estandar:
-                    renombres_directos[col] = estandar
+    if renamed:
+        logger.info("Se modificaron %d nombres de columnas.", len(renamed))
+        for original, nuevo in renamed.items():
+            logger.info("Renombrando: '%s' -> '%s'", original, nuevo)
+    else:
+        logger.info("No se encontraron columnas que necesiten ser renombradas.")
 
-        nuevos_nombres = {}
-        columnas_modificadas = 0
-        for col in columnas_originales:
-            if col in renombres_directos:
-                nuevos_nombres[col] = renombres_directos[col]
-                columnas_modificadas += 1
-            else:
-                nuevo_nombre = limpiar_nombre_columna(col)
-                if nuevo_nombre != col:
-                    nuevos_nombres[col] = nuevo_nombre
-                    columnas_modificadas += 1
+    df.to_excel(output_file, index=False)
+    logger.info("Archivo con columnas limpias guardado en: %s", output_file)
 
-        if nuevos_nombres:
-            df.rename(columns=nuevos_nombres, inplace=True)
-            logging.info(f"Se modificaron {columnas_modificadas} nombres de columnas.")
-            for original, nuevo in nuevos_nombres.items():
-                logging.info(f"Renombrando: '{original}' -> '{nuevo}'")
-        else:
-            logging.info("No se encontraron columnas que necesiten ser renombradas.")
 
-        df.to_excel(archivo_salida, index=False)
-        logging.info(f"Archivo con columnas limpias guardado en: {archivo_salida}")
-            
-    except Exception as e:
-        logging.error(f"Error en el procesamiento: {e}", exc_info=True)
-
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover - manual execution
     main()
