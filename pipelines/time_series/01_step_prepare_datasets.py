@@ -10,11 +10,13 @@ Incluye la columna `date` en la salida y no genera filas sintéticas.
 """
 
 import logging
+import os
 from datetime import datetime
-from sp500_analysis.config.settings import settings
-from sp500_analysis.shared.logging.logger import configurar_logging
 from pathlib import Path
 import warnings
+
+from sp500_analysis.config.settings import settings
+from sp500_analysis.shared.logging.logger import configurar_logging
 
 import numpy as np
 import pandas as pd

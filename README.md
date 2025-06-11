@@ -17,19 +17,16 @@ manual o a través del comando `sp500 preprocess`. Posteriormente,
 ```
 SP500_index_analysis/
 │
-├── data/
-│   ├── raw/           # Datos crudos originales
-│   ├── processed/     # Datos transformados intermedios
-│   └── final/         # Datos finales listos para entrenamiento
-│
-├── models/            # Modelos entrenados (.pkl)
+├── data/              # Datos crudos e intermedios
 ├── pipelines/         # Scripts de procesamiento por paso
-├── logs/              # Logs de ejecución
-├── outputs/           # Predicciones listas para visualización (ej. Power BI)
 ├── notebooks/         # Jupyter notebooks exploratorios
+├── logs/              # Registros de ejecución
+├── src/               # Código fuente del paquete `sp500_analysis`
+├── tests/             # Pruebas unitarias e integrales
 ├── run_pipeline.py    # Orquestador principal del pipeline
-├── .gitignore         # Exclusión de archivos sensibles
-└── requirements.txt   # Dependencias del proyecto
+├── Makefile           # Tareas de automatización
+├── requirement.txt    # Dependencias del proyecto
+└── pyproject.toml     # Configuración del proyecto
 ```
 
 ---
@@ -167,14 +164,14 @@ python pipelines/ml/10_step_inference.py                  # Paso 10
 ### 🟢 Paso 7d - Formato compatible con Power BI
 **Script:** `pipelines/ml/07d_step_Transform_to_PowerBI.py`
 - Adapta los CSV al formato regional español para Power BI.
-- **Output:** `outputs/archivo_powerbi_es.csv`
+- **Output:** `data/4_results/archivo_powerbi_es.csv`
 
 ---
 
 ### 🟢 Paso 8 - Preparación de Resultados para Dashboard
 **Script:** `pipelines/ml/08_step_prepare_output.py`
-- Convierte los resultados a formato `.csv` compatible con Power BI (formato español).  
-- **Output:** `outputs/archivo_para_powerbi.csv`
+- Convierte los resultados a formato `.csv` compatible con Power BI (formato español).
+- **Output:** `data/4_results/archivo_para_powerbi.csv`
 
 ### 🟢 Paso 9 - Backtest de Estrategias
 **Script:** `pipelines/ml/09_step_backtest.py`
@@ -199,7 +196,7 @@ python pipelines/ml/10_step_inference.py                  # Paso 10
 ## ⚙️ Requisitos
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 ---

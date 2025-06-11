@@ -1586,11 +1586,11 @@ def generate_model_visualizations(
         if df_val is not None and len(df_val) > 0:
             try:
                 if model_type.startswith("SARIMAX"):
-                    y_val_pred = final_model.get_prediction(
+                    y_val_pred = model.get_prediction(
                         start=df_val.index[0], end=df_val.index[-1], exog=df_val[exog_cols] if exog_cols else None
                     ).predicted_mean
                 else:
-                    y_val_pred = final_model.get_prediction(start=df_val.index[0], end=df_val.index[-1]).predicted_mean
+                    y_val_pred = model.get_prediction(start=df_val.index[0], end=df_val.index[-1]).predicted_mean
             except Exception as e:
                 logger.warning(f"No se pudieron obtener predicciones para validación: {str(e)}")
                 y_val_pred = None

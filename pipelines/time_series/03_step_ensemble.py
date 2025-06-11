@@ -25,6 +25,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
+import numpy as np
 
 # Importar módulos de utilidades si están disponibles
 try:
