@@ -2,6 +2,7 @@ from sp500_analysis.shared.container import container, setup_container
 from sp500_analysis.application.services.preprocessing_service import PreprocessingService
 from sp500_analysis.application.services.inference_service import InferenceService
 from sp500_analysis.application.services.evaluation_service import EvaluationService
+from sp500_analysis.application.model_training.ensemble_builder import EnsembleBuilder
 import types
 import sys
 
@@ -21,3 +22,4 @@ def test_container_resolves_registered_services():
     assert isinstance(container.resolve("preprocessing_service"), PreprocessingService)
     assert isinstance(container.resolve("inference_service"), InferenceService)
     assert isinstance(container.resolve("evaluation_service"), EvaluationService)
+    assert isinstance(container.resolve("ensemble_builder"), EnsembleBuilder)
