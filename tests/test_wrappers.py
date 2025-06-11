@@ -35,3 +35,17 @@ def test_lstm_wrapper_importerror():
     mod = load_wrapper('lstm_wrapper')
     with pytest.raises(ImportError):
         mod.LSTMWrapper()
+
+
+def test_registry_discovers_wrappers(monkeypatch):
+    monkeypatch.syspath_prepend("src")
+    import importlib, sys
+
+    if "sp500_analysis.infrastructure.models.registry" in sys.modules:
+        del sys.modules["sp500_analysis.infrastructure.models.registry"]
+    importlib.import_module("sp500_analysis.infrastructure.models.registry")
+    from sp500_analysis.infrastructure.models.registry import model_registry
+
+    names = {name for name, _ in model_registry.items()}
+    expected = {"CatBoost", "LightGBM", "XGBoost", "LSTM"}
+    assert expected.issubset(names)
