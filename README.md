@@ -5,10 +5,10 @@
 Este proyecto aplica una serie de transformaciones modulares y secuenciales sobre datos macroeconómicos para generar datasets entrenables para modelos predictivos, orientados al análisis del índice S&P500.
 
 El proceso inicia con `pipelines/ml/00_step_preprocess.py`, que **no se ejecuta**
-automáticamente al correr `run_pipeline.py`. Este paso debe lanzarse de forma
-manual o a través del comando `sp500 preprocess`. Posteriormente,
-`run_pipeline.py` orquesta los pasos 1–10 (incluido el 7.5) desde la carpeta
-`pipelines/`.
+automáticamente al correr `run_pipeline.py`. **Este paso es obligatorio** y debe
+lanzarse manualmente (por ejemplo con `sp500 preprocess`). Una vez completado
+este preprocesamiento inicial, `run_pipeline.py` orquesta los pasos 1–10
+(incluido el 7.5) desde la carpeta `pipelines/`.
 
 ---
 
@@ -43,7 +43,8 @@ al ejecutar el pipeline y no están versionadas.
 
 ### Paso previo: ejecutar preprocesamiento
 
-Antes de orquestar los pasos 1–10 debes lanzar el paso 0 desde la CLI:
+`run_pipeline.py` asume que los archivos procesados ya existen, por lo que el
+paso 0 debe ejecutarse **siempre** antes de lanzar el orquestador. Ejecuta:
 
 ```bash
 sp500 preprocess
@@ -94,6 +95,20 @@ python pipelines/ml/07d_step_Transform_to_PowerBI.py      # Paso 7d
 python pipelines/ml/08_step_prepare_output.py             # Paso 8
 python pipelines/ml/09_step_backtest.py                   # Paso 9
 python pipelines/ml/10_step_inference.py                  # Paso 10
+```
+
+Un ejemplo rápido de ejecución aislada sería:
+
+```bash
+python pipelines/ml/04_step_transform_features.py  # solo el paso 4
+```
+
+Para procesar todo el flujo de forma encadenada realiza primero el paso 0 y
+luego invoca el orquestador:
+
+```bash
+sp500 preprocess  # Paso 0 obligatorio
+python run_pipeline.py  # Pasos 1-10
 ```
 
 ---
