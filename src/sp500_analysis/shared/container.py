@@ -57,11 +57,15 @@ def setup_container() -> None:
     container.register("evaluation_service", EvaluationService, singleton=True)
     container.register("inference_service", InferenceService, singleton=True)
     from sp500_analysis.application.feature_engineering import FeatureEngineeringService
+
     container.register("feature_engineering_service", FeatureEngineeringService, singleton=True)
+    from sp500_analysis.application.services.category_service import CategoryService
+
+    container.register("category_service", CategoryService, singleton=True)
     from sp500_analysis.application.model_training.ensemble_builder import EnsembleBuilder
+
     container.register(
         "ensemble_builder",
         lambda: EnsembleBuilder(container.resolve("data_repository")),
         singleton=True,
     )
-

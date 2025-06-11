@@ -1,1 +1,6 @@
-__all__ = ["TrainingService", "PreprocessingService", "InferenceService"]
+__all__ = [
+    "TrainingService",
+    "PreprocessingService",
+    "InferenceService",
+    "CategoryService",
+]
