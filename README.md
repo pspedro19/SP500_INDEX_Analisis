@@ -41,6 +41,18 @@ al ejecutar el pipeline y no están versionadas.
 
 ## ▶️ Ejecución del pipeline
 
+### Paso previo: ejecutar preprocesamiento
+
+Antes de orquestar los pasos 1–10 debes lanzar el paso 0 desde la CLI:
+
+```bash
+sp500 preprocess
+```
+
+Este comando utiliza `PreprocessingService` para correr
+`pipelines/ml/00_step_preprocess.py` y preparar los datos. Solo después de este
+paso puedes ejecutar el pipeline completo:
+
 ```bash
 python run_pipeline.py
 ```
