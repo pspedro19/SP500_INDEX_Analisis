@@ -44,18 +44,8 @@ from joblib import Parallel, delayed, dump, load
 # Suprimir advertencias
 warnings.filterwarnings("ignore")
 
-# Importar módulos de utilidades para visualizaciones
-# Añadir rutas para encontrar los módulos de utilidades
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
-try:
-    from time_series.utils import plots
-except ImportError:
-    # Intentar con rutas alternativas durante desarrollo
-    try:
-        sys.path.append(os.path.abspath("../pipelines"))
-        from time_series.utils import plots
-    except ImportError:
-        pass
+# Importar utilidades de visualización
+from sp500_analysis.shared.visualization import plotters as plots
 # CONFIGURACIÓN Y ESTRUCTURAS DE DATOS
 # ====================================
 

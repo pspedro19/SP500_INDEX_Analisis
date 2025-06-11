@@ -26,17 +26,8 @@ import seaborn as sns
 import sys
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 
-# Importar módulos de utilidades si están disponibles
-try:
-    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
-    from time_series.utils import plots
-except ImportError:
-    # Intentar con rutas alternativas durante desarrollo
-    try:
-        sys.path.append(os.path.abspath("../pipelines"))
-        from time_series.utils import plots
-    except ImportError:
-        pass
+# Importar utilidades de visualización
+from sp500_analysis.shared.visualization import plotters as plots
 
 # Configuración de logging
 

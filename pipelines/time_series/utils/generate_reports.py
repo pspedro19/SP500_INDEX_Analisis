@@ -29,11 +29,7 @@ import base64
 from io import BytesIO
 
 # Importamos nuestras funciones de visualización
-try:
-    from . import plots
-except ImportError:
-    # Para permitir importación independiente durante desarrollo
-    import plots
+from sp500_analysis.shared.visualization import plotters as plots
 
 def _fig_to_base64(fig):
     """Convierte una figura de matplotlib a una cadena base64 para HTML."""
