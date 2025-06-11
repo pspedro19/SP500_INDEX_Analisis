@@ -44,16 +44,8 @@ log_file = LOG_DIR / f"prepare_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}
 configurar_logging(str(log_file))
 
 # Importar módulos de utilidades para reportes avanzados
-try:
-    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
-    from time_series.utils import generate_reports, plots
-except ImportError:
-    # Intentar con rutas alternativas durante desarrollo
-    try:
-        sys.path.append(os.path.abspath("../pipelines"))
-        from time_series.utils import generate_reports, plots
-    except ImportError:
-        logging.warning("No se pudieron importar los módulos de generación de reportes avanzados.")
+from pipelines.time_series.utils import generate_reports
+from sp500_analysis.shared.visualization import plotters as plots
 
 #----------------------------------------------------------------------------
 # Funciones auxiliares para manejo seguro de datos

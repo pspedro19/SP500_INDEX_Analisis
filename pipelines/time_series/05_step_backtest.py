@@ -40,22 +40,9 @@ from sklearn.metrics import (
     r2_score
 )
 
-# Intentar importar módulos de utilidades para visualizaciones avanzadas
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
-try:
-    from time_series.utils import plots
-    HAS_ADVANCED_PLOTTING = True
-    logging.info("Módulo de visualizaciones avanzadas cargado correctamente")
-except ImportError:
-    # Intentar con rutas alternativas durante desarrollo
-    try:
-        sys.path.append(os.path.abspath("../pipelines"))
-        from time_series.utils import plots
-        HAS_ADVANCED_PLOTTING = True
-        logging.info("Módulo de visualizaciones avanzadas cargado desde ruta alternativa")
-    except ImportError:
-        HAS_ADVANCED_PLOTTING = False
-        logging.warning("No se pudieron importar los módulos de utilidades. Las visualizaciones avanzadas no estarán disponibles.")
+# Utilidades de visualización
+from sp500_analysis.shared.visualization import plotters as plots
+HAS_ADVANCED_PLOTTING = True
 
 # Configuración del proyecto
 PROJECT_ROOT = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
