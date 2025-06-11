@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-from sp500_analysis.shared.visualization.plotters import plot_real_vs_pred
+from sp500_analysis.shared.visualization.time_series_plots import plot_real_vs_pred
 
 
 @dataclass
