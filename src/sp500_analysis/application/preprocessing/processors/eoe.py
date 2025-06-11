@@ -1,14 +1,16 @@
-from pathlib import Path
+from typing import Any
+
+from sp500_analysis.application.preprocessing.base import BaseProcessor
 from sp500_analysis.shared.logging.logger import configurar_logging
 
 
-class EOEProcessor:
-    def __init__(self, data_root='data/0_raw', log_file='eoe_universal_processor.log'):
-        self.data_root = data_root
-        self.logger = configurar_logging(log_file, name='EOEProcessor')
+class EOEProcessor(BaseProcessor):
+    def __init__(self, data_root: str | None = 'data/0_raw', log_file: str = 'eoe_universal_processor.log'):
+        super().__init__(data_root=data_root, log_file=log_file)
 
-    def run(self, output_file):
-        """Placeholder run implementation for EOE processing."""
-        self.logger.info('Running EOE processor')
-        Path(output_file).touch()
+    def _validate_input(self, data: Any) -> bool:
         return True
+
+    def _transform(self, data: Any) -> Any:
+        self.logger.info('Running EOE processor')
+        return data
