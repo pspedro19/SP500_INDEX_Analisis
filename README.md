@@ -4,7 +4,7 @@
 
 Este proyecto aplica una serie de transformaciones modulares y secuenciales sobre datos macroeconómicos para generar datasets entrenables para modelos predictivos, orientados al análisis del índice S&P500.
 
-El proceso inicia con `pipelines/ml/step_0_preprocess.py`, que **no se ejecuta**
+El proceso inicia con `pipelines/ml/00_step_preprocess.py`, que **no se ejecuta**
 automáticamente al correr `run_pipeline.py`. Este paso debe lanzarse de forma
 manual o a través del comando `sp500 preprocess`. Posteriormente,
 `run_pipeline.py` orquesta los pasos 1–10 (incluido el 7.5) desde la carpeta
@@ -61,16 +61,16 @@ sp500 --help
 
 Cada script puede ejecutarse por separado:
 ```bash
-python pipelines/ml/step_0_preprocess.py          # Paso 0
-python pipelines/ml/step_1_merge_excels.py       # Paso 1
-python pipelines/ml/step_2_generate_categories.py # Paso 2
-python pipelines/ml/step_3_clean_columns.py       # Paso 3
-python pipelines/ml/step_4_transform_features.py  # Paso 4
-python pipelines/ml/step_5_remove_relations.py    # Paso 5
-python pipelines/ml/step_6_fpi_selection.py       # Paso 6
+python pipelines/ml/00_step_preprocess.py          # Paso 0
+python pipelines/ml/01_step_merge_excels.py       # Paso 1
+python pipelines/ml/02_step_generate_categories.py # Paso 2
+python pipelines/ml/03_step_clean_columns.py       # Paso 3
+python pipelines/ml/04_step_transform_features.py  # Paso 4
+python pipelines/ml/05_step_remove_relations.py    # Paso 5
+python pipelines/ml/06_step_fpi_selection.py       # Paso 6
 python src/sp500_analysis/application/model_training/trainer.py  # Paso 7
-python pipelines/ml/step_7_5_ensemble.py          # Paso 7.5
-python pipelines/ml/step_8_prepare_output.py      # Paso 8
+python pipelines/ml/07b_step_ensemble.py          # Paso 7.5
+python pipelines/ml/08_step_prepare_output.py      # Paso 8
 python -m sp500_analysis.application.services.evaluation_service  # Paso 9
 python -m sp500_analysis.application.services.inference_service   # Paso 10
 ```
@@ -80,7 +80,7 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
 ## 🧩 Descripción de cada paso
 
 ### 🟣 Paso 0 - Preprocesamiento Inicial
-**Script:** `pipelines/ml/step_0_preprocess.py`  
+**Script:** `pipelines/ml/00_step_preprocess.py`
 - Limpia estructuras base y normaliza nombres y fechas.  
 - **Input:** Archivos `.xlsx` o `.csv` de `data/raw/`  
 - **Output:** Archivos estandarizados a `data/processed/`
@@ -88,7 +88,7 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
 ---
 
 ### 🔵 Paso 1 - Unión de Archivos
-**Script:** `pipelines/ml/step_1_merge_excels.py`  
+**Script:** `pipelines/ml/01_step_merge_excels.py`
 - Une múltiples archivos Excel en uno solo.  
 - **Input:** Archivos macroeconómicos  
 - **Output:** `MERGEDEXCELS.xlsx`
@@ -96,21 +96,21 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
 ---
 
 ### 🔵 Paso 2 - Generación de Categorías
-**Script:** `pipelines/ml/step_2_generate_categories.py`  
+**Script:** `pipelines/ml/02_step_generate_categories.py`
 - Clasifica columnas en categorías económicas.  
 - **Output:** `MERGEDEXCELS_CATEGORIZADO.xlsx`
 
 ---
 
 ### 🔵 Paso 3 - Limpieza de Nombres de Columnas
-**Script:** `pipelines/ml/step_3_clean_columns.py`  
+**Script:** `pipelines/ml/03_step_clean_columns.py`
 - Elimina redundancias y mejora la trazabilidad de variables.  
 - **Output:** `MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx`
 
 ---
 
 ### 🟠 Paso 4 - Transformaciones e Indicadores
-**Script:** `pipelines/ml/step_4_transform_features.py`  
+**Script:** `pipelines/ml/04_step_transform_features.py`
 - Aplica indicadores técnicos como:
   - MoM, YoY, medias móviles, z-score, log-retornos, RSI, Bollinger Bands.  
 - **Output:** Datos enriquecidos por categoría.
@@ -118,14 +118,14 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
 ---
 
 ### 🟠 Paso 5 - Eliminación de Relaciones Redundantes
-**Script:** `pipelines/ml/step_5_remove_relations.py`  
+**Script:** `pipelines/ml/05_step_remove_relations.py`
 - Elimina multicolinealidad con VIF, y variables con alta correlación o baja varianza.  
 - **Output:** Dataset reducido.
 
 ---
 
 ### 🟡 Paso 6 - Selección de Variables Relevantes (FPI)
-**Script:** `pipelines/ml/step_6_fpi_selection.py`  
+**Script:** `pipelines/ml/06_step_fpi_selection.py`
 - Selecciona variables clave usando Feature Permutation Importance con CatBoost y validación temporal.  
 - **Output:** `EUR_final_FPI.xlsx`
 
@@ -139,14 +139,14 @@ python -m sp500_analysis.application.services.inference_service   # Paso 10
   - Predicciones en `data/final/all_models_predictions.csv`
 
 ### 🟢 Paso 7.5 - Ensamble de Modelos
-**Script:** `pipelines/ml/step_7_5_ensemble.py`
+**Script:** `pipelines/ml/07b_step_ensemble.py`
 - Combina las predicciones de los modelos base con un enfoque greedy.
 - **Output:** `ensemble_greedy.pkl` y `ensemble_info.json`
 
 ---
 
 ### 🟢 Paso 8 - Preparación de Resultados para Dashboard
-**Script:** `pipelines/ml/step_8_prepare_output.py`  
+**Script:** `pipelines/ml/08_step_prepare_output.py`
 - Convierte los resultados a formato `.csv` compatible con Power BI (formato español).  
 - **Output:** `outputs/archivo_para_powerbi.csv`
 
