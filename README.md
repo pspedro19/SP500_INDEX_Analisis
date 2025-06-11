@@ -12,6 +12,36 @@ este preprocesamiento inicial, `run_pipeline.py` orquesta los pasos 1–10
 
 ---
 
+## ⚡ Quick Start
+
+Ejecución rápida del pipeline utilizando la CLI:
+
+```bash
+pip install -r requirements.txt
+sp500 preprocess  # paso 0 obligatorio
+python run_pipeline.py
+```
+
+Resultados principales por paso:
+- **0 – Preprocesamiento:** archivos estandarizados en `data/processed/`.
+- **1 – Unión de Archivos:** `MERGEDEXCELS.xlsx`.
+- **2 – Generación de Categorías:** `MERGEDEXCELS_CATEGORIZADO.xlsx`.
+- **3 – Limpieza de Nombres:** `MERGEDEXCELS_CATEGORIZADO_LIMPIO.xlsx`.
+- **4 – Transformaciones e Indicadores:** datos enriquecidos por categoría.
+- **5 – Eliminación de Relaciones:** dataset reducido.
+- **6 – Selección FPI:** `EUR_final_FPI.xlsx`.
+- **6a – Filtro de 20 días:** dataset filtrado.
+- **7 – Entrenamiento de Modelos:** modelos en `models/` y `data/4_results/all_models_predictions.csv`.
+- **7a – Aplicar Transformación Inversa:** `predicciones_reales.csv`.
+- **7b – Ensamble de Modelos:** `ensemble_greedy.pkl` y `ensemble_info.json`.
+- **7c – Cálculo del Valor del S&P500:** `valor_sp500.csv`.
+- **7d – Formato Power BI:** `data/4_results/archivo_powerbi_es.csv`.
+- **8 – Preparación de Resultados:** `data/4_results/archivo_para_powerbi.csv`.
+- **9 – Backtest:** métricas y gráficos en `data/5_metrics/`.
+- **10 – Inferencia:** `predictions_api.json` y visualizaciones de forecast.
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```
