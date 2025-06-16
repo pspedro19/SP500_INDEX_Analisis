@@ -583,7 +583,7 @@ def main():
             print(f"\n✅ Análisis seleccionado: USD/COP usando variables filtradas")
             
             # Para USD/COP, leemos las variables del archivo Data Engineering.xlsx
-            variables_file = os.path.join(PROJECT_ROOT, "pipelines", "Data Engineering.xlsx")
+            variables_file = os.path.join(PROJECT_ROOT, "data", "Data Engineering.xlsx")
             
             try:
                 # Verificar que el archivo existe

@@ -116,11 +116,20 @@ def main() -> None:
     """
     main_start_time = time.time()
 
-    # 1) Obtener el archivo más reciente en la carpeta de entrada
-    input_file = get_most_recent_file(INPUT_DIR)
-    if not input_file:
-        logging.error(f"❌ No se encontraron archivos Excel en {INPUT_DIR}")
-        return
+    # 1) CORRECCIÓN CRÍTICA: Usar archivo de TRAINING en lugar de buscar el más reciente
+    # El problema era que se usaba INFERENCE que no tiene targets válidos
+    training_file = os.path.join(PROCESSED_DIR, "datos_economicos_1month_SP500_TRAINING.xlsx")
+    
+    if os.path.exists(training_file):
+        input_file = training_file
+        logging.info(f"✅ Usando archivo de TRAINING: {input_file}")
+    else:
+        # Fallback: buscar archivo más reciente como antes
+        input_file = get_most_recent_file(INPUT_DIR)
+        if not input_file:
+            logging.error(f"❌ No se encontraron archivos Excel en {INPUT_DIR}")
+            return
+        logging.warning(f"⚠️ No se encontró archivo de TRAINING, usando: {input_file}")
 
     # Extraer el nombre base del archivo para generar el nombre de salida
     base_name = os.path.basename(input_file)

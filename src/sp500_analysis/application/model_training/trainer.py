@@ -16,6 +16,7 @@ from sp500_analysis.infrastructure.models.wrappers import (
     MLPWrapper,
     SVMWrapper,
     LSTMWrapper,
+    TTSWrapper,
 )
 
 
@@ -49,6 +50,18 @@ DEFAULT_PARAM_SPACES: Dict[Type, Dict[str, Callable]] = {
         "dropout_rate": lambda t: t.suggest_float("dropout_rate", 0.0, 0.5),
         "learning_rate": lambda t: t.suggest_float("learning_rate", 1e-4, 1e-2, log=True),
         "sequence_length": lambda t: t.suggest_int("sequence_length", 5, 20),
+    },
+    TTSWrapper: {
+        "d_model": lambda t: t.suggest_categorical("d_model", [32, 64, 128]),
+        "nhead": lambda t: t.suggest_categorical("nhead", [4, 8, 16]),
+        "num_encoder_layers": lambda t: t.suggest_int("num_encoder_layers", 2, 6),
+        "dim_feedforward": lambda t: t.suggest_categorical("dim_feedforward", [128, 256, 512]),
+        "dropout": lambda t: t.suggest_float("dropout", 0.0, 0.3),
+        "sequence_length": lambda t: t.suggest_int("sequence_length", 15, 45),
+        "learning_rate": lambda t: t.suggest_float("learning_rate", 1e-4, 1e-2, log=True),
+        "batch_size": lambda t: t.suggest_categorical("batch_size", [16, 32, 64]),
+        "epochs": lambda t: t.suggest_int("epochs", 50, 200),
+        "patience": lambda t: t.suggest_int("patience", 5, 15),
     },
 }
 

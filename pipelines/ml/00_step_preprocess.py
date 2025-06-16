@@ -3,6 +3,8 @@ from __future__ import annotations
 import os
 import sys
 from pathlib import Path
+import importlib.util
+import logging
 
 from sp500_analysis.application.preprocessing.factory import ProcessorFactory
 from sp500_analysis.config.settings import settings
@@ -19,10 +21,103 @@ LOG_DIR.mkdir(exist_ok=True)
 # Agregar el proyecto al path para importar el step_0_preprocess.py
 sys.path.insert(0, str(PROJECT_ROOT))
 
+def load_legacy_preprocessing_step():
+    """
+    Carga dinámicamente el código legacy de step_0_preprocess.py aplicando correcciones automáticas de rutas.
+    
+    Returns:
+        tuple: (module, success_flag)
+    """
+    # Determinar rutas
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, "../.."))
+    legacy_file_path = os.path.join(project_root, "src", "sp500_analysis", "application", "preprocessing", "legacy_step_0.py")
+    
+    if not os.path.exists(legacy_file_path):
+        print(f"❌ Error: No se encuentra el archivo legacy en {legacy_file_path}")
+        return None, False
+    
+    try:
+        # Función para interceptar os.path.join y corregir rutas automáticamente
+        original_join = os.path.join
+        original_dirname = os.path.dirname
+        original_abspath = os.path.abspath
+        
+        def patched_join(*args):
+            # Convertir argumentos a strings y verificar si necesitan corrección
+            str_args = [str(arg) for arg in args]
+            
+            # Buscar y corregir patrones problemáticos
+            for i, arg in enumerate(str_args):
+                if 'pipelines/Data Engineering.xlsx' in arg:
+                    str_args[i] = arg.replace('pipelines/Data Engineering.xlsx', 'data/Data Engineering.xlsx')
+                    print(f"🔧 Corrigiendo ruta: {arg} → {str_args[i]}")
+            
+            # Aplicar la función original con argumentos corregidos
+            result = original_join(*str_args)
+            return result
+        
+        def patched_dirname(path):
+            # Si es el archivo legacy_step_0.py, devolver el directorio del proyecto
+            if 'legacy_step_0.py' in str(path):
+                return project_root
+            return original_dirname(path)
+            
+        def patched_abspath(path):
+            # Si es el dirname del legacy file, devolver project root
+            if hasattr(patched_abspath, '_in_legacy_context') and patched_abspath._in_legacy_context:
+                if str(path) == original_dirname(legacy_file_path):
+                    return project_root
+            return original_abspath(path)
+        
+        # Aplicar los patches
+        os.path.join = patched_join
+        os.path.dirname = patched_dirname
+        os.path.abspath = patched_abspath
+        patched_abspath._in_legacy_context = True
+        
+        # Cargar el módulo legacy
+        spec = importlib.util.spec_from_file_location("legacy_step_0", legacy_file_path)
+        legacy_module = importlib.util.module_from_spec(spec)
+        
+        # Ejecutar el módulo
+        spec.loader.exec_module(legacy_module)
+        
+        # IMPORTANTE: Después de cargar el módulo, corregir manualmente el PROJECT_ROOT
+        # que ya fue calculado incorrectamente
+        if hasattr(legacy_module, 'PROJECT_ROOT'):
+            legacy_module.PROJECT_ROOT = project_root
+            print(f"🔧 PROJECT_ROOT corregido manualmente: {project_root}")
+        
+        # Restaurar funciones originales
+        os.path.join = original_join
+        os.path.dirname = original_dirname
+        os.path.abspath = original_abspath
+        
+        print("✅ Código completo de legacy_step_0.py cargado con rutas corregidas")
+        print(f"📁 PROJECT_ROOT final: {legacy_module.PROJECT_ROOT if hasattr(legacy_module, 'PROJECT_ROOT') else 'No definido'}")
+        
+        return legacy_module, True
+        
+    except Exception as e:
+        # Restaurar funciones originales en caso de error
+        os.path.join = original_join
+        os.path.dirname = original_dirname  
+        os.path.abspath = original_abspath
+        print(f"❌ Error cargando legacy_step_0.py: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return None, False
+
 # Importar tu función completa
 try:
-    from step_0_preprocess import ejecutar_todos_los_procesadores_v2
-    print("✅ Usando tu código completo step_0_preprocess.py")
+    legacy_module, success = load_legacy_preprocessing_step()
+    if success:
+        ejecutar_todos_los_procesadores_v2 = legacy_module.ejecutar_todos_los_procesadores_v2
+        print("✅ Usando tu código completo step_0_preprocess.py")
+    else:
+        print("❌ Error importando step_0_preprocess.py")
+        sys.exit(1)
 except ImportError as e:
     print(f"❌ Error importando step_0_preprocess.py: {e}")
     sys.exit(1)

@@ -4,6 +4,7 @@ from .xgboost_wrapper import XGBoostWrapper
 from .mlp_wrapper import MLPWrapper
 from .svm_wrapper import SVMWrapper
 from .lstm_wrapper import LSTMWrapper
+from .tts_wrapper import TTSWrapper
 
 __all__ = [
     "CatBoostWrapper",
@@ -12,4 +13,5 @@ __all__ = [
     "MLPWrapper",
     "SVMWrapper",
     "LSTMWrapper",
+    "TTSWrapper",
 ]
