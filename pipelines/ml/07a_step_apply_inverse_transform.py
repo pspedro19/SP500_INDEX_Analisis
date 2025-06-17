@@ -51,7 +51,7 @@ class SP500TargetExtractor:
         1. datos_economicos_1month_SP500_TRAINING.xlsx 
         2. Últimos 20 días de datos_economicos_1month_SP500_INFERENCE.xlsx
         """
-        logging.info("📂 Cargando valores TARGET del S&P500...")
+        logging.info("Cargando valores TARGET del S&P500...")
 
         try:
             # Archivo 1: Training
@@ -71,7 +71,7 @@ class SP500TargetExtractor:
             # Tomar solo los últimos 20 días de inference
             df_inference_last20 = df_inference.tail(20).copy()
             
-            logging.info(f"✅ Datos cargados:")
+            logging.info(f"Datos cargados:")
             logging.info(f"   - Training: {len(df_training)} filas")
             logging.info(f"   - Inference (total): {len(df_inference)} filas")
             logging.info(f"   - Inference (últimos 20): {len(df_inference_last20)} filas")
@@ -84,11 +84,11 @@ class SP500TargetExtractor:
             target_col = 'PRICE_S&P500_Index_index_pricing_Target'
             
             if target_col not in df_combined.columns:
-                logging.error(f"❌ Columna {target_col} no encontrada")
+                logging.error(f"Columna {target_col} no encontrada")
                 logging.info(f"Columnas disponibles: {list(df_combined.columns)}")
                 return False
 
-            logging.info(f"✅ Columna encontrada: {target_col}")
+            logging.info(f"Columna encontrada: {target_col}")
 
             # Crear mapeo de fecha a valores TARGET
             self.target_mapping = {}
@@ -102,14 +102,14 @@ class SP500TargetExtractor:
                     self.target_mapping[date] = target
                     valid_rows += 1
 
-            logging.info("✅ Mapeo TARGET creado:")
+            logging.info("Mapeo TARGET creado:")
             logging.info(f"   - Fechas con valor TARGET: {len(self.target_mapping)}")
             logging.info(f"   - Filas válidas: {valid_rows}")
 
             # Mostrar algunos ejemplos
             dates_sample = sorted(list(self.target_mapping.keys()))
             if len(dates_sample) >= 5:
-                logging.info("\n📊 Muestra de valores TARGET:")
+                logging.info("Muestra de valores TARGET:")
                 for i, date in enumerate(dates_sample[:5]):
                     target = self.target_mapping[date]
                     logging.info(f"   {date.strftime('%Y-%m-%d')}: ${target:.2f}")
@@ -122,14 +122,14 @@ class SP500TargetExtractor:
             return True
 
         except Exception as e:
-            logging.error(f"❌ Error cargando valores TARGET del S&P500: {e}")
+            logging.error(f"Error cargando valores TARGET del S&P500: {e}")
             return False
 
     def load_date_mapping(self, all_predictions_file: str) -> bool:
         """
         Carga el mapeo de FechaKey a fechas reales
         """
-        logging.info("📂 Cargando mapeo de fechas...")
+        logging.info("Cargando mapeo de fechas...")
 
         try:
             df_all = pd.read_csv(all_predictions_file)
@@ -139,11 +139,11 @@ class SP500TargetExtractor:
             fechas_unicas = sorted(df_all['date'].unique())
             self.date_mapping = {idx + 1: fecha for idx, fecha in enumerate(fechas_unicas)}
 
-            logging.info(f"✅ Mapeo de fechas creado: {len(self.date_mapping)} fechas únicas")
+            logging.info(f"Mapeo de fechas creado: {len(self.date_mapping)} fechas únicas")
             return True
 
         except Exception as e:
-            logging.error(f"❌ Error cargando mapeo de fechas: {e}")
+            logging.error(f"Error cargando mapeo de fechas: {e}")
             return False
 
     def map_target_values_by_model(self) -> None:
@@ -151,7 +151,7 @@ class SP500TargetExtractor:
         Mapea los valores TARGET del S&P500 por modelo y fecha
         NO calcula valores reales, solo mapea fechas
         """
-        logging.info("🔄 Mapeando valores TARGET por modelo y fecha...")
+        logging.info("Mapeando valores TARGET por modelo y fecha...")
 
         # Inicializar columnas
         valor_target_sp500 = []
@@ -204,7 +204,7 @@ class SP500TargetExtractor:
 
                     # Log para primeros casos de cada modelo
                     if stats['por_modelo'][modelo]['con_target'] <= 2:
-                        logging.info(f"   {modelo} - Fila {idx}: {fecha_real_valor.strftime('%Y-%m-%d')} → ${target_price:.2f}")
+                        logging.info(f"   {modelo} - Fila {idx}: {fecha_real_valor.strftime('%Y-%m-%d')} -> ${target_price:.2f}")
                 else:
                     # Para valores vacíos, usar string vacío (como espera la función)
                     valor_target_sp500.append("")
@@ -229,13 +229,13 @@ class SP500TargetExtractor:
         self.df_predictions['ValorReal_SP500'] = valor_target_sp500
 
         # Log estadísticas
-        logging.info("✅ Mapeo completado:")
+        logging.info("Mapeo completado:")
         logging.info(f"   - Total filas procesadas: {stats['total']:,}")
         logging.info(f"   - Con valor TARGET: {stats['con_target']:,}")
         logging.info(f"   - Sin valor TARGET: {stats['sin_target']:,}")
         logging.info(f"   - Forecast Future: {stats['forecast_future']:,}")
         
-        logging.info("\n📊 Estadísticas por modelo:")
+        logging.info("Estadísticas por modelo:")
         for modelo, data in stats['por_modelo'].items():
             porcentaje = (data['con_target'] / data['total'] * 100) if data['total'] > 0 else 0
             logging.info(f"   {modelo}: {data['con_target']:,}/{data['total']:,} ({porcentaje:.1f}%)")
@@ -244,11 +244,11 @@ class SP500TargetExtractor:
         """
         Guarda el archivo con los valores TARGET mapeados
         """
-        logging.info(f"💾 Guardando archivo mejorado: {output_file}")
+        logging.info(f"Guardando archivo mejorado: {output_file}")
 
         try:
             self.df_predictions.to_csv(output_file, index=False, sep=';')
-            logging.info(f"✅ Archivo guardado exitosamente")
+            logging.info(f"Archivo guardado exitosamente")
             logging.info(f"   - Filas: {len(self.df_predictions):,}")
             logging.info(f"   - Columnas: {len(self.df_predictions.columns)}")
             
@@ -266,14 +266,14 @@ class SP500TargetExtractor:
             return True
 
         except Exception as e:
-            logging.error(f"❌ Error guardando archivo: {e}")
+            logging.error(f"Error guardando archivo: {e}")
             return False
 
     def generate_validation_report(self) -> None:
         """
         Genera un reporte de validación
         """
-        logging.info("📋 Generando reporte de validación...")
+        logging.info("Generando reporte de validación...")
 
         try:
             # Resumen por modelo
@@ -282,7 +282,7 @@ class SP500TargetExtractor:
                 'FechaReal': lambda x: x.notna().sum()
             }).round(2)
 
-            logging.info("\n📊 Resumen por modelo:")
+            logging.info("Resumen por modelo:")
             for modelo in resumen.index:
                 total = resumen.loc[modelo, ('ValorReal_SP500', 'count')]
                 validos = resumen.loc[modelo, ('ValorReal_SP500', '<lambda>')]
@@ -297,7 +297,7 @@ def main() -> None:
     """
     Función principal para extraer TARGET values y mapear fechas por modelo
     """
-    logging.info("🚀 Iniciando extracción de valores TARGET del S&P500")
+    logging.info("Iniciando extracción de valores TARGET del S&P500")
     logging.info("=" * 70)
     
     try:
@@ -338,10 +338,10 @@ def main() -> None:
         # Generar reporte
         extractor.generate_validation_report()
 
-        logging.info("🎉 Proceso completado exitosamente")
+        logging.info("Proceso completado exitosamente")
         logging.info("=" * 70)
         logging.info("Archivos generados:")
-        logging.info(f"  📊 {output_file}")
+        logging.info(f"  {output_file}")
         logging.info("=" * 70)
 
     except Exception as e:
