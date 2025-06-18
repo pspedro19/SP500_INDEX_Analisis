@@ -3,6 +3,15 @@ Advanced Model Training Pipeline
 Integrates all features from step_7_0_train_models (1).py while maintaining modular architecture.
 """
 
+import sys
+from pathlib import Path
+
+# Add src directory to Python path
+project_root = Path(__file__).parents[2]  # Go up two directories from pipelines/ml/
+src_path = project_root / "src"
+if str(src_path) not in sys.path:
+    sys.path.insert(0, str(src_path))
+
 import logging
 from datetime import datetime
 
@@ -32,16 +41,16 @@ def main() -> None:
     log_file = settings.log_dir / f"advanced_training_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
     configurar_logging(str(log_file))
     
-    logging.info("🚀 Starting Advanced Training Pipeline")
+    logging.info("STARTING Advanced Training Pipeline")
     logging.info("=" * 70)
     logging.info("Features integrated from step_7_0_train_models (1).py:")
-    logging.info("  ✅ TTS (Transformer Time Series) model")
-    logging.info("  ✅ 3-zone temporal validation methodology")
-    logging.info("  ✅ Advanced hyperparameter optimization")
-    logging.info("  ✅ Comprehensive forecasting pipeline")
-    logging.info("  ✅ Fact tables with Hilbert metrics")
-    logging.info("  ✅ Inverse transform to actual prices")
-    logging.info("  ✅ Business days forecasting")
+    logging.info("  [OK] TTS (Transformer Time Series) model")
+    logging.info("  [OK] 3-zone temporal validation methodology")
+    logging.info("  [OK] Advanced hyperparameter optimization")
+    logging.info("  [OK] Comprehensive forecasting pipeline")
+    logging.info("  [OK] Fact tables with Hilbert metrics")
+    logging.info("  [OK] Simplified predictions processing")
+    logging.info("  [OK] Business days forecasting")
     logging.info("=" * 70)
     
     try:
@@ -49,31 +58,31 @@ def main() -> None:
         # This now uses AdvancedTrainingService internally while maintaining modularity
         results = run_training()
         
-        logging.info("🎉 Advanced Training Pipeline completed successfully")
+        logging.info("SUCCESS: Advanced Training Pipeline completed successfully")
         logging.info("=" * 70)
         logging.info("Generated files:")
-        logging.info("  📊 all_models_predictions.csv - Complete predictions")
-        logging.info("  📈 hechos_predicciones_fields.csv - Fact predictions (no Hilbert)")
-        logging.info("  📉 hechos_metricas_modelo.csv - Metrics with Hilbert transform")
-        logging.info("  📋 dim_modelo.csv - Model dimension table")
-        logging.info("  💰 predictions_with_inverse_transform.csv - Actual price predictions")
-        logging.info("  🤖 Individual model files: catboost_best.pkl, tts_best.pkl, etc.")
-        logging.info("  📈 Individual forecast CSVs for each model")
-        logging.info("  📊 Comprehensive metrics and visualization plots")
+        logging.info("  [DATA] all_models_predictions.csv - Complete predictions")
+        logging.info("  [FACTS] hechos_predicciones_fields.csv - Fact predictions (no Hilbert)")
+        logging.info("  [METRICS] hechos_metricas_modelo.csv - Metrics with Hilbert transform")
+        logging.info("  [DIM] dim_modelo.csv - Model dimension table")
+        logging.info("  [PRICES] Simplified predictions (no inverse transform)")
+        logging.info("  [MODELS] Individual model files: catboost_best.pkl, tts_best.pkl, etc.")
+        logging.info("  [FORECASTS] Individual forecast CSVs for each model")
+        logging.info("  [CHARTS] Comprehensive metrics and visualization plots")
         logging.info("=" * 70)
         
         # Log TTS specific confirmation
         if 'TTS' in results:
-            logging.info("🎯 TTS CONFIRMATION:")
-            logging.info("  ✅ TTS model trained successfully")
-            logging.info("  ✅ TTS predictions generated")
-            logging.info("  ✅ TTS included in fact tables")
-            logging.info("  ✅ TTS metrics calculated with Hilbert transform")
+            logging.info("TTS CONFIRMATION:")
+            logging.info("  [OK] TTS model trained successfully")
+            logging.info("  [OK] TTS predictions generated")
+            logging.info("  [OK] TTS included in fact tables")
+            logging.info("  [OK] TTS metrics calculated with Hilbert transform")
         
         return results
         
     except Exception as e:
-        logging.error(f"❌ Error in advanced training pipeline: {e}")
+        logging.error(f"ERROR in advanced training pipeline: {e}")
         raise
 
 

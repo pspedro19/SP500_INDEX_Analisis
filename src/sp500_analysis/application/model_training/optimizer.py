@@ -324,9 +324,34 @@ class HyperparameterOptimizer:
 
     def _objective_lstm(self, trial, X_train, y_train, X_val, y_val, base_params):
         """LSTM objective function for Optuna."""
-        # LSTM optimization is more complex and may need special handling
-        # For now, return default parameters
-        return float('inf')
+        try:
+            from sp500_analysis.infrastructure.models.wrappers.lstm_wrapper import LSTMWrapper
+            from sklearn.preprocessing import StandardScaler
+            
+            # Scale features for LSTM
+            scaler = StandardScaler()
+            X_train_scaled = scaler.fit_transform(X_train)
+            X_val_scaled = scaler.transform(X_val)
+            
+            params = {
+                'units': trial.suggest_int('units', 32, 128),
+                'dropout_rate': trial.suggest_float('dropout_rate', 0.0, 0.3),
+                'learning_rate': trial.suggest_float('learning_rate', 1e-4, 1e-2, log=True),
+                'sequence_length': trial.suggest_int('sequence_length', 10, 20),
+                'epochs': trial.suggest_int('epochs', 20, 50),
+                'batch_size': trial.suggest_categorical('batch_size', [16, 32]),
+                'patience': trial.suggest_int('patience', 5, 10)
+            }
+            
+            model = LSTMWrapper(**params)
+            model.fit(pd.DataFrame(X_train_scaled, columns=X_train.columns, index=X_train.index), y_train)
+            y_pred = model.predict(pd.DataFrame(X_val_scaled, columns=X_val.columns, index=X_val.index))
+            
+            return sqrt(mean_squared_error(y_val, y_pred))
+            
+        except Exception as e:
+            logging.warning(f"LSTM optimization failed: {e}")
+            return float('inf')
 
     def _objective_tts(self, trial, X_train, y_train, X_val, y_val, base_params):
         """TTS (Transformer Time Series) objective function for Optuna."""

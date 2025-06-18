@@ -4,7 +4,10 @@ from pathlib import Path
 
 from sp500_analysis.config import settings
 
-__all__ = ["settings", "ensure_directories"]
+# Agregamos PROJECT_ROOT para compatibilidad con código estable
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+
+__all__ = ["settings", "ensure_directories", "PROJECT_ROOT"]
 
 
 def ensure_directories() -> None:

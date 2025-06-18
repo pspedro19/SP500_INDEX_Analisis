@@ -1,0 +1,8 @@
+ModeloKey,NombreModelo,TipoModelo,Activo
+1,CATBOOST,TreeBased,True
+2,LIGHTGBM,TreeBased,True
+3,XGBOOST,TreeBased,True
+4,MLP,NeuralNetwork,True
+5,SVM,SupportVector,True
+6,LSTM,NeuralNetwork,True
+7,TTS,TimeSeries,True

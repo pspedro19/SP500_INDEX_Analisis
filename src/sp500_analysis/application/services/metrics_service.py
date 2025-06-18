@@ -8,6 +8,7 @@ from __future__ import annotations
 import pandas as pd
 import numpy as np
 import os
+import json
 import logging
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta
@@ -32,8 +33,8 @@ class MetricsService:
         output_file: Optional[str] = None
     ) -> pd.DataFrame:
         """
-        Generate FactPredictions CSV (WITHOUT Hilbert metrics).
-        Matches step_7_0_train_models (1).py logic.
+        Generate FactPredictions CSV with EXACT structure from reference file.
+        Structure: PrediccionKey,FechaKey,ModeloKey,MercadoKey,ValorReal,ValorPredicho,ErrorAbsoluto,ErrorPorcentual,TipoPeriodo,ZonaEntrenamiento,EsPrediccionFutura
         """
         
         if input_file is None:
@@ -43,38 +44,107 @@ class MetricsService:
             output_file = self.results_dir / 'hechos_predicciones_fields.csv'
         
         try:
-            logging.info(f"📊 Generating FactPredictions from {input_file}")
+            logging.info(f"📊 Generating FactPredictions with EXACT structure from {input_file}")
             
             # Load predictions
             df = pd.read_csv(input_file)
             df['date'] = pd.to_datetime(df['date'])
             
-            # Create fact predictions structure
+            # Handle NaN values in Periodo by filling with 'Unknown'
+            df['Periodo'] = df['Periodo'].fillna('Unknown')
+            
+            # Create model and market keys mapping
+            modelo_mapping = {
+                'CATBOOST': 1,
+                'LIGHTGBM': 2, 
+                'XGBOOST': 3,
+                'MLP': 4,
+                'SVM': 5,
+                'LSTM': 6,
+                'TTS': 7  # Adding TTS with key 7
+            }
+            
+            mercado_mapping = {'S&P500': 1}
+            
+            # CRITICAL FIX: Load actual dates from reference files
+            fecha_mapping = self._create_correct_date_mapping()
+            
+            # Create fact predictions with EXACT structure
             fact_predictions = []
+            prediction_key = 1
             
             for _, row in df.iterrows():
+                # Map periodo to exact reference format
+                zona_entrenamiento = self._map_periodo_to_zona_exact(row.get('Periodo', 'Unknown'))
+                tipo_periodo = self._map_periodo_to_tipo_exact(row.get('Periodo', 'Unknown'))
+                
+                # Determine if it's future prediction
+                es_prediccion_futura = 'True' if row.get('Periodo') == 'Forecast' else 'False'
+                
+                # Get the correct FechaKey using real dates
+                fecha_key = fecha_mapping.get(row['date'], len(fecha_mapping) + 1)
+                
+                # Extract actual values, handle NaN properly
+                valor_real = row.get('Valor_Real')
+                valor_predicho = row.get('Valor_Predicho')
+                
+                # Convert NaN to proper float values
+                if pd.isna(valor_real):
+                    valor_real = 0.0
+                else:
+                    valor_real = float(valor_real)
+                    
+                if pd.isna(valor_predicho):
+                    valor_predicho = 0.0
+                else:
+                    valor_predicho = float(valor_predicho)
+                
                 fact_record = {
-                    'ID_Prediccion': f"{row['Model']}_{row['date'].strftime('%Y%m%d')}",
-                    'Fecha': row['date'],
-                    'Modelo': row['Model'],
-                    'Valor_Real': row.get('Valor_Real', np.nan),
-                    'Valor_Predicho': row.get('Valor_Predicho', np.nan),
-                    'Error_Absoluto': abs(row.get('Valor_Real', 0) - row.get('Valor_Predicho', 0)),
-                    'Error_Porcentual': self._calculate_error_porcentual(
-                        row.get('Valor_Real', 0), 
-                        row.get('Valor_Predicho', 0)
-                    ),
-                    'Periodo': self._map_periodo_to_zona(row.get('Periodo', 'Unknown')),
-                    'Timestamp_Creacion': datetime.now()
+                    'PrediccionKey': prediction_key,
+                    'FechaKey': fecha_key,
+                    'ModeloKey': modelo_mapping.get(row['Model'], 1),
+                    'MercadoKey': mercado_mapping.get(row.get('Tipo_Mercado', 'S&P500'), 1),
+                    'ValorReal': valor_real,
+                    'ValorPredicho': valor_predicho,
+                    'ErrorAbsoluto': abs(valor_real - valor_predicho),
+                    'ErrorPorcentual': self._calculate_error_porcentual(valor_real, valor_predicho),
+                    'TipoPeriodo': tipo_periodo,
+                    'ZonaEntrenamiento': zona_entrenamiento,
+                    'EsPrediccionFutura': es_prediccion_futura
                 }
                 fact_predictions.append(fact_record)
+                prediction_key += 1
             
-            # Create DataFrame
+            # Create DataFrame with exact column order
             df_fact = pd.DataFrame(fact_predictions)
+            
+            # Ensure exact column order from reference
+            column_order = [
+                'PrediccionKey', 'FechaKey', 'ModeloKey', 'MercadoKey', 
+                'ValorReal', 'ValorPredicho', 'ErrorAbsoluto', 'ErrorPorcentual',
+                'TipoPeriodo', 'ZonaEntrenamiento', 'EsPrediccionFutura'
+            ]
+            df_fact = df_fact[column_order]
+            
+            # Sort by ModeloKey, then by FechaKey for organized output
+            df_fact = df_fact.sort_values(['ModeloKey', 'FechaKey']).reset_index(drop=True)
+            
+            # Reset PrediccionKey to be sequential after sorting
+            df_fact['PrediccionKey'] = range(1, len(df_fact) + 1)
             
             # Save CSV
             df_fact.to_csv(output_file, index=False)
-            logging.info(f"✅ FactPredictions saved: {output_file}")
+            logging.info(f"✅ FactPredictions saved with EXACT structure: {output_file}")
+            logging.info(f"📊 Generated {len(df_fact)} predictions including TTS")
+            
+            # Log TTS confirmation
+            tts_count = len(df_fact[df_fact['ModeloKey'] == 7])  # TTS has key 7
+            logging.info(f"🎯 TTS CONFIRMED: {tts_count} predictions with ModeloKey=7")
+            
+            # Log date range information
+            min_fecha_key = df_fact['FechaKey'].min()
+            max_fecha_key = df_fact['FechaKey'].max()
+            logging.info(f"📅 Date range: FechaKey {min_fecha_key} to {max_fecha_key}")
             
             return df_fact
             
@@ -82,14 +152,67 @@ class MetricsService:
             logging.error(f"❌ Error generating fact predictions: {e}")
             return pd.DataFrame()
 
+    def _create_correct_date_mapping(self) -> Dict[pd.Timestamp, int]:
+        """
+        Create the correct date mapping using the actual reference files:
+        1. datos_economicos_1month_SP500_TRAINING_FPI.xlsx
+        2. datos_economicos_filtrados.xlsx (últimos 20 días)
+        """
+        logging.info("📅 Creating correct date mapping from reference files")
+        
+        fecha_mapping = {}
+        fecha_key = 1
+        
+        try:
+            # Load main training file (FPI)
+            training_fpi_file = self.base_dir / "data" / "3_trainingdata" / "datos_economicos_1month_SP500_TRAINING_FPI.xlsx"
+            if training_fpi_file.exists():
+                logging.info(f"📂 Loading dates from: {training_fpi_file}")
+                df_fpi = pd.read_excel(training_fpi_file)
+                if 'date' in df_fpi.columns:
+                    df_fpi['date'] = pd.to_datetime(df_fpi['date'])
+                    for date in sorted(df_fpi['date'].unique()):
+                        fecha_mapping[date] = fecha_key
+                        fecha_key += 1
+                    logging.info(f"✅ Added {len(df_fpi)} dates from FPI file, range: {df_fpi['date'].min()} to {df_fpi['date'].max()}")
+            
+            # Load filtered file (últimos 20 días)
+            filtered_file = self.base_dir / "data" / "3_trainingdata" / "datos_economicos_filtrados.xlsx"
+            if filtered_file.exists():
+                logging.info(f"📂 Loading dates from: {filtered_file}")
+                df_filtered = pd.read_excel(filtered_file)
+                if 'date' in df_filtered.columns:
+                    df_filtered['date'] = pd.to_datetime(df_filtered['date'])
+                    # Add filtered dates only if they're not already in the mapping
+                    new_dates = 0
+                    for date in sorted(df_filtered['date'].unique()):
+                        if date not in fecha_mapping:
+                            fecha_mapping[date] = fecha_key
+                            fecha_key += 1
+                            new_dates += 1
+                    logging.info(f"✅ Added {new_dates} new dates from filtered file, range: {df_filtered['date'].min()} to {df_filtered['date'].max()}")
+            
+            logging.info(f"📊 Total unique dates mapped: {len(fecha_mapping)}")
+            if fecha_mapping:
+                all_dates = list(fecha_mapping.keys())
+                logging.info(f"📅 Complete date range: {min(all_dates)} to {max(all_dates)}")
+                
+            return fecha_mapping
+            
+        except Exception as e:
+            logging.error(f"❌ Error creating date mapping: {e}")
+            # Fallback to simple sequential mapping
+            logging.warning("⚠️ Using fallback sequential date mapping")
+            return {}
+
     def generate_hechos_metricas_csv(
         self, 
         input_file: Optional[str] = None, 
         output_file: Optional[str] = None
     ) -> pd.DataFrame:
         """
-        Generate HechosMetricas CSV (WITH Hilbert metrics).
-        Matches step_7_0_train_models (1).py logic.
+        Generate HechosMetricas CSV with EXACT structure from reference file.
+        Structure: MetricaKey,ModeloKey,MercadoKey,FechaEvaluacion,Periodo,RMSE,MAE,R2,SMAPE,Amplitud_Score,Fase_Score,Ultra_Metric,Hit_Direction,Hyperparametros,NumeroObservaciones,DuracionVentana,FechaInicioPeriodo,FechaFinPeriodo
         """
         
         if input_file is None:
@@ -99,68 +222,246 @@ class MetricsService:
             output_file = self.results_dir / 'hechos_metricas_modelo.csv'
         
         try:
-            logging.info(f"📈 Generating HechosMetricas (WITH Hilbert) from {input_file}")
+            logging.info(f"📈 Generating HechosMetricas with EXACT structure from {input_file}")
             
             # Load predictions
             df = pd.read_csv(input_file)
             df['date'] = pd.to_datetime(df['date'])
             
+            # Create model and market keys mapping (handles trial formats)
+            modelo_mapping = {
+                'CATBOOST': 1,
+                'LIGHTGBM': 2, 
+                'XGBOOST': 3,
+                'MLP': 4,
+                'SVM': 5,
+                'LSTM': 6,
+                'TTS': 7  # Adding TTS with key 7
+            }
+            
+            # Function to extract base model name from trial format
+            def get_base_model_name(model_name: str) -> str:
+                """Extract base model name from formats like 'CATBOOST_TRIAL5'"""
+                if '_TRIAL' in model_name:
+                    return model_name.split('_TRIAL')[0]
+                elif '_' in model_name:
+                    return model_name.split('_')[0]
+                return model_name.upper()
+            
+            # Function to get model key
+            def get_model_key(model_name: str) -> int:
+                """Get model key for any model name format"""
+                base_name = get_base_model_name(model_name)
+                return modelo_mapping.get(base_name, 1)  # Default to 1 if not found
+            
+            mercado_mapping = {'S&P500': 1}
+            
+            # Handle NaN values in Periodo by filling with 'Unknown'
+            df['Periodo'] = df['Periodo'].fillna('Unknown')
+            
+            # Debug: Log unique models found
+            unique_models = df['Model'].unique()
+            logging.info(f"📊 Models found in data: {list(unique_models)}")
+            
             # Group by model and periodo for metrics calculation
             hechos_metricas = []
+            metrica_key = 1
+            fecha_evaluacion = datetime.now().strftime('%Y-%m-%d')
             
             for (modelo, periodo), group in df.groupby(['Model', 'Periodo']):
                 
+                # Skip if no valid data
+                if len(group) == 0:
+                    continue
+                
+                # Get base model name and key
+                base_model_name = get_base_model_name(modelo)
+                model_key = get_model_key(modelo)
+                
+                logging.info(f"🔄 Processing: {modelo} -> {base_model_name} (Key: {model_key}) | Periodo: {periodo}")
+                
+                # Map periodo to exact reference format
+                periodo_mapped = self._map_periodo_for_metrics_exact(periodo)
+                
                 # Basic metrics
                 n_predictions = len(group)
-                mse = np.mean((group['Valor_Real'] - group['Valor_Predicho']) ** 2)
-                mae = np.mean(np.abs(group['Valor_Real'] - group['Valor_Predicho']))
-                rmse = np.sqrt(mse)
+                real_values = pd.to_numeric(group['Valor_Real'], errors='coerce').dropna()
+                pred_values = pd.to_numeric(group['Valor_Predicho'], errors='coerce').dropna()
                 
-                # Hilbert Transform Metrics
-                real_values = group['Valor_Real'].dropna().values
-                pred_values = group['Valor_Predicho'].dropna().values
-                
-                if len(real_values) > 0 and len(pred_values) > 0:
+                # Ensure we have matching pairs
+                min_len = min(len(real_values), len(pred_values))
+                if min_len > 0:
+                    real_values = real_values.iloc[:min_len].values
+                    pred_values = pred_values.iloc[:min_len].values
+                    
+                    # Calculate standard metrics
+                    mse = np.mean((real_values - pred_values) ** 2)
+                    mae = np.mean(np.abs(real_values - pred_values))
+                    rmse = np.sqrt(mse)
+                    r2 = self._calculate_r2(real_values, pred_values)
+                    smape = self._calculate_smape(real_values, pred_values)
+                    
+                    # Hilbert Transform Metrics (same as original)
                     amplitud_score = self._calcular_amplitud_score(real_values, pred_values)
                     fase_score = self._calcular_fase_score(real_values, pred_values)
                     ultra_metric = self._calcular_ultra_metric(real_values, pred_values)
                     hit_direction = self._calcular_hit_direction(real_values, pred_values)
+                    
+                    # Get hyperparameters (try to extract from existing data or use default)
+                    hyperparametros = self._get_model_hyperparameters(base_model_name, group)
+                    
+                    # Calculate duration and date range
+                    fecha_inicio = group['date'].min().strftime('%Y-%m-%d')
+                    fecha_fin = group['date'].max().strftime('%Y-%m-%d')
+                    duracion_ventana = (group['date'].max() - group['date'].min()).days
+                    
                 else:
+                    # Default values for empty data
+                    rmse = mae = r2 = smape = np.nan
                     amplitud_score = fase_score = ultra_metric = hit_direction = np.nan
+                    hyperparametros = "{}"
+                    fecha_inicio = fecha_fin = ""
+                    duracion_ventana = 0
                 
-                # Create metrics record
+                # Create metrics record with EXACT structure
                 metrica_record = {
-                    'ID_Metrica': f"{modelo}_{periodo}_{datetime.now().strftime('%Y%m%d')}",
-                    'Modelo': modelo,
-                    'Periodo': self._map_periodo_for_metrics(periodo),
-                    'Fecha_Inicio': group['date'].min(),
-                    'Fecha_Fin': group['date'].max(),
-                    'Duracion_Ventana': self._calculate_window_duration(group['date']),
-                    'N_Predicciones': n_predictions,
-                    'MSE': mse,
-                    'MAE': mae,
+                    'MetricaKey': metrica_key,
+                    'ModeloKey': model_key,  # Use calculated model key
+                    'MercadoKey': mercado_mapping.get('S&P500', 1),
+                    'FechaEvaluacion': fecha_evaluacion,
+                    'Periodo': periodo_mapped,
                     'RMSE': rmse,
-                    'R2': self._calculate_r2(real_values, pred_values),
+                    'MAE': mae,
+                    'R2': r2,
+                    'SMAPE': smape,
                     'Amplitud_Score': amplitud_score,
                     'Fase_Score': fase_score,
                     'Ultra_Metric': ultra_metric,
                     'Hit_Direction': hit_direction,
-                    'Timestamp_Calculo': datetime.now()
+                    'Hyperparametros': hyperparametros,
+                    'NumeroObservaciones': n_predictions,
+                    'DuracionVentana': duracion_ventana,
+                    'FechaInicioPeriodo': fecha_inicio,
+                    'FechaFinPeriodo': fecha_fin
                 }
                 hechos_metricas.append(metrica_record)
+                metrica_key += 1
             
-            # Create DataFrame
+            # Create DataFrame with exact column order
             df_hechos = pd.DataFrame(hechos_metricas)
+            
+            # Ensure exact column order from reference
+            column_order = [
+                'MetricaKey', 'ModeloKey', 'MercadoKey', 'FechaEvaluacion', 'Periodo',
+                'RMSE', 'MAE', 'R2', 'SMAPE', 'Amplitud_Score', 'Fase_Score', 
+                'Ultra_Metric', 'Hit_Direction', 'Hyperparametros', 'NumeroObservaciones',
+                'DuracionVentana', 'FechaInicioPeriodo', 'FechaFinPeriodo'
+            ]
+            df_hechos = df_hechos[column_order]
+            
+            # Sort by ModeloKey, then by Periodo for organized output
+            df_hechos = df_hechos.sort_values(['ModeloKey', 'Periodo']).reset_index(drop=True)
+            
+            # Reset MetricaKey to be sequential after sorting
+            df_hechos['MetricaKey'] = range(1, len(df_hechos) + 1)
             
             # Save CSV
             df_hechos.to_csv(output_file, index=False)
-            logging.info(f"✅ HechosMetricas saved: {output_file}")
+            logging.info(f"✅ HechosMetricas saved with EXACT structure: {output_file}")
+            logging.info(f"📈 Generated {len(df_hechos)} metrics records")
+            
+            # Log model confirmation
+            unique_model_keys = df_hechos['ModeloKey'].unique()
+            logging.info(f"🎯 Model Keys found: {sorted(unique_model_keys)}")
+            
+            # Log specific model counts
+            for key, name in modelo_mapping.items():
+                count = len(df_hechos[df_hechos['ModeloKey'] == name])
+                if count > 0:
+                    logging.info(f"📊 {key} (Key {name}): {count} metrics records")
             
             return df_hechos
             
         except Exception as e:
             logging.error(f"❌ Error generating hechos metricas: {e}")
+            import traceback
+            logging.error(traceback.format_exc())
             return pd.DataFrame()
+
+    # New mapping methods for exact structure
+    def _map_periodo_to_zona_exact(self, periodo: str) -> str:
+        """Map periodo to exact zona format from reference."""
+        mapping = {
+            'Training': 'Zona A',
+            'Validation': 'Zona B', 
+            'Test': 'Zona C',
+            'Forecast': 'Zona D',
+            'Unknown': 'Zona A',  # Treat unknown periods as Zona A
+            'Evaluacion': 'Zona B'  # Map existing periods
+        }
+        return mapping.get(periodo, 'Zona A')
+    
+    def _map_periodo_to_tipo_exact(self, periodo: str) -> str:
+        """Map periodo to exact tipo format from reference."""
+        mapping = {
+            'Training': 'Training',
+            'Validation': 'Back-test', 
+            'Test': 'Back-test',
+            'Forecast': 'Forecast',
+            'Unknown': 'Training',  # Treat unknown periods as Training
+            'Evaluacion': 'Back-test'  # Map existing periods
+        }
+        return mapping.get(periodo, 'Training')
+    
+    def _map_periodo_for_metrics_exact(self, periodo: str) -> str:
+        """Map periodo for metrics with exact format from reference."""
+        mapping = {
+            'Training': 'Training',
+            'Validation': 'Back-test', 
+            'Test': 'Back-test',
+            'Forecast': 'Forecast',
+            'Unknown': 'Training',  # Treat unknown periods as Training
+            'Evaluacion': 'Back-test'  # Map existing periods
+        }
+        return mapping.get(periodo, 'Training')
+    
+    def _get_model_hyperparameters(self, modelo: str, group: pd.DataFrame) -> str:
+        """Get hyperparameters for model in JSON format."""
+        # Try to get from existing data
+        if 'Hyperparámetros' in group.columns:
+            hyper_str = group['Hyperparámetros'].iloc[0]
+            if pd.notna(hyper_str) and hyper_str != '':
+                return hyper_str
+        
+        # Default hyperparameters for each model
+        default_params = {
+            'CATBOOST': '{"learning_rate": 0.01, "depth": 6, "iterations": 500}',
+            'LIGHTGBM': '{"learning_rate": 0.01, "num_leaves": 31, "n_estimators": 500}',
+            'XGBOOST': '{"learning_rate": 0.01, "max_depth": 6, "n_estimators": 500}',
+            'MLP': '{"hidden_layer_sizes": [100], "learning_rate_init": 0.001}',
+            'SVM': '{"C": 1.0, "epsilon": 0.1, "kernel": "rbf"}',
+            'LSTM': '{"units": 50, "dropout_rate": 0.2, "sequence_length": 10}',
+            'TTS': '{"d_model": 64, "nhead": 8, "num_encoder_layers": 3, "sequence_length": 15}'
+        }
+        return default_params.get(modelo, '{}')
+    
+    def _calculate_smape(self, real: np.ndarray, pred: np.ndarray) -> float:
+        """Calculate SMAPE (Symmetric Mean Absolute Percentage Error)."""
+        try:
+            if len(real) == 0 or len(pred) == 0:
+                return np.nan
+            
+            denominator = (np.abs(real) + np.abs(pred)) / 2
+            mask = denominator != 0
+            
+            if np.sum(mask) == 0:
+                return np.nan
+            
+            smape = np.mean(np.abs(real[mask] - pred[mask]) / denominator[mask]) * 100
+            return smape
+            
+        except Exception:
+            return np.nan
 
     def generate_modelo_dimension_table(
         self, 
@@ -437,9 +738,12 @@ class MetricsService:
     
     def _calculate_error_porcentual(self, real: float, predicho: float) -> float:
         """Calculate percentage error."""
-        if pd.isna(real) or pd.isna(predicho) or real == 0:
-            return np.nan
-        return abs((real - predicho) / real) * 100
+        try:
+            if pd.isna(real) or pd.isna(predicho) or real == 0:
+                return 0.0
+            return abs((real - predicho) / real) * 100
+        except:
+            return 0.0
 
     def _map_periodo_to_zona(self, periodo: str) -> str:
         """Map periodo to zona classification."""

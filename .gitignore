@@ -53,7 +53,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -119,21 +118,32 @@ env/
 .DS_Store
 Thumbs.db
 
-# Logs
-debug.log
-*.log
-logs/
+# Logs - Solo ignorar logs de debugging temporales
+logs/*.log
 !logs/.gitkeep
 !logs/README.md
 
-# Models
-models/
-!src/sp500_analysis/infrastructure/models/
+# Temporal files and cache
+catboost_info/
+.catboost_cache/
+*.tmp
 
-# Data
-data/
-!data/README.md
+# Large model files (pero mantener los importantes)
+models/*.pkl
+models/*.h5
+models/*.hdf5
+models/*.joblib
+!models/best_*.pkl
+!models/*_final.pkl
 
+# DATA FOLDER - NO IGNORAR NADA (TODO SE SUBE)
+# data/ - COMENTADO PARA PERMITIR TODO
+# !data/ - FORZAMOS INCLUIR TODA LA CARPETA DATA
+
+# Temporary analysis files
+*_temp.py
+*_debug.py
+*_test.py
 
 # Windows shortcuts
 *.lnk

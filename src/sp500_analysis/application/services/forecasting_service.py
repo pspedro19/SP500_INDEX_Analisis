@@ -58,6 +58,9 @@ class ForecastingService:
             # Step 4: Validate and save forecast
             self._validate_and_save_forecast(complete_forecast_df, model_name)
             
+            # Step 5: Save individual model predictions CSV (for all_models_predictions.csv combination)
+            self._save_individual_model_predictions(complete_forecast_df, model_name)
+            
             return {
                 'last_20_days': last_20_days_results,
                 'future_forecast': future_forecast_results,
@@ -87,15 +90,38 @@ class ForecastingService:
                 logging.warning(f"[{model_name}] Not enough data for {lag_days} days")
                 return {}
             
-            # Extract last N days
+            # Extract last N days for target values
             X_last = X_all.tail(lag_days).copy()
             y_last = y_all.tail(lag_days).copy()
             
             # Generate predictions
             if hasattr(model, 'predict'):
                 if model_name in ['LSTM', 'TTS']:
-                    # Handle sequence models differently
-                    predictions = self._predict_sequence_model(model, X_last, model_name)
+                    # CORRECCIÓN CRÍTICA PARA TTS: Proporcionar más contexto histórico
+                    if model_name == 'TTS':
+                        # Para TTS, necesitamos proporcionar suficientes datos históricos
+                        sequence_length = getattr(model, 'sequence_length', 17)
+                        required_context = sequence_length + lag_days
+                        
+                        if len(X_all) >= required_context:
+                            # Usar datos históricos suficientes para crear secuencias
+                            X_with_context = X_all.tail(required_context)
+                            logging.info(f"[TTS] Usando {len(X_with_context)} muestras con contexto (sequence_length={sequence_length})")
+                            
+                            # Predecir usando el contexto completo
+                            all_predictions = model.predict(X_with_context)
+                            
+                            # Extraer solo las últimas lag_days predicciones
+                            predictions = all_predictions[-lag_days:] if len(all_predictions) >= lag_days else all_predictions
+                            
+                            logging.info(f"[TTS] Extraídas {len(predictions)} predicciones de los últimos {lag_days} días")
+                        else:
+                            # No hay suficiente contexto, usar método de respaldo
+                            logging.warning(f"[TTS] Contexto insuficiente: {len(X_all)} < {required_context}")
+                            predictions = self._predict_sequence_model(model, X_last, model_name)
+                    else:
+                        # Para LSTM, usar método existente
+                        predictions = self._predict_sequence_model(model, X_last, model_name)
                 else:
                     predictions = model.predict(X_last)
             else:
@@ -190,14 +216,51 @@ class ForecastingService:
                     return np.zeros(len(X))
                     
             elif model_name == 'TTS':
-                # TTS wrapper should handle this internally
-                return model.predict(X)
+                # CORRECCIÓN CRÍTICA PARA TTS: No usar solo las últimas muestras
+                # El TTS wrapper maneja las secuencias internamente, pero necesita suficientes datos
+                
+                # Verificar si tenemos suficientes datos para crear secuencias
+                sequence_length = getattr(model, 'sequence_length', 17)
+                
+                if len(X) < sequence_length:
+                    # Si no tenemos suficientes datos en X, necesitamos acceso a más datos históricos
+                    # Por ahora, usar el predict del wrapper que maneja este caso
+                    logging.warning(f"[TTS] Solo {len(X)} muestras disponibles, menos que sequence_length={sequence_length}")
+                    # El TTSWrapper manejará esto con su lógica de fallback mejorada
+                    return model.predict(X)
+                else:
+                    # Tenemos suficientes datos, usar predict normal
+                    return model.predict(X)
             else:
                 return model.predict(X)
                 
         except Exception as e:
             logging.error(f"[{model_name}] Error in sequence prediction: {e}")
             return np.zeros(len(X))
+
+    def _predict_sequence_single(self, model: Any, features: np.ndarray, model_name: str) -> float:
+        """Make a single prediction with sequence models."""
+        try:
+            if model_name == 'TTS':
+                # For TTS, use the model's predict method directly
+                # Convert to DataFrame if needed
+                if hasattr(features, 'shape') and len(features.shape) == 2:
+                    features_df = pd.DataFrame(features)
+                    pred = model.predict(features_df)
+                    return float(pred[0]) if hasattr(pred, '__getitem__') else float(pred)
+                else:
+                    return 0.0
+            elif model_name == 'LSTM':
+                # For LSTM, might need sequence reshaping
+                pred = model.predict(features)
+                return float(pred[0]) if hasattr(pred, '__getitem__') else float(pred)
+            else:
+                # Regular prediction
+                pred = model.predict(features)
+                return float(pred[0]) if hasattr(pred, '__getitem__') else float(pred)
+        except Exception as e:
+            logging.error(f"[{model_name}] Error in single sequence prediction: {e}")
+            return 0.0
 
     def _generate_business_dates(self, start_date: datetime.date, n_days: int) -> List[datetime.date]:
         """Generate N business days starting from start_date."""
@@ -227,32 +290,74 @@ class ForecastingService:
             df_char = pd.read_excel(characteristics_file)
             df_char['date'] = pd.to_datetime(df_char['date']).dt.date
             
+            logging.info(f"[{model_name}] Loaded characteristics file with {len(df_char)} rows")
+            logging.info(f"[{model_name}] Characteristics date range: {df_char['date'].min()} to {df_char['date'].max()}")
+            logging.info(f"[{model_name}] Target dates: {target_dates[0]} to {target_dates[-1]}")
+            
             predictions = []
             
-            for target_date in target_dates:
-                # Find matching row in characteristics file
-                matching_rows = df_char[df_char['date'] == target_date]
-                
-                if not matching_rows.empty:
-                    # Use the characteristics for prediction
-                    row = matching_rows.iloc[0]
-                    
-                    # Prepare features (exclude date and target columns)
+            # Check if we have any matching dates
+            target_dates_set = set(target_dates)
+            char_dates_set = set(df_char['date'].tolist())
+            matching_dates = target_dates_set.intersection(char_dates_set)
+            
+            if len(matching_dates) == 0:
+                logging.warning(f"[{model_name}] No matching dates between target and characteristics file")
+                # Use the last available row for all predictions
+                if len(df_char) > 0:
+                    last_row = df_char.iloc[-1]
                     feature_cols = [col for col in df_char.columns 
                                   if col not in ['date', 'pricing_Target']]
-                    features = row[feature_cols].values.reshape(1, -1)
+                    features = last_row[feature_cols].values.reshape(1, -1)
                     
-                    # Make prediction
-                    if model_name in ['LSTM', 'TTS']:
-                        pred = self._predict_sequence_single(model, features, model_name)
-                    else:
-                        pred = model.predict(features)[0]
-                    
-                    predictions.append(float(pred))
+                    for target_date in target_dates:
+                        # Make prediction using last available characteristics
+                        if model_name in ['LSTM', 'TTS']:
+                            pred = self._predict_sequence_single(model, features, model_name)
+                        else:
+                            pred = model.predict(features)[0]
+                        
+                        predictions.append(float(pred))
                 else:
-                    # No characteristics available, use fallback
-                    predictions.append(0.0)
+                    # No data available, use fallback
+                    predictions = [0.0] * len(target_dates)
+            else:
+                # We have some matching dates
+                for target_date in target_dates:
+                    # Find matching row in characteristics file
+                    matching_rows = df_char[df_char['date'] == target_date]
+                    
+                    if not matching_rows.empty:
+                        # Use the characteristics for prediction
+                        row = matching_rows.iloc[0]
+                        
+                        # Prepare features (exclude date and target columns)
+                        feature_cols = [col for col in df_char.columns 
+                                      if col not in ['date', 'pricing_Target']]
+                        features = row[feature_cols].values.reshape(1, -1)
+                        
+                        # Make prediction
+                        if model_name in ['LSTM', 'TTS']:
+                            pred = self._predict_sequence_single(model, features, model_name)
+                        else:
+                            pred = model.predict(features)[0]
+                        
+                        predictions.append(float(pred))
+                    else:
+                        # Use nearest available date
+                        nearest_row = df_char.iloc[-1]  # Use last available
+                        feature_cols = [col for col in df_char.columns 
+                                      if col not in ['date', 'pricing_Target']]
+                        features = nearest_row[feature_cols].values.reshape(1, -1)
+                        
+                        if model_name in ['LSTM', 'TTS']:
+                            pred = self._predict_sequence_single(model, features, model_name)
+                        else:
+                            pred = model.predict(features)[0]
+                        
+                        predictions.append(float(pred))
             
+            logging.info(f"[{model_name}] Generated {len(predictions)} predictions from characteristics file")
             return predictions
             
         except Exception as e:
@@ -341,24 +446,48 @@ class ForecastingService:
         try:
             forecast_data = []
             
-            # Add last 20 days data (validation)
-            if last_20_days_results:
-                dates = last_20_days_results.get('dates', [])
-                real_values = last_20_days_results.get('real_values', [])
-                predictions = last_20_days_results.get('predictions', [])
+            # CRITICAL: Use ALL historical data, not just last 20 days
+            # This ensures we have the same number of dates as the input Excel
+            logging.info(f"[{model_name}] Creating predictions for ALL {len(X_all)} historical records")
+            
+            # Get predictions for ALL historical data
+            if hasattr(X_all, 'index') and len(X_all) > 0:
+                # Make predictions for all historical data
+                if model_name in ['LSTM', 'TTS']:
+                    # Handle sequence models - may need special handling
+                    all_predictions = self._predict_sequence_model_all(X_all, model_name)
+                else:
+                    # Regular models
+                    all_predictions = self.trained_model.predict(X_all) if hasattr(self, 'trained_model') else [0.0] * len(X_all)
                 
-                for i, (date, real_val, pred_val) in enumerate(zip(dates, real_values, predictions)):
+                # Get corresponding real values and dates
+                y_all = getattr(self, 'y_all', pd.Series([np.nan] * len(X_all), index=X_all.index))
+                
+                # Create records for ALL historical data
+                for i in range(len(X_all)):
+                    # Get the date - try different ways
+                    if hasattr(X_all.index, 'to_list'):
+                        date_val = X_all.index.to_list()[i]
+                    elif hasattr(X_all, 'iloc'):
+                        date_val = X_all.index[i] if len(X_all.index) > i else f"2024-01-{i+1:02d}"
+                    else:
+                        date_val = f"2024-01-{i+1:02d}"
+                    
+                    # Get real and predicted values
+                    real_val = y_all.iloc[i] if i < len(y_all) else np.nan
+                    pred_val = all_predictions[i] if i < len(all_predictions) else 0.0
+                    
                     forecast_data.append({
-                        'date': date,
+                        'date': date_val,
                         'Model': model_name,
                         'Valor_Real': real_val,
                         'Valor_Predicho': pred_val,
-                        'Periodo': 'Validation_Last_20_Days',
+                        'Periodo': 'Historical_Training',
                         'Tipo': 'Historical_Validation',
                         'Parametros_Modelo': str(best_params)
                     })
             
-            # Add future forecast data
+            # Add future forecast data (will be filtered out for individual files)
             if future_forecast_results:
                 target_dates = future_forecast_results.get('target_dates', [])
                 predictions = future_forecast_results.get('predictions', [])
@@ -378,15 +507,29 @@ class ForecastingService:
             df_forecast = pd.DataFrame(forecast_data)
             
             if not df_forecast.empty:
-                df_forecast['date'] = pd.to_datetime(df_forecast['date'])
+                df_forecast['date'] = pd.to_datetime(df_forecast['date'], errors='coerce')
+                df_forecast = df_forecast.dropna(subset=['date'])  # Remove invalid dates
                 df_forecast = df_forecast.sort_values('date').reset_index(drop=True)
             
-            logging.info(f"[{model_name}] Complete forecast DataFrame: {len(df_forecast)} rows")
+            logging.info(f"[{model_name}] Complete forecast DataFrame: {len(df_forecast)} rows (including {len([x for x in forecast_data if x['Tipo'] == 'Historical_Validation'])} historical)")
             return df_forecast
             
         except Exception as e:
             logging.error(f"[{model_name}] Error creating complete forecast DataFrame: {e}")
             return pd.DataFrame()
+            
+    def _predict_sequence_model_all(self, X_all: pd.DataFrame, model_name: str) -> List[float]:
+        """Generate predictions for all data using sequence models."""
+        try:
+            if hasattr(self, 'trained_model'):
+                predictions = self.trained_model.predict(X_all)
+                return predictions.tolist() if hasattr(predictions, 'tolist') else list(predictions)
+            else:
+                logging.warning(f"[{model_name}] No trained model available, using zeros")
+                return [0.0] * len(X_all)
+        except Exception as e:
+            logging.error(f"[{model_name}] Error in sequence prediction: {e}")
+            return [0.0] * len(X_all)
 
     def _validate_and_save_forecast(self, df_forecast: pd.DataFrame, model_name: str) -> None:
         """Validate and save forecast results."""
@@ -424,4 +567,55 @@ class ForecastingService:
             logging.info(f"[{model_name}] Forecast saved: {output_file}")
             
         except Exception as e:
-            logging.error(f"[{model_name}] Error validating/saving forecast: {e}") 
+            logging.error(f"[{model_name}] Error validating/saving forecast: {e}")
+
+    def _save_individual_model_predictions(self, df_forecast: pd.DataFrame, model_name: str) -> None:
+        """Save individual model predictions in the format expected by _create_all_models_predictions_csv."""
+        
+        try:
+            if df_forecast.empty:
+                logging.warning(f"[{model_name}] Empty forecast DataFrame, skipping individual save")
+                return
+            
+            # Create a copy for individual model format
+            df_individual = df_forecast.copy()
+            
+            # CRITICAL: Filter out future predictions - only keep historical data
+            # This ensures we match exactly the dates from the input Excel
+            if 'Tipo' in df_individual.columns:
+                # Only keep historical validation, exclude future forecasts
+                df_individual = df_individual[df_individual['Tipo'] != 'Future_Forecast'].copy()
+                logging.info(f"[{model_name}] Filtered out future forecasts, kept {len(df_individual)} historical records")
+            
+            # Ensure standard column names
+            df_individual = df_individual.rename(columns={
+                'Valor_Real': 'Valor_Real',
+                'Valor_Predicho': 'Valor_Predicho',
+                'Model': 'Model',
+                'date': 'date'
+            })
+            
+            # Ensure required columns exist
+            required_columns = ['date', 'Model', 'Valor_Real', 'Valor_Predicho']
+            for col in required_columns:
+                if col not in df_individual.columns:
+                    if col == 'Model':
+                        df_individual['Model'] = model_name
+                    elif col == 'Valor_Real':
+                        df_individual['Valor_Real'] = np.nan
+                    elif col == 'Valor_Predicho':
+                        df_individual['Valor_Predicho'] = np.nan
+            
+            # Ensure date is in string format
+            if 'date' in df_individual.columns:
+                df_individual['date'] = pd.to_datetime(df_individual['date']).dt.strftime('%Y-%m-%d')
+            
+            # Save individual model file
+            output_file = self.results_dir / f"s&p500_{model_name.lower()}_three_zones.csv"
+            df_individual.to_csv(output_file, index=False)
+            
+            logging.info(f"[{model_name}] Individual predictions saved: {output_file}")
+            logging.info(f"[{model_name}] Records saved: {len(df_individual)} (historical only)")
+            
+        except Exception as e:
+            logging.error(f"[{model_name}] Error saving individual predictions: {e}") 

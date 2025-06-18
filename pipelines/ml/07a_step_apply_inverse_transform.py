@@ -30,6 +30,7 @@ class SP500TargetExtractor:
         self.target_mapping = {}  # Mapeo fecha -> precio target
         self.date_mapping = {}  # Mapeo FechaKey -> fecha real
         self.df_predictions = None
+        self.modelo_mapping = {}  # Mapeo ModeloKey -> NombreModelo
 
     def load_predictions_file(self, predictions_file: str) -> bool:
         """
@@ -146,6 +147,29 @@ class SP500TargetExtractor:
             logging.error(f"Error cargando mapeo de fechas: {e}")
             return False
 
+    def load_modelo_mapping(self) -> bool:
+        """
+        Carga el mapeo de ModeloKey a NombreModelo desde dim_modelo.csv
+        """
+        logging.info("Cargando mapeo de modelos...")
+
+        try:
+            modelo_file = settings.results_dir / "dim_modelo.csv"
+            df_modelos = pd.read_csv(modelo_file)
+
+            # Crear mapeo ModeloKey -> NombreModelo
+            self.modelo_mapping = dict(zip(df_modelos['ModeloKey'], df_modelos['NombreModelo']))
+
+            logging.info(f"Mapeo de modelos creado: {len(self.modelo_mapping)} modelos")
+            for key, nombre in self.modelo_mapping.items():
+                logging.info(f"   {key}: {nombre}")
+            
+            return True
+
+        except Exception as e:
+            logging.error(f"Error cargando mapeo de modelos: {e}")
+            return False
+
     def map_target_values_by_model(self) -> None:
         """
         Mapea los valores TARGET del S&P500 por modelo y fecha
@@ -173,7 +197,8 @@ class SP500TargetExtractor:
 
             try:
                 # Obtener información del modelo
-                modelo = row.get('Modelo', 'Unknown')
+                modelo_key = row.get('ModeloKey', 0)
+                modelo = self.modelo_mapping.get(modelo_key, f'Unknown_{modelo_key}')
                 tipo_periodo = row.get('TipoPeriodo', 'Unknown')
                 
                 # Estadísticas por modelo
@@ -181,54 +206,50 @@ class SP500TargetExtractor:
                     stats['por_modelo'][modelo] = {'total': 0, 'con_target': 0}
                 stats['por_modelo'][modelo]['total'] += 1
 
-                # Obtener fecha real
-                fecha_key = row['FechaKey']
-                if fecha_key not in self.date_mapping:
-                    valor_target_sp500.append("")
-                    fecha_real.append(None)
+                # Obtener FechaKey y mapear a fecha real
+                fecha_key = row.get('FechaKey', 0)
+                
+                if fecha_key in self.date_mapping:
+                    # Mapear fecha real
+                    fecha_real_mapped = self.date_mapping[fecha_key]
+                    fecha_real.append(fecha_real_mapped)
+                    
+                    # Información del modelo
                     modelo_info.append(f"{modelo}_{tipo_periodo}")
-                    stats['sin_target'] += 1
-                    continue
-
-                fecha_real_valor = self.date_mapping[fecha_key]
-
-                # Buscar el valor TARGET
-                if fecha_real_valor in self.target_mapping:
-                    target_price = self.target_mapping[fecha_real_valor]
-                    # Formatear como string para CSV (como espera compute_predicted_sp500)
-                    valor_target_sp500.append(f"{target_price:.2f}")
-                    fecha_real.append(fecha_real_valor)
-                    modelo_info.append(f"{modelo}_{tipo_periodo}")
-                    stats['con_target'] += 1
-                    stats['por_modelo'][modelo]['con_target'] += 1
-
-                    # Log para primeros casos de cada modelo
-                    if stats['por_modelo'][modelo]['con_target'] <= 2:
-                        logging.info(f"   {modelo} - Fila {idx}: {fecha_real_valor.strftime('%Y-%m-%d')} -> ${target_price:.2f}")
+                    
+                    # Buscar valor TARGET en el mapeo
+                    if fecha_real_mapped in self.target_mapping:
+                        target_price = self.target_mapping[fecha_real_mapped]
+                        valor_target_sp500.append(f"{target_price:.2f}")
+                        stats['con_target'] += 1
+                        stats['por_modelo'][modelo]['con_target'] += 1
+                    else:
+                        valor_target_sp500.append("")
+                        stats['sin_target'] += 1
+                        
+                        # Contar predicciones futuras sin TARGET
+                        if tipo_periodo == 'Forecast_Future':
+                            stats['forecast_future'] += 1
                 else:
-                    # Para valores vacíos, usar string vacío (como espera la función)
-                    valor_target_sp500.append("")
-                    fecha_real.append(fecha_real_valor)
+                    # FechaKey no encontrada en mapeo
+                    fecha_real.append("")
                     modelo_info.append(f"{modelo}_{tipo_periodo}")
+                    valor_target_sp500.append("")
                     stats['sin_target'] += 1
-
-                # Contar forecast future
-                if tipo_periodo == 'Forecast_Future':
-                    stats['forecast_future'] += 1
 
             except Exception as e:
                 logging.warning(f"Error procesando fila {idx}: {e}")
-                valor_target_sp500.append("")
-                fecha_real.append(None)
+                fecha_real.append("")
                 modelo_info.append("Error")
+                valor_target_sp500.append("")
                 stats['sin_target'] += 1
 
-        # Agregar columnas al DataFrame (FechaReal primero, luego ValorReal_SP500 al final)
+        # Agregar columnas al DataFrame
         self.df_predictions['FechaReal'] = fecha_real
         self.df_predictions['ModeloInfo'] = modelo_info
         self.df_predictions['ValorReal_SP500'] = valor_target_sp500
 
-        # Log estadísticas
+        # Logging de estadísticas
         logging.info("Mapeo completado:")
         logging.info(f"   - Total filas procesadas: {stats['total']:,}")
         logging.info(f"   - Con valor TARGET: {stats['con_target']:,}")
@@ -276,8 +297,11 @@ class SP500TargetExtractor:
         logging.info("Generando reporte de validación...")
 
         try:
+            # Crear columna temporal con nombres de modelos para el reporte
+            self.df_predictions['ModeloNombre'] = self.df_predictions['ModeloKey'].map(self.modelo_mapping)
+            
             # Resumen por modelo
-            resumen = self.df_predictions.groupby('Modelo').agg({
+            resumen = self.df_predictions.groupby('ModeloNombre').agg({
                 'ValorReal_SP500': ['count', lambda x: (x != "").sum()],
                 'FechaReal': lambda x: x.notna().sum()
             }).round(2)
@@ -326,6 +350,9 @@ def main() -> None:
             return
 
         if not extractor.load_date_mapping(str(all_predictions_file)):
+            return
+
+        if not extractor.load_modelo_mapping():
             return
 
         # Mapear valores TARGET por modelo
