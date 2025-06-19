@@ -3,7 +3,8 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import BaseSettings, Field
+from pydantic_settings import BaseSettings
+from pydantic import Field
 
 
 class Settings(BaseSettings):
@@ -36,7 +37,7 @@ class Settings(BaseSettings):
         self.root = self.project_root
         data_dir = Path(self.data_path)
         self.data_dir = data_dir if data_dir.is_absolute() else self.project_root / data_dir
-        self.raw_dir = self.data_dir / "0_raw"
+        self.raw_dir = self.data_dir / "raw" / "0_raw"
         self.preprocess_dir = self.data_dir / "1_preprocess"
         self.ts_prep_dir = self.data_dir / "1_preprocess_ts"
         self.processed_dir = self.data_dir / "2_processed"

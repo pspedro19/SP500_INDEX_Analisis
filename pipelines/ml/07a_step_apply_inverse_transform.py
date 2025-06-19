@@ -2,8 +2,9 @@
 # coding: utf-8
 
 """
-Script CORREGIDO para mapear valores reales del S&P500 a hechos_predicciones_fields.csv
-Usa los valores originales del archivo de entrenamiento en lugar de calcular transformada inversa
+Script ACTUALIZADO para extraer PRICE_S&P500_Index_index_pricing_Target 
+de datos_economicos_1month_SP500_TRAINING y últimos 20 días de INFERENCE
+Solo mapeo de fechas para cada modelo, sin calcular valores reales
 """
 
 import pandas as pd
@@ -19,15 +20,17 @@ log_file = os.path.join(settings.log_dir, f"apply_inverse_transform_{datetime.no
 configurar_logging(log_file)
 
 
-class SP500RealValueMapper:
+class SP500TargetExtractor:
     """
-    Clase para mapear los valores reales del S&P500 desde el archivo de entrenamiento
+    Clase para extraer PRICE_S&P500_Index_index_pricing_Target de archivos específicos
+    y mapear fechas para cada modelo
     """
 
     def __init__(self) -> None:
-        self.price_mapping = {}  # Mapeo fecha -> precio original
         self.target_mapping = {}  # Mapeo fecha -> precio target
         self.date_mapping = {}  # Mapeo FechaKey -> fecha real
+        self.df_predictions = None
+        self.modelo_mapping = {}  # Mapeo ModeloKey -> NombreModelo
 
     def load_predictions_file(self, predictions_file: str) -> bool:
         """
@@ -43,87 +46,91 @@ class SP500RealValueMapper:
             logging.error(f"❌ Error cargando predicciones: {e}")
             return False
 
-    def load_sp500_values(self, original_data_file: str) -> bool:
+    def load_sp500_target_values(self) -> bool:
         """
-        Carga los valores REALES del S&P500 del archivo de entrenamiento
+        Carga PRICE_S&P500_Index_index_pricing_Target de:
+        1. datos_economicos_1month_SP500_TRAINING.xlsx 
+        2. Últimos 20 días de datos_economicos_1month_SP500_INFERENCE.xlsx
         """
-        logging.info(f"📂 Cargando valores reales del S&P500: {original_data_file}")
+        logging.info("Cargando valores TARGET del S&P500...")
 
         try:
-            # Cargar datos
-            df_original = pd.read_excel(original_data_file)
-            df_original['date'] = pd.to_datetime(df_original['date'])
+            # Archivo 1: Training
+            training_file = settings.processed_dir / "datos_economicos_1month_SP500_TRAINING.xlsx"
+            logging.info(f"   Cargando TRAINING: {training_file}")
+            
+            df_training = pd.read_excel(training_file)
+            df_training['date'] = pd.to_datetime(df_training['date'])
+            
+            # Archivo 2: Inference (últimos 20 días)
+            inference_file = settings.processed_dir / "datos_economicos_1month_SP500_INFERENCE.xlsx"
+            logging.info(f"   Cargando INFERENCE: {inference_file}")
+            
+            df_inference = pd.read_excel(inference_file)
+            df_inference['date'] = pd.to_datetime(df_inference['date'])
+            
+            # Tomar solo los últimos 20 días de inference
+            df_inference_last20 = df_inference.tail(20).copy()
+            
+            logging.info(f"Datos cargados:")
+            logging.info(f"   - Training: {len(df_training)} filas")
+            logging.info(f"   - Inference (total): {len(df_inference)} filas")
+            logging.info(f"   - Inference (últimos 20): {len(df_inference_last20)} filas")
 
-            logging.info(f"✅ Datos cargados: {len(df_original)} filas x {len(df_original.columns)} columnas")
+            # Combinar ambos datasets
+            df_combined = pd.concat([df_training, df_inference_last20], ignore_index=True)
+            logging.info(f"   - Combined: {len(df_combined)} filas")
 
-            # Buscar las columnas del S&P500
-            price_col = None
-            target_col = None
-            return_col = None
-
-            for col in df_original.columns:
-                if col == 'PRICE_S&P500_Index_index_pricing':
-                    price_col = col
-                elif col == 'PRICE_S&P500_Index_index_pricing_Target':
-                    target_col = col
-                elif col == 'PRICE_S&P500_Index_index_pricing_Return_Target':
-                    return_col = col
-
-            if not all([price_col, target_col, return_col]):
-                logging.error("❌ No se encontraron todas las columnas necesarias del S&P500")
+            # Buscar la columna TARGET
+            target_col = 'PRICE_S&P500_Index_index_pricing_Target'
+            
+            if target_col not in df_combined.columns:
+                logging.error(f"Columna {target_col} no encontrada")
+                logging.info(f"Columnas disponibles: {list(df_combined.columns)}")
                 return False
 
-            logging.info("✅ Columnas encontradas:")
-            logging.info(f"   - Precio original: {price_col}")
-            logging.info(f"   - Precio target: {target_col}")
-            logging.info(f"   - Return: {return_col}")
+            logging.info(f"Columna encontrada: {target_col}")
 
-            # Crear mapeos de fecha a valores
-            self.price_mapping = {}
+            # Crear mapeo de fecha a valores TARGET
             self.target_mapping = {}
-            self.return_mapping = {}
-
             valid_rows = 0
-            for idx, row in df_original.iterrows():
+
+            for idx, row in df_combined.iterrows():
                 date = row['date']
-                price = row[price_col]
                 target = row[target_col]
-                return_val = row[return_col]
 
-                if pd.notna(price):
-                    self.price_mapping[date] = price
-
-                if pd.notna(target):
+                if pd.notna(target) and pd.notna(date):
                     self.target_mapping[date] = target
-                    self.return_mapping[date] = return_val
                     valid_rows += 1
 
-            logging.info("✅ Mapeos creados:")
-            logging.info(f"   - Fechas con precio original: {len(self.price_mapping)}")
-            logging.info(f"   - Fechas con precio target: {len(self.target_mapping)}")
-            logging.info(f"   - Filas válidas (con target): {valid_rows}")
+            logging.info("Mapeo TARGET creado:")
+            logging.info(f"   - Fechas con valor TARGET: {len(self.target_mapping)}")
+            logging.info(f"   - Filas válidas: {valid_rows}")
 
             # Mostrar algunos ejemplos
-            dates_sample = sorted(list(self.target_mapping.keys()))[:5]
-            logging.info("\n📊 Muestra de valores:")
-            for date in dates_sample:
-                if date in self.price_mapping and date in self.target_mapping:
-                    price = self.price_mapping[date]
+            dates_sample = sorted(list(self.target_mapping.keys()))
+            if len(dates_sample) >= 5:
+                logging.info("Muestra de valores TARGET:")
+                for i, date in enumerate(dates_sample[:5]):
                     target = self.target_mapping[date]
-                    ret = self.return_mapping.get(date, 0)
-                    logging.info(f"   {date.strftime('%Y-%m-%d')}: ${price:.2f} → ${target:.2f} (Return: {ret:.4f})")
+                    logging.info(f"   {date.strftime('%Y-%m-%d')}: ${target:.2f}")
+                
+                logging.info("   ...")
+                for i, date in enumerate(dates_sample[-3:]):
+                    target = self.target_mapping[date]
+                    logging.info(f"   {date.strftime('%Y-%m-%d')}: ${target:.2f}")
 
             return True
 
         except Exception as e:
-            logging.error(f"❌ Error cargando valores del S&P500: {e}")
+            logging.error(f"Error cargando valores TARGET del S&P500: {e}")
             return False
 
     def load_date_mapping(self, all_predictions_file: str) -> bool:
         """
         Carga el mapeo de FechaKey a fechas reales
         """
-        logging.info("📂 Cargando mapeo de fechas...")
+        logging.info("Cargando mapeo de fechas...")
 
         try:
             df_all = pd.read_csv(all_predictions_file)
@@ -133,243 +140,241 @@ class SP500RealValueMapper:
             fechas_unicas = sorted(df_all['date'].unique())
             self.date_mapping = {idx + 1: fecha for idx, fecha in enumerate(fechas_unicas)}
 
-            logging.info(f"✅ Mapeo de fechas creado: {len(self.date_mapping)} fechas únicas")
+            logging.info(f"Mapeo de fechas creado: {len(self.date_mapping)} fechas únicas")
             return True
 
         except Exception as e:
-            logging.error(f"❌ Error cargando mapeo de fechas: {e}")
+            logging.error(f"Error cargando mapeo de fechas: {e}")
             return False
 
-    def map_real_values(self) -> None:
+    def load_modelo_mapping(self) -> bool:
         """
-        Mapea los valores reales del S&P500 a las predicciones
+        Carga el mapeo de ModeloKey a NombreModelo desde dim_modelo.csv
         """
-        logging.info("🔄 Mapeando valores reales del S&P500...")
+        logging.info("Cargando mapeo de modelos...")
+
+        try:
+            modelo_file = settings.results_dir / "dim_modelo.csv"
+            df_modelos = pd.read_csv(modelo_file)
+
+            # Crear mapeo ModeloKey -> NombreModelo
+            self.modelo_mapping = dict(zip(df_modelos['ModeloKey'], df_modelos['NombreModelo']))
+
+            logging.info(f"Mapeo de modelos creado: {len(self.modelo_mapping)} modelos")
+            for key, nombre in self.modelo_mapping.items():
+                logging.info(f"   {key}: {nombre}")
+            
+            return True
+
+        except Exception as e:
+            logging.error(f"Error cargando mapeo de modelos: {e}")
+            return False
+
+    def map_target_values_by_model(self) -> None:
+        """
+        Mapea los valores TARGET del S&P500 por modelo y fecha
+        NO calcula valores reales, solo mapea fechas
+        """
+        logging.info("Mapeando valores TARGET por modelo y fecha...")
 
         # Inicializar columnas
-        valor_real_sp500 = []
-        valor_predicho_sp500 = []
+        valor_target_sp500 = []
+        fecha_real = []
+        modelo_info = []
 
         # Estadísticas
-        stats = {'total': 0, 'con_valores': 0, 'sin_valores': 0, 'forecast_future': 0}
+        stats = {
+            'total': 0, 
+            'con_target': 0, 
+            'sin_target': 0, 
+            'forecast_future': 0,
+            'por_modelo': {}
+        }
 
         # Procesar cada fila
         for idx, row in self.df_predictions.iterrows():
             stats['total'] += 1
 
             try:
-                # Obtener fecha real
-                fecha_key = row['FechaKey']
-                if fecha_key not in self.date_mapping:
-                    valor_real_sp500.append(np.nan)
-                    valor_predicho_sp500.append(np.nan)
-                    stats['sin_valores'] += 1
-                    continue
+                # Obtener información del modelo
+                modelo_key = row.get('ModeloKey', 0)
+                modelo = self.modelo_mapping.get(modelo_key, f'Unknown_{modelo_key}')
+                tipo_periodo = row.get('TipoPeriodo', 'Unknown')
+                
+                # Estadísticas por modelo
+                if modelo not in stats['por_modelo']:
+                    stats['por_modelo'][modelo] = {'total': 0, 'con_target': 0}
+                stats['por_modelo'][modelo]['total'] += 1
 
-                fecha_real = self.date_mapping[fecha_key]
+                # Obtener FechaKey y mapear a fecha real
+                fecha_key = row.get('FechaKey', 0)
+                
+                if fecha_key in self.date_mapping:
+                    # Mapear fecha real
+                    fecha_real_mapped = self.date_mapping[fecha_key]
+                    fecha_real.append(fecha_real_mapped)
+                    
+                    # Información del modelo
+                    modelo_info.append(f"{modelo}_{tipo_periodo}")
 
-                # Para valores reales (no forecast futuro)
-                if row['TipoPeriodo'] != 'Forecast_Future':
-                    # Buscar el valor TARGET (que es el precio en t+20)
-                    if fecha_real in self.target_mapping:
-                        # El valor real es el precio target
-                        real_price = self.target_mapping[fecha_real]
-
-                        # Calcular el precio predicho usando el return predicho
-                        # Necesitamos el precio base (20 días antes)
-                        if fecha_real in self.price_mapping:
-                            base_price = self.price_mapping[fecha_real]
-                            pred_return = row['ValorPredicho']
-                            pred_price = base_price * (1 + pred_return)
-                        else:
-                            pred_price = np.nan
-
-                        valor_real_sp500.append(real_price)
-                        valor_predicho_sp500.append(pred_price)
-                        stats['con_valores'] += 1
-
-                        # Log para primeros casos
-                        if idx < 5:
-                            logging.info(f"   Fila {idx}: Fecha {fecha_real.strftime('%Y-%m-%d')}")
-                            logging.info(f"      Precio real (target): ${real_price:.2f}")
-                            logging.info(f"      Return predicho: {pred_return:.4f}")
-                            logging.info(f"      Precio predicho: ${pred_price:.2f}")
+                    # Buscar valor TARGET en el mapeo
+                    if fecha_real_mapped in self.target_mapping:
+                        target_price = self.target_mapping[fecha_real_mapped]
+                        valor_target_sp500.append(f"{target_price:.2f}")
+                        stats['con_target'] += 1
+                        stats['por_modelo'][modelo]['con_target'] += 1
                     else:
-                        valor_real_sp500.append(np.nan)
-                        valor_predicho_sp500.append(np.nan)
-                        stats['sin_valores'] += 1
+                        valor_target_sp500.append("")
+                        stats['sin_target'] += 1
+                        
+                        # Contar predicciones futuras sin TARGET
+                        if tipo_periodo == 'Forecast_Future':
+                            stats['forecast_future'] += 1
                 else:
-                    # Para Forecast_Future solo tenemos predicciones
-                    if fecha_real in self.price_mapping:
-                        base_price = self.price_mapping[fecha_real]
-                        pred_return = row['ValorPredicho']
-                        pred_price = base_price * (1 + pred_return) if not pd.isna(pred_return) else np.nan
-                    else:
-                        pred_price = np.nan
-
-                    valor_real_sp500.append(np.nan)  # No hay valor real para futuro
-                    valor_predicho_sp500.append(pred_price)
-                    stats['forecast_future'] += 1
+                    # FechaKey no encontrada en mapeo
+                    fecha_real.append("")
+                    modelo_info.append(f"{modelo}_{tipo_periodo}")
+                    valor_target_sp500.append("")
+                    stats['sin_target'] += 1
 
             except Exception as e:
-                if idx < 10:
-                    logging.warning(f"Error en fila {idx}: {e}")
-                valor_real_sp500.append(np.nan)
-                valor_predicho_sp500.append(np.nan)
-                stats['sin_valores'] += 1
+                logging.warning(f"Error procesando fila {idx}: {e}")
+                fecha_real.append("")
+                modelo_info.append("Error")
+                valor_target_sp500.append("")
+                stats['sin_target'] += 1
 
         # Agregar columnas al DataFrame
-        self.df_predictions['ValorReal_SP500'] = valor_real_sp500
-        self.df_predictions['ValorPredicho_SP500'] = valor_predicho_sp500
+        self.df_predictions['FechaReal'] = fecha_real
+        self.df_predictions['ModeloInfo'] = modelo_info
+        self.df_predictions['ValorReal_SP500'] = valor_target_sp500
 
-        # Estadísticas finales
-        logging.info("\n📊 ESTADÍSTICAS DE MAPEO:")
-        logging.info(f"   Total filas: {stats['total']:,}")
-        logging.info(
-            f"   Con valores mapeados: {stats['con_valores']:,} ({stats['con_valores']/stats['total']*100:.1f}%)"
-        )
-        logging.info(f"   Sin valores: {stats['sin_valores']:,}")
-        logging.info(f"   Forecast futuro: {stats['forecast_future']:,}")
-
-        # Rangos de valores
-        valid_real = self.df_predictions['ValorReal_SP500'].dropna()
-        valid_pred = self.df_predictions['ValorPredicho_SP500'].dropna()
-
-        if len(valid_real) > 0:
-            logging.info("\n💰 VALORES REALES DEL S&P500:")
-            logging.info(f"   Mínimo: ${valid_real.min():.2f}")
-            logging.info(f"   Máximo: ${valid_real.max():.2f}")
-            logging.info(f"   Promedio: ${valid_real.mean():.2f}")
-
-        if len(valid_pred) > 0:
-            logging.info("\n📈 VALORES PREDICHOS DEL S&P500:")
-            logging.info(f"   Mínimo: ${valid_pred.min():.2f}")
-            logging.info(f"   Máximo: ${valid_pred.max():.2f}")
-            logging.info(f"   Promedio: ${valid_pred.mean():.2f}")
+        # Logging de estadísticas
+        logging.info("Mapeo completado:")
+        logging.info(f"   - Total filas procesadas: {stats['total']:,}")
+        logging.info(f"   - Con valor TARGET: {stats['con_target']:,}")
+        logging.info(f"   - Sin valor TARGET: {stats['sin_target']:,}")
+        logging.info(f"   - Forecast Future: {stats['forecast_future']:,}")
+        
+        logging.info("Estadísticas por modelo:")
+        for modelo, data in stats['por_modelo'].items():
+            porcentaje = (data['con_target'] / data['total'] * 100) if data['total'] > 0 else 0
+            logging.info(f"   {modelo}: {data['con_target']:,}/{data['total']:,} ({porcentaje:.1f}%)")
 
     def save_enhanced_file(self, output_file: str) -> bool:
         """
-        Guarda el archivo con los valores reales del S&P500
+        Guarda el archivo con los valores TARGET mapeados
         """
-        logging.info(f"\n💾 Guardando archivo con valores del S&P500: {output_file}")
+        logging.info(f"Guardando archivo mejorado: {output_file}")
 
         try:
-            # Ordenar columnas
-            columns_order = [
-                'PrediccionKey',
-                'FechaKey',
-                'ModeloKey',
-                'MercadoKey',
-                'ValorReal',
-                'ValorPredicho',
-                'ErrorAbsoluto',
-                'ErrorPorcentual',
-                'TipoPeriodo',
-                'ZonaEntrenamiento',
-                'EsPrediccionFutura',
-                'ValorReal_SP500',
-                'ValorPredicho_SP500',
-            ]
-
-            columns_to_save = [col for col in columns_order if col in self.df_predictions.columns]
-
-            # Guardar
-            self.df_predictions[columns_to_save].to_csv(output_file, index=False, float_format='%.6f')
-
-            logging.info("✅ Archivo guardado exitosamente")
-            logging.info("   Nuevas columnas: ValorReal_SP500, ValorPredicho_SP500")
+            self.df_predictions.to_csv(output_file, index=False, sep=';')
+            logging.info(f"Archivo guardado exitosamente")
+            logging.info(f"   - Filas: {len(self.df_predictions):,}")
+            logging.info(f"   - Columnas: {len(self.df_predictions.columns)}")
+            
+            # Verificar las nuevas columnas
+            nuevas_cols = ['FechaReal', 'ModeloInfo', 'ValorReal_SP500']
+            for col in nuevas_cols:
+                if col in self.df_predictions.columns:
+                    if col == 'ValorReal_SP500':
+                        # Para ValorReal_SP500, contar valores que no sean strings vacíos
+                        valores_validos = (self.df_predictions[col] != "").sum()
+                    else:
+                        valores_validos = self.df_predictions[col].notna().sum()
+                    logging.info(f"   - {col}: {valores_validos:,} valores válidos")
 
             return True
 
         except Exception as e:
-            logging.error(f"❌ Error guardando archivo: {e}")
+            logging.error(f"Error guardando archivo: {e}")
             return False
 
     def generate_validation_report(self) -> None:
         """
-        Genera reporte de validación comparando returns vs precios
+        Genera un reporte de validación
         """
-        logging.info("\n🔍 VALIDACIÓN DE VALORES:")
+        logging.info("Generando reporte de validación...")
 
-        # Filtrar filas con valores completos
-        df_valid = self.df_predictions.dropna(subset=['ValorReal', 'ValorReal_SP500', 'ValorPredicho_SP500'])
+        try:
+            # Crear columna temporal con nombres de modelos para el reporte
+            self.df_predictions['ModeloNombre'] = self.df_predictions['ModeloKey'].map(self.modelo_mapping)
+            
+            # Resumen por modelo
+            resumen = self.df_predictions.groupby('ModeloNombre').agg({
+                'ValorReal_SP500': ['count', lambda x: (x != "").sum()],
+                'FechaReal': lambda x: x.notna().sum()
+            }).round(2)
 
-        if len(df_valid) > 0:
-            logging.info(f"\nComparando {len(df_valid)} filas con valores completos:")
+            logging.info("Resumen por modelo:")
+            for modelo in resumen.index:
+                total = resumen.loc[modelo, ('ValorReal_SP500', 'count')]
+                validos = resumen.loc[modelo, ('ValorReal_SP500', '<lambda>')]
+                fechas = resumen.loc[modelo, ('FechaReal', '<lambda>')]
+                logging.info(f"   {modelo}: {validos}/{total} valores reales válidos, {fechas} fechas mapeadas")
 
-            # Muestra de validación
-            sample = df_valid.head(10)
-            for idx, row in sample.iterrows():
-                return_real = row['ValorReal']
-                precio_real = row['ValorReal_SP500']
-                return_pred = row['ValorPredicho']
-                precio_pred = row['ValorPredicho_SP500']
-
-                logging.info(f"\n   Registro {idx}:")
-                logging.info(f"      Return real: {return_real:.4f} → Precio real: ${precio_real:.2f}")
-                logging.info(f"      Return pred: {return_pred:.4f} → Precio pred: ${precio_pred:.2f}")
+        except Exception as e:
+            logging.warning(f"Error generando reporte: {e}")
 
 
 def main() -> None:
     """
-    Función principal
+    Función principal para extraer TARGET values y mapear fechas por modelo
     """
-    print("\n" + "=" * 70)
-    print("🔄 MAPEADOR DE VALORES REALES DEL S&P500")
-    print("=" * 70)
+    logging.info("Iniciando extracción de valores TARGET del S&P500")
+    logging.info("=" * 70)
+    
+    try:
+        # Rutas de archivos
+        predictions_file = settings.results_dir / "hechos_predicciones_fields.csv"
+        all_predictions_file = settings.results_dir / "all_models_predictions.csv"
+        output_file = settings.results_dir / "hechos_predicciones_fields_con_sp500.csv"
 
-    # Configuración de rutas
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    base_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..'))
+        # Verificar archivos
+        if not predictions_file.exists():
+            logging.error(f"❌ Archivo no encontrado: {predictions_file}")
+            return
 
-    # Archivos
-    predictions_file = os.path.join(
-        base_dir, 'SP500_INDEX_Analisis', 'Data', '4_results', 'hechos_predicciones_fields.csv'
-    )
+        if not all_predictions_file.exists():
+            logging.error(f"❌ Archivo no encontrado: {all_predictions_file}")
+            return
 
-    original_data_file = os.path.join(
-        base_dir, 'SP500_INDEX_Analisis', 'Data', '2_processed', 'datos_economicos_1month_SP500_TRAINING.xlsx'
-    )
+        # Crear extractor
+        extractor = SP500TargetExtractor()
 
-    all_predictions_file = os.path.join(
-        base_dir, 'SP500_INDEX_Analisis', 'Data', '4_results', 'all_models_predictions.csv'
-    )
+        # Cargar archivos
+        if not extractor.load_predictions_file(str(predictions_file)):
+            return
 
-    output_file = os.path.join(
-        base_dir, 'SP500_INDEX_Analisis', 'Data', '4_results', 'hechos_predicciones_fields_con_sp500.csv'
-    )
+        if not extractor.load_sp500_target_values():
+            return
 
-    # Crear mapeador
-    mapper = SP500RealValueMapper()
+        if not extractor.load_date_mapping(str(all_predictions_file)):
+            return
 
-    # 1. Cargar predicciones
-    if not mapper.load_predictions_file(predictions_file):
-        return
+        if not extractor.load_modelo_mapping():
+            return
 
-    # 2. Cargar mapeo de fechas
-    if not mapper.load_date_mapping(all_predictions_file):
-        return
+        # Mapear valores TARGET por modelo
+        extractor.map_target_values_by_model()
 
-    # 3. Cargar valores reales del S&P500
-    if not mapper.load_sp500_values(original_data_file):
-        return
+        # Guardar archivo
+        if not extractor.save_enhanced_file(str(output_file)):
+            return
 
-    # 4. Mapear valores reales
-    mapper.map_real_values()
+        # Generar reporte
+        extractor.generate_validation_report()
 
-    # 5. Generar reporte de validación
-    mapper.generate_validation_report()
+        logging.info("Proceso completado exitosamente")
+        logging.info("=" * 70)
+        logging.info("Archivos generados:")
+        logging.info(f"  {output_file}")
+        logging.info("=" * 70)
 
-    # 6. Guardar archivo
-    if mapper.save_enhanced_file(output_file):
-        print("\n✅ PROCESO COMPLETADO EXITOSAMENTE")
-        print(f"   Archivo generado: {output_file}")
-        print("   Columnas agregadas:")
-        print("   - ValorReal_SP500: Precio real del S&P500 (del archivo original)")
-        print("   - ValorPredicho_SP500: Precio predicho calculado desde returns")
-    else:
-        print("❌ Esrror guardando archivo")
+    except Exception as e:
+        logging.error(f"❌ Error en el proceso principal: {e}")
+        raise
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

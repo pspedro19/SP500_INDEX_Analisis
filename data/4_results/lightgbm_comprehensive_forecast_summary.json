@@ -1,0 +1,99 @@
+{
+    "algorithm": "LightGBM",
+    "version": "complete_forecast_with_debugging",
+    "execution_timestamp": "2025-06-18T12:34:22.758862",
+    "lag_days": 20,
+    "total_forecast_days": 40,
+    "last_20_days": {
+        "source": "training_file_with_real_values",
+        "method": "characteristics_20_days_before_with_debugging",
+        "n_predictions": 20,
+        "n_valid_predictions": 20,
+        "has_real_values": true,
+        "date_range": {
+            "from": "2025-05-05 00:00:00",
+            "to": "2025-05-30 00:00:00"
+        },
+        "metrics_available": true,
+        "debugging_applied": true
+    },
+    "future_forecast": {
+        "source": "new_characteristics_file",
+        "file_path": "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\2_processed\\datos_economicos_filtrados.xlsx",
+        "method": "characteristics_with_20_day_lag",
+        "n_predictions": 20,
+        "n_valid_predictions": 20,
+        "has_real_values": false,
+        "date_range": {
+            "from": "2025-06-02 00:00:00",
+            "to": "2025-06-27 00:00:00"
+        }
+    },
+    "temporal_continuity": {
+        "gaps_detected": 0,
+        "continuous": true,
+        "total_date_range": {
+            "from": "2025-05-05 00:00:00",
+            "to": "2025-06-27 00:00:00"
+        }
+    },
+    "model_performance": {
+        "training_metrics": {
+            "RMSE": 0.00014465124345517644,
+            "MAE": 0.00010865828764140734,
+            "R2": 0.999988779646019,
+            "SMAPE": 1.6450855545316667
+        },
+        "backtest_metrics": {
+            "RMSE": 0.06740300687881828,
+            "MAE": 0.05244076637203015,
+            "R2": -1.070047988867179,
+            "SMAPE": 148.85928043955371
+        },
+        "holdout_metrics": {
+            "RMSE": 0.051040771799399254,
+            "MAE": 0.039898824485642935,
+            "R2": -0.38602538513982565,
+            "SMAPE": 154.01365316097804
+        },
+        "last_20_days_metrics": {
+            "rmse": 0.00012699532242048433,
+            "mae": 9.227881051725173e-05,
+            "r2": 0.9999865904588784,
+            "smape": 0.10767803989435477
+        }
+    },
+    "hyperparameters": {
+        "best_params": {
+            "learning_rate": 0.08440316330862697,
+            "max_depth": 12,
+            "n_estimators": 1298,
+            "subsample": 0.7440993525176433
+        },
+        "random_search_params": {
+            "colsample_bytree": 0.9509357413523924,
+            "learning_rate": 0.05233038391531597,
+            "max_depth": 12,
+            "n_estimators": 1380,
+            "num_leaves": 32,
+            "reg_alpha": 0.9962536997579243,
+            "reg_lambda": 0.9654193512887936,
+            "subsample": 0.8233173814428391
+        },
+        "optuna_best_score": 0.039101528276138095
+    },
+    "files_generated": {
+        "csv_complete": "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\4_results\\s&p500_lightgbm_three_zones_complete.csv",
+        "graphs": [
+            "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\4_results\\charts\\lightgbm_three_zones_eval_test_forecast_complete.png",
+            "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\4_results\\charts\\lightgbm_forecast_complete_detail.png",
+            "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\4_results\\charts\\lightgbm_desde_2024_forecast_completo.png",
+            "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\4_results\\charts\\lightgbm_historico_completo_con_forecast.png"
+        ],
+        "feature_importance": "C:\\Users\\Home\\Desktop\\SP500\\SP500_INDEX_Analisis\\data\\4_results\\charts\\lightgbm_feature_importance.png"
+    },
+    "verification_status": {
+        "dataframe_verification_passed": "True",
+        "predictions_debugging_applied": true
+    }
+}

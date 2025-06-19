@@ -13,7 +13,14 @@ import pandas as pd
 import os
 import csv
 import chardet
+import sys
+from pathlib import Path
 from typing import List
+
+# Add src to Python path
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+from sp500_analysis.application.inference.calculations import format_for_powerbi
 
 
 def detectar_encoding(archivo: str) -> str:
@@ -50,19 +57,27 @@ def leer_csv_robusto(archivo_entrada: str) -> pd.DataFrame:
     # Detectar delimitador
     delimiter = detectar_delimitador(archivo_entrada, encoding)
     print(f"   🔍 Delimitador detectado: '{delimiter}'")
+    
+    # Si ya es punto y coma, usar configuración española
+    if delimiter == ';':
+        print("   ✅ Archivo ya en formato español - usando decimal=','")
+        decimal_input = ','
+    else:
+        print("   🔄 Archivo en formato internacional - usando decimal='.'")
+        decimal_input = '.'
 
     # Intentar diferentes estrategias de lectura
     estrategias = [
         # Estrategia 1: Lectura normal
         {
-            'params': {'delimiter': delimiter, 'decimal': '.', 'encoding': encoding, 'quoting': csv.QUOTE_MINIMAL},
+            'params': {'delimiter': delimiter, 'decimal': decimal_input, 'encoding': encoding, 'quoting': csv.QUOTE_MINIMAL},
             'descripcion': 'Lectura normal',
         },
         # Estrategia 2: Con manejo de errores
         {
             'params': {
                 'delimiter': delimiter,
-                'decimal': '.',
+                'decimal': decimal_input,
                 'encoding': encoding,
                 'quoting': csv.QUOTE_ALL,
                 'on_bad_lines': 'skip',
@@ -73,7 +88,7 @@ def leer_csv_robusto(archivo_entrada: str) -> pd.DataFrame:
         {
             'params': {
                 'delimiter': delimiter,
-                'decimal': '.',
+                'decimal': decimal_input,
                 'encoding': encoding,
                 'engine': 'python',
                 'quoting': csv.QUOTE_MINIMAL,
@@ -85,7 +100,7 @@ def leer_csv_robusto(archivo_entrada: str) -> pd.DataFrame:
         {
             'params': {
                 'delimiter': delimiter,
-                'decimal': '.',
+                'decimal': decimal_input,
                 'encoding': encoding,
                 'quoting': csv.QUOTE_NONE,
                 'engine': 'python',
@@ -170,6 +185,17 @@ def convertir_csv_powerbi_espanol(
     """
     try:
         print(f"\n🔄 Procesando: {archivo_entrada}")
+        
+        # Para hechos_predicciones, usar siempre el archivo fields.csv que está bien formateado
+        if "hechos_predicciones" in archivo_entrada and "sp500_powerbi" in archivo_entrada:
+            archivo_fields = archivo_entrada.replace("sp500_powerbi", "fields")
+            if os.path.exists(archivo_fields):
+                print(f"   🔄 Usando archivo bien formateado: {archivo_fields}")
+                archivo_entrada = archivo_fields
+
+        # Detectar configuración del archivo
+        encoding = detectar_encoding(archivo_entrada)
+        delimiter = detectar_delimitador(archivo_entrada, encoding)
 
         # Leer CSV original con estrategia robusta
         df = leer_csv_robusto(archivo_entrada)
@@ -199,22 +225,47 @@ def convertir_csv_powerbi_espanol(
             except Exception as e:
                 print(f"   ⚠️  Problema con columna {col}: {str(e)}")
 
-        # Guardar en formato español (delimitador punto y coma, separador decimal coma)
-        df.to_csv(
-            archivo_salida,
-            sep=';',  # Delimitador: punto y coma
-            decimal=',',  # Separador decimal: coma
-            index=False,  # Sin índice
-            encoding='utf-8',  # Codificación UTF-8
-            quoting=csv.QUOTE_MINIMAL,  # Comillas mínimas
-        )
+        # ⭐ APLICAR FORMATEO ESPAÑOL CORRECTO ⭐
+        if delimiter == ';':
+            print("   ✅ Archivo ya en formato español - no necesita conversión decimal")
+            df_formatted = df  # No aplicar formateo si ya está en español
+        else:
+            print("   🇪🇸 Aplicando formateo decimal español...")
+            df_formatted = format_for_powerbi(df)
+            print("   ✅ Decimales convertidos de punto (.) a coma (,)")
+
+        # ⭐ ESCRITURA LÍNEA POR LÍNEA COMO EL ARCHIVO EXITOSO ⭐
+        print(f"   📝 Escribiendo archivo línea por línea (método exitoso)...")
+        
+        with open(archivo_salida, 'w', encoding='utf-8-sig', newline='') as f:
+            # Escribir encabezados
+            headers = df_formatted.columns.tolist()
+            f.write(';'.join(headers) + '\n')
+            
+            # Escribir datos línea por línea
+            for _, row in df_formatted.iterrows():
+                values = []
+                for col in headers:
+                    value = row[col]
+                    if pd.isna(value) or value == '':
+                        values.append('')
+                    else:
+                        # Convertir a string limpio
+                        clean_value = str(value).strip()
+                        values.append(clean_value)
+                
+                # Escribir línea completa
+                f.write(';'.join(values) + '\n')
+        
+        print(f"   ✅ Archivo escrito exitosamente línea por línea")
 
         print(f"   ✅ Guardado: {archivo_salida}")
 
         # Verificar el archivo guardado
         try:
-            df_test = pd.read_csv(archivo_salida, sep=';', decimal=',')
+            df_test = pd.read_csv(archivo_salida, sep=';', decimal=',', encoding='utf-8-sig')
             print(f"   ✅ Verificación: {len(df_test)} filas en archivo de salida")
+            print(f"   🔢 Verificación decimal: ejemplo = {df_test.iloc[0, 1] if len(df_test) > 0 else 'N/A'}")
         except Exception as e:
             print(f"   ⚠️  Error en verificación: {str(e)}")
 
@@ -234,14 +285,14 @@ def main() -> None:
     # Configuración de archivos
     archivos_config = [
         {
-            'entrada': 'hechos_predicciones_fields_con_sp500_powerbi_ready.csv',
-            'salida': 'hechos_predicciones_fields_POWERBI_ES1.csv',
-            'columnas_decimales': ['ValorReal', 'ValorPredicho', 'ErrorAbsoluto', 'ErrorPorcentual'],
+            'entrada': 'data/4_results/hechos_predicciones_sp500_powerbi.csv',
+            'salida': 'data/4_results/hechos_predicciones_fields_POWERBI_ES.csv',
+            'columnas_decimales': ['ValorReal', 'ValorPredicho', 'ErrorAbsoluto', 'ErrorPorcentual', 'ValorReal_SP500', 'ValorPredicho_SP500'],
         },
         {
-            'entrada': 'hechos_metricas_modelo.csv',
-            'salida': 'hechos_metricas_modelo_POWERBI_ES1.csv',
-            'columnas_decimales': ['RMSE', 'MAE', 'R2', 'SMAPE'],
+            'entrada': 'data/4_results/hechos_metricas_modelo.csv',
+            'salida': 'data/4_results/hechos_metricas_modelo_POWERBI_ES.csv',
+            'columnas_decimales': ['RMSE', 'MAE', 'R2', 'SMAPE', 'Amplitud_Score', 'Fase_Score', 'Ultra_Metric', 'Hit_Direction'],
         },
     ]
 

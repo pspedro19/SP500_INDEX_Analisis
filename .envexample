@@ -1,0 +1,63 @@
+# =============================================================================
+# SP500 Analysis Project - Environment Configuration
+# =============================================================================
+# Copy this file to `.env` in your project root and update the values
+# for your specific environment.
+
+# =============================================================================
+# PROJECT PATHS
+# =============================================================================
+# Root directory of the project (leave empty to auto-detect from config.py location)
+# If you need to override the auto-detection, uncomment and set the full path:
+# PROJECT_ROOT=/absolute/path/to/your/sp500_project
+
+# Path to data directory (relative to project root or absolute path)
+DATA_PATH=./data
+
+# =============================================================================
+# LOGGING
+# =============================================================================
+LOG_LEVEL=INFO
+
+# =============================================================================
+# DATABASE CONFIGURATION
+# =============================================================================
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=your_database_password
+DB_NAME=sp500
+
+# =============================================================================
+# API KEYS
+# =============================================================================
+# Alpha Vantage API key for financial data
+ALPHA_VANTAGE_KEY=your_alpha_vantage_api_key_here
+
+# Other API key (replace with actual service name if needed)
+ANOTHER_API_KEY=your_other_api_key_here
+
+# =============================================================================
+# DEVELOPMENT/PRODUCTION OVERRIDES (optional)
+# =============================================================================
+# Uncomment and modify these if you need different settings for dev/prod
+
+# Development database
+# DB_HOST=localhost
+# DB_PORT=5432
+# DB_USER=dev_user
+# DB_PASSWORD=dev_password
+# DB_NAME=sp500_dev
+
+# Production database
+# DB_HOST=prod-db-server.com
+# DB_PORT=5432
+# DB_USER=prod_user
+# DB_PASSWORD=secure_prod_password
+# DB_NAME=sp500_prod
+
+# Different data path for production
+# DATA_PATH=/opt/sp500_data
+
+# More verbose logging for development
+# LOG_LEVEL=DEBUG

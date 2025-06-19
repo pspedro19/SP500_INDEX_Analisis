@@ -1,0 +1,4 @@
+variable,has_causality,best_lag,min_p_value,status
+japan_leading_lag1m_log_d1,False,1,0.3091588459242019,ok
+norm_range,False,1,0.743536923498032,ok
+pct_gap,False,1,0.2044923288812648,ok

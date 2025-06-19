@@ -1,0 +1,21 @@
+{
+    "instrument": "SP500",
+    "model_type": "ARIMA",
+    "order": "(1, 0, 0)",
+    "seasonal_order": "None",
+    "hyperparameters": {
+        "p": 1,
+        "d": 0,
+        "q": 0
+    },
+    "metrics": {
+        "rmse": 0.008492128643074352,
+        "mae": 0.006137465585533879,
+        "mape": NaN,
+        "hit_direction": 4.382470119521913,
+        "naive_rmse": 0.01517180529658925,
+        "naive_drift_rmse": 0.3636955401413248,
+        "improvement_vs_naive": 44.02690729900512,
+        "improvement_vs_drift": 97.66504460302853
+    }
+}

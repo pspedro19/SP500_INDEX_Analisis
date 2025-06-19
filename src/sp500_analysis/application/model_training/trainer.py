@@ -16,6 +16,7 @@ from sp500_analysis.infrastructure.models.wrappers import (
     MLPWrapper,
     SVMWrapper,
     LSTMWrapper,
+    TTSWrapper,
 )
 
 
@@ -45,10 +46,24 @@ DEFAULT_PARAM_SPACES: Dict[Type, Dict[str, Callable]] = {
         "learning_rate_init": lambda t: t.suggest_float("learning_rate_init", 1e-4, 1e-2, log=True),
     },
     LSTMWrapper: {
-        "units": lambda t: t.suggest_int("units", 32, 128),
-        "dropout_rate": lambda t: t.suggest_float("dropout_rate", 0.0, 0.5),
+        "units": lambda t: t.suggest_int("units", 32, 64),
+        "dropout_rate": lambda t: t.suggest_float("dropout_rate", 0.0, 0.3),
         "learning_rate": lambda t: t.suggest_float("learning_rate", 1e-4, 1e-2, log=True),
-        "sequence_length": lambda t: t.suggest_int("sequence_length", 5, 20),
+        "sequence_length": lambda t: t.suggest_int("sequence_length", 5, 15),
+        "epochs": lambda t: t.suggest_int("epochs", 20, 50),
+        "batch_size": lambda t: t.suggest_categorical("batch_size", [32, 64]),
+    },
+    TTSWrapper: {
+        "d_model": lambda t: t.suggest_categorical("d_model", [32, 64]),
+        "nhead": lambda t: t.suggest_categorical("nhead", [4, 8]),
+        "num_encoder_layers": lambda t: t.suggest_int("num_encoder_layers", 2, 3),
+        "dim_feedforward": lambda t: t.suggest_categorical("dim_feedforward", [128, 256]),
+        "dropout": lambda t: t.suggest_float("dropout", 0.0, 0.3),
+        "sequence_length": lambda t: t.suggest_int("sequence_length", 10, 20),
+        "learning_rate": lambda t: t.suggest_float("learning_rate", 1e-4, 1e-2, log=True),
+        "batch_size": lambda t: t.suggest_categorical("batch_size", [32, 64]),
+        "epochs": lambda t: t.suggest_int("epochs", 10, 30),
+        "patience": lambda t: t.suggest_int("patience", 3, 8),
     },
 }
 

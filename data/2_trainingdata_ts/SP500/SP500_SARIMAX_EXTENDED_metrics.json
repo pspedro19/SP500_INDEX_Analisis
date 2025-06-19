@@ -1,0 +1,25 @@
+{
+    "instrument": "SP500",
+    "model_type": "SARIMAX_EXTENDED",
+    "order": "(3, 0, 3)",
+    "seasonal_order": "(0, 1, 1, 5)",
+    "hyperparameters": {
+        "p": 3,
+        "d": 0,
+        "q": 3,
+        "P": 0,
+        "D": 1,
+        "Q": 1,
+        "m": 5
+    },
+    "metrics": {
+        "rmse": 0.005403563669104336,
+        "mae": 0.003823660624214988,
+        "mape": NaN,
+        "hit_direction": 88.04780876494024,
+        "naive_rmse": 0.01517180529658925,
+        "naive_drift_rmse": 0.3636955401413248,
+        "improvement_vs_naive": 64.38417470121962,
+        "improvement_vs_drift": 98.51426177318407
+    }
+}

@@ -10,6 +10,7 @@ import pandas as pd
 
 from sp500_analysis.application.preprocessing.base import BaseProcessor
 from sp500_analysis.shared.logging.logger import configurar_logging
+from sp500_analysis.utils import PathManager
 
 
 class InvestingProcessor(BaseProcessor):
@@ -29,6 +30,9 @@ class InvestingProcessor(BaseProcessor):
         self.final_df: pd.DataFrame | None = None
         self.stats: dict[str, dict] = {}
         self.date_cache: dict[str, bool] = {}
+
+        # Initialize PathManager for efficient file discovery
+        self.path_manager = PathManager(data_root)
 
         self.logger.info("=" * 80)
         self.logger.info("INICIANDO PROCESO: InvestingProcessor")
@@ -169,21 +173,29 @@ class InvestingProcessor(BaseProcessor):
         macro_type = config_row["Tipo Macro"]
         target_col = config_row["TARGET"]
 
-        # Construir la ruta (buscando también en subdirectorios)
-        ruta = os.path.join(self.data_root, macro_type, f"{variable}.xlsx")
-        if not os.path.exists(ruta):
-            for root, dirs, files in os.walk(self.data_root):
-                if f"{variable}.xlsx" in files:
-                    ruta = os.path.join(root, f"{variable}.xlsx")
-                    break
-        if not os.path.exists(ruta):
-            self.logger.error(f"Archivo no encontrado: {variable}.xlsx")
+        # Use PathManager for efficient file discovery
+        filename = f"{variable}.xlsx"
+        ruta = self.path_manager.find_file(filename)
+        
+        if ruta is None:
+            self.logger.error(f"Archivo no encontrado: {filename}")
+            
+            # Suggest similar files
+            suggestions = self.path_manager.suggest_similar_files(filename, max_suggestions=3)
+            if suggestions:
+                self.logger.info(f"Archivos similares encontrados: {', '.join(suggestions)}")
             return variable, None
 
         self.logger.info(f"\nProcesando: {variable} ({macro_type})")
-        self.logger.info(f"- Archivo: {variable}.xlsx")
+        self.logger.info(f"- Archivo: {filename}")
         self.logger.info(f"- Columna TARGET: {target_col}")
         self.logger.info(f"- Ruta encontrada: {ruta}")
+        
+        # Get file info for additional logging
+        file_info = self.path_manager.get_file_info(filename)
+        if file_info:
+            self.logger.debug(f"- Categoría: {file_info.category}")
+            self.logger.debug(f"- Tamaño: {file_info.size_bytes / 1024:.2f} KB")
 
         try:
             if variable == "US_Leading_EconIndex":
@@ -321,24 +333,46 @@ class InvestingProcessor(BaseProcessor):
     def _transform(self, data: object) -> pd.DataFrame | None:
         """Execute the full processing pipeline."""
         start_time = time.time()
+        
+        # Load configuration first
         if self.read_config() is None:
             return None
 
+        # Validate required files before processing
+        self.logger.info("Validating required files...")
+        if not self.validate_required_files():
+            self.logger.error("No se encontraron archivos válidos para procesar")
+            return None
+
+        # Log PathManager cache statistics
+        cache_stats = self.path_manager.get_cache_stats()
+        self.logger.info(f"PathManager stats: {cache_stats['total_files']} archivos en {cache_stats['total_categories']} categorías")
+
+        # Process each file
+        successful_processes = 0
         for _, config_row in self.config_data.iterrows():
             var, df_processed = self.process_file(config_row)
             self.processed_data[var] = df_processed
+            if df_processed is not None:
+                successful_processes += 1
 
-        if len([df for df in self.processed_data.values() if df is not None]) == 0:
+        if successful_processes == 0:
             self.logger.error("No se procesó ningún archivo correctamente")
             return None
+
+        self.logger.info(f"Archivos procesados exitosamente: {successful_processes}/{len(self.config_data)}")
 
         self.generate_daily_index()
         self.combine_data()
         self.analyze_coverage()
+        
         end_time = time.time()
         self.logger.info("\nResumen de Ejecución:")
         self.logger.info(f"Tiempo de ejecución: {end_time - start_time:.2f} segundos")
-        self.logger.info(f"Archivos procesados: {len(self.config_data)}")
+        self.logger.info(f"Archivos configurados: {len(self.config_data)}")
+        self.logger.info(f"Archivos procesados exitosamente: {successful_processes}")
+        self.logger.info(f"Tasa de éxito: {successful_processes/len(self.config_data)*100:.1f}%")
+        
         return self.final_df
 
     def save(self, data: pd.DataFrame | None, output_file: str) -> bool:
@@ -348,3 +382,47 @@ class InvestingProcessor(BaseProcessor):
     def run(self, output_file: str = "datos_economicos_procesados.xlsx") -> bool:
         """Run the processor end-to-end."""
         return super().run(None, output_file)
+
+    def validate_required_files(self) -> bool:
+        """Validate that all required files are available before processing.
+        
+        Returns
+        -------
+        bool
+            True if all files are available or processing can continue, False otherwise
+        """
+        if self.config_data is None:
+            self.logger.error("Configuration data not loaded. Call read_config() first.")
+            return False
+        
+        # Extract required files from configuration
+        required_files = [f"{row['Variable']}.xlsx" for _, row in self.config_data.iterrows()]
+        
+        # Validate files using PathManager
+        validation_results = self.path_manager.validate_required_files(required_files)
+        
+        # Count missing files
+        missing_files = [filename for filename, available in validation_results.items() if not available]
+        found_files = [filename for filename, available in validation_results.items() if available]
+        
+        self.logger.info(f"File validation completed:")
+        self.logger.info(f"  - Total required: {len(required_files)}")
+        self.logger.info(f"  - Found: {len(found_files)}")
+        self.logger.info(f"  - Missing: {len(missing_files)}")
+        
+        if missing_files:
+            self.logger.warning("Missing files:")
+            for missing_file in missing_files:
+                self.logger.warning(f"  - {missing_file}")
+                
+                # Try to suggest similar files
+                suggestions = self.path_manager.suggest_similar_files(missing_file, max_suggestions=3)
+                if suggestions:
+                    self.logger.info(f"    Similar files found: {', '.join(suggestions)}")
+        
+        # Log available categories for reference
+        categories = self.path_manager.get_available_categories()
+        self.logger.info(f"Available data categories: {categories}")
+        
+        # Return True if at least some files are available
+        return len(found_files) > 0

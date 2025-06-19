@@ -33,6 +33,20 @@ class FeatureEngineeringService:
             raise ImportError("pandas is required for feature engineering")
 
         df = pd.read_excel(input_file)
+        
+        # Remove category row if present (first row contains categories, not data)
+        if len(df) > 0 and not pd.api.types.is_datetime64_any_dtype(df.iloc[0, 0]):
+            # Check if first row contains category information
+            first_value = str(df.iloc[0, 0]).lower()
+            if any(word in first_value for word in ['categoría', 'category', 'sin categoría']):
+                df = df.iloc[1:].reset_index(drop=True)
+                logging.info("Removed category row from dataset")
+        
+        # Add id column if not present
+        if "id" not in df.columns:
+            df.insert(1, "id", "economic_series")
+            logging.info("Added id column to dataset")
+        
         df = convert_dataframe(df, excluded_column=None)
         df = impute_time_series_ffill(df)
         df = resample_to_business_day(df, input_frequency="D")
@@ -57,13 +71,18 @@ class FeatureEngineeringService:
         for tdf in transformed[1:]:
             final_df = final_df.merge(tdf, on=["date", "id"], how="outer")
 
-        final_df = configure_target_variable(
-            final_df,
-            target_column,
-            use_lag=use_lag,
-            lag_days=lag_days,
-            lag_type=lag_type,
-        )
+        # Configure target variable if the column exists
+        if target_column in final_df.columns:
+            final_df = configure_target_variable(
+                final_df,
+                target_column,
+                use_lag=use_lag,
+                lag_days=lag_days,
+                lag_type=lag_type,
+            )
+            logging.info("Configured target variable: %s", target_column)
+        else:
+            logging.warning("Target column '%s' not found in dataset. Skipping target configuration.", target_column)
 
         final_df.to_excel(output_file, index=False)
         logging.info("Features saved to %s", output_file)

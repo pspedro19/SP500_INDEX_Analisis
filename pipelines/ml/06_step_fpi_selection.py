@@ -116,11 +116,20 @@ def main() -> None:
     """
     main_start_time = time.time()
 
-    # 1) Obtener el archivo más reciente en la carpeta de entrada
-    input_file = get_most_recent_file(INPUT_DIR)
-    if not input_file:
-        logging.error(f"❌ No se encontraron archivos Excel en {INPUT_DIR}")
-        return
+    # 1) CORRECCIÓN CRÍTICA: Usar archivo de TRAINING en lugar de buscar el más reciente
+    # El problema era que se usaba INFERENCE que no tiene targets válidos
+    training_file = os.path.join(PROCESSED_DIR, "datos_economicos_1month_SP500_TRAINING.xlsx")
+    
+    if os.path.exists(training_file):
+        input_file = training_file
+        logging.info(f"✅ Usando archivo de TRAINING: {input_file}")
+    else:
+        # Fallback: buscar archivo más reciente como antes
+        input_file = get_most_recent_file(INPUT_DIR)
+        if not input_file:
+            logging.error(f"❌ No se encontraron archivos Excel en {INPUT_DIR}")
+            return
+        logging.warning(f"⚠️ No se encontró archivo de TRAINING, usando: {input_file}")
 
     # Extraer el nombre base del archivo para generar el nombre de salida
     base_name = os.path.basename(input_file)
@@ -167,7 +176,7 @@ def main() -> None:
     logging.info(f"Convirtiendo columna '{DATE_COL}' a datetime...")
     original_dtype = df[DATE_COL].dtype
     df[DATE_COL] = pd.to_datetime(df[DATE_COL], errors='coerce').dt.normalize()
-    logging.info(f"Conversión de fechas: {original_dtype} → {df[DATE_COL].dtype}")
+    logging.info(f"Conversión de fechas: {original_dtype} -> {df[DATE_COL].dtype}")
 
     # 5) Eliminar filas con fechas inválidas
     df_before_drop = df.shape[0]
@@ -260,12 +269,12 @@ def main() -> None:
         date_data = X.pop(DATE_COL)
     else:
         date_data = None
-        logging.warning(f"⚠️ No se encontró columna de fecha '{DATE_COL}' en las features.")
+        logging.warning(f"WARNING: No se encontró columna de fecha '{DATE_COL}' en las features.")
 
     # 12) Quedarnos solo con columnas numéricas
     non_numeric_cols = X.select_dtypes(exclude=[np.number]).columns.tolist()
     if non_numeric_cols:
-        logging.warning(f"⚠️ Eliminando {len(non_numeric_cols)} columnas no numéricas: {non_numeric_cols}")
+        logging.warning(f"WARNING: Eliminando {len(non_numeric_cols)} columnas no numéricas: {non_numeric_cols}")
 
     X_numeric = X.select_dtypes(include=[np.number])
     logging.info(f"Número de columnas numéricas: {len(X_numeric.columns)} de {len(X.columns)} originales")
@@ -300,7 +309,7 @@ def main() -> None:
     if y.isna().any():
         num_nans = y.isna().sum()
         logging.warning(
-            f"⚠️ El target contiene {num_nans} valores NaN ({num_nans/len(y)*100:.2f}%); se eliminarán esas filas."
+            f"WARNING: El target contiene {num_nans} valores NaN ({num_nans/len(y)*100:.2f}%); se eliminarán esas filas."
         )
         valid_idx = ~y.isna()
         y = y[valid_idx]
@@ -327,7 +336,7 @@ def main() -> None:
         na_count = X_scaled[col].isna().sum()
         inf_count = np.isinf(X_scaled[col]).sum()
         if na_count > 0 or inf_count > 0:
-            logging.warning(f"⚠️ Columna '{col}' tiene {na_count} NaNs y {inf_count} infinitos")
+            logging.warning(f"WARNING: Columna '{col}' tiene {na_count} NaNs y {inf_count} infinitos")
 
     logging.info(f"Últimas 3 filas de X_scaled:\n{X_scaled.tail(3)}")
     logging.info(f"Últimas 3 filas de y:\n{y.tail(3)}")
@@ -425,7 +434,7 @@ def main() -> None:
     # Verificar nulls en el dataset final
     null_counts = final_df.isna().sum()
     if null_counts.sum() > 0:
-        logging.warning("⚠️ El dataset final contiene valores nulos:")
+        logging.warning("WARNING: El dataset final contiene valores nulos:")
         for col, count in null_counts[null_counts > 0].items():
             logging.warning(f"  - {col}: {count} valores nulos")
 
