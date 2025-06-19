@@ -1,4 +1,4 @@
-MetricaKey;ModeloKey;MercadoKey;FechaEvaluacion;Periodo;RMSE;MAE;R2;SMAPE;Amplitud_Score;Fase_Score;Ultra_Metric;Hit_Direction;Hyperparametros;NumeroObservaciones;DuracionVentana;FechaInicioPeriodo;FechaFinPeriodo
+﻿MetricaKey;ModeloKey;MercadoKey;FechaEvaluacion;Periodo;RMSE;MAE;R2;SMAPE;Amplitud_Score;Fase_Score;Ultra_Metric;Hit_Direction;Hyperparametros;NumeroObservaciones;DuracionVentana;FechaInicioPeriodo;FechaFinPeriodo
 1;1;1;2025-06-18;Back-test;0,045788;0,038123;0,044738;150,5179;0,263336;0,134697;1,077972;54,38;"{""learning_rate"": 0.0976991672780769, ""depth"": 10, ""iterations"": 2774}";538;754;2022-03-31;2024-04-22
 2;1;1;2025-06-18;Forecast;4e-06;3e-06;1,0;0,0049;0,999941;0,99994;8,5e-05;100,0;"{""learning_rate"": 0.0976991672780769, ""depth"": 10, ""iterations"": 2774}";20;26;2025-05-05;2025-05-30
 3;1;1;2025-06-18;Hold-out;0,043204;0,031377;0,006911;120,1954;0,269372;0,219413;1,005931;53,36;"{""learning_rate"": 0.0976991672780769, ""depth"": 10, ""iterations"": 2774}";269;375;2024-04-23;2025-05-02
