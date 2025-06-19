@@ -216,7 +216,7 @@ class SP500TargetExtractor:
                     
                     # Información del modelo
                     modelo_info.append(f"{modelo}_{tipo_periodo}")
-                    
+
                     # Buscar valor TARGET en el mapeo
                     if fecha_real_mapped in self.target_mapping:
                         target_price = self.target_mapping[fecha_real_mapped]

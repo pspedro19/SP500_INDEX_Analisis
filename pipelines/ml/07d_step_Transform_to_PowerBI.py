@@ -196,7 +196,7 @@ def convertir_csv_powerbi_espanol(
         # Detectar configuración del archivo
         encoding = detectar_encoding(archivo_entrada)
         delimiter = detectar_delimitador(archivo_entrada, encoding)
-        
+
         # Leer CSV original con estrategia robusta
         df = leer_csv_robusto(archivo_entrada)
 

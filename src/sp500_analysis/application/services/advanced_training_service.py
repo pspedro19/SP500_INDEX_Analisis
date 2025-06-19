@@ -561,7 +561,7 @@ class AdvancedTrainingService(TrainingService):
         logging.info("\n🔄 Skipping Inverse Transform")
         logging.info("-" * 40)
         logging.info("✅ Using predictions directly for fact tables (simplified approach)")
-        
+            
         # No inverse transform needed - we'll use predictions as-is
 
     def _generate_advanced_outputs(self, results: Dict[str, Any], df: pd.DataFrame) -> None:

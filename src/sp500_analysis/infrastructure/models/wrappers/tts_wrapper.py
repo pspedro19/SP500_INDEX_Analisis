@@ -55,7 +55,7 @@ if TORCH_AVAILABLE:
     class TransformerTimeSeriesModel(nn.Module):
         """Modelo Transformer para predicción de series temporales."""
         
-        def __init__(self, d_model=64, nhead=8, num_encoder_layers=3, dim_feedforward=256,
+        def __init__(self, d_model=64, nhead=8, num_encoder_layers=3, dim_feedforward=256, 
                      dropout=0.1, sequence_length=30, n_features=1):
             super().__init__()
             
@@ -103,7 +103,7 @@ if TORCH_AVAILABLE:
                     nn.init.xavier_uniform_(module.weight)
                     if module.bias is not None:
                         nn.init.zeros_(module.bias)
-        
+            
         def forward(self, x):
             # x shape: (batch_size, sequence_length, n_features)
             
@@ -293,26 +293,26 @@ class TTSWrapper:
                             except Exception as e:
                                 logging.warning(f"Error in validation batch: {e}")
                                 continue
+                        
+                        if val_batches > 0:
+                            val_loss = val_loss_sum / val_batches
                     
-                    if val_batches > 0:
-                        val_loss = val_loss_sum / val_batches
-                
-                # Learning rate scheduling
-                scheduler.step(val_loss)
-                
-                # Early stopping logic
-                if val_loss < best_val_loss:
-                    best_val_loss = val_loss
-                    best_train_loss = train_loss
-                    patience_counter = 0
-                    # Save best model state
-                    self.best_model_state = self.model.state_dict().copy()
-                else:
-                    patience_counter += 1
-                
-                if patience_counter >= self.patience:
-                    logging.info(f"Early stopping at epoch {epoch+1}")
-                    break
+                    # Learning rate scheduling
+                    scheduler.step(val_loss)
+                    
+                    # Early stopping logic
+                    if val_loss < best_val_loss:
+                        best_val_loss = val_loss
+                        best_train_loss = train_loss
+                        patience_counter = 0
+                        # Save best model state
+                        self.best_model_state = self.model.state_dict().copy()
+                    else:
+                        patience_counter += 1
+                    
+                    if patience_counter >= self.patience:
+                        logging.info(f"Early stopping at epoch {epoch+1}")
+                        break
                 
                 # Log progress
                 if (epoch + 1) % 10 == 0 or epoch == 0:
@@ -377,51 +377,7 @@ class TTSWrapper:
             
             if len(X_sequences) == 0:
                 logging.warning(f"No sequences created for TTS prediction, using intelligent fallback for {original_len} samples")
-                
-                # NUEVO ENFOQUE: En lugar de valores constantes, usar predicciones inteligentes
-                try:
-                    # Si tenemos datos pero no suficientes para secuencias, usar cada muestra individualmente
-                    if hasattr(X, 'values'):
-                        X_array = X.values
-                    else:
-                        X_array = np.array(X)
-                    
-                    if X_array.ndim == 1:
-                        X_array = X_array.reshape(-1, 1)
-                    
-                    # Escalar datos
-                    X_scaled = self.scaler.transform(X_array)
-                    
-                    # Generar predicciones usando características
-                    intelligent_predictions = []
-                    for i in range(len(X_scaled)):
-                        sample = X_scaled[i]
-                        
-                        # Usar suma ponderada de características para generar predicción realista
-                        feature_sum = np.sum(sample)
-                        feature_mean = np.mean(sample)
-                        feature_std = np.std(sample) if len(sample) > 1 else 0.1
-                        
-                        # Combinar múltiples factores para predicción más realista
-                        base_pred = np.tanh(feature_sum * 0.001)  # Factor base
-                        trend_pred = feature_mean * 0.1  # Factor de tendencia
-                        noise_pred = np.random.normal(0, feature_std * 0.01)  # Pequeño ruido
-                        
-                        # Combinar y limitar a rangos razonables
-                        combined_pred = base_pred + trend_pred + noise_pred
-                        combined_pred = np.clip(combined_pred, -0.1, 0.1)  # Limitar a ±10%
-                        
-                        intelligent_predictions.append(combined_pred)
-                    
-                    logging.info(f"TTS: Generadas {len(intelligent_predictions)} predicciones inteligentes")
-                    logging.info(f"TTS: Rango de predicciones: [{min(intelligent_predictions):.4f}, {max(intelligent_predictions):.4f}]")
-                    
-                    return np.array(intelligent_predictions)
-                    
-                except Exception as e:
-                    logging.error(f"TTS: Error en predicciones inteligentes: {e}")
-                    # Solo como último recurso usar valores constantes pequeños pero realistas
-                    return np.full(original_len, 0.005)  # Valor muy pequeño pero realista
+                return np.full(original_len, 0.005)  # Valor muy pequeño pero realista
             
             self.model.eval()
             predictions = []
@@ -511,7 +467,7 @@ class TTSWrapper:
             else:
                 logging.info(f"TTS sequences created: X_shape={X_sequences.shape}")
                 return X_sequences, None
-                
+            
         except Exception as e:
             logging.error(f"Error preparing TTS sequences: {e}")
             return np.array([]), np.array([]) if y is not None else None

@@ -351,7 +351,7 @@ class HyperparameterOptimizer:
             
         except Exception as e:
             logging.warning(f"LSTM optimization failed: {e}")
-            return float('inf')
+        return float('inf')
 
     def _objective_tts(self, trial, X_train, y_train, X_val, y_val, base_params):
         """TTS (Transformer Time Series) objective function for Optuna."""
